@@ -79,7 +79,11 @@ def test_every_x_format_reads_the_fixture_strictly(dataset, frames) -> None:
 
 @pytest.mark.parametrize(
     ("dataset", "names"),
-    [("sih_aih_rejeitada", RJ_DATES), ("sih_servicos_profissionais", SP_DATES), (AN, AN_DATES)],
+    [
+        ("sih_aih_rejeitada", RJ_DATES),
+        ("sih_servicos_profissionais", SP_DATES),
+        (AN, AN_DEF_DATES),
+    ],
 )
 def test_rj_sp_and_an_dates_declare_the_format_the_fixtures_show(dataset, names) -> None:
     for name in names:
@@ -160,10 +164,9 @@ def test_the_def_places_the_year_and_the_month_of_three_dates_and_no_day(
     [
         ("sih_aih_rejeitada", "nasc", "sih/RJ2008.DEF"),
         ("sih_servicos_profissionais", "sp_dtsaida", "sih/SP2008.DEF"),
-        (AN, "an_dtpdr", "sia/APAC_Nefrologia.DEF"),
     ],
 )
-def test_the_def_has_no_line_for_the_three_other_dates(dataset, name, member) -> None:
+def test_the_def_has_no_line_for_the_two_other_dates(dataset, name, member) -> None:
     text = (CNV / member).read_bytes().decode("latin-1")
     assert not [b for b in parse_def(text) if b.field == name.upper()]
     claim = next(
@@ -203,6 +206,36 @@ def test_the_an_def_places_the_year_and_the_year_month_at_1_and_no_day(name, lin
             "locator": f"APAC_Nefrologia.DEF, linhas {line}-{line + 1}: {cited}",
         }
     ]
+
+
+def test_an_dtpdr_takes_the_format_the_informe_gives_and_the_def_has_no_line_for_it() -> None:
+    """Informe Técnico SIASUS 2019-07, p. 8, layout of ANUFAAMM.DBF: AN_DTPDR is the only
+    date whose format the AN layout writes. An agent read the page, so the claim stays
+    ``unreviewed``; the document is not packaged, and the fixture is what this test reads."""
+    field = _field(AN, "an_dtpdr")
+    assert field["type"] == "date" and field["x-format"] == "yyyyMMdd"
+    text = (CNV / "sia/APAC_Nefrologia.DEF").read_bytes().decode("latin-1")
+    assert not [b for b in parse_def(text) if b.field == "AN_DTPDR"]
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/format"]
+    assert claim["status"] == "unreviewed" and claim["reviewer"] is None
+    assert claim["method"] != "fixture-measure"
+    assert claim["evidence"] == [
+        {
+            "source_id": "siasus-70fe69dbd4cf",
+            "pages": [8],
+            "locator": 'AN_DTPDR CHAR (8): "Data (AAAAMMDD) da PRIMEIRA diálise realizada"',
+        }
+    ]
+    assert "issues" not in field["x-metadata"]
+
+
+@pytest.mark.parametrize("name", [*AN_DEF_DATES, "ap_dtocor"])
+def test_the_an_layout_of_the_informe_gives_no_format_to_the_ap_dates(name) -> None:
+    """Same page: the AN layout describes the five AP_DT* without a format, so the field
+    issue names the page and says so."""
+    (issue,) = _field(AN, name)["x-metadata"]["issues"]
+    assert "siasus-70fe69dbd4cf), p. 8" in issue["description"]
+    assert "não foi conferido" not in issue["description"]
 
 
 def test_an_ap_dtocor_stays_a_string_because_the_fixture_does_not_fill_it(frames) -> None:

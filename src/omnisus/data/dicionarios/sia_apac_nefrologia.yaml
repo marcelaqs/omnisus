@@ -302,7 +302,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'Nenhum documento lido dá o formato de AP_DTINIC: o leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) não foi conferido. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 66-67, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTINIC; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTINIC como CHAR (8), "Data de INÍCIO validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 66-67, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTINIC; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
   - name: ap_dtfim
     type: date
     x-format: yyyyMMdd
@@ -338,7 +338,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'Nenhum documento lido dá o formato de AP_DTFIM: o leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) não foi conferido. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 68-69, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTFIM; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTFIM como CHAR (8), "Data de FIM validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 68-69, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTFIM; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
   - name: ap_tpaten
     type: string
     x-decode:
@@ -515,7 +515,7 @@ schema:
       issues:
       - id: formato-sem-valor
         status: open
-        description: 'A única fixture da AN não tem o campo preenchido (ANPA1410: 0 de 2), então não há valor para medir e o campo continua string sem x-format. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 79-80, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTOCOR; não tem linha para o dia. O leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) não foi conferido.'
+        description: 'A única fixture da AN não tem o campo preenchido (ANPA1410: 0 de 2), então não há valor para medir e o campo continua string sem x-format. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 79-80, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTOCOR; não tem linha para o dia. O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTOCOR como CHAR (8), "Data de Ocorrência que substitui a data de FIM de validade", sem formato.'
   - name: ap_codemi
     type: string
   - name: ap_catend
@@ -593,7 +593,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'Nenhum documento lido dá o formato de AP_DTSOLIC: o leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) não foi conferido. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 81-82, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTSOLIC; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTSOLIC como CHAR (8), "Data da Solicitação", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 81-82, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTSOLIC; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
   - name: ap_dtaut
     type: date
     x-format: yyyyMMdd
@@ -629,7 +629,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'Nenhum documento lido dá o formato de AP_DTAUT: o leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) não foi conferido. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 83-84, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTAUT; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTAUT como CHAR (8), "Data da Autorização", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 83-84, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTAUT; não tem linha para o dia, e os dois CNV não estão empacotados, então a largura de cada parte não foi lida.'
   - name: ap_cidcas
     type: string
     foreignKeys:
@@ -653,10 +653,13 @@ schema:
         value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
         status: unreviewed
         checked_at: '2026-11-18'
-        method: fixture-measure
+        method: 'Leitura do PDF oficial e comparação com os valores da fixture, feita por agente; sem revisor humano'
         reviewer: null
-        evidence: []
-        note: Medido, não lido (issue formato-sem-documento). O APAC_Nefrologia.DEF não tem linha para AN_DTPDR; nenhuma fonte lida dá o formato deste campo.
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'AN_DTPDR CHAR (8): "Data (AAAAMMDD) da PRIMEIRA diálise realizada"'
+        note: Formato do leiaute da AN; os 2 registros de ANPA1410 leem como yyyyMMdd. O APAC_Nefrologia.DEF não tem linha para AN_DTPDR.
       observations:
       - file: ANPA1410.dbc
         url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANPA1410.dbc
@@ -673,10 +676,6 @@ schema:
           valid_min: '2014-02-01'
           valid_max: '2014-02-01'
           also_valid_as_ddMMyyyy: 0
-      issues:
-      - id: formato-sem-documento
-        status: open
-        description: 'Nenhum documento lido dá o formato de AN_DTPDR: o leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) não foi conferido. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410, as duas com 8 dígitos e data válida; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802) não tem linha para AN_DTPDR.'
   - name: an_altura
     type: string
   - name: an_peso
