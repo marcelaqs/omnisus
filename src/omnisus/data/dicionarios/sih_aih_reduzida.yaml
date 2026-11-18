@@ -31,7 +31,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 1, UF_ZI char(6)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara UF_ZI C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara UF_ZI C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
     - name: ano_cmpt
       type: integer
       label: Ano de competência
@@ -53,7 +53,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 2, ANO_CMPT char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ANO_CMPT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ANO_CMPT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: bec0d8e4f3e7234238927e4f3daffdbffe9b7cb56ccbe0e8b7b8553a0fa1c02f
           status: verified_in_source
@@ -87,7 +87,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 3, MÊS_CMPT char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MES_CMPT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MES_CMPT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 9e4c548ead1d0c28b33c88e4f9006903cd5fa96bbf3117fe2e4131b2d773f594
           status: verified_in_source
@@ -121,7 +121,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 6, N_AIH char(13)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara N_AIH C(13) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara N_AIH C(13) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 858c9e8e150baabfd04546c527338682915a29ce1d69e70a1d9dd84ccc57a843
           status: verified_in_source
@@ -166,7 +166,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 7, IDENT char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IDENT C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IDENT C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 00e59ae459e093e7b2260bced3fac4f2ea386a4a30fa3e6677da54bff285917f
           status: verified_in_source
@@ -236,7 +236,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 87, REMESSA char(21)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara REMESSA C(21) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara REMESSA C(21) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: cff2aefe75f04162b63856eebe651d85499726d1cfaca98fcad5365bf1ea835d
           status: verified_in_source
@@ -274,7 +274,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 5, CGC_HOSP char(14)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CGC_HOSP C(14) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CGC_HOSP C(14) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: f5dd960a9b556c1c8f4b26cab27d9559f7917d8b83018de4f72b85194ecb5119
           status: verified_in_source
@@ -312,7 +312,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 75, CNES char(7)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNES C(7) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNES C(7) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
     - name: cnpj_mant
       type: string
       label: CNPJ da mantenedora
@@ -334,7 +334,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 76, CNPJ_MANT char(14)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNPJ_MANT C(14) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNPJ_MANT C(14) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 750732d819ca155171a674bfe4f4989367bcad3f9fcbe4dc01a3a14012548ca9
           status: verified_in_source
@@ -371,7 +371,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 49, MUNIC_MOV char(6)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MUNIC_MOV C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MUNIC_MOV C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 539d4b481f93ab0b1c7da4f47cefec2b744e442830ce0e3baa964072c33b5089
           status: verified_in_source
@@ -506,7 +506,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 44, NATUREZA char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NATUREZA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NATUREZA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: d9a20f8fb8d4f6f9f01aeeb252cf4c53d42def67c0bd2fba6989e46f396508e4
           status: verified_in_source
@@ -563,7 +563,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 45, NAT_JUR char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NAT_JUR C(4) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NAT_JUR C(4) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 875bbfc991de08da2a4e50ff54298b18f18e0c790362bfc38845adf573d661f8
           status: verified_in_source
@@ -610,7 +610,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 46, DESTAO char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTAO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTAO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 25f5cea1bcc87353bde8533018a1e852553ebe8b7a0c868459f48d6bc2b17098
           status: verified_in_source
@@ -704,7 +704,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 4, ESPEC char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ESPEC C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ESPEC C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 297a3782236de8b52e0e7565f5af8627ea30429f0fdbe7058cd8039a9aefed46
           status: verified_in_source
@@ -867,7 +867,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 80, COMPLEX char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COMPLEX C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COMPLEX C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 3dc0d600382bdb7a1e1db67ed3a4268a26f6795dfc63f536fdcd3d9a713c619d
           status: verified_in_source
@@ -1065,7 +1065,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 9, MUNIC_RES char(6)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MUNIC_RES C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MUNIC_RES C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 7577e846324d705e2059b0d120b72d346ae27aeeca6ad630c159d6662e0d3e95
           status: verified_in_source
@@ -1099,7 +1099,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 8, CEP char(8)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CEP C(8) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CEP C(8) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 5287dd5d218de46f475e9b209b242148dc82e705ae96adda56c67b6446c63cb1
           status: verified_in_source
@@ -1138,7 +1138,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 50, COD_IDADE char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COD_IDADE C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COD_IDADE C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 99e73dcdcb68a24ba7825782ac61597048c908211c0bf7c97571022632b51e03
           status: verified_in_source
@@ -1577,7 +1577,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 54, NACIONAL char(2)'
-          note: 'O layout oficial dá char(2). O cabeçalho DBF declara NACIONAL C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá char(2). O cabeçalho DBF declara NACIONAL C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 71698ab6541c94f5c7ca6974c8d6f9d52a0167582e91015df1e911931696fc75
           status: verified_in_source
@@ -1604,7 +1604,7 @@ schema:
         issues:
         - id: largura-difere-do-documento
           status: open
-          description: 'IT_SIHSUS_1603, p. 2, dá NACIONAL char(2). O cabeçalho DBF declara NACIONAL C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
+          description: 'IT_SIHSUS_1603, p. 2, dá NACIONAL char(2) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara NACIONAL C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: raca_cor
       type: string
       label: Raça/cor
@@ -1727,7 +1727,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 84, RACA_COR char(4)'
-          note: 'O layout oficial dá char(4). O cabeçalho DBF declara RACA_COR C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá char(4). O cabeçalho DBF declara RACA_COR C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: fb4f8b49113753c1e4355cb04bd06e66f81918a21531176684449ca0035b3e2a
           status: verified_in_source
@@ -1754,7 +1754,7 @@ schema:
         issues:
         - id: largura-difere-do-documento
           status: open
-          description: 'IT_SIHSUS_1603, p. 3, dá RACA_COR char(4). O cabeçalho DBF declara RACA_COR C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
+          description: 'IT_SIHSUS_1603, p. 3, dá RACA_COR char(4) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara RACA_COR C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
         - id: cnv-difere-do-mapa-anterior
           status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Branca'', CNV não lista;
@@ -11783,7 +11783,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 85, ETNIA char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ETNIA C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ETNIA C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: d566d2dbe4b993ff3a6b084de4579d428d9ae7e2c6d5fc669870da6f3efa965c
           status: verified_in_source
@@ -11856,7 +11856,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 68, CBOR char(3)'
-          note: 'O layout oficial dá char(3). O cabeçalho DBF declara CBOR C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá char(3). O cabeçalho DBF declara CBOR C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: e6c2f9007c6bd3e05806b79cb49b3487be065a6701fe2a8c7f7894fe73a9d688
           status: verified_in_source
@@ -11872,7 +11872,7 @@ schema:
         issues:
         - id: largura-difere-do-documento
           status: open
-          description: 'IT_SIHSUS_1603, p. 3, dá CBOR char(3). O cabeçalho DBF declara CBOR C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
+          description: 'IT_SIHSUS_1603, p. 3, dá CBOR char(3) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara CBOR C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: homonimo
       type: string
       label: Homônimo
@@ -11894,7 +11894,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 59, HOMONIMO char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara HOMONIMO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara HOMONIMO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: c2cfd57126426c3a2a641b470e36aa80471af78259f8a2c973c152484f63c9fe
           status: verified_in_source
@@ -12115,7 +12115,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 56, CAR_INT char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CAR_INT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CAR_INT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 9d14492e2e37972c011f673e6a636211e31cde508fc090435ce117d501ccf1a6
           status: verified_in_source
@@ -12203,7 +12203,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 43, COBRANCA char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COBRANCA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COBRANCA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: de7264b6321f4248b79157c0d604bfb4b8d0f35f8d10bccb256c5f5632f766b6
           status: verified_in_source
@@ -12314,7 +12314,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 23, PROC_SOLIC char(10)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara PROC_SOLIC C(10) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara PROC_SOLIC C(10) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 225e1f6abc555106fafc8983946e72dc0e9437fd2143c361986b2687e72fea1e
           status: verified_in_source
@@ -12348,7 +12348,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 24, PROC_REA char(10)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara PROC_REA C(10) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara PROC_REA C(10) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: a61b67e3200c31425b352ff07ed115b217eb44d624b8888e3fae97187344dc2e
           status: verified_in_source
@@ -12388,7 +12388,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 41, DIAG_PRINC char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAG_PRINC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAG_PRINC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: b1bd6810e3c28dea1a6b1887c6061bd7687be6155da437c43bc0391f95a80345
           status: verified_in_source
@@ -12424,7 +12424,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 42, DIAG_SECUN char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAG_SECUN C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAG_SECUN C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 6c3e8c7759d355e56b2449181744a2a77ae6e99a08f88f75bc7003b1df442b39
           status: verified_in_source
@@ -12458,7 +12458,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 62, CID_NOTIF char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_NOTIF C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_NOTIF C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 4984ca44a632d9489cbf3d0e6c159f7dc8dd933922be6715751cf888c9dfbccc
           status: verified_in_source
@@ -12494,7 +12494,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 78, CID_ASSO char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_ASSO C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_ASSO C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 95cf8cbe0dff6d7b61fcc3a56658980265ffc39601f4d685cb904ab20f022e1d
           status: verified_in_source
@@ -12530,7 +12530,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 79, CID_MORTE char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_MORTE C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_MORTE C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 079f7cab5af6db2810467a7092f4aabdcfd1b85dfb0afa61041663f12f1c72f0
           status: verified_in_source
@@ -12569,7 +12569,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 77, INFEHOSP char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INFEHOSP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INFEHOSP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 591efed554f380ae5479e00b524487ae87885d404efd2b34b8390a968c90d6df
           status: verified_in_source
@@ -12708,7 +12708,7 @@ schema:
             pages:
             - 1
             locator: 'Tabela 1, linha 16, MARCA_UTI char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MARCA_UTI C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MARCA_UTI C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 8447771d003de3c052ebf9b5e4bfe5300f1018e44082e3a709faec3de3717338
           status: verified_in_source
@@ -12861,8 +12861,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 95, MARCA_UCI char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MARCA_UCI C(2) nos 173 arquivos RD lidos que têm o campo, de 2013-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 95, MARCA_UCI char (2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MARCA_UCI C(2) nos 173 arquivos RD lidos que têm o campo, de 2013-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 48527180da309b9746ddc1930a01756f554b811a533f745db4ec1cc405f4e7ee
           status: verified_in_source
@@ -12873,7 +12873,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 95, MARCA_UCI char(2): "Tipo de UCI utilizada pelo paciente."'
+            locator: 'Tabela 1, linha 95, MARCA_UCI char (2): "Tipo de UCI utilizada pelo paciente."'
           note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 54278ce7f2601738cc118761108d23734257ccb60a94714cb69339bc3e74d07e
@@ -12908,7 +12908,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 94, VAL_UCI numeric(10,2): "Valor de UCI."'
+            locator: 'Tabela 1, linha 94, VAL_UCI numeric (10, 2): "Valor de UCI."'
           note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
@@ -13182,7 +13182,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 90, VAL_SH_FED numeric(10,2): "Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH."'
+            locator: 'Tabela 1, linha 90, VAL_SH_FED numeric (10, 2): "Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH."'
           note: Transcrição da coluna Descrição/Observações.
     - name: val_sp_fed
       type: number
@@ -13200,7 +13200,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 91, VAL_SP_FED numeric(10,2): "Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH."'
+            locator: 'Tabela 1, linha 91, VAL_SP_FED numeric (10, 2): "Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH."'
           note: Transcrição da coluna Descrição/Observações.
     - name: val_sh_ges
       type: number
@@ -13218,7 +13218,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 92, VAL_SH_GES numeric(10,2): "Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH."'
+            locator: 'Tabela 1, linha 92, VAL_SH_GES numeric (10, 2): "Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH."'
           note: Transcrição da coluna Descrição/Observações.
     - name: val_sp_ges
       type: number
@@ -13236,7 +13236,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 93, VAL_SP_GES numeric(10,2): "Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH."'
+            locator: 'Tabela 1, linha 93, VAL_SP_GES numeric (10, 2): "Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH."'
           note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
@@ -13271,7 +13271,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 81, FINANC char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FINANC C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FINANC C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: f9b96458a8f325b2dad93260e54431a95323bcf697ef80fe4813699ea8f00c4d
           status: verified_in_source
@@ -13325,7 +13325,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 82, FAEC_TP char(6)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FAEC_TP C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FAEC_TP C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 369e7b98ff4d178a3cad9917f602cabdef28fbfad42f964e382844ffe7f39e7c
           status: verified_in_source
@@ -13380,7 +13380,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 83, REGCT char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara REGCT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara REGCT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: a8617475669ed53c384ceba37eb4707f27f47f95514d806f6be10568d53c33cd
           status: verified_in_source
@@ -13476,7 +13476,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 61, INSTRU char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INSTRU C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INSTRU C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: fd023198e17f22af012a4135950539655d5efdc6c4e44abfe61a45de5c3ef167
           status: verified_in_source
@@ -13629,7 +13629,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 63, CONTRACEP1 char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CONTRACEP1 C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CONTRACEP1 C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 468e6511b94b0097cde66b6c4f48138fc887c25dadad44b92cbe9591b36fcea2
           status: verified_in_source
@@ -13775,7 +13775,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 64, CONTRACEP2 char(2)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CONTRACEP2 C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CONTRACEP2 C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: caa3d6023b5698216ead31c13513e92faa45225322414afbd2c37328a071a5c1
           status: verified_in_source
@@ -13825,7 +13825,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 65, GESTRISCO char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTRISCO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTRISCO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 14f758dfc2df4663b9fc08420ada9a8f971d41775d4d0dfa6e9fcffa3e743706
           status: verified_in_source
@@ -13870,7 +13870,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 66, INSC_PN char(12)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INSC_PN C(10) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(12) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts); o contrato guarda uma largura por campo, a do layout em vigor.'
+          note: 'O layout oficial, ''para janeiro de 2008 em diante'', dá char(12), a largura dos arquivos lidos de 2012-01 a 2026-07. O cabeçalho DBF declara INSC_PN C(10) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(12) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout); o contrato guarda uma largura por campo, a do último layout lido.'
         - target: /field/description
           value_sha256: 3f7c4e397c79addee61a10ec679f8a5cabe337d086efe8cd26a554104e08aecf
           status: verified_in_source
@@ -13883,6 +13883,10 @@ schema:
             - 3
             locator: 'Tabela 1, linha 66, INSC_PN char(12): "Número da gestante no pré-natal."'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: largura-difere-do-documento
+          status: open
+          description: 'IT_SIHSUS_1603, p. 3, dá INSC_PN char(12) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara INSC_PN C(10) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(12) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout); o contrato guarda uma largura por campo, a do último layout lido. Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: cnaer
       type: string
       label: CNAE (acidente de trabalho)
@@ -13904,7 +13908,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 69, CNAER char(3)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNAER C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNAER C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: fd1ed367239c4e2ee3b8f2556c4b54c74b685943bc8a60e62653152453296acb
           status: verified_in_source
@@ -13949,7 +13953,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 70, VINCPREV char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara VINCPREV C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara VINCPREV C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: ec9935de47d51d6ef521a8f54608be2acfa9dd92f67a7e869ffd125b473878e3
           status: verified_in_source
@@ -14005,7 +14009,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 48, IND_VDRL char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IND_VDRL C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IND_VDRL C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: ddcb0c49f207d327cc6ebca11777d973be863f7476e8328751c69fe168e7d25f
           status: verified_in_source
@@ -14061,7 +14065,7 @@ schema:
             pages:
             - 2
             locator: 'Tabela 1, linha 55, NUM_PROC char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NUM_PROC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NUM_PROC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -14095,7 +14099,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 58, CPF_AUT char(11)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CPF_AUT C(11) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CPF_AUT C(11) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -14129,7 +14133,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 71, GESTOR_COD char(3)'
-          note: 'O layout oficial dá char(3). O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts); o contrato guarda uma largura por campo, a do layout em vigor.'
+          note: 'O layout oficial, ''para janeiro de 2008 em diante'', dá char(3), a largura dos arquivos lidos de 2008-01 a 2011-12. O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout); o contrato guarda uma largura por campo, a do último layout lido.'
         - target: /field/description
           value_sha256: d01fc78f66a3b5891f5d43cae73f0ab0e0b5786c21b509daeaf82ee3e03f6c6c
           status: verified_in_source
@@ -14145,7 +14149,7 @@ schema:
         issues:
         - id: largura-difere-do-documento
           status: open
-          description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_COD char(3). O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts); o contrato guarda uma largura por campo, a do layout em vigor. Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
+          description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_COD char(3) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout); o contrato guarda uma largura por campo, a do último layout lido. Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: gestor_tp
       type: string
       label: Tipo gestor autorizador
@@ -14167,7 +14171,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 72, GESTOR_TP char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTOR_TP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTOR_TP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 8f45e3cba07d40f3ed5b0362074269f61cd79d2aaf9a8d8733e3cecc6865043d
           status: verified_in_source
@@ -14212,7 +14216,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 73, GESTOR_CPF char(11)'
-          note: 'O layout oficial dá char(11). O cabeçalho DBF declara GESTOR_CPF C(15) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá char(11). O cabeçalho DBF declara GESTOR_CPF C(15) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: dca87b42738c88721d298849b7d4eff8c2550c1656fb53e61b466f628d569055
           status: verified_in_source
@@ -14228,7 +14232,7 @@ schema:
         issues:
         - id: largura-difere-do-documento
           status: open
-          description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_CPF char(11). O cabeçalho DBF declara GESTOR_CPF C(15) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
+          description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_CPF char(11) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara GESTOR_CPF C(15) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: gestor_dt
       type: date
       label: Data de autorização
@@ -14310,8 +14314,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 3
-            locator: 'Tabela 1, linha 88, AUD_JUST char(50)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara AUD_JUST C(50) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 88, AUD_JUST char (50)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara AUD_JUST C(50) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: c9608a88a32034ba2ceb02409b9070287f5bbcf05d59286bd6a77ae45a07bcdb
           status: verified_in_source
@@ -14322,7 +14326,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 3
-            locator: 'Tabela 1, linha 88, AUD_JUST char(50): "Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
+            locator: 'Tabela 1, linha 88, AUD_JUST char (50): "Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
           note: Transcrição da coluna Descrição/Observações.
     - name: sis_just
       type: string
@@ -14344,8 +14348,20 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 3
-            locator: 'Tabela 1, linha 89, SIS_JUST char(50)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara SIS_JUST C(50) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 89, SIS_JUST char (50)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara SIS_JUST C(50) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 19bf48573e701ada3dab8e2aac244d9cbad7f931d24d379e5b99cde77dc83aaa
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 89, SIS_JUST char (50): "Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
+          note: As três primeiras palavras da descrição do documento.
         - target: /field/description
           value_sha256: c49d48a8b408997c389c841494667f29bd21996a7bfda6fda5321d06ea9a36a0
           status: verified_in_source
@@ -14356,7 +14372,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 3
-            locator: 'Tabela 1, linha 89, SIS_JUST char(50): "Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
+            locator: 'Tabela 1, linha 89, SIS_JUST char (50): "Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tot_pt_sp
       type: integer
@@ -14397,7 +14413,7 @@ schema:
             pages:
             - 3
             locator: 'Tabela 1, linha 67, SEQ_AIH5 char(3)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara SEQ_AIH5 C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara SEQ_AIH5 C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 184948279518e68772c0bb6acdd27f6e374f9c02030cad19b73d531c5f96f336
           status: verified_in_source
@@ -14472,8 +14488,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 96, DIAGSEC1 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC1 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 96, DIAGSEC1 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC1 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 9c833bdef3fb97872ec3b25b1b7e027a68f74d273c02233509bac0c3aaf3233c
           status: verified_in_source
@@ -14484,7 +14500,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 96, DIAGSEC1 char(4): "Diagnóstico secundário1."'
+            locator: 'Tabela 1, linha 96, DIAGSEC1 char (4): "Diagnóstico secundário1."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec1
       type: string
@@ -14510,7 +14526,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 105, TPDISEC1 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC1 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC1 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: f9a8c8d48e40294d9ffeaac77941fcfb7c6295b770f618a8e9a8ff34e15ad49c
           status: verified_in_source
@@ -14562,8 +14578,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 97, DIAGSEC2 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC2 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 97, DIAGSEC2 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC2 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: cb4852cc8d385bab7b8f2b46881a12aaca78f13c530c7dfa568ff2f68993d871
           status: verified_in_source
@@ -14574,7 +14590,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 97, DIAGSEC2 char(4): "Diagnóstico secundário 2."'
+            locator: 'Tabela 1, linha 97, DIAGSEC2 char (4): "Diagnóstico secundário 2."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec2
       type: string
@@ -14600,7 +14616,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 107, TPDISEC2 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC2 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC2 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 9e9ab180f613505873077726974089808c05a2d6efcabc840451404731c06f9c
           status: verified_in_source
@@ -14652,8 +14668,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 98, DIAGSEC3 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC3 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 98, DIAGSEC3 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC3 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 2b32d89c15acc2d92f20722fa1ec2d96ff69e58bb33686c55d4d7f65ba9b8a18
           status: verified_in_source
@@ -14664,7 +14680,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 98, DIAGSEC3 char(4): "Diagnóstico secundário 3."'
+            locator: 'Tabela 1, linha 98, DIAGSEC3 char (4): "Diagnóstico secundário 3."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec3
       type: string
@@ -14690,7 +14706,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 108, TPDISEC3 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC3 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC3 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 5d127b313e830a3fff4b23c0c69614513466a2fa8f3ed19112c6c95ac9df18d3
           status: verified_in_source
@@ -14742,8 +14758,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 99, DIAGSEC4 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC4 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 99, DIAGSEC4 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC4 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 056e3a18e63e7e2e0ee264e3fc7da8941072cfca257857a8b404b7589536d163
           status: verified_in_source
@@ -14754,7 +14770,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 99, DIAGSEC4 char(4): "Diagnóstico secundário 4."'
+            locator: 'Tabela 1, linha 99, DIAGSEC4 char (4): "Diagnóstico secundário 4."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec4
       type: string
@@ -14780,7 +14796,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 109, TPDISEC4 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC4 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC4 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 7ada4106e0da5656e6f47147fead8ad3990cba400e3415ddb77fd633e8c0b01b
           status: verified_in_source
@@ -14832,8 +14848,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 100, DIAGSEC5 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC5 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 100, DIAGSEC5 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC5 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 59c5b5cb9b0f613a644267d9333066fcdc8cbbb41e9482476e28d3b11e0aae71
           status: verified_in_source
@@ -14844,7 +14860,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 100, DIAGSEC5 char(4): "Diagnóstico secundário 5."'
+            locator: 'Tabela 1, linha 100, DIAGSEC5 char (4): "Diagnóstico secundário 5."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec5
       type: string
@@ -14870,7 +14886,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 110, TPDISEC5 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC5 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC5 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 94576d1c6560c5162758cd0e1b965b51f18581c7458c8472c187a6e35783ad47
           status: verified_in_source
@@ -14922,8 +14938,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 101, DIAGSEC6 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC6 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 101, DIAGSEC6 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC6 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: a4b2ea0c40d2f080136e340371d9ddab2add929abc10b6fa74709e010d80fa26
           status: verified_in_source
@@ -14934,7 +14950,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 101, DIAGSEC6 char(4): "Diagnóstico secundário 6."'
+            locator: 'Tabela 1, linha 101, DIAGSEC6 char (4): "Diagnóstico secundário 6."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec6
       type: string
@@ -14960,7 +14976,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 111, TPDISEC6 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC6 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC6 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: d07ab92fde84baef275459a943c796c161e89de5b6935485327ca6e1c08ce99b
           status: verified_in_source
@@ -15012,8 +15028,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 102, DIAGSEC7 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC7 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 102, DIAGSEC7 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC7 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 0ecc5c9bcab0c33c66d22fd3ad8be504592cff7a72be2df4a28249b7eab9a677
           status: verified_in_source
@@ -15024,7 +15040,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 102, DIAGSEC7 char(4): "Diagnóstico secundário 7."'
+            locator: 'Tabela 1, linha 102, DIAGSEC7 char (4): "Diagnóstico secundário 7."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec7
       type: string
@@ -15050,7 +15066,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 112, TPDISEC7 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC7 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC7 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: cb9d40248cea98d21620a9f225a0af39d041eee1f6263f901772bf3034805c21
           status: verified_in_source
@@ -15102,8 +15118,8 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 103, DIAGSEC8 char(4)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC8 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+            locator: 'Tabela 1, linha 103, DIAGSEC8 char (4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC8 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 57c0b22ff9d349c4f1ff8b31cb94a65a508e1b5df69a0a2f6ef982a4f478eff1
           status: verified_in_source
@@ -15114,7 +15130,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 103, DIAGSEC8 char(4): "Diagnóstico secundário 8."'
+            locator: 'Tabela 1, linha 103, DIAGSEC8 char (4): "Diagnóstico secundário 8."'
           note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec8
       type: string
@@ -15140,7 +15156,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 113, TPDISEC8 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC8 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC8 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: bc06de11659ca510bc60ce9fc791d06aa8c0ffc0b2327f123d311838b74b5997
           status: verified_in_source
@@ -15190,7 +15206,7 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 4
-            locator: 'Tabela 1, linha 104, DIAGSEC9 char(4): "Diagnóstico secundário 9."'
+            locator: 'Tabela 1, linha 104, DIAGSEC9 char (4): "Diagnóstico secundário 9."'
           note: Transcrição da coluna Descrição/Observações.
         - target: /field/physical_type
           value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
@@ -15243,7 +15259,7 @@ schema:
             pages:
             - 4
             locator: 'Tabela 1, linha 114, TPDISEC9 char(1)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC9 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC9 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: f7db3afd75096bb8b63d53236f1a1f4d96394c4ac9f5252d17a86b8c0597668c
           status: verified_in_source
@@ -15296,6 +15312,25 @@ schema:
           type: string
           length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: unreviewed
+          checked_at: '2026-11-18'
+          method: Comparison with the DBF headers of the RD files.
+          reviewer: null
+          evidence: []
+          note: 'IT_SIHSUS_1603 não lista FONTE_ORC; nenhum documento registrado dá o tipo. O cabeçalho DBF declara FONTE_ORC C(2) nos 19 arquivos RD lidos que têm o campo, de 2025-03 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: e3bb96a80d884e0a58f44a90366174035ef659a87dbde13d186170adffe480c6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: def-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sih-tab-f05b32f32908
+            pages: []
+            locator: 'RD2008.DEF, linha 274: XFonte Orçamentária, FONTE_ORC, 1, CNV/fonterem.CNV'
+          note: Descrição que a linha do DEF dá ao campo; o IT_SIHSUS_1603 não lista FONTE_ORC.
         - target: /field/codes
           value_sha256: a658bfb10749059ef36c508b24da5edca4605688d6e6ae5f4608f3bdb75e52d7
           status: verified_in_source
@@ -15320,7 +15355,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.21.0"
+x-version: "2.21.1"
 
 x-analytics:
   version: 1.3.0

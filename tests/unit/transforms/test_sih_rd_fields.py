@@ -24,6 +24,9 @@ DATASET = "sih_aih_reduzida"
 LAYOUTS = {"sih_rr_2024_01_mini": 5, "sih_rd_rr_2025_03_excerpt": 6}
 IT_1603 = ROOT / "evidence/2026-11-18-it-sihsus-1603-layout-rd/tabela1.csv"
 RD2008_DEF = ROOT / "src/omnisus/data/dicionarios/sources/cnv/sih/RD2008.DEF"
+OLDER_CLAIMS = {"nasc", "sexo", "dt_inter", "dt_saida", "gestor_dt", "diagsec9"}
+"""Fields whose `/field/physical_type` claim predates #182 and words its locator and note
+another way; their width and status are checked like the others."""
 OWN_DESCRIPTION = {"uf_zi", "cnes", "natureza"}
 """Fields whose description is not the document's sentence: `uf_zi` and `cnes` add what
 the DEF and the lake say, and `natureza` has a paraphrase with its own verified claim."""
@@ -46,20 +49,6 @@ def official_layout() -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
-def census_widths() -> dict[str, dict[int, tuple[int, int]]]:
-    """Text field -> width -> (first, last) layout that publishes it with that width."""
-    out: dict[str, dict[int, tuple[int, int]]] = {}
-    with CENSUS.open(encoding="utf-8", newline="") as f:
-        for row in csv.DictReader(f):
-            tokens = row["fields"].split(" ")
-            for name, descriptor in zip(tokens[::2], tokens[1::2], strict=True):
-                if descriptor.startswith("C"):
-                    width, layout = int(descriptor[1:].split(".")[0]), int(row["layout"])
-                    first, last = out.setdefault(name.lower(), {}).get(width, (layout, layout))
-                    out[name.lower()][width] = (min(first, layout), max(last, layout))
-    return out
-
-
 def fixture_fields(dbc_fixture, fixture: str) -> dict[str, str]:
     raw = dbc_fixture(fixture).read_bytes()
     return {f["name"]: f["type"] for f in fields_of(dbc.decompress_bytes(raw))}
@@ -77,11 +66,21 @@ def test_each_fixture_publishes_the_fields_of_its_layout(dbc_fixture, fixture):
 
 def test_the_official_layout_lists_the_fields_of_layout_5():
     """IT_SIHSUS_1603 is the report of 2016-03, and its Table 1 has the 113 fields the
-    files publish from 2014-01 to 2025-02, once the three names it misspells are read as
-    the DBF spells them (MÊS_CMPT, DI_INTER, DESTAO)."""
+    files publish from 2014-01 to 2025-02, in the order of the DBF header, once the three
+    names it misspells are read as the DBF spells them (MÊS_CMPT, DI_INTER, DESTAO)."""
     rows = official_layout()
     assert len(rows) == 113
     assert {row["campo"] for row in rows} == census_layouts()[5]
+    with CENSUS.open(encoding="utf-8", newline="") as f:
+        (in_file_order,) = {row["fields"] for row in csv.DictReader(f) if row["layout"] == "5"}
+    assert [row["campo"] for row in rows] == [
+        name.lower() for name in in_file_order.split(" ")[::2]
+    ]
+    assert [
+        row["nome_no_documento"]
+        for row in rows
+        if row["campo"] != row["nome_no_documento"].lower()
+    ] == ["MÊS_CMPT", "DI_INTER", "DESTAO"]
 
 
 def test_each_field_of_the_official_layout_carries_the_documents_description():
@@ -99,8 +98,24 @@ def test_each_field_of_the_official_layout_carries_the_documents_description():
         (evidence,) = claim["evidence"]
         assert evidence["source_id"] == "sihsus-1e89d5f2cc41"
         assert evidence["pages"] == [int(row["pagina"])]
-        assert row["nome_no_documento"] in evidence["locator"]
-        assert row["descricao"] in evidence["locator"]
+        assert evidence["locator"] == (
+            f"Tabela 1, linha {row['seq']}, {row['nome_no_documento']} {row['tipo']}: "
+            f'"{row["descricao"]}"'
+        )
+
+
+def test_the_fields_the_document_calls_zerado_are_empty_in_rdrr2401(dbc_fixture):
+    """Table 1 says only "Zerado" of 19 fields. In RDRR2401 the 17 numeric ones are 0 in
+    every record, and the two text ones, NUM_PROC and CPF_AUT, are blank, not zeros."""
+    zerado = [row["campo"] for row in official_layout() if row["descricao"] == "Zerado"]
+    assert len(zerado) == 19
+    raw = dbc_fixture("sih_rr_2024_01_mini").read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect().select(zerado)
+    values = {name: frame[name].unique().to_list() for name in zerado}
+    assert {name: found for name, found in values.items() if found != [0]} == {
+        "num_proc": [""],
+        "cpf_aut": [""],
+    }
 
 
 def test_fonte_orc_and_sis_just_are_labelled_as_their_sources_call_them():
@@ -114,71 +129,158 @@ def test_fonte_orc_and_sis_just_are_labelled_as_their_sources_call_them():
     ]
     (sis_just,) = (row for row in official_layout() if row["campo"] == "sis_just")
     assert sis_just["descricao"].startswith("Justificativa do estabelecimento para aceitação")
-    dictionary = load_dicionario(DATASET)
-    assert dictionary.field_def("fonte_orc")["label"] == "Fonte Orçamentária"
-    assert dictionary.field_def("sis_just")["label"] == "Justificativa do estabelecimento"
+    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
+    expected = {
+        "fonte_orc": (
+            "Fonte Orçamentária",
+            "RD2008.DEF, linha 274: XFonte Orçamentária, FONTE_ORC",
+        ),
+        "sis_just": (
+            "Justificativa do estabelecimento",
+            'SIS_JUST char (50): "Justificativa do est',
+        ),
+    }
+    for name, (label, quoted) in expected.items():
+        assert contract[name]["field"]["label"] == label
+        claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
+        assert claim["status"] == "verified_in_source"
+        assert quoted in claim["evidence"][0]["locator"]
+
+
+def census_files() -> dict[str, dict[int, list[str]]]:
+    """Text field -> width -> months of the files that publish it with that width."""
+    out: dict[str, dict[int, list[str]]] = {}
+    with CENSUS.open(encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            tokens = row["fields"].split(" ")
+            for name, descriptor in zip(tokens[::2], tokens[1::2], strict=True):
+                if descriptor.startswith("C"):
+                    width = int(descriptor[1:].split(".")[0])
+                    out.setdefault(name.lower(), {}).setdefault(width, []).append(row["month"])
+    return out
+
+
+def printed_widths() -> dict[str, int]:
+    """Text field -> the N of the `char(N)` that Table 1 of IT_SIHSUS_1603 prints."""
+    return {
+        row["campo"]: int(row["tipo"].replace(" ", "")[5:-1])
+        for row in official_layout()
+        if row["tipo"].startswith("char")
+    }
+
+
+def header_widths(raw: bytes) -> dict[str, int]:
+    """C field -> width, from the 32-byte field descriptors of a DBF header."""
+    out = {}
+    for start in range(32, int.from_bytes(raw[8:10], "little") - 1, 32):
+        descriptor = raw[start : start + 32]
+        if descriptor[11:12] == b"C":
+            out[descriptor[:11].rstrip(b"\x00").decode("ascii").lower()] = descriptor[16]
+    return out
+
+
+def physical_type_claims() -> dict[str, tuple[dict, dict]]:
+    """Field -> (resolved field, its `/field/physical_type` claim)."""
+    return {
+        item["field"]["name"]: (
+            item["field"],
+            next(c for c in item["claims"] if c["target"] == "/field/physical_type"),
+        )
+        for item in sus.describe_dataset(DATASET)["fields"]
+    }
 
 
 def test_each_text_field_declares_the_width_the_files_publish():
-    """`physical_type` of a C field is its DBF descriptor in the layout in force (6, from
-    2025-03), read from the census. The claim is verified where Table 1 of IT_SIHSUS_1603
-    prints the same width and conflicting where it prints another; FONTE_ORC is not in
-    the document, so its claim stays unreviewed (#182)."""
-    printed = {row["campo"]: row["tipo"] for row in official_layout()}
-    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
-    for name, widths in census_widths().items():
-        (width,) = (w for w, (_, last) in widths.items() if last == 6)
-        item = contract[name]
-        assert item["field"]["physical_name"] == name.upper()
-        assert item["field"]["physical_type"] == {"type": "string", "length": width}, name
-        claim = next(c for c in item["claims"] if c["target"] == "/field/physical_type")
+    """`physical_type` of a C field is its DBF descriptor in the last layout read (6,
+    2025-03 to 2026-07), from the census. The claim is verified where Table 1 of
+    IT_SIHSUS_1603 prints the same width and conflicting where it prints another, and it
+    cites the row; its note counts the files read with each width. FONTE_ORC is not in
+    the document, so its claim is unreviewed and cites only the census (#182)."""
+    printed = printed_widths()
+    rows = {row["campo"]: row for row in official_layout()}
+    resolved = physical_type_claims()
+    for name, widths in census_files().items():
+        (width,) = (w for w, months in widths.items() if max(months) == "2026-07")
+        field, claim = resolved[name]
+        assert field["physical_name"] == name.upper()
+        assert field["physical_type"] == {"type": "string", "length": width}, name
         if name not in printed:
-            expected = "unreviewed"
-        elif printed[name] == f"char({width})":
-            expected = "verified_in_source"
+            assert (claim["status"], claim["evidence"]) == ("unreviewed", []), name
         else:
-            expected = "conflicting"
-        assert claim["status"] == expected, name
+            expected = "verified_in_source" if printed[name] == width else "conflicting"
+            assert claim["status"] == expected, name
+        if name in OLDER_CLAIMS:
+            continue
+        if name in printed:
+            (evidence,) = claim["evidence"]
+            assert evidence["pages"] == [int(rows[name]["pagina"])], name
+            assert evidence["locator"] == (
+                f"Tabela 1, linha {rows[name]['seq']}, {rows[name]['nome_no_documento']} "
+                f"{rows[name]['tipo']}"
+            ), name
+        for other, months in widths.items():
+            assert f"C({other}) nos {len(months)} " in claim["note"], name
+            assert f"de {min(months)} a {max(months)}" in claim["note"], name
 
 
-def test_the_document_and_the_files_disagree_on_the_width_of_six_text_fields():
-    """Printed type in Table 1 against the DBF descriptor of layout 6. Each of the six
-    has an open issue that says so; `diagsec9` had it already (#67)."""
-    printed = {row["campo"]: row["tipo"] for row in official_layout()}
-    differing = {}
-    for name, widths in census_widths().items():
-        (width,) = (w for w, (_, last) in widths.items() if last == 6)
-        if name in printed and printed[name] != f"char({width})":
-            differing[name] = (printed[name], width)
+@pytest.mark.parametrize("fixture", sorted(LAYOUTS))
+def test_the_declared_widths_are_those_of_a_real_dbf_header(dbc_fixture, fixture):
+    """The census is a transcription; RDRR2401 (layout 5) and RDRR2503 (layout 6) are the
+    files. Every C field of their headers has the declared width."""
+    published = header_widths(dbc.decompress_bytes(dbc_fixture(fixture).read_bytes()))
+    assert set(published) == {n for n in census_files() if n in census_layouts()[LAYOUTS[fixture]]}
+    resolved = physical_type_claims()
+    assert {name: resolved[name][0]["physical_type"]["length"] for name in published} == published
+
+
+def test_the_document_and_the_files_disagree_on_the_width_of_seven_text_fields():
+    """Printed type in Table 1 against the DBF descriptors of the files read. Six fields
+    differ in the last layout; INSC_PN differs only in the files of 2008-01 to 2011-12,
+    which the table, "para janeiro de 2008 em diante", also covers. Each has an open
+    issue that says so; `diagsec9` had it already (#67)."""
+    printed = printed_widths()
+    differing = {
+        name: (printed[name], sorted(widths))
+        for name, widths in census_files().items()
+        if name in printed and set(widths) != {printed[name]}
+    }
     assert differing == {
-        "nacional": ("char(2)", 3),
-        "raca_cor": ("char(4)", 2),
-        "cbor": ("char(3)", 6),
-        "gestor_cod": ("char(3)", 5),
-        "gestor_cpf": ("char(11)", 15),
-        "diagsec9": ("char(4)", 1),
+        "nacional": (2, [3]),
+        "raca_cor": (4, [2]),
+        "cbor": (3, [6]),
+        "gestor_cod": (3, [3, 5]),
+        "gestor_cpf": (11, [15]),
+        "insc_pn": (12, [10, 12]),
+        "diagsec9": (4, [1]),
     }
     dictionary = load_dicionario(DATASET)
-    for name in differing:
+    for name, (doc, widths) in differing.items():
         issues = dictionary.field_def(name)["x-metadata"]["issues"]
         expected = "diagsec9-c1" if name == "diagsec9" else "largura-difere-do-documento"
-        assert expected in [i["id"] for i in issues if i["status"] == "open"], name
+        (issue,) = (i for i in issues if i["id"] == expected and i["status"] == "open")
+        assert f"char({doc})" in issue["description"].replace("char (", "char("), name
+        assert all(f"C({width})" in issue["description"] for width in widths), name
 
 
 def test_two_text_fields_change_width_in_2012():
-    """GESTOR_COD is C(3) and INSC_PN C(10) in layouts 1 and 2 (2008-01 to 2011-12), and
-    C(5) and C(12) from layout 3 on; no other text field changes width. The contract
-    holds one `physical_type` per field, so the claim's note carries the older width."""
-    changing = {name: widths for name, widths in census_widths().items() if len(widths) > 1}
-    assert changing == {
-        "gestor_cod": {3: (1, 2), 5: (3, 6)},
-        "insc_pn": {10: (1, 2), 12: (3, 6)},
+    """In the files read, GESTOR_COD is C(3) and INSC_PN C(10) from 2008-01 to 2011-12, and
+    C(5) and C(12) from 2012-01 on; no other text field changes width. RDRR, RDSP and
+    RDMG were read on both sides of the change. The contract holds one `physical_type`
+    per field, so the claim's note carries the older width."""
+    changing = {
+        name: {width: (min(months), max(months)) for width, months in widths.items()}
+        for name, widths in census_files().items()
+        if len(widths) > 1
     }
-    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
-    for name, widths in changing.items():
-        claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/physical_type")
-        assert f"C({min(widths)})" in claim["note"]
-        assert "2011-12" in claim["note"]
+    assert changing == {
+        "gestor_cod": {3: ("2008-01", "2011-12"), 5: ("2012-01", "2026-07")},
+        "insc_pn": {10: ("2008-01", "2011-12"), 12: ("2012-01", "2026-07")},
+    }
+    with CENSUS.open(encoding="utf-8", newline="") as f:
+        read = {
+            row["file"][:4] for row in csv.DictReader(f) if row["month"] in ("2011-12", "2012-01")
+        }
+    assert read == {"RDRR", "RDSP", "RDMG"}
 
 
 def test_fonte_orc_takes_the_labels_of_fonterem(dbc_fixture):
