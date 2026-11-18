@@ -29,6 +29,11 @@
   The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while the
   file publishes `0` and `1`: both fields keep the CNV map and gain the open issue
   `informe-diverge-do-arquivo` (#183).
+- `registry.json` registers the `TAB_SIA.zip` republished on 2026-10-15
+  (`sia-tab-1ce232b217c6`). The 49 members whose hash `vinculos.json` holds are identical
+  to those of `sia-tab-e5812b51d802`, so the packaged members stay on that edition;
+  `evidence/2026-11-18-tab-sia-republicado/` has the member census and what was not
+  compared (#183).
 
 ### omnisus-dbf 0.2.2
 
