@@ -1,12 +1,13 @@
 """The AN dictionary against the layout of the Informe Técnico and the DBF header (#183).
 
-Real data: ``sia_an_pa_2014_10_mini.dbc`` is the whole ``ANPA1410.dbc`` (2 records; server
-SHA-256 in ``tests/fixtures/FIXTURES.md``). The Informe Técnico SIASUS 2019-07
+Real data: ``sia_an_pa_2014_10_mini.dbc`` is the whole ``ANPA1410.dbc`` (2 records) and
+``sia_an_rr_2014_01_mini.dbc`` every record of ``ANRR1401.dbc`` (162), with AP_CNSPCN
+blanked; server SHA-256 in ``tests/fixtures/FIXTURES.md``. The Informe Técnico SIASUS 2019-07
 (``siasus-70fe69dbd4cf``) is not packaged, so no test reads its pages: section 3.4.3,
 "LAYOUT DO ARQUIVO DE APAC DE NEFROLOGIA: ANUFAAMM.DBF", lists 60 fields on pages 7 to 9,
 and each description claim quotes the row it was read from. What the tests can check is
-that those 60 rows are the first 60 fields of the published file, in order, with the same
-name, type and width.
+that those 60 rows are the first 60 fields of each published file, in order, with the same
+name, type and width: ``ANRR1401`` has exactly those 60, and ``ANPA1410`` a 61st, AP_NATJUR.
 """
 
 from __future__ import annotations
@@ -23,12 +24,12 @@ from omnisus.transforms.dictionaries import load_dicionario
 
 AN = "sia_apac_nefrologia"
 FIXTURE = "sia_an_pa_2014_10_mini"
+FIXTURE_RR = "sia_an_rr_2014_01_mini"
 LOCATOR = re.compile(r"Seção 3\.4\.3, SEQ (\d+), ([A-Z_]+) (CHAR|NUMERIC) ?\((\d+)(?:\.(\d+))?\)")
 
 
-@pytest.fixture
-def header(dbc_fixture):
-    return list(_read_field_descriptors(decompress_bytes(dbc_fixture(FIXTURE).read_bytes())))
+def _header(path) -> list:
+    return list(_read_field_descriptors(decompress_bytes(path.read_bytes())))
 
 
 def _description_claim(name: str) -> dict:
@@ -37,9 +38,13 @@ def _description_claim(name: str) -> dict:
     return claim
 
 
-def test_the_60_rows_of_the_informe_layout_are_the_first_60_fields_of_the_file(header) -> None:
+@pytest.mark.parametrize(("fixture", "fields"), [(FIXTURE, 61), (FIXTURE_RR, 60)])
+def test_the_60_rows_of_the_informe_layout_are_the_first_60_fields_of_the_file(
+    dbc_fixture, fixture, fields
+) -> None:
     """Order, name, type and width of each row the claims quote equal the DBF header."""
-    assert len(header) == 61
+    header = _header(dbc_fixture(fixture))
+    assert len(header) == fields
     for position, descriptor in enumerate(header[:60], start=1):
         name = descriptor.name.strip()
         field = load_dicionario(AN).field_def(name.lower())
@@ -58,10 +63,17 @@ def test_the_60_rows_of_the_informe_layout_are_the_first_60_fields_of_the_file(h
         ), name
 
 
-def test_ap_natjur_is_published_and_the_informe_layout_does_not_list_it(header) -> None:
-    """The 61st field of the file has no row in section 3.4.3, so it gets no description."""
-    assert header[60].name.strip() == "AP_NATJUR"
-    assert "description" not in load_dicionario(AN).field_def("ap_natjur")
+def test_ap_natjur_is_in_anpa1410_only_and_the_informe_layout_does_not_list_it(
+    dbc_fixture,
+) -> None:
+    """The 61st field of ANPA1410 (2014-10) has no row in section 3.4.3, so it gets no
+    description; ANRR1401 (2014-01) ends at AN_HB, and the field's open issue says so."""
+    assert _header(dbc_fixture(FIXTURE))[60].name.strip() == "AP_NATJUR"
+    assert [d.name.strip() for d in _header(dbc_fixture(FIXTURE_RR))][-1] == "AN_HB"
+    field = load_dicionario(AN).field_def("ap_natjur")
+    assert "description" not in field
+    (issue,) = field["x-metadata"]["issues"]
+    assert (issue["id"], issue["status"]) == ("ap_natjur-nem-sempre-publicado", "open")
 
 
 def test_describe_dataset_resolves_the_descriptions_with_their_claims() -> None:

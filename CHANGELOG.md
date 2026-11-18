@@ -42,6 +42,16 @@
   adds `ap_ufnacio_rotulo` for this dataset. The open issues of the five `ap_dt*`
   fields now give the widths the same edition has for `ANO_2008.CNV` (4) and
   `anomes2008.CNV` (6), which place the year in characters 1-4 (#183).
+- `sia_apac_nefrologia` (1.6.0), from a second real file, `ANRR1401` (162 records, new
+  fixture `sia_an_rr_2014_01_mini.dbc`, with `AP_CNSPCN` blanked): `ap_dtocor` is `date` with
+  `x-format: yyyyMMdd`, measured in the one record that fills it (`fixture-measure`,
+  `unreviewed`, open issue `formato-sem-documento` in place of `formato-sem-valor`).
+  The file has 60 fields, the 60 rows of the Informe layout, and no `AP_NATJUR`:
+  `ap_natjur` gains the open issue `ap_natjur-nem-sempre-publicado`. The issue of
+  `ap_coidade` now says `5` was measured in an AN file too. The file reads the five
+  other dates as `yyyyMMdd` in all 162 records; `ap_dtaut` (`20430101`) and `an_dtpdr`
+  (`20161101`) each hold one implausible date and gain the open issue
+  `data-implausivel` (#183).
 
 ### omnisus-dbf 0.2.2
 
