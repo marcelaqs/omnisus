@@ -74,7 +74,7 @@ def test_describe_dataset_resolves_the_descriptions_with_their_claims() -> None:
 @pytest.mark.parametrize("name", ["ap_ufdif", "ap_mndif"])
 def test_the_layout_says_n_and_s_where_the_file_publishes_0_and_1(dbc_fixture, name) -> None:
     """Page 8 describes AP_UFDIF and AP_MNDIF with "(N = não, S = sim)"; ANPA1410 publishes
-    0 and 1, the codes Invasao.CNV labels. The description is the document's, and the open
+    0 in the first and 1 in the second, codes Invasao.CNV labels. The description is the document's, and the open
     issue says the two disagree."""
     frame = dbc_bytes_to_lazyframe(dbc_fixture(FIXTURE).read_bytes(), dataset=AN).collect()
     assert set(frame[name]) <= {"0", "1"}

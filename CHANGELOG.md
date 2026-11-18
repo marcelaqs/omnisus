@@ -26,8 +26,9 @@
   a `/field/description` claim that quotes the row and stays `unreviewed` (read by an
   agent). Those 60 rows are the first 60 fields of `ANPA1410`, with the same order, name,
   type and width; `ap_natjur`, the 61st, is not in the layout and gets no description.
-  The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while the
-  file publishes `0` and `1`: both fields keep the CNV map and gain the open issue
+  The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while
+  `ANPA1410` publishes `0` in the first and `1` in the second, codes `Invasao.CNV`
+  labels: both fields keep the CNV map and gain the open issue
   `informe-diverge-do-arquivo` (#183).
 
 ### omnisus-dbf 0.2.2

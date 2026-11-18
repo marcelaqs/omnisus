@@ -558,7 +558,7 @@ schema:
       issues:
       - id: informe-diverge-do-arquivo
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_UFDIF com "(N = não, S = sim)". O arquivo publica 0 e 1: ANPA1410 traz 0 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0 e 1. O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_UFDIF com "(N = não, S = sim)". ANPA1410 publica 0 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
   - name: ap_mndif
     type: string
     description: 'Indica se o município de residência do paciente é diferente do município de localização do estabelecimento (N = não, S = sim)'
@@ -594,7 +594,7 @@ schema:
       issues:
       - id: informe-diverge-do-arquivo
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_MNDIF com "(N = não, S = sim)". O arquivo publica 0 e 1: ANPA1410 traz 1 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0 e 1. O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_MNDIF com "(N = não, S = sim)". ANPA1410 publica 1 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). A linha 455 do DEF liga o campo também a SIMNAO.CNV, que não está empacotado e não foi lido. O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
   - name: ap_dtinic
     type: date
     description: 'Data de INÍCIO validade'
