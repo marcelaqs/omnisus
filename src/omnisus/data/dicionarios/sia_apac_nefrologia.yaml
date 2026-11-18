@@ -155,16 +155,16 @@ schema:
         - source_id: sia-tab-e5812b51d802
           pages: []
           locator: 'APAC_Nefrologia.DEF, linhas 387-388: AP_COIDADE, 1, CNV/IDADEDET.CNV e CNV/IDADE18.CNV'
-        note: 'Medido, não lido (issue ap_coidade-sem-tabela). Os CNV leem 3 caracteres, AP_COIDADE seguido de AP_NUIDADE; nenhuma tabela rotula o código de 1 caractere.'
+        note: 'Só ''4'' foi medido em arquivo AN; o mapa é o de AQ (issue ap_coidade-sem-tabela). Os CNV leem 3 caracteres, AP_COIDADE seguido de AP_NUIDADE; nenhuma tabela rotula o código de 1 caractere.'
       issues:
       - id: ap_coidade-sem-tabela
         status: open
-        description: '''0'', se aparecer, fica sem rótulo, e ''2'', ''3'', ''4'' e ''5'' foram medidos, não lidos: nenhuma tabela rotula o código de 1 caractere. IDADEDET.CNV e IDADE18.CNV (TAB_SIA),
-          ligados a AP_COIDADE em todos os DEF de APAC, leem 3 caracteres, AP_COIDADE seguido de AP_NUIDADE:
-          ''000'' é ''Idade inválida'' e 500 a 530 são 100 a 130 anos, e por isso ''5'' é ''Anos (somar 100)''. O Informe Técnico SIASUS 2019-07
-          descreve AP_COIDADE (CHAR 1, ''Código da Idade'') sem códigos (pp. 6-14). O mapa é o de AQ: APAC_Nefrologia.DEF
-          (linhas 387-388) liga AP_COIDADE aos mesmos IDADEDET.CNV e IDADE18.CNV que APAC_Quimioterapia.DEF
-          (linhas 416-417). ANPA1410 (2 linhas) só publica ''4''.'
+        description: '''4'' foi medido no ANPA1410 (2 linhas); ''2'', ''3'' e ''5'' vêm do mapa de AQ e não foram medidos em arquivo AN; ''0'', se aparecer, fica sem rótulo.
+          Nenhuma tabela rotula o código de 1 caractere: IDADEDET.CNV e IDADE18.CNV (TAB_SIA), ligados a AP_COIDADE em todos os DEF de APAC, leem 3 caracteres,
+          AP_COIDADE seguido de AP_NUIDADE. No IDADEDET.CNV, ''000'' e ''999'' são ''Idade inválida'' e 500 a 530 são 100 a 130 anos, e por isso ''5'' é ''Anos (somar 100)'';
+          o IDADE18.CNV põe 100 a 312 e 400 em ''<1a'', 401 a 599 em faixas de anos e o que sobra de 000 a 999 em ''Ign''. O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN,
+          descreve AP_COIDADE como CHAR (1), ''Código da Idade'', sem códigos. O mapa é o de AQ: APAC_Nefrologia.DEF (linhas 387-388) liga AP_COIDADE aos mesmos
+          IDADEDET.CNV e IDADE18.CNV que APAC_Quimioterapia.DEF (linhas 416-417).'
   - name: ap_nuidade
     type: string
   - name: ap_sexo
