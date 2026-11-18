@@ -4,11 +4,12 @@
 
 ### Dictionaries
 
-- `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map of the other APAC
-  datasets (`2` Dias, `3` Meses, `4` Anos, `5` Anos (somar 100)), with a
+- `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map seven other APAC
+  datasets carry (`2` Dias, `3` Meses, `4` Anos, `5` Anos (somar 100)), with a
   `fixture-measure`, `unreviewed` claim and the open issue `ap_coidade-sem-tabela`:
   `APAC_Nefrologia.DEF` lines 387-388 bind `AP_COIDADE` to `IDADEDET.CNV` and
-  `IDADE18.CNV`, and `ANPA1410` publishes `4`. `sus.label` now adds
+  `IDADE18.CNV`. `ANPA1410` publishes only `4`; `2`, `3` and `5` were not measured in
+  an AN file. `sus.label` now adds
   `ap_coidade_rotulo` for this dataset (#183).
 - `sia_apac_nefrologia` (1.3.0): `ap_dtinic`, `ap_dtfim`, `ap_dtsolic`, `ap_dtaut` and
   `an_dtpdr` are `date` with `x-format: yyyyMMdd`, each with the observation of the 2
