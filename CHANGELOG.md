@@ -21,6 +21,14 @@
   position 1 and has no line for the day. `ap_dtocor`, blank in both records, stays
   `string` with the open issue `formato-sem-valor`. `check_columns` now checks the five
   dates; the lake still stores them as published, as strings (#183).
+- `sia_apac_nefrologia` (1.4.0): the 60 fields of the AN layout of the Informe Técnico
+  SIASUS 2019-07 (section 3.4.3, pp. 7-9) carry the document's `description`, each with
+  a `/field/description` claim that quotes the row and stays `unreviewed` (read by an
+  agent). Those 60 rows are the first 60 fields of `ANPA1410`, with the same order, name,
+  type and width; `ap_natjur`, the 61st, is not in the layout and gets no description.
+  The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while the
+  file publishes `0` and `1`: both fields keep the CNV map and gain the open issue
+  `informe-diverge-do-arquivo` (#183).
 
 ### omnisus-dbf 0.2.2
 
