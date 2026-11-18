@@ -63,11 +63,21 @@ def test_each_fixture_publishes_the_fields_of_its_layout(dbc_fixture, fixture):
 
 def test_the_official_layout_lists_the_fields_of_layout_5():
     """IT_SIHSUS_1603 is the report of 2016-03, and its Table 1 has the 113 fields the
-    files publish from 2014-01 to 2025-02, once the three names it misspells are read as
-    the DBF spells them (MÊS_CMPT, DI_INTER, DESTAO)."""
+    files publish from 2014-01 to 2025-02, in the order of the DBF header, once the three
+    names it misspells are read as the DBF spells them (MÊS_CMPT, DI_INTER, DESTAO)."""
     rows = official_layout()
     assert len(rows) == 113
     assert {row["campo"] for row in rows} == census_layouts()[5]
+    with CENSUS.open(encoding="utf-8", newline="") as f:
+        (in_file_order,) = {row["fields"] for row in csv.DictReader(f) if row["layout"] == "5"}
+    assert [row["campo"] for row in rows] == [
+        name.lower() for name in in_file_order.split(" ")[::2]
+    ]
+    assert [
+        row["nome_no_documento"]
+        for row in rows
+        if row["campo"] != row["nome_no_documento"].lower()
+    ] == ["MÊS_CMPT", "DI_INTER", "DESTAO"]
 
 
 def test_each_field_of_the_official_layout_carries_the_documents_description():
@@ -85,8 +95,24 @@ def test_each_field_of_the_official_layout_carries_the_documents_description():
         (evidence,) = claim["evidence"]
         assert evidence["source_id"] == "sihsus-1e89d5f2cc41"
         assert evidence["pages"] == [int(row["pagina"])]
-        assert row["nome_no_documento"] in evidence["locator"]
-        assert row["descricao"] in evidence["locator"]
+        assert evidence["locator"] == (
+            f"Tabela 1, linha {row['seq']}, {row['nome_no_documento']} {row['tipo']}: "
+            f'"{row["descricao"]}"'
+        )
+
+
+def test_the_fields_the_document_calls_zerado_are_empty_in_rdrr2401(dbc_fixture):
+    """Table 1 says only "Zerado" of 19 fields. In RDRR2401 the 17 numeric ones are 0 in
+    every record, and the two text ones, NUM_PROC and CPF_AUT, are blank, not zeros."""
+    zerado = [row["campo"] for row in official_layout() if row["descricao"] == "Zerado"]
+    assert len(zerado) == 19
+    raw = dbc_fixture("sih_rr_2024_01_mini").read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect().select(zerado)
+    values = {name: frame[name].unique().to_list() for name in zerado}
+    assert {name: found for name, found in values.items() if found != [0]} == {
+        "num_proc": [""],
+        "cpf_aut": [""],
+    }
 
 
 def test_fonte_orc_and_sis_just_are_labelled_as_their_sources_call_them():
@@ -100,9 +126,22 @@ def test_fonte_orc_and_sis_just_are_labelled_as_their_sources_call_them():
     ]
     (sis_just,) = (row for row in official_layout() if row["campo"] == "sis_just")
     assert sis_just["descricao"].startswith("Justificativa do estabelecimento para aceitação")
-    dictionary = load_dicionario(DATASET)
-    assert dictionary.field_def("fonte_orc")["label"] == "Fonte Orçamentária"
-    assert dictionary.field_def("sis_just")["label"] == "Justificativa do estabelecimento"
+    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
+    expected = {
+        "fonte_orc": (
+            "Fonte Orçamentária",
+            "RD2008.DEF, linha 274: XFonte Orçamentária, FONTE_ORC",
+        ),
+        "sis_just": (
+            "Justificativa do estabelecimento",
+            'SIS_JUST char (50): "Justificativa do est',
+        ),
+    }
+    for name, (label, quoted) in expected.items():
+        assert contract[name]["field"]["label"] == label
+        claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
+        assert claim["status"] == "verified_in_source"
+        assert quoted in claim["evidence"][0]["locator"]
 
 
 def test_fonte_orc_takes_the_labels_of_fonterem(dbc_fixture):
@@ -122,7 +161,7 @@ def test_fonte_orc_takes_the_labels_of_fonterem(dbc_fixture):
     for code, label in labels.items():
         expected |= {code: label, code[1]: label, f" {code[1]}": label}
     assert field["x-decode"] == expected
-    (claim,) = field["x-metadata"]["claims"]
+    (claim,) = (c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes")
     assert claim["method"] == "cnv-parse"
     assert "FONTE_ORC, 1, CNV/fonterem.CNV" in claim["evidence"][0]["locator"]
     assert [i["id"] for i in field["x-metadata"]["issues"]] == ["fonte_orc-00-sem-fonte"]

@@ -236,7 +236,7 @@ Passo a passo com análise e procedência:
   <ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Doc/IT_SIHSUS_1603.pdf>
   — consultado em 2026-09-10; SHA-256
   `1e89d5f2cc41420385d7e30ba5541a387912ab3a0efb167d39def74502076220`, conferido de novo
-  em 2026-09-13. Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+  em 2026-09-13 e em 2026-11-18. Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
   A Tabela 1 do informe (pp. 1–4) está transcrita linha a linha em
   `evidence/2026-11-18-it-sihsus-1603-layout-rd/tabela1.csv`, e a descrição de 110 campos
   no dicionário (`sus.describe_dataset("sih_aih_reduzida")`) é a frase que a tabela traz,

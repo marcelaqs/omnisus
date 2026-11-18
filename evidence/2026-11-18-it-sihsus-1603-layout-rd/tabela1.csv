@@ -86,23 +86,23 @@ pagina,seq,nome_no_documento,campo,tipo,descricao
 3,85,ETNIA,etnia,char(4),"Etnia do paciente, se raça cor for indígena."
 3,86,SEQUENCIA,sequencia,numeric(9),Sequencial da AIH na remessa.
 3,87,REMESSA,remessa,char(21),Número da remessa.
-3,88,AUD_JUST,aud_just,char(50),Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde.
-3,89,SIS_JUST,sis_just,char(50),Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde.
-4,90,VAL_SH_FED,val_sh_fed,"numeric(10,2)",Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH.
-4,91,VAL_SP_FED,val_sp_fed,"numeric(10,2)",Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH.
-4,92,VAL_SH_GES,val_sh_ges,"numeric(10,2)",Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH.
-4,93,VAL_SP_GES,val_sp_ges,"numeric(10,2)",Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH.
-4,94,VAL_UCI,val_uci,"numeric(10,2)",Valor de UCI.
-4,95,MARCA_UCI,marca_uci,char(2),Tipo de UCI utilizada pelo paciente.
-4,96,DIAGSEC1,diagsec1,char(4),Diagnóstico secundário1.
-4,97,DIAGSEC2,diagsec2,char(4),Diagnóstico secundário 2.
-4,98,DIAGSEC3,diagsec3,char(4),Diagnóstico secundário 3.
-4,99,DIAGSEC4,diagsec4,char(4),Diagnóstico secundário 4.
-4,100,DIAGSEC5,diagsec5,char(4),Diagnóstico secundário 5.
-4,101,DIAGSEC6,diagsec6,char(4),Diagnóstico secundário 6.
-4,102,DIAGSEC7,diagsec7,char(4),Diagnóstico secundário 7.
-4,103,DIAGSEC8,diagsec8,char(4),Diagnóstico secundário 8.
-4,104,DIAGSEC9,diagsec9,char(4),Diagnóstico secundário 9.
+3,88,AUD_JUST,aud_just,char (50),Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde.
+3,89,SIS_JUST,sis_just,char (50),Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde.
+4,90,VAL_SH_FED,val_sh_fed,"numeric (10, 2)",Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH.
+4,91,VAL_SP_FED,val_sp_fed,"numeric (10, 2)",Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH.
+4,92,VAL_SH_GES,val_sh_ges,"numeric (10, 2)",Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH.
+4,93,VAL_SP_GES,val_sp_ges,"numeric (10, 2)",Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH.
+4,94,VAL_UCI,val_uci,"numeric (10, 2)",Valor de UCI.
+4,95,MARCA_UCI,marca_uci,char (2),Tipo de UCI utilizada pelo paciente.
+4,96,DIAGSEC1,diagsec1,char (4),Diagnóstico secundário1.
+4,97,DIAGSEC2,diagsec2,char (4),Diagnóstico secundário 2.
+4,98,DIAGSEC3,diagsec3,char (4),Diagnóstico secundário 3.
+4,99,DIAGSEC4,diagsec4,char (4),Diagnóstico secundário 4.
+4,100,DIAGSEC5,diagsec5,char (4),Diagnóstico secundário 5.
+4,101,DIAGSEC6,diagsec6,char (4),Diagnóstico secundário 6.
+4,102,DIAGSEC7,diagsec7,char (4),Diagnóstico secundário 7.
+4,103,DIAGSEC8,diagsec8,char (4),Diagnóstico secundário 8.
+4,104,DIAGSEC9,diagsec9,char (4),Diagnóstico secundário 9.
 4,105,TPDISEC1,tpdisec1,char(1),Tipo de diagnóstico secundário 1.
 4,107,TPDISEC2,tpdisec2,char(1),Tipo de diagnóstico secundário 2.
 4,108,TPDISEC3,tpdisec3,char(1),Tipo de diagnóstico secundário 3.
