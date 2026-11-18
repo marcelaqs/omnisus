@@ -14,12 +14,46 @@ schema:
       type: string
       label: Município gestor
       description: "Código de 6 dígitos do município gestor, apesar do nome: RD2008.DEF, linhas 175-176 ('Município gestor'); Informe SIH 2016-03, p. 1."
+      x-metadata:
+        physical_name: UF_ZI
+        physical_type:
+          type: string
+          length: 6
+        claims:
+        - target: /field/physical_type
+          value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 1, UF_ZI char(6)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara UF_ZI C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
     - name: ano_cmpt
       type: integer
       label: Ano de competência
       description: 'Ano de processamento da AIH, no formato aaaa.'
       x-metadata:
+        physical_name: ANO_CMPT
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 2, ANO_CMPT char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ANO_CMPT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: bec0d8e4f3e7234238927e4f3daffdbffe9b7cb56ccbe0e8b7b8553a0fa1c02f
           status: verified_in_source
@@ -37,7 +71,23 @@ schema:
       label: Mês de competência
       description: 'Mês de processamento da AIH, no formato mm.'
       x-metadata:
+        physical_name: MES_CMPT
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 3, MÊS_CMPT char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MES_CMPT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 9e4c548ead1d0c28b33c88e4f9006903cd5fa96bbf3117fe2e4131b2d773f594
           status: verified_in_source
@@ -55,7 +105,23 @@ schema:
       label: Número da AIH
       description: 'Número da AIH.'
       x-metadata:
+        physical_name: N_AIH
+        physical_type:
+          type: string
+          length: 13
         claims:
+        - target: /field/physical_type
+          value_sha256: 934375578c5dcc7069a4fbdcd22b5393eb264a0c2f8069199d76cf762f1a90f5
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 6, N_AIH char(13)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara N_AIH C(13) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 858c9e8e150baabfd04546c527338682915a29ce1d69e70a1d9dd84ccc57a843
           status: verified_in_source
@@ -84,7 +150,23 @@ schema:
         '8': Outras/ignorado
         '9': Outras/ignorado
       x-metadata:
+        physical_name: IDENT
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 7, IDENT char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IDENT C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 00e59ae459e093e7b2260bced3fac4f2ea386a4a30fa3e6677da54bff285917f
           status: verified_in_source
@@ -138,7 +220,23 @@ schema:
       label: Número da remessa
       description: 'Número da remessa.'
       x-metadata:
+        physical_name: REMESSA
+        physical_type:
+          type: string
+          length: 21
         claims:
+        - target: /field/physical_type
+          value_sha256: f60a52cc6e5285e27ce072151cbd41e022cf459a11bd2dfbcb3d2e5aa4d9b8c5
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 87, REMESSA char(21)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara REMESSA C(21) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: cff2aefe75f04162b63856eebe651d85499726d1cfaca98fcad5365bf1ea835d
           status: verified_in_source
@@ -160,7 +258,23 @@ schema:
       label: CNPJ do hospital
       description: 'CNPJ do Estabelecimento.'
       x-metadata:
+        physical_name: CGC_HOSP
+        physical_type:
+          type: string
+          length: 14
         claims:
+        - target: /field/physical_type
+          value_sha256: eeff7c46839a28be403bd93dee0fa2eb00aa8fc6870b7b5d750ee5699e7424ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 5, CGC_HOSP char(14)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CGC_HOSP C(14) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: f5dd960a9b556c1c8f4b26cab27d9559f7917d8b83018de4f72b85194ecb5119
           status: verified_in_source
@@ -181,12 +295,46 @@ schema:
         ``aux_cnes`` quando ``import_cnes_master()`` foi rodado.
       foreignKeys:
         - { fields: cnes, reference: { resource: aux_cnes, fields: cnes } }
+      x-metadata:
+        physical_name: CNES
+        physical_type:
+          type: string
+          length: 7
+        claims:
+        - target: /field/physical_type
+          value_sha256: c14d994322f00ef63a86a1dc6f2b452332d6c22a3ee20a51563a2ce9b3e286b6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 75, CNES char(7)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNES C(7) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
     - name: cnpj_mant
       type: string
       label: CNPJ da mantenedora
       description: 'CNPJ da mantenedora.'
       x-metadata:
+        physical_name: CNPJ_MANT
+        physical_type:
+          type: string
+          length: 14
         claims:
+        - target: /field/physical_type
+          value_sha256: eeff7c46839a28be403bd93dee0fa2eb00aa8fc6870b7b5d750ee5699e7424ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 76, CNPJ_MANT char(14)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNPJ_MANT C(14) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 750732d819ca155171a674bfe4f4989367bcad3f9fcbe4dc01a3a14012548ca9
           status: verified_in_source
@@ -207,7 +355,23 @@ schema:
       foreignKeys:
         - { fields: munic_mov, reference: { resource: aux_municipios, fields: codigo_6 } }
       x-metadata:
+        physical_name: MUNIC_MOV
+        physical_type:
+          type: string
+          length: 6
         claims:
+        - target: /field/physical_type
+          value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 49, MUNIC_MOV char(6)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MUNIC_MOV C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 539d4b481f93ab0b1c7da4f47cefec2b744e442830ce0e3baa964072c33b5089
           status: verified_in_source
@@ -326,7 +490,23 @@ schema:
         '98': Ignorado
         '99': Ignorado
       x-metadata:
+        physical_name: NATUREZA
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 44, NATUREZA char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NATUREZA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: d9a20f8fb8d4f6f9f01aeeb252cf4c53d42def67c0bd2fba6989e46f396508e4
           status: verified_in_source
@@ -367,7 +547,23 @@ schema:
       label: Natureza jurídica (CONCLA)
       description: 'Natureza jurídica do Estabelecimento, conforme a Comissão Nacional de Classificação - CONCLA'
       x-metadata:
+        physical_name: NAT_JUR
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 45, NAT_JUR char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NAT_JUR C(4) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 875bbfc991de08da2a4e50ff54298b18f18e0c790362bfc38845adf573d661f8
           status: verified_in_source
@@ -398,7 +594,23 @@ schema:
         E: Estadual plena
         M: Municipal plena assist
       x-metadata:
+        physical_name: GESTAO
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 46, DESTAO char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTAO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 25f5cea1bcc87353bde8533018a1e852553ebe8b7a0c868459f48d6bc2b17098
           status: verified_in_source
@@ -476,7 +688,23 @@ schema:
         '95': 95-UCI Unidade de Cuidados Intermediarios Adulto
         '96': 96-Suporte Ventilatório Pulmonar COVID-19
       x-metadata:
+        physical_name: ESPEC
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 4, ESPEC char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ESPEC C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 297a3782236de8b52e0e7565f5af8627ea30429f0fdbe7058cd8039a9aefed46
           status: verified_in_source
@@ -623,7 +851,23 @@ schema:
         '98': Não se aplica
         '99': Não se aplica
       x-metadata:
+        physical_name: COMPLEX
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 80, COMPLEX char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COMPLEX C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 3dc0d600382bdb7a1e1db67ed3a4268a26f6795dfc63f536fdcd3d9a713c619d
           status: verified_in_source
@@ -805,7 +1049,23 @@ schema:
       foreignKeys:
         - { fields: munic_res, reference: { resource: aux_municipios, fields: codigo_6 } }
       x-metadata:
+        physical_name: MUNIC_RES
+        physical_type:
+          type: string
+          length: 6
         claims:
+        - target: /field/physical_type
+          value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 9, MUNIC_RES char(6)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MUNIC_RES C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 7577e846324d705e2059b0d120b72d346ae27aeeca6ad630c159d6662e0d3e95
           status: verified_in_source
@@ -823,7 +1083,23 @@ schema:
       label: CEP do paciente
       description: 'CEP do paciente.'
       x-metadata:
+        physical_name: CEP
+        physical_type:
+          type: string
+          length: 8
         claims:
+        - target: /field/physical_type
+          value_sha256: d250552cb2cfdaafce9d365c236eb53a1f7a34dfeee9dd571daa0ab10900e5c1
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 8, CEP char(8)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CEP C(8) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 5287dd5d218de46f475e9b209b242148dc82e705ae96adda56c67b6446c63cb1
           status: verified_in_source
@@ -846,7 +1122,23 @@ schema:
         "4": "Anos"
         "5": "Anos (somar 100)"
       x-metadata:
+        physical_name: COD_IDADE
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 50, COD_IDADE char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COD_IDADE C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 99e73dcdcb68a24ba7825782ac61597048c908211c0bf7c97571022632b51e03
           status: verified_in_source
@@ -1269,7 +1561,23 @@ schema:
         '349': Senegal
         '350': Tanzania
       x-metadata:
+        physical_name: NACIONAL
+        physical_type:
+          type: string
+          length: 3
         claims:
+        - target: /field/physical_type
+          value_sha256: 15e0d976f802a4752f598e8353b384949828c50d0f377d3f552d01ca3d148ed9
+          status: conflicting
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 54, NACIONAL char(2)'
+          note: 'O layout oficial dá char(2). O cabeçalho DBF declara NACIONAL C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 71698ab6541c94f5c7ca6974c8d6f9d52a0167582e91015df1e911931696fc75
           status: verified_in_source
@@ -1293,6 +1601,10 @@ schema:
             pages: []
             locator: 'RD2008.DEF: XNacionalidade, NACIONAL, 1, CNV\NACION3D.CNV; CNV/NACION3D.CNV'
           note: Mapa do CNV.
+        issues:
+        - id: largura-difere-do-documento
+          status: open
+          description: 'IT_SIHSUS_1603, p. 2, dá NACIONAL char(2). O cabeçalho DBF declara NACIONAL C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: raca_cor
       type: string
       label: Raça/cor
@@ -1399,7 +1711,23 @@ schema:
         '98': Sem informação
         '99': Sem informação
       x-metadata:
+        physical_name: RACA_COR
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: conflicting
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 84, RACA_COR char(4)'
+          note: 'O layout oficial dá char(4). O cabeçalho DBF declara RACA_COR C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: fb4f8b49113753c1e4355cb04bd06e66f81918a21531176684449ca0035b3e2a
           status: verified_in_source
@@ -1424,6 +1752,9 @@ schema:
             locator: 'RD2008.DEF: XCor/raça, RACA_COR, 1, CNV\RACACOR.CNV; CNV/RACACOR.CNV'
           note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-09-26; texto no issue cnv-difere-do-mapa-anterior.
         issues:
+        - id: largura-difere-do-documento
+          status: open
+          description: 'IT_SIHSUS_1603, p. 3, dá RACA_COR char(4). O cabeçalho DBF declara RACA_COR C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
         - id: cnv-difere-do-mapa-anterior
           status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Branca'', CNV não lista;
@@ -11436,7 +11767,23 @@ schema:
         '9998': NÃO INFORMADO
         '9999': NÃO INFORMADO
       x-metadata:
+        physical_name: ETNIA
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 85, ETNIA char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ETNIA C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: d566d2dbe4b993ff3a6b084de4579d428d9ae7e2c6d5fc669870da6f3efa965c
           status: verified_in_source
@@ -11493,7 +11840,23 @@ schema:
       label: Ocupação (CBO)
       description: 'Ocupação do paciente, segundo a Classificação Brasileira de Ocupações – CBO.'
       x-metadata:
+        physical_name: CBOR
+        physical_type:
+          type: string
+          length: 6
         claims:
+        - target: /field/physical_type
+          value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
+          status: conflicting
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 68, CBOR char(3)'
+          note: 'O layout oficial dá char(3). O cabeçalho DBF declara CBOR C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: e6c2f9007c6bd3e05806b79cb49b3487be065a6701fe2a8c7f7894fe73a9d688
           status: verified_in_source
@@ -11506,12 +11869,32 @@ schema:
             - 3
             locator: 'Tabela 1, linha 68, CBOR char(3): "Ocupação do paciente, segundo a Classificação Brasileira de Ocupações – CBO."'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: largura-difere-do-documento
+          status: open
+          description: 'IT_SIHSUS_1603, p. 3, dá CBOR char(3). O cabeçalho DBF declara CBOR C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: homonimo
       type: string
       label: Homônimo
       description: 'Indicador se o paciente da AIH é homônimo do paciente de outra AIH.'
       x-metadata:
+        physical_name: HOMONIMO
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 59, HOMONIMO char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara HOMONIMO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: c2cfd57126426c3a2a641b470e36aa80471af78259f8a2c973c152484f63c9fe
           status: verified_in_source
@@ -11716,7 +12099,23 @@ schema:
         '05': 05 Outros tipo de acidente de trânsito
         '06': 06 Out tp lesões e envenen por agent quím físicos
       x-metadata:
+        physical_name: CAR_INT
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 56, CAR_INT char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CAR_INT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 9d14492e2e37972c011f673e6a636211e31cde508fc090435ce117d501ccf1a6
           status: verified_in_source
@@ -11788,7 +12187,23 @@ schema:
         '66': Óbito da mãe/puérpera e alta do recém-nascido
         '67': Óbito da mãe/puérpera e permanência recém-nascido
       x-metadata:
+        physical_name: COBRANCA
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 43, COBRANCA char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COBRANCA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: de7264b6321f4248b79157c0d604bfb4b8d0f35f8d10bccb256c5f5632f766b6
           status: verified_in_source
@@ -11883,7 +12298,23 @@ schema:
       label: Procedimento solicitado (SIGTAP)
       description: 'Procedimento solicitado.'
       x-metadata:
+        physical_name: PROC_SOLIC
+        physical_type:
+          type: string
+          length: 10
         claims:
+        - target: /field/physical_type
+          value_sha256: 19d0f44605970de20d929464711db00e4451ebf3ee4270d38d17262c6ef124e9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 23, PROC_SOLIC char(10)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara PROC_SOLIC C(10) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 225e1f6abc555106fafc8983946e72dc0e9437fd2143c361986b2687e72fea1e
           status: verified_in_source
@@ -11901,7 +12332,23 @@ schema:
       label: Procedimento realizado (SIGTAP)
       description: 'Procedimento realizado.'
       x-metadata:
+        physical_name: PROC_REA
+        physical_type:
+          type: string
+          length: 10
         claims:
+        - target: /field/physical_type
+          value_sha256: 19d0f44605970de20d929464711db00e4451ebf3ee4270d38d17262c6ef124e9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 24, PROC_REA char(10)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara PROC_REA C(10) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: a61b67e3200c31425b352ff07ed115b217eb44d624b8888e3fae97187344dc2e
           status: verified_in_source
@@ -11925,7 +12372,23 @@ schema:
       foreignKeys:
         - { fields: diag_princ, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAG_PRINC
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 41, DIAG_PRINC char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAG_PRINC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: b1bd6810e3c28dea1a6b1887c6061bd7687be6155da437c43bc0391f95a80345
           status: verified_in_source
@@ -11945,7 +12408,23 @@ schema:
       foreignKeys:
         - { fields: diag_secun, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAG_SECUN
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 42, DIAG_SECUN char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAG_SECUN C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 6c3e8c7759d355e56b2449181744a2a77ae6e99a08f88f75bc7003b1df442b39
           status: verified_in_source
@@ -11963,7 +12442,23 @@ schema:
       label: CID notificação compulsória
       description: 'CID de Notificação.'
       x-metadata:
+        physical_name: CID_NOTIF
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 62, CID_NOTIF char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_NOTIF C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 4984ca44a632d9489cbf3d0e6c159f7dc8dd933922be6715751cf888c9dfbccc
           status: verified_in_source
@@ -11983,7 +12478,23 @@ schema:
       foreignKeys:
         - { fields: cid_asso, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: CID_ASSO
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 78, CID_ASSO char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_ASSO C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 95cf8cbe0dff6d7b61fcc3a56658980265ffc39601f4d685cb904ab20f022e1d
           status: verified_in_source
@@ -12003,7 +12514,23 @@ schema:
       foreignKeys:
         - { fields: cid_morte, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: CID_MORTE
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 79, CID_MORTE char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_MORTE C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 079f7cab5af6db2810467a7092f4aabdcfd1b85dfb0afa61041663f12f1c72f0
           status: verified_in_source
@@ -12026,7 +12553,23 @@ schema:
         '0': Não
         '1': Sim
       x-metadata:
+        physical_name: INFEHOSP
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 77, INFEHOSP char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INFEHOSP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 591efed554f380ae5479e00b524487ae87885d404efd2b34b8390a968c90d6df
           status: verified_in_source
@@ -12149,7 +12692,23 @@ schema:
         '86': UTI coronariana tipo III - UCO tipo III
         '99': UTI Doador
       x-metadata:
+        physical_name: MARCA_UTI
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 16, MARCA_UTI char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MARCA_UTI C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 8447771d003de3c052ebf9b5e4bfe5300f1018e44082e3a709faec3de3717338
           status: verified_in_source
@@ -12287,7 +12846,23 @@ schema:
         '02': Unidade de cuidados intermed neonatal canguru
         '03': Unidade intermediária neonatal
       x-metadata:
+        physical_name: MARCA_UCI
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 95, MARCA_UCI char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MARCA_UCI C(2) nos 173 arquivos RD lidos que têm o campo, de 2013-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 48527180da309b9746ddc1930a01756f554b811a533f745db4ec1cc405f4e7ee
           status: verified_in_source
@@ -12680,7 +13255,23 @@ schema:
         '07': 07 Vigilância em Saúde
         '08': 08 Gestão em Saúde
       x-metadata:
+        physical_name: FINANC
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 81, FINANC char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FINANC C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: f9b96458a8f325b2dad93260e54431a95323bcf697ef80fe4813699ea8f00c4d
           status: verified_in_source
@@ -12718,7 +13309,23 @@ schema:
       label: Subtipo FAEC
       description: 'Subtipo de financiamento FAEC.'
       x-metadata:
+        physical_name: FAEC_TP
+        physical_type:
+          type: string
+          length: 6
         claims:
+        - target: /field/physical_type
+          value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 82, FAEC_TP char(6)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FAEC_TP C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 369e7b98ff4d178a3cad9917f602cabdef28fbfad42f964e382844ffe7f39e7c
           status: verified_in_source
@@ -12757,7 +13364,23 @@ schema:
         '7116': ESTABELECIMENTO DE SAÚDE SEM GERAÇÃO DE CRÉDITO NA
         '7117': ESTABELECIMENTO DE SAÚDE SEM GERAÇÃO DE CRÉDITO NA
       x-metadata:
+        physical_name: REGCT
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 83, REGCT char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara REGCT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: a8617475669ed53c384ceba37eb4707f27f47f95514d806f6be10568d53c33cd
           status: verified_in_source
@@ -12837,7 +13460,23 @@ schema:
         '8': Ignorado/não se aplica
         '9': Ignorado/não se aplica
       x-metadata:
+        physical_name: INSTRU
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 61, INSTRU char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INSTRU C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: fd023198e17f22af012a4135950539655d5efdc6c4e44abfe61a45de5c3ef167
           status: verified_in_source
@@ -12974,7 +13613,23 @@ schema:
         '98': Ignorado/não se aplica
         '99': Ignorado/não se aplica
       x-metadata:
+        physical_name: CONTRACEP1
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 63, CONTRACEP1 char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CONTRACEP1 C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 468e6511b94b0097cde66b6c4f48138fc887c25dadad44b92cbe9591b36fcea2
           status: verified_in_source
@@ -13104,7 +13759,23 @@ schema:
         '98': Ignorado/não se aplica
         '99': Ignorado/não se aplica
       x-metadata:
+        physical_name: CONTRACEP2
+        physical_type:
+          type: string
+          length: 2
         claims:
+        - target: /field/physical_type
+          value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 64, CONTRACEP2 char(2)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CONTRACEP2 C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: caa3d6023b5698216ead31c13513e92faa45225322414afbd2c37328a071a5c1
           status: verified_in_source
@@ -13138,7 +13809,23 @@ schema:
         '0': Não
         '1': Sim
       x-metadata:
+        physical_name: GESTRISCO
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 65, GESTRISCO char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTRISCO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 14f758dfc2df4663b9fc08420ada9a8f971d41775d4d0dfa6e9fcffa3e743706
           status: verified_in_source
@@ -13167,7 +13854,23 @@ schema:
       label: Inscrição pré-natal
       description: 'Número da gestante no pré-natal.'
       x-metadata:
+        physical_name: INSC_PN
+        physical_type:
+          type: string
+          length: 12
         claims:
+        - target: /field/physical_type
+          value_sha256: 7fb033c0f04b39f2581acd9b3d63d52b68f9abf3467698ae77509b624a50a9aa
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 66, INSC_PN char(12)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara INSC_PN C(10) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(12) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts); o contrato guarda uma largura por campo, a do layout em vigor.'
         - target: /field/description
           value_sha256: 3f7c4e397c79addee61a10ec679f8a5cabe337d086efe8cd26a554104e08aecf
           status: verified_in_source
@@ -13185,7 +13888,23 @@ schema:
       label: CNAE (acidente de trabalho)
       description: 'Código de acidente de trabalho.'
       x-metadata:
+        physical_name: CNAER
+        physical_type:
+          type: string
+          length: 3
         claims:
+        - target: /field/physical_type
+          value_sha256: 15e0d976f802a4752f598e8353b384949828c50d0f377d3f552d01ca3d148ed9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 69, CNAER char(3)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CNAER C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: fd1ed367239c4e2ee3b8f2556c4b54c74b685943bc8a60e62653152453296acb
           status: verified_in_source
@@ -13214,7 +13933,23 @@ schema:
         '8': Não classificado
         '9': Não classificado
       x-metadata:
+        physical_name: VINCPREV
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 70, VINCPREV char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara VINCPREV C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: ec9935de47d51d6ef521a8f54608be2acfa9dd92f67a7e869ffd125b473878e3
           status: verified_in_source
@@ -13254,7 +13989,23 @@ schema:
         '0': Não
         '1': Sim
       x-metadata:
+        physical_name: IND_VDRL
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 48, IND_VDRL char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IND_VDRL C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: ddcb0c49f207d327cc6ebca11777d973be863f7476e8328751c69fe168e7d25f
           status: verified_in_source
@@ -13294,7 +14045,23 @@ schema:
       label: Número do processamento
       description: 'Zerado'
       x-metadata:
+        physical_name: NUM_PROC
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 55, NUM_PROC char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NUM_PROC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -13312,7 +14079,23 @@ schema:
       label: CPF do autorizador
       description: 'Zerado'
       x-metadata:
+        physical_name: CPF_AUT
+        physical_type:
+          type: string
+          length: 11
         claims:
+        - target: /field/physical_type
+          value_sha256: ea7441d1e2e143644471d91f8192a7e86702260ec91e4fae1db8c5397953feb6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 58, CPF_AUT char(11)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CPF_AUT C(11) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -13330,7 +14113,23 @@ schema:
       label: Código motivo autorização
       description: 'Motivo de autorização da AIH pelo Gestor.'
       x-metadata:
+        physical_name: GESTOR_COD
+        physical_type:
+          type: string
+          length: 5
         claims:
+        - target: /field/physical_type
+          value_sha256: 3c45c15a9d7fb20760f76ba53caa94ff640c468d04b2c78a776403c29208f22b
+          status: conflicting
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 71, GESTOR_COD char(3)'
+          note: 'O layout oficial dá char(3). O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts); o contrato guarda uma largura por campo, a do layout em vigor.'
         - target: /field/description
           value_sha256: d01fc78f66a3b5891f5d43cae73f0ab0e0b5786c21b509daeaf82ee3e03f6c6c
           status: verified_in_source
@@ -13343,12 +14142,32 @@ schema:
             - 3
             locator: 'Tabela 1, linha 71, GESTOR_COD char(3): "Motivo de autorização da AIH pelo Gestor."'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: largura-difere-do-documento
+          status: open
+          description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_COD char(3). O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts); o contrato guarda uma largura por campo, a do layout em vigor. Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: gestor_tp
       type: string
       label: Tipo gestor autorizador
       description: 'Tipo de gestor.'
       x-metadata:
+        physical_name: GESTOR_TP
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 72, GESTOR_TP char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTOR_TP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 8f45e3cba07d40f3ed5b0362074269f61cd79d2aaf9a8d8733e3cecc6865043d
           status: verified_in_source
@@ -13377,7 +14196,23 @@ schema:
       label: CPF do gestor
       description: 'Número do CPF do Gestor.'
       x-metadata:
+        physical_name: GESTOR_CPF
+        physical_type:
+          type: string
+          length: 15
         claims:
+        - target: /field/physical_type
+          value_sha256: 3b89880409aee2217545a5d4a9bf1e9d3a2fb9b410bab635c61814d1dc507547
+          status: conflicting
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 73, GESTOR_CPF char(11)'
+          note: 'O layout oficial dá char(11). O cabeçalho DBF declara GESTOR_CPF C(15) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: dca87b42738c88721d298849b7d4eff8c2550c1656fb53e61b466f628d569055
           status: verified_in_source
@@ -13390,6 +14225,10 @@ schema:
             - 3
             locator: 'Tabela 1, linha 73, GESTOR_CPF char(11): "Número do CPF do Gestor."'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: largura-difere-do-documento
+          status: open
+          description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_CPF char(11). O cabeçalho DBF declara GESTOR_CPF C(15) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts). Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: gestor_dt
       type: date
       label: Data de autorização
@@ -13456,7 +14295,23 @@ schema:
       label: Justificativa do auditor
       description: 'Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde.'
       x-metadata:
+        physical_name: AUD_JUST
+        physical_type:
+          type: string
+          length: 50
         claims:
+        - target: /field/physical_type
+          value_sha256: 4658aff14eedaf50cb9c4875078a46f9d95ad69f8a981cca8d1cbd3e3e40a65c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 88, AUD_JUST char(50)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara AUD_JUST C(50) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: c9608a88a32034ba2ceb02409b9070287f5bbcf05d59286bd6a77ae45a07bcdb
           status: verified_in_source
@@ -13474,7 +14329,23 @@ schema:
       label: Justificativa do estabelecimento
       description: 'Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde.'
       x-metadata:
+        physical_name: SIS_JUST
+        physical_type:
+          type: string
+          length: 50
         claims:
+        - target: /field/physical_type
+          value_sha256: 4658aff14eedaf50cb9c4875078a46f9d95ad69f8a981cca8d1cbd3e3e40a65c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 89, SIS_JUST char(50)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara SIS_JUST C(50) nos 205 arquivos RD lidos que têm o campo, de 2011-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: c49d48a8b408997c389c841494667f29bd21996a7bfda6fda5321d06ea9a36a0
           status: verified_in_source
@@ -13510,7 +14381,23 @@ schema:
       label: Sequencial longa permanência
       description: 'Sequencial de longa permanência (AIH tipo 5).'
       x-metadata:
+        physical_name: SEQ_AIH5
+        physical_type:
+          type: string
+          length: 3
         claims:
+        - target: /field/physical_type
+          value_sha256: 15e0d976f802a4752f598e8353b384949828c50d0f377d3f552d01ca3d148ed9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 67, SEQ_AIH5 char(3)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara SEQ_AIH5 C(3) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 184948279518e68772c0bb6acdd27f6e374f9c02030cad19b73d531c5f96f336
           status: verified_in_source
@@ -13570,7 +14457,23 @@ schema:
       foreignKeys:
         - { fields: diagsec1, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC1
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 96, DIAGSEC1 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC1 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 9c833bdef3fb97872ec3b25b1b7e027a68f74d273c02233509bac0c3aaf3233c
           status: verified_in_source
@@ -13591,7 +14494,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC1
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 105, TPDISEC1 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC1 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: f9a8c8d48e40294d9ffeaac77941fcfb7c6295b770f618a8e9a8ff34e15ad49c
           status: verified_in_source
@@ -13628,7 +14547,23 @@ schema:
       foreignKeys:
         - { fields: diagsec2, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC2
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 97, DIAGSEC2 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC2 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: cb4852cc8d385bab7b8f2b46881a12aaca78f13c530c7dfa568ff2f68993d871
           status: verified_in_source
@@ -13649,7 +14584,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC2
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 107, TPDISEC2 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC2 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 9e9ab180f613505873077726974089808c05a2d6efcabc840451404731c06f9c
           status: verified_in_source
@@ -13686,7 +14637,23 @@ schema:
       foreignKeys:
         - { fields: diagsec3, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC3
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 98, DIAGSEC3 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC3 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 2b32d89c15acc2d92f20722fa1ec2d96ff69e58bb33686c55d4d7f65ba9b8a18
           status: verified_in_source
@@ -13707,7 +14674,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC3
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 108, TPDISEC3 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC3 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 5d127b313e830a3fff4b23c0c69614513466a2fa8f3ed19112c6c95ac9df18d3
           status: verified_in_source
@@ -13744,7 +14727,23 @@ schema:
       foreignKeys:
         - { fields: diagsec4, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC4
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 99, DIAGSEC4 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC4 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 056e3a18e63e7e2e0ee264e3fc7da8941072cfca257857a8b404b7589536d163
           status: verified_in_source
@@ -13765,7 +14764,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC4
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 109, TPDISEC4 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC4 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 7ada4106e0da5656e6f47147fead8ad3990cba400e3415ddb77fd633e8c0b01b
           status: verified_in_source
@@ -13802,7 +14817,23 @@ schema:
       foreignKeys:
         - { fields: diagsec5, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC5
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 100, DIAGSEC5 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC5 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 59c5b5cb9b0f613a644267d9333066fcdc8cbbb41e9482476e28d3b11e0aae71
           status: verified_in_source
@@ -13823,7 +14854,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC5
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 110, TPDISEC5 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC5 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 94576d1c6560c5162758cd0e1b965b51f18581c7458c8472c187a6e35783ad47
           status: verified_in_source
@@ -13860,7 +14907,23 @@ schema:
       foreignKeys:
         - { fields: diagsec6, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC6
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 101, DIAGSEC6 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC6 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: a4b2ea0c40d2f080136e340371d9ddab2add929abc10b6fa74709e010d80fa26
           status: verified_in_source
@@ -13881,7 +14944,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC6
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 111, TPDISEC6 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC6 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: d07ab92fde84baef275459a943c796c161e89de5b6935485327ca6e1c08ce99b
           status: verified_in_source
@@ -13918,7 +14997,23 @@ schema:
       foreignKeys:
         - { fields: diagsec7, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC7
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 102, DIAGSEC7 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC7 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 0ecc5c9bcab0c33c66d22fd3ad8be504592cff7a72be2df4a28249b7eab9a677
           status: verified_in_source
@@ -13939,7 +15034,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC7
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 112, TPDISEC7 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC7 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: cb9d40248cea98d21620a9f225a0af39d041eee1f6263f901772bf3034805c21
           status: verified_in_source
@@ -13976,7 +15087,23 @@ schema:
       foreignKeys:
         - { fields: diagsec8, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
+        physical_name: DIAGSEC8
+        physical_type:
+          type: string
+          length: 4
         claims:
+        - target: /field/physical_type
+          value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 103, DIAGSEC8 char(4)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara DIAGSEC8 C(4) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: 57c0b22ff9d349c4f1ff8b31cb94a65a508e1b5df69a0a2f6ef982a4f478eff1
           status: verified_in_source
@@ -13997,7 +15124,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC8
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 113, TPDISEC8 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC8 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: bc06de11659ca510bc60ce9fc791d06aa8c0ffc0b2327f123d311838b74b5997
           status: verified_in_source
@@ -14084,7 +15227,23 @@ schema:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
+        physical_name: TPDISEC9
+        physical_type:
+          type: string
+          length: 1
         claims:
+        - target: /field/physical_type
+          value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: Official PDF field/page inspection and comparison with the DBF headers of the RD files.
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 114, TPDISEC9 char(1)'
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara TPDISEC9 C(1) nos 157 arquivos RD lidos que têm o campo, de 2014-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts).'
         - target: /field/description
           value_sha256: f7db3afd75096bb8b63d53236f1a1f4d96394c4ac9f5252d17a86b8c0597668c
           status: verified_in_source
@@ -14132,6 +15291,10 @@ schema:
         '3': CREDITO FINANC.PARC.VENCIDAS E VICENDAS
         '4': CREDITO FINANCEIRO TRANSACAO TRIBUTARIA
       x-metadata:
+        physical_name: FONTE_ORC
+        physical_type:
+          type: string
+          length: 2
         claims:
         - target: /field/codes
           value_sha256: a658bfb10749059ef36c508b24da5edca4605688d6e6ae5f4608f3bdb75e52d7
@@ -14157,7 +15320,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.20.0"
+x-version: "2.21.0"
 
 x-analytics:
   version: 1.3.0

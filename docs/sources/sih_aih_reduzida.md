@@ -194,6 +194,12 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   os valores publicados.
 - O comprimento do código de município nos dados: o documento declara 6 caracteres
   (p. 1–2). Confira nos seus dados antes de juntar com outra base.
+- A largura de cinco campos de texto: o informe dá `nacional` char(2), `raca_cor`
+  char(4), `cbor` char(3), `gestor_cpf` char(11) e `gestor_cod` char(3) (Informe SIH
+  2016-03, p. 2–3), e os arquivos lidos publicam C(3), C(2), C(6), C(15) e C(5)
+  (`evidence/2026-10-06-rd-2008-layouts/`). `gestor_cod` era C(3) e `insc_pn` C(10) até
+  2011-12, e passam a C(5) e C(12) em 2012-01. O dicionário declara a largura do arquivo
+  e traz a divergência na issue `largura-difere-do-documento` de cada campo.
 - Se o layout vale para arquivos processados depois de 2016-03: o documento é o informe
   desse processamento (p. 1).
 - `nat_jur` e `cnaer` (no RD e no RJ) e `gestor_cod` (no RJ) ficam sem rótulo: o DEF
