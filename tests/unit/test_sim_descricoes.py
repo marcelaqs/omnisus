@@ -1,10 +1,11 @@
-"""Every `sim_obitos` field says what the Estrutura do SIM 2025 says about it (#184).
+"""Every `sim_obitos` field says what the Estrutura do SIM says about it (#184).
 
-The document is `sim-b4195ac8e0f8` in `sources/registry.json` (nine pages). A field it
-describes carries the description with a `/field/description` claim that cites the page;
-the reading was made by an agent, so the claim is `unreviewed` with no reviewer. A field
-the document does not describe keeps `description: null` with a `not_found` claim, which
-needs the same evidence as a description (AGENTS.md rule 1).
+Two editions are in `sources/registry.json`, nine pages each: 07/2025 (`sim-b4195ac8e0f8`)
+and 12/2019 (`sim-b014389eca62`). A field the 2025 edition describes carries that
+description with a `/field/description` claim that cites the page; three fields it leaves
+blank or out take the 2019 text. The reading was made by an agent, so every claim is
+`unreviewed` with no reviewer. A field neither edition describes keeps `description: null`
+with a `not_found` claim, which needs the same evidence as a description (AGENTS.md rule 1).
 """
 
 from __future__ import annotations
@@ -15,6 +16,8 @@ import omnisus as sus
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 ESTRUTURA_2025 = "sim-b4195ac8e0f8"
+ESTRUTURA_2019 = "sim-b014389eca62"
+EVERY_PAGE = list(range(1, 10))
 
 # Field -> the page of the Estrutura do SIM 2025 whose "Descrição" column describes it.
 DESCRIBED = {
@@ -105,17 +108,17 @@ DESCRIBED = {
     **dict.fromkeys(["gestacao", "cb_alt"], 9),
 }
 
-# Listed by the document with an empty "Descrição" cell -> the page of the row.
-LISTED_WITHOUT_DESCRIPTION = {"origem": 5, "tpobitocor": 7, "tp_altera": 9}
+# Blank in the 2025 edition (origem, tpobitocor) or absent from it (cb_pre) -> the page of
+# the 2019 edition that describes the field.
+DESCRIBED_ONLY_IN_2019 = {"origem": 6, "tpobitocor": 8, "cb_pre": 9}
 
-# In no row of the nine pages.
+# In no row of either edition.
 NOT_LISTED = [
     "numerodo",
     "contador",
     "estabdescr",
     "fontesinf",
     "ufinform",
-    "cb_pre",
     "nudiasobin",
     "nudiasinf",
     "covid_clas",
@@ -141,7 +144,8 @@ def _description_claim(column: dict) -> dict:
 def test_every_field_is_in_exactly_one_group() -> None:
     groups = [
         *DESCRIBED,
-        *LISTED_WITHOUT_DESCRIPTION,
+        *DESCRIBED_ONLY_IN_2019,
+        "tp_altera",
         *NOT_LISTED,
         *AUTHORED_BEFORE,
         *ADDED_BY_THE_IMPORT,
@@ -149,28 +153,35 @@ def test_every_field_is_in_exactly_one_group() -> None:
     assert sorted(groups) == sorted(_columns())
 
 
-@pytest.mark.parametrize(("name", "page"), sorted(DESCRIBED.items()))
-def test_a_described_field_cites_the_page_and_has_no_reviewer(name, page) -> None:
+@pytest.mark.parametrize(
+    ("name", "source", "page"),
+    [
+        *((name, ESTRUTURA_2025, page) for name, page in sorted(DESCRIBED.items())),
+        *((name, ESTRUTURA_2019, page) for name, page in sorted(DESCRIBED_ONLY_IN_2019.items())),
+    ],
+)
+def test_a_described_field_cites_the_page_and_has_no_reviewer(name, source, page) -> None:
     column = _columns()[name]
     claim = _description_claim(column)
     assert column["field"]["description"]
     assert (claim["status"], claim["reviewer"]) == ("unreviewed", None)
-    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [(ESTRUTURA_2025, [page])]
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [(source, [page])]
 
 
 @pytest.mark.parametrize(
-    ("name", "pages"),
-    [
-        *sorted((name, [page]) for name, page in LISTED_WITHOUT_DESCRIPTION.items()),
-        *((name, list(range(1, 10))) for name in NOT_LISTED),
-    ],
+    ("name", "pages_2025"),
+    # tp_altera: page 9 of the 2025 edition lists its codes and does not say what it is.
+    [("tp_altera", [9]), *((name, EVERY_PAGE) for name in NOT_LISTED)],
 )
-def test_a_field_the_document_does_not_describe_is_not_found(name, pages) -> None:
+def test_a_field_neither_edition_describes_is_not_found(name, pages_2025) -> None:
     column = _columns()[name]
     claim = _description_claim(column)
     assert column["field"]["description"] is None
     assert (claim["status"], claim["reviewer"]) == ("not_found", None)
-    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [(ESTRUTURA_2025, pages)]
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
+        (ESTRUTURA_2025, pages_2025),
+        (ESTRUTURA_2019, EVERY_PAGE),
+    ]
 
 
 def _open_issue(name: str, issue: str) -> dict:

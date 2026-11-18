@@ -16,11 +16,12 @@
   already packaged and `sim_obitos_fetais` already used them. The claims are `cnv-parse`, written
   by `gerar_decode_cnv.py`; in DORR2022 and DORR2023 every value of the three fields is a key of
   its table. Versions: `sim_obitos` 2.9.0, the three subsets 1.4.0 (#184).
-- 73 fields of `sim_obitos` gain the `description` the Estrutura do SIM 2025 gives them
-  (`sim-b4195ac8e0f8`), each with a `/field/description` claim that cites the page. The reading
-  was made by an agent: the claims are `unreviewed`, with no reviewer. The 13 fields the document
-  lists without a description (`origem`, `tpobitocor`, `tp_altera`) or does not list (`numerodo`,
-  `contador`, `estabdescr`, `fontesinf`, `ufinform`, `cb_pre`, `nudiasobin`, `nudiasinf`,
+- 76 fields of `sim_obitos` gain the `description` the Estrutura do SIM gives them, each with a
+  `/field/description` claim that cites the page: 73 from the 07/2025 edition
+  (`sim-b4195ac8e0f8`) and three it leaves blank or out (`origem`, `tpobitocor`, `cb_pre`) from
+  the 12/2019 edition (`sim-b014389eca62`). The reading was made by an agent: the claims are
+  `unreviewed`, with no reviewer. The ten fields neither edition describes (`tp_altera`,
+  `numerodo`, `contador`, `estabdescr`, `fontesinf`, `ufinform`, `nudiasobin`, `nudiasinf`,
   `covid_clas`, `mat_clas`) keep `description: null` with a `not_found` claim. Two open issues
   record where the dictionary and the document differ: `horaobito` (the document says 5
   characters, `00:00`; DORR2022 and DORR2023 write 4 digits) and the label of `nudiasobco`. The

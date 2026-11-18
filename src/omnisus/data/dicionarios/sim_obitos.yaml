@@ -20,13 +20,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'NUMERODO não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'NUMERODO não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -41,16 +44,20 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'CONTADOR não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'CONTADOR não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
     - name: origem
       type: string
       label: Origem
+      description: "Origem do registro."
       x-decode:
         "1": "Oracle"
         "2": "Banco estadual via FTP"
@@ -74,16 +81,16 @@ schema:
             locator: 'ORIGEM, Caracter 1: 01 Oracle, 02 Banco estadual disponibilizado via FTP, 03 Banco SEADE, 9 Ignorado'
           note: 'O PDF escreve 01, 02 e 03 (e 9) para um campo de 1 caractere; o x-decode usa ''1'', ''2'', ''3'' e ''9''. Os rótulos são abreviações do texto.'
         - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
+          value_sha256: fd1e53ff65f8f7987c099ba78065ce3dcbda0bcbf2dd39818c2054c39e46c65e
+          status: unreviewed
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [5]
-            locator: 'ORIGEM: a linha existe e a coluna Descrição está vazia'
-          note: 'O documento lista o campo sem descrevê-lo.'
+          - source_id: sim-b014389eca62
+            pages: [6]
+            locator: 'ORIGEM, coluna Descrição'
+          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 lista ORIGEM (p. 5) com a coluna Descrição vazia; a descrição é a da edição de 12/2019.'
     - name: tipobito
       type: integer
       label: Tipo do óbito
@@ -769,13 +776,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'ESTABDESCR não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'ESTABDESCR não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
     - name: codmunocor
       type: string
       label: Município de ocorrência
@@ -1817,6 +1827,7 @@ schema:
     - name: tpobitocor
       type: string
       label: Momento da ocorrência do óbito materno
+      description: "Momento da ocorrência do óbito."
       x-decode:
         "": "Não investigado"
         "1": "Durante a gestação"
@@ -1856,16 +1867,16 @@ schema:
               circunstancias anteriores, Branco - Não investigado'
           note: Branco é o código vazio, como a ingestão grava um campo C em branco.
         - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
+          value_sha256: afb394c94eaa8fdcb291fbcedecdcac91c3387462b5e88f5f6043dc122ec1dd8
+          status: unreviewed
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [7]
-            locator: 'TPOBITOCOR: a linha existe e a coluna Descrição está vazia'
-          note: 'O documento lista o campo sem descrevê-lo.'
+          - source_id: sim-b014389eca62
+            pages: [8]
+            locator: 'TPOBITOCOR, coluna Descrição'
+          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 lista TPOBITOCOR (p. 7) com a coluna Descrição vazia; a descrição é a da edição de 12/2019.'
 
     # ========================================================================
     # Investigação
@@ -2183,13 +2194,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'FONTESINF não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'FONTESINF não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
     - name: tpresginfo
       type: string
       label: Tipo de resgate
@@ -2844,13 +2858,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'UFINFORM não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'UFINFORM não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -2859,21 +2876,22 @@ schema:
     - name: cb_pre
       type: string
       label: Causa básica pré-seleção
+      description: "Causa básica informada antes da resseleção (localidade)."
       foreignKeys:
         - { fields: cb_pre, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
         claims:
         - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
+          value_sha256: 90c9177a5a86c8505dfd654ef717ad424cbeb14355dc2df9e7a9efc1ecd95ef9
+          status: unreviewed
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'CB_PRE não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [9]
+            locator: 'CB_PRE, coluna Descrição'
+          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 não lista CB_PRE; a descrição é a da edição de 12/2019.'
     - name: stdoepidem
       type: string
       label: Status DO epidemiológica
@@ -2988,13 +3006,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'NUDIASOBIN não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'NUDIASOBIN não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
     - name: nudiasinf
       type: integer
       label: Dias até informação
@@ -3004,13 +3025,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'NUDIASINF não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'NUDIASINF não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
 
     # ========================================================================
     # Classificação
@@ -3052,13 +3076,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [9]
-            locator: 'TP_ALTERA: a linha existe e a coluna Descrição está vazia'
-          note: 'O documento lista o campo sem descrevê-lo.'
+            locator: 'TP_ALTERA: a linha existe e a coluna Descrição traz a lista de códigos, sem descrever o campo'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'TP_ALTERA não aparece na coluna Nome do campo no DBF'
+          note: 'A edição de 07/2025 lista o campo sem descrevê-lo; a de 12/2019 não o lista.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -3097,13 +3124,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'COVID_CLAS não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'COVID_CLAS não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -3122,13 +3152,16 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas do PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             locator: 'MAT_CLAS não aparece na coluna Nome do campo no DBF'
-          note: 'O documento não lista o campo.'
+          - source_id: sim-b014389eca62
+            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            locator: 'MAT_CLAS não aparece na coluna Nome do campo no DBF'
+          note: 'Nenhuma das duas edições lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
