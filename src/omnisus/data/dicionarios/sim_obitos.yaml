@@ -13,23 +13,21 @@ schema:
     - name: numerodo
       type: string
       label: Número da DO
+      description: "Número da DO, sequencial por UF informante e por ano."
       constraints: { required: true }
       x-metadata:
         claims:
         - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
+          value_sha256: de8a17efd50a98e04a0fb09121b112f4b57be9dbe43233763a9f6943efd90169
+          status: unreviewed
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'NUMERODO não aparece na coluna Nome do campo no DBF'
-          - source_id: sim-b014389eca62
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'NUMERODO não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1]
+            locator: 'NUMERODO, coluna Descrição'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam NUMERODO; a descrição é a da estrutura do arquivo de Mortalidade 2006.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -44,16 +42,22 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'CONTADOR não aparece na coluna Nome do campo no DBF'
+            locator: 'CONTADOR não aparece na coluna de nome do campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'CONTADOR não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+            locator: 'CONTADOR não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'CONTADOR não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'CONTADOR não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'Nenhum dos quatro documentos lista o campo.'
     - name: origem
       type: string
       label: Origem
@@ -90,11 +94,11 @@ schema:
           - source_id: sim-b014389eca62
             pages: [6]
             locator: 'ORIGEM, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 lista ORIGEM (p. 5) com a coluna Descrição vazia; a descrição é a da edição de 12/2019.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 lista ORIGEM (p. 5) com a coluna Descrição vazia; a descrição é a da edição de 12/2019.'
     - name: tipobito
       type: integer
       label: Tipo do óbito
-      description: "Tipo do óbito. Óbito fetal: morte antes da expulsão ou da extração completa do corpo da mãe, independentemente da duração da gravidez."
+      description: "Tipo do óbito. Óbito fetal: morte antes da expulsão ou da extração completa do corpo da mãe, independentemente da duração da gravidez. Indica o óbito o fato de o feto, depois da expulsão do corpo materno, não respirar nem apresentar nenhum outro sinal de vida, como batimentos do coração, pulsações do cordão umbilical ou movimentos efetivos dos músculos de contração voluntária."
       x-decode:
         '1': Fetal
         '2': Não Fetal
@@ -113,7 +117,7 @@ schema:
             locator: 'Obito_1996_CID10.def: XTipo Obito, TIPOBITO, 1, TIPOBITO.CNV; OBITOS_CID10_TAB/tabdo/TIPOBITO.CNV'
           note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
-          value_sha256: cf3185ca8ff0bf88b8fd8cc00e236273cde1cb4351b57d5b382cb1f2a9dfafef
+          value_sha256: 045ecea71d3f7dc088d2d51ce9b326d96740dc16132bd6a9a2f7fab817d4e1f4
           status: unreviewed
           checked_at: '2026-11-18'
           method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
@@ -122,7 +126,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [1]
             locator: 'TIPOBITO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -187,7 +191,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [1]
             locator: 'DTOBITO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: horaobito
       type: string
       label: Hora do óbito
@@ -204,7 +208,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [1]
             locator: 'HORAOBITO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: horaobito-formato-diverge-do-pdf
           status: open
@@ -232,7 +236,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [1]
             locator: 'CODMUNNATU, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtnasc
       type: date
       label: Data de nascimento
@@ -292,7 +296,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [1]
             locator: 'DTNASC, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: idade
       type: string
       label: Idade
@@ -309,7 +313,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [2]
             locator: 'IDADE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         physical_name: IDADE
         unit: encoded
         derivation:
@@ -410,7 +414,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [2]
             locator: 'SEXO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: racacor
       type: integer
       label: Raça/cor
@@ -446,7 +450,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [2]
             locator: 'RACACOR, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -489,7 +493,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [2]
             locator: 'ESTCIV, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -531,7 +535,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'ESC, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -573,11 +577,11 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [2]
             locator: 'ESC2010, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: esc2010-rotulo-diverge-do-pdf
           status: open
-          description: 'Os rótulos de ''1'' (''Fundamental I (1-5 ano)'') e ''2'' (''Fundamental II (6-9 ano)'') não são os do Estrutura_do_SIM_2025.pdf (p. 2: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo NASCIDO.def, linha 79) traz ''1'' como ''Fundamental I (1 a 4 Serie)'' e ''2'' como ''Fundamental II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESC2010 a ESCCICLO.CNV, ausente do OBITOS_CID10_TAB.zip; uma linha comentada do mesmo DEF cita ESCSERIE.CNV, que está no zip (tabdo/ESCSERIE.CNV, SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10, lido em 2026-11-18) e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental II(5ª a 8ª serie)'', como o PDF. O mapa fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
+          description: 'Os rótulos de ''1'' (''Fundamental I (1-5 ano)'') e ''2'' (''Fundamental II (6-9 ano)'') não são os do Estrutura_do_SIM_2025.pdf (p. 2: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo NASCIDO.def, linha 79) traz ''1'' como ''Fundamental I (1 a 4 Serie)'' e ''2'' como ''Fundamental II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESC2010 a ESCCICLO.CNV, ausente do OBITOS_CID10_TAB.zip, e cita ESCSERIE.CNV numa linha comentada (linha 72). ESCSERIE.CNV está no zip em tabdo, tabinf e tabmat, com os mesmos bytes (SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10, lido em 2026-11-18), e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental II(5ª a 8ª serie)'', como o PDF. Os DEF dos subconjuntos, no mesmo zip, citam esse CNV para ESC2010: tabinf/OBITO_Infantil.DEF na linha 410 (ativa) e tabmat/OBITOMAT.DEF na linha 310 (ativa). O mapa fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
     - name: seriescfal
       type: string
       label: Escolaridade (série)
@@ -618,7 +622,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [2]
             locator: 'SERIESCFAL, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: escfalagr1
       type: string
       label: Escolaridade agregada
@@ -662,7 +666,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'ESCFALAGR1, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -710,7 +714,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'CODMUNRES, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
 
     # ========================================================================
     # Bloco IV — Local de Ocorrência
@@ -750,7 +754,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'LOCOCOR, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -776,16 +780,22 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'ESTABDESCR não aparece na coluna Nome do campo no DBF'
+            locator: 'ESTABDESCR não aparece na coluna de nome do campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'ESTABDESCR não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+            locator: 'ESTABDESCR não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'ESTABDESCR não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'ESTABDESCR não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'Nenhum dos quatro documentos lista o campo.'
     - name: codmunocor
       type: string
       label: Município de ocorrência
@@ -805,7 +815,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'CODMUNOCOR, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
 
     # ========================================================================
     # Bloco V — Óbito Fetal / Menores de 1 Ano
@@ -826,7 +836,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'IDADEMAE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: escmae2010
       type: string
       label: Escolaridade da mãe (2010)
@@ -862,11 +872,11 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'ESCMAE2010, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: escmae2010-rotulo-diverge-do-pdf
           status: open
-          description: 'Os rótulos de ''1'' (''Fundamental I (1-5 ano)'') e ''2'' (''Fundamental II (6-9 ano)'') não são os do Estrutura_do_SIM_2025.pdf (p. 3: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo NASCIDO.def, linha 79) traz ''1'' como ''Fundamental I (1 a 4 Serie)'' e ''2'' como ''Fundamental II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESCMAE2010 a ESCCICLO.CNV, ausente do OBITOS_CID10_TAB.zip; uma linha comentada do mesmo DEF cita ESCSERIE.CNV, que está no zip (tabdo/ESCSERIE.CNV, SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10, lido em 2026-11-18) e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental II(5ª a 8ª serie)'', como o PDF. O mapa fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
+          description: 'Os rótulos de ''1'' (''Fundamental I (1-5 ano)'') e ''2'' (''Fundamental II (6-9 ano)'') não são os do Estrutura_do_SIM_2025.pdf (p. 3: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo NASCIDO.def, linha 79) traz ''1'' como ''Fundamental I (1 a 4 Serie)'' e ''2'' como ''Fundamental II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESCMAE2010 a ESCCICLO.CNV, ausente do OBITOS_CID10_TAB.zip, e cita ESCSERIE.CNV numa linha comentada (linha 315). ESCSERIE.CNV está no zip em tabdo, tabinf e tabmat, com os mesmos bytes (SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10, lido em 2026-11-18), e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental II(5ª a 8ª serie)'', como o PDF. Os DEF dos subconjuntos, no mesmo zip, citam esse CNV para ESCMAE2010: tabinf/OBITO_Infantil.DEF na linha 507 (comentada) e tabmat/OBITOMAT.DEF na linha 405 (ativa). O mapa fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
     - name: seriescmae
       type: string
       label: Escolaridade da mãe (série)
@@ -907,7 +917,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'SERIESCMAE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: escmae
       type: string
       label: Escolaridade da mãe (antigo)
@@ -944,7 +954,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'ESCMAE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -994,7 +1004,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'ESCMAEAGR1, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1024,7 +1034,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'OCUPMAE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: qtdfilvivo
       type: integer
       label: Filhos nascidos vivos
@@ -1041,7 +1051,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'QTDFILVIVO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: qtdfilmort
       type: integer
       label: Filhos mortos
@@ -1058,7 +1068,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [3]
             locator: 'QTDFILMORT, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: semagestac
       type: integer
       label: Semanas de gestação
@@ -1075,7 +1085,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'SEMAGESTAC, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: gestacao
       type: string
       label: Gestação (faixas)
@@ -1113,7 +1123,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [9]
             locator: 'GESTACAO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1155,7 +1165,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'GRAVIDEZ, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1194,7 +1204,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'PARTO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1233,7 +1243,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'OBITOPARTO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1283,7 +1293,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'TPMORTEOCO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1324,7 +1334,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'OBITOGRAV, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1364,7 +1374,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'OBITOPUERP, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1399,7 +1409,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'ASSISTMED, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: exame
       type: string
       label: Exame
@@ -1433,7 +1443,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'EXAME, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1471,7 +1481,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'CIRURGIA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1509,7 +1519,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [4]
             locator: 'NECROPSIA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1554,7 +1564,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'LINHAII, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: causabas
       type: string
       label: Causa básica
@@ -1574,7 +1584,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'CAUSABAS, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
 
     # ========================================================================
     # Bloco VII — Médico Atestante
@@ -1615,7 +1625,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'ATESTANTE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1639,7 +1649,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'COMUNSVOIM, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtatestado
       type: date
       label: Data do atestado
@@ -1703,7 +1713,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'DTATESTADO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: circobito
       type: string
       label: Circunstância do óbito
@@ -1739,7 +1749,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'CIRCOBITO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1778,7 +1788,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'ACIDTRAB, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1818,7 +1828,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'FONTE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1876,7 +1886,7 @@ schema:
           - source_id: sim-b014389eca62
             pages: [8]
             locator: 'TPOBITOCOR, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 lista TPOBITOCOR (p. 7) com a coluna Descrição vazia; a descrição é a da edição de 12/2019.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 lista TPOBITOCOR (p. 7) com a coluna Descrição vazia; a descrição é a da edição de 12/2019.'
 
     # ========================================================================
     # Investigação
@@ -1913,7 +1923,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'TPPOS, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -1979,7 +1989,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'DTINVESTIG, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: causabas_o
       type: string
       label: Causa básica original
@@ -1998,7 +2008,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'CAUSABAS_O, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. O documento tem uma segunda linha CAUSABAS_O, na p. 8, com a descrição ''Causa básica Original''.'
     - name: fonteinv
       type: string
       label: Fonte de investigação
@@ -2038,7 +2048,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'FONTEINV, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -2107,7 +2117,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'DTCADINV, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtconinv
       type: date
       label: Data conclusão investigação
@@ -2167,7 +2177,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'DTCONINV, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: fontes
       type: string
       label: Fontes (combinado)
@@ -2184,7 +2194,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'FONTES, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: fontesinf
       type: string
       label: Fontes de informação
@@ -2194,16 +2204,22 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'FONTESINF não aparece na coluna Nome do campo no DBF'
+            locator: 'FONTESINF não aparece na coluna de nome do campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'FONTESINF não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+            locator: 'FONTESINF não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'FONTESINF não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'FONTESINF não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'Nenhum dos quatro documentos lista o campo.'
     - name: tpresginfo
       type: string
       label: Tipo de resgate
@@ -2240,7 +2256,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'TPRESGINFO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: tpnivelinv
       type: string
       label: Nível investigador
@@ -2272,7 +2288,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'TPNIVELINV, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtcadinf
       type: date
       label: Data cadastro informação
@@ -2332,7 +2348,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'DTCADINF, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: morteparto
       type: string
       label: Morte/parto (pós-investigação)
@@ -2365,7 +2381,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'MORTEPARTO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtconcaso
       type: date
       label: Data conclusão do caso
@@ -2425,7 +2441,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'DTCONCASO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: altcausa
       type: string
       label: Alteração de causa
@@ -2454,7 +2470,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'ALTCAUSA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: causamat
       type: string
       label: Causa materna
@@ -2473,7 +2489,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'CAUSAMAT, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
 
     # ========================================================================
     # Administrativos
@@ -2494,7 +2510,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'NUMEROLOTE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtcadastro
       type: date
       label: Data do cadastro
@@ -2554,7 +2570,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'DTCADASTRO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: stcodifica
       type: string
       label: Status codificação
@@ -2587,7 +2603,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'STCODIFICA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -2621,7 +2637,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'CODIFICADO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: versaosist
       type: string
       label: Versão do sistema
@@ -2638,7 +2654,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'VERSAOSIST, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: versaoscb
       type: string
       label: Versão SCB
@@ -2689,7 +2705,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'VERSAOSCB, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtrecebim
       type: date
       label: Data recebimento
@@ -2749,7 +2765,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'DTRECEBIM, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: atestado
       type: string
       label: Atestado (texto)
@@ -2766,7 +2782,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'ATESTADO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: dtrecoriga
       type: date
       label: Data recebimento original
@@ -2826,7 +2842,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'DTRECORIGA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: opor_do
       type: integer
       label: Oportunidade da DO
@@ -2843,7 +2859,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [6]
             locator: 'OPOR_DO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -2852,22 +2868,20 @@ schema:
     - name: ufinform
       type: string
       label: UF informante
+      description: "Código da UF que informou o registro."
       x-metadata:
         claims:
         - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
+          value_sha256: 5d4864610d8f561a2fc222b70809929447eb282133702fbfe7c6281cf7a57194
+          status: unreviewed
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'UFINFORM não aparece na coluna Nome do campo no DBF'
-          - source_id: sim-b014389eca62
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'UFINFORM não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [4]
+            locator: 'UFINFORM, coluna Descrição'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam UFINFORM; a descrição é a da estrutura do arquivo de Mortalidade 2006.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -2891,7 +2905,7 @@ schema:
           - source_id: sim-b014389eca62
             pages: [9]
             locator: 'CB_PRE, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 não lista CB_PRE; a descrição é a da edição de 12/2019.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. A edição de 07/2025 não lista CB_PRE; a descrição é a da edição de 12/2019. A estrutura de 2006 (sim-anterior-13cabba0b9a1, p. 4) diz ''Causa selecionada sem re-seleção (novo SCB)'' e o dicionário da tabela DOM (sim-dom-fb396a277981, p. 7) diz ''Causa básica informada antes da resseleção (NRESSELE)''.'
     - name: stdoepidem
       type: string
       label: Status DO epidemiológica
@@ -2922,7 +2936,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'STDOEPIDEM, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: stdonova
       type: string
       label: Status DO nova
@@ -2953,7 +2967,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'STDONOVA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: open
@@ -2975,7 +2989,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'DIFDATA, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: nudiasobco
       type: integer
       label: Dias óbito-codificação
@@ -2992,7 +3006,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [7]
             locator: 'NUDIASOBCO, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: nudiasobco-rotulo-diverge-do-pdf
           status: open
@@ -3000,22 +3014,20 @@ schema:
     - name: nudiasobin
       type: integer
       label: Dias óbito-investigação
+      description: "Diferença entre a data do óbito e a data de cadastro da investigação, em dias."
       x-metadata:
         claims:
         - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
+          value_sha256: 42bc7dbf6c5789ea710305ed7bbdab05f623b5d8546a575a0a45a458a90d4c3a
+          status: unreviewed
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'NUDIASOBIN não aparece na coluna Nome do campo no DBF'
-          - source_id: sim-b014389eca62
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'NUDIASOBIN não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+          - source_id: sim-dom-fb396a277981
+            pages: [2]
+            locator: 'NUDIASOBIN, coluna Descrição'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam NUDIASOBIN; a descrição é a do dicionário da tabela DOM (investigação materna), que escreve ''Diferença a data óbito e a data cadastro da investigação, em dias''.'
     - name: nudiasinf
       type: integer
       label: Dias até informação
@@ -3025,16 +3037,22 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'NUDIASINF não aparece na coluna Nome do campo no DBF'
+            locator: 'NUDIASINF não aparece na coluna de nome do campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'NUDIASINF não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+            locator: 'NUDIASINF não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'NUDIASINF não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'NUDIASINF não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'Nenhum dos quatro documentos lista o campo.'
 
     # ========================================================================
     # Classificação
@@ -3076,7 +3094,7 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
@@ -3084,8 +3102,14 @@ schema:
             locator: 'TP_ALTERA: a linha existe e a coluna Descrição traz a lista de códigos, sem descrever o campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'TP_ALTERA não aparece na coluna Nome do campo no DBF'
-          note: 'A edição de 07/2025 lista o campo sem descrevê-lo; a de 12/2019 não o lista.'
+            locator: 'TP_ALTERA não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'TP_ALTERA não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'TP_ALTERA não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'A edição de 07/2025 lista o campo sem descrevê-lo; os outros três documentos não o listam.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -3109,7 +3133,7 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [9]
             locator: 'CB_ALT, coluna Descrição'
-          note: 'Transcrição do documento, com a ortografia corrigida; a aplicabilidade a cada arquivo não foi conferida.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -3124,16 +3148,22 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'COVID_CLAS não aparece na coluna Nome do campo no DBF'
+            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'COVID_CLAS não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'COVID_CLAS não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'Nenhum dos quatro documentos lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -3152,16 +3182,22 @@ schema:
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
           status: not_found
           checked_at: '2026-11-18'
-          method: 'Leitura das nove páginas de cada PDF oficial, feita por agente; sem revisor humano'
+          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'MAT_CLAS não aparece na coluna Nome do campo no DBF'
+            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
           - source_id: sim-b014389eca62
             pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'MAT_CLAS não aparece na coluna Nome do campo no DBF'
-          note: 'Nenhuma das duas edições lista o campo.'
+            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
+          - source_id: sim-anterior-13cabba0b9a1
+            pages: [1, 2, 3, 4, 5, 6, 7]
+            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
+          - source_id: sim-dom-fb396a277981
+            pages: [1, 2, 3, 4, 5, 6, 7, 8]
+            locator: 'MAT_CLAS não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+          note: 'Nenhum dos quatro documentos lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
           status: open

@@ -139,9 +139,10 @@ fica sem rótulo no DOFET e no CID-9: `SEXO.CNV` rotula só com as letras M, F e
 - `nudiasobco` é, no documento, a diferença em dias entre a data do óbito e a data de
   conclusão da investigação (Estrutura do SIM 2025, p. 7); o rótulo do dicionário diz
   "Dias óbito-codificação" e a divergência está registrada no campo.
-- `fontes` são seis caracteres, um por campo de fonte da investigação, na ordem em que o
-  documento os nomeia (FONTENTREV, FONTEAMBUL, FONTEPRONT, FONTESVO, FONTEIML, FONTEPROF):
-  `S` se o campo foi preenchido, `X` se ficou vazio (Estrutura do SIM 2025, p. 8).
+- `fontes` tem 6 caracteres e é, no documento, um "combinado de caracteres conforme o
+  preenchimento dos campos de fontes (FONTENTREV, FONTEAMBUL, FONTEPRONT, FONTESVO, FONTEIML,
+  FONTEPROF)": `S` se preenchido, `X` se o campo estiver vazio (Estrutura do SIM 2025, p. 8).
+  O documento não diz qual posição corresponde a qual campo.
 - O documento é a edição atualizada em 07/2025 (Estrutura do SIM 2025, p. 1).
 - O documento não descreve `numerodo` nem `contador`, que o dicionário da biblioteca
   declara (Estrutura do SIM 2025, p. 1–9;

@@ -1,11 +1,14 @@
-"""Every `sim_obitos` field says what the Estrutura do SIM says about it (#184).
+"""Every `sim_obitos` field says what the official layout documents say about it (#184).
 
-Two editions are in `sources/registry.json`, nine pages each: 07/2025 (`sim-b4195ac8e0f8`)
-and 12/2019 (`sim-b014389eca62`). A field the 2025 edition describes carries that
-description with a `/field/description` claim that cites the page; three fields it leaves
-blank or out take the 2019 text. The reading was made by an agent, so every claim is
-`unreviewed` with no reviewer. A field neither edition describes keeps `description: null`
-with a `not_found` claim, which needs the same evidence as a description (AGENTS.md rule 1).
+Four documents of `sources/registry.json` were read page by page: the Estrutura do SIM of
+07/2025 (`sim-b4195ac8e0f8`) and of 12/2019 (`sim-b014389eca62`), the structure of the 2006
+file (`sim-anterior-13cabba0b9a1`) and the dictionary of the DOM table
+(`sim-dom-fb396a277981`). A field with no description before #184 takes the text of the
+07/2025 edition with a `/field/description` claim that cites the page; six fields that
+edition leaves blank or out take the text of the document that describes them. The reading
+was made by an agent, so every claim is `unreviewed` with no reviewer. A field none of the
+four describes keeps `description: null` with a `not_found` claim, which needs the same
+evidence as a description (AGENTS.md rule 1).
 """
 
 from __future__ import annotations
@@ -17,6 +20,8 @@ from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 ESTRUTURA_2025 = "sim-b4195ac8e0f8"
 ESTRUTURA_2019 = "sim-b014389eca62"
+ESTRUTURA_2006 = "sim-anterior-13cabba0b9a1"
+DICIONARIO_DOM = "sim-dom-fb396a277981"
 EVERY_PAGE = list(range(1, 10))
 
 # Field -> the page of the Estrutura do SIM 2025 whose "Descrição" column describes it.
@@ -108,24 +113,22 @@ DESCRIBED = {
     **dict.fromkeys(["gestacao", "cb_alt"], 9),
 }
 
-# Blank in the 2025 edition (origem, tpobitocor) or absent from it (cb_pre) -> the page of
-# the 2019 edition that describes the field.
-DESCRIBED_ONLY_IN_2019 = {"origem": 6, "tpobitocor": 8, "cb_pre": 9}
+# Blank in the 07/2025 edition (origem, tpobitocor) or absent from it -> the document and
+# the page that describe the field.
+DESCRIBED_ELSEWHERE = {
+    "origem": (ESTRUTURA_2019, 6),
+    "tpobitocor": (ESTRUTURA_2019, 8),
+    "cb_pre": (ESTRUTURA_2019, 9),
+    "numerodo": (ESTRUTURA_2006, 1),
+    "ufinform": (ESTRUTURA_2006, 4),
+    "nudiasobin": (DICIONARIO_DOM, 2),
+}
 
-# In no row of either edition.
-NOT_LISTED = [
-    "numerodo",
-    "contador",
-    "estabdescr",
-    "fontesinf",
-    "ufinform",
-    "nudiasobin",
-    "nudiasinf",
-    "covid_clas",
-    "mat_clas",
-]
+# In no row of the four documents.
+NOT_LISTED = ["contador", "estabdescr", "fontesinf", "nudiasinf", "covid_clas", "mat_clas"]
 
-# Described before #184 in the maintainers' words, with no claim; left as they were.
+# Described before #184 in the maintainers' words, with no claim; left as they were, though
+# the documents describe them too.
 AUTHORED_BEFORE = ["natural", "ocup", "codestab", "peso", "linhaa", "linhab", "linhac", "linhad"]
 
 # Columns the import adds; the document is about the DBF.
@@ -144,7 +147,7 @@ def _description_claim(column: dict) -> dict:
 def test_every_field_is_in_exactly_one_group() -> None:
     groups = [
         *DESCRIBED,
-        *DESCRIBED_ONLY_IN_2019,
+        *DESCRIBED_ELSEWHERE,
         "tp_altera",
         *NOT_LISTED,
         *AUTHORED_BEFORE,
@@ -157,7 +160,7 @@ def test_every_field_is_in_exactly_one_group() -> None:
     ("name", "source", "page"),
     [
         *((name, ESTRUTURA_2025, page) for name, page in sorted(DESCRIBED.items())),
-        *((name, ESTRUTURA_2019, page) for name, page in sorted(DESCRIBED_ONLY_IN_2019.items())),
+        *((name, *where) for name, where in sorted(DESCRIBED_ELSEWHERE.items())),
     ],
 )
 def test_a_described_field_cites_the_page_and_has_no_reviewer(name, source, page) -> None:
@@ -170,10 +173,11 @@ def test_a_described_field_cites_the_page_and_has_no_reviewer(name, source, page
 
 @pytest.mark.parametrize(
     ("name", "pages_2025"),
-    # tp_altera: page 9 of the 2025 edition lists its codes and does not say what it is.
+    # tp_altera: page 9 of the 07/2025 edition lists its codes and does not say what it is.
     [("tp_altera", [9]), *((name, EVERY_PAGE) for name in NOT_LISTED)],
 )
-def test_a_field_neither_edition_describes_is_not_found(name, pages_2025) -> None:
+def test_a_field_no_document_describes_is_not_found(name, pages_2025) -> None:
+    """The DOM dictionary is served cut at 524,288 bytes; its eight readable pages were read."""
     column = _columns()[name]
     claim = _description_claim(column)
     assert column["field"]["description"] is None
@@ -181,6 +185,8 @@ def test_a_field_neither_edition_describes_is_not_found(name, pages_2025) -> Non
     assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
         (ESTRUTURA_2025, pages_2025),
         (ESTRUTURA_2019, EVERY_PAGE),
+        (ESTRUTURA_2006, list(range(1, 8))),
+        (DICIONARIO_DOM, list(range(1, 9))),
     ]
 
 
