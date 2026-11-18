@@ -15,7 +15,9 @@
   `SERIEFAL.CNV` for the two school grades, `VERSCB.CNV` for the SCB version. Both tables were
   already packaged and `sim_obitos_fetais` already used them. The claims are `cnv-parse`, written
   by `gerar_decode_cnv.py`; in DORR2022 and DORR2023 every value of the three fields is a key of
-  its table. Versions: `sim_obitos` 2.9.0, the three subsets 1.4.0 (#184).
+  its table. `SERIEFAL.CNV` also lists `0` and `9` (`Ign`), which the Estrutura do SIM does not:
+  it says "Números de 1 a 8" for both fields, and no fixture holds `0` or `9`. Versions:
+  `sim_obitos` 2.9.0, the three subsets 1.4.0 (#184).
 - 79 fields of `sim_obitos` gain the `description` an official layout document gives them, each
   with a `/field/description` claim that cites the page: 73 from the Estrutura do SIM of 07/2025
   (`sim-b4195ac8e0f8`); `origem`, `tpobitocor` and `cb_pre` from the edition of 12/2019
