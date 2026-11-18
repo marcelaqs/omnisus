@@ -58,8 +58,15 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   (Informe SIH 2016-03, p. 1).
 - `munic_mov` é o município do estabelecimento, com 6 caracteres
   (Informe SIH 2016-03, p. 2).
-- `uf_zi` é o município gestor, com 6 caracteres, apesar do nome (Informe SIH 2016-03,
-  p. 1; `RD2008.DEF`, linhas 175-176).
+- `uf_zi` é o gestor da AIH, com 6 caracteres, apesar do nome: o informe e o DEF o
+  chamam de "Município gestor" (Informe SIH 2016-03, p. 1; `RD2008.DEF`, linhas 175-176),
+  mas o código nem sempre é de município. A tabela que o DEF liga ao campo,
+  `CNV/br_municgestor.cnv` do `TAB_SIH.zip`, traz para cada um dos 26 estados o código da UF seguido de
+  `0000` com o rótulo "Gestão estadual" (`140000`, "140000 Roraima - Gestão estadual"). Em
+  RDRR2401 são 2.920 das 3.714 AIHs com `140000` e 794 com `140010` (Boa Vista). Os
+  rótulos vêm dessa tabela, no RD e no RJ (`RJ2008.DEF`, linhas 177-178), e repetem o
+  código, como ela publica. O campo não tem
+  referência a `aux_municipios`: `140000` não é município.
 - `cnes` é o código CNES do hospital, com 7 caracteres (Informe SIH 2016-03, p. 3).
 - O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`; `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa ([vocabulários](vocabularios.md)).
   A importação preserva o comprimento dos códigos publicados; não aplica
@@ -209,11 +216,11 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   motivo em `sem_cnv`. Nas fixtures, `cnaer` é `000` em todas as linhas e o `gestor_cod`
   do RJ vem em branco; o `gestor_cod` do RD é relacionado a `DBF/LIBGESTOR.DBF`.
 - Os demais campos que o `RD2008.DEF` e o `RJ2008.DEF` ligam a um CNV e que ficam sem
-  mapa (21 no RD, 20 no RJ) também estão em `sem_cnv`, com as linhas do DEF e o motivo:
+  mapa (20 no RD, 19 no RJ) também estão em `sem_cnv`, com as linhas do DEF e o motivo:
   agrupamento do código (capítulo e grupo da CID, ano e mês das datas, região e UF do
   município), coluna inicial diferente de 1 (`dias_perm`, `n_aih`), linhas que trazem um
   nome de campo no lugar da coluna inicial (`faec_tp`, `proc_rea`) ou tabela não
-  empacotada (`uf_zi` e os demais, #137). O `cod_idade` está em `sem_cnv` no RD e no RJ
+  empacotada (os demais, #137). O `cod_idade` está em `sem_cnv` no RD e no RJ
   e tem o mapa medido descrito acima (#6).
 
 ## Como usar

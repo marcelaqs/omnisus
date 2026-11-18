@@ -223,6 +223,35 @@ def test_uf_zi_is_the_gestor_municipality(dbc_fixture):
     assert load_dicionario(DATASET).field_def("uf_zi")["label"] == "Município gestor"
 
 
+def test_uf_zi_takes_the_labels_of_br_municgestor(dbc_fixture):
+    """RD2008.DEF lines 175-176 bind UF_ZI to CNV/br_municgestor.cnv at position 1. The
+    table names each municipality and, for each of the 26 states, the code UF0000 as
+    "<UF> - Gestão estadual": RDRR2401 publishes 140000 in 2,920 of its 3,714 records and 140010 (Boa
+    Vista) in 794. UF0000 is no municipality, so the field holds no reference to
+    aux_municipios (#182)."""
+    import json
+
+    raw = dbc_fixture("sih_rr_2024_01_mini").read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect().select("uf_zi")
+    assert dict(frame["uf_zi"].value_counts().rows()) == {"140000": 2920, "140010": 794}
+    labelled = sus.label(DATASET, frame, columns=["uf_zi"])
+    assert dict(labelled.unique().rows()) == {
+        "140000": "140000 Roraima - Gestão estadual",
+        "140010": "140010 Boa Vista",
+    }
+    field = load_dicionario(DATASET).field_def("uf_zi")
+    assert "foreignKeys" not in field
+    (claim,) = (c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes")
+    assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
+    assert "UF_ZI" in claim["evidence"][0]["locator"]
+    assert claim["evidence"][0]["locator"].endswith("CNV/br_municgestor.cnv")
+    vinculos = json.loads(
+        (ROOT / "src/omnisus/data/dicionarios/sources/cnv/vinculos.json").read_text("utf-8")
+    )["datasets"][DATASET]
+    assert vinculos["campos"]["uf_zi"] == "sih/CNV/br_municgestor.cnv"
+    assert "uf_zi" not in vinculos["sem_cnv"]
+
+
 COD_IDADE = {"2": "Dias", "3": "Meses", "4": "Anos", "5": "Anos (somar 100)"}
 
 

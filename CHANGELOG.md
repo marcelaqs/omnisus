@@ -22,6 +22,15 @@
   C(2) with an unreviewed claim. `gestor_cod` and `insc_pn` were C(3) and C(10) until
   2011-12; the claim's note says so. Numeric fields stay without `physical_type`: the
   contract has no place for decimals (#182).
+- `uf_zi` of `sih_aih_reduzida` (2.22.0) and of `sih_aih_rejeitada` (1.6.0) takes the labels
+  of `CNV/br_municgestor.cnv`, the table `RD2008.DEF` (lines 175-176) and `RJ2008.DEF`
+  (lines 177-178) bind it to, packaged from `TAB_SIH.zip`
+  (`sih-tab-21e42384645a`): 15,731 codes, a new `uf_zi_rotulo` column. The table names
+  each municipality and, for each of the 26 states, the code of the UF followed by `0000` as "Gestão
+  estadual": RDRR2401 publishes `140000`, "140000 Roraima - Gestão estadual", in 2,920 of
+  its 3,714 records. The labels repeat the code, as the table prints them. The field
+  leaves `sem_cnv` (#137) in both datasets and keeps no reference to `aux_municipios`
+  (#182).
 
 ### omnisus-dbf 0.2.2
 
