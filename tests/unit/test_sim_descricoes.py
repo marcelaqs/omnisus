@@ -177,7 +177,6 @@ def test_a_described_field_cites_the_page_and_has_no_reviewer(name, source, page
     [("tp_altera", [9]), *((name, EVERY_PAGE) for name in NOT_LISTED)],
 )
 def test_a_field_no_document_describes_is_not_found(name, pages_2025) -> None:
-    """The DOM dictionary is served cut at 524,288 bytes; its eight readable pages were read."""
     column = _columns()[name]
     claim = _description_claim(column)
     assert column["field"]["description"] is None

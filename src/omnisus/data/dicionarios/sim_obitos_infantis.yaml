@@ -802,8 +802,7 @@ schema:
           - 6
           - 7
           - 8
-          locator: ESTABDESCR não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes
-            e as oito páginas legíveis foram lidas
+          locator: ESTABDESCR não aparece na coluna de nome do campo
         note: Nenhum dos quatro documentos lista o campo.
   - name: codmunocor
     type: string
@@ -3100,8 +3099,7 @@ schema:
           - 6
           - 7
           - 8
-          locator: NUDIASINF não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes
-            e as oito páginas legíveis foram lidas
+          locator: NUDIASINF não aparece na coluna de nome do campo
         note: Nenhum dos quatro documentos lista o campo.
   - name: dtcadinf
     type: date
@@ -3323,8 +3321,7 @@ schema:
           - 6
           - 7
           - 8
-          locator: FONTESINF não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes
-            e as oito páginas legíveis foram lidas
+          locator: FONTESINF não aparece na coluna de nome do campo
         note: Nenhum dos quatro documentos lista o campo.
   - name: altcausa
     type: string
@@ -3418,6 +3415,5 @@ schema:
           - 6
           - 7
           - 8
-          locator: CONTADOR não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes
-            e as oito páginas legíveis foram lidas
+          locator: CONTADOR não aparece na coluna de nome do campo
         note: Nenhum dos quatro documentos lista o campo.

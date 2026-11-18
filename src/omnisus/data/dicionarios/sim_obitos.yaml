@@ -27,7 +27,7 @@ schema:
           - source_id: sim-anterior-13cabba0b9a1
             pages: [1]
             locator: 'NUMERODO, coluna Descrição'
-          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam NUMERODO; a descrição é a da estrutura do arquivo de Mortalidade 2006.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam NUMERODO; a descrição é a da estrutura do arquivo de Mortalidade 2006. O dicionário da tabela DOM (sim-dom-fb396a277981, p. 1) diz só ''Número da DO''; a estrutura até 2005, no mesmo PDF de 2006 (p. 5), repete o texto de 2006.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -56,7 +56,7 @@ schema:
             locator: 'CONTADOR não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'CONTADOR não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'CONTADOR não aparece na coluna de nome do campo'
           note: 'Nenhum dos quatro documentos lista o campo.'
     - name: origem
       type: string
@@ -794,7 +794,7 @@ schema:
             locator: 'ESTABDESCR não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'ESTABDESCR não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'ESTABDESCR não aparece na coluna de nome do campo'
           note: 'Nenhum dos quatro documentos lista o campo.'
     - name: codmunocor
       type: string
@@ -2218,7 +2218,7 @@ schema:
             locator: 'FONTESINF não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'FONTESINF não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'FONTESINF não aparece na coluna de nome do campo'
           note: 'Nenhum dos quatro documentos lista o campo.'
     - name: tpresginfo
       type: string
@@ -2881,7 +2881,7 @@ schema:
           - source_id: sim-anterior-13cabba0b9a1
             pages: [4]
             locator: 'UFINFORM, coluna Descrição'
-          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam UFINFORM; a descrição é a da estrutura do arquivo de Mortalidade 2006.'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam UFINFORM; a descrição é a da estrutura do arquivo de Mortalidade 2006. A estrutura até 2005, no mesmo PDF (p. 7), diz ''Código da UF que informou, conforme código IBGE''.'
         issues:
         - id: absent-in-audited-snapshot
           status: open
@@ -3051,7 +3051,7 @@ schema:
             locator: 'NUDIASINF não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'NUDIASINF não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'NUDIASINF não aparece na coluna de nome do campo'
           note: 'Nenhum dos quatro documentos lista o campo.'
 
     # ========================================================================
@@ -3108,7 +3108,7 @@ schema:
             locator: 'TP_ALTERA não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'TP_ALTERA não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'TP_ALTERA não aparece na coluna de nome do campo'
           note: 'A edição de 07/2025 lista o campo sem descrevê-lo; os outros três documentos não o listam.'
         issues:
         - id: absent-in-audited-snapshot
@@ -3162,7 +3162,7 @@ schema:
             locator: 'COVID_CLAS não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'COVID_CLAS não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
           note: 'Nenhum dos quatro documentos lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
@@ -3196,7 +3196,7 @@ schema:
             locator: 'MAT_CLAS não aparece na coluna de nome do campo'
           - source_id: sim-dom-fb396a277981
             pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'MAT_CLAS não aparece na coluna de nome do campo; o arquivo é servido com 524.288 bytes e as oito páginas legíveis foram lidas'
+            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
           note: 'Nenhum dos quatro documentos lista o campo.'
         issues:
         - id: absent-in-audited-snapshot
