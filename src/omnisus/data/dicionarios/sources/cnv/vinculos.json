@@ -375,6 +375,11 @@
       "sha256": "da7f026713ae0669d626ae4661cbd33af72df9a7e76337dc0e1cba7f0d41b615",
       "mesmo_que": "sia/CNV/ACES_VASC.CNV"
     },
+    "sia/CNV/UFNACIO.CNV": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/UFNACIO.CNV",
+      "sha256": "30d1c1c37d47ccac77d93d51010fe992b083580589cc3e06c3db0aab38097b12"
+    },
     "sia/CNV/destino.cnv": {
       "fonte": "sia-tab-e5812b51d802",
       "membro": "CNV/destino.cnv",
@@ -1711,7 +1716,8 @@
         "ap_tpaten": "sia/CNV/TP_ATEND.CNV",
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
-        "ap_ufdif": "sia/CNV/Invasao.CNV"
+        "ap_ufdif": "sia/CNV/Invasao.CNV",
+        "ap_ufnacio": "sia/CNV/UFNACIO.CNV"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."

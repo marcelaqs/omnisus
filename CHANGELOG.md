@@ -35,6 +35,13 @@
   to those of `sia-tab-e5812b51d802`, so the packaged members stay on that edition;
   `evidence/2026-11-18-tab-sia-republicado/` has the member census and what was not
   compared (#183).
+- `sia_apac_nefrologia` (1.5.0): `ap_ufnacio` takes the 328 codes of `UFNACIO.CNV`
+  (`010` BRASIL, the value `ANPA1410` publishes), with a `cnv-parse` claim:
+  `APAC_Nefrologia.DEF` line 390 binds `AP_UFNACIO` to it. The member is packaged from
+  the `TAB_SIA.zip` republished on 2026-10-15 (`sia-tab-1ce232b217c6`). `sus.label` now
+  adds `ap_ufnacio_rotulo` for this dataset. The open issues of the five `ap_dt*`
+  fields now give the widths the same edition has for `ANO_2008.CNV` (4) and
+  `anomes2008.CNV` (6), which place the year in characters 1-4 (#183).
 
 ### omnisus-dbf 0.2.2
 
