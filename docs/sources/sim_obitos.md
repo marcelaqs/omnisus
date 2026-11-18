@@ -133,6 +133,15 @@ fica sem rótulo no DOFET e no CID-9: `SEXO.CNV` rotula só com as letras M, F e
   (Estrutura do SIM 2025, p. 9); `semagestac` traz as semanas com dois algarismos
   (p. 4).
 - `peso` é o peso ao nascer em gramas (Estrutura do SIM 2025, p. 4).
+- `horaobito` vem como quatro dígitos, HHMM, sem os dois-pontos (`0600`): o documento declara
+  5 caracteres no padrão `00:00` (Estrutura do SIM 2025, p. 1), e os arquivos de Roraima de
+  2022 e 2023 gravam 4 (`tests/unit/test_sim_descricoes.py`).
+- `nudiasobco` é, no documento, a diferença em dias entre a data do óbito e a data de
+  conclusão da investigação (Estrutura do SIM 2025, p. 7); o rótulo do dicionário diz
+  "Dias óbito-codificação" e a divergência está registrada no campo.
+- `fontes` são seis caracteres, um por campo de fonte da investigação, na ordem em que o
+  documento os nomeia (FONTENTREV, FONTEAMBUL, FONTEPRONT, FONTESVO, FONTEIML, FONTEPROF):
+  `S` se o campo foi preenchido, `X` se ficou vazio (Estrutura do SIM 2025, p. 8).
 - O documento é a edição atualizada em 07/2025 (Estrutura do SIM 2025, p. 1).
 - O documento não descreve `numerodo` nem `contador`, que o dicionário da biblioteca
   declara (Estrutura do SIM 2025, p. 1–9;
