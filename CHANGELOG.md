@@ -10,6 +10,14 @@
   `APAC_Nefrologia.DEF` lines 387-388 bind `AP_COIDADE` to `IDADEDET.CNV` and
   `IDADE18.CNV`, and `ANPA1410` publishes `4`. `sus.label` now adds
   `ap_coidade_rotulo` for this dataset (#183).
+- `sia_apac_nefrologia` (1.3.0): `ap_dtinic`, `ap_dtfim`, `ap_dtsolic`, `ap_dtaut` and
+  `an_dtpdr` are `date` with `x-format: yyyyMMdd`, measured in the 2 records of
+  `ANPA1410`: the `/field/format` claim is `fixture-measure`, `unreviewed`, with the open
+  issue `formato-sem-documento` and the observation. `APAC_Nefrologia.DEF` places the
+  year and the year-month of the four `ap_dt*` at position 1 and has no line for the day.
+  `ap_dtocor`, blank in both records, stays `string` with the open issue
+  `formato-sem-valor`. `check_columns` now checks the five dates; the lake still stores
+  them as published, as strings (#183).
 
 ### omnisus-dbf 0.2.2
 
