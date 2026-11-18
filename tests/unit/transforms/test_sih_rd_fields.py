@@ -22,6 +22,11 @@ ROOT = Path(__file__).resolve().parents[3]
 CENSUS = ROOT / "evidence/2026-10-06-rd-2008-layouts/census.csv"
 DATASET = "sih_aih_reduzida"
 LAYOUTS = {"sih_rr_2024_01_mini": 5, "sih_rd_rr_2025_03_excerpt": 6}
+IT_1603 = ROOT / "evidence/2026-11-18-it-sihsus-1603-layout-rd/tabela1.csv"
+RD2008_DEF = ROOT / "src/omnisus/data/dicionarios/sources/cnv/sih/RD2008.DEF"
+OWN_DESCRIPTION = {"uf_zi", "cnes", "natureza"}
+"""Fields whose description is not the document's sentence: `uf_zi` and `cnes` add what
+the DEF and the lake say, and `natureza` has a paraphrase with its own verified claim."""
 
 
 def census_layouts() -> dict[int, set[str]]:
@@ -33,6 +38,12 @@ def census_layouts() -> dict[int, set[str]]:
                 name.lower() for name in row["fields"].split(" ")[::2]
             )
     return out
+
+
+def official_layout() -> list[dict[str, str]]:
+    """Table 1 of IT_SIHSUS_1603.pdf (`sihsus-1e89d5f2cc41`), one dict per row."""
+    with IT_1603.open(encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
 
 
 def fixture_fields(dbc_fixture, fixture: str) -> dict[str, str]:
@@ -48,6 +59,50 @@ def test_the_dictionary_declares_every_field_of_every_layout():
 @pytest.mark.parametrize("fixture", sorted(LAYOUTS))
 def test_each_fixture_publishes_the_fields_of_its_layout(dbc_fixture, fixture):
     assert set(fixture_fields(dbc_fixture, fixture)) == census_layouts()[LAYOUTS[fixture]]
+
+
+def test_the_official_layout_lists_the_fields_of_layout_5():
+    """IT_SIHSUS_1603 is the report of 2016-03, and its Table 1 has the 113 fields the
+    files publish from 2014-01 to 2025-02, once the three names it misspells are read as
+    the DBF spells them (MÊS_CMPT, DI_INTER, DESTAO)."""
+    rows = official_layout()
+    assert len(rows) == 113
+    assert {row["campo"] for row in rows} == census_layouts()[5]
+
+
+def test_each_field_of_the_official_layout_carries_the_documents_description():
+    """The description of a field is the sentence Table 1 prints for it, with a claim
+    that names the page and quotes the row (#182). The 19 rows that say only "Zerado"
+    are described as "Zerado"."""
+    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
+    for row in official_layout():
+        if row["campo"] in OWN_DESCRIPTION:
+            continue
+        item = contract[row["campo"]]
+        assert item["field"]["description"] == row["descricao"], row["campo"]
+        claim = next(c for c in item["claims"] if c["target"] == "/field/description")
+        assert (claim["status"], claim["method"]) == ("verified_in_source", "pdf-read")
+        (evidence,) = claim["evidence"]
+        assert evidence["source_id"] == "sihsus-1e89d5f2cc41"
+        assert evidence["pages"] == [int(row["pagina"])]
+        assert row["nome_no_documento"] in evidence["locator"]
+        assert row["descricao"] in evidence["locator"]
+
+
+def test_fonte_orc_and_sis_just_are_labelled_as_their_sources_call_them():
+    """RD2008.DEF line 274 calls FONTE_ORC "Fonte Orçamentária", and the field had no
+    label. IT_SIHSUS_1603, p. 3, says SIS_JUST is the justification of the
+    estabelecimento; the dictionary called it "Justificativa do sistema" (#182)."""
+    def_line = RD2008_DEF.read_text(encoding="latin-1").splitlines()[273]
+    assert [part.strip() for part in def_line.split(",")[:2]] == [
+        "XFonte Orçamentária",
+        "FONTE_ORC",
+    ]
+    (sis_just,) = (row for row in official_layout() if row["campo"] == "sis_just")
+    assert sis_just["descricao"].startswith("Justificativa do estabelecimento para aceitação")
+    dictionary = load_dicionario(DATASET)
+    assert dictionary.field_def("fonte_orc")["label"] == "Fonte Orçamentária"
+    assert dictionary.field_def("sis_just")["label"] == "Justificativa do estabelecimento"
 
 
 def test_fonte_orc_takes_the_labels_of_fonterem(dbc_fixture):
@@ -137,8 +192,8 @@ def test_cod_idade_labels_the_measured_units(
     assert dict(labelled.unique().rows()) == {code: COD_IDADE[code] for code in published}
     field = load_dicionario(dataset).field_def("cod_idade")
     assert field["x-decode"] == COD_IDADE
-    (claim,) = field["x-metadata"]["claims"]
-    assert (claim["target"], claim["status"]) == ("/field/codes", "unreviewed")
+    (claim,) = (c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes")
+    assert claim["status"] == "unreviewed"
     assert "sih-tab-714ed980d483" in {e["source_id"] for e in claim["evidence"]}
     (entry,) = field["x-metadata"]["issues"]
     assert (entry["id"], entry["status"]) == ("cod_idade-sem-tabela", "open")

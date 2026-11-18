@@ -17,15 +17,61 @@ schema:
     - name: ano_cmpt
       type: integer
       label: Ano de competência
+      description: 'Ano de processamento da AIH, no formato aaaa.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: bec0d8e4f3e7234238927e4f3daffdbffe9b7cb56ccbe0e8b7b8553a0fa1c02f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 2, ANO_CMPT char(4): "Ano de processamento da AIH, no formato aaaa."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: mes_cmpt
       type: integer
       label: Mês de competência
+      description: 'Mês de processamento da AIH, no formato mm.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 9e4c548ead1d0c28b33c88e4f9006903cd5fa96bbf3117fe2e4131b2d773f594
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 3, MÊS_CMPT char(2): "Mês de processamento da AIH, no formato mm."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: n_aih
       type: string
       label: Número da AIH
+      description: 'Número da AIH.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 858c9e8e150baabfd04546c527338682915a29ce1d69e70a1d9dd84ccc57a843
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 6, N_AIH char(13): "Número da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: ident
       type: string
       label: Tipo da AIH
+      description: 'Identificação do tipo da AIH.'
       x-decode:
         '0': Outras/ignorado
         '1': Normal
@@ -39,6 +85,18 @@ schema:
         '9': Outras/ignorado
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 00e59ae459e093e7b2260bced3fac4f2ea386a4a30fa3e6677da54bff285917f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 7, IDENT char(1): "Identificação do tipo da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 09f3215720dc054cd57289cab5d47ecb7ef2e2d78b9fec9fbe9d112a5c891fc5
           status: verified_in_source
@@ -60,9 +118,39 @@ schema:
     - name: sequencia
       type: integer
       label: Sequencial na remessa
+      description: 'Sequencial da AIH na remessa.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 046aa2d37a7f6e4686920535004b1ed05006fc2d6e637ef3f4a609e554706b4d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 86, SEQUENCIA numeric(9): "Sequencial da AIH na remessa."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: remessa
       type: string
       label: Número da remessa
+      description: 'Número da remessa.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: cff2aefe75f04162b63856eebe651d85499726d1cfaca98fcad5365bf1ea835d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 87, REMESSA char(21): "Número da remessa."'
+          note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
     # Estabelecimento
@@ -70,6 +158,21 @@ schema:
     - name: cgc_hosp
       type: string
       label: CNPJ do hospital
+      description: 'CNPJ do Estabelecimento.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: f5dd960a9b556c1c8f4b26cab27d9559f7917d8b83018de4f72b85194ecb5119
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 5, CGC_HOSP char(14): "CNPJ do Estabelecimento."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cnes
       type: string
       label: CNES do hospital
@@ -81,12 +184,42 @@ schema:
     - name: cnpj_mant
       type: string
       label: CNPJ da mantenedora
+      description: 'CNPJ da mantenedora.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 750732d819ca155171a674bfe4f4989367bcad3f9fcbe4dc01a3a14012548ca9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 76, CNPJ_MANT char(14): "CNPJ da mantenedora."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: munic_mov
       type: string
       label: Município do hospital (IBGE)
+      description: 'Município do Estabelecimento.'
       x-normalization-hint: lpad_6
       foreignKeys:
         - { fields: munic_mov, reference: { resource: aux_municipios, fields: codigo_6 } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 539d4b481f93ab0b1c7da4f47cefec2b744e442830ce0e3baa964072c33b5089
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 49, MUNIC_MOV char(6): "Município do Estabelecimento."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: natureza
       type: string
       label: Natureza jurídica (antigo)
@@ -232,9 +365,25 @@ schema:
     - name: nat_jur
       type: string
       label: Natureza jurídica (CONCLA)
+      description: 'Natureza jurídica do Estabelecimento, conforme a Comissão Nacional de Classificação - CONCLA'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 875bbfc991de08da2a4e50ff54298b18f18e0c790362bfc38845adf573d661f8
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 45, NAT_JUR char(4): "Natureza jurídica do Estabelecimento, conforme a Comissão Nacional de Classificação - CONCLA"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: gestao
       type: string
       label: Tipo de gestão
+      description: 'Indica o tipo de gestão do hospital.'
       x-decode:
         '0': Estadual
         '1': Municipal plena assist
@@ -250,6 +399,18 @@ schema:
         M: Municipal plena assist
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 25f5cea1bcc87353bde8533018a1e852553ebe8b7a0c868459f48d6bc2b17098
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 46, DESTAO char(1): "Indica o tipo de gestão do hospital."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 1f7afbd8ec687eb01947ff6759a9a6d7af201a75af70f9a19f7a41d576aca7d7
           status: verified_in_source
@@ -271,6 +432,7 @@ schema:
     - name: espec
       type: string
       label: Especialidade do leito
+      description: 'Especialidade do Leito'
       x-decode:
         '01': 01-Cirúrgico
         '02': 02-Obstétricos
@@ -315,6 +477,18 @@ schema:
         '96': 96-Suporte Ventilatório Pulmonar COVID-19
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 297a3782236de8b52e0e7565f5af8627ea30429f0fdbe7058cd8039a9aefed46
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 4, ESPEC char(2): "Especialidade do Leito"'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: e1b507f238c6949b3f843a2135f0f7a4dfe4a3799dbe86d0b1e3bbc0cd0bab5e
           status: verified_in_source
@@ -346,6 +520,7 @@ schema:
     - name: complex
       type: string
       label: Complexidade
+      description: 'Complexidade.'
       x-decode:
         '00': Não se aplica
         '01': Atenção Básica
@@ -449,6 +624,18 @@ schema:
         '99': Não se aplica
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 3dc0d600382bdb7a1e1db67ed3a4268a26f6795dfc63f536fdcd3d9a713c619d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 80, COMPLEX char(2): "Complexidade."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 05fbb346cbf08e3a75b6a1d1f4a470c42b08e01620734d7d26d1158ce2c650f2
           status: verified_in_source
@@ -472,6 +659,7 @@ schema:
     - name: nasc
       type: date
       label: Data de nascimento
+      description: 'Data de nascimento do paciente (aaaammdd).'
       x-format: yyyyMMdd
       x-metadata:
         physical_name: NASC
@@ -493,6 +681,18 @@ schema:
             - 1
             locator: Layout RD, linha NASC, char(8), descrição da data
         claims:
+        - target: /field/description
+          value_sha256: 2a86eeba239f0fd46a72be14927dca95424f3d7467dcb7dab2958d1f114b8fff
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 10, NASC char(8): "Data de nascimento do paciente (aaaammdd)."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/format
           value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
           status: verified_in_source
@@ -520,6 +720,7 @@ schema:
     - name: sexo
       type: string
       label: Sexo
+      description: 'Sexo do paciente.'
       x-decode:
         '0': Ignorado
         '1': Masculino
@@ -561,6 +762,18 @@ schema:
             pages: []
             locator: RD2008.DEF and CNV/SEXO.CNV:1 masculine,2/3 feminine
         claims:
+        - target: /field/description
+          value_sha256: cc2bae8cf0e6f27fca0023749e9fc18fa3818ce5c4ca7f1f4e45af7f834d9750
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 11, SEXO char(1): "Sexo do paciente."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/physical_type
           value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
           status: verified_in_source
@@ -587,15 +800,46 @@ schema:
     - name: munic_res
       type: string
       label: Município de residência (IBGE)
+      description: 'Município de Residência do Paciente'
       x-normalization-hint: lpad_6
       foreignKeys:
         - { fields: munic_res, reference: { resource: aux_municipios, fields: codigo_6 } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 7577e846324d705e2059b0d120b72d346ae27aeeca6ad630c159d6662e0d3e95
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 9, MUNIC_RES char(6): "Município de Residência do Paciente"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cep
       type: string
       label: CEP do paciente
+      description: 'CEP do paciente.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 5287dd5d218de46f475e9b209b242148dc82e705ae96adda56c67b6446c63cb1
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 8, CEP char(8): "CEP do paciente."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cod_idade
       type: string
       label: Unidade da idade
+      description: 'Unidade de medida da idade.'
       x-decode:
         "2": "Dias"
         "3": "Meses"
@@ -603,6 +847,18 @@ schema:
         "5": "Anos (somar 100)"
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 99e73dcdcb68a24ba7825782ac61597048c908211c0bf7c97571022632b51e03
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 50, COD_IDADE char(1): "Unidade de medida da idade."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 83616371dedaa6efde39e6aa288ca9c043d7a29fcef25633a2fa65a3d37952e0
           status: unreviewed
@@ -634,7 +890,21 @@ schema:
     - name: idade
       type: integer
       label: Idade
+      description: 'Idade.'
       x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 4662fe5514c383753e3009b15d4ab5eed98e1ae7d91325931536acf9c2cecf6b
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 51, IDADE numeric(2): "Idade."'
+          note: Transcrição da coluna Descrição/Observações.
         physical_name: IDADE
         unit: encoded
         derivation:
@@ -664,6 +934,7 @@ schema:
     - name: nacional
       type: string
       label: Nacionalidade
+      description: 'Código da nacionalidade do paciente.'
       x-decode:
         '010': Brasil
         '020': Reservado
@@ -999,6 +1270,18 @@ schema:
         '350': Tanzania
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 71698ab6541c94f5c7ca6974c8d6f9d52a0167582e91015df1e911931696fc75
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 54, NACIONAL char(2): "Código da nacionalidade do paciente."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: d0e15c5e53f0fde2d400d8ce9aebace3871a5ef02f188d4c994a259093fae2d4
           status: verified_in_source
@@ -1013,6 +1296,7 @@ schema:
     - name: raca_cor
       type: string
       label: Raça/cor
+      description: 'Raça/Cor do paciente.'
       x-decode:
         '00': Sem informação
         '01': Branca
@@ -1116,6 +1400,18 @@ schema:
         '99': Sem informação
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: fb4f8b49113753c1e4355cb04bd06e66f81918a21531176684449ca0035b3e2a
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 84, RACA_COR char(4): "Raça/Cor do paciente."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: b100d29201424a2b8a0c000bc5e062f9106eabdccce5416e2620d1f8164a86ec
           status: verified_in_source
@@ -1137,6 +1433,7 @@ schema:
     - name: etnia
       type: string
       label: Etnia (se indígena)
+      description: 'Etnia do paciente, se raça cor for indígena.'
       x-decode:
         '0000': NÃO INFORMADO
         '0001': ACONA (WAKONAS, NACONAS, JAKONA, ACORA­NES)
@@ -11140,6 +11437,18 @@ schema:
         '9999': NÃO INFORMADO
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: d566d2dbe4b993ff3a6b084de4579d428d9ae7e2c6d5fc669870da6f3efa965c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 85, ETNIA char(4): "Etnia do paciente, se raça cor for indígena."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 57f9dc184ddfa36ef55aab28051a5ee0f9375df31699321dc9deb93e1352c712
           status: verified_in_source
@@ -11182,10 +11491,39 @@ schema:
     - name: cbor
       type: string
       label: Ocupação (CBO)
+      description: 'Ocupação do paciente, segundo a Classificação Brasileira de Ocupações – CBO.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: e6c2f9007c6bd3e05806b79cb49b3487be065a6701fe2a8c7f7894fe73a9d688
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 68, CBOR char(3): "Ocupação do paciente, segundo a Classificação Brasileira de Ocupações – CBO."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: homonimo
       type: string
       label: Homônimo
+      description: 'Indicador se o paciente da AIH é homônimo do paciente de outra AIH.'
       x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: c2cfd57126426c3a2a641b470e36aa80471af78259f8a2c973c152484f63c9fe
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 59, HOMONIMO char(1): "Indicador se o paciente da AIH é homônimo do paciente de outra AIH."'
+          note: Transcrição da coluna Descrição/Observações.
         issues:
         - id: homonimo-sem-fonte
           status: open
@@ -11203,6 +11541,7 @@ schema:
     - name: dt_inter
       type: date
       label: Data de internação
+      description: 'Data de internação no formato aaammdd.'
       x-format: yyyyMMdd
       x-metadata:
         physical_name: DT_INTER
@@ -11224,6 +11563,18 @@ schema:
             - 2
             locator: Layout RD, linha DI_INTER, char(8), descrição da data
         claims:
+        - target: /field/description
+          value_sha256: cce5df2ed1ee043c9098361abf613fac78772c772328387e3f74edff18bfa591
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 39, DI_INTER char(8): "Data de internação no formato aaammdd."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/format
           value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
           status: conflicting
@@ -11259,6 +11610,7 @@ schema:
     - name: dt_saida
       type: date
       label: Data de saída
+      description: 'Data de saída, no formato aaaammdd.'
       x-format: yyyyMMdd
       x-metadata:
         physical_name: DT_SAIDA
@@ -11280,6 +11632,18 @@ schema:
             - 2
             locator: Layout RD, linha DT_SAIDA, char(8), descrição da data
         claims:
+        - target: /field/description
+          value_sha256: a3cdaea4bba199c739afe4dc8213cc9bb874890001d7523de41dce5383743bc7
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 40, DT_SAIDA char(8): "Data de saída, no formato aaaammdd."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/format
           value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
           status: verified_in_source
@@ -11307,12 +11671,43 @@ schema:
     - name: dias_perm
       type: integer
       label: Dias de permanência
+      description: 'Dias de Permanência.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: cda9a2af247f47ce11abd23f285e2d2d44f037e4e268ee73587a9c0dd829b26c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 52, DIAS_PERM numeric(5): "Dias de Permanência."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: qt_diarias
       type: integer
       label: Diárias cobradas
+      description: 'Quantidade de diárias.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: c8ab2c38d0d2716bf182232a0796d6a4263f09ef9d13df2b627365e8e17d02f8
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 22, QT_DIARIAS numeric(3): "Quantidade de diárias."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: car_int
       type: string
       label: Caráter da internação
+      description: 'Caráter da internação.'
       x-decode:
         '01': 01 Eletivo
         '02': 02 Urgência
@@ -11322,6 +11717,18 @@ schema:
         '06': 06 Out tp lesões e envenen por agent quím físicos
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 9d14492e2e37972c011f673e6a636211e31cde508fc090435ce117d501ccf1a6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 56, CAR_INT char(2): "Caráter da internação."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: b57ffa55dcb62d0e624514e530e6fed1e0a44f9f809efd5781e25e227d08a11d
           status: verified_in_source
@@ -11347,6 +11754,7 @@ schema:
     - name: cobranca
       type: string
       label: Motivo de saída/cobrança
+      description: 'Motivo de Saída/Permanência'
       x-decode:
         '11': Alta curado
         '12': Alta melhorado
@@ -11381,6 +11789,18 @@ schema:
         '67': Óbito da mãe/puérpera e permanência recém-nascido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: de7264b6321f4248b79157c0d604bfb4b8d0f35f8d10bccb256c5f5632f766b6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 43, COBRANCA char(2): "Motivo de Saída/Permanência"'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 08cdd9aaf92b1ff40a62cf03086db6c6875bc4e6256ac5336d6788fd364d07c9
           status: verified_in_source
@@ -11419,11 +11839,24 @@ schema:
     - name: morte
       type: integer
       label: Óbito
+      description: 'Indica Óbito'
       x-decode:
         '0': Sem óbito
         '1': Com óbito
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: b46787be0bd9862385c66279176e67923e3d04d6f219c4c12cde3fd5db922b66
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 53, MORTE numeric(1): "Indica Óbito"'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: b9f5ab9277a51625f5753fd63190d7c055200c29dba492081f1b15c143d11bc1
           status: verified_in_source
@@ -11448,9 +11881,39 @@ schema:
     - name: proc_solic
       type: string
       label: Procedimento solicitado (SIGTAP)
+      description: 'Procedimento solicitado.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 225e1f6abc555106fafc8983946e72dc0e9437fd2143c361986b2687e72fea1e
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 23, PROC_SOLIC char(10): "Procedimento solicitado."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: proc_rea
       type: string
       label: Procedimento realizado (SIGTAP)
+      description: 'Procedimento realizado.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: a61b67e3200c31425b352ff07ed115b217eb44d624b8888e3fae97187344dc2e
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 24, PROC_REA char(10): "Procedimento realizado."'
+          note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
     # Diagnósticos CID-10
@@ -11458,29 +11921,105 @@ schema:
     - name: diag_princ
       type: string
       label: Diagnóstico principal (CID-10)
+      description: 'Código do diagnóstico principal (CID10).'
       foreignKeys:
         - { fields: diag_princ, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: b1bd6810e3c28dea1a6b1887c6061bd7687be6155da437c43bc0391f95a80345
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 41, DIAG_PRINC char(4): "Código do diagnóstico principal (CID10)."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: diag_secun
       type: string
       label: Diagnóstico secundário
+      description: 'Código do diagnostico secundário (CID10). Preenchido com zeros a partir de 201501.'
       foreignKeys:
         - { fields: diag_secun, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 6c3e8c7759d355e56b2449181744a2a77ae6e99a08f88f75bc7003b1df442b39
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 42, DIAG_SECUN char(4): "Código do diagnostico secundário (CID10). Preenchido com zeros a partir de 201501."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cid_notif
       type: string
       label: CID notificação compulsória
+      description: 'CID de Notificação.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 4984ca44a632d9489cbf3d0e6c159f7dc8dd933922be6715751cf888c9dfbccc
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 62, CID_NOTIF char(4): "CID de Notificação."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cid_asso
       type: string
       label: CID causa associada
+      description: 'CID causa.'
       foreignKeys:
         - { fields: cid_asso, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 95cf8cbe0dff6d7b61fcc3a56658980265ffc39601f4d685cb904ab20f022e1d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 78, CID_ASSO char(4): "CID causa."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cid_morte
       type: string
       label: CID causa da morte
+      description: 'CID da morte.'
       foreignKeys:
         - { fields: cid_morte, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 079f7cab5af6db2810467a7092f4aabdcfd1b85dfb0afa61041663f12f1c72f0
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 79, CID_MORTE char(4): "CID da morte."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: infehosp
       type: string
       label: Infecção hospitalar
+      description: 'Status de infecção hospitalar.'
       x-decode:
         ? ''
         : Não informado
@@ -11488,6 +12027,18 @@ schema:
         '1': Sim
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 591efed554f380ae5479e00b524487ae87885d404efd2b34b8390a968c90d6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 77, INFEHOSP char(1): "Status de infecção hospitalar."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 36112cfe5d4d0c9bf13a3fa3d30b015b2579fdd97f064214ea37bcc42a49bf68
           status: verified_in_source
@@ -11506,18 +12057,79 @@ schema:
     - name: uti_mes_in
       type: integer
       label: Dias UTI mês internação
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 12, UTI_MES_IN numeric(2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_mes_an
       type: integer
       label: Dias UTI mês anterior
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 13, UTI_MES_AN numeric(2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_mes_al
       type: integer
       label: Dias UTI mês alta
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 14, UTI_MES_AL numeric(2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_mes_to
       type: integer
       label: Total dias UTI
+      description: 'Quantidade de dias de UTI no mês.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 23151c9824e235fa672e7ce82eac5e66a4ccbd0bb8b98a290b3c6de7a038cf68
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 15, UTI_MES_TO numeric(3): "Quantidade de dias de UTI no mês."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: marca_uti
       type: string
       label: Tipo de UTI
+      description: 'Indica qual o tipo de UTI utilizada pelo paciente.'
       x-decode:
         '00': Não utilizou UTI
         '01': Utilizou mais de um tipo de UTI
@@ -11538,6 +12150,18 @@ schema:
         '99': UTI Doador
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 8447771d003de3c052ebf9b5e4bfe5300f1018e44082e3a709faec3de3717338
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 16, MARCA_UTI char(2): "Indica qual o tipo de UTI utilizada pelo paciente."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4343b6a34196e50049905b4ff1ab2cbd43a1a662772e16c05b5d36d629cd1e25
           status: verified_in_source
@@ -11566,21 +12190,97 @@ schema:
     - name: val_uti
       type: number
       label: Valor UTI
+      description: 'Valor de UTI.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 2f609c64de20b2d92e68925debbd0396dd119fed6c6c5f40098fea522628201f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 37, VAL_UTI numeric(8,2): "Valor de UTI."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_int_in
       type: integer
       label: Dias UCI mês internação
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 17, UTI_INT_IN numeric(2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_int_an
       type: integer
       label: Dias UCI mês anterior
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 18, UTI_INT_AN numeric(2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_int_al
       type: integer
       label: Dias UCI mês alta
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 19, UTI_INT_AL numeric(2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: uti_int_to
       type: integer
       label: Total dias UCI
+      description: 'Quantidade de diárias em unidade intermediaria.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: dfdc62477a46dbe7c212513af888f64ced81f8aef071fb303b4c3be9774debda
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 20, UTI_INT_TO numeric(3): "Quantidade de diárias em unidade intermediaria."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: marca_uci
       type: string
       label: Tipo de UCI
+      description: 'Tipo de UCI utilizada pelo paciente.'
       x-decode:
         '00': Não utilizou UCI
         '01': Unidade de cuidados intermed neonatal convencional
@@ -11588,6 +12288,18 @@ schema:
         '03': Unidade intermediária neonatal
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 48527180da309b9746ddc1930a01756f554b811a533f745db4ec1cc405f4e7ee
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 95, MARCA_UCI char(2): "Tipo de UCI utilizada pelo paciente."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 54278ce7f2601738cc118761108d23734257ccb60a94714cb69339bc3e74d07e
           status: verified_in_source
@@ -11608,6 +12320,21 @@ schema:
     - name: val_uci
       type: number
       label: Valor UCI
+      description: 'Valor de UCI.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: a818997cd3c5f676aff91e20582b7b5416e19776543b30610511854e53e93b87
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 94, VAL_UCI numeric(10,2): "Valor de UCI."'
+          note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
     # Acompanhante e Valores Financeiros
@@ -11615,57 +12342,327 @@ schema:
     - name: diar_acom
       type: integer
       label: Diárias de acompanhante
+      description: 'Quantidade de diárias de acompanhante.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: a738229dc360aa3aac60de2b77a9af35fd254ef8bf8a0c6f775d35fe6140038a
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 21, DIAR_ACOM numeric(3): "Quantidade de diárias de acompanhante."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sh
       type: number
       label: Valor serviços hospitalares
+      description: 'Valor de serviços hospitalares.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 8b9311349ddda8db105e5816c9e74db6c9d2e9c9e5259171f2bdbd8a52c7bc1d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 25, VAL_SH numeric(13,2): "Valor de serviços hospitalares."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sp
       type: number
       label: Valor serviços profissionais
+      description: 'Valor de serviços profissionais.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: f9a7c431d5bc1194caf621452dad1a30d3a40c407ca2faf45f7b4879eecceee9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 26, VAL_SP numeric(13,2): "Valor de serviços profissionais."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sadt
       type: number
       label: Valor SADT
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 27, VAL_SADT numeric(13,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_rn
       type: number
       label: Valor recém-nascido
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 28, VAL_RN numeric(13,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_acomp
       type: number
       label: Valor acompanhante
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 29, VAL_ACOMP numeric(13,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_ortp
       type: number
       label: Valor órteses/próteses
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 30, VAL_ORTP numeric(13,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sangue
       type: number
       label: Valor sangue/hemoderivados
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 31, VAL_SANGUE numeric(13,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sadtsr
       type: number
       label: Valor tomografia/ressonância
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 32, VAL_SADTSR numeric(11,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_transp
       type: number
       label: Valor transplantes
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 33, VAL_TRANSP numeric(13,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_obsang
       type: number
       label: Valor analgesia obstétrica
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 34, VAL_OBSANG numeric(11,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_ped1ac
       type: number
       label: Valor acompanhante pediatria
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 35, VAL_PED1AC numeric(11,2): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_tot
       type: number
       label: Valor total da AIH
+      description: 'Valor total da AIH.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 4f53f6ca4d8ac578f6f4e57b0edfffca4d77cc77835bba8c1b09c81d91dde15a
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 36, VAL_TOT numeric(14,2): "Valor total da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: us_tot
       type: number
       label: Valor total (dólar referência)
+      description: 'Valor total, em dólar.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: d7e121dd58fa1b282dd3cd5202591629d0afcdf7bd1f9385376169183dc4c6c8
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 38, US_TOT numeric(10,2): "Valor total, em dólar."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sh_fed
       type: number
       label: Complemento federal — SH
+      description: 'Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: e214d86011927b03e33c0fe8bdf4300f2a4a331fbe07a8b5c564231e1788e14f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 90, VAL_SH_FED numeric(10,2): "Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sp_fed
       type: number
       label: Complemento federal — SP
+      description: 'Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 1dade1f943a689822b40b08fa0dcf7acadcbe685fdcbdc3dedfda50a3684af93
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 91, VAL_SP_FED numeric(10,2): "Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sh_ges
       type: number
       label: Complemento gestor — SH
+      description: 'Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 3909e7a438b4d2d6b409d8d797776a649374bbaa770251daccfef8dd79489963
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 92, VAL_SH_GES numeric(10,2): "Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: val_sp_ges
       type: number
       label: Complemento gestor — SP
+      description: 'Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 8feb32b6b94f8071e32fa128fc511cc432088b73dbc1c7924759bac2698a94e3
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 93, VAL_SP_GES numeric(10,2): "Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH."'
+          note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
     # Financiamento
@@ -11673,6 +12670,7 @@ schema:
     - name: financ
       type: string
       label: Tipo de financiamento
+      description: 'Tipo de financiamento.'
       x-decode:
         '01': 01 Atenção Básica (PAB)
         '02': 02 Assistência Farmacêutica
@@ -11683,6 +12681,18 @@ schema:
         '08': 08 Gestão em Saúde
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: f9b96458a8f325b2dad93260e54431a95323bcf697ef80fe4813699ea8f00c4d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 81, FINANC char(2): "Tipo de financiamento."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: b502a7a998f58f54bb87882d47423fe45e2abb8414a5183bba213b61687fce51
           status: verified_in_source
@@ -11706,9 +12716,25 @@ schema:
     - name: faec_tp
       type: string
       label: Subtipo FAEC
+      description: 'Subtipo de financiamento FAEC.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 369e7b98ff4d178a3cad9917f602cabdef28fbfad42f964e382844ffe7f39e7c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 82, FAEC_TP char(6): "Subtipo de financiamento FAEC."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: regct
       type: string
       label: Regra contratual
+      description: 'Regra contratual.'
       x-decode:
         '0000': SEM CONTRATO
         '7010': ESTABELECIMENTO SEM GERAÇÃO DE CREDITO no  grupo 1
@@ -11732,6 +12758,18 @@ schema:
         '7117': ESTABELECIMENTO DE SAÚDE SEM GERAÇÃO DE CRÉDITO NA
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: a8617475669ed53c384ceba37eb4707f27f47f95514d806f6be10568d53c33cd
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 83, REGCT char(4): "Regra contratual."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: db5d6d2946bb6dbdb9fbb509768bbee7f30206b93eb25fa16287f4873b6d7018
           status: verified_in_source
@@ -11746,6 +12784,21 @@ schema:
     - name: rubrica
       type: string
       label: Rubrica orçamentária
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 47, RUBRICA numeric(5): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
     # Dados Obstétricos / Trabalho
@@ -11753,9 +12806,25 @@ schema:
     - name: num_filhos
       type: integer
       label: Número de filhos
+      description: 'Número de filhos do paciente.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 1db8a14901a97a967118a8e35e6689e35470600a2f6bd38fc09380dcdb64ae84
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 60, NUM_FILHOS numeric(2): "Número de filhos do paciente."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: instru
       type: string
       label: Grau de instrução
+      description: 'Grau de instrução do paciente.'
       x-decode:
         '0': Ignorado/não se aplica
         '1': Analfabeto
@@ -11769,6 +12838,18 @@ schema:
         '9': Ignorado/não se aplica
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: fd023198e17f22af012a4135950539655d5efdc6c4e44abfe61a45de5c3ef167
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 61, INSTRU char(1): "Grau de instrução do paciente."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 595254be2c676a5195ea0ca54a893ffbd5afeac487ded164340700af37e75d95
           status: verified_in_source
@@ -11790,6 +12871,7 @@ schema:
     - name: contracep1
       type: string
       label: 1º método contraceptivo
+      description: 'Tipo de contraceptivo utilizado.'
       x-decode:
         '00': Ignorado/não se aplica
         '01': LAM
@@ -11893,6 +12975,18 @@ schema:
         '99': Ignorado/não se aplica
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 468e6511b94b0097cde66b6c4f48138fc887c25dadad44b92cbe9591b36fcea2
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 63, CONTRACEP1 char(2): "Tipo de contraceptivo utilizado."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: b29176087604c7d1cf1b34980268acc8e927e9fd82cc61a056eec49e1ebabb1f
           status: verified_in_source
@@ -11907,6 +13001,7 @@ schema:
     - name: contracep2
       type: string
       label: 2º método contraceptivo
+      description: 'Segundo tipo de contraceptivo utilizado.'
       x-decode:
         '00': Ignorado/não se aplica
         '01': LAM
@@ -12010,6 +13105,18 @@ schema:
         '99': Ignorado/não se aplica
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: caa3d6023b5698216ead31c13513e92faa45225322414afbd2c37328a071a5c1
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 64, CONTRACEP2 char(2): "Segundo tipo de contraceptivo utilizado."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: b29176087604c7d1cf1b34980268acc8e927e9fd82cc61a056eec49e1ebabb1f
           status: verified_in_source
@@ -12024,6 +13131,7 @@ schema:
     - name: gestrisco
       type: string
       label: Gestante alto risco
+      description: 'Indicador se é gestante de risco.'
       x-decode:
         ? ''
         : Não informado
@@ -12031,6 +13139,18 @@ schema:
         '1': Sim
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 14f758dfc2df4663b9fc08420ada9a8f971d41775d4d0dfa6e9fcffa3e743706
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 65, GESTRISCO char(1): "Indicador se é gestante de risco."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 36112cfe5d4d0c9bf13a3fa3d30b015b2579fdd97f064214ea37bcc42a49bf68
           status: verified_in_source
@@ -12045,12 +13165,43 @@ schema:
     - name: insc_pn
       type: string
       label: Inscrição pré-natal
+      description: 'Número da gestante no pré-natal.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 3f7c4e397c79addee61a10ec679f8a5cabe337d086efe8cd26a554104e08aecf
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 66, INSC_PN char(12): "Número da gestante no pré-natal."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cnaer
       type: string
       label: CNAE (acidente de trabalho)
+      description: 'Código de acidente de trabalho.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: fd1ed367239c4e2ee3b8f2556c4b54c74b685943bc8a60e62653152453296acb
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 69, CNAER char(3): "Código de acidente de trabalho."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: vincprev
       type: string
       label: Vínculo previdenciário
+      description: 'Vínculo com a Previdência.'
       x-decode:
         '0': Não classificado
         '1': Autônomo
@@ -12064,6 +13215,18 @@ schema:
         '9': Não classificado
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: ec9935de47d51d6ef521a8f54608be2acfa9dd92f67a7e869ffd125b473878e3
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 70, VINCPREV char(1): "Vínculo com a Previdência."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 52f021de88a24ff76075cbea8171064f8430de036ac18981ef4980504033719c
           status: verified_in_source
@@ -12084,6 +13247,7 @@ schema:
     - name: ind_vdrl
       type: string
       label: Exame VDRL (sífilis)
+      description: 'Indica exame VDRL.'
       x-decode:
         ? ''
         : Não informado
@@ -12091,6 +13255,18 @@ schema:
         '1': Sim
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: ddcb0c49f207d327cc6ebca11777d973be863f7476e8328751c69fe168e7d25f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 48, IND_VDRL char(1): "Indica exame VDRL."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 36112cfe5d4d0c9bf13a3fa3d30b015b2579fdd97f064214ea37bcc42a49bf68
           status: verified_in_source
@@ -12116,16 +13292,75 @@ schema:
     - name: num_proc
       type: string
       label: Número do processamento
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 55, NUM_PROC char(4): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: cpf_aut
       type: string
       label: CPF do autorizador
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 58, CPF_AUT char(11): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: gestor_cod
       type: string
       label: Código motivo autorização
+      description: 'Motivo de autorização da AIH pelo Gestor.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: d01fc78f66a3b5891f5d43cae73f0ab0e0b5786c21b509daeaf82ee3e03f6c6c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 71, GESTOR_COD char(3): "Motivo de autorização da AIH pelo Gestor."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: gestor_tp
       type: string
       label: Tipo gestor autorizador
+      description: 'Tipo de gestor.'
       x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 8f45e3cba07d40f3ed5b0362074269f61cd79d2aaf9a8d8733e3cecc6865043d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 72, GESTOR_TP char(1): "Tipo de gestor."'
+          note: Transcrição da coluna Descrição/Observações.
         issues:
         - id: gestor_tp-sem-fonte
           status: open
@@ -12140,9 +13375,25 @@ schema:
     - name: gestor_cpf
       type: string
       label: CPF do gestor
+      description: 'Número do CPF do Gestor.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: dca87b42738c88721d298849b7d4eff8c2550c1656fb53e61b466f628d569055
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 73, GESTOR_CPF char(11): "Número do CPF do Gestor."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: gestor_dt
       type: date
       label: Data de autorização
+      description: 'Data da autorização dada pelo Gestor (aaaammdd).'
       x-format: yyyyMMdd
       x-metadata:
         physical_name: GESTOR_DT
@@ -12164,6 +13415,18 @@ schema:
             - 3
             locator: Layout RD, linha GESTOR_DT, char(8), descrição da data
         claims:
+        - target: /field/description
+          value_sha256: 15fd329c955517ffaabcfd2ea00ee5b0cf0c6f9c967f3dfe2199b6f9ab8ec9e2
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 74, GESTOR_DT char(8): "Data da autorização dada pelo Gestor (aaaammdd)."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/format
           value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
           status: verified_in_source
@@ -12191,15 +13454,75 @@ schema:
     - name: aud_just
       type: string
       label: Justificativa do auditor
+      description: 'Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: c9608a88a32034ba2ceb02409b9070287f5bbcf05d59286bd6a77ae45a07bcdb
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 88, AUD_JUST char(50): "Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: sis_just
       type: string
-      label: Justificativa do sistema
+      label: Justificativa do estabelecimento
+      description: 'Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde.'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: c49d48a8b408997c389c841494667f29bd21996a7bfda6fda5321d06ea9a36a0
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 89, SIS_JUST char(50): "Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tot_pt_sp
       type: integer
       label: Total pontos serviços profissionais
+      description: 'Zerado'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 57, TOT_PT_SP numeric(6): "Zerado"'
+          note: Transcrição da coluna Descrição/Observações.
     - name: seq_aih5
       type: string
       label: Sequencial longa permanência
+      description: 'Sequencial de longa permanência (AIH tipo 5).'
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 184948279518e68772c0bb6acdd27f6e374f9c02030cad19b73d531c5f96f336
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 67, SEQ_AIH5 char(3): "Sequencial de longa permanência (AIH tipo 5)."'
+          note: Transcrição da coluna Descrição/Observações.
 
     # ========================================================================
     # Partições + procedência (adicionados pelo ETL)
@@ -12243,16 +13566,44 @@ schema:
     - name: diagsec1
       type: string
       label: Diagnóstico secundário 1
+      description: 'Diagnóstico secundário1.'
       foreignKeys:
         - { fields: diagsec1, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 9c833bdef3fb97872ec3b25b1b7e027a68f74d273c02233509bac0c3aaf3233c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 96, DIAGSEC1 char(4): "Diagnóstico secundário1."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec1
       type: string
       label: Tipo de diagnóstico secundário 1
+      description: 'Tipo de diagnóstico secundário 1.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: f9a8c8d48e40294d9ffeaac77941fcfb7c6295b770f618a8e9a8ff34e15ad49c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 105, TPDISEC1 char(1): "Tipo de diagnóstico secundário 1."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12273,16 +13624,44 @@ schema:
     - name: diagsec2
       type: string
       label: Diagnóstico secundário 2
+      description: 'Diagnóstico secundário 2.'
       foreignKeys:
         - { fields: diagsec2, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: cb4852cc8d385bab7b8f2b46881a12aaca78f13c530c7dfa568ff2f68993d871
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 97, DIAGSEC2 char(4): "Diagnóstico secundário 2."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec2
       type: string
       label: Tipo de diagnóstico secundário 2
+      description: 'Tipo de diagnóstico secundário 2.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 9e9ab180f613505873077726974089808c05a2d6efcabc840451404731c06f9c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 107, TPDISEC2 char(1): "Tipo de diagnóstico secundário 2."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12303,16 +13682,44 @@ schema:
     - name: diagsec3
       type: string
       label: Diagnóstico secundário 3
+      description: 'Diagnóstico secundário 3.'
       foreignKeys:
         - { fields: diagsec3, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 2b32d89c15acc2d92f20722fa1ec2d96ff69e58bb33686c55d4d7f65ba9b8a18
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 98, DIAGSEC3 char(4): "Diagnóstico secundário 3."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec3
       type: string
       label: Tipo de diagnóstico secundário 3
+      description: 'Tipo de diagnóstico secundário 3.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 5d127b313e830a3fff4b23c0c69614513466a2fa8f3ed19112c6c95ac9df18d3
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 108, TPDISEC3 char(1): "Tipo de diagnóstico secundário 3."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12333,16 +13740,44 @@ schema:
     - name: diagsec4
       type: string
       label: Diagnóstico secundário 4
+      description: 'Diagnóstico secundário 4.'
       foreignKeys:
         - { fields: diagsec4, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 056e3a18e63e7e2e0ee264e3fc7da8941072cfca257857a8b404b7589536d163
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 99, DIAGSEC4 char(4): "Diagnóstico secundário 4."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec4
       type: string
       label: Tipo de diagnóstico secundário 4
+      description: 'Tipo de diagnóstico secundário 4.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 7ada4106e0da5656e6f47147fead8ad3990cba400e3415ddb77fd633e8c0b01b
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 109, TPDISEC4 char(1): "Tipo de diagnóstico secundário 4."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12363,16 +13798,44 @@ schema:
     - name: diagsec5
       type: string
       label: Diagnóstico secundário 5
+      description: 'Diagnóstico secundário 5.'
       foreignKeys:
         - { fields: diagsec5, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 59c5b5cb9b0f613a644267d9333066fcdc8cbbb41e9482476e28d3b11e0aae71
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 100, DIAGSEC5 char(4): "Diagnóstico secundário 5."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec5
       type: string
       label: Tipo de diagnóstico secundário 5
+      description: 'Tipo de diagnóstico secundário 5.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: 94576d1c6560c5162758cd0e1b965b51f18581c7458c8472c187a6e35783ad47
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 110, TPDISEC5 char(1): "Tipo de diagnóstico secundário 5."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12393,16 +13856,44 @@ schema:
     - name: diagsec6
       type: string
       label: Diagnóstico secundário 6
+      description: 'Diagnóstico secundário 6.'
       foreignKeys:
         - { fields: diagsec6, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: a4b2ea0c40d2f080136e340371d9ddab2add929abc10b6fa74709e010d80fa26
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 101, DIAGSEC6 char(4): "Diagnóstico secundário 6."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec6
       type: string
       label: Tipo de diagnóstico secundário 6
+      description: 'Tipo de diagnóstico secundário 6.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: d07ab92fde84baef275459a943c796c161e89de5b6935485327ca6e1c08ce99b
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 111, TPDISEC6 char(1): "Tipo de diagnóstico secundário 6."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12423,16 +13914,44 @@ schema:
     - name: diagsec7
       type: string
       label: Diagnóstico secundário 7
+      description: 'Diagnóstico secundário 7.'
       foreignKeys:
         - { fields: diagsec7, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 0ecc5c9bcab0c33c66d22fd3ad8be504592cff7a72be2df4a28249b7eab9a677
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 102, DIAGSEC7 char(4): "Diagnóstico secundário 7."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec7
       type: string
       label: Tipo de diagnóstico secundário 7
+      description: 'Tipo de diagnóstico secundário 7.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: cb9d40248cea98d21620a9f225a0af39d041eee1f6263f901772bf3034805c21
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 112, TPDISEC7 char(1): "Tipo de diagnóstico secundário 7."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12453,16 +13972,44 @@ schema:
     - name: diagsec8
       type: string
       label: Diagnóstico secundário 8
+      description: 'Diagnóstico secundário 8.'
       foreignKeys:
         - { fields: diagsec8, reference: { resource: aux_cid10, fields: codigo } }
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 57c0b22ff9d349c4f1ff8b31cb94a65a508e1b5df69a0a2f6ef982a4f478eff1
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 103, DIAGSEC8 char(4): "Diagnóstico secundário 8."'
+          note: Transcrição da coluna Descrição/Observações.
     - name: tpdisec8
       type: string
       label: Tipo de diagnóstico secundário 8
+      description: 'Tipo de diagnóstico secundário 8.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: bc06de11659ca510bc60ce9fc791d06aa8c0ffc0b2327f123d311838b74b5997
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 113, TPDISEC8 char(1): "Tipo de diagnóstico secundário 8."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12483,12 +14030,25 @@ schema:
     - name: diagsec9
       type: string
       label: Diagnóstico secundário 9
+      description: 'Diagnóstico secundário 9.'
       x-metadata:
         physical_name: DIAGSEC9
         physical_type:
           type: string
           length: 1
         claims:
+        - target: /field/description
+          value_sha256: f3eab180241cf7ae22fdd7878a5024e738ae8245360ec54f89cb56b229cb51a3
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 104, DIAGSEC9 char(4): "Diagnóstico secundário 9."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/physical_type
           value_sha256: 848e3f778dde84f2e0e943a8a871c439e45d31d3688547d85fcdb5b3987d2266
           status: conflicting
@@ -12519,11 +14079,24 @@ schema:
     - name: tpdisec9
       type: string
       label: Tipo de diagnóstico secundário 9
+      description: 'Tipo de diagnóstico secundário 9.'
       x-decode:
         '1': Preexistente
         '2': Adquirido
       x-metadata:
         claims:
+        - target: /field/description
+          value_sha256: f7db3afd75096bb8b63d53236f1a1f4d96394c4ac9f5252d17a86b8c0597668c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 4
+            locator: 'Tabela 1, linha 114, TPDISEC9 char(1): "Tipo de diagnóstico secundário 9."'
+          note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
           value_sha256: 4f9ca63d8bb033130322dd2c252d0ca1dd73ae6f740becbfa1370ebc2edd2594
           status: verified_in_source
@@ -12543,6 +14116,7 @@ schema:
             3.714 linhas com ''0'', todas com diagsec9 vazio; a coincidência não é fonte.'
     - name: fonte_orc
       type: string
+      label: Fonte Orçamentária
       x-decode:
         '  -zz': Branco Ignorado
         ' 1': MOD.1-SERVICO DE SAUDE - AES
@@ -12583,7 +14157,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.19.0"
+x-version: "2.20.0"
 
 x-analytics:
   version: 1.3.0

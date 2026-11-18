@@ -1,0 +1,114 @@
+pagina,seq,nome_no_documento,campo,tipo,descricao
+1,1,UF_ZI,uf_zi,char(6),Município Gestor.
+1,2,ANO_CMPT,ano_cmpt,char(4),"Ano de processamento da AIH, no formato aaaa."
+1,3,MÊS_CMPT,mes_cmpt,char(2),"Mês de processamento da AIH, no formato mm."
+1,4,ESPEC,espec,char(2),Especialidade do Leito
+1,5,CGC_HOSP,cgc_hosp,char(14),CNPJ do Estabelecimento.
+1,6,N_AIH,n_aih,char(13),Número da AIH.
+1,7,IDENT,ident,char(1),Identificação do tipo da AIH.
+1,8,CEP,cep,char(8),CEP do paciente.
+1,9,MUNIC_RES,munic_res,char(6),Município de Residência do Paciente
+1,10,NASC,nasc,char(8),Data de nascimento do paciente (aaaammdd).
+1,11,SEXO,sexo,char(1),Sexo do paciente.
+1,12,UTI_MES_IN,uti_mes_in,numeric(2),Zerado
+1,13,UTI_MES_AN,uti_mes_an,numeric(2),Zerado
+1,14,UTI_MES_AL,uti_mes_al,numeric(2),Zerado
+1,15,UTI_MES_TO,uti_mes_to,numeric(3),Quantidade de dias de UTI no mês.
+1,16,MARCA_UTI,marca_uti,char(2),Indica qual o tipo de UTI utilizada pelo paciente.
+1,17,UTI_INT_IN,uti_int_in,numeric(2),Zerado
+1,18,UTI_INT_AN,uti_int_an,numeric(2),Zerado
+1,19,UTI_INT_AL,uti_int_al,numeric(2),Zerado
+1,20,UTI_INT_TO,uti_int_to,numeric(3),Quantidade de diárias em unidade intermediaria.
+2,21,DIAR_ACOM,diar_acom,numeric(3),Quantidade de diárias de acompanhante.
+2,22,QT_DIARIAS,qt_diarias,numeric(3),Quantidade de diárias.
+2,23,PROC_SOLIC,proc_solic,char(10),Procedimento solicitado.
+2,24,PROC_REA,proc_rea,char(10),Procedimento realizado.
+2,25,VAL_SH,val_sh,"numeric(13,2)",Valor de serviços hospitalares.
+2,26,VAL_SP,val_sp,"numeric(13,2)",Valor de serviços profissionais.
+2,27,VAL_SADT,val_sadt,"numeric(13,2)",Zerado
+2,28,VAL_RN,val_rn,"numeric(13,2)",Zerado
+2,29,VAL_ACOMP,val_acomp,"numeric(13,2)",Zerado
+2,30,VAL_ORTP,val_ortp,"numeric(13,2)",Zerado
+2,31,VAL_SANGUE,val_sangue,"numeric(13,2)",Zerado
+2,32,VAL_SADTSR,val_sadtsr,"numeric(11,2)",Zerado
+2,33,VAL_TRANSP,val_transp,"numeric(13,2)",Zerado
+2,34,VAL_OBSANG,val_obsang,"numeric(11,2)",Zerado
+2,35,VAL_PED1AC,val_ped1ac,"numeric(11,2)",Zerado
+2,36,VAL_TOT,val_tot,"numeric(14,2)",Valor total da AIH.
+2,37,VAL_UTI,val_uti,"numeric(8,2)",Valor de UTI.
+2,38,US_TOT,us_tot,"numeric(10,2)","Valor total, em dólar."
+2,39,DI_INTER,dt_inter,char(8),Data de internação no formato aaammdd.
+2,40,DT_SAIDA,dt_saida,char(8),"Data de saída, no formato aaaammdd."
+2,41,DIAG_PRINC,diag_princ,char(4),Código do diagnóstico principal (CID10).
+2,42,DIAG_SECUN,diag_secun,char(4),Código do diagnostico secundário (CID10). Preenchido com zeros a partir de 201501.
+2,43,COBRANCA,cobranca,char(2),Motivo de Saída/Permanência
+2,44,NATUREZA,natureza,char(2),Natureza jurídica do hospital (com conteúdo até maio/12). Era utilizada a classificação de Regime e Natureza.
+2,45,NAT_JUR,nat_jur,char(4),"Natureza jurídica do Estabelecimento, conforme a Comissão Nacional de Classificação - CONCLA"
+2,46,DESTAO,gestao,char(1),Indica o tipo de gestão do hospital.
+2,47,RUBRICA,rubrica,numeric(5),Zerado
+2,48,IND_VDRL,ind_vdrl,char(1),Indica exame VDRL.
+2,49,MUNIC_MOV,munic_mov,char(6),Município do Estabelecimento.
+2,50,COD_IDADE,cod_idade,char(1),Unidade de medida da idade.
+2,51,IDADE,idade,numeric(2),Idade.
+2,52,DIAS_PERM,dias_perm,numeric(5),Dias de Permanência.
+2,53,MORTE,morte,numeric(1),Indica Óbito
+2,54,NACIONAL,nacional,char(2),Código da nacionalidade do paciente.
+2,55,NUM_PROC,num_proc,char(4),Zerado
+2,56,CAR_INT,car_int,char(2),Caráter da internação.
+3,57,TOT_PT_SP,tot_pt_sp,numeric(6),Zerado
+3,58,CPF_AUT,cpf_aut,char(11),Zerado
+3,59,HOMONIMO,homonimo,char(1),Indicador se o paciente da AIH é homônimo do paciente de outra AIH.
+3,60,NUM_FILHOS,num_filhos,numeric(2),Número de filhos do paciente.
+3,61,INSTRU,instru,char(1),Grau de instrução do paciente.
+3,62,CID_NOTIF,cid_notif,char(4),CID de Notificação.
+3,63,CONTRACEP1,contracep1,char(2),Tipo de contraceptivo utilizado.
+3,64,CONTRACEP2,contracep2,char(2),Segundo tipo de contraceptivo utilizado.
+3,65,GESTRISCO,gestrisco,char(1),Indicador se é gestante de risco.
+3,66,INSC_PN,insc_pn,char(12),Número da gestante no pré-natal.
+3,67,SEQ_AIH5,seq_aih5,char(3),Sequencial de longa permanência (AIH tipo 5).
+3,68,CBOR,cbor,char(3),"Ocupação do paciente, segundo a Classificação Brasileira de Ocupações – CBO."
+3,69,CNAER,cnaer,char(3),Código de acidente de trabalho.
+3,70,VINCPREV,vincprev,char(1),Vínculo com a Previdência.
+3,71,GESTOR_COD,gestor_cod,char(3),Motivo de autorização da AIH pelo Gestor.
+3,72,GESTOR_TP,gestor_tp,char(1),Tipo de gestor.
+3,73,GESTOR_CPF,gestor_cpf,char(11),Número do CPF do Gestor.
+3,74,GESTOR_DT,gestor_dt,char(8),Data da autorização dada pelo Gestor (aaaammdd).
+3,75,CNES,cnes,char(7),Código CNES do hospital.
+3,76,CNPJ_MANT,cnpj_mant,char(14),CNPJ da mantenedora.
+3,77,INFEHOSP,infehosp,char(1),Status de infecção hospitalar.
+3,78,CID_ASSO,cid_asso,char(4),CID causa.
+3,79,CID_MORTE,cid_morte,char(4),CID da morte.
+3,80,COMPLEX,complex,char(2),Complexidade.
+3,81,FINANC,financ,char(2),Tipo de financiamento.
+3,82,FAEC_TP,faec_tp,char(6),Subtipo de financiamento FAEC.
+3,83,REGCT,regct,char(4),Regra contratual.
+3,84,RACA_COR,raca_cor,char(4),Raça/Cor do paciente.
+3,85,ETNIA,etnia,char(4),"Etnia do paciente, se raça cor for indígena."
+3,86,SEQUENCIA,sequencia,numeric(9),Sequencial da AIH na remessa.
+3,87,REMESSA,remessa,char(21),Número da remessa.
+3,88,AUD_JUST,aud_just,char(50),Justificativa do auditor para aceitação da AIH sem o número do Cartão Nacional de Saúde.
+3,89,SIS_JUST,sis_just,char(50),Justificativa do estabelecimento para aceitação da AIH sem o número do Cartão Nacional de Saúde.
+4,90,VAL_SH_FED,val_sh_fed,"numeric(10,2)",Valor do complemento federal de serviços hospitalares. Está incluído no valor total da AIH.
+4,91,VAL_SP_FED,val_sp_fed,"numeric(10,2)",Valor do complemento federal de serviços profissionais. Está incluído no valor total da AIH.
+4,92,VAL_SH_GES,val_sh_ges,"numeric(10,2)",Valor do complemento do gestor (estadual ou municipal) de serviços hospitalares. Está incluído no valor total da AIH.
+4,93,VAL_SP_GES,val_sp_ges,"numeric(10,2)",Valor do complemento do gestor (estadual ou municipal) de serviços profissionais. Está incluído no valor total da AIH.
+4,94,VAL_UCI,val_uci,"numeric(10,2)",Valor de UCI.
+4,95,MARCA_UCI,marca_uci,char(2),Tipo de UCI utilizada pelo paciente.
+4,96,DIAGSEC1,diagsec1,char(4),Diagnóstico secundário1.
+4,97,DIAGSEC2,diagsec2,char(4),Diagnóstico secundário 2.
+4,98,DIAGSEC3,diagsec3,char(4),Diagnóstico secundário 3.
+4,99,DIAGSEC4,diagsec4,char(4),Diagnóstico secundário 4.
+4,100,DIAGSEC5,diagsec5,char(4),Diagnóstico secundário 5.
+4,101,DIAGSEC6,diagsec6,char(4),Diagnóstico secundário 6.
+4,102,DIAGSEC7,diagsec7,char(4),Diagnóstico secundário 7.
+4,103,DIAGSEC8,diagsec8,char(4),Diagnóstico secundário 8.
+4,104,DIAGSEC9,diagsec9,char(4),Diagnóstico secundário 9.
+4,105,TPDISEC1,tpdisec1,char(1),Tipo de diagnóstico secundário 1.
+4,107,TPDISEC2,tpdisec2,char(1),Tipo de diagnóstico secundário 2.
+4,108,TPDISEC3,tpdisec3,char(1),Tipo de diagnóstico secundário 3.
+4,109,TPDISEC4,tpdisec4,char(1),Tipo de diagnóstico secundário 4.
+4,110,TPDISEC5,tpdisec5,char(1),Tipo de diagnóstico secundário 5.
+4,111,TPDISEC6,tpdisec6,char(1),Tipo de diagnóstico secundário 6.
+4,112,TPDISEC7,tpdisec7,char(1),Tipo de diagnóstico secundário 7.
+4,113,TPDISEC8,tpdisec8,char(1),Tipo de diagnóstico secundário 8.
+4,114,TPDISEC9,tpdisec9,char(1),Tipo de diagnóstico secundário 9.

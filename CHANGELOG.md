@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Dictionaries
+
+- `sih_aih_reduzida` (2.20.0): 110 fields take the `description` that Table 1 of
+  `IT_SIHSUS_1603.pdf` prints for them, each with a `/field/description` claim
+  (`pdf-read`, `verified_in_source`) that names the page and quotes the row;
+  `describe_dataset` returned `description: null` for them. The table is transcribed in
+  `evidence/2026-11-18-it-sihsus-1603-layout-rd/`. `fonte_orc` gets the label the
+  `RD2008.DEF` gives it, "Fonte Orçamentária", and `sis_just` is "Justificativa do
+  estabelecimento", as the document says, not "Justificativa do sistema" (#182).
+
 ### omnisus-dbf 0.2.2
 
 - The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
