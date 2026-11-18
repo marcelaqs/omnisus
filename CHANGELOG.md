@@ -4,32 +4,42 @@
 
 ### Dictionaries
 
-- `sih_aih_reduzida` (2.20.0): 110 fields take the `description` that Table 1 of
+- `sih_aih_reduzida` (2.20.1): 110 fields take the `description` that Table 1 of
   `IT_SIHSUS_1603.pdf` prints for them, each with a `/field/description` claim
   (`pdf-read`, `verified_in_source`) that names the page and quotes the row;
   `describe_dataset` returned `description: null` for them. The table is transcribed in
   `evidence/2026-11-18-it-sihsus-1603-layout-rd/`. `fonte_orc` gets the label the
   `RD2008.DEF` gives it, "Fonte Orçamentária", and `sis_just` is "Justificativa do
-  estabelecimento", as the document says, not "Justificativa do sistema" (#182).
-- `sih_aih_reduzida` (2.21.0): the 72 text fields that had no `physical_type` declare the
-  width of their DBF descriptor in the layout in force, read from the census of
-  `evidence/2026-10-06-rd-2008-layouts`. The `/field/physical_type` claim is
+  estabelecimento", as the document says, not "Justificativa do sistema"; each of the two
+  labels has a `/field/label` claim (#182).
+- `sih_aih_reduzida` (2.21.1): the 72 text fields that had no `physical_type` declare the
+  width of their DBF descriptor in the last layout read (6, 2025-03 to 2026-07), from the
+  census of `evidence/2026-10-06-rd-2008-layouts` (one file of RR, or AP, a month, plus SP
+  and MG at the months a layout changes). The `/field/physical_type` claim is
   `verified_in_source` where Table 1 of `IT_SIHSUS_1603.pdf` prints the same width (66
   fields) and `conflicting` where it prints another: `nacional` (char(2), published
   C(3)), `raca_cor` (char(4), C(2)), `cbor` (char(3), C(6)), `gestor_cpf` (char(11),
-  C(15)) and `gestor_cod` (char(3), C(5) from 2012-01). Each of the five has the open issue
-  `largura-difere-do-documento`. `fonte_orc`, which the document does not list, declares
-  C(2) with an unreviewed claim. `gestor_cod` and `insc_pn` were C(3) and C(10) until
-  2011-12; the claim's note says so. Numeric fields stay without `physical_type`: the
-  contract has no place for decimals (#182).
-- `uf_zi` of `sih_aih_reduzida` (2.22.0) and of `sih_aih_rejeitada` (1.6.0) takes the labels
+  C(15)) and `gestor_cod` (char(3), C(5)). In the files read, `gestor_cod` and `insc_pn`
+  are C(3) and C(10) until 2011-12 and C(5) and C(12) from 2012-01, while the table, "para
+  janeiro de 2008 em diante", prints char(3) and char(12). Each of the six has the open
+  issue `largura-difere-do-documento`. `fonte_orc`, which the document does not list,
+  declares C(2) with an unreviewed claim that cites the census. Numeric fields stay
+  without `physical_type`: the contract's `{type, length}` has no place for the decimals
+  of 19 of the 36, and no dictionary uses a type other than `string` for the other 17
+- `uf_zi` of `sih_aih_reduzida` (2.22.1) and of `sih_aih_rejeitada` (1.6.1) takes the labels
   of `CNV/br_municgestor.cnv`, the table `RD2008.DEF` (lines 175-176) and `RJ2008.DEF`
-  (lines 177-178) bind it to, packaged from `TAB_SIH.zip`
-  (`sih-tab-21e42384645a`): 15,731 codes, a new `uf_zi_rotulo` column. The table names
-  each municipality and, for each of the 26 states, the code of the UF followed by `0000` as "Gestão
-  estadual": RDRR2401 publishes `140000`, "140000 Roraima - Gestão estadual", in 2,920 of
-  its 3,714 records. The labels repeat the code, as the table prints them. The field
-  leaves `sem_cnv` (#137) in both datasets and keeps no reference to `aux_municipios`
+  (lines 177-178) bind it to, packaged from `TAB_SIH.zip` (`sih-tab-21e42384645a`):
+  15,731 codes, a new `uf_zi_rotulo` column. The table has 5,569 municipality lines
+  (Brasília's `530010` is on the line "530000 Distrito Federal") and, for each of the 26
+  states, a line "Gestão estadual" for the code of the UF followed by `0000`: RDRR2401
+  publishes `140000`, "140000 Roraima - Gestão estadual", in 2,920 of its 3,714 records.
+  Each label starts with the code of its table line, as the table prints it, so a key
+  listed as a second code or inside a range shows that line's code (`149999` is "140000
+  Roraima - Gestão estadual"). 10,087 of the keys come from three lines that write
+  ranges, which TabWin.pdf (pp. 90-91) documents only for codes of up to 4 characters;
+  the open issue `uf_zi-faixa-em-codigo-longo` says so, and no file read publishes one of
+  them. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
+  `aux_municipios`, where `140000` is "Município ignorado - RR" (#182).
   (#182).
 
 ### omnisus-dbf 0.2.2

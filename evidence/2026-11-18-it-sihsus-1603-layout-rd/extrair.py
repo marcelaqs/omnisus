@@ -6,8 +6,9 @@
 
 The PDF is `sihsus-1e89d5f2cc41` in `registry.json`; the script stops when the file given
 has another SHA-256. One row per line of the table: the page, the sequence number, the
-field name and the type as printed, and the text of "Descrição/Observações" with its
-line breaks and runs of spaces turned into one space. `campo` is the dictionary's name
+field name and the type as printed, and the text of "Descrição/Observações". In the type
+and in the text, a line break or a run of spaces becomes one space (`char (50)` keeps
+its space; `numeric (10,  2)` would become `numeric (10, 2)`). `campo` is the dictionary's name
 for the row: the printed name in lowercase, except the three names the document
 misspells (`CORRECTED`).
 """
@@ -46,7 +47,7 @@ def rows(pdf: Path) -> list[dict[str, str | int]]:
                         "seq": int(seq),
                         "nome_no_documento": name,
                         "campo": CORRECTED.get(name, name.lower()),
-                        "tipo": re.sub(r"\s+", "", kind),
+                        "tipo": " ".join(kind.split()),
                         "descricao": " ".join(text.split()),
                     }
                 )
@@ -56,13 +57,9 @@ def rows(pdf: Path) -> list[dict[str, str | int]]:
 
 
 def _is_furniture(line: str) -> bool:
-    """Page header, column header or section title: not a continuation of a row."""
+    """Page header or column header: not a continuation of a row."""
     text = line.strip()
-    return (
-        text.startswith(("Ministério da Saúde", "DIDIS", "SEQ"))
-        or text.startswith("Tabela ")
-        or bool(re.match(r"^\d\.?\s", text))
-    )
+    return text.startswith(("Ministério da Saúde", "DIDIS", "SEQ"))
 
 
 def main(pdf: Path) -> None:

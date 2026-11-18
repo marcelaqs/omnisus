@@ -58,15 +58,22 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   (Informe SIH 2016-03, p. 1).
 - `munic_mov` é o município do estabelecimento, com 6 caracteres
   (Informe SIH 2016-03, p. 2).
-- `uf_zi` é o gestor da AIH, com 6 caracteres, apesar do nome: o informe e o DEF o
-  chamam de "Município gestor" (Informe SIH 2016-03, p. 1; `RD2008.DEF`, linhas 175-176),
-  mas o código nem sempre é de município. A tabela que o DEF liga ao campo,
-  `CNV/br_municgestor.cnv` do `TAB_SIH.zip`, traz para cada um dos 26 estados o código da UF seguido de
-  `0000` com o rótulo "Gestão estadual" (`140000`, "140000 Roraima - Gestão estadual"). Em
-  RDRR2401 são 2.920 das 3.714 AIHs com `140000` e 794 com `140010` (Boa Vista). Os
-  rótulos vêm dessa tabela, no RD e no RJ (`RJ2008.DEF`, linhas 177-178), e repetem o
-  código, como ela publica. O campo não tem
-  referência a `aux_municipios`: `140000` não é município.
+- `uf_zi` é o gestor da AIH, com 6 caracteres, apesar do nome: o DEF o chama de
+  "Município gestor" e o informe de "Município Gestor." (`RD2008.DEF`, linhas 175-176;
+  Informe SIH 2016-03, p. 1), mas o código nem sempre é de município. A tabela que o DEF
+  liga ao campo, `CNV/br_municgestor.cnv` do `TAB_SIH.zip`, tem para cada um dos 26
+  estados uma linha "Gestão estadual" com o código da UF seguido de `0000` (`140000`,
+  "140000 Roraima - Gestão estadual"). Em RDRR2401 são 2.920 das 3.714 AIHs com `140000`
+  e 794 com `140010` (Boa Vista), e `gestao` vale `2` nas primeiras e `1` nas outras. Os
+  rótulos vêm dessa tabela, no RD e no RJ (`RJ2008.DEF`, linhas 177-178). Cada rótulo
+  começa pelo código da linha da tabela, e uma chave listada como segundo código ou
+  dentro de uma faixa mostra o código da linha: `149999` é "140000 Roraima - Gestão
+  estadual" e `530010` (Brasília) é "530000 Distrito Federal". Das 15.731 chaves, 10.087
+  vêm de três linhas que escrevem faixas (Rio de Janeiro, São Paulo e Distrito Federal),
+  forma que o TabWin.pdf (pp. 90-91) só documenta para códigos de até 4 caracteres; a
+  issue `uf_zi-faixa-em-codigo-longo` do campo diz isso, e nenhum arquivo lido publica
+  uma delas. O campo não tem referência a `aux_municipios`: lá `140000` é "Município
+  ignorado - RR", e a tabela do DEF o chama de "Roraima - Gestão estadual".
 - `cnes` é o código CNES do hospital, com 7 caracteres (Informe SIH 2016-03, p. 3).
 - O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`; `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa ([vocabulários](vocabularios.md)).
   A importação preserva o comprimento dos códigos publicados; não aplica
@@ -201,12 +208,15 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   os valores publicados.
 - O comprimento do código de município nos dados: o documento declara 6 caracteres
   (p. 1–2). Confira nos seus dados antes de juntar com outra base.
-- A largura de cinco campos de texto: o informe dá `nacional` char(2), `raca_cor`
-  char(4), `cbor` char(3), `gestor_cpf` char(11) e `gestor_cod` char(3) (Informe SIH
-  2016-03, p. 2–3), e os arquivos lidos publicam C(3), C(2), C(6), C(15) e C(5)
-  (`evidence/2026-10-06-rd-2008-layouts/`). `gestor_cod` era C(3) e `insc_pn` C(10) até
-  2011-12, e passam a C(5) e C(12) em 2012-01. O dicionário declara a largura do arquivo
-  e traz a divergência na issue `largura-difere-do-documento` de cada campo.
+- A largura de seis campos de texto. O informe dá `nacional` char(2), `raca_cor` char(4),
+  `cbor` char(3), `gestor_cpf` char(11) e `gestor_cod` char(3) (Informe SIH 2016-03,
+  p. 2–3), e o último layout lido (2025-03 a 2026-07) publica C(3), C(2), C(6), C(15) e
+  C(5). Nos arquivos lidos, `gestor_cod` é C(3) e `insc_pn` C(10) até 2011-12, e C(5) e
+  C(12) de 2012-01 em diante; o informe, que diz valer "para janeiro de 2008 em diante",
+  dá char(3) e char(12). O censo lê um arquivo de RR (ou AP) por mês, mais SP e MG nos
+  meses de troca de layout (`evidence/2026-10-06-rd-2008-layouts/`), não todas as UFs. O
+  dicionário declara a largura do último layout lido e traz a divergência na issue
+  `largura-difere-do-documento` de cada um dos seis campos.
 - Se o layout vale para arquivos processados depois de 2016-03: o documento é o informe
   desse processamento (p. 1).
 - `nat_jur` e `cnaer` (no RD e no RJ) e `gestor_cod` (no RJ) ficam sem rótulo: o DEF
@@ -249,7 +259,7 @@ Passo a passo com análise e procedência:
   <ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Doc/IT_SIHSUS_1603.pdf>
   — consultado em 2026-09-10; SHA-256
   `1e89d5f2cc41420385d7e30ba5541a387912ab3a0efb167d39def74502076220`, conferido de novo
-  em 2026-09-13. Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+  em 2026-09-13 e em 2026-11-18. Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
   A Tabela 1 do informe (pp. 1–4) está transcrita linha a linha em
   `evidence/2026-11-18-it-sihsus-1603-layout-rd/tabela1.csv`, e a descrição de 110 campos
   no dicionário (`sus.describe_dataset("sih_aih_reduzida")`) é a frase que a tabela traz,
