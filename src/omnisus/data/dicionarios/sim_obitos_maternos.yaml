@@ -2,7 +2,7 @@ name: sim_obitos_maternos
 title: SIM — Óbitos maternos (DOMAT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.3.0
+x-version: 1.4.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_domat_br_2023_mini.dbc, 87 fields; observed 2026-09-22
@@ -403,6 +403,32 @@ schema:
   - name: seriescfal
     type: string
     label: Escolaridade (série)
+    x-decode:
+      ? ''
+      : N Inf
+      '0': '0'
+      '1': '1'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': Ign
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 62a5b87bc4d463a6999baec054a01461a2cf54690b04b9526adbf733c49ba7ab
+        status: verified_in_source
+        checked_at: '2026-09-21'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sim-tab-bb1c9f02668e
+          pages: []
+          locator: 'Obito_1996_CID10.def: x*Escol falec SERIE, SERIESCFAL, 1, SERIEFAL.CNV; OBITOS_CID10_TAB/tabdo/SERIEFAL.CNV'
+        note: Mapa do CNV.
   - name: ocup
     type: string
     label: Ocupação habitual
@@ -559,6 +585,32 @@ schema:
   - name: seriescmae
     type: string
     label: Escolaridade da mãe (série)
+    x-decode:
+      ? ''
+      : N Inf
+      '0': '0'
+      '1': '1'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': Ign
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 62a5b87bc4d463a6999baec054a01461a2cf54690b04b9526adbf733c49ba7ab
+        status: verified_in_source
+        checked_at: '2026-09-21'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sim-tab-bb1c9f02668e
+          pages: []
+          locator: 'Obito_1996_CID10.def: x*Escol Mãe SERIE, SERIESCMAE, 1, SERIEFAL.CNV; OBITOS_CID10_TAB/tabdo/SERIEFAL.CNV'
+        note: Mapa do CNV.
   - name: ocupmae
     type: string
     label: Ocupação da mãe
@@ -1277,6 +1329,42 @@ schema:
   - name: versaoscb
     type: string
     label: Versão SCB
+    x-decode:
+      ? ''
+      : CD sem Patch
+      '1.1': Versao SCB 1.1
+      '1.2': Versao SCB 1.2
+      '1.3': Versao SCB 1.3
+      '1.4': Versao SCB 1.4
+      '1.5': Versao SCB 1.5
+      '1.6': Versao SCB 1.6
+      '1.7': Versao SCB 1.7
+      '1.8': Versao SCB 1.8
+      '1.9': Versao SCB 1.9
+      '2.0': Versao SCB 2.0
+      '2.1': Versao SCB 2.1
+      '2.2': Versao SCB 2.2
+      '2.3': Versao SCB 2.3
+      '2.4': Versao SCB 2.4
+      '2.5': Versao SCB 2.5
+      '3.2': Versao SCB 3.2
+      '3.3': Versao SCB 3.3
+      '3.4': Versao SCB 3.4
+      '4.1': Versao SCB 4.1
+      '4.3': Versao SCB 4.3
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: f9ca61ff089ee5ac6557cfe84eb3f301b57840b09ab92d63264ed4ef801d03a5
+        status: verified_in_source
+        checked_at: '2026-09-21'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sim-tab-bb1c9f02668e
+          pages: []
+          locator: 'Obito_1996_CID10.def: XVersao SCB, VERSAOSCB, 1, VERSCB.CNV; OBITOS_CID10_TAB/tabdo/VERSCB.CNV'
+        note: Mapa do CNV.
   - name: fonteinv
     type: string
     label: Fonte de investigação

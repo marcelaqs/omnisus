@@ -8,6 +8,15 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+### Dictionaries
+
+- `seriescfal`, `seriescmae` and `versaoscb` of `sim_obitos` (and of the three SIM subsets,
+  generated from it) gain the code map of the CNV that `Obito_1996_CID10.def` binds each to:
+  `SERIEFAL.CNV` for the two school grades, `VERSCB.CNV` for the SCB version. Both tables were
+  already packaged and `sim_obitos_fetais` already used them. The claims are `cnv-parse`, written
+  by `gerar_decode_cnv.py`; in DORR2022 and DORR2023 every value of the three fields is a key of
+  its table. Versions: `sim_obitos` 2.9.0, the three subsets 1.4.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same
