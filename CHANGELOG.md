@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Dictionaries
+
+- `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map of the other APAC
+  datasets (`2` Dias, `3` Meses, `4` Anos, `5` Anos (somar 100)), with a
+  `fixture-measure`, `unreviewed` claim and the open issue `ap_coidade-sem-tabela`:
+  `APAC_Nefrologia.DEF` lines 387-388 bind `AP_COIDADE` to `IDADEDET.CNV` and
+  `IDADE18.CNV`, and `ANPA1410` publishes `4`. `sus.label` now adds
+  `ap_coidade_rotulo` for this dataset (#183).
+
 ### omnisus-dbf 0.2.2
 
 - The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so

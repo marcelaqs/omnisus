@@ -433,6 +433,8 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
             {"2": "Dias", "4": "Anos"},
         ),
         ("sia_apac_fistula_arteriovenosa", "sia_acf_rr_2024_01_mini", "ap_coidade", {"4": "Anos"}),
+        # APAC_Nefrologia.DEF lines 387-388 bind AP_COIDADE to the same tables (#183).
+        ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_coidade", {"4": "Anos"}),
         # #6: IDADEDET.CNV reads 500-530 as 100 to 130 years; the unit '5' alone is
         # measured, not read, and says to add 100.
         (
@@ -710,6 +712,7 @@ APAC_WITH_UNIT_MAP = [
     "sia_apac_cirurgia_bariatrica",
     "sia_apac_radioterapia",
     "sia_apac_fistula_arteriovenosa",
+    "sia_apac_nefrologia",
 ]
 
 

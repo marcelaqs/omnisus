@@ -1712,6 +1712,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "sem_cnv": {
+        "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
       }
     },
     "sia_apac_radioterapia": {
