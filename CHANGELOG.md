@@ -50,6 +50,15 @@
   2026-11-18. The three SIM subsets are regenerated. Versions: `sim_obitos` 2.10.0, the three
   subsets 1.5.0 (#184).
 
+- 24 `/field/codes` claims of `sim_obitos` written by `gerar_decode_cnv.py` change from
+  `conflicting` to `verified_in_source`, and the issue `cnv-difere-do-mapa-anterior` of each
+  field is `resolved`: the map in force was already the one of the CNV, and the map it replaced
+  had no claim. The issue keeps the older labels, some of which are the spelling of the
+  Estrutura do SIM (`Cesáreo` where `PARTO.CNV` says `Cesário`). Two stay `conflicting`, where
+  the document and the CNV say different things: `tppos` (the document lists `1` and `2`,
+  which `INVESTIG.CNV` does not) and `atestante` (the document calls `1` "Assistente",
+  `ATESTANT.CNV` calls it "Sim"). No code or label changes. Versions: `sim_obitos` 2.11.0, the three subsets 1.6.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same
