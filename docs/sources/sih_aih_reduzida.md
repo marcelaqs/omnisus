@@ -78,7 +78,8 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   estadual" e `530010` (Brasília) é "530000 Distrito Federal". Das 15.731 chaves, 10.087
   vêm de três linhas que escrevem faixas (Rio de Janeiro, São Paulo e Distrito Federal),
   forma que o TabWin.pdf (pp. 90-91) só documenta para códigos de até 4 caracteres; a
-  issue `uf_zi-faixa-em-codigo-longo` do campo diz isso. Uma delas é publicada: `530000`
+  issue `uf_zi-faixa-em-codigo-longo` do campo diz isso, e está resolvida: o mapa segue a
+  tabela como publicada e expande as faixas (#182). Uma delas é publicada: `530000`
   está em todos os 76.276 registros dos cinco arquivos `RDDF` lidos (janeiro de 2008,
   2012, 2016, 2020 e 2024, `evidence/2026-11-18-rd-medidas/`), e a tabela só chega a ela
   pela faixa `530000-530009`. Nenhum arquivo `RJ` do Distrito Federal foi lido. O campo não tem referência a `aux_municipios`: lá `140000` é "Município

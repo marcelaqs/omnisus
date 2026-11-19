@@ -94,6 +94,12 @@
   files of 2014 and, from 2015-01, `0` exactly where the diagnosis of the same number is
   blank. `cid_notif` is `Z302` in 28,207 of its 28,388 filled records. No label changes
   (#182).
+- `sih_aih_reduzida` (2.27.0) and `sih_aih_rejeitada` (1.8.0): the issue
+  `uf_zi-faixa-em-codigo-longo` is resolved. The map keeps expanding the ranges
+  `br_municgestor.cnv` writes in its 6-character codes, as the maintainer decided in
+  #182: the table is followed as published, and the range `530000-530009` is the only
+  reference to the code the `RDDF` files read publish. The reader's documentation
+  (`transforms/cnv.py`) now says that it expands ranges of any width and why.
 
 ### omnisus-dbf 0.2.2
 

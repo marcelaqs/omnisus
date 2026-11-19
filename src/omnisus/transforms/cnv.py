@@ -16,6 +16,11 @@ which line wins.
   category number in columns 4-7, the description in columns 10-59 and the
   comma-separated code list from column 61 on (p. 90). Short codes may be written
   as ``first-last`` ranges (p. 90). ``;`` starts a comment (p. 91).
+* The manual documents ranges only for codes of up to 4 characters and says long
+  codes "somente poderão ser separados por vírgulas" (pp. 90-91). The reader
+  expands a range of any width all the same, because DATASUS tables write them:
+  ``br_municgestor.cnv`` (6 characters) reaches ``530000``, which the RD files of
+  the Federal District publish, only through ``530000-530009`` (#182).
 * Column 60 may hold a 51st description character when codes follow from column
   61: ``CBO2002.CNV`` (SIM) does so on 246 of its 2,429 lines. A line whose column
   60 is filled and that holds nothing from column 61 (``DNNOVA.CNV`` writes its

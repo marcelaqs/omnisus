@@ -683,8 +683,11 @@ def test_br_municgestor_writes_ranges_in_a_table_of_long_codes():
     """TabWin.pdf (pp. 90-91) documents `first-last` only for variables of up to 4
     characters. br_municgestor.cnv declares 6 and writes ranges on three lines (Rio de
     Janeiro, São Paulo, Distrito Federal), which the map expands: 10,087 of its 15,731
-    keys are labelled only through them. The field's open issue says so, in both
-    datasets. Read from the packaged table, line by line."""
+    keys are labelled only through them. The maintainer decided in #182 that the map
+    follows the table as published, ranges included: the five RDDF files measured
+    publish 530000, which only a range reaches (test_sih_rd_measures.py). The field's
+    issue records the divergence and the decision, as resolved, in both datasets. Read
+    from the packaged table, line by line."""
     header, *body = MUNICGESTOR.read_text(encoding="latin-1").splitlines()
     assert header.split() == ["5596", "6"]
     explicit: set[str] = set()
@@ -712,8 +715,12 @@ def test_br_municgestor_writes_ranges_in_a_table_of_long_codes():
         assert field["x-decode"]["149999"] == "140000 Roraima - Gestão estadual"
         assert field["x-decode"]["530010"] == "530000 Distrito Federal"
         (issue,) = field["x-metadata"]["issues"]
-        assert (issue["id"], issue["status"]) == ("uf_zi-faixa-em-codigo-longo", "open")
+        assert (issue["id"], issue["status"]) == ("uf_zi-faixa-em-codigo-longo", "resolved")
         assert "10.087 das 15.731" in issue["description"]
+        assert (
+            "Resolvido em 2026-11-18 (issue #182): o mapa expande as faixas"
+            in issue["description"]
+        )
 
 
 COD_IDADE = {"2": "Dias", "3": "Meses", "4": "Anos", "5": "Anos (somar 100)"}
