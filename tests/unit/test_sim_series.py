@@ -1,10 +1,11 @@
 """What the `seriescfal` and `seriescmae` maps rest on, and where the sources differ (#184).
 
 `Obito_1996_CID10.def` links both fields to `SERIEFAL.CNV` in lines that begin with a
-lowercase `x`. TabWin.pdf (`tabwin-bb98cff14765`, p. 87) does not list `X` among the
-functions of a DEF line, so each field keeps an open issue that says so. The CNV lists
-`0` and `9`; the Estrutura do SIM says "Números de 1 a 8", and the audited files hold
-only blank and `1` to `8`.
+lowercase `x`. TabWin.pdf (`tabwin-bb98cff14765`, p. 87) does not list `X`, in either
+case, among the functions of a DEF line, so each field keeps an open issue that says so;
+the same holds for every field bound by an `X` line. The CNV lists `0` and `9`; the
+Estrutura do SIM says "Números de 1 a 8", and in the audited files every value is blank
+or a number from 1 to 8.
 """
 
 from __future__ import annotations
@@ -46,7 +47,7 @@ def test_the_def_line_begins_with_a_lowercase_x_and_the_field_says_so(name) -> N
 @pytest.mark.parametrize("fixture", ["sim_rr_2022_mini", "sim_rr_2023_mini"])
 @pytest.mark.parametrize("name", FIELDS)
 def test_the_cnv_lists_0_and_9_and_the_files_hold_1_to_8(dbc_fixture, fixture, name) -> None:
-    """Real data: DORR2022 and DORR2023 hold blank and 1-8; the CNV also labels 0 and 9."""
+    """Real data: in DORR2022 and DORR2023 no value is 0 or 9, which the CNV also labels."""
     frame = dbc_bytes_to_lazyframe(
         dbc_fixture(fixture).read_bytes(), dataset="sim_obitos"
     ).collect()

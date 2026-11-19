@@ -92,7 +92,8 @@ que é. `DORBR79`–`DORBR95` são o Brasil, não uma UF.
 
 `sim_obitos_infantis`, `sim_obitos_maternos` e `sim_obitos_externos` usam os campos de
 `sim_obitos`, copiados por `scripts/metadados/gerar_subconjuntos_sim.py`: os
-registros do DOINF, DOMAT e DOEXT são registros do DO. Em 11 anos de 1996 a 2024, os 7.999
+registros do DOINF, DOMAT e DOEXT são registros do DO. A única diferença é em `idade`: os
+subconjuntos não declaram as colunas de idade harmonizadas, que só `sim_obitos` cria. Em 11 anos de 1996 a 2024, os 7.999
 residentes de RR com um único par no DORR (mesmas data e hora do óbito, nascimento, sexo e
 causa básica) são iguais a ele, exceto `CONTADOR`, a numeração do arquivo.
 Em 2010 e 2015 o subconjunto deixa vazios `CODBAIRES`, `CODBAIOCOR` e `NUDIASOBIN`, que o
@@ -143,8 +144,8 @@ fica sem rótulo no DOFET e no CID-9: `SEXO.CNV` rotula só com as letras M, F e
 - `tppos` vem como `S`, `N` ou em branco, as chaves do `INVESTIG.CNV`; o documento dá ao
   campo os códigos `1 – sim; 2 – não` (Estrutura do SIM 2025, p. 8), que os arquivos de 2022
   e 2023 não gravam (`tests/unit/test_sim_descricoes.py`).
-- `codestab` vem com 7 dígitos; o documento declara 8 caracteres (Estrutura do SIM 2025,
-  p. 3).
+- `codestab` vem com 7 dígitos; a edição de 2025 declara 8 caracteres (Estrutura do SIM 2025,
+  p. 3) e a estrutura do arquivo de 2006 declara 7 (`Estrutura_SIM_Anterior.pdf`, p. 2).
 - `fontes` tem 6 caracteres e é, no documento, um "combinado de caracteres conforme o
   preenchimento dos campos de fontes (FONTENTREV, FONTEAMBUL, FONTEPRONT, FONTESVO, FONTEIML,
   FONTEPROF)": `S` se preenchido, `X` se o campo estiver vazio (Estrutura do SIM 2025, p. 8).

@@ -18,8 +18,9 @@
   its table. `SERIEFAL.CNV` also lists `0` and `9` (`Ign`), which the Estrutura do SIM does not:
   it says "Números de 1 a 8" for both fields, and no fixture holds `0` or `9`; the open issue
   `seriefal-cnv-lista-0-e-9` records it on each field. The DEF lines of the two grades begin
-  with a lowercase `x`, and TabWin.pdf (p. 87) does not list `X` among the functions of a DEF
-  line: the open issue `def-liga-por-linha-x` says so. Versions: `sim_obitos` 2.9.0, the three
+  with a lowercase `x`, and TabWin.pdf (p. 87) does not list `X`, in either case, among the
+  functions of a DEF line: the open issue `def-liga-por-linha-x` says so. The same holds for
+  the other maps `Obito_1996_CID10.def` binds by an `X` line, `versaoscb` among them. Versions: `sim_obitos` 2.9.0, the three
   subsets 1.4.0 (#184).
 - 81 fields of `sim_obitos` have the `description` an official layout document gives them, each
   with a `/field/description` claim that cites the page: 75 from the Estrutura do SIM of 07/2025
@@ -38,8 +39,9 @@
 - Three open issues record where the files and the document differ: `horaobito` (the document
   says 5 characters, `00:00`; the files write 4 digits), `tppos` (the document says `1 – sim;
   2 – não`; the files write `S`, `N` or blank, the keys of `INVESTIG.CNV`) and `codestab` (the
-  document says 8 characters; the files write 7 digits). The `/field/codes` claim of `origem`
-  now cites the edition of 12/2019 first, which writes `1`, `2`, `3` and `9` as the file does.
+  edition of 07/2025 says 8 characters; the files write 7 digits, as the structure of the 2006
+  file says). The `/field/codes` claim of `origem` now cites the edition of 12/2019 first,
+  which writes `1`, `2`, `3` and `9`, the form of the map; the fixtures hold only `1` and `2`.
   The issue of `esc2010` and `escmae2010` no longer says `ESCSERIE.CNV` is missing from
   `OBITOS_CID10_TAB.zip`: it is there, cited by a commented line of `Obito_1996_CID10.def` and
   by the DEF of the infant and maternal subsets. `registry.json` records the edition of
@@ -48,19 +50,23 @@
   2026-11-18. The three SIM subsets are regenerated. Versions: `sim_obitos` 2.10.0, the three
   subsets 1.5.0 (#184).
 
-- 25 `/field/codes` claims of `sim_obitos` written by `gerar_decode_cnv.py` change from
+- 24 `/field/codes` claims of `sim_obitos` written by `gerar_decode_cnv.py` change from
   `conflicting` to `verified_in_source`, and the issue `cnv-difere-do-mapa-anterior` of each
   field is `resolved`: the map in force was already the one of the CNV, and the map it replaced
-  had no source. The issue keeps the older labels. `tppos` stays `conflicting`: the Estrutura
-  do SIM gives it the codes `1` and `2`, which `INVESTIG.CNV` does not list. No code or label
-  changes. Versions: `sim_obitos` 2.11.0, the three subsets 1.6.0 (#184).
+  had no claim. The issue keeps the older labels, some of which are the spelling of the
+  Estrutura do SIM (`Cesáreo` where `PARTO.CNV` says `Cesário`). Two stay `conflicting`, where
+  the document and the CNV say different things: `tppos` (the document lists `1` and `2`,
+  which `INVESTIG.CNV` does not) and `atestante` (the document calls `1` "Assistente",
+  `ATESTANT.CNV` calls it "Sim"). No code or label changes. Versions: `sim_obitos` 2.11.0, the three subsets 1.6.0 (#184).
 
 - **Labels changed:** `esc2010` and `escmae2010` of `sim_obitos` (and of the three SIM subsets)
   take the labels the Estrutura do SIM of 07/2025 writes (p. 2 and 3): `1` is "Fundamental I
   (1ª a 4ª série)", not "Fundamental I (1-5 ano)"; `2` is "Fundamental II (5ª a 8ª série)", not
   "Fundamental II (6-9 ano)"; `3` is "Médio (antigo 2º Grau)", not "Médio". The older labels
-  had no source; the edition of 12/2019, the dictionary of the DOM table and `ESCSERIE.CNV`
-  agree with the document. `esc2010_rotulo` and `escmae2010_rotulo` change accordingly. The
+  had no source; the edition of 12/2019 and the dictionary of the DOM table print the same
+  text, and `ESCSERIE.CNV` the same categories in another spelling (`Fundamental II(5ª a 8ª
+  serie)`, `Medio (antigo 2º Grau)`). `Obito_1996_CID10.def` binds the two fields to
+  `ESCCICLO.CNV`, which no downloaded file has, so the map is read from the document. `esc2010_rotulo` and `escmae2010_rotulo` change accordingly. The
   claims go from `conflicting` to `unreviewed` (an agent read the page) and the issues are
   `resolved`. Versions: `sim_obitos` 2.12.0, the three subsets 1.7.0 (#184).
 
@@ -68,13 +74,19 @@
   that `idade` derives `idade_anos_completos`, `idade_status`, `idade_quantidade` and
   `idade_unidade`. They have no `x-analytics`, so `sus.load` never created those columns in
   them (ADR 0003); `gerar_subconjuntos_sim.py` copied the declaration from `sim_obitos` and now
-  leaves it out. Nothing `sus.load` returns changes. Validating DOEXT, DOINF and DOMAT files so
+  leaves it out. Nothing `sus.load` returns changes; `describe_dataset(subset)` now gives
+  `derivation: None` for `idade`, and the subset's `metadata_hash` changes with it. The
+  `applicability` text of the copied fields still points at `validated_sources`, which a
+  subset does not have. Validating DOEXT, DOINF and DOMAT files so
   the subsets can have the age rule stays open in #177. Versions: the three subsets 1.8.0.
 
 - `ocupmae` of `sim_obitos` (and of the three SIM subsets) declares the reference `ocup`
   already had: `aux_ocupacoes`, scheme `cbo2002`, from 2006. `Obito_1996_CID10.def` binds
-  `OCUPMAE` to `CBO2002.CNV` (lines 331 and 332), and DORR writes 5 characters until 2005 and 6
-  digits from 2006 in both fields (measured in DORR2003, 2005, 2006, 2010, 2015 and 2023).
+  `OCUPMAE` to `CBO2002.CNV` (lines 331 and 332), and the DORR of each year from 1996 to 2024 writes
+  `ocupmae` with 5 characters until 2005 and 6 digits from 2006. `ocup` does the same, except
+  nine values of DORR2006 with 5 digits, which are the 5-digit form `aux_ocupacoes` keeps for
+  CBO 2002 codes that start with 0. From 2006 on every filled `ocupmae` of those files is a
+  `cbo2002` code of the table. Only Roraima was measured here.
   `sus.reference_join_sql("sim_obitos", "ocupmae")` now returns the join. Versions: `sim_obitos`
   2.13.0, the three subsets 1.9.0 (#184).
 
