@@ -68,12 +68,13 @@ def _physical_type_for_null_columns(
     correct for *this* file; the one that keeps the lake column usable is the
     type a sibling file stages when the column is populated — which is the
     physical type in the DBF header, not the type a dictionary declares. The
-    two can disagree: until its version 2.25.0, ``sih_aih_reduzida`` declared
-    ``rubrica``, an ``N`` field the parser stages as int64, as ``string``, and
-    typing it from the dictionary would have pinned the lake to VARCHAR and
-    rejected the next month's integers. A declared type can be wrong;
-    descriptors are what sibling files actually stage. Fields whose type we
-    cannot map stay ``null``.
+    two can disagree: ``sih_aih_reduzida_1992_2007`` declares ``insc_pn`` as
+    ``string``, and the field is ``N`` in 35 of the files of its census of
+    layouts and ``C`` in 81 (evidence/2026-10-01-rd-1992-2007-layouts). Typing
+    a blank column from the dictionary would pin the lake to VARCHAR and reject
+    the integers of a file where the field is ``N``. A declared type can be
+    wrong; descriptors are what sibling files actually stage. Fields whose
+    type we cannot map stay ``null``.
     """
     return pa.schema(
         [

@@ -77,8 +77,11 @@
   declares `integer`, the types the library stages from the files (`ANO_CMPT` C(4),
   `MES_CMPT` C(2), `RUBRICA` N(5)); they declared `integer`, `integer` and `string`.
   `describe_dataset` reports the new `logical_type`. The lake does not change: the
-  import reads `type` only for dates, so `ano_cmpt` was already text (`2024`) and
-  `mes_cmpt` text with its leading zero (`01`) (#182).
+  import does not read `type` (only `check_columns` does, to tell the dates), so
+  `ano_cmpt` was already text (`2024`) and `mes_cmpt` text with its leading zero (`01`).
+  The three types are C(4), C(2) and N(5) in the 243 files of
+  `evidence/2026-10-06-rd-2008-layouts`. Other dictionaries still declare a type their
+  files do not stage, such as `insc_pn` of `sih_aih_reduzida_1992_2007` (#182).
 
 ### omnisus-dbf 0.2.2
 
