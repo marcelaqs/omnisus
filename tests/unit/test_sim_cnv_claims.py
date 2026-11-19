@@ -1,10 +1,11 @@
 """A `sim_obitos` map read from the CNV is verified, even where an older map differed (#184).
 
 `gerar_decode_cnv.py` marks a claim `conflicting` when the map it replaces disagreed with
-the CNV. The older maps had no source, so the disagreement is history: the claim is
+the CNV. The older maps had no claim, so the disagreement is history: the claim is
 `verified_in_source` and the issue that keeps the older labels is `resolved`, as in
-`sih_aih_reduzida`. `tppos` is the exception: the official document gives it codes the
-CNV does not list, so its claim stays `conflicting` with the issue open.
+`sih_aih_reduzida`. Two fields are exceptions, where the Estrutura do SIM and the CNV say
+different things: it gives `tppos` codes the CNV does not list, and it calls `atestante` 1
+"Assistente" where the CNV says "Sim". Their claims stay `conflicting` with the issue open.
 """
 
 from __future__ import annotations
@@ -30,14 +31,20 @@ def test_twenty_six_maps_replaced_an_older_one() -> None:
     assert len(_replaced_maps()) == 26
 
 
-@pytest.mark.parametrize("name", sorted(set(_replaced_maps()) - {"tppos"}))
-def test_a_map_that_replaced_an_unsourced_one_is_verified(name) -> None:
+@pytest.mark.parametrize("name", sorted(set(_replaced_maps()) - {"atestante", "tppos"}))
+def test_a_map_that_replaced_one_with_no_claim_is_verified(name) -> None:
     claim, issue = _replaced_maps()[name]
     assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
-    assert issue["status"] == "resolved" and "não tinha fonte" in issue["description"]
+    assert issue["status"] == "resolved" and "não tinha claim" in issue["description"]
 
 
 def test_tppos_stays_conflicting_because_the_document_lists_other_codes() -> None:
     claim, issue = _replaced_maps()["tppos"]
     assert (claim["status"], issue["status"]) == ("conflicting", "open")
     assert "'1' era 'Sim', CNV não lista" in issue["description"]
+
+
+def test_atestante_stays_conflicting_because_the_document_names_code_1_otherwise() -> None:
+    claim, issue = _replaced_maps()["atestante"]
+    assert (claim["status"], issue["status"]) == ("conflicting", "open")
+    assert "Assistente" in issue["description"] and "ATESTANT.CNV" in issue["description"]
