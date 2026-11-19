@@ -52,9 +52,13 @@ uv run pytest -m "not e2e and not perf" -n auto
 uv run mkdocs build --strict
 ```
 
-These are the CI checks. Tests marked `integration` and `e2e` reach the DATASUS
-server and are not in pull request CI; run them when a change depends on what the
-server lists today.
+Run them locally before every push and record the result in the pull request: the
+local run is the test. Do not use GitHub Actions to test a change, because runs cost
+money: no push to see whether a check passes, no re-run, no manual dispatch, no new
+workflow.
+
+Tests marked `integration` and `e2e` reach the DATASUS server and are not in these
+commands; run them when a change depends on what the server lists today.
 
 ## Boundaries
 
