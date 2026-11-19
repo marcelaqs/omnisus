@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+### Import
+
+- A field the DBF header declares `N` with no decimals is staged with the type the
+  dictionary declares: as text when that is `string` or `date`, with the number as
+  written and no zeros added, and as a number with decimals when it is `number`. Nothing
+  else is converted. Staged as published, such a field had one type in some files and
+  another in the rest, and the lake refused whichever was imported second
+  (`UnsafeSchemaError`). In the fixtures of the 43 DATASUS datasets it changes two files:
+  `RDRR0407`, where `insc_pn` and `seq_aih5` are numbers and now come as `0` beside the
+  `0000000000` and `000` of `RDRR0712` (#40), and `RDAC0909`, where 17 fields are `N1.0`
+  (#219). A lake whose table already has one of these columns as a number, because it
+  began with such a file, refuses the files staged from now on and has to be rebuilt.
+  `sih_aih_reduzida_1992_2007` (1.3.2) says in its `x-evidence` what staging does.
+  The parser version stays `dbc-staging-v2` and does not hash the field types, so no
+  other published scope is asked to be replaced.
+
 ### Dictionaries
 
 - `sih_aih_reduzida` (2.20.1): 110 fields take the `description` that Table 1 of
@@ -146,10 +162,13 @@
   1992-2007 and no other, with `num_proc`, `insc_pn` and `seq_aih5` published as numbers
   in every file of the months #40 names; and the 6 layouts from 2008 in all files but
   one. `RDAC0909.dbc`, which the server dates 2024-05-22, has 82 fields, 17 of them of
-  another type, and `val_sh` and `val_sp` zeroed in its 4,540 records. It cannot share a
-  table of the lake with another RD file from 2008: whichever is imported second is
-  refused. The fixture `sih_rd_ac_2009_09_excerpt` and `test_sih_rd_headers.py` record
-  what the import meets today, and the decision is in #219. No dictionary changes.
+  another type, and `val_sh` and `val_sp` zeroed in its 4,540 records (#219). The fixture
+  `sih_rd_ac_2009_09_excerpt` keeps five of them.
+- `sih_aih_reduzida` (2.29.2): `val_sh` and `val_sp` have the open issue
+  `zerado-em-rdac0909`. `RDAC0909.dbc` is imported as published, so in the lake the two
+  sums for Acre in 2009-09 are zero; `val_tot` is filled in its 4,540 records, and both
+  fields are filled in the 4,379 of `RDAC0908.dbc`
+  (`evidence/2026-11-19-sih-cabecalhos/rdac0909.csv`, #219).
 
 ### omnisus-dbf 0.2.2
 

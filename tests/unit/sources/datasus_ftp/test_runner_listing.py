@@ -182,14 +182,16 @@ def test_an_editorial_dictionary_change_keeps_the_scope_unchanged(monkeypatch, t
         ("sinan_hanseniase", _relabel, True),
         ("sinan_hanseniase", lambda raw: raw.update(encoding="cp1252"), False),
         ("sinan_hanseniase", lambda raw: raw["x-identity"].update(code="A30"), False),
+        ("sinan_hanseniase", lambda raw: raw["schema"]["fields"][0].update(type="number"), True),
     ],
-    ids=["editorial", "encoding", "x-identity"],
+    ids=["editorial", "encoding", "x-identity", "type"],
 )
 def test_the_parser_version_follows_only_what_the_import_reads(
     tmp_path, dataset, edit, same
 ) -> None:
-    """The import reads the dictionary's ``encoding`` (to decode text) and ``x-identity``
-    (to accept or reject the file); nothing else in the YAML changes the stored rows."""
+    """The version follows the dictionary's ``encoding`` (to decode text) and
+    ``x-identity`` (to accept or reject the file). A field's ``type`` is read too, for a
+    whole number the dictionary declares otherwise, and is left out of the version."""
     from dataclasses import replace
 
     from omnisus.sources.datasus_ftp._runner import parser_version

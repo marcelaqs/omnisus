@@ -15,17 +15,15 @@ import struct
 from pathlib import Path
 
 import polars as pl
+import pyarrow as pa
 import pytest
 
-from omnisus.lake import Lake
-from omnisus.lake.schema import UnsafeSchemaError
-from omnisus.sources._base import ScopeKey
-from omnisus.sources.datasus_ftp._runner import ingest_raw
-from omnisus.sources.datasus_ftp.datasets import REGISTRY
+from omnisus.sources.datasus_ftp import dbc
+from omnisus.sources.datasus_ftp.dbf_batches import physical_arrow_types
 from omnisus.sources.datasus_ftp.inventory import _parse_msdos_line
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 from omnisus.transforms.dictionaries import load_dicionario
-from tests.support.listings import fixture_entry, listing_lines
+from tests.support.listings import listing_lines
 
 ROOT = Path(__file__).resolve().parents[3]
 HEADERS = ROOT / "evidence/2026-11-19-sih-cabecalhos"
@@ -257,20 +255,55 @@ def test_rdac0909_has_val_sh_and_val_sp_zeroed_and_the_month_before_has_them_fil
     }
 
 
-def test_the_library_stages_rdac0909_with_17_fields_of_another_type(dbc_fixture, monkeypatch):
-    """The staged type follows the descriptor, so in this file 17 fields do not have the
-    type the dictionary declares and every other RD file is staged with. The fixture is
+@pytest.mark.parametrize("field", ["val_sh", "val_sp"])
+def test_the_dictionary_warns_that_rdac0909_publishes_the_field_zeroed(field):
+    """The file is imported as published (#219), so the sum of the field for Acre in
+    2009-09 is zero in the lake. The issue of the field says so, with the counts of
+    `rdac0909.csv`."""
+    rows = {(r["file"], r["field"].lower()): r for r in read(HEADERS / "rdac0909.csv")}
+    odd, before = rows[ODD, field], rows["RDAC0908.dbc", field]
+    assert (odd["records"], odd["filled"]) == ("4540", "0")
+    assert (before["records"], before["filled"]) == ("4379", "4379")
+    assert rows[ODD, "val_tot"]["filled"] == "4540"
+    issues = load_dicionario(DATASET).field_def(field)["x-metadata"].get("issues", [])
+    assert [issue["id"] for issue in issues] == ["zerado-em-rdac0909"]
+    (found,) = issues
+    text = " ".join(found["description"].split())
+    assert found["status"] == "open"
+    assert f"{field.upper()} igual a zero nos 4.540 registros" in text
+    assert "preenchido nos 4.379" in text and "VAL_TOT está preenchido nos 4.540" in text
+    assert odd["sha256"] in text
+    assert "evidence/2026-11-19-sih-cabecalhos/rdac0909.csv" in text and "issue #219" in text
+    in_layout = {number: descriptors(fields)[field] for number, fields in layouts("rd").items()}
+    assert in_layout.pop("2") == "N1.0" and set(in_layout.values()) == {"N13.2"}
+    others = [row for row in read(HEADERS / "rd.csv") if row["layout"] != "2"]
+    assert len(others) == 6071 and "nos outros 6.071 arquivos RD" in text
+    assert "é N(1), sem casas decimais" in text and "é N(13,2)" in text
+
+
+def test_rdac0909_declares_17_fields_as_whole_numbers_and_is_staged_as_the_dictionary_declares(
+    dbc_fixture, monkeypatch
+):
+    """In this file's header 17 fields are whole numbers that the dictionary declares
+    `number`, `string` or `date`. Staging gives them the declared type (#219; the rule
+    is tested in tests/unit/sources/datasus_ftp/test_staged_types.py). The fixture is
     records 5 to 9 as published: none has a pre-natal number or a manager's CPF."""
     monkeypatch.setenv("OMNISUS_DBF_BACKEND", "auto")
     raw = dbc_fixture("sih_rd_ac_2009_09_excerpt").read_bytes()
-    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect()
     dictionary = load_dicionario(DATASET)
+    header = physical_arrow_types(dbc.decompress_bytes(raw))
+    assert {
+        name
+        for name, kind in header.items()
+        if pa.types.is_integer(kind) and dictionary.field_def(name)["type"] != "integer"
+    } == VALUES_AS_WHOLE_NUMBERS | TEXT_AS_WHOLE_NUMBERS
+    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect()
     assert frame.shape == (5, 82)
     assert {
         name
         for name, dtype in frame.schema.items()
         if dtype.is_integer() and dictionary.field_def(name)["type"] != "integer"
-    } == VALUES_AS_WHOLE_NUMBERS | TEXT_AS_WHOLE_NUMBERS
+    } == set()
     assert frame.select(pl.col("val_sh", "val_sp").sum()).row(0) == (0, 0)
     assert frame["val_tot"].min() > 0
     assert frame["insc_pn"].unique().to_list() == ["0000000000"]
@@ -294,33 +327,3 @@ def test_the_rust_reader_does_not_read_rdac0909(dbc_fixture, monkeypatch):
     monkeypatch.setenv("OMNISUS_DBF_BACKEND", "rust")
     with pytest.raises(omnisus_dbf.UnsupportedDbfError):
         dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect()
-
-
-USUAL = ("sih_rd_rr_2025_01_excerpt", "RDRR2501.dbc", ScopeKey("RR", 2025, 1))
-APART = ("sih_rd_ac_2009_09_excerpt", ODD, ScopeKey("AC", 2009, 9))
-
-
-@pytest.mark.parametrize(
-    ("first", "second", "message"),
-    [(USUAL, APART, "DOUBLE versus BIGINT"), (APART, USUAL, "BIGINT versus DOUBLE")],
-    ids=["rdac0909 second", "rdac0909 first"],
-)
-def test_rdac0909_and_another_rd_file_do_not_share_a_lake(
-    dbc_fixture, tmp_path, monkeypatch, first, second, message
-):
-    """What an import meets today (#219): whichever of the two comes second is refused,
-    because the lake does not turn a column of whole numbers into one of decimals, or the
-    reverse. Imported first, RDAC0909 is the scope the lake keeps, and it is the other RD
-    file that is refused. Whoever settles #219 turns this test around."""
-    monkeypatch.setenv("OMNISUS_DBF_BACKEND", "auto")
-    dataset = REGISTRY[DATASET]
-
-    def ingest(fixture: str, name: str, scope: ScopeKey, lake: Lake) -> None:
-        raw = dbc_fixture(fixture).read_bytes()
-        ingest_raw(dataset, scope, [(fixture_entry(dataset.ftp_dir, name, raw), raw)], lake)
-
-    with Lake.local(f"ducklake:{tmp_path}/x.ducklake") as lake:
-        ingest(*first, lake)
-        with pytest.raises(UnsafeSchemaError, match=message):
-            ingest(*second, lake)
-        assert [p["scope"] for p in lake.publications()] == [first[2]]

@@ -124,12 +124,17 @@ fields that change family are blank or zero in both files. The fixture
 `INSC_PN`, the pre-natal number 617 records of the file carry, is zeros, and so is
 `GESTOR_CPF`.
 
-The file and any other RD file from 2008 cannot share a table of the lake: in every
-other layout the eleven value fields have decimals and the six others are text, and the
-lake does not convert between them. Whichever is imported second is refused
-(`UnsafeSchemaError`); imported first, `RDAC0909` stays and the other is refused.
+Staged with the types of its header, the file and any other RD file from 2008 could not
+share a table of the lake: in every other layout the eleven value fields have decimals
+and the six others are text, and the lake does not convert between them. Whichever was
+imported second was refused (`UnsafeSchemaError`). Since #219 staging writes a whole
+number of the file with the type the dictionary declares
+(`tests/unit/sources/datasus_ftp/test_staged_types.py`), and the scope is imported as
+published, with `VAL_SH` and `VAL_SP` zero.
 
 **What it is used for.** `tests/unit/transforms/test_sih_headers.py` compares the SP and
 RJ dictionaries with the layouts, and the issue `fonte_orc-sem-def` of the field in each
 dictionary quotes these counts. `tests/unit/transforms/test_sih_rd_headers.py` compares
-the RD headers with the two censuses and with the fixture of `RDAC0909`.
+the RD headers with the two censuses and with the fixture of `RDAC0909`, and the issue
+`zerado-em-rdac0909` of `val_sh` and of `val_sp` in `sih_aih_reduzida.yaml` quotes the
+counts of `rdac0909.csv`.

@@ -29,8 +29,10 @@ omnisus import sim_obitos --year 2023 --ufs RR --policy skip_same --run-id sim-r
 ```
 
 Source identity combines the compressed DBC SHA-256 with an explicit staging
-parser version and the SHA-256 of what the import reads from the dictionary (its
-`encoding` and `x-identity`). Editing labels, code maps or claims does not change it;
+parser version and the SHA-256 of the dictionary's `encoding` and `x-identity`.
+Editing labels, code maps or claims does not change it, and neither does editing a
+field's `type`, which staging reads only for a field the file publishes as a whole
+number ([architecture](../architecture.md));
 a parser algorithm change must bump that version. `skip_same` first compares the server listing (path, size and
 server time of each file) and the parser version with the active publication; if
 nothing changed, it skips the scope without downloading. Any difference downloads

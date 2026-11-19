@@ -138,10 +138,11 @@ class StagedScope:
 def parser_version(d: Dataset) -> str:
     """The publication parser version for ``d``, known before any download.
 
-    It hashes only what the import reads from the dictionary: the ``encoding`` that
-    decodes text and the ``x-identity`` that accepts or rejects a file. Labels, code
-    maps and claims are read when rows are queried, so editing them leaves published
-    scopes unchanged.
+    It hashes the ``encoding`` that decodes text and the ``x-identity`` that accepts or
+    rejects a file. Labels, code maps and claims are read when rows are queried, so
+    editing them leaves published scopes unchanged. Staging also reads each field's
+    ``type`` (``staging._staged_types``); the types are not hashed, because a file's
+    rows depend on them only when its header has a whole number declared otherwise.
     """
     from omnisus.sources.datasus_ftp.dbf_contract import publication_parser_version
 

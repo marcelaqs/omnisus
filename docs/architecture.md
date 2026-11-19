@@ -80,7 +80,11 @@ require its timeout to finish.
 New columns widen the lake table; absent columns become NULL through
 `INSERT BY NAME`. Existing types must match or allow a lossless widening within
 the same signed-integer, unsigned-integer or floating-point family. Incompatible
-families and decimal changes fail before insertion. The staging parser also
+families and decimal changes fail before insertion. Staging writes one such
+difference away: a field the DBF header declares `N` with no decimals is staged
+as text when the dictionary declares it `string` or `date`, with the number as
+written and no zeros added, and as a number with decimals when the dictionary
+declares it `number` (#40, #219). Nothing else is converted. The staging parser also
 rejects incompatible values before Arrow inference can erase information.
 Previously coerced values require an explicit source rebuild to recover.
 
@@ -108,9 +112,12 @@ batch owns its exported data; the initial DBF copy is included in resource
 measurements. This does not make DBC decompression incremental.
 
 `dbc-staging-v2:<hash>` identifies output semantics rather than the execution
-language. The hash covers only what the import reads from the dictionary, its
-`encoding` and `x-identity`; labels, code maps and claims are read at query time, so
-editing them keeps `skip_same` skipping. Backend and native package version are
+language. The hash covers the dictionary's `encoding` and `x-identity`; labels, code
+maps and claims are read at query time, so editing them keeps `skip_same` skipping.
+Staging also reads the `type` of each field, for the conversion above, and the types
+are not in the hash: a file's rows depend on them only when its header has a whole
+number the dictionary declares otherwise. After editing the `type` of such a field,
+replace the scopes whose files publish it as a whole number. Backend and native package version are
 logged separately.
 Changing between equivalent backends therefore preserves `skip_same`; a change
 in decoding semantics requires a new parser contract version.
