@@ -1057,6 +1057,10 @@ schema:
       type: string
       label: Ocupação da mãe
       description: "Tipo de trabalho exercido habitualmente pela mãe, de acordo com a Classificação Brasileira de Ocupações – CBO 2002. No caso de a mãe do falecido(a) ser “aposentada”, preencher com a ocupação habitual anterior."
+      foreignKeys:
+        - fields: ocupmae
+          reference: { resource: aux_ocupacoes, fields: codigo }
+          x-join-rule: "{r}.esquema = 'cbo2002' AND {d}.ano >= 2006"
       x-metadata:
         claims:
         - target: /field/description
@@ -3281,7 +3285,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: DO
-x-version: "2.12.0"
+x-version: "2.13.0"
 
 x-analytics:
   version: 1.2.0

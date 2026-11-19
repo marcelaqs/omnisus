@@ -2,7 +2,7 @@ name: sim_obitos_maternos
 title: SIM — Óbitos maternos (DOMAT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.8.0
+x-version: 1.9.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_domat_br_2023_mini.dbc, 87 fields; observed 2026-09-22
@@ -1066,6 +1066,12 @@ schema:
     description: Tipo de trabalho exercido habitualmente pela mãe, de acordo com a Classificação Brasileira
       de Ocupações – CBO 2002. No caso de a mãe do falecido(a) ser “aposentada”, preencher com a ocupação
       habitual anterior.
+    foreignKeys:
+    - fields: ocupmae
+      reference:
+        resource: aux_ocupacoes
+        fields: codigo
+      x-join-rule: '{r}.esquema = ''cbo2002'' AND {d}.ano >= 2006'
     x-metadata:
       claims:
       - target: /field/description

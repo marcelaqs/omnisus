@@ -393,6 +393,26 @@ def test_occupation_joins_cbo2002_from_2006_only(con, dbc_fixture):
     con.unregister("d")
 
 
+def test_mother_occupation_joins_cbo2002_from_2006_only(con, dbc_fixture):
+    """SIM ``ocupmae`` takes the reference of ``ocup``: `Obito_1996_CID10.def` binds both to
+    CBO2002.CNV, and DORR writes ``ocupmae`` with 6 digits from 2006 and 5 characters until
+    2005. The 2005 half relabels the 2023 fixture: no fixture of a year before 2006 exists."""
+    frame = dbc_bytes_to_lazyframe(
+        dbc_fixture("sim_rr_2023_mini").read_bytes(), dataset="sim_obitos", ano=2023, uf="RR"
+    ).collect()
+    con.register("d", frame.to_arrow())
+    join = sus.reference_join_sql("sim_obitos", "ocupmae", alias="d")
+    rows = con.execute(
+        f"SELECT ref_ocupmae.esquema, count(*) FROM d {join} WHERE d.ocupmae = '622020' GROUP BY 1"
+    ).fetchall()
+    assert rows == [("cbo2002", rows[0][1])] and rows[0][1] > 0
+    con.register("d", frame.with_columns(pl.lit(2005).alias("ano")).to_arrow())
+    assert con.execute(
+        f"SELECT count(ref_ocupmae.codigo) FROM d {join} WHERE d.ocupmae <> ''"
+    ).fetchone() == (0,)
+    con.unregister("d")
+
+
 def test_reference_join_sql_names_the_resource_and_rule():
     assert sus.reference_join_sql("sim_obitos", "ocup", alias="d") == (
         'LEFT JOIN "lake"."aux_ocupacoes" AS "ref_ocup" '

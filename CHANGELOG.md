@@ -80,6 +80,16 @@
   subset does not have. Validating DOEXT, DOINF and DOMAT files so
   the subsets can have the age rule stays open in #177. Versions: the three subsets 1.8.0.
 
+- `ocupmae` of `sim_obitos` (and of the three SIM subsets) declares the reference `ocup`
+  already had: `aux_ocupacoes`, scheme `cbo2002`, from 2006. `Obito_1996_CID10.def` binds
+  `OCUPMAE` to `CBO2002.CNV` (lines 331 and 332), and the DORR of each year from 1996 to 2024 writes
+  `ocupmae` with 5 characters until 2005 and 6 digits from 2006. `ocup` does the same, except
+  nine values of DORR2006 with 5 digits, which are the 5-digit form `aux_ocupacoes` keeps for
+  CBO 2002 codes that start with 0. From 2006 on every filled `ocupmae` of those files is a
+  `cbo2002` code of the table. Only Roraima was measured here.
+  `sus.reference_join_sql("sim_obitos", "ocupmae")` now returns the join. Versions: `sim_obitos`
+  2.13.0, the three subsets 1.9.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same
