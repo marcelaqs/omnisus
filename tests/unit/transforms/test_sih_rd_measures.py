@@ -215,12 +215,16 @@ def test_cid_notif_is_z302_in_almost_every_filled_record():
     ) in text
 
 
-def test_faec_tp_publishes_32_codes():
-    """The files from 2008 publish 32 distinct FAEC_TP codes in 57,820 records, each of 6
-    digits. The README compares them with TP_FINAN.CNV, which is not packaged."""
-    codes = {code: rows for code, rows in totals(FROM_2008, "faec_tp").items() if code.strip()}
+def test_every_faec_tp_code_the_files_publish_has_a_label():
+    """The files from 2008 publish 32 distinct FAEC_TP codes in 57,820 records, and blank
+    in the others. Every one is a code TP_FINAN.CNV lists one by one, so the dictionary
+    labels it: no published code falls to the reserve range the map leaves out."""
+    published = totals(FROM_2008, "faec_tp")
+    codes = {code: rows for code, rows in published.items() if code.strip()}
     assert (len(codes), sum(codes.values())) == (32, 57820)
-    assert all(len(code) == 6 and code.isdigit() for code in codes)
+    assert sum(published.values()) == 1994690
+    labels = load_dicionario(DATASET).field_def("faec_tp")["x-decode"]
+    assert set(published) <= set(labels)
     assert codes["040080"] == max(codes.values())
 
 

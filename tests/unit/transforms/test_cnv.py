@@ -252,6 +252,34 @@ def test_a_long_code_claimed_twice_or_an_uneven_range_fails(header, body, messag
         parse_cnv(header + "\n" + body)
 
 
+def test_tp_finan_reserves_every_long_code_and_lists_100_one_by_one():
+    """TP_FINAN.CNV (TAB_SIH) opens with line 101, "Não discriminado/Não se aplica", whose
+    codes are the range 000000-999999 and the blank code; then it lists 100 codes of 6
+    characters, one per line. TabWin.pdf (pp. 90-91) has no range for a long code and
+    keeps a long code's first reference, which would give every code the label of line
+    101. The reader does not expand a range that spans every code of a long width (#182):
+    line 101 keeps the blank code, each of the 100 codes keeps its own line, and a code
+    no line lists has no label."""
+    text = member("sih/CNV/TP_FINAN.CNV")
+    assert text.splitlines()[0] == "N 101 6 L"
+    assert "000000-999999," in text.splitlines()[1].split()
+    reserve, *listed = parse_cnv(text)
+    assert (reserve.category, reserve.label, reserve.codes, reserve.ranged) == (
+        101,
+        "Não discriminado/Não se aplica",
+        ("      ",),
+        (),
+    )
+    assert sorted(line.category for line in listed) == list(range(1, 101))
+    assert all(len(line.codes) == 1 and not line.ranged for line in listed)
+    assert all(len(line.codes[0]) == 6 and line.codes[0].isdigit() for line in listed)
+    decode = cnv_map([reserve, *listed])
+    assert len(decode) == 101
+    assert decode[""] == "Não discriminado/Não se aplica"
+    assert decode["010000"] == "Atenção Básica (PAB)"
+    assert "999999" not in decode and "000000" not in decode
+
+
 def test_sinan_defs_bind_every_cnv_at_a_known_column():
     """ChagasNET.def and HansNET.def (TAB_SINANNET): every CNV binding has a numeric start."""
     for path, count in [("sinan/ChagasNET.def", 481), ("sinan/HansNET.def", 334)]:

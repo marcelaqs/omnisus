@@ -17,7 +17,9 @@ discorda vira claim `conflicting` e um issue com o rótulo anterior de cada cód
 claim de códigos existente nunca é substituída: de outro método, ou `cnv-parse` com mapa
 diferente, o script para e pede revisão; com o mesmo mapa, só a evidência e o
 `checked_at` são reescritos, se diferem dos gerados. Uma linha de DEF fora
-do layout só é ignorada se `linhas_fora_do_layout` a lista com o texto exato. Rodar de novo não muda
+do layout só é ignorada se `linhas_fora_do_layout` a lista com o texto exato. Uma linha
+que traz um nome de campo no lugar da coluna inicial só liga o campo se `inicio_revisto`
+a lista, com o motivo da revisão. Rodar de novo não muda
 nada; `--check` falha se algum dicionário mudaria.
 """
 
@@ -26,6 +28,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
@@ -120,14 +123,23 @@ def read_def(path: str, vinculos: dict[str, Any]) -> str:
     return "".join(lines)
 
 
-def binding_for(def_path: str, text: str, field: str, member: str) -> str:
+def binding_for(
+    def_path: str, text: str, field: str, member: str, reviewed: Sequence[dict[str, Any]] = ()
+) -> str:
     """The DEF line that binds `field` at position 1 to `member`, as a locator.
 
     A binding with an unknown start column (``start=None``, a field name where the
-    column goes; TabWin.pdf pp. 87-88 documents no such form) is refused by name:
-    such a field belongs in `sem_cnv`, never in `campos`.
+    column goes; TabWin.pdf pp. 87-88 documents no such form) is refused by name,
+    unless `reviewed` (`inicio_revisto` of vinculos.json) lists this DEF, field and
+    table with `inicio` 1: then the locator shows what the line writes and that the
+    start was reviewed. Without that entry such a field belongs in `sem_cnv`.
     """
     folder = Path(def_path).parent
+    listed = any(
+        (e["membro"], e["campo"], e["tabela"].lower(), e["inicio"])
+        == (def_path, field.lower(), member.lower(), 1)
+        for e in reviewed
+    )
     unknown = False
     for b in parse_def(text):
         target = (folder / b.table.replace("\\", "/")).as_posix()
@@ -135,6 +147,9 @@ def binding_for(def_path: str, text: str, field: str, member: str) -> str:
             continue
         if b.start == 1:
             return f"{Path(def_path).name}: {b.kind}{b.label}, {b.field}, {b.start}, {b.table}"
+        if b.start is None and listed:
+            start = f"{b.written_start} (posição 1 revista)"
+            return f"{Path(def_path).name}: {b.kind}{b.label}, {b.field}, {start}, {b.table}"
         unknown = unknown or b.start is None
     if unknown:
         raise ValueError(f"{def_path} binds {field} to {member} with an unknown start column")
@@ -278,7 +293,7 @@ def evidence_for(
         if key.lower().endswith(".dbf"):
             line = lookup_for(def_path, text, field, key)[0]
         else:
-            line = binding_for(def_path, text, field, key)
+            line = binding_for(def_path, text, field, key, vinculos.get("inicio_revisto", []))
         evidence.append(
             {
                 "source_id": membros[key]["fonte"],

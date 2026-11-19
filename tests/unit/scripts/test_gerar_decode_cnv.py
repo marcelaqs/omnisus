@@ -254,15 +254,43 @@ def test_a_listed_def_line_whose_text_differs_from_the_member_is_refused(monkeyp
         gerar.read_def(entry["membro"], vinculos)
 
 
-def test_a_binding_with_unknown_start_is_refused_not_generated(monkeypatch):
-    """RD2008.DEF binds FAEC_TP to TP_FINAN.CNV with 'DS_TPFIN' where the start column
-    goes (TabWin.pdf pp. 87-88 documents no such form). The generator never writes a
-    map from such a binding: it names the reason instead of reporting a missing line."""
+def test_a_binding_with_unknown_start_needs_a_reviewed_start(monkeypatch, dbc_fixture):
+    """RD2008.DEF and RJ2008.DEF bind FAEC_TP to TP_FINAN.CNV, and RD2008.DEF binds
+    PROC_REA to PROCOBS2b.CNV, with a field name where the start column goes (TabWin.pdf
+    pp. 87-88 documents no such form). The generator refuses such a binding unless
+    `inicio_revisto` of vinculos.json lists it. It lists FAEC_TP of both DEF, at 1 (#182):
+    the field is C(6) in the DBF headers of RDRR2401 and RJRR2401 and the table's codes
+    have 6 characters, so no other start fits. PROC_REA is not listed and stays refused."""
+    from omnisus.sources.datasus_ftp.dbc import decompress_bytes
+    from omnisus.sources.datasus_ftp.dbf_contract import _read_field_descriptors
+
     gerar = _load(monkeypatch)
+    vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
+    reviewed = vinculos["inicio_revisto"]
+    assert [(e["membro"], e["campo"], e["tabela"], e["inicio"]) for e in reviewed] == [
+        ("sih/RD2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1),
+        ("sih/RJ2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1),
+    ]
+    table_width = int((CNV / "sih/CNV/TP_FINAN.CNV").read_bytes().split(b"\r\n")[0].split()[2])
+    for entry, fixture in zip(
+        reviewed, ("sih_rr_2024_01_mini", "sih_rj_rr_2024_01_mini"), strict=True
+    ):
+        text = (CNV / entry["membro"]).read_bytes().decode("latin-1")
+        unknown = {b.field for b in parse_def(text) if b.start is None}
+        assert "FAEC_TP" in unknown
+        with pytest.raises(ValueError, match="unknown start column"):
+            gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"])
+        locator = gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"], reviewed)
+        assert locator.endswith(
+            "LSubTp FAEC, FAEC_TP, DS_TPFIN (posição 1 revista), CNV\\TP_FINAN.CNV"
+        )
+        header = _read_field_descriptors(decompress_bytes(dbc_fixture(fixture).read_bytes()))
+        (field_width,) = (f.width for f in header if f.name.strip() == "FAEC_TP")
+        assert field_width == table_width == 6
     text = (CNV / "sih/RD2008.DEF").read_bytes().decode("latin-1")
     assert {b.field for b in parse_def(text) if b.start is None} == {"FAEC_TP", "PROC_REA"}
     with pytest.raises(ValueError, match="unknown start column"):
-        gerar.binding_for("sih/RD2008.DEF", text, "faec_tp", "sih/CNV/TP_FINAN.CNV")
+        gerar.binding_for("sih/RD2008.DEF", text, "proc_rea", "sih/CNV/PROCOBS2b.CNV", reviewed)
 
 
 @pytest.mark.parametrize(

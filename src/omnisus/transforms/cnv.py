@@ -35,7 +35,12 @@ which line wins.
 * A short code (width up to 4) listed on two lines takes the later line: in the
   manual's MESES.CNV, ``01`` is first "Ignorado" (``00-99``), then "Janeiro", which
   "prevalece, por aparecer por último" (ManualTabnet.pdf p. 21). A long code keeps
-  its first reference (TabWin.pdf p. 91); no packaged CNV repeats one, so it raises.
+  its first reference (TabWin.pdf p. 91); a long code listed on two lines raises.
+* A range that spans every code of a long width (``000000-999999`` on the first line
+  of SIH ``TP_FINAN.CNV``, before the 100 codes it lists one by one) is not expanded
+  and claims no code: by the rule above it would give every code that line's label,
+  and it would be a million keys. Its line keeps the codes it lists one by one, and
+  a code no line lists has no label (#182).
 * Tables whose header starts with ``N`` (e.g. ``N 41 2 L``) use a 100-column
   description: category in columns 1-9, description 12-111, codes from 113.
   The manual does not describe them; the layout is read from the packaged
@@ -65,6 +70,7 @@ class DefBinding:
     field: str
     start: int | None  # 1-based position in the DBF field; None if undocumented
     table: str  # as written, e.g. "CNV\\SAIDAPERM.CNV"
+    written_start: str  # the third part as written: "1", or a name such as "DS_TPFIN"
 
 
 @dataclass(frozen=True)
@@ -114,7 +120,7 @@ def parse_def(text: str) -> list[DefBinding]:
             )
         label, field, third, table = parts
         start = int(third) if third.isdigit() else None
-        bindings.append(DefBinding(line[0], label, field.upper(), start, table))
+        bindings.append(DefBinding(line[0], label, field.upper(), start, table, third))
     return bindings
 
 
@@ -165,7 +171,8 @@ def parse_cnv(text: str) -> list[CnvLine]:
 
     "Lists" counts explicit codes and every code a range expands to, so SIH SEXO.CNV
     (``Ignorado 0-9``, then ``Masculino 1``) keeps ``1`` on the Masculino line. A long
-    code (width over 4) listed twice raises ``CnvFormatError``.
+    code (width over 4) listed twice raises ``CnvFormatError``; a range that spans every
+    code of a long width is left out (see the module docstring).
     """
     lines = [line.split(";", 1)[0].rstrip() for line in text.splitlines()]
     lines = [line for line in lines if line]
@@ -204,6 +211,8 @@ def parse_cnv(text: str) -> list[CnvLine]:
             first, last = bounds.groups()
             if len(first) != len(last):
                 raise CnvFormatError(f"CNV range of unequal width: {token!r}")
+            if width > 4 and (first, last) == ("0" * width, "9" * width):
+                continue  # every code of a long width: reserves, labels none
             for n in range(int(first), int(last) + 1):
                 expanded.append(str(n).zfill(len(first)))
                 _claim(claimed, expanded[-1], f"in range {token}", width)

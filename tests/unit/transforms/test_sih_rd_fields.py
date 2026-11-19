@@ -679,6 +679,67 @@ def test_uf_zi_takes_the_labels_of_br_municgestor(
     ]
 
 
+@pytest.mark.parametrize(
+    ("dataset", "fixture", "def_member", "def_lines", "published"),
+    [
+        (
+            "sih_aih_reduzida",
+            "sih_rr_2024_01_mini",
+            "RD2008.DEF",
+            (271, 272, 273),
+            {"": 3432, "040080": 282},
+        ),
+        (
+            "sih_aih_rejeitada",
+            "sih_rj_rr_2024_01_mini",
+            "RJ2008.DEF",
+            (274, 275, 276),
+            {"": 26, "040080": 4},
+        ),
+    ],
+)
+def test_faec_tp_takes_the_labels_tp_finan_lists(
+    dbc_fixture, dataset, fixture, def_member, def_lines, published
+):
+    """The RD and the RJ DEF bind FAEC_TP to CNV/TP_FINAN.CNV on three lines that write
+    DS_TPFIN where the start column goes; the maintainer decided in #182 to read them as
+    position 1 and to label the 100 codes the table lists one by one. RDRR2401 publishes
+    040080 in 282 records and blank in 3,432; the table lists both. The open issue of the
+    field says what was decided and that the table's reserve range 000000-999999 gives no
+    label."""
+    import json
+
+    text = (MUNICGESTOR.parent.parent / def_member).read_text(encoding="latin-1").splitlines()
+    assert [n for n, line in enumerate(text, 1) if "FAEC_TP" in line.upper()] == list(def_lines)
+    for n in def_lines:
+        _, field, start, table = (part.strip() for part in text[n - 1].split(","))
+        assert (field, start, table) == ("FAEC_TP", "DS_TPFIN", "CNV\\TP_FINAN.CNV")
+    raw = dbc_fixture(fixture).read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=dataset).collect().select("faec_tp")
+    assert dict(frame["faec_tp"].value_counts().rows()) == published
+    labelled = sus.label(dataset, frame, columns=["faec_tp"])
+    assert dict(labelled.unique().rows()) == {
+        "": "Não discriminado/Não se aplica",
+        # three blanks before the parenthesis and "ä" (0xE4), as the table writes them
+        "040080": "Programa Agora Tem Especialistas - Componente Cirúrgico   (antigo Reduçäo das Filas)",
+    }
+    field = load_dicionario(dataset).field_def("faec_tp")
+    assert len(field["x-decode"]) == 101
+    assert {len(code) for code in field["x-decode"]} == {0, 6}
+    (claim,) = (c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes")
+    assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
+    assert "FAEC_TP, DS_TPFIN (posição 1 revista)" in claim["evidence"][0]["locator"]
+    assert claim["evidence"][0]["locator"].endswith("CNV/TP_FINAN.CNV")
+    (issue,) = [i for i in field["x-metadata"]["issues"] if i["id"] == "faec_tp-faixa-de-reserva"]
+    assert issue["status"] == "open"
+    assert "000000-999999" in issue["description"] and "DS_TPFIN" in issue["description"]
+    vinculos = json.loads(
+        (ROOT / "src/omnisus/data/dicionarios/sources/cnv/vinculos.json").read_text("utf-8")
+    )["datasets"][dataset]
+    assert vinculos["campos"]["faec_tp"] == "sih/CNV/TP_FINAN.CNV"
+    assert "faec_tp" not in vinculos["sem_cnv"]
+
+
 def test_br_municgestor_writes_ranges_in_a_table_of_long_codes():
     """TabWin.pdf (pp. 90-91) documents `first-last` only for variables of up to 4
     characters. br_municgestor.cnv declares 6 and writes ranges on three lines (Rio de

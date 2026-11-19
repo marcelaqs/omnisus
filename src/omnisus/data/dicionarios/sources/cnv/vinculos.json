@@ -500,6 +500,11 @@
       "membro": "CNV/VINCPREV.CNV",
       "sha256": "f5a6c3ec24355fefd3c2d9f439ca0020df028c8ddcd0a2b246ad99831056f1df"
     },
+    "sih/CNV/TP_FINAN.CNV": {
+      "fonte": "sih-tab-21e42384645a",
+      "membro": "CNV/TP_FINAN.CNV",
+      "sha256": "f6986095b663c4a22b69e027c582b7094c56c40abaf26a8183206531d9336683"
+    },
     "sih/CNV/br_municgestor.cnv": {
       "fonte": "sih-tab-21e42384645a",
       "membro": "CNV/br_municgestor.cnv",
@@ -1026,6 +1031,7 @@
         "contracep2": "sih/CNV/CONTRAC.CNV",
         "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
+        "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
         "fonte_orc": "sih/CNV/fonterem.CNV",
         "gestao": "sih/CNV/GESTAO.CNV",
@@ -1068,7 +1074,6 @@
         "dias_perm": "RD2008.DEF (linha 249) liga DIAS_PERM a PERM.CNV a partir da posição 2; não está empacotado. Issue 137.",
         "dt_inter": "RD2008.DEF (linhas 239-243) liga DT_INTER a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de internação', 'Mês de internação' e 'Ano/Mês internação'. Issue 137.",
         "dt_saida": "RD2008.DEF (linhas 244-248) liga DT_SAIDA a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de saída', 'Mês de saída' e 'Ano/Mês de saída'. Issue 137.",
-        "faec_tp": "RD2008.DEF (linhas 271-273) liga FAEC_TP a TP_FINAN.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (DS_TPFIN), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "insc_pn": "RD2008.DEF (linha 531) liga INSC_PN a INSCPN.CNV; não está empacotado. Issue 137.",
         "mes_cmpt": "RD2008.DEF (linha 180) liga MES_CMPT a MESES.CNV; não está empacotado. Issue 137.",
         "munic_mov": "RD2008.DEF (linhas 26-40) liga MUNIC_MOV a 13 tabelas, entre elas br_regiaouf.cnv e br_uf.cnv; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Região e UF internação', 'UF internação' e 'Região internação'. O código tem rótulo pela referência a aux_municipios. Issue 137.",
@@ -1400,6 +1405,7 @@
         "contracep2": "sih/CNV/CONTRAC.CNV",
         "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
+        "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
         "gestao": "sih/CNV/GESTAO.CNV",
         "gestrisco": "sih/CNV/SIMNAO.CNV",
@@ -1434,7 +1440,6 @@
         "dias_perm": "RJ2008.DEF (linha 252) liga DIAS_PERM a PERM.CNV a partir da posição 2; não está empacotado. Issue 137.",
         "dt_inter": "RJ2008.DEF (linhas 242-246) liga DT_INTER a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de internação', 'Mês de internação' e 'Ano/Mês internação'. Issue 137.",
         "dt_saida": "RJ2008.DEF (linhas 247-251) liga DT_SAIDA a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de saída', 'Mês de saída' e 'Ano/Mês de saída'. Issue 137.",
-        "faec_tp": "RJ2008.DEF (linhas 274-276) liga FAEC_TP a TP_FINAN.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (DS_TPFIN), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "insc_pn": "RJ2008.DEF (linha 488) liga INSC_PN a INSCPN.CNV; não está empacotado. Issue 137.",
         "mes_cmpt": "RJ2008.DEF (linha 182) liga MES_CMPT a MESES.CNV; não está empacotado. Issue 137.",
         "munic_mov": "RJ2008.DEF (linhas 21-44) liga MUNIC_MOV a 13 tabelas, entre elas br_regiao.cnv e br_regiaouf.cnv; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Região de Atendimento', 'Região/UF de Atendimento' e 'Unid da Federação de Atend.'. Issue 137.",
@@ -1792,6 +1797,22 @@
       }
     }
   },
+  "inicio_revisto": [
+    {
+      "membro": "sih/RD2008.DEF",
+      "campo": "faec_tp",
+      "tabela": "sih/CNV/TP_FINAN.CNV",
+      "inicio": 1,
+      "motivo": "As três linhas (L, C e S) trazem DS_TPFIN no lugar da coluna inicial, forma que as pp. 87-88 do TabWin.pdf não documentam para CNV. O campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Decisão do mantenedor na issue 182 (C10)."
+    },
+    {
+      "membro": "sih/RJ2008.DEF",
+      "campo": "faec_tp",
+      "tabela": "sih/CNV/TP_FINAN.CNV",
+      "inicio": 1,
+      "motivo": "As três linhas (L, C e S) trazem DS_TPFIN no lugar da coluna inicial, forma que as pp. 87-88 do TabWin.pdf não documentam para CNV. O campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Decisão do mantenedor na issue 182 (C10)."
+    }
+  ],
   "linhas_fora_do_layout": [
     {
       "membro": "sia/APAC_Quimioterapia.DEF",

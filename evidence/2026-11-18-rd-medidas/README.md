@@ -66,7 +66,8 @@ zero (text made only of zeros is zero); a field a file does not have gets no row
 - **`faec_tp`.** 32 distinct codes in 57,820 filled records. All are among the 100
   codes that `CNV/TP_FINAN.CNV` of `TAB_SIH.zip` (`sih-tab-21e42384645a`; member SHA-256
   `f6986095b663c4a22b69e027c582b7094c56c40abaf26a8183206531d9336683`) lists one by one.
-  That member is not packaged, so no test repeats the comparison.
+  The dictionary takes its labels from that member since #182 (C10), and
+  `test_sih_rd_measures.py` checks that every published code has one.
 - **`uf_zi`.** Every record of the five `RDDF` files (76,276) has `530000`, a code
   `br_municgestor.cnv` reaches only through the range `530000-530009` of the line
   "530000 Distrito Federal". No file read has a code of the other three ranges.

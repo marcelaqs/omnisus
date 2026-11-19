@@ -29375,7 +29375,7 @@ schema:
     - name: faec_tp
       type: string
       label: Subtipo FAEC
-      description: 'Subtipo de financiamento FAEC.'
+      description: Subtipo de financiamento FAEC.
       x-metadata:
         physical_name: FAEC_TP
         physical_type:
@@ -29392,8 +29392,10 @@ schema:
           - source_id: sihsus-1e89d5f2cc41
             pages:
             - 3
-            locator: 'Tabela 1, linha 82, FAEC_TP char(6)'
-          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FAEC_TP C(6) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+            locator: Tabela 1, linha 82, FAEC_TP char(6)
+          note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara FAEC_TP C(6) nos 243 arquivos RD
+            lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de
+            RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
         - target: /field/description
           value_sha256: 369e7b98ff4d178a3cad9917f602cabdef28fbfad42f964e382844ffe7f39e7c
           status: verified_in_source
@@ -29406,6 +29408,134 @@ schema:
             - 3
             locator: 'Tabela 1, linha 82, FAEC_TP char(6): "Subtipo de financiamento FAEC."'
           note: Transcrição da coluna Descrição/Observações.
+        - target: /field/codes
+          value_sha256: 5b13c75742708635cee543f8149c0aa063e135187000aadffffbf9bc80ea1933
+          status: verified_in_source
+          checked_at: '2026-11-15'
+          method: cnv-parse
+          reviewer: scripts/metadados/gerar_decode_cnv.py
+          evidence:
+          - source_id: sih-tab-21e42384645a
+            pages: []
+            locator: 'RD2008.DEF: LSubTp FAEC, FAEC_TP, DS_TPFIN (posição 1 revista), CNV\TP_FINAN.CNV; CNV/TP_FINAN.CNV'
+          note: Mapa do CNV.
+        issues:
+        - id: faec_tp-faixa-de-reserva
+          status: open
+          description: 'O RD2008.DEF (linhas 271-273) liga FAEC_TP a CNV/TP_FINAN.CNV com DS_TPFIN no lugar
+            da coluna inicial, forma que o TabWin.pdf (pp. 87-88) não documenta para CNV; o mapa lê a posição
+            1, a única que cabe (campo C(6), códigos de 6 caracteres). A tabela abre com a linha 101, "Não
+            discriminado/Não se aplica", cujos códigos são a faixa 000000-999999 e o código em branco, e depois
+            lista 100 códigos, um por linha. O TabWin.pdf (pp. 90-91) não documenta faixa em código longo
+            e diz que o código longo fica com a primeira referência, o que daria a todo código o rótulo da
+            linha 101. O mapa não expande essa faixa: rotula o branco e os 100 códigos listados, e um código
+            fora deles fica sem rótulo. Decisão do mantenedor na issue #182 (C10). Nos 238 arquivos RD lidos
+            de 2008-01 a 2026-07 (222 deles de Roraima; evidence/2026-11-18-rd-medidas), os 32 códigos publicados
+            estão entre os 100.'
+      x-decode:
+        ? ''
+        : Não discriminado/Não se aplica
+        '010000': Atenção Básica (PAB)
+        '020000': Assistência Farmacêutica
+        '021012': FAEC CNRAC (21012-cód ant à tab unif-vál p/2008-01)
+        '021014': FAEC Eletiv(21014-cód ant à tab unif-vál p/2008-01)
+        '040001': Coleta de material
+        '040002': Diagnóstico em laboratório clínico
+        '040003': Coleta/exame anátomo-patológico colo uterino
+        '040004': Diagnóstico em neurologia
+        '040005': Diagnóstico em otorrinolaringologia/fonoaudiologia
+        '040006': Diagnóstico em psicologia/psiquiatria
+        '040007': Consultas médicas/outros profissionais de nível superior
+        '040008': Atenção domiciliar
+        '040009': Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas
+          deficiências
+        '040010': Atendimento/acompanhamento psicossocial
+        '040011': Atendimento/acompanhamento em saúde do idoso
+        '040012': Atendimento/acompanhamento de queimados
+        '040013': Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais
+        '040014': Tratamento de doenças do sistema nervoso central e periférico
+        '040015': Tratamento de doenças do aparelho da visão
+        '040016': Tratamento em oncologia
+        '040017': Nefrologia
+        '040018': Tratamentos odontológicos
+        '040019': Cirurgia do sistema nervoso central e periférico
+        '040020': Cirurgias de ouvido, nariz e garganta
+        '040021': Deformidade labio-palatal e crânio-facial
+        '040022': Cirurgia do aparelho da visão
+        '040023': Cirurgia do aparelho circulatório
+        '040024': Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)
+        '040025': Cirurgia do aparelho geniturinário
+        '040026': Tratamento de queimados
+        '040027': Cirurgia reparadora para lipodistrofia
+        '040028': Outras cirurgias plásticas/reparadoras
+        '040029': Cirurgia orofacial
+        '040030': Sequenciais
+        '040031': Cirurgias em nefrologia
+        '040032': Transplantes de orgãos, tecidos e células
+        '040033': Medicamentos para transplante
+        '040034': OPM auditivas
+        '040035': OPM em odontologia
+        '040036': OPM em queimados
+        '040037': OPM em nefrologia
+        '040038': OPM para transplantes
+        '040039': Incentivos ao pré-natal e nascimento
+        '040040': Incentivo ao registro cívil de nascimento
+        '040041': Central Nacional de Regulação de Alta Complexidade (CNRAC)
+        '040042': Reguladores de Atividade hormonal - Inibidores de prolactina
+        '040043': Política Nacional de Cirurgias Eletivas
+        '040044': Redesignação e Acompanhamento
+        '040045': Projeto Olhar Brasil
+        '040046': Mamografia para Rastreamento
+        '040047': Projeto Olhar Brasil - Consulta
+        '040048': Projeto Olhar Brasil - Óculos
+        '040049': Implementar Cirg. CV Pediátrica
+        '040050': Cirurgias Eletivas - Componente I
+        '040051': Cirurgias Eletivas - Componente II
+        '040052': Cirurgias Eletivas - Componente III
+        '040053': Prótese Mamária - Exames
+        '040054': Prótese Mamária - Cirurgia
+        '040055': Transplante - Histocompatibilidade
+        '040056': Triagem Neonatal
+        '040057': Controle de qualidade do exame citopatológico do colo de útero
+        '040058': Exames do Leite Materno
+        '040059': Atenção as Pessoas em Situação de Violência Sexual
+        '040060': Sangue e Hemoderivados
+        '040061': Mamografia para rastreamento em faixa etária recomendada
+        '040062': Doenças Raras
+        '040063': Cadeiras de Rodas
+        '040064': Sistema de Frequencia Modulada Pessoal-FM
+        '040065': Medicamentos em Urgência
+        '040066': Cirurgias Eletivas - Componente Único
+        '040067': Atenção Especializada em Saúde Auditiva
+        '040068': Terapias Especializadas em Angiologia
+        '040069': Tratamento de Doença Macular
+        '040070': OPME Não Relacionados ao Ato Cirúrgico
+        '040071': Diagnóstico/tratamento em oncologia
+        '040072': Diagnóstico de trombofilia em gestante
+        '040073': Reabilitação Pós-COVID-19
+        '040074': Telemedicina em Urgência
+        '040075': Fisioterapia Cardiovascular
+        '040076': Hemodinâmica em atendimento de urgência
+        '040077': Exames Sorológicos e Imunológicos
+        '040078': QualiSUS Cardio
+        '040079': Pré-cirúrgico em Cirurgias Prioritárias
+        '040080': Programa Agora Tem Especialistas - Componente Cirúrgico   (antigo Reduçäo das Filas)
+        '040081': Síndrome Respiratória Aguda Grave - SRAG
+        '040082': Alta Complexidade em Cardiologia
+        '040083': Cirurgia da Face e do Sistema Estomatognático
+        '040084': Neurocirurgias
+        '040085': Exames coprológicos
+        '040086': Programa Agora Tem Especialistas - Componente Ambulatorial
+        '040087': Saúde Bucal
+        '040088': Radioterapia
+        '040089': Recursos Vinculados a Parcela Única
+        '040090': Recursos Vinculados a Emendas Parlamentares
+        '040091': Materno Infântil
+        '040092': Saúde da Mulher
+        '050000': Incentivo - MAC
+        '060000': Média e Alta Complexidade (MAC)
+        '070000': Vigilância em Saúde
+        '080000': Gestão do SUS
     - name: regct
       type: string
       label: Regra contratual
@@ -31532,7 +31662,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.27.0"
+x-version: "2.28.0"
 
 x-analytics:
   version: 1.3.0
