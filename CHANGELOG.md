@@ -100,6 +100,13 @@
   issue of `ufinform` is resolved: the column is published from 2002 to 2010. Versions:
   `sim_obitos` 2.14.0 (#184).
 
+- `evidence/2026-11-18-sim-valores-do/` counts the values of every coded field of `sim_obitos`
+  in 186 DO files of ten UF, 1996 to 2024 (2,557,540 records, each file with its SHA-256).
+  The open issues of `tppos`, `horaobito`, `codestab`, `seriescfal` and `seriescmae` now cite
+  it: `tppos` is never `1` or `2`, `horaobito` has 4 digits, `codestab` has 7, and no record
+  holds the `0` or `9` of `SERIEFAL.CNV`. A test lists the 17 fields whose files hold a value
+  the map does not label. Versions: `sim_obitos` 2.15.0, the three subsets 1.10.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same

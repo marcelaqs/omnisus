@@ -2,7 +2,7 @@ name: sim_obitos_maternos
 title: SIM — Óbitos maternos (DOMAT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.9.0
+x-version: 1.10.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_domat_br_2023_mini.dbc, 87 fields; observed 2026-09-22
@@ -195,6 +195,8 @@ schema:
         description: O Estrutura_do_SIM_2025.pdf (p. 1) declara HORAOBITO com 5 caracteres, 'Números (padrão
           24 horas 00:00)'. DORR2022 e DORR2023 gravam 4 dígitos, HHMM, sem os dois-pontos (por exemplo
           '0600'), ou branco. O campo fica sem x-format até um documento descrever o que o arquivo grava.
+          Em 186 arquivos DO de dez UFs, de 1996 a 2024 (evidence/2026-11-18-sim-valores-do/), 2.185.721
+          registros de 2006 a 2024 têm 4 dígitos, 8 têm 5 dígitos e nenhum tem o formato 00:00.
   - name: natural
     type: string
     label: Naturalidade
@@ -679,7 +681,8 @@ schema:
         status: open
         description: O SERIEFAL.CNV rotula 0 ('0') e 9 ('Ign'). O Estrutura_do_SIM_2025.pdf (p. 2) descreve
           o campo como 'Números de 1 a 8'. Em DORR2022 e DORR2023 todo valor é branco ou um número de 1
-          a 8. O mapa mantém as onze linhas do CNV.
+          a 8. O mapa mantém as onze linhas do CNV. Em 186 arquivos DO de dez UFs, de 1996 a 2024 (evidence/2026-11-18-sim-valores-do/),
+          nenhum dos 1.664.734 registros de 2012 a 2024 tem 0 ou 9.
   - name: ocup
     type: string
     label: Ocupação habitual
@@ -790,7 +793,9 @@ schema:
         description: O Estrutura_do_SIM_2025.pdf (p. 3) declara CODESTAB com 8 caracteres. Em DORR2022,
           DORR2023 e nos excertos de DOEXT, DOINF e DOMAT de 2023, todo valor preenchido tem 7 dígitos.
           O Estrutura_SIM_Anterior.pdf declara CODESTAB com C(07) nos dois layouts (p. 2, de 2006, e p.
-          6, até 2005); o dicionário da tabela DOM (p. 4), com 8.
+          6, até 2005); o dicionário da tabela DOM (p. 4), com 8. Em 186 arquivos DO de dez UFs, de 1996
+          a 2024 (evidence/2026-11-18-sim-valores-do/), todo valor preenchido de 2001 a 2024 tem 7 dígitos,
+          menos um de 2011, com 5 letras.
   - name: estabdescr
     type: string
     label: Estabelecimento (descrição)
@@ -1059,7 +1064,8 @@ schema:
         status: open
         description: O SERIEFAL.CNV rotula 0 ('0') e 9 ('Ign'). O Estrutura_do_SIM_2025.pdf (p. 3) descreve
           o campo como 'Números de 1 a 8'. Em DORR2022 e DORR2023 todo valor é branco ou um número de 1
-          a 8. O mapa mantém as onze linhas do CNV.
+          a 8. O mapa mantém as onze linhas do CNV. Em 186 arquivos DO de dez UFs, de 1996 a 2024 (evidence/2026-11-18-sim-valores-do/),
+          nenhum dos 1.664.734 registros de 2012 a 2024 tem 0 ou 9.
   - name: ocupmae
     type: string
     label: Ocupação da mãe
@@ -2040,7 +2046,9 @@ schema:
         description: O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos '1 – sim; 2 – não'. DORR2022,
           DORR2023 e os excertos de DOEXT, DOINF e DOMAT de 2023 gravam S, N ou branco, as chaves do INVESTIG.CNV,
           que o Obito_1996_CID10.def liga ao campo numa linha X (a ressalva dessas linhas está no issue
-          def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo.
+          def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo. Em 186 arquivos
+          DO de dez UFs, de 1996 a 2024 (evidence/2026-11-18-sim-valores-do/), TPPOS tem S em 374.509 registros,
+          N em 951.045 e branco em 950.059, e nenhum 1 ou 2.
       - id: cnv-difere-do-mapa-anterior
         status: open
         description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Investigado'';
