@@ -21,22 +21,32 @@
   with a lowercase `x`, and TabWin.pdf (p. 87) does not list `X` among the functions of a DEF
   line: the open issue `def-liga-por-linha-x` says so. Versions: `sim_obitos` 2.9.0, the three
   subsets 1.4.0 (#184).
-- 79 fields of `sim_obitos` gain the `description` an official layout document gives them, each
-  with a `/field/description` claim that cites the page: 73 from the Estrutura do SIM of 07/2025
+- 81 fields of `sim_obitos` have the `description` an official layout document gives them, each
+  with a `/field/description` claim that cites the page: 75 from the Estrutura do SIM of 07/2025
   (`sim-b4195ac8e0f8`); `origem`, `tpobitocor` and `cb_pre` from the edition of 12/2019
   (`sim-b014389eca62`); `numerodo` and `ufinform` from the structure of the 2006 file
   (`sim-anterior-13cabba0b9a1`); `nudiasobin` from the dictionary of the DOM table
   (`sim-dom-fb396a277981`). The reading was made by an agent: the claims are `unreviewed`, with
-  no reviewer. The seven fields none of the four documents describes (`tp_altera`, `contador`,
+  no reviewer. Two of the 81 replace a description that had no source: `natural` no longer says
+  "código do país" and `peso` no longer says "(óbito fetal/menor 1 ano)", which the document
+  does not say. The seven fields none of the four documents describes (`tp_altera`, `contador`,
   `estabdescr`, `fontesinf`, `nudiasinf`, `covid_clas`, `mat_clas`) keep `description: null` with
-  a `not_found` claim. Two open issues record where the dictionary and the document differ:
-  `horaobito` (the document says 5 characters, `00:00`; DORR2022 and DORR2023 write 4 digits) and
-  the label of `nudiasobco`. The issue of `esc2010` and `escmae2010` no longer says
-  `ESCSERIE.CNV` is missing from `OBITOS_CID10_TAB.zip`: it is there, cited by a commented line
-  of `Obito_1996_CID10.def` and by the DEF of the infant and maternal subsets. `registry.json`
-  records the edition of `Estrutura_SIM_para_CD.pdf` (12/2019) and that the five SIM sources
-  read here were hashed again on 2026-11-18. The three SIM subsets are regenerated. Versions:
-  `sim_obitos` 2.10.0, the three subsets 1.5.0 (#184).
+  a `not_found` claim.
+- The label of `nudiasobco` changes from "Dias óbito-codificação" to "Dias óbito-conclusão da
+  investigação", which is what the editions of 07/2025 (p. 7) and 12/2019 (p. 8) and the
+  dictionary of the DOM table (p. 2) say the field is.
+- Three open issues record where the files and the document differ: `horaobito` (the document
+  says 5 characters, `00:00`; the files write 4 digits), `tppos` (the document says `1 – sim;
+  2 – não`; the files write `S`, `N` or blank, the keys of `INVESTIG.CNV`) and `codestab` (the
+  document says 8 characters; the files write 7 digits). The `/field/codes` claim of `origem`
+  now cites the edition of 12/2019 first, which writes `1`, `2`, `3` and `9` as the file does.
+  The issue of `esc2010` and `escmae2010` no longer says `ESCSERIE.CNV` is missing from
+  `OBITOS_CID10_TAB.zip`: it is there, cited by a commented line of `Obito_1996_CID10.def` and
+  by the DEF of the infant and maternal subsets. `registry.json` records the edition of
+  `Estrutura_SIM_para_CD.pdf` (12/2019), that `Estrutura_SIM_Anterior.pdf` holds the layout of
+  2006 and the one up to 2005, and that the five SIM sources read here were hashed again on
+  2026-11-18. The three SIM subsets are regenerated. Versions: `sim_obitos` 2.10.0, the three
+  subsets 1.5.0 (#184).
 
 ## v0.3.0 — 2026-11-17
 

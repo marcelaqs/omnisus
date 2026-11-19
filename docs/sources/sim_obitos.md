@@ -136,9 +136,13 @@ fica sem rótulo no DOFET e no CID-9: `SEXO.CNV` rotula só com as letras M, F e
 - `horaobito` vem como quatro dígitos, HHMM, sem os dois-pontos (`0600`): o documento declara
   5 caracteres no padrão `00:00` (Estrutura do SIM 2025, p. 1), e os arquivos de Roraima de
   2022 e 2023 gravam 4 (`tests/unit/test_sim_descricoes.py`).
-- `nudiasobco` é, no documento, a diferença em dias entre a data do óbito e a data de
-  conclusão da investigação (Estrutura do SIM 2025, p. 7); o rótulo do dicionário diz
-  "Dias óbito-codificação" e a divergência está registrada no campo.
+- `nudiasobco` é a diferença em dias entre a data do óbito e a data de conclusão da
+  investigação (Estrutura do SIM 2025, p. 7), não da codificação.
+- `tppos` vem como `S`, `N` ou em branco, as chaves do `INVESTIG.CNV`; o documento dá ao
+  campo os códigos `1 – sim; 2 – não` (Estrutura do SIM 2025, p. 8), que os arquivos de 2022
+  e 2023 não gravam (`tests/unit/test_sim_descricoes.py`).
+- `codestab` vem com 7 dígitos; o documento declara 8 caracteres (Estrutura do SIM 2025,
+  p. 3).
 - `fontes` tem 6 caracteres e é, no documento, um "combinado de caracteres conforme o
   preenchimento dos campos de fontes (FONTENTREV, FONTEAMBUL, FONTEPRONT, FONTESVO, FONTEIML,
   FONTEPROF)": `S` se preenchido, `X` se o campo estiver vazio (Estrutura do SIM 2025, p. 8).

@@ -231,13 +231,13 @@
     {
       "id": "sim-anterior-13cabba0b9a1",
       "category": "SIM",
-      "title": "Estrutura SIM anterior — Mortalidade 2006",
+      "title": "Estrutura SIM anterior — Mortalidade 2006 e até 2005",
       "publisher": "Ministério da Saúde / DATASUS",
       "authority": "official",
       "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOCS/Estrutura_SIM_Anterior.pdf",
       "sha256": "13cabba0b9a19d32b836f57762b9bc571e573c4a87737440c8052b737072d890",
       "bytes": 55572,
-      "edition": "2006",
+      "edition": "2006 e até 2005",
       "published_on": null,
       "retrieved_on": "2026-09-14",
       "last_checked_on": "2026-11-18"

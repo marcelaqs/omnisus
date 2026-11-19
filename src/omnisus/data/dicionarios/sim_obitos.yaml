@@ -76,14 +76,17 @@ schema:
         - target: /field/codes
           value_sha256: 2a575282e815c11490547293aba879fa7968b5349f64f344b4b00b3f93e6bea4
           status: unreviewed
-          checked_at: '2026-11-15'
+          checked_at: '2026-11-18'
           method: 'Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente; sem revisor humano'
           reviewer: null
           evidence:
+          - source_id: sim-b014389eca62
+            pages: [6]
+            locator: 'ORIGEM, Caracter 1: 1 Oracle, 2 Banco estadual disponibilizado via FTP, 3 Banco SEADE, 9 Ignorado'
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'ORIGEM, Caracter 1: 01 Oracle, 02 Banco estadual disponibilizado via FTP, 03 Banco SEADE, 9 Ignorado'
-          note: 'O PDF escreve 01, 02 e 03 (e 9) para um campo de 1 caractere; o x-decode usa ''1'', ''2'', ''3'' e ''9''. Os rótulos são abreviações do texto.'
+          note: 'A edição de 12/2019 escreve 1, 2, 3 e 9, como o x-decode; a de 07/2025 escreve 01, 02 e 03 (e 9) para um campo de 1 caractere. Os rótulos são abreviações do texto.'
         - target: /field/description
           value_sha256: fd1e53ff65f8f7987c099ba78065ce3dcbda0bcbf2dd39818c2054c39e46c65e
           status: unreviewed
@@ -216,7 +219,20 @@ schema:
     - name: natural
       type: string
       label: Naturalidade
-      description: "Município/UF de naturalidade. Se estrangeiro, código do país."
+      description: "Município e Unidade da Federação onde o falecido nasceu. Se estrangeiro, informar o país."
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: b8e7adc618bd1626cf422e584e49d50736b04b14c87b852a41ae67dbf53354f2
+          status: unreviewed
+          checked_at: '2026-11-18'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
+          reviewer: null
+          evidence:
+          - source_id: sim-b4195ac8e0f8
+            pages: [1]
+            locator: 'NATURAL, coluna Descrição'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. A descrição anterior, sem fonte, dizia ''Município/UF de naturalidade. Se estrangeiro, código do país.'''
     - name: codmunnatu
       type: string
       label: Município de naturalidade
@@ -778,6 +794,11 @@ schema:
         (``import_cnes_master()``), o nome fica nulo no lookup.
       foreignKeys:
         - { fields: codestab, reference: { resource: aux_cnes, fields: cnes } }
+      x-metadata:
+        issues:
+        - id: codestab-tamanho-diverge-do-pdf
+          status: open
+          description: 'O Estrutura_do_SIM_2025.pdf (p. 3) declara CODESTAB com 8 caracteres. Em DORR2022, DORR2023 e nos excertos de DOEXT, DOINF e DOMAT de 2023, todo valor preenchido tem 7 dígitos, como diz a descrição do campo, que não vem do documento.'
     - name: estabdescr
       type: string
       label: Estabelecimento (descrição)
@@ -1265,7 +1286,20 @@ schema:
     - name: peso
       type: integer
       label: Peso ao nascer
-      description: "Peso ao nascer em gramas (óbito fetal/menor 1 ano)."
+      description: "Peso ao nascer em gramas."
+      x-metadata:
+        claims:
+        - target: /field/description
+          value_sha256: 3dab5525e457adaec3cc31365f4e4646544ca416447c845afa0c234753e40d59
+          status: unreviewed
+          checked_at: '2026-11-18'
+          method: 'Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor humano'
+          reviewer: null
+          evidence:
+          - source_id: sim-b4195ac8e0f8
+            pages: [4]
+            locator: 'PESO, coluna Descrição'
+          note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. A descrição anterior, sem fonte, trazia ''(óbito fetal/menor 1 ano)'', que o documento não diz.'
 
     # ========================================================================
     # Bloco VI — Condições e Causas do Óbito
@@ -1939,6 +1973,9 @@ schema:
             locator: 'TPPOS, coluna Descrição'
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
+        - id: tppos-codigos-divergem-do-pdf
+          status: open
+          description: 'O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos ''1 – sim; 2 – não''. DORR2022, DORR2023 e os excertos de DOEXT, DOINF e DOMAT de 2023 gravam S, N ou branco, as chaves do INVESTIG.CNV que o Obito_1996_CID10.def liga ao campo. O mapa é o do CNV; 1 e 2 ficam sem rótulo.'
         - id: cnv-difere-do-mapa-anterior
           status: open
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Investigado'';
@@ -3006,7 +3043,7 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
     - name: nudiasobco
       type: integer
-      label: Dias óbito-codificação
+      label: Dias óbito-conclusão da investigação
       description: "Diferença entre a data do óbito e a data de conclusão da investigação, em dias."
       x-metadata:
         claims:
@@ -3021,10 +3058,6 @@ schema:
             pages: [7]
             locator: 'NUDIASOBCO, coluna Descrição'
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
-        issues:
-        - id: nudiasobco-rotulo-diverge-do-pdf
-          status: open
-          description: 'O rótulo ''Dias óbito-codificação'' não é o que o Estrutura_do_SIM_2025.pdf (p. 7) diz de NUDIASOBCO: ''Diferença entre a data óbito e a data conclusão da investigação, em dias''. O rótulo fica como estava até o mantenedor decidir.'
     - name: nudiasobin
       type: integer
       label: Dias óbito-investigação

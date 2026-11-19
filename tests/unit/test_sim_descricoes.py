@@ -16,6 +16,7 @@ from __future__ import annotations
 import pytest
 
 import omnisus as sus
+from omnisus.metadata import sources_registry
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 ESTRUTURA_2025 = "sim-b4195ac8e0f8"
@@ -26,7 +27,7 @@ EVERY_PAGE = list(range(1, 10))
 
 # Field -> the page of the Estrutura do SIM 2025 whose "Descrição" column describes it.
 DESCRIBED = {
-    **dict.fromkeys(["tipobito", "dtobito", "horaobito", "codmunnatu", "dtnasc"], 1),
+    **dict.fromkeys(["tipobito", "dtobito", "horaobito", "natural", "codmunnatu", "dtnasc"], 1),
     **dict.fromkeys(["idade", "sexo", "racacor", "estciv", "esc2010", "seriescfal"], 2),
     **dict.fromkeys(
         [
@@ -43,7 +44,16 @@ DESCRIBED = {
         3,
     ),
     **dict.fromkeys(
-        ["semagestac", "gravidez", "parto", "obitoparto", "tpmorteoco", "assistmed", "necropsia"],
+        [
+            "semagestac",
+            "gravidez",
+            "parto",
+            "obitoparto",
+            "peso",
+            "tpmorteoco",
+            "assistmed",
+            "necropsia",
+        ],
         4,
     ),
     **dict.fromkeys(
@@ -127,9 +137,9 @@ DESCRIBED_ELSEWHERE = {
 # In no row of the four documents.
 NOT_LISTED = ["contador", "estabdescr", "fontesinf", "nudiasinf", "covid_clas", "mat_clas"]
 
-# Described before #184 in the maintainers' words, with no claim; left as they were, though
-# the documents describe them too.
-AUTHORED_BEFORE = ["natural", "ocup", "codestab", "peso", "linhaa", "linhab", "linhac", "linhad"]
+# Described before #184 in the maintainers' words, with no claim. Each says something the
+# documents do not (the CBO eras, the `aux_cnes` lookup, the `*J189*A419` form), so it stays.
+AUTHORED_BEFORE = ["ocup", "codestab", "linhaa", "linhab", "linhac", "linhad"]
 
 # Columns the import adds; the document is about the DBF.
 ADDED_BY_THE_IMPORT = ["ano", "uf", "_source_release"]
@@ -208,8 +218,59 @@ def test_horaobito_is_four_digits_where_the_document_says_five_characters(
     assert "HHMM" in _open_issue("horaobito", "horaobito-formato-diverge-do-pdf")["description"]
 
 
-def test_nudiasobco_label_differs_from_the_document() -> None:
+def test_nudiasobco_label_says_what_the_documents_say() -> None:
+    """Three documents describe NUDIASOBCO as days to the conclusion of the investigation."""
     column = _columns()["nudiasobco"]
-    assert column["field"]["label"] == "Dias óbito-codificação"
+    assert column["field"]["label"] == "Dias óbito-conclusão da investigação"
     assert "conclusão da investigação" in column["field"]["description"]
-    _open_issue("nudiasobco", "nudiasobco-rotulo-diverge-do-pdf")
+    assert not column["issues"]
+
+
+SIM_FIXTURES = [
+    "sim_rr_2022_mini",
+    "sim_rr_2023_mini",
+    "sim_doext_br_2023_excerpt",
+    "sim_doinf_br_2023_excerpt",
+    "sim_domat_br_2023_mini",
+]
+
+
+def _values(dbc_fixture, fixture: str, name: str) -> set[str]:
+    frame = dbc_bytes_to_lazyframe(
+        dbc_fixture(fixture).read_bytes(), dataset="sim_obitos"
+    ).collect()
+    return {v for v in frame[name].to_list() if v}
+
+
+@pytest.mark.parametrize("fixture", SIM_FIXTURES)
+def test_tppos_is_s_or_n_where_the_document_says_1_or_2(dbc_fixture, fixture) -> None:
+    """Real data: the files write the keys of INVESTIG.CNV, not the codes of the document."""
+    assert _values(dbc_fixture, fixture, "tppos") == {"S", "N"}
+    codes = {c["value"] for c in _columns()["tppos"]["field"]["codes"]}
+    assert {"S", "N"} <= codes and not {"1", "2"} & codes
+    assert "INVESTIG.CNV" in _open_issue("tppos", "tppos-codigos-divergem-do-pdf")["description"]
+
+
+@pytest.mark.parametrize("fixture", SIM_FIXTURES)
+def test_codestab_is_seven_digits_where_the_document_says_eight(dbc_fixture, fixture) -> None:
+    """Real data: every CODESTAB that is filled has 7 digits; the document declares 8."""
+    values = _values(dbc_fixture, fixture, "codestab")
+    assert values and all(len(v) == 7 and v.isdigit() for v in values)
+    assert "8" in _open_issue("codestab", "codestab-tamanho-diverge-do-pdf")["description"]
+
+
+def test_origem_codes_cite_the_edition_that_writes_them_as_the_file_does() -> None:
+    """The 12/2019 edition writes 1, 2, 3 and 9; the 07/2025 edition writes 01, 02 and 03."""
+    (claim,) = [c for c in _columns()["origem"]["claims"] if c["target"] == "/field/codes"]
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
+        (ESTRUTURA_2019, [6]),
+        (ESTRUTURA_2025, [5]),
+    ]
+    assert (claim["status"], claim["reviewer"]) == ("unreviewed", None)
+
+
+def test_the_2006_structure_is_registered_with_both_layouts() -> None:
+    """Estrutura_SIM_Anterior.pdf holds the 2006 layout (p. 1-4) and the one up to 2005 (p. 5-7)."""
+    (source,) = [s for s in sources_registry()["sources"] if s["id"] == ESTRUTURA_2006]
+    assert "2005" in source["title"] and "2006" in source["title"]
+    assert source["edition"] == "2006 e até 2005"
