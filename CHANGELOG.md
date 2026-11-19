@@ -116,16 +116,20 @@
   line with nothing but such a range raises. The 32 codes the 238 measured RD files
   publish are all among the 100. The open issue `faec_tp-faixa-de-reserva` records these
   points. The field leaves `sem_cnv` (#137) in both datasets.
-- `sih_aih_reduzida` (2.29.0): 15 more labels are the words of `IT_SIHSUS_1603.pdf`, each
-  with a `/field/label` claim, because they said more than the document or something
+- `sih_aih_reduzida` (2.29.1): 15 more labels are the words of `IT_SIHSUS_1603.pdf`, each
+  with a `/field/label` claim, because they said more than that document or something
   else: `munic_res` and `munic_mov` (no "(IBGE)"; "Município do Estabelecimento"),
   `proc_rea` and `proc_solic` (no "(SIGTAP)"), `cgc_hosp` ("CNPJ do Estabelecimento"),
   `natureza`, `cid_asso` ("CID causa"), `cid_morte` ("CID da morte"), `uti_mes_to`,
   `uti_int_to` ("Quantidade de diárias em unidade intermediaria", not "Total dias UCI"),
   `contracep1`, `contracep2`, `insc_pn`, `cnaer` ("Código de acidente de trabalho", not
   "CNAE") and `gestor_cod`. With the nine of 2.23.1, 24 labels are the table's text up
-  to its first full stop. The other labels shorten or abbreviate the description ("SH"
-  for "serviços hospitalares") without adding to it, and keep no claim (#182).
+  to its first full stop (up to ", no formato" for `ano_cmpt` and `mes_cmpt`). Some of
+  the words that left were `RD2008.DEF`'s, not the document's ("Inscrição pré-natal",
+  "Diárias UCI", "Causa Associada", `DBF\TB_SIGTAW.DBF` for the procedures), so each of
+  the 15 claims also quotes the first DEF line that names the field. In all, 45 of the
+  118 labels have a verified claim (25 from this document, 19 from the layout of
+  2006-2007, `fonte_orc` from the DEF); the other 73 have none (#182).
 
 ### omnisus-dbf 0.2.2
 

@@ -160,7 +160,8 @@ WORDS_OF_THE_OFFICIAL_LAYOUT = {
     "cid_notif": "CID de Notificação",
     "gestrisco": "Indicador se é gestante de risco",
     "gestor_tp": "Tipo de gestor",
-    # second round (#182, C14)
+}
+MORE_WORDS_OF_THE_OFFICIAL_LAYOUT = {
     "cgc_hosp": "CNPJ do Estabelecimento",
     "munic_mov": "Município do Estabelecimento",
     "munic_res": "Município de Residência do Paciente",
@@ -279,22 +280,35 @@ def test_the_page_of_manuals_lists_the_older_layout_under_its_period():
 
 
 def test_24_labels_are_the_words_of_the_official_layout():
-    """The labels the maintainer chose in #182 (C2, C3 and C14) among those that said more
-    than IT_SIHSUS_1603 says of the field, or something else: "competência" where it
-    says "processamento", "(sífilis)", "alto risco", "notificação compulsória", "(IBGE)",
-    "(SIGTAP)", "hospital" where it says "Estabelecimento", "CNAE", "UCI". Each is now
-    the document's description up to its first full stop, or up to ", no formato". The
-    document's own spelling stays ("intermediaria"). The other labels of the dictionary
-    shorten or abbreviate the description and have no claim; no test checks them."""
+    """24 labels are what Table 1 of IT_SIHSUS_1603 prints for the field: the description
+    up to its first full stop, or up to ", no formato" for ANO_CMPT and MES_CMPT, with the
+    document's own spelling ("intermediaria"). The maintainer chose them in #182 because
+    the label said more than that document, or something else: "competência" where it
+    says "processamento", "(sífilis)", "notificação compulsória", "(IBGE)", "(SIGTAP)",
+    "CNAE", "UCI". For the 15 of the second round, the claim also quotes the first line
+    of RD2008.DEF that names the field, because some of the words that left the label
+    were the DEF's ("Inscrição pré-natal", "Diárias UCI", TB_SIGTAW.DBF)."""
     official = {row["campo"]: row for row in official_layout()}
     contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
-    assert len(WORDS_OF_THE_OFFICIAL_LAYOUT) == 24
-    for name, label in WORDS_OF_THE_OFFICIAL_LAYOUT.items():
+    def_lines = RD2008_DEF.read_text(encoding="latin-1").splitlines()
+    for name, label in (WORDS_OF_THE_OFFICIAL_LAYOUT | MORE_WORDS_OF_THE_OFFICIAL_LAYOUT).items():
         row = official[name]
         assert row["descricao"].startswith(label), name
         rest = row["descricao"].removeprefix(label)
         assert rest == "" or rest.startswith((".", ", no formato")), name
         assert "." not in label
+        if name in MORE_WORDS_OF_THE_OFFICIAL_LAYOUT:
+            naming = (
+                (n, [part.strip() for part in line.split(",")])
+                for n, line in enumerate(def_lines, 1)
+                if line[:1].isalpha()
+            )
+            n, parts = next((n, p) for n, p in naming if len(p) > 1 and p[1] == name.upper())
+            claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
+            quoted = (
+                f'A primeira linha do RD2008.DEF que cita o campo é a {n}: "{", ".join(parts)}".'
+            )
+            assert claim["note"].endswith(quoted), name
         assert contract[name]["field"]["label"] == label
         claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
         assert (claim["status"], claim["method"]) == ("verified_in_source", "pdf-read")
