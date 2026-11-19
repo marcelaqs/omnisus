@@ -1803,14 +1803,16 @@
       "campo": "faec_tp",
       "tabela": "sih/CNV/TP_FINAN.CNV",
       "inicio": 1,
-      "motivo": "As três linhas (L, C e S) trazem DS_TPFIN no lugar da coluna inicial, forma que as pp. 87-88 do TabWin.pdf não documentam para CNV. O campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Decisão do mantenedor na issue 182 (C10)."
+      "escrito": "DS_TPFIN",
+      "motivo": "As três linhas (L, C e S) têm a forma da relação com DBF do TabWin.pdf (p. 88: campo, coluna da descrição, arquivo), mas nomeiam um CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote. Lida como CNV, a linha não traz coluna inicial: o campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Vale o CNV, o arquivo que o DEF nomeia; as duas tabelas estão comparadas em evidence/2026-11-18-tp-finan-cnv-e-dbf. Decisão do mantenedor na issue 182 (C10)."
     },
     {
       "membro": "sih/RJ2008.DEF",
       "campo": "faec_tp",
       "tabela": "sih/CNV/TP_FINAN.CNV",
       "inicio": 1,
-      "motivo": "As três linhas (L, C e S) trazem DS_TPFIN no lugar da coluna inicial, forma que as pp. 87-88 do TabWin.pdf não documentam para CNV. O campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Decisão do mantenedor na issue 182 (C10)."
+      "escrito": "DS_TPFIN",
+      "motivo": "As três linhas (L, C e S) têm a forma da relação com DBF do TabWin.pdf (p. 88: campo, coluna da descrição, arquivo), mas nomeiam um CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote. Lida como CNV, a linha não traz coluna inicial: o campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Vale o CNV, o arquivo que o DEF nomeia; as duas tabelas estão comparadas em evidence/2026-11-18-tp-finan-cnv-e-dbf. Decisão do mantenedor na issue 182 (C10)."
     }
   ],
   "linhas_fora_do_layout": [

@@ -100,18 +100,22 @@
   #182: the table is followed as published, and the range `530000-530009` is the only
   reference to the code the `RDDF` files read publish. The reader's documentation
   (`transforms/cnv.py`) now says that it expands ranges of any width and why.
-- `faec_tp` of `sih_aih_reduzida` (2.28.0) and of `sih_aih_rejeitada` (1.9.0) takes the
+- `faec_tp` of `sih_aih_reduzida` (2.28.1) and of `sih_aih_rejeitada` (1.9.1) takes the
   labels of `CNV/TP_FINAN.CNV`, packaged from `TAB_SIH.zip` (`sih-tab-21e42384645a`): the
   100 codes the table lists one by one and the blank code, a new `faec_tp_rotulo` column.
   Two things were decided in #182. `RD2008.DEF` (lines 271-273) and `RJ2008.DEF` (lines
-  274-276) write `DS_TPFIN` where the start column goes; the generator reads position 1
-  for the bindings `inicio_revisto` of `vinculos.json` lists, and still refuses any
-  other (`PROC_REA`). The table opens with the range `000000-999999`, "Não
-  discriminado/Não se aplica"; `parse_cnv` no longer refuses the table and does not
-  expand a range that spans every code of a long width, so a code outside the 100 has no
-  label. The 32 codes the 238 measured RD files publish are all among the 100. The open
-  issue `faec_tp-faixa-de-reserva` records both points. The field leaves `sem_cnv`
-  (#137) in both datasets.
+  274-276) write `DS_TPFIN` where the start column goes: the line has the shape of a DBF
+  relation and names a CNV, and the package also has a `DBF/TP_FINAN.dbf` with that
+  column, which differs from the CNV in 17 codes and 2 labels
+  (`evidence/2026-11-18-tp-finan-cnv-e-dbf/`). The generator reads the CNV at position 1
+  for the bindings `inicio_revisto` of `vinculos.json` lists, each pinned to what the
+  line writes, and still refuses any other (`PROC_REA`). The first line of the table has
+  the range `000000-999999`, "Não discriminado/Não se aplica"; `parse_cnv` no longer
+  refuses the table and does not apply a range that spans every code of a long width
+  (the one exception to expanding ranges), so a code outside the 100 has no label; a
+  line with nothing but such a range raises. The 32 codes the 238 measured RD files
+  publish are all among the 100. The open issue `faec_tp-faixa-de-reserva` records these
+  points. The field leaves `sem_cnv` (#137) in both datasets.
 
 ### omnisus-dbf 0.2.2
 

@@ -17,8 +17,9 @@ which line wins.
   comma-separated code list from column 61 on (p. 90). Short codes may be written
   as ``first-last`` ranges (p. 90). ``;`` starts a comment (p. 91).
 * The manual documents ranges only for codes of up to 4 characters and says long
-  codes "somente poderão ser separados por vírgulas" (pp. 90-91). The reader
-  expands a range of any width all the same, because DATASUS tables write them:
+  codes "somente poderão ser separados por vírgulas" (p. 91). The reader expands a
+  range of any width all the same (but for the reserve described below), because
+  DATASUS tables write them:
   ``br_municgestor.cnv`` (6 characters) reaches ``530000``, which the RD files of
   the Federal District publish, only through ``530000-530009`` (#182).
 * Column 60 may hold a 51st description character when codes follow from column
@@ -36,11 +37,16 @@ which line wins.
   manual's MESES.CNV, ``01`` is first "Ignorado" (``00-99``), then "Janeiro", which
   "prevalece, por aparecer por último" (ManualTabnet.pdf p. 21). A long code keeps
   its first reference (TabWin.pdf p. 91); a long code listed on two lines raises.
-* A range that spans every code of a long width (``000000-999999`` on the first line
-  of SIH ``TP_FINAN.CNV``, before the 100 codes it lists one by one) is not expanded
-  and claims no code: by the rule above it would give every code that line's label,
-  and it would be a million keys. Its line keeps the codes it lists one by one, and
-  a code no line lists has no label (#182).
+* A range that spans every code of a long width (``000000-999999`` on the first
+  line of SIH ``TP_FINAN.CNV``, whose other 100 lines list one code each) reserves
+  its line's label for whatever the table does not list. The reader does not apply
+  it: the range is not expanded and claims no code, the line keeps the codes it
+  lists one by one, and a code no line lists has no label (#182). A short reserve
+  (``0-9`` in SEXO.CNV) is expanded like any range; a long one would be a million
+  keys. The manual has no hyphen range for a long code ("os intervalos entre os
+  códigos não podem ser definidos ligando dois itens na lista por hífen", p. 92),
+  so what TabWin does with the token is not documented. A line whose only code is
+  such a range raises.
 * Tables whose header starts with ``N`` (e.g. ``N 41 2 L``) use a 100-column
   description: category in columns 1-9, description 12-111, codes from 113.
   The manual does not describe them; the layout is read from the packaged
@@ -172,7 +178,8 @@ def parse_cnv(text: str) -> list[CnvLine]:
     "Lists" counts explicit codes and every code a range expands to, so SIH SEXO.CNV
     (``Ignorado 0-9``, then ``Masculino 1``) keeps ``1`` on the Masculino line. A long
     code (width over 4) listed twice raises ``CnvFormatError``; a range that spans every
-    code of a long width is left out (see the module docstring).
+    code of a long width is left out, and a line left with no code raises (see the module
+    docstring).
     """
     lines = [line.split(";", 1)[0].rstrip() for line in text.splitlines()]
     lines = [line for line in lines if line]
@@ -212,10 +219,12 @@ def parse_cnv(text: str) -> list[CnvLine]:
             if len(first) != len(last):
                 raise CnvFormatError(f"CNV range of unequal width: {token!r}")
             if width > 4 and (first, last) == ("0" * width, "9" * width):
-                continue  # every code of a long width: reserves, labels none
+                continue  # every code of a long width: a reserve, not applied
             for n in range(int(first), int(last) + 1):
                 expanded.append(str(n).zfill(len(first)))
                 _claim(claimed, expanded[-1], f"in range {token}", width)
+        if not codes and not expanded:
+            raise CnvFormatError(f"CNV line whose only code is a reserve range: {line!r}")
         owner.update(dict.fromkeys((*codes, *expanded), len(parsed)))
         parsed.append(
             CnvLine(int(line[:number]), line[gap:codes_at].rstrip(), tuple(codes), tuple(expanded))

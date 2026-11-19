@@ -258,7 +258,9 @@ def test_a_binding_with_unknown_start_needs_a_reviewed_start(monkeypatch, dbc_fi
     """RD2008.DEF and RJ2008.DEF bind FAEC_TP to TP_FINAN.CNV, and RD2008.DEF binds
     PROC_REA to PROCOBS2b.CNV, with a field name where the start column goes (TabWin.pdf
     pp. 87-88 documents no such form). The generator refuses such a binding unless
-    `inicio_revisto` of vinculos.json lists it. It lists FAEC_TP of both DEF, at 1 (#182):
+    `inicio_revisto` of vinculos.json lists it, with what the line writes there; an entry
+    for another position, or one that binds nothing, raises. It lists FAEC_TP of both DEF,
+    at 1 (#182):
     the field is C(6) in the DBF headers of RDRR2401 and RJRR2401 and the table's codes
     have 6 characters, so no other start fits. PROC_REA is not listed and stays refused."""
     from omnisus.sources.datasus_ftp.dbc import decompress_bytes
@@ -267,10 +269,21 @@ def test_a_binding_with_unknown_start_needs_a_reviewed_start(monkeypatch, dbc_fi
     gerar = _load(monkeypatch)
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
     reviewed = vinculos["inicio_revisto"]
-    assert [(e["membro"], e["campo"], e["tabela"], e["inicio"]) for e in reviewed] == [
-        ("sih/RD2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1),
-        ("sih/RJ2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1),
+    listed = [(e["membro"], e["campo"], e["tabela"], e["inicio"], e["escrito"]) for e in reviewed]
+    assert listed == [
+        ("sih/RD2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1, "DS_TPFIN"),
+        ("sih/RJ2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1, "DS_TPFIN"),
     ]
+    for entry in reviewed:  # the reason names what was weighed
+        for cited in ("DBF/TP_FINAN.dbf", "C(6)", "6 caracteres", "issue 182"):
+            assert cited in entry["motivo"]
+    gerar.check_reviewed_starts(vinculos)
+    with pytest.raises(ValueError, match="only position 1 is read"):
+        gerar.check_reviewed_starts({**vinculos, "inicio_revisto": [{**reviewed[0], "inicio": 2}]})
+    with pytest.raises(ValueError, match="binds nothing"):
+        gerar.check_reviewed_starts(
+            {**vinculos, "inicio_revisto": [{**reviewed[0], "campo": "proc_rea"}]}
+        )
     table_width = int((CNV / "sih/CNV/TP_FINAN.CNV").read_bytes().split(b"\r\n")[0].split()[2])
     for entry, fixture in zip(
         reviewed, ("sih_rr_2024_01_mini", "sih_rj_rr_2024_01_mini"), strict=True
@@ -282,8 +295,11 @@ def test_a_binding_with_unknown_start_needs_a_reviewed_start(monkeypatch, dbc_fi
             gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"])
         locator = gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"], reviewed)
         assert locator.endswith(
-            "LSubTp FAEC, FAEC_TP, DS_TPFIN (posição 1 revista), CNV\\TP_FINAN.CNV"
+            "LSubTp FAEC, FAEC_TP, DS_TPFIN, CNV\\TP_FINAN.CNV (lida na posição 1: inicio_revisto)"
         )
+        other = [{**entry, "escrito": "IP_DSCR"}]  # the entry pins what the line writes
+        with pytest.raises(ValueError, match="unknown start column"):
+            gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"], other)
         header = _read_field_descriptors(decompress_bytes(dbc_fixture(fixture).read_bytes()))
         (field_width,) = (f.width for f in header if f.name.strip() == "FAEC_TP")
         assert field_width == table_width == 6

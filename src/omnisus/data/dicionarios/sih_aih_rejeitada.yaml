@@ -2,7 +2,7 @@ name: sih_aih_rejeitada
 title: SIHSUS — AIH rejeitada (RJ)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.9.0
+x-version: 1.9.1
 x-source-format: dbc
 x-evidence:
   physical_schema: sih_rj_rr_2024_01_mini.dbc, 90 fields; observed 2026-09-22
@@ -17358,21 +17358,27 @@ schema:
         evidence:
         - source_id: sih-tab-21e42384645a
           pages: []
-          locator: 'RJ2008.DEF: LSubTp FAEC, FAEC_TP, DS_TPFIN (posição 1 revista), CNV\TP_FINAN.CNV; CNV/TP_FINAN.CNV'
+          locator: 'RJ2008.DEF: LSubTp FAEC, FAEC_TP, DS_TPFIN, CNV\TP_FINAN.CNV (lida na posição 1: inicio_revisto);
+            CNV/TP_FINAN.CNV'
         note: Mapa do CNV.
       issues:
       - id: faec_tp-faixa-de-reserva
         status: open
         description: 'O RJ2008.DEF (linhas 274-276) liga FAEC_TP a CNV/TP_FINAN.CNV com DS_TPFIN no lugar
-          da coluna inicial, forma que o TabWin.pdf (pp. 87-88) não documenta para CNV; o mapa lê a posição
-          1, a única que cabe (campo C(6), códigos de 6 caracteres). A tabela abre com a linha 101, "Não
-          discriminado/Não se aplica", cujos códigos são a faixa 000000-999999 e o código em branco, e depois
-          lista 100 códigos, um por linha. O TabWin.pdf (pp. 90-91) não documenta faixa em código longo
-          e diz que o código longo fica com a primeira referência, o que daria a todo código o rótulo da
-          linha 101. O mapa não expande essa faixa: rotula o branco e os 100 códigos listados, e um código
-          fora deles fica sem rótulo. Decisão do mantenedor na issue #182 (C10). Nos 238 arquivos RD lidos
-          de 2008-01 a 2026-07 (222 deles de Roraima; evidence/2026-11-18-rd-medidas), os 32 códigos publicados
-          estão entre os 100. A medida é do RD: nenhum arquivo RJ foi contado.'
+          da coluna inicial. A linha tem a forma da relação com DBF do TabWin.pdf (p. 88), mas nomeia um
+          CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote (88 códigos). O mapa
+          usa o CNV, o arquivo que o DEF nomeia, na posição 1, a única que cabe (campo C(6), códigos de
+          6 caracteres). As duas tabelas diferem (evidence/2026-11-18-tp-finan-cnv-e-dbf): o CNV tem o branco
+          e 14 códigos que o DBF não tem, o DBF tem 000000 e 040000, que o CNV não lista, e 2 rótulos diferem
+          (040078 e 040080). A primeira linha da tabela, a categoria 101, "Não discriminado/Não se aplica",
+          traz a faixa 000000-999999 e o código em branco; as outras 100 listam um código cada. O TabWin.pdf
+          não documenta faixa com hífen em código longo (pp. 91-92), e o que o TabWin faz com ela não está
+          documentado. O mapa não aplica essa faixa: rotula o branco e os 100 códigos listados, e um código
+          fora deles, 000000 inclusive, fica sem rótulo, embora a tabela reserve a ele o rótulo da categoria
+          101. Decisão do mantenedor na issue #182 (C10). Nos 238 arquivos RD lidos de 2008-01 a 2026-07
+          (222 deles de Roraima; evidence/2026-11-18-rd-medidas), os 32 códigos publicados estão entre os
+          100; 3 deles (021014, 040082 e 040084, em 2.433 registros) não estão no DBF. A medida é do RD:
+          nenhum arquivo RJ foi contado.'
   - name: regct
     type: string
     x-decode:

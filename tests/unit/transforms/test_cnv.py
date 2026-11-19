@@ -243,23 +243,26 @@ def test_a_real_line_outside_the_layout_fails():
             "long code '12345' twice: explicit and explicit",
         ),
         ("2 2", "      1  Todos" + " " * 46 + "0-99\n", "unequal width"),
+        ("1 6", "      1  Todos" + " " * 46 + "000000-999999\n", "only code is a reserve range"),
     ],
 )
 def test_a_long_code_claimed_twice_or_an_uneven_range_fails(header, body, message):
     """Synthetic malformed tables (AGENTS.md rule 2). TabWin.pdf p. 91 keeps the first
-    reference of a long code; no packaged CNV repeats one, so the parser refuses it."""
+    reference of a long code; no packaged CNV repeats one, so the parser refuses it. A
+    line with nothing but a range over every long code would lose its label, and no
+    packaged CNV has one."""
     with pytest.raises(CnvFormatError, match=message):
         parse_cnv(header + "\n" + body)
 
 
 def test_tp_finan_reserves_every_long_code_and_lists_100_one_by_one():
-    """TP_FINAN.CNV (TAB_SIH) opens with line 101, "Não discriminado/Não se aplica", whose
-    codes are the range 000000-999999 and the blank code; then it lists 100 codes of 6
-    characters, one per line. TabWin.pdf (pp. 90-91) has no range for a long code and
-    keeps a long code's first reference, which would give every code the label of line
-    101. The reader does not expand a range that spans every code of a long width (#182):
-    line 101 keeps the blank code, each of the 100 codes keeps its own line, and a code
-    no line lists has no label."""
+    """The first line of TP_FINAN.CNV (TAB_SIH) is category 101, "Não discriminado/Não se
+    aplica", whose codes are the range 000000-999999 and the blank code; the other 100
+    lines list one code of 6 characters each. TabWin.pdf has no hyphen range for a long
+    code (pp. 91-92), so what TabWin does with it is not documented. The reader does not
+    apply a range that spans every code of a long width (#182): the first line keeps the
+    blank code, each of the 100 codes keeps its own line, and a code no line lists,
+    000000 included, has no label."""
     text = member("sih/CNV/TP_FINAN.CNV")
     assert text.splitlines()[0] == "N 101 6 L"
     assert "000000-999999," in text.splitlines()[1].split()

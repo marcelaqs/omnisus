@@ -131,15 +131,17 @@ def binding_for(
     A binding with an unknown start column (``start=None``, a field name where the
     column goes; TabWin.pdf pp. 87-88 documents no such form) is refused by name,
     unless `reviewed` (`inicio_revisto` of vinculos.json) lists this DEF, field and
-    table with `inicio` 1: then the locator shows what the line writes and that the
-    start was reviewed. Without that entry such a field belongs in `sem_cnv`.
+    table with `inicio` 1 and, in `escrito`, what the line writes there: then the
+    locator quotes the line and says the start was reviewed. Without that entry such
+    a field belongs in `sem_cnv`.
     """
     folder = Path(def_path).parent
-    listed = any(
-        (e["membro"], e["campo"], e["tabela"].lower(), e["inicio"])
-        == (def_path, field.lower(), member.lower(), 1)
+    written = {
+        e["escrito"]
         for e in reviewed
-    )
+        if (e["membro"], e["campo"], e["tabela"].lower(), e["inicio"])
+        == (def_path, field.lower(), member.lower(), 1)
+    }
     unknown = False
     for b in parse_def(text):
         target = (folder / b.table.replace("\\", "/")).as_posix()
@@ -147,9 +149,9 @@ def binding_for(
             continue
         if b.start == 1:
             return f"{Path(def_path).name}: {b.kind}{b.label}, {b.field}, {b.start}, {b.table}"
-        if b.start is None and listed:
-            start = f"{b.written_start} (posição 1 revista)"
-            return f"{Path(def_path).name}: {b.kind}{b.label}, {b.field}, {start}, {b.table}"
+        if b.start is None and b.written_start in written:
+            line = f"{b.kind}{b.label}, {b.field}, {b.written_start}, {b.table}"
+            return f"{Path(def_path).name}: {line} (lida na posição 1: inicio_revisto)"
         unknown = unknown or b.start is None
     if unknown:
         raise ValueError(f"{def_path} binds {field} to {member} with an unknown start column")
@@ -304,9 +306,31 @@ def evidence_for(
     return evidence
 
 
+def check_reviewed_starts(vinculos: dict[str, Any]) -> None:
+    """Every `inicio_revisto` entry reads position 1 for a binding some dataset uses.
+
+    An entry with another `inicio`, or one whose DEF, field and table are not a
+    `campos` binding of a dataset with that DEF, raises: a stale entry would otherwise
+    stay in the file and excuse nothing.
+    """
+    for entry in vinculos.get("inicio_revisto", []):
+        if entry["inicio"] != 1:
+            raise ValueError(f"inicio_revisto: {entry['campo']}: only position 1 is read")
+        used = any(
+            entry["membro"] in spec["def"]
+            and spec["campos"].get(entry["campo"]) == entry["tabela"]
+            for spec in vinculos["datasets"].values()
+        )
+        if not used:
+            raise ValueError(
+                f"inicio_revisto: {entry['campo']} of {entry['membro']} binds nothing"
+            )
+
+
 def generate() -> dict[Path, str]:
     """New text of every dictionary the bindings touch."""
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
+    check_reviewed_starts(vinculos)
     membros = vinculos["membros"]
     registry = {s["id"]: s for s in sources_registry()["sources"]}
     out = {}

@@ -703,10 +703,12 @@ def test_faec_tp_takes_the_labels_tp_finan_lists(
 ):
     """The RD and the RJ DEF bind FAEC_TP to CNV/TP_FINAN.CNV on three lines that write
     DS_TPFIN where the start column goes; the maintainer decided in #182 to read them as
-    position 1 and to label the 100 codes the table lists one by one. RDRR2401 publishes
-    040080 in 282 records and blank in 3,432; the table lists both. The open issue of the
-    field says what was decided and that the table's reserve range 000000-999999 gives no
-    label."""
+    position 1 and to label the codes the table lists one by one. RDRR2401 publishes
+    040080 in 282 records and blank in 3,432; the table lists both. DS_TPFIN is the
+    description column of DBF/TP_FINAN.dbf of the same package, which differs from the
+    CNV in 17 codes and 2 labels (evidence/2026-11-18-tp-finan-cnv-e-dbf). The open issue
+    of the field says what was decided, that the DBF exists, and that the table's reserve
+    range 000000-999999 gives no label."""
     import json
 
     text = (MUNICGESTOR.parent.parent / def_member).read_text(encoding="latin-1").splitlines()
@@ -728,11 +730,35 @@ def test_faec_tp_takes_the_labels_tp_finan_lists(
     assert {len(code) for code in field["x-decode"]} == {0, 6}
     (claim,) = (c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes")
     assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
-    assert "FAEC_TP, DS_TPFIN (posição 1 revista)" in claim["evidence"][0]["locator"]
+    assert (
+        "FAEC_TP, DS_TPFIN, CNV\\TP_FINAN.CNV (lida na posição 1"
+        in claim["evidence"][0]["locator"]
+    )
     assert claim["evidence"][0]["locator"].endswith("CNV/TP_FINAN.CNV")
     (issue,) = [i for i in field["x-metadata"]["issues"] if i["id"] == "faec_tp-faixa-de-reserva"]
     assert issue["status"] == "open"
     assert "000000-999999" in issue["description"] and "DS_TPFIN" in issue["description"]
+    with (ROOT / "evidence/2026-11-18-tp-finan-cnv-e-dbf/comparacao.csv").open(newline="") as f:
+        compared = list(csv.DictReader(f))
+    in_cnv = {row["codigo"]: row["rotulo_no_cnv"] for row in compared if row["rotulo_no_cnv"]}
+    in_dbf = {
+        row["codigo"]: row["descricao_no_dbf"] for row in compared if row["descricao_no_dbf"]
+    }
+    assert field["x-decode"] == in_cnv
+    assert (len(in_cnv), len(in_dbf)) == (101, 88)
+    assert len(in_cnv.keys() - in_dbf.keys()) == 15 and "" not in in_dbf
+    assert sorted(in_dbf.keys() - in_cnv.keys()) == ["000000", "040000"]
+    assert sorted(c for c in in_cnv.keys() & in_dbf.keys() if in_cnv[c] != in_dbf[c]) == [
+        "040078",
+        "040080",
+    ]
+    for cited in (
+        "DBF/TP_FINAN.dbf do mesmo pacote (88 códigos)",
+        "o branco e 14 códigos que o DBF não tem",
+        "o DBF tem 000000 e 040000",
+        "2 rótulos diferem (040078 e 040080)",
+    ):
+        assert cited in issue["description"]
     vinculos = json.loads(
         (ROOT / "src/omnisus/data/dicionarios/sources/cnv/vinculos.json").read_text("utf-8")
     )["datasets"][dataset]

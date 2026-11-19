@@ -252,16 +252,20 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   nome de campo no lugar da coluna inicial (`proc_rea`) ou tabela não empacotada (os
   demais, #137).
 - `faec_tp` (no RD e no RJ) tem os rótulos de `CNV/TP_FINAN.CNV`. O DEF liga o campo à
-  tabela com `DS_TPFIN` no lugar da coluna inicial, forma que o TabWin.pdf não documenta
-  para CNV; o mapa lê a posição 1, a única que cabe num campo de 6 caracteres com códigos
-  de 6 (decisão na #182, registrada em `inicio_revisto` do `vinculos.json`). A tabela
-  abre com a faixa `000000-999999`, "Não discriminado/Não se aplica", e depois lista 100
-  códigos: o mapa rotula os 100 e o branco, e não aplica a faixa, então um código fora
-  da lista fica sem rótulo. Nos 238 arquivos RD medidos, os 32 códigos publicados estão
-  todos entre os 100 (`evidence/2026-11-18-rd-medidas/`). Os rótulos ficam como a tabela
-  os escreve, com erros de digitação (`040080`, "… (antigo Reduçäo das Filas)"). A issue
-  `faec_tp-faixa-de-reserva` do campo registra isso. O `cod_idade` está em `sem_cnv` no RD e no RJ
-  e tem o mapa medido descrito acima (#6).
+  tabela com `DS_TPFIN` no lugar da coluna inicial. A linha tem a forma da relação com
+  DBF do TabWin.pdf (p. 88), mas nomeia um CNV; `DS_TPFIN` é a coluna de descrição do
+  `DBF/TP_FINAN.dbf` do mesmo pacote. O mapa usa o CNV, o arquivo que o DEF nomeia, na
+  posição 1, a única que cabe num campo de 6 caracteres com códigos de 6 (decisão na
+  #182, registrada em `inicio_revisto` do `vinculos.json`). As duas tabelas diferem em 17
+  códigos e 2 rótulos (`evidence/2026-11-18-tp-finan-cnv-e-dbf/`): 3 dos 32 códigos que
+  os arquivos medidos publicam não estão no DBF. A primeira linha do CNV traz a faixa
+  `000000-999999`, "Não discriminado/Não se aplica", e as outras 100 listam um código
+  cada: o mapa rotula os 100 e o branco, e não aplica a faixa, então um código fora da
+  lista fica sem rótulo, embora a tabela reserve a ele aquele rótulo. Nos 238 arquivos
+  RD medidos, os 32 códigos publicados estão todos entre os 100
+  (`evidence/2026-11-18-rd-medidas/`). Os rótulos ficam como a tabela os escreve, com
+  erros de digitação (`040080`, "… (antigo Reduçäo das Filas)"). A issue
+  `faec_tp-faixa-de-reserva` do campo registra isso.
 
 ## Como usar
 

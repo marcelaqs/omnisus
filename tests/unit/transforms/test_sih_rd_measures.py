@@ -225,7 +225,17 @@ def test_every_faec_tp_code_the_files_publish_has_a_label():
     assert sum(published.values()) == 1994690
     labels = load_dicionario(DATASET).field_def("faec_tp")["x-decode"]
     assert set(published) <= set(labels)
-    assert codes["040080"] == max(codes.values())
+    assert codes["040080"] == max(codes.values()) == 26600
+    with (ROOT / "evidence/2026-11-18-tp-finan-cnv-e-dbf/comparacao.csv").open(newline="") as f:
+        in_dbf = {row["codigo"] for row in csv.DictReader(f) if row["descricao_no_dbf"]}
+    assert {code: rows for code, rows in codes.items() if code not in in_dbf} == {
+        "021014": 1550,
+        "040082": 873,
+        "040084": 10,
+    }
+    text = issue("faec_tp", "faec_tp-faixa-de-reserva")
+    assert "os 32 códigos publicados estão entre os 100" in text
+    assert "(021014, 040082 e 040084, em 2.433 registros) não estão no DBF" in text
 
 
 def test_the_rd_files_of_the_federal_district_publish_a_uf_zi_only_a_range_reaches():
