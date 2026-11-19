@@ -59,6 +59,17 @@
   which `INVESTIG.CNV` does not) and `atestante` (the document calls `1` "Assistente",
   `ATESTANT.CNV` calls it "Sim"). No code or label changes. Versions: `sim_obitos` 2.11.0, the three subsets 1.6.0 (#184).
 
+- **Labels changed:** `esc2010` and `escmae2010` of `sim_obitos` (and of the three SIM subsets)
+  take the labels the Estrutura do SIM of 07/2025 writes (p. 2 and 3): `1` is "Fundamental I
+  (1ª a 4ª série)", not "Fundamental I (1-5 ano)"; `2` is "Fundamental II (5ª a 8ª série)", not
+  "Fundamental II (6-9 ano)"; `3` is "Médio (antigo 2º Grau)", not "Médio". The older labels
+  had no source; the edition of 12/2019 and the dictionary of the DOM table print the same
+  text, and `ESCSERIE.CNV` the same categories in another spelling (`Fundamental II(5ª a 8ª
+  serie)`, `Medio (antigo 2º Grau)`). `Obito_1996_CID10.def` binds the two fields to
+  `ESCCICLO.CNV`, which no downloaded file has, so the map is read from the document. `esc2010_rotulo` and `escmae2010_rotulo` change accordingly. The
+  claims go from `conflicting` to `unreviewed` (an agent read the page) and the issues are
+  `resolved`. Versions: `sim_obitos` 2.12.0, the three subsets 1.7.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same
