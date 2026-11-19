@@ -395,7 +395,8 @@ def test_occupation_joins_cbo2002_from_2006_only(con, dbc_fixture):
 
 def test_mother_occupation_joins_cbo2002_from_2006_only(con, dbc_fixture):
     """SIM ``ocupmae`` takes the reference of ``ocup``: `Obito_1996_CID10.def` binds both to
-    CBO2002.CNV, and DORR writes 6 digits from 2006 and 5 characters until 2005 in both."""
+    CBO2002.CNV, and DORR writes ``ocupmae`` with 6 digits from 2006 and 5 characters until
+    2005. The 2005 half relabels the 2023 fixture: no fixture of a year before 2006 exists."""
     frame = dbc_bytes_to_lazyframe(
         dbc_fixture("sim_rr_2023_mini").read_bytes(), dataset="sim_obitos", ano=2023, uf="RR"
     ).collect()

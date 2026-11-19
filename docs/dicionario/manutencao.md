@@ -153,7 +153,8 @@ mão: a claim passa a `verified_in_source` e o issue `cnv-difere-do-mapa-anterio
 `resolved`, guardando o texto do mapa anterior.
 
 Os campos de `sim_obitos_infantis`, `sim_obitos_maternos` e `sim_obitos_externos` são os
-de `sim_obitos` (os registros são do DO). Depois de mudar `sim_obitos.yaml`,
+de `sim_obitos` (os registros são do DO), menos a `derivation` de `idade`: sem
+`x-analytics`, os subconjuntos não criam as colunas harmonizadas. Depois de mudar `sim_obitos.yaml`,
 regenerar com `uv run --locked python scripts/metadados/gerar_subconjuntos_sim.py`; o teste
 `tests/unit/scripts/test_gerar_subconjuntos_sim.py` falha enquanto não se regenera.
 
