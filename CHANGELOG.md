@@ -90,21 +90,25 @@
   `sus.reference_join_sql("sim_obitos", "ocupmae")` now returns the join. Versions: `sim_obitos`
   2.13.0, the three subsets 1.9.0 (#184).
 
-- **Fields removed:** `covid_clas` and `mat_clas` leave `sim_obitos`. No official layout
-  document lists them and none of the 868 `DO<UF><year>` files on the server carries them:
-  `evidence/2026-11-18-sim-colunas-do/` has the columns of every file of `SIM/CID10/DORES`
-  (1996 to 2024) and `SIM/PRELIM/DORES` (2025 and 2026), read from the DBF headers on
-  2026-11-18. `sim_obitos` no longer declares `numerodo` as primary key: no file carries the
-  column. `numerodo`, `opor_do`, `tp_altera` and `cb_alt`, which a layout document describes
-  and no file carries, stay declared, each with an open issue that cites the evidence. The
-  issue of `ufinform` is resolved: the column is published from 2002 to 2010. Versions:
+- **Fields removed:** `covid_clas` and `mat_clas` leave `sim_obitos`. None of the four
+  registered layout documents lists them and none of the 1,011 files read carries them:
+  `evidence/2026-11-18-sim-colunas-do/` has the columns of every `DO` file of `SIM/CID10/DORES`
+  (1996 to 2024), `SIM/PRELIM/DORES` (2025 and 2026), `SIM/CID10/DOFET` and `SIM/PRELIM/DOFET`,
+  read from the DBF headers on 2026-11-18. `sim_obitos` no longer declares `numerodo` as
+  primary key: none of the 868 `DO<UF><year>` files carries the column. `numerodo`, `opor_do`,
+  `tp_altera` and `cb_alt`, which a layout document describes and no `DO<UF><year>` file
+  carries, stay declared, each with an open issue that cites the evidence; `DOREXT21.dbc`,
+  which omnisus does not import, is the one file with `NUMERODO`, `TP_ALTERA` and `CB_ALT`.
+  The issue of `ufinform` is resolved: the column is in the headers from 2002 to 2010. Versions:
   `sim_obitos` 2.14.0 (#184).
 
 - `evidence/2026-11-18-sim-valores-do/` counts the values of every coded field of `sim_obitos`
-  in 186 DO files of ten UF, 1996 to 2024 (2,557,540 records, each file with its SHA-256).
-  The open issues of `tppos`, `horaobito`, `codestab`, `seriescfal` and `seriescmae` now cite
-  it: `tppos` is never `1` or `2`, `horaobito` has 4 digits, `codestab` has 7, and no record
-  holds the `0` or `9` of `SERIEFAL.CNV`. A test lists the 17 fields whose files hold a value
+  in 186 DO files: six UF in every year from 1996 to 2024 and four more in 2006, 2015 and
+  2023 (2,557,540 records, each file with its SHA-256). The open issues of `tppos`,
+  `horaobito`, `codestab`, `seriescfal` and `seriescmae` now cite it: `tppos` is never `1` or
+  `2`; `horaobito` has 4 digits in 2,185,721 records, another shape in 1,324 and never
+  `00:00`; `codestab` has 7 digits in every filled record but one; no record holds the `0` or
+  `9` of `SERIEFAL.CNV`. A test lists the 17 fields whose files hold a value
   the map does not label. Versions: `sim_obitos` 2.15.0, the three subsets 1.10.0 (#184).
 
 ## v0.3.0 — 2026-11-17

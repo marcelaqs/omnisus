@@ -13,12 +13,18 @@ the script.
 - `seriescfal` and `seriescmae` are blank or `1` to `8`; never the `0` or `9` of `SERIEFAL.CNV`.
 - `esc2010` and `escmae2010` hold only `0` to `5`, `9` and blank.
 - `origem` is `1`, `2`, `3` or blank; never `01`, and never `9`.
-- `horaobito` has 4 digits in 2,185,721 records and 5 digits in 8; none is `00:00`.
+- `horaobito` has 4 digits in 2,185,721 records. Another 1,324 filled records have other
+  shapes: 872 with 4 letters, 344 with 2 or 3 digits, 8 with 5 digits and 100 with other
+  characters, among them one `99.99` and one `99;99` of 2011. None is `99:99`.
 - `codestab` has 7 digits in every filled record but one.
 - `ocup` and `ocupmae` have 5 characters until 2005 and 6 from 2007; 2006 has both.
 - `causamat` is blank in all but 35 records, which have the shape of a CID-10 code.
-- 17 fields hold values their map does not label, mostly `0` in 2002 and `8` or `A` until
-  2001; `tests/unit/test_sim_valores_medidos.py` lists every one.
+- 17 fields hold values their map does not label: `0` (in `esc` and `escmae` from 2009 to
+  2014, and in 12 fields of DORR2002), `8` and `A` until 2001, `acidtrab` 3 and 4 in 2008
+  and 2009, `tpmorteoco` 6 in 2015 and `versaoscb` 4.880 in 2015 and 2016.
+  `tests/unit/test_sim_valores_medidos.py` lists every one.
 
-Not covered: the other 17 UF in the years outside 2006, 2015 and 2023, the preliminary
-files and the national subsets.
+Outside 2006, 2015 and 2023 every count comes from the six small UF; BA, PA, RS and SP
+supply 1,479,982 of the records. A field counts only in the years whose files carry it:
+`tppos` and `horaobito` from 2006, `codestab` from 2001, `seriescfal` and `seriescmae` from
+2012. Not covered: the other 17 UF, the preliminary files and the national subsets.

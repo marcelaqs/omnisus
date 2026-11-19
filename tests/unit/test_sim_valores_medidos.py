@@ -3,7 +3,9 @@
 `evidence/2026-11-18-sim-valores-do/` counts the values of every coded field of
 `sim_obitos`, and the shape of a few others, in the files of AC, AP, DF, RR, SE and TO of
 every year from 1996 to 2024 and of BA, PA, RS and SP of 2006, 2015 and 2023: 2,557,540
-records, each file listed with its SHA-256.
+records, each file listed with its SHA-256. Most tests here pin the committed table: they
+fail when the table is measured again and differs, or when a map or an issue stops agreeing
+with it.
 """
 
 from __future__ import annotations
@@ -93,9 +95,11 @@ def test_no_file_holds_the_0_or_9_of_seriefal_cnv(name) -> None:
     assert CITATION in _issue(name, "seriefal-cnv-lista-0-e-9")
 
 
-def test_horaobito_is_four_digits_in_every_year() -> None:
+def test_horaobito_is_four_digits_and_never_the_form_of_the_document() -> None:
     shapes = _counts("shape")["horaobito"]
-    assert shapes["9999"] == 2_185_721 and shapes["99:99"] == 0 and shapes["99999"] == 8
+    filled = sum(n for shape, n in shapes.items() if shape)
+    assert (shapes["9999"], filled - shapes["9999"], shapes["99:99"]) == (2_185_721, 1_324, 0)
+    assert (shapes["AAAA"], shapes["99999"], shapes["999"] + shapes["99"]) == (872, 8, 344)
     assert CITATION in _issue("horaobito", "horaobito-formato-diverge-do-pdf")
 
 
