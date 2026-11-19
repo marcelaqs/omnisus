@@ -69,6 +69,21 @@
   the choice. The member is packaged from the `TAB_SIA.zip` republished on 2026-10-15
   (`sia-tab-1ce232b217c6`). `sus.label` now adds `ap_tippre_rotulo` for this dataset
   (#183).
+- `sia_apac_nefrologia` (1.9.0), from a census of the 2,145 `AN*.dbc` files the server
+  lists (6,534,272 records, `evidence/2026-11-18-censo-sia-an/`): no map and no type
+  changes; the open issues of the fields now carry what was counted. `ap_coidade`:
+  `2`, `3` and `5` are counted in AN files, and `0` (18 records) has no label (new
+  issue `codigo-sem-rotulo`). `ap_ufnacio`: 202 records hold a value `UFNACIO.CNV` does
+  not label (new issue `codigo-sem-rotulo`). `ap_natjur`: the field is in the 27 files
+  of 2011-12 and in `ANPA1410`, empty in 87,203 records and filled in 2. `ap_mndif` is
+  `1` in every record and `ap_ufdif` only `0` or `1`; the `SIMNAO.CNV` of `TAB_SIA.zip`,
+  now read, labels `S` and `N`, which no AN file publishes in either field. The six
+  dates say how many filled values read as `yyyyMMdd` in any year; `ap_dtsolic`,
+  `ap_dtaut` and `an_dtpdr` say how many do not, and how many files have a year outside
+  1900-2100 or after 2015 (issue `data-implausivel`, new in `ap_dtsolic`). `an_albumi`
+  and `an_hb` gain the open issue `escala-sem-documento`, with the records that hold
+  integer zero, integers from 1 to 9, integers from 10 to 99 and text such as `3,`; no
+  source read says the scale (#183).
 
 ### omnisus-dbf 0.2.2
 
