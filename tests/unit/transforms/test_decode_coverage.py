@@ -739,7 +739,8 @@ def test_sih_homonimo_and_gestor_tp_stay_undecoded_without_a_def(
     definition = load_dicionario("sih_aih_reduzida").field_def(field)
     assert "x-decode" not in definition
     (entry,) = [i for i in definition["x-metadata"]["issues"] if i["id"] == issue]
-    assert entry["status"] == "open" and "DEF" in entry["description"]
+    assert entry["status"] == "open"
+    assert f"nenhum dos {len(defs)} DEF empacotados" in " ".join(entry["description"].split())
 
 
 APAC_WITH_UNIT_MAP = [

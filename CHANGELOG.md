@@ -287,6 +287,10 @@
   fields are filled in the 4,379 of `RDAC0908.dbc`
   (`evidence/2026-11-19-sih-cabecalhos/rdac0909.csv`, which now also counts the rows in
   which each field is blank; #219).
+- `sih_aih_reduzida` (2.29.3): the issues `homonimo-sem-fonte` and `gestor_tp-sem-fonte`
+  say that none of the 38 packaged DEF names the field. They said 37, the count before
+  `APAC_Dados_Comuns.DEF` was packaged (#218); the test that reads every DEF now compares
+  the count in the text.
 
 ### omnisus-dbf 0.2.2
 
