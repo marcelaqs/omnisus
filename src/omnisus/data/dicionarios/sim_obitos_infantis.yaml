@@ -2,7 +2,7 @@ name: sim_obitos_infantis
 title: SIM — Óbitos infantis (DOINF), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.7.0
+x-version: 1.8.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_doinf_br_2023_excerpt.dbc, 87 fields; observed 2026-09-22
@@ -327,16 +327,6 @@ schema:
           a cada arquivo não foi conferida.
       physical_name: IDADE
       unit: encoded
-      derivation:
-        kind: coded_age
-        inputs:
-        - idade
-        rule_version: 1.2.0
-        output:
-        - idade_anos_completos
-        - idade_status
-        - idade_quantidade
-        - idade_unidade
       applicability:
         status: confirmed
         data_period: null

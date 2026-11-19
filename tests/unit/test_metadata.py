@@ -133,14 +133,15 @@ def test_age_derivation_output_is_what_the_harmonisation_creates():
         dataset = path.stem
         raw = load_dicionario(dataset).raw
         expected = [c for c in harmonised_inputs(raw.get("x-analytics")) if c.startswith("idade_")]
-        if not expected:  # SIM subsets copy sim_obitos' fields; they have no x-analytics
-            continue
         listed = [
             field["x-metadata"]["derivation"]["output"]
             for field in raw["schema"]["fields"]
             if "idade_anos_completos"
             in field.get("x-metadata", {}).get("derivation", {}).get("output", [])
         ]
+        if not expected:  # no age rule, so `sus.load` creates no age column (ADR 0003)
+            assert not listed, dataset
+            continue
         if listed:
             age_datasets.append(dataset)
         assert all(output == expected for output in listed), dataset

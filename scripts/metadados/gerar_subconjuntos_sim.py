@@ -6,6 +6,9 @@ DORR do ano; em 1996, 2005, 2015 e 2017 só difere `CONTADOR`, a numeração do 
 (evidência em `evidence/2026-09-23-sim-subconjuntos/`). O mesmo valor tem então o
 mesmo rótulo nos dois dicionários. O DOFET fica de fora: é outro registro, não cópia do DO.
 
+A `derivation` que lista colunas harmonizadas (`output`) não é copiada: os subconjuntos
+não têm `x-analytics`, então o `sus.load` não cria essas colunas neles (ADR 0003).
+
 Rodar de novo não muda nada; `--check` falha se algum dicionário mudaria.
 """
 
@@ -14,6 +17,7 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -24,10 +28,21 @@ from gerar_decode_cnv import DICIONARIOS, ROOT, replace_field
 SUBCONJUNTOS = ("sim_obitos_infantis", "sim_obitos_maternos", "sim_obitos_externos")
 
 
+def sem_saidas_harmonizadas(definition: dict[str, Any]) -> dict[str, Any]:
+    """The field without a derivation that lists harmonised columns, which no subset creates."""
+    meta = definition.get("x-metadata", {})
+    if "output" not in meta.get("derivation", {}):
+        return definition
+    return {**definition, "x-metadata": {k: v for k, v in meta.items() if k != "derivation"}}
+
+
 def generate() -> dict[Path, str]:
     """New text of each subset dictionary, with sim_obitos' definition of every shared field."""
     do_text = (DICIONARIOS / "sim_obitos.yaml").read_text(encoding="utf-8")
-    do = {f["name"]: f for f in yaml.load(do_text, Loader=yaml.CSafeLoader)["schema"]["fields"]}
+    do = {
+        f["name"]: sem_saidas_harmonizadas(f)
+        for f in yaml.load(do_text, Loader=yaml.CSafeLoader)["schema"]["fields"]
+    }
     out = {}
     for dataset in SUBCONJUNTOS:
         path = DICIONARIOS / f"{dataset}.yaml"

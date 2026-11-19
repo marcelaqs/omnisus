@@ -64,6 +64,13 @@
   claims go from `conflicting` to `unreviewed` (an agent read the page) and the issues are
   `resolved`. Versions: `sim_obitos` 2.12.0, the three subsets 1.7.0 (#184).
 
+- `sim_obitos_externos`, `sim_obitos_infantis` and `sim_obitos_maternos` no longer declare
+  that `idade` derives `idade_anos_completos`, `idade_status`, `idade_quantidade` and
+  `idade_unidade`. They have no `x-analytics`, so `sus.load` never created those columns in
+  them (ADR 0003); `gerar_subconjuntos_sim.py` copied the declaration from `sim_obitos` and now
+  leaves it out. Nothing `sus.load` returns changes. Validating DOEXT, DOINF and DOMAT files so
+  the subsets can have the age rule stays open in #177. Versions: the three subsets 1.8.0.
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same
