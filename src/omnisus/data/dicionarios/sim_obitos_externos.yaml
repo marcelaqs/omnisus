@@ -2,7 +2,7 @@ name: sim_obitos_externos
 title: SIM — Óbitos por causas externas (DOEXT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.4.0
+x-version: 1.5.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_doext_br_2023_excerpt.dbc, 87 fields; observed 2026-09-22
@@ -17,6 +17,7 @@ schema:
   - name: origem
     type: string
     label: Origem
+    description: Origem do registro.
     x-decode:
       '1': Oracle
       '2': Banco estadual via FTP
@@ -27,21 +28,45 @@ schema:
       - target: /field/codes
         value_sha256: 2a575282e815c11490547293aba879fa7968b5349f64f344b4b00b3f93e6bea4
         status: unreviewed
-        checked_at: '2026-11-15'
+        checked_at: '2026-11-18'
         method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
           sem revisor humano
         reviewer: null
         evidence:
+        - source_id: sim-b014389eca62
+          pages:
+          - 6
+          locator: 'ORIGEM, Caracter 1: 1 Oracle, 2 Banco estadual disponibilizado via FTP, 3 Banco SEADE,
+            9 Ignorado'
         - source_id: sim-b4195ac8e0f8
           pages:
           - 5
           locator: 'ORIGEM, Caracter 1: 01 Oracle, 02 Banco estadual disponibilizado via FTP, 03 Banco SEADE,
             9 Ignorado'
-        note: O PDF escreve 01, 02 e 03 (e 9) para um campo de 1 caractere; o x-decode usa '1', '2', '3'
-          e '9'. Os rótulos são abreviações do texto.
+        note: A edição de 12/2019 escreve 1, 2, 3 e 9, como o x-decode; a de 07/2025 escreve 01, 02 e 03
+          (e 9) para um campo de 1 caractere. Os rótulos são abreviações do texto.
+      - target: /field/description
+        value_sha256: fd1e53ff65f8f7987c099ba78065ce3dcbda0bcbf2dd39818c2054c39e46c65e
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b014389eca62
+          pages:
+          - 6
+          locator: ORIGEM, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. A edição de 07/2025 lista ORIGEM (p. 5) com a coluna Descrição
+          vazia; a descrição é a da edição de 12/2019.
   - name: tipobito
     type: integer
     label: Tipo do óbito
+    description: 'Tipo do óbito. Óbito fetal: morte antes da expulsão ou da extração completa do corpo da
+      mãe, independentemente da duração da gravidez. Indica o óbito o fato de o feto, depois da expulsão
+      do corpo materno, não respirar nem apresentar nenhum outro sinal de vida, como batimentos do coração,
+      pulsações do cordão umbilical ou movimentos efetivos dos músculos de contração voluntária.'
     x-decode:
       '1': Fetal
       '2': Não Fetal
@@ -59,6 +84,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XTipo Obito, TIPOBITO, 1, TIPOBITO.CNV; OBITOS_CID10_TAB/tabdo/TIPOBITO.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 045ecea71d3f7dc088d2d51ce9b326d96740dc16132bd6a9a2f7fab817d4e1f4
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          locator: TIPOBITO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -66,6 +105,7 @@ schema:
   - name: dtobito
     type: date
     label: Data do óbito
+    description: Data em que ocorreu o óbito.
     x-format: ddMMyyyy
     constraints:
       required: true
@@ -113,25 +153,98 @@ schema:
           - 1
           locator: 'Linha DTOBITO, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 43be00e33c963e61dd10e140e6831208df4f6e3a4fa1683d608afdf998a50341
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          locator: DTOBITO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: horaobito
     type: string
     label: Hora do óbito
+    description: Horário do óbito.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 84a0eac597d5a767373c24fb6c9293d2a1ec97c0e696e7150df2a24c7b0bb4bb
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          locator: HORAOBITO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
+      issues:
+      - id: horaobito-formato-diverge-do-pdf
+        status: open
+        description: O Estrutura_do_SIM_2025.pdf (p. 1) declara HORAOBITO com 5 caracteres, 'Números (padrão
+          24 horas 00:00)'. DORR2022 e DORR2023 gravam 4 dígitos, HHMM, sem os dois-pontos (por exemplo
+          '0600'), ou branco. O campo fica sem x-format até um documento descrever o que o arquivo grava.
   - name: natural
     type: string
     label: Naturalidade
-    description: Município/UF de naturalidade. Se estrangeiro, código do país.
+    description: Município e Unidade da Federação onde o falecido nasceu. Se estrangeiro, informar o país.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: b8e7adc618bd1626cf422e584e49d50736b04b14c87b852a41ae67dbf53354f2
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          locator: NATURAL, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. A descrição anterior, sem fonte, dizia 'Município/UF de naturalidade.
+          Se estrangeiro, código do país.'
   - name: codmunnatu
     type: string
     label: Município de naturalidade
+    description: Código do município de naturalidade do falecido.
     x-normalization-hint: lpad_6
     foreignKeys:
     - fields: codmunnatu
       reference:
         resource: aux_municipios
         fields: codigo_6
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: d5f754a9025de1c50eb643574a117db39bb8ca177aa39069fbb0ad3ea05be77f
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          locator: CODMUNNATU, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: dtnasc
     type: date
     label: Data de nascimento
+    description: Data do nascimento do falecido. Em caso de óbito fetal, as datas de óbito e nascimento
+      deverão ser iguais.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTNASC
@@ -177,10 +290,40 @@ schema:
           - 1
           locator: 'Linha DTNASC, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 15bf824b6d7d34120d931da54148d3d7a74beb55c12296d48b5f4499235fb775
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          locator: DTNASC, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: idade
     type: string
     label: Idade
+    description: Idade do falecido em minutos, horas, dias, meses ou anos.
     x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 784172523d10ebc7a273edf44d08c832cd2290d7b54c02c057c9a843b9a326ff
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 2
+          locator: IDADE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       physical_name: IDADE
       unit: encoded
       derivation:
@@ -210,6 +353,8 @@ schema:
   - name: sexo
     type: string
     label: Sexo
+    description: Sexo do falecido. “Ignorado” selecionada em casos especiais como cadáveres mutilados, em
+      estado avançado de decomposição, genitália indefinida ou hermafroditismo.
     x-decode:
       '0': Ignorado
       '1': Masculino
@@ -270,9 +415,24 @@ schema:
           - 2
           locator: Linha10 SEXO
         note: Applies only to audited source identities.
+      - target: /field/description
+        value_sha256: 67eafe022cb2a4f6c6f34e5325ac08d5bf40288c802e833f6464e759d1e90bb6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 2
+          locator: SEXO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: racacor
     type: integer
     label: Raça/cor
+    description: Cor informada pelo responsável pelas informações do falecido.
     x-decode:
       ? ''
       : N Inf
@@ -294,6 +454,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XRaca Cor, RACACOR, 1, RACACOR.CNV; OBITOS_CID10_TAB/tabdo/RACACOR.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 500201f66820f9f7c6718e75c9ae876b0b7d70d94eaa5966e31bb74a8b15fdbb
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 2
+          locator: RACACOR, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -302,6 +476,7 @@ schema:
   - name: estciv
     type: integer
     label: Situação conjugal
+    description: Situação conjugal do falecido informada pelos familiares.
     x-decode:
       ? ''
       : N Inf
@@ -325,6 +500,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XEstado Civil, ESTCIV, 1, ESTCIV.CNV; OBITOS_CID10_TAB/tabdo/ESTCIV.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 65d9e757c4272726466e72543570286f4333d9b8721ebaff5f08ebc2a9c5cf3a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 2
+          locator: ESTCIV, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -333,6 +522,7 @@ schema:
   - name: esc
     type: string
     label: Escolaridade (antigo)
+    description: Escolaridade em anos.
     x-decode:
       ? ''
       : N Inf
@@ -355,6 +545,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XEscol anos concl, ESC, 1, INSTRUC.CNV; OBITOS_CID10_TAB/tabdo/INSTRUC.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: ae53d9135ffdf30d7fe2a6d6f07d87db72ae429e92ddf4ad228ce7bc37552fdd
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: ESC, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -364,6 +568,7 @@ schema:
   - name: esc2010
     type: string
     label: Escolaridade (2010)
+    description: Escolaridade 2010. Nível da última série concluída pelo falecido.
     x-decode:
       '0': Sem escolaridade
       '1': Fundamental I (1-5 ano)
@@ -390,6 +595,20 @@ schema:
         note: 'Os códigos batem, mas os rótulos de ''1'' e ''2'' não: o x-decode diz ''1-5 ano'' e ''6-9
           ano'', o PDF diz ''1ª a 4ª série'' e ''5ª a 8ª série''. O Obito_1996_CID10.def liga o campo a
           ESCSERIE.CNV e ESCCICLO.CNV, que o OBITOS_CID10_TAB.zip não traz.'
+      - target: /field/description
+        value_sha256: 500f9ded1778914aba57053629d78cb7e969167a7fd44f8c34bb2026dda5faca
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 2
+          locator: ESC2010, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: esc2010-rotulo-diverge-do-pdf
         status: open
@@ -397,12 +616,17 @@ schema:
           não são os do Estrutura_do_SIM_2025.pdf (p. 2: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum
           CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo
           NASCIDO.def, linha 79) traz ''1'' como ''Fundamental I (1 a 4 Serie)'' e ''2'' como ''Fundamental
-          II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESC2010 a ESCSERIE.CNV e ESCCICLO.CNV,
-          ausentes do OBITOS_CID10_TAB.zip. O mapa fica como estava até o mantenedor escolher entre o PDF
-          e o rótulo atual.'
+          II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESC2010 a ESCCICLO.CNV, ausente do
+          OBITOS_CID10_TAB.zip, e cita ESCSERIE.CNV numa linha comentada (linha 72). ESCSERIE.CNV está no
+          zip em tabdo, tabinf e tabmat, com os mesmos bytes (SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10,
+          lido em 2026-11-18), e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental
+          II(5ª a 8ª serie)'', como o PDF. Os DEF dos subconjuntos, no mesmo zip, citam esse CNV para ESC2010:
+          tabinf/OBITO_Infantil.DEF na linha 410 (ativa) e tabmat/OBITOMAT.DEF na linha 310 (ativa). O mapa
+          fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
   - name: seriescfal
     type: string
     label: Escolaridade (série)
+    description: Última série escolar concluída pelo falecido.
     x-decode:
       ? ''
       : N Inf
@@ -429,6 +653,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: x*Escol falec SERIE, SERIESCFAL, 1, SERIEFAL.CNV; OBITOS_CID10_TAB/tabdo/SERIEFAL.CNV'
         note: Mapa do CNV.
+      - target: /field/description
+        value_sha256: e2a0a4b56401eb63db679c433cc9c4092fd60bbdd9191dac5c528b4778c58371
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 2
+          locator: SERIESCFAL, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: def-liga-por-linha-x
         status: open
@@ -457,15 +695,34 @@ schema:
   - name: codmunres
     type: string
     label: Município de residência
+    description: Código do município de residência. Em caso de óbito fetal, considerar o município de residência
+      da mãe.
     x-normalization-hint: lpad_6
     foreignKeys:
     - fields: codmunres
       reference:
         resource: aux_municipios
         fields: codigo_6
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ca072d78a6013b3d94582a2dcb586b7e191947228ba9c71bdbeddebc80797fc1
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: CODMUNRES, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: lococor
     type: string
     label: Local de ocorrência
+    description: Local de ocorrência do óbito.
     x-decode:
       '1': Hospital
       '2': Outro Estab de Saúde
@@ -487,6 +744,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XLocal Ocorrencia, LOCOCOR, 1, LOCOCOR.CNV; OBITOS_CID10_TAB/tabdo/LOCOCOR.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 4d397d3641667b21633c78ddbe9efa2468b427648c030857c68632844c9018e9
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: LOCOCOR, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -510,24 +781,122 @@ schema:
       reference:
         resource: aux_cnes
         fields: cnes
+    x-metadata:
+      issues:
+      - id: codestab-tamanho-diverge-do-pdf
+        status: open
+        description: O Estrutura_do_SIM_2025.pdf (p. 3) declara CODESTAB com 8 caracteres. Em DORR2022,
+          DORR2023 e nos excertos de DOEXT, DOINF e DOMAT de 2023, todo valor preenchido tem 7 dígitos.
+          O Estrutura_SIM_Anterior.pdf declara CODESTAB com C(07) nos dois layouts (p. 2, de 2006, e p.
+          6, até 2005); o dicionário da tabela DOM (p. 4), com 8.
   - name: estabdescr
     type: string
     label: Estabelecimento (descrição)
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
+        status: not_found
+        checked_at: '2026-11-18'
+        method: Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: ESTABDESCR não aparece na coluna de nome do campo
+        - source_id: sim-b014389eca62
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: ESTABDESCR não aparece na coluna de nome do campo
+        - source_id: sim-anterior-13cabba0b9a1
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          locator: ESTABDESCR não aparece na coluna de nome do campo
+        - source_id: sim-dom-fb396a277981
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          locator: ESTABDESCR não aparece na coluna de nome do campo
+        note: Nenhum dos quatro documentos lista o campo.
   - name: codmunocor
     type: string
     label: Município de ocorrência
+    description: Código relativo ao município onde ocorreu o óbito.
     x-normalization-hint: lpad_6
     foreignKeys:
     - fields: codmunocor
       reference:
         resource: aux_municipios
         fields: codigo_6
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 44b9888c8aeaedef2c121f5d5ea20deb12bb42e3c17ab71df19d09643b19e8ae
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: CODMUNOCOR, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: idademae
     type: integer
     label: Idade da mãe
+    description: Idade da mãe.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 64485c79784c4f98e42ae2cdc97a16e371617bf7075ef87fb97ace65dd86ef9f
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: IDADEMAE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: escmae
     type: string
     label: Escolaridade da mãe (antigo)
+    description: Escolaridade da mãe em anos.
     x-decode:
       ? ''
       : N Inf
@@ -550,6 +919,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XEscolMãe anos concl, ESCMAE, 1, INSTRUC.CNV; OBITOS_CID10_TAB/tabdo/INSTRUC.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 3073b9561674db6ce979d39a4629575774951c5e5234d4284c138f90b19cc413
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: ESCMAE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -559,6 +942,7 @@ schema:
   - name: escmae2010
     type: string
     label: Escolaridade da mãe (2010)
+    description: Escolaridade 2010. Nível da última série concluída pela mãe.
     x-decode:
       '0': Sem escolaridade
       '1': Fundamental I (1-5 ano)
@@ -585,6 +969,20 @@ schema:
         note: 'Os códigos batem, mas os rótulos de ''1'' e ''2'' não: o x-decode diz ''1-5 ano'' e ''6-9
           ano'', o PDF diz ''1ª a 4ª série'' e ''5ª a 8ª série''. O Obito_1996_CID10.def liga o campo a
           ESCSERIE.CNV e ESCCICLO.CNV, que o OBITOS_CID10_TAB.zip não traz.'
+      - target: /field/description
+        value_sha256: 258b626e58f750cecaf7b2ba71a73a1502a7d409179fd1e237a264aeacb992dd
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: ESCMAE2010, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: escmae2010-rotulo-diverge-do-pdf
         status: open
@@ -592,12 +990,17 @@ schema:
           não são os do Estrutura_do_SIM_2025.pdf (p. 3: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum
           CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo
           NASCIDO.def, linha 79) traz ''1'' como ''Fundamental I (1 a 4 Serie)'' e ''2'' como ''Fundamental
-          II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESCMAE2010 a ESCSERIE.CNV e ESCCICLO.CNV,
-          ausentes do OBITOS_CID10_TAB.zip. O mapa fica como estava até o mantenedor escolher entre o PDF
-          e o rótulo atual.'
+          II (5 a 8 Serie)'', como o PDF. O Obito_1996_CID10.def liga ESCMAE2010 a ESCCICLO.CNV, ausente
+          do OBITOS_CID10_TAB.zip, e cita ESCSERIE.CNV numa linha comentada (linha 315). ESCSERIE.CNV está
+          no zip em tabdo, tabinf e tabmat, com os mesmos bytes (SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10,
+          lido em 2026-11-18), e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental
+          II(5ª a 8ª serie)'', como o PDF. Os DEF dos subconjuntos, no mesmo zip, citam esse CNV para ESCMAE2010:
+          tabinf/OBITO_Infantil.DEF na linha 507 (comentada) e tabmat/OBITOMAT.DEF na linha 405 (ativa).
+          O mapa fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
   - name: seriescmae
     type: string
     label: Escolaridade da mãe (série)
+    description: Última série escolar concluída pela mãe.
     x-decode:
       ? ''
       : N Inf
@@ -624,6 +1027,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: x*Escol Mãe SERIE, SERIESCMAE, 1, SERIEFAL.CNV; OBITOS_CID10_TAB/tabdo/SERIEFAL.CNV'
         note: Mapa do CNV.
+      - target: /field/description
+        value_sha256: d662c0964603bdf5b70acfb636e63a5ca73c3ddf66430c8bca0f2eb81b838e26
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: SERIESCMAE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: def-liga-por-linha-x
         status: open
@@ -640,15 +1057,69 @@ schema:
   - name: ocupmae
     type: string
     label: Ocupação da mãe
+    description: Tipo de trabalho exercido habitualmente pela mãe, de acordo com a Classificação Brasileira
+      de Ocupações – CBO 2002. No caso de a mãe do falecido(a) ser “aposentada”, preencher com a ocupação
+      habitual anterior.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 1ebb1bdf4708a1469609df2c0165166f22da38ef4268f9f3f5042f7b11da75d9
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: OCUPMAE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: qtdfilvivo
     type: integer
     label: Filhos nascidos vivos
+    description: Número de filhos vivos.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 50f9cac101e833e98b8b059806d9076e0ab6152cb8783e171a5f9e86a5e510e8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: QTDFILVIVO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: qtdfilmort
     type: integer
     label: Filhos mortos
+    description: Número de filhos mortos. Não incluir a criança cujo óbito se notifica na respectiva DO.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: dab12b5d44e270d5ca017f3da679bb9624e9629c0e52f1855084b2c5d182dcfc
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 3
+          locator: QTDFILMORT, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: gravidez
     type: string
     label: Tipo de gravidez
+    description: Tipo de gravidez.
     x-decode:
       ? ''
       : N inf
@@ -669,6 +1140,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XGravidez, GRAVIDEZ, 1, GRAVIDEZ.CNV; OBITOS_CID10_TAB/tabdo/GRAVIDEZ.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: aea102bd6174f690c710e87af9847b1b25c889a4ed949de2fe7968fcff402cf6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: GRAVIDEZ, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -677,9 +1162,27 @@ schema:
   - name: semagestac
     type: integer
     label: Semanas de gestação
+    description: Semanas de gestação com dois algarismos.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 0dd1a4a784933774ccaf93a1e44df3be8e4f3facf6bc3c0f6c35f1de0fbb9276
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: SEMAGESTAC, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: gestacao
     type: string
     label: Gestação (faixas)
+    description: Faixas de semanas de gestação.
     x-decode:
       ? ''
       : N inf
@@ -703,6 +1206,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XSemanas Gestação, GESTACAO, 1, SEMANAS.CNV; OBITOS_CID10_TAB/tabdo/SEMANAS.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: f2fb0d0816dcb0a54985dde3375164bb768c150b59d8b5a16db5c7837761fcb5
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 9
+          locator: GESTACAO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -713,6 +1230,7 @@ schema:
   - name: parto
     type: string
     label: Tipo de parto
+    description: Tipo de parto.
     x-decode:
       ? ''
       : Não informado
@@ -732,6 +1250,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XTipo Parto, PARTO, 1, PARTO.CNV; OBITOS_CID10_TAB/tabdo/PARTO.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: f127b800637f5130d01be64523200029579983285705926494cffd2c79265e73
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: PARTO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -739,6 +1271,7 @@ schema:
   - name: obitoparto
     type: string
     label: Morte em relação ao parto
+    description: Momento do óbito em relação ao parto.
     x-decode:
       ? ''
       : N Inf
@@ -759,6 +1292,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XObito Parto, OBITOPARTO, 1, OPARTO.CNV; OBITOS_CID10_TAB/tabdo/oparto.cnv'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 0c491f0b9b96a44aead9981cee7da84967c80bf1c02b46f3f02b8bcc794d3fb8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: OBITOPARTO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -766,10 +1313,28 @@ schema:
   - name: peso
     type: integer
     label: Peso ao nascer
-    description: Peso ao nascer em gramas (óbito fetal/menor 1 ano).
+    description: Peso ao nascer em gramas.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 3dab5525e457adaec3cc31365f4e4646544ca416447c845afa0c234753e40d59
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: PESO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. A descrição anterior, sem fonte, trazia '(óbito fetal/menor
+          1 ano)', que o documento não diz.
   - name: tpmorteoco
     type: string
     label: Morte durante gestação/puerpério
+    description: Situação gestacional ou pós-gestacional em que ocorreu o óbito.
     x-decode:
       ? ''
       : N Inf
@@ -793,6 +1358,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: X*Ob Mulher id Fert, TPMORTEOCO, 1, OMUFER.CNV; OBITOS_CID10_TAB/tabdo/OMUFER.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 36d25e1c64c9da296cfd2f4cd58e0f3fca2b26d6d465e2f557078308c128b809
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: TPMORTEOCO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -803,6 +1382,7 @@ schema:
   - name: obitograv
     type: string
     label: Óbito na gravidez
+    description: Óbito na gravidez.
     x-decode:
       ? ''
       : N Inf
@@ -822,6 +1402,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XObito na Gravidez, OBITOGRAV, 1, OBITOGRA.CNV; OBITOS_CID10_TAB/tabdo/obitogra.cnv'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 35ca3db7567208703083341b99163ec2f4ddb51c74fabeeb099263b95dab5ddf
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: OBITOGRAV, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -830,6 +1424,7 @@ schema:
   - name: obitopuerp
     type: string
     label: Óbito no puerpério
+    description: Óbito no puerpério.
     x-decode:
       ? ''
       : N Inf
@@ -850,6 +1445,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XObito no Puerp, OBITOPUERP, 1, OBITOPUE.CNV; OBITOS_CID10_TAB/tabdo/obitoPUE.cnv'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 7c46e64bcff475afd763c9332523277172c8630acb195f6254d2d3604fc96139
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: OBITOPUERP, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -859,6 +1468,8 @@ schema:
   - name: assistmed
     type: string
     label: Assistência médica
+    description: Refere-se ao atendimento médico continuado que o paciente recebeu, ou não, durante a enfermidade
+      que ocasionou o óbito.
     x-decode:
       '1': Sim
       '2': Não
@@ -878,9 +1489,24 @@ schema:
           - 4
           locator: 'ASSISTMED, Caracter 1: 1 sim; 2 não; 9 ignorado'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
+      - target: /field/description
+        value_sha256: cd3da60e01ca5733d70eb8ef07306e40758c9ca6a228dec52b2bead19104bdca
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: ASSISTMED, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: exame
     type: string
     label: Exame
+    description: Realização de exame.
     x-decode:
       ? ''
       : N Inf
@@ -900,6 +1526,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XExame complem, EXAME, 1, EXAME.CNV; OBITOS_CID10_TAB/tabdo/EXAME.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 777a705d94dcba8ac253d6879b7f97d108113fc32fb13f578e5933595b0ccc09
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: EXAME, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -907,6 +1547,7 @@ schema:
   - name: cirurgia
     type: string
     label: Cirurgia
+    description: Realização de cirurgia.
     x-decode:
       ? ''
       : N Inf
@@ -926,6 +1567,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XCirurgia, CIRURGIA, 1, CIRURGIA.CNV; OBITOS_CID10_TAB/tabdo/CIRURGIA.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 74de7a6f84b9a4e8270ccab1d34fd47886453950d26b99b36cdb640e3f4c0942
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: CIRURGIA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -933,6 +1588,7 @@ schema:
   - name: necropsia
     type: string
     label: Necropsia
+    description: Refere-se à execução ou não de necropsia para confirmação do diagnóstico.
     x-decode:
       ? ''
       : N Inf
@@ -952,6 +1608,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XNecropsia, NECROPSIA, 1, NECROPS.CNV; OBITOS_CID10_TAB/tabdo/NECROPS.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: b4774bb71de9c7ebb0c5094ef338434d6937ccaeab499a2c98395d8d55e799f0
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 4
+          locator: NECROPSIA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -979,9 +1649,27 @@ schema:
   - name: linhaii
     type: string
     label: Causas — Parte II
+    description: CIDs informados na Parte II da DO.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 745a84fed7965a510c072fd9d74ba09626d9c732d8ed862b2184629ec5d970b5
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: LINHAII, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: causabas
     type: string
     label: Causa básica
+    description: Causa básica da DO.
     constraints:
       required: true
       pattern: ^[A-Z]\d{2}\.?\d?$
@@ -990,26 +1678,80 @@ schema:
       reference:
         resource: aux_cid10
         fields: codigo
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 01e75527cb5fbb66b17cc05034cacbb4e3b4f4775a9848f330fdffab3dfdbda5
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: CAUSABAS, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: cb_pre
     type: string
     label: Causa básica pré-seleção
+    description: Causa básica informada antes da resseleção (localidade).
     foreignKeys:
     - fields: cb_pre
       reference:
         resource: aux_cid10
         fields: codigo
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 90c9177a5a86c8505dfd654ef717ad424cbeb14355dc2df9e7a9efc1ecd95ef9
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b014389eca62
+          pages:
+          - 9
+          locator: CB_PRE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. A edição de 07/2025 não lista CB_PRE; a descrição é a da edição
+          de 12/2019. A estrutura de 2006 (sim-anterior-13cabba0b9a1, p. 4) diz 'Causa selecionada sem re-seleção
+          (novo SCB)' e o dicionário da tabela DOM (sim-dom-fb396a277981, p. 7) diz 'Causa básica informada
+          antes da resseleção (NRESSELE)'.
   - name: comunsvoim
     type: string
     label: Município SVO/IML
+    description: Código do município do SVO ou do IML.
     x-normalization-hint: lpad_6
     foreignKeys:
     - fields: comunsvoim
       reference:
         resource: aux_municipios
         fields: codigo_6
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 0f85f4a676d9c3208986b381cb077e9e23c4f4c487592d8dfd714a5e9da278ab
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: COMUNSVOIM, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: dtatestado
     type: date
     label: Data do atestado
+    description: Data em que o atestado foi assinado.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTATESTADO
@@ -1055,9 +1797,24 @@ schema:
           - 5
           locator: 'Linha DTATESTADO, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 8fdadc5fbe27131cd25602fddd768ca8b33f484bdb585d0de4b4215941f9b05c
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: DTATESTADO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: circobito
     type: string
     label: Circunstância do óbito
+    description: Tipo de morte violenta ou circunstâncias em que se deu a morte não natural.
     x-decode:
       ? ''
       : N Inf
@@ -1079,6 +1836,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XTipo de Violencia, CIRCOBITO, 1, TIPOVIOL.CNV; OBITOS_CID10_TAB/tabdo/TIPOVIOL.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 3d26ad19d5df4e900528de1a324bb9ad551d26a1d0fcfeff8d56cf565db2d052
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: CIRCOBITO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1087,6 +1858,7 @@ schema:
   - name: acidtrab
     type: string
     label: Acidente de trabalho
+    description: Indica se o evento que desencadeou o óbito está relacionado ao processo de trabalho.
     x-decode:
       ? ''
       : Em branco
@@ -1106,6 +1878,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XAcid Trabalho, ACIDTRAB, 1, ACIDTRAB.CNV; OBITOS_CID10_TAB/tabdo/ACIDTRAB.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 12e4d305ea8202e41e20e302f3000e2e3830e4bbb1960549bb4c77a8e8ebd061
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: ACIDTRAB, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1113,6 +1899,7 @@ schema:
   - name: fonte
     type: string
     label: Fonte da informação
+    description: Fonte de informação utilizada para o preenchimento dos campos 48 e 49.
     x-decode:
       ? ''
       : N Inf
@@ -1134,6 +1921,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XFonte Informac, FONTE, 1, FONTINFO.CNV; OBITOS_CID10_TAB/tabdo/FONTINFO.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 915b57eaff90d8844e3c9af8a7d51ea8a31fdff07d91d924c3ef55c3954f0ce1
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: FONTE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1142,9 +1943,27 @@ schema:
   - name: numerolote
     type: string
     label: Número do lote
+    description: Número do lote.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 744fb92f5f2ad7e45636cbe15896697c84a8906505ac63715b378f9a881455b8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: NUMEROLOTE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: tppos
     type: string
     label: Óbito investigado
+    description: Óbito investigado.
     x-decode:
       ? ''
       : N Informado
@@ -1163,7 +1982,27 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XObito investigado, TPPOS, 1, INVESTIG.CNV; OBITOS_CID10_TAB/tabdo/INVESTIG.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: e5c350acaa9926c1dbae45cfbdcf1829e09f011649a1702314acd42578a668b0
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: TPPOS, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
+      - id: tppos-codigos-divergem-do-pdf
+        status: open
+        description: O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos '1 – sim; 2 – não'. DORR2022,
+          DORR2023 e os excertos de DOEXT, DOINF e DOMAT de 2023 gravam S, N ou branco, as chaves do INVESTIG.CNV,
+          que o Obito_1996_CID10.def liga ao campo numa linha X (a ressalva dessas linhas está no issue
+          def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo.
       - id: cnv-difere-do-mapa-anterior
         status: open
         description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Investigado'';
@@ -1172,6 +2011,7 @@ schema:
   - name: dtinvestig
     type: date
     label: Data da investigação
+    description: Data da investigação do óbito.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTINVESTIG
@@ -1217,17 +2057,50 @@ schema:
           - 6
           locator: 'Linha DTINVESTIG, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 080360bd6c9869adfe032f171857ad158716ccf66b9b3895b9673f2a81f67227
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: DTINVESTIG, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: causabas_o
     type: string
     label: Causa básica original
+    description: Causa básica informada antes da resseleção.
     foreignKeys:
     - fields: causabas_o
       reference:
         resource: aux_cid10
         fields: codigo
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: b2e4fba59cd047f03500502f6d4f90096c2229dc95d5b775e633c69a7afae791
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: CAUSABAS_O, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. O documento tem uma segunda linha CAUSABAS_O, na p. 8, com a
+          descrição 'Causa básica Original'.
   - name: dtcadastro
     type: date
     label: Data do cadastro
+    description: Data do cadastro do óbito.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTCADASTRO
@@ -1273,9 +2146,24 @@ schema:
           - 6
           locator: 'Linha DTCADASTRO, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 7e7f0f41cf60a02aa863d2aa3bc124591d7d264c77ea6f2deecfb565887507a8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: DTCADASTRO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: atestante
     type: string
     label: Médico atestante
+    description: Condição do médico atestante.
     x-decode:
       ? ''
       : N Inf
@@ -1298,6 +2186,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XMedico Atest, ATESTANTE, 1, ATESTANT.CNV; OBITOS_CID10_TAB/tabdo/ATESTANT.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: a5e2105c0567a798a51fb23958dba37e03843c089a6af0077199569c446adc11
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 5
+          locator: ATESTANTE, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1305,6 +2207,7 @@ schema:
   - name: stcodifica
     type: string
     label: Status codificação
+    description: Status de instalação.
     x-decode:
       ? ''
       : N Inf
@@ -1323,6 +2226,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XTp instal SCB, STCODIFICA, 1, CODIFICA1.CNV; OBITOS_CID10_TAB/tabdo/CODIFICA1.cnv'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 3f5546d76ea3b144e90de3565494f017b09ff4f2cdfe986a3035df2e3369d4c2
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: STCODIFICA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1331,6 +2248,7 @@ schema:
   - name: codificado
     type: string
     label: Codificado
+    description: Informa se o formulário foi codificado.
     x-decode:
       S: Codificado
       N: Não codificado
@@ -1349,12 +2267,44 @@ schema:
           - 6
           locator: 'CODIFICADO, Caracter 1: S se estiver codificado; N se não'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
+      - target: /field/description
+        value_sha256: 4730246174647bf3f31bbf856f09f92637140ed987bc30bdf30006d56cc6d7d2
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: CODIFICADO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: versaosist
     type: string
     label: Versão do sistema
+    description: Versão do sistema.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: e361a8b45aae526b770db4830ce800dd2cfee56549cb30b63cc66264b68d5574
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: VERSAOSIST, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: versaoscb
     type: string
     label: Versão SCB
+    description: Versão do seletor de causa básica.
     x-decode:
       ? ''
       : CD sem Patch
@@ -1391,9 +2341,24 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XVersao SCB, VERSAOSCB, 1, VERSCB.CNV; OBITOS_CID10_TAB/tabdo/VERSCB.CNV'
         note: Mapa do CNV.
+      - target: /field/description
+        value_sha256: 88846ceb368f5107096bb51c8a4ae851a503d9b9eed0afcb72d7b088361ff57d
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: VERSAOSCB, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: fonteinv
     type: string
     label: Fonte de investigação
+    description: Fonte de investigação.
     x-decode:
       ? ''
       : N Inf
@@ -1419,6 +2384,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: XFonte Investig, FONTEINV, 1, FONTEINV.CNV; OBITOS_CID10_TAB/tabdo/FONTEINV.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 77794d725cf8d3aa1924a45575a9b03309801d42d9f8b173fee3bfb3825ced0b
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: FONTEINV, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1431,6 +2410,7 @@ schema:
   - name: dtrecebim
     type: date
     label: Data recebimento
+    description: Data do recebimento.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTRECEBIM
@@ -1476,12 +2456,44 @@ schema:
           - 6
           locator: 'Linha DTRECEBIM, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 53299ede922d1212d95258a40024ccf14f088612a8dd8b27fd0a896296efc31e
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: DTRECEBIM, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: atestado
     type: string
     label: Atestado (texto)
+    description: CIDs informados no atestado.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 5e8132d2168b1eb4e59b7dcbfba0b96fb5f14131d663e31b910bea04c56c9dec
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: ATESTADO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: dtrecoriga
     type: date
     label: Data recebimento original
+    description: Campo criado no tratamento para data do recebimento original.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTRECORIGA
@@ -1527,17 +2539,49 @@ schema:
           - 6
           locator: 'Linha DTRECORIGA, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: ec8d9883e9911aa495589b1c4d084225d3e45b4ac82426c419fe81c89baa65ce
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: DTRECORIGA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: causamat
     type: string
     label: Causa materna
+    description: CID da causa externa associada a uma causa materna.
     foreignKeys:
     - fields: causamat
       reference:
         resource: aux_cid10
         fields: codigo
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 055ddd4d53f4c0d17348088501d8b9a13d420fa313759f7f27efb6e75091db62
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 6
+          locator: CAUSAMAT, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: escmaeagr1
     type: string
     label: Escolaridade da mãe agregada
+    description: Escolaridade da mãe agregada (formulário a partir de 2010).
     x-decode:
       ? ''
       : N Inf
@@ -1567,6 +2611,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: X*EscMãe1CICLO/SERIE, ESCMAEAGR1, 1, ESCAGR1.CNV; OBITOS_CID10_TAB/tabdo/ESCAGR1.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 1ac4752412328f642fbfd4904bd0adf8fb158b3a0a6ab7798918fcf0d7f798bd
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: ESCMAEAGR1, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1583,6 +2641,7 @@ schema:
   - name: escfalagr1
     type: string
     label: Escolaridade agregada
+    description: Escolaridade do falecido agregada (formulário a partir de 2010).
     x-decode:
       ? ''
       : N Inf
@@ -1612,6 +2671,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: X*EscFal1CICLO/SERIE, ESCFALAGR1, 1, ESCAGR1.CNV; OBITOS_CID10_TAB/tabdo/ESCAGR1.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 9d28c4c99ec595be53990038647a8d0677825d9ce046db36cc57b2fb100506fd
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: ESCFALAGR1, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1628,6 +2701,7 @@ schema:
   - name: stdoepidem
     type: string
     label: Status DO epidemiológica
+    description: Status de DO Epidemiológica.
     x-decode:
       '0': Não
       '1': Sim
@@ -1644,9 +2718,24 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: X*DO epidemiologica, STDOEPIDEM, 1, DONOVA.CNV; OBITOS_CID10_TAB/tabdo/DONOVA.CNV'
         note: Mapa do CNV.
+      - target: /field/description
+        value_sha256: f19651e805a898350df3b5e2aedaef7c1b545ab0ef64c65d3e0aa3761d7a89fc
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: STDOEPIDEM, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: stdonova
     type: string
     label: Status DO nova
+    description: Status de DO Nova.
     x-decode:
       '0': Não
       '1': Sim
@@ -1663,6 +2752,20 @@ schema:
           pages: []
           locator: 'Obito_1996_CID10.def: X*DO novo modelo, STDONOVA, 1, DONOVA.CNV; OBITOS_CID10_TAB/tabdo/DONOVA.CNV'
         note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+      - target: /field/description
+        value_sha256: 778af9746a02501b8bc0ac8f7e50c1b11169c95db44cd1c16e3e5262da51cfbe
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: STDONOVA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
         status: open
@@ -1671,15 +2774,69 @@ schema:
   - name: difdata
     type: integer
     label: Diferença de datas
+    description: Diferença entre a data de óbito e a data do recebimento original da DO ([DTOBITO] – [DTRECORIG]).
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 09f4b821dc41c9facc614a5fce48f4a96029936a63520576574d6222f04ca447
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: DIFDATA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: nudiasobco
     type: integer
-    label: Dias óbito-codificação
+    label: Dias óbito-conclusão da investigação
+    description: Diferença entre a data do óbito e a data de conclusão da investigação, em dias.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 134481d2a075a267f9bd266af5f3e60b2b9f9a88cdf7016351c9b05e22c398fb
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: NUDIASOBCO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: nudiasobin
     type: integer
     label: Dias óbito-investigação
+    description: Diferença entre a data do óbito e a data de cadastro da investigação, em dias.
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 42bc7dbf6c5789ea710305ed7bbdab05f623b5d8546a575a0a45a458a90d4c3a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-dom-fb396a277981
+          pages:
+          - 2
+          locator: NUDIASOBIN, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam NUDIASOBIN; a descrição
+          é a do dicionário da tabela DOM (investigação materna), que escreve 'Diferença a data óbito e
+          a data cadastro da investigação, em dias'.
   - name: dtcadinv
     type: date
     label: Data cadastro investigação
+    description: Data do cadastro de investigação.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTCADINV
@@ -1725,9 +2882,24 @@ schema:
           - 7
           locator: 'Linha DTCADINV, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 867183c910216dead44a7a920684bfbe7de20557c60feb019aa059a67de9ad68
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: DTCADINV, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: tpobitocor
     type: string
     label: Momento da ocorrência do óbito materno
+    description: Momento da ocorrência do óbito.
     x-decode:
       ? ''
       : Não investigado
@@ -1767,9 +2939,25 @@ schema:
           locator: 'TPOBITOCOR, Caracter 1: 1-Durante a gestação ... 9- O óbito não ocorreu nas circunstancias
             anteriores, Branco - Não investigado'
         note: Branco é o código vazio, como a ingestão grava um campo C em branco.
+      - target: /field/description
+        value_sha256: afb394c94eaa8fdcb291fbcedecdcac91c3387462b5e88f5f6043dc122ec1dd8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b014389eca62
+          pages:
+          - 8
+          locator: TPOBITOCOR, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida. A edição de 07/2025 lista TPOBITOCOR (p. 7) com a coluna Descrição
+          vazia; a descrição é a da edição de 12/2019.
   - name: dtconinv
     type: date
     label: Data conclusão investigação
+    description: Data da conclusão da investigação.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTCONINV
@@ -1815,12 +3003,47 @@ schema:
           - 7
           locator: 'Linha DTCONINV, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 3064591916f37d05c44dfca8d3323d4e750ef0c417dea0ed712af2660bf1697a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 7
+          locator: DTCONINV, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: fontes
     type: string
     label: Fontes (combinado)
+    description: 'Combinado de caracteres conforme o preenchimento dos campos de fontes (FONTENTREV, FONTEAMBUL,
+      FONTEPRONT, FONTESVO, FONTEIML, FONTEPROF): se preenchido, caractere “S”; se o campo estiver vazio,
+      caractere “X”.'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: af874b72959807c4fabf6da03d7d4470e11fe96df89b6fb125b3f83e3b819ab1
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: FONTES, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: tpresginfo
     type: string
     label: Tipo de resgate
+    description: Informa se a investigação permitiu o resgate de alguma causa de óbito não informada, ou
+      a correção de alguma antes informada.
     x-decode:
       '1': Não acrescentou nem corrigiu informação
       '2': Sim, permitiu o resgate de novas informações
@@ -1842,9 +3065,24 @@ schema:
             originalmente.'
         note: A Estrutura escreve 01 a 03, mas os arquivos gravam um dígito alinhado à esquerda ('1 ', lido
           como '1') em DORR2016, 2019, 2022, 2023 e 2024 de RR; as chaves são as publicadas.
+      - target: /field/description
+        value_sha256: c6563c15ee1b4a3511f231a4296d54d66d6c5b80b8289a94b14e4155d75918d5
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: TPRESGINFO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: tpnivelinv
     type: string
     label: Nível investigador
+    description: Tipo de nível investigador.
     x-decode:
       E: Estadual
       R: Regional
@@ -1864,12 +3102,82 @@ schema:
           - 8
           locator: 'TPNIVELINV, Caracter 1: E estadual; R regional; M municipal'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
+      - target: /field/description
+        value_sha256: 8fae1b7bd99dd2a625e464e6cc4b2199cb6fe5cea66ba80d1e3c9cf13fd0438b
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: TPNIVELINV, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: nudiasinf
     type: integer
     label: Dias até informação
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
+        status: not_found
+        checked_at: '2026-11-18'
+        method: Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: NUDIASINF não aparece na coluna de nome do campo
+        - source_id: sim-b014389eca62
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: NUDIASINF não aparece na coluna de nome do campo
+        - source_id: sim-anterior-13cabba0b9a1
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          locator: NUDIASINF não aparece na coluna de nome do campo
+        - source_id: sim-dom-fb396a277981
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          locator: NUDIASINF não aparece na coluna de nome do campo
+        note: Nenhum dos quatro documentos lista o campo.
   - name: dtcadinf
     type: date
     label: Data cadastro informação
+    description: Quando preenchido indica se a investigação foi realizada.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTCADINF
@@ -1915,9 +3223,24 @@ schema:
           - 8
           locator: 'Linha DTCADINF, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 354240cfad77f84dd68ad47827830eec3616197c2ec85b534aa1dd0fca47c612
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: DTCADINF, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: morteparto
     type: string
     label: Morte/parto (pós-investigação)
+    description: Momento do óbito em relação ao parto após investigação.
     x-decode:
       '1': Antes
       '2': Durante
@@ -1938,9 +3261,24 @@ schema:
           - 8
           locator: 'MORTEPARTO, Caracter 1: 1 antes; 2 durante; 3 após; 9 ignorado'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
+      - target: /field/description
+        value_sha256: 437422721b2307c9a1488ca493dd693ec85b6a08370a195caadd574bdb1e0818
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: MORTEPARTO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: dtconcaso
     type: date
     label: Data conclusão do caso
+    description: Data de conclusão do caso.
     x-format: ddMMyyyy
     x-metadata:
       physical_name: DTCONCASO
@@ -1986,12 +3324,82 @@ schema:
           - 8
           locator: 'Linha DTCONCASO, colunas Tipo/Tamanho e Valores: Data no padrão ddmmaaaa'
         note: Applicability restricted to exact audited source identities.
+      - target: /field/description
+        value_sha256: 69f22f1effb860ccec75c27cef6f4a19c4412d952ef043bc107d4c7e01ab302a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: DTCONCASO, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: fontesinf
     type: string
     label: Fontes de informação
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
+        status: not_found
+        checked_at: '2026-11-18'
+        method: Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: FONTESINF não aparece na coluna de nome do campo
+        - source_id: sim-b014389eca62
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: FONTESINF não aparece na coluna de nome do campo
+        - source_id: sim-anterior-13cabba0b9a1
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          locator: FONTESINF não aparece na coluna de nome do campo
+        - source_id: sim-dom-fb396a277981
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          locator: FONTESINF não aparece na coluna de nome do campo
+        note: Nenhum dos quatro documentos lista o campo.
   - name: altcausa
     type: string
     label: Alteração de causa
+    description: Indica se houve correção ou alteração da causa do óbito após investigação.
     x-decode:
       '1': Sim
       '2': Não
@@ -2010,6 +3418,75 @@ schema:
           - 8
           locator: 'ALTCAUSA, Caracter 1: 1 Sim; 2 Não'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
+      - target: /field/description
+        value_sha256: b0d58782250a8e2a3535e12f82bb3a92244a0a0e83cc62ee5adf1bf1da450af5
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial e transcrição da coluna Descrição, feita por agente; sem revisor
+          humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 8
+          locator: ALTCAUSA, coluna Descrição
+        note: Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade
+          a cada arquivo não foi conferida.
   - name: contador
     type: integer
     label: Contador
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
+        status: not_found
+        checked_at: '2026-11-18'
+        method: Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano
+        reviewer: null
+        evidence:
+        - source_id: sim-b4195ac8e0f8
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: CONTADOR não aparece na coluna de nome do campo
+        - source_id: sim-b014389eca62
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          locator: CONTADOR não aparece na coluna de nome do campo
+        - source_id: sim-anterior-13cabba0b9a1
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          locator: CONTADOR não aparece na coluna de nome do campo
+        - source_id: sim-dom-fb396a277981
+          pages:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          locator: CONTADOR não aparece na coluna de nome do campo
+        note: Nenhum dos quatro documentos lista o campo.
