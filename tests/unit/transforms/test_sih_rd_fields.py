@@ -210,7 +210,9 @@ def test_the_older_layout_is_that_of_the_rd_files_of_2006_and_2007():
     older = older_layout()
     names = [row["nome"].lower() for row in older]
     assert len(names) == len(set(names)) == 75
-    with (ROOT / "evidence/2026-10-01-rd-1992-2007-layouts/census.csv").open(newline="") as f:
+    with (ROOT / "evidence/2026-10-01-rd-1992-2007-layouts/census.csv").open(
+        encoding="utf-8", newline=""
+    ) as f:
         last_before_2008 = [row for row in csv.DictReader(f) if row["layout"] == "19"]
     months = sorted(row["month"] for row in last_before_2008)
     assert (len(months), months[0], months[-1]) == (23, "2006-04", "2007-12")
@@ -738,7 +740,9 @@ def test_faec_tp_takes_the_labels_tp_finan_lists(
     (issue,) = [i for i in field["x-metadata"]["issues"] if i["id"] == "faec_tp-faixa-de-reserva"]
     assert issue["status"] == "open"
     assert "000000-999999" in issue["description"] and "DS_TPFIN" in issue["description"]
-    with (ROOT / "evidence/2026-11-18-tp-finan-cnv-e-dbf/comparacao.csv").open(newline="") as f:
+    with (ROOT / "evidence/2026-11-18-tp-finan-cnv-e-dbf/comparacao.csv").open(
+        encoding="utf-8", newline=""
+    ) as f:
         compared = list(csv.DictReader(f))
     in_cnv = {row["codigo"]: row["rotulo_no_cnv"] for row in compared if row["rotulo_no_cnv"]}
     in_dbf = {

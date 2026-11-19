@@ -226,7 +226,9 @@ def test_every_faec_tp_code_the_files_publish_has_a_label():
     labels = load_dicionario(DATASET).field_def("faec_tp")["x-decode"]
     assert set(published) <= set(labels)
     assert codes["040080"] == max(codes.values()) == 26600
-    with (ROOT / "evidence/2026-11-18-tp-finan-cnv-e-dbf/comparacao.csv").open(newline="") as f:
+    with (ROOT / "evidence/2026-11-18-tp-finan-cnv-e-dbf/comparacao.csv").open(
+        encoding="utf-8", newline=""
+    ) as f:
         in_dbf = {row["codigo"] for row in csv.DictReader(f) if row["descricao_no_dbf"]}
     assert {code: rows for code, rows in codes.items() if code not in in_dbf} == {
         "021014": 1550,
