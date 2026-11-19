@@ -71,6 +71,13 @@
   leaves it out. Nothing `sus.load` returns changes. Validating DOEXT, DOINF and DOMAT files so
   the subsets can have the age rule stays open in #177. Versions: the three subsets 1.8.0.
 
+- `ocupmae` of `sim_obitos` (and of the three SIM subsets) declares the reference `ocup`
+  already had: `aux_ocupacoes`, scheme `cbo2002`, from 2006. `Obito_1996_CID10.def` binds
+  `OCUPMAE` to `CBO2002.CNV` (lines 331 and 332), and DORR writes 5 characters until 2005 and 6
+  digits from 2006 in both fields (measured in DORR2003, 2005, 2006, 2010, 2015 and 2023).
+  `sus.reference_join_sql("sim_obitos", "ocupmae")` now returns the join. Versions: `sim_obitos`
+  2.13.0, the three subsets 1.9.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same
