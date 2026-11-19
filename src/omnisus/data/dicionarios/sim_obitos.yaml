@@ -31,7 +31,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Descrito na estrutura do arquivo de 2006 e no dicionário da tabela DOM; fica declarado, e o dataset não declara chave primária.'
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Descrito na estrutura do arquivo de 2006 e no dicionário da tabela DOM; fica declarado, e o dataset não declara chave primária. O DOREXT21.dbc de SIM/CID10/DOFET, que a biblioteca não importa, traz NUMERODO, TP_ALTERA e CB_ALT; é o único dos 1.011 arquivos lidos que os traz.'
     - name: contador
       type: integer
       label: Contador
@@ -2938,7 +2938,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: resolved
-          description: 'Ausente de DORR2022 e DORR2023. Resolvido em 2026-11-18: o campo está nos 28 arquivos de cada ano de 2002 a 2010 e em um de 2001, e em nenhum de 2011 em diante (evidence/2026-11-18-sim-colunas-do/).'
+          description: 'Ausente de DORR2022 e DORR2023. Resolvido em 2026-11-18: a coluna está no cabeçalho dos 28 arquivos de cada ano de 2002 a 2010 e de um de 2001, e de nenhum de 2011 em diante (evidence/2026-11-18-sim-colunas-do/).'
     - name: cb_pre
       type: string
       label: Causa básica pré-seleção
@@ -3161,7 +3161,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 9); fica declarado.'
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 9); fica declarado. O DOREXT21.dbc de SIM/CID10/DOFET, que a biblioteca não importa, traz NUMERODO, TP_ALTERA e CB_ALT; é o único dos 1.011 arquivos lidos que os traz.'
     - name: cb_alt
       type: string
       label: Causa básica alterada
@@ -3184,7 +3184,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 9); fica declarado.'
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 9); fica declarado. O DOREXT21.dbc de SIM/CID10/DOFET, que a biblioteca não importa, traz NUMERODO, TP_ALTERA e CB_ALT; é o único dos 1.011 arquivos lidos que os traz.'
     - name: ano
       type: integer
       label: Ano

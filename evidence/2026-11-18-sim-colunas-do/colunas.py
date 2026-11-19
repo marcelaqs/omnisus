@@ -20,7 +20,12 @@ import sys
 from pathlib import Path
 
 HOST = "ftp.datasus.gov.br"
-DIRS = ("/dissemin/publicos/SIM/CID10/DORES", "/dissemin/publicos/SIM/PRELIM/DORES")
+DIRS = (
+    "/dissemin/publicos/SIM/CID10/DORES",
+    "/dissemin/publicos/SIM/PRELIM/DORES",
+    "/dissemin/publicos/SIM/CID10/DOFET",
+    "/dissemin/publicos/SIM/PRELIM/DOFET",
+)
 
 
 class _HeaderReadError(Exception):
