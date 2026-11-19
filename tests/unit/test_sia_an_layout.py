@@ -13,6 +13,7 @@ name, type and width: ``ANRR1401`` has exactly those 60, and ``ANPA1410`` a 61st
 from __future__ import annotations
 
 import re
+from importlib.resources import files
 
 import pytest
 
@@ -20,6 +21,7 @@ import omnisus as sus
 from omnisus.sources.datasus_ftp.dbc import decompress_bytes
 from omnisus.sources.datasus_ftp.dbf_contract import _read_field_descriptors
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
+from omnisus.transforms.cnv import parse_def
 from omnisus.transforms.dictionaries import load_dicionario
 
 AN = "sia_apac_nefrologia"
@@ -111,3 +113,22 @@ def test_ap_cnspcn_is_marked_as_the_cipher_anpa1410_publishes(dbc_fixture) -> No
     assert len(cells) == 2
     assert all(len(cell) == 15 and not any(ch.isdigit() for ch in cell) for cell in cells)
     assert load_dicionario(AN).field_def("ap_cnspcn").get("x-crypto") == "datasus-cns"
+
+
+def test_the_def_binds_ap_tippre_to_three_tables_and_the_issue_says_which_one_is_the_map() -> None:
+    """APAC_Nefrologia.DEF lines 216-218 and 220. The map is TIPOPRES.CNV's, one row per
+    code; the open issue records the two ESFERA tables the same field is bound to."""
+    member = files("omnisus").joinpath("data/dicionarios/sources/cnv/sia/APAC_Nefrologia.DEF")
+    lines = member.read_bytes().decode("latin-1").splitlines()
+    bound = {n: parse_def(lines[n - 1])[0] for n in (216, 217, 218, 220)}
+    assert {b.field for b in bound.values()} == {"AP_TIPPRE"}
+    assert {n: (b.kind, b.table) for n, b in bound.items()} == {
+        216: ("D", "CNV/ESFERA.CNV"),
+        217: ("C", "CNV/ESFERA_C.CNV"),
+        218: ("S", "CNV/ESFERA.CNV"),
+        220: ("X", "CNV/TIPOPRES.CNV"),
+    }
+    field = load_dicionario(AN).field_def("ap_tippre")
+    (issue,) = field["x-metadata"]["issues"]
+    assert (issue["id"], issue["status"]) == ("def-liga-outra-tabela", "open")
+    assert all(b.table.removeprefix("CNV/") in issue["description"] for b in bound.values())

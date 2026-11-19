@@ -438,6 +438,19 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
         ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_coidade", {"4": "Anos"}),
         # APAC_Nefrologia.DEF line 390 binds AP_UFNACIO to UFNACIO.CNV (#183).
         ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_ufnacio", {"010": "BRASIL"}),
+        # APAC_Nefrologia.DEF line 220 binds AP_TIPPRE to TIPOPRES.CNV (#183).
+        (
+            "sia_apac_nefrologia",
+            "sia_an_pa_2014_10_mini",
+            "ap_tippre",
+            {"61": "FILANTROPICO COM CNAS VALIDO"},
+        ),
+        (
+            "sia_apac_nefrologia",
+            "sia_an_rr_2014_01_mini",
+            "ap_tippre",
+            {"20": "PRIVADO COM FINS LUCRATIVOS"},
+        ),
         # ANRR1401 has the one AN record measured with unit '5' (age 100 and over).
         (
             "sia_apac_nefrologia",

@@ -59,6 +59,16 @@
   records, and `ANRR1401` as published in its 162, with 15 characters and no digit.
   The fixture of `ANRR1401` blanks the column because the cipher is reversible, so the
   test reads `ANPA1410` only. The library does not decipher the value (#183).
+- `sia_apac_nefrologia` (1.8.0): `ap_tippre` takes the 8 codes of `TIPOPRES.CNV`
+  (`61` FILANTROPICO COM CNAS VALIDO in `ANPA1410`, `20` PRIVADO COM FINS LUCRATIVOS in
+  `ANRR1401`), with a `cnv-parse` claim: `APAC_Nefrologia.DEF` line 220 binds
+  `AP_TIPPRE` to it. Lines 216-218 bind the same field to `ESFERA.CNV` and
+  `ESFERA_C.CNV`, which are not used: `ESFERA_C.CNV` groups the codes into four spheres,
+  and `ESFERA.CNV` has those four rows plus one row, with another wording, for each of
+  `20`, `22`, `60`, `61` and `80`. The field's open issue `def-liga-outra-tabela` records
+  the choice. The member is packaged from the `TAB_SIA.zip` republished on 2026-10-15
+  (`sia-tab-1ce232b217c6`). `sus.label` now adds `ap_tippre_rotulo` for this dataset
+  (#183).
 
 ### omnisus-dbf 0.2.2
 

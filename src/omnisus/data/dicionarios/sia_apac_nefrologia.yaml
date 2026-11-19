@@ -2,7 +2,7 @@ name: sia_apac_nefrologia
 title: SIASUS — APAC de Nefrologia (AN)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.7.0
+x-version: 1.8.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sia_an_pa_2014_10_mini.dbc, 61 fields, observed 2026-09-23; sia_an_rr_2014_01_mini.dbc,
@@ -249,20 +249,45 @@ schema:
         note: Mapa do CNV.
   - name: ap_tippre
     type: string
-    description: 'Tipo de Prestador'
+    description: Tipo de Prestador
     x-metadata:
       claims:
       - target: /field/description
         value_sha256: 37cb5d23584ac000eef48e0118d5bd14686944cc3845db19aa696a2f020dca2d
         status: unreviewed
         checked_at: '2026-11-18'
-        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        method: Leitura do PDF oficial, feita por agente; sem revisor humano
         reviewer: null
         evidence:
         - source_id: siasus-70fe69dbd4cf
-          pages: [8]
-          locator: 'Seção 3.4.3, SEQ 11, AP_TIPPRE CHAR (2)'
+          pages:
+          - 8
+          locator: Seção 3.4.3, SEQ 11, AP_TIPPRE CHAR (2)
         note: Descrição transcrita da linha do leiaute.
+      - target: /field/codes
+        value_sha256: 7f2226900a7d6bc4eed2793bf609ea11df301ed913c2e73095ddc34908864428
+        status: verified_in_source
+        checked_at: '2026-11-18'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sia-tab-1ce232b217c6
+          pages: []
+          locator: 'APAC_Nefrologia.DEF: XTipo Prestador, AP_TIPPRE, 1, CNV/TIPOPRES.CNV; CNV/TIPOPRES.CNV'
+        note: Mapa do CNV.
+      issues:
+      - id: def-liga-outra-tabela
+        status: open
+        description: 'O APAC_Nefrologia.DEF liga AP_TIPPRE a três tabelas: TIPOPRES.CNV (linha 220, prefixo X), ESFERA.CNV (linhas 216 e 218, prefixos D e S) e ESFERA_C.CNV (linha 217, prefixo C). O mapa é o do TIPOPRES.CNV, que tem uma linha para cada um dos 8 códigos. O ESFERA_C.CNV agrupa os mesmos códigos em 4 esferas (Federal 30, Estadual 40, Municipal 50, Privada 20,22,60,61,80). O ESFERA.CNV tem essas 4 linhas e mais uma, com outra redação, para cada um de 20, 22, 60, 61 e 80, sob a linha da esfera privada; esses rótulos e os nomes das esferas não entram no mapa. O significado dos prefixos das linhas do DEF não foi lido.'
+    x-decode:
+      '20': PRIVADO COM FINS LUCRATIVOS
+      '22': PRIVADO OPTANTE PELO SIMPLES
+      '30': PUBLICO FEDERAL
+      '40': PUBLICO ESTADUAL
+      '50': PUBLICO MUNICIPAL
+      '60': PRIVADO SEM FINS LUCRATIVOS
+      '61': FILANTROPICO COM CNAS VALIDO
+      '80': SINDICATO
   - name: ap_mn_ind
     type: string
     description: 'Estabelecimento Mantido / Individual'

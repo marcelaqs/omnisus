@@ -375,6 +375,11 @@
       "sha256": "da7f026713ae0669d626ae4661cbd33af72df9a7e76337dc0e1cba7f0d41b615",
       "mesmo_que": "sia/CNV/ACES_VASC.CNV"
     },
+    "sia/CNV/TIPOPRES.CNV": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/TIPOPRES.CNV",
+      "sha256": "8ab1f0fd0a3e613cb8a586df5843ffb55a692ea5a23b2ce66e74f74a0365ac9c"
+    },
     "sia/CNV/UFNACIO.CNV": {
       "fonte": "sia-tab-1ce232b217c6",
       "membro": "CNV/UFNACIO.CNV",
@@ -1712,6 +1717,7 @@
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
         "ap_sexo": "sia/CNV/SEXO.CNV",
+        "ap_tippre": "sia/CNV/TIPOPRES.CNV",
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_tpaten": "sia/CNV/TP_ATEND.CNV",
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
