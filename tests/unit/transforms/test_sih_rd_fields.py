@@ -15,6 +15,7 @@ import pytest
 from scripts.gen_dicionario import fields_of
 
 import omnisus as sus
+from omnisus.metadata import sources_registry
 from omnisus.sources.datasus_ftp import dbc
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 from omnisus.transforms.dictionaries import load_dicionario
@@ -255,6 +256,56 @@ def test_the_zerado_fields_take_the_label_of_the_layout_used_until_2007():
         assert issue["status"] == "open"
     assert contract["val_sadtsr"]["field"]["label"] == "Valor de SADT sem rateio"
     assert contract["cpf_aut"]["field"]["label"] == "CPF do auditor que autorizou o homônimo"
+
+
+OTHER_DOCUMENTS = ROOT / "evidence/2026-11-18-sih-codigos-em-outros-documentos/trechos.csv"
+
+
+def test_tpdisec_0_and_homonimo_stay_unlabelled_and_say_what_was_read(dbc_fixture):
+    """Three DATASUS documents give codes to what looks like these fields in another file:
+    the layout of the SISAIH01 text file ("0 - Quando não é preenchido o campo anterior"
+    for the class of a secondary diagnosis), and the layout of the reduced file until
+    2007-12 and the dictionary of the AIH table ("0 = não", "1 = sim" for the homonym
+    mark). None describes the RD from 2008, no DEF relates the fields to them, and none
+    has the `2` RDRR2401 publishes in `homonimo`. So the codes keep no label (#182, C11
+    and C12), and the open issue of each field names the documents and quotes them."""
+    with OTHER_DOCUMENTS.open(encoding="utf-8", newline="") as f:
+        passages = {row["campo"]: row for row in csv.DictReader(f)}
+    sisaih01, sihd2 = passages["DIAG_SEC_1_CLASS"], passages["AH_ST_DUPLICIDADE"]
+    (older,) = (row for row in older_layout() if row["nome"] == "HOMONIMO")
+    zero = "0 - Quando não é preenchido o campo anterior"
+    assert zero in sisaih01["trecho"]
+    assert sihd2["trecho"].endswith("Marca de homônimo, onde: 0 = não. 1 = sim.")
+    assert older["descricao"] == "MARCA DE HOMONIMO ( 0 = não , 1 = sim)"
+    registered = {source["id"] for source in sources_registry()["sources"]}
+    assert {sisaih01["source_id"], sihd2["source_id"], "sihsus-f6084d22de30"} <= registered
+
+    dictionary = load_dicionario(DATASET)
+    for n in range(1, 10):
+        row = passages[f"DIAG_SEC_{n}_CLASS"]
+        named = f"campo {99 + 2 * n} DIAG_SEC_{n}_CLASS"
+        assert row["trecho"].startswith(named.removeprefix("campo "))
+        if n > 1:  # the other eight rows only point to the first
+            assert row["trecho"].endswith("ver campo 101 ver campo 101")
+            named += ", que remete ao campo 101 DIAG_SEC_1_CLASS"
+        field = dictionary.field_def(f"tpdisec{n}")
+        assert set(field["x-decode"]) == {"1", "2"}
+        (issue,) = [i for i in field["x-metadata"]["issues"] if i["id"] == "tpdisec-0-sem-fonte"]
+        assert issue["status"] == "open"
+        assert f"({row['source_id']}, p. {row['paginas']}, {named})" in issue["description"]
+        assert zero in issue["description"]
+    homonimo = dictionary.field_def("homonimo")
+    assert "x-decode" not in homonimo
+    (issue,) = [i for i in homonimo["x-metadata"]["issues"] if i["id"] == "homonimo-sem-fonte"]
+    assert issue["status"] == "open"
+    assert f"sihsus-f6084d22de30, p. {older['pagina']}" in issue["description"]
+    assert older["descricao"] in issue["description"]
+    assert f"{sihd2['source_id']}, pp. {sihd2['paginas']}" in issue["description"]
+    assert "Marca de homônimo, onde: 0 = não. 1 = sim." in issue["description"]
+
+    raw = dbc_fixture("sih_rr_2024_01_mini").read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect()
+    assert dict(frame["homonimo"].value_counts().iter_rows()) == {"0": 3675, "2": 39}
 
 
 def census_files() -> dict[str, dict[int, list[str]]]:

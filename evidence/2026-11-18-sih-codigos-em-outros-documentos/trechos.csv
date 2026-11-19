@@ -1,0 +1,11 @@
+source_id,paginas,campo,trecho
+sihsus-af543b2b2c9b,7,DIAG_SEC_1_CLASS,101 DIAG_SEC_1_CLASS 001 1595 1595 Classificação do Diagnóstico em: * Preexistente : doença que o indivíduo já apresenta no momento da internação * Adquirido : doença que o indivíduo adquiriu durante o período da internação 0 - Quando não é preenchido o campo anterior 1-Preexistente 2-Adquirido
+sihsus-af543b2b2c9b,7,DIAG_SEC_2_CLASS,103 DIAG_SEC_2_CLASS 001 1600 1600 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_3_CLASS,105 DIAG_SEC_3_CLASS 001 1605 1605 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_4_CLASS,107 DIAG_SEC_4_CLASS 001 1610 1610 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_5_CLASS,109 DIAG_SEC_5_CLASS 001 1615 1615 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_6_CLASS,111 DIAG_SEC_6_CLASS 001 1620 1620 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_7_CLASS,113 DIAG_SEC_7_CLASS 001 1625 1625 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_8_CLASS,115 DIAG_SEC_8_CLASS 001 1630 1630 ver campo 101 ver campo 101
+sihsus-af543b2b2c9b,7,DIAG_SEC_9_CLASS,117 DIAG_SEC_9_CLASS 001 1635 1635 ver campo 101 ver campo 101
+sihsus-f70974716de8,8-9,AH_ST_DUPLICIDADE,"AH_ST_DUPLICIDADE Text 1 Marca de homônimo, onde: 0 = não. 1 = sim."

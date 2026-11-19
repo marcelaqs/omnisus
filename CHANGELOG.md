@@ -56,6 +56,16 @@
   (lines 523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all
   `Z302`, find their row; the open issue `cid_notif-laqueadura-no-def` records that the
   DEF calls the field "CID laqueadura" (#182).
+- `sih_aih_reduzida` (2.24.0): the `0` of `tpdisec1` to `tpdisec9` and the codes of
+  `homonimo` keep no label, and their open issues now name the documents that were read
+  and why they are not used. The layout of the SISAIH01 text file for 09/2015
+  (`sihsus-af543b2b2c9b`, p. 7) says "0 - Quando não é preenchido o campo anterior" of
+  the class of a secondary diagnosis; the layout of the reduced file until 2007-12
+  (`sihsus-f6084d22de30`, p. 2) and the dictionary of the AIH table
+  (`sihsus-f70974716de8`, pp. 8-9) say "0 = não", "1 = sim" of the homonym mark. None
+  describes the RD files from 2008, no DEF relates the fields to them, and none has the
+  `2` the RD publishes in `homonimo`. The passages are in
+  `evidence/2026-11-18-sih-codigos-em-outros-documentos/` (#182).
 
 ### omnisus-dbf 0.2.2
 

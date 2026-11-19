@@ -29,7 +29,12 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   nem de `gestor_tp`, e nenhum DEF empacotado cita os dois campos: eles ficam sem
   rótulo. O RD publica `homonimo` `0` e `2`, e o RJ `0` e `1`; não suponha que `2`
   e `1` querem dizer a mesma coisa (issues `homonimo-sem-fonte` e
-  `gestor_tp-sem-fonte`, #10).
+  `gestor_tp-sem-fonte`, #10). Dois documentos de outro contexto dão `0` não e `1` sim
+  para a marca de homônimo: o layout do arquivo reduzido de até 12/2007
+  (`Layout_REDUZIDA.pdf`, p. 2) e o dicionário de dados da AIH
+  (`dicionario_de_dados_AIH.pdf`, pp. 8-9). Nenhum descreve o RD de 2008 em diante nem
+  fala em `2`, e por isso não viraram rótulo
+  (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`).
 - `diag_princ` é o código do diagnóstico principal pela CID-10, com 4 caracteres
   (Informe SIH 2016-03, p. 2), e o dicionário o liga à tabela `aux_cid10`
   (`src/omnisus/data/dicionarios/sih_aih_reduzida.yaml`).
