@@ -2,7 +2,7 @@ name: sia_apac_nefrologia
 title: SIASUS — APAC de Nefrologia (AN)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.8.0
+x-version: 1.9.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sia_an_pa_2014_10_mini.dbc, 61 fields, observed 2026-09-23; sia_an_rr_2014_01_mini.dbc,
@@ -15,7 +15,7 @@ x-evidence:
 schema:
   fields:
   - name: ap_mvm
-    type: string
+    type: yearmonth
     description: 'Data de Processamento / Movimento (AAAAMM)'
     x-metadata:
       claims:
@@ -30,6 +30,20 @@ schema:
           pages: [7]
           locator: 'Seção 3.4.3, SEQ 1, AP_MVM CHAR (6)'
         note: Descrição transcrita da linha do leiaute.
+      - target: /field/logical_type
+        value_sha256: 3ea55acad4224bea5a31a8e6f59dc8891d83a65d11da18be3bf968b2359ff23a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial e comparação com os valores das fixtures, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [7]
+          locator: 'Seção 3.4.3, SEQ 1, AP_MVM CHAR (6): "Data de Processamento / Movimento (AAAAMM)"'
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 33-34: AP_MVM, 1, CNV/ANOMES2008.CNV'
+        note: 'O leiaute da AN escreve (AAAAMM). ANPA1410 publica 201410 nos 2 registros e ANRR1401 publica 201401 nos 162. O APAC_Nefrologia.DEF (linhas 33-34) liga o campo, na posição 1, a ANOMES2008.CNV, e as linhas 35-38 a SEME2008.CNV e ANO_2008.CNV; nenhum desses CNV está empacotado.'
   - name: ap_condic
     type: string
     description: 'Sigla do Tipo de Gestão no qual o Estado ou Município está habilitado'
@@ -114,7 +128,7 @@ schema:
           locator: 'Seção 3.4.3, SEQ 5, AP_AUTORIZ CHAR (13)'
         note: Descrição transcrita da linha do leiaute.
   - name: ap_cmp
-    type: string
+    type: yearmonth
     description: 'Data de Atendimento ao paciente / Competência (AAAAMM)'
     x-metadata:
       claims:
@@ -129,6 +143,20 @@ schema:
           pages: [8]
           locator: 'Seção 3.4.3, SEQ 6, AP_CMP CHAR (6)'
         note: Descrição transcrita da linha do leiaute.
+      - target: /field/logical_type
+        value_sha256: 3ea55acad4224bea5a31a8e6f59dc8891d83a65d11da18be3bf968b2359ff23a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial e comparação com os valores das fixtures, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 6, AP_CMP CHAR (6): "Data de Atendimento ao paciente / Competência (AAAAMM)"'
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 39-40: AP_CMP, 1, CNV/ANOMES2008.CNV'
+        note: 'O leiaute da AN escreve (AAAAMM). ANPA1410 publica 201407 nos 2 registros e ANRR1401 publica 201401 nos 162. O APAC_Nefrologia.DEF (linhas 39-40) liga o campo, na posição 1, a ANOMES2008.CNV, e as linhas 41-44 a Seme2008.CNV e ANO_2008.CNV; nenhum desses CNV está empacotado.'
   - name: ap_pripal
     type: string
     description: 'Procedimento Principal da APAC'
