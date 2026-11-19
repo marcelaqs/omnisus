@@ -48,6 +48,13 @@
   2026-11-18. The three SIM subsets are regenerated. Versions: `sim_obitos` 2.10.0, the three
   subsets 1.5.0 (#184).
 
+- 25 `/field/codes` claims of `sim_obitos` written by `gerar_decode_cnv.py` change from
+  `conflicting` to `verified_in_source`, and the issue `cnv-difere-do-mapa-anterior` of each
+  field is `resolved`: the map in force was already the one of the CNV, and the map it replaced
+  had no source. The issue keeps the older labels. `tppos` stays `conflicting`: the Estrutura
+  do SIM gives it the codes `1` and `2`, which `INVESTIG.CNV` does not list. No code or label
+  changes. Versions: `sim_obitos` 2.11.0, the three subsets 1.6.0 (#184).
+
 ## v0.3.0 — 2026-11-17
 
 **Upgrading from 0.2.3:** no parser version changed (the import still reads the same

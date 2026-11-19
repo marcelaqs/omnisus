@@ -149,9 +149,9 @@ def test_each_tab_downloads_a_workbook_of_its_columns_and_of_the_codes_it_labels
         "Linha10 SEXO p. 2",
     )
     # The note says what a `conflicting` map conflicts with.
-    tipobito = colunas.filter(coluna="tipobito").row(0, named=True)
-    assert tipobito["conferencia"] == "conflicting"
-    assert "cnv-difere-do-mapa-anterior" in tipobito["nota"]
+    tppos = colunas.filter(coluna="tppos").row(0, named=True)
+    assert tppos["conferencia"] == "conflicting"
+    assert "cnv-difere-do-mapa-anterior" in tppos["nota"]
     # A date the lake keeps as published text; with no codes, nothing was conferred.
     dtobito = colunas.filter(coluna="dtobito").row(0, named=True)
     assert (dtobito["tipo_no_lake"], dtobito["tipo_no_dicionario"], dtobito["conferencia"]) == (

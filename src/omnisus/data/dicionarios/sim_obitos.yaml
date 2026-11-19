@@ -110,7 +110,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 0a34ad70ca563c98dfbbbd5784ba66e4958a2deae30440a18c75e01d873867dc
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -118,7 +118,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XTipo Obito, TIPOBITO, 1, TIPOBITO.CNV; OBITOS_CID10_TAB/tabdo/TIPOBITO.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 045ecea71d3f7dc088d2d51ce9b326d96740dc16132bd6a9a2f7fab817d4e1f4
           status: unreviewed
@@ -132,8 +132,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Não fetal'', CNV ''Não Fetal'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Não fetal'', CNV ''Não Fetal''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: dtobito
       type: date
       label: Data do óbito
@@ -447,7 +447,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 4f336e53cc39a17d5a490f13346b755a4224b219c2d6a3108c3f85da20edff30
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -455,7 +455,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XRaca Cor, RACACOR, 1, RACACOR.CNV; OBITOS_CID10_TAB/tabdo/RACACOR.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 500201f66820f9f7c6718e75c9ae876b0b7d70d94eaa5966e31bb74a8b15fdbb
           status: unreviewed
@@ -469,9 +469,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Branca'', CNV ''Bra''; ''3''
-            era ''Amarela'', CNV ''Amar''; ''5'' era ''Indígena'', CNV ''Indig'''
+            era ''Amarela'', CNV ''Amar''; ''5'' era ''Indígena'', CNV ''Indig''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: estciv
       type: integer
       label: Situação conjugal
@@ -490,7 +490,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 977f42fcdf08afe550ad2cb50cedc5847acd6c7e5fe72279c2409a09c1e310e1
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -498,7 +498,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XEstado Civil, ESTCIV, 1, ESTCIV.CNV; OBITOS_CID10_TAB/tabdo/ESTCIV.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 65d9e757c4272726466e72543570286f4333d9b8721ebaff5f08ebc2a9c5cf3a
           status: unreviewed
@@ -512,9 +512,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''4'' era ''Separado/Divorciado'', CNV
-            ''Separado jud''; ''5'' era ''União estável'', CNV ''U.Estável'''
+            ''Separado jud''; ''5'' era ''União estável'', CNV ''U.Estável''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: esc
       type: string
       label: Escolaridade (antigo)
@@ -532,7 +532,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: acba34ba09e47d5d844c3c7d85380abb208dfa74204bdc30d7e9f2176f8f6ed1
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -540,7 +540,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XEscol anos concl, ESC, 1, INSTRUC.CNV; OBITOS_CID10_TAB/tabdo/INSTRUC.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: ae53d9135ffdf30d7fe2a6d6f07d87db72ae429e92ddf4ad228ce7bc37552fdd
           status: unreviewed
@@ -554,10 +554,10 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''1 a 3 anos'', CNV ''01-03'';
             ''3'' era ''4 a 7 anos'', CNV ''04-07''; ''4'' era ''8 a 11 anos'', CNV ''08-11''; ''5'' era ''12+
-            anos'', CNV ''12 e+''; ''9'' era ''Ignorado'', CNV ''Ign'''
+            anos'', CNV ''12 e+''; ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: esc2010
       type: string
       label: Escolaridade (2010)
@@ -670,7 +670,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: cb374381c2a0998d2a13d45c5ec91812ce49542794b6bfdf9ab1ba238dbf8a84
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -678,7 +678,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: X*EscFal1CICLO/SERIE, ESCFALAGR1, 1, ESCAGR1.CNV; OBITOS_CID10_TAB/tabdo/ESCAGR1.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 9d28c4c99ec595be53990038647a8d0677825d9ce046db36cc57b2fb100506fd
           status: unreviewed
@@ -692,7 +692,7 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''00'' era ''Sem escolaridade'', CNV
             ''Sem Escolaridade''; ''01'' era ''Fundamental I incompleto'', CNV ''Fundamental I Incompleto'';
             ''02'' era ''Fundamental I completo'', CNV ''Fundamental I Completo''; ''03'' era ''Fundamental
@@ -702,7 +702,7 @@ schema:
             CNV ''Superior Incompleto''; ''08'' era ''Superior completo'', CNV ''Superior Completo''; ''10''
             era ''Fundamental completo (inespecífico)'', CNV ''Fundamental I Incompleto ou Inespecif''; ''11''
             era ''Médio (inespecífico)'', CNV ''Fundamental II Incompleto ou Inespecif''; ''12'' era ''Superior
-            (inespecífico)'', CNV ''Ensino Medio Incompleto ou Inespecif'''
+            (inespecífico)'', CNV ''Ensino Medio Incompleto ou Inespecif''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: ocup
       type: string
       label: Ocupação habitual
@@ -758,7 +758,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 387a0a528d9538faf842e42b27f75f71a5d247fee547e1e35788e6117ca9fa25
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -766,7 +766,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XLocal Ocorrencia, LOCOCOR, 1, LOCOCOR.CNV; OBITOS_CID10_TAB/tabdo/LOCOCOR.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 4d397d3641667b21633c78ddbe9efa2468b427648c030857c68632844c9018e9
           status: unreviewed
@@ -780,10 +780,10 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Outro estab. saúde'', CNV
             ''Outro Estab de Saúde''; ''4'' era ''Via pública'', CNV ''Via Pública''; ''6'' era ''Aldeia indígena'',
-            CNV ''Aldeia Indigena'''
+            CNV ''Aldeia Indigena''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: codestab
       type: string
       label: Estabelecimento (CNES)
@@ -970,7 +970,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: acba34ba09e47d5d844c3c7d85380abb208dfa74204bdc30d7e9f2176f8f6ed1
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -978,7 +978,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XEscolMãe anos concl, ESCMAE, 1, INSTRUC.CNV; OBITOS_CID10_TAB/tabdo/INSTRUC.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 3073b9561674db6ce979d39a4629575774951c5e5234d4284c138f90b19cc413
           status: unreviewed
@@ -992,10 +992,10 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''1 a 3 anos'', CNV ''01-03'';
             ''3'' era ''4 a 7 anos'', CNV ''04-07''; ''4'' era ''8 a 11 anos'', CNV ''08-11''; ''5'' era ''12+
-            anos'', CNV ''12 e+''; ''9'' era ''Ignorado'', CNV ''Ign'''
+            anos'', CNV ''12 e+''; ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: escmaeagr1
       type: string
       label: Escolaridade da mãe agregada
@@ -1020,7 +1020,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: cb374381c2a0998d2a13d45c5ec91812ce49542794b6bfdf9ab1ba238dbf8a84
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1028,7 +1028,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: X*EscMãe1CICLO/SERIE, ESCMAEAGR1, 1, ESCAGR1.CNV; OBITOS_CID10_TAB/tabdo/ESCAGR1.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 1ac4752412328f642fbfd4904bd0adf8fb158b3a0a6ab7798918fcf0d7f798bd
           status: unreviewed
@@ -1042,7 +1042,7 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''00'' era ''Sem escolaridade'', CNV
             ''Sem Escolaridade''; ''01'' era ''Fundamental I incompleto'', CNV ''Fundamental I Incompleto'';
             ''02'' era ''Fundamental I completo'', CNV ''Fundamental I Completo''; ''03'' era ''Fundamental
@@ -1052,7 +1052,7 @@ schema:
             CNV ''Superior Incompleto''; ''08'' era ''Superior completo'', CNV ''Superior Completo''; ''10''
             era ''Fundamental completo (inespecífico)'', CNV ''Fundamental I Incompleto ou Inespecif''; ''11''
             era ''Médio (inespecífico)'', CNV ''Fundamental II Incompleto ou Inespecif''; ''12'' era ''Superior
-            (inespecífico)'', CNV ''Ensino Medio Incompleto ou Inespecif'''
+            (inespecífico)'', CNV ''Ensino Medio Incompleto ou Inespecif''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: ocupmae
       type: string
       label: Ocupação da mãe
@@ -1139,7 +1139,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 85cefa976e0b1748ed782d80be7a883f28bf50c61b620953f033e8331e0668be
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1147,7 +1147,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XSemanas Gestação, GESTACAO, 1, SEMANAS.CNV; OBITOS_CID10_TAB/tabdo/SEMANAS.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: f2fb0d0816dcb0a54985dde3375164bb768c150b59d8b5a16db5c7837761fcb5
           status: unreviewed
@@ -1161,11 +1161,11 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''< 22 semanas'', CNV ''Menos
             22''; ''2'' era ''22 a 27 semanas'', CNV ''22 a 27''; ''3'' era ''28 a 31 semanas'', CNV ''28
             a 31''; ''4'' era ''32 a 36 semanas'', CNV ''32 a 36''; ''5'' era ''37 a 41 semanas'', CNV ''37
-            a 41''; ''6'' era ''42+ semanas'', CNV ''42 e +'''
+            a 41''; ''6'' era ''42+ semanas'', CNV ''42 e +''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: gravidez
       type: string
       label: Tipo de gravidez
@@ -1181,7 +1181,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: c70e873b64e2a6b025381a1483c3f1266d0df97662a771790428407ce5a78419
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1189,7 +1189,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XGravidez, GRAVIDEZ, 1, GRAVIDEZ.CNV; OBITOS_CID10_TAB/tabdo/GRAVIDEZ.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: aea102bd6174f690c710e87af9847b1b25c889a4ed949de2fe7968fcff402cf6
           status: unreviewed
@@ -1203,9 +1203,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''3'' era ''Tripla ou mais'', CNV ''Tripla
-            e+''; ''9'' era ''Ignorada'', CNV ''Ignorado'''
+            e+''; ''9'' era ''Ignorada'', CNV ''Ignorado''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: parto
       type: string
       label: Tipo de parto
@@ -1220,7 +1220,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 93a3463f457b45046a105fedb410e0e43fecb989384dfaf5468c64c7a2fb2052
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1228,7 +1228,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XTipo Parto, PARTO, 1, PARTO.CNV; OBITOS_CID10_TAB/tabdo/PARTO.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: f127b800637f5130d01be64523200029579983285705926494cffd2c79265e73
           status: unreviewed
@@ -1242,8 +1242,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Cesáreo'', CNV ''Cesário'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Cesáreo'', CNV ''Cesário''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: obitoparto
       type: string
       label: Morte em relação ao parto
@@ -1259,7 +1259,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 1e5854c1fe045835acd54fa3ad7fa81f128d0810f945d95cff7f3c435c2493fc
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1267,7 +1267,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XObito Parto, OBITOPARTO, 1, OPARTO.CNV; OBITOS_CID10_TAB/tabdo/oparto.cnv'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 0c491f0b9b96a44aead9981cee7da84967c80bf1c02b46f3f02b8bcc794d3fb8
           status: unreviewed
@@ -1281,8 +1281,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: peso
       type: integer
       label: Peso ao nascer
@@ -1322,7 +1322,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 38065c611b416fe00381e8f7e15e497f1ca05dc080306fb695d8c188f7cbc04c
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1330,7 +1330,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: X*Ob Mulher id Fert, TPMORTEOCO, 1, OMUFER.CNV; OBITOS_CID10_TAB/tabdo/OMUFER.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 36d25e1c64c9da296cfd2f4cd58e0f3fca2b26d6d465e2f557078308c128b809
           status: unreviewed
@@ -1344,11 +1344,11 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''3'' era ''No abortamento'', CNV ''No
             Aborto''; ''4'' era ''Até 42 dias pós-parto'', CNV ''Ate 42d apos parto''; ''5'' era ''43 dias
             a 1 ano pós-parto'', CNV ''43d-01a apos parto''; ''8'' era ''Não nestes períodos'', CNV ''Nao
-            ocorreu nestes periodos''; ''9'' era ''Ignorado'', CNV ''Ign'''
+            ocorreu nestes periodos''; ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: obitograv
       type: string
       label: Óbito na gravidez
@@ -1363,7 +1363,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 56a50cd75494bf29771f0759d10bf0591a28ee42f7d2e1d138be9a20a5b2dd95
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1371,7 +1371,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XObito na Gravidez, OBITOGRAV, 1, OBITOGRA.CNV; OBITOS_CID10_TAB/tabdo/obitogra.cnv'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 35ca3db7567208703083341b99163ec2f4ddb51c74fabeeb099263b95dab5ddf
           status: unreviewed
@@ -1385,9 +1385,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Não'', CNV ''Nao''; ''9''
-            era ''Ignorado'', CNV ''Ign'''
+            era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: obitopuerp
       type: string
       label: Óbito no puerpério
@@ -1403,7 +1403,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 7d8621bb2568c5fecba247f52de2b6238e20e0a355e9e4f8ad7f3bb050979c5f
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1411,7 +1411,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XObito no Puerp, OBITOPUERP, 1, OBITOPUE.CNV; OBITOS_CID10_TAB/tabdo/obitoPUE.cnv'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 7c46e64bcff475afd763c9332523277172c8630acb195f6254d2d3604fc96139
           status: unreviewed
@@ -1425,10 +1425,10 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Sim, até 42 dias'', CNV
             ''00-42''; ''2'' era ''Sim, 43 dias a 1 ano'', CNV ''43-1a''; ''3'' era ''Não'', CNV ''Nao'';
-            ''9'' era ''Ignorado'', CNV ''Ign'''
+            ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: assistmed
       type: string
       label: Assistência médica
@@ -1472,7 +1472,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 3422606b95b81313902f1103a41cfa99757b2781f730bca8f24722d56acc3807
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1480,7 +1480,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XExame complem, EXAME, 1, EXAME.CNV; OBITOS_CID10_TAB/tabdo/EXAME.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 777a705d94dcba8ac253d6879b7f97d108113fc32fb13f578e5933595b0ccc09
           status: unreviewed
@@ -1494,8 +1494,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: cirurgia
       type: string
       label: Cirurgia
@@ -1510,7 +1510,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 3422606b95b81313902f1103a41cfa99757b2781f730bca8f24722d56acc3807
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1518,7 +1518,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XCirurgia, CIRURGIA, 1, CIRURGIA.CNV; OBITOS_CID10_TAB/tabdo/CIRURGIA.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 74de7a6f84b9a4e8270ccab1d34fd47886453950d26b99b36cdb640e3f4c0942
           status: unreviewed
@@ -1532,8 +1532,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: necropsia
       type: string
       label: Necropsia
@@ -1548,7 +1548,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 3422606b95b81313902f1103a41cfa99757b2781f730bca8f24722d56acc3807
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1556,7 +1556,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XNecropsia, NECROPSIA, 1, NECROPS.CNV; OBITOS_CID10_TAB/tabdo/NECROPS.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: b4774bb71de9c7ebb0c5094ef338434d6937ccaeab499a2c98395d8d55e799f0
           status: unreviewed
@@ -1570,8 +1570,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: linhaa
       type: string
       label: Causa — Linha A
@@ -1654,7 +1654,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 84428dba1e8943e5c653d365dad765579149b2146711067f716692a438f77d51
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1662,7 +1662,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XMedico Atest, ATESTANTE, 1, ATESTANT.CNV; OBITOS_CID10_TAB/tabdo/ATESTANT.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: a5e2105c0567a798a51fb23958dba37e03843c089a6af0077199569c446adc11
           status: unreviewed
@@ -1676,8 +1676,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Assistente'', CNV ''Sim'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Assistente'', CNV ''Sim''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: comunsvoim
       type: string
       label: Município SVO/IML
@@ -1778,7 +1778,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: f0d16deb6fe19edbf304d8d358418a6e89e15ccbe2d13f869b191da3526550ef
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1786,7 +1786,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XTipo de Violencia, CIRCOBITO, 1, TIPOVIOL.CNV; OBITOS_CID10_TAB/tabdo/TIPOVIOL.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 3d26ad19d5df4e900528de1a324bb9ad551d26a1d0fcfeff8d56cf565db2d052
           status: unreviewed
@@ -1800,9 +1800,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''3'' era ''Homicídio'', CNV ''Homicidio'';
-            ''9'' era ''Ignorado'', CNV ''Ign'''
+            ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: acidtrab
       type: string
       label: Acidente de trabalho
@@ -1817,7 +1817,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: e519a4a8b725197b1766c00e56c17c47e5eb9a875c4bf07e4ca6d7bbf1585afd
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1825,7 +1825,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XAcid Trabalho, ACIDTRAB, 1, ACIDTRAB.CNV; OBITOS_CID10_TAB/tabdo/ACIDTRAB.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 12e4d305ea8202e41e20e302f3000e2e3830e4bbb1960549bb4c77a8e8ebd061
           status: unreviewed
@@ -1839,8 +1839,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign'''
+          status: resolved
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: fonte
       type: string
       label: Fonte da informação
@@ -1857,7 +1857,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: a7d1fe8be8e19bc7bc032de4bd2da67366d3d57ab6793cdab5b825614e55a57c
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -1865,7 +1865,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XFonte Informac, FONTE, 1, FONTINFO.CNV; OBITOS_CID10_TAB/tabdo/FONTINFO.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 915b57eaff90d8844e3c9af8a7d51ea8a31fdff07d91d924c3ef55c3954f0ce1
           status: unreviewed
@@ -1879,9 +1879,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Ocorrência policial'', CNV
-            ''Boletim Ocorrência''; ''9'' era ''Ignorado'', CNV ''Ign'''
+            ''Boletim Ocorrência''; ''9'' era ''Ignorado'', CNV ''Ign''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: tpobitocor
       type: string
       label: Momento da ocorrência do óbito materno
@@ -2080,7 +2080,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: f50994393e73134e1e846df6e5ac60dc13af9c0a195439739b1a35002a36a904
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -2088,7 +2088,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XFonte Investig, FONTEINV, 1, FONTEINV.CNV; OBITOS_CID10_TAB/tabdo/FONTEINV.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 77794d725cf8d3aa1924a45575a9b03309801d42d9f8b173fee3bfb3825ced0b
           status: unreviewed
@@ -2102,13 +2102,13 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Comitê Morte Materna/Infantil'',
             CNV ''Comitê de Morte Materna e/ou Infantil''; ''2'' era ''Visita domiciliar'', CNV ''Visita domiciliar
             / Entrevista familia''; ''3'' era ''Estab. Saúde/Prontuário'', CNV ''Estab Saude / Prontuario'';
             ''4'' era ''Outros bancos de dados'', CNV ''Relacion com outros bancos de dados''; ''5'' era ''SVO'',
             CNV ''S V O''; ''6'' era ''IML'', CNV ''I M L''; ''7'' era ''Outra'', CNV ''Outra  fonte''; ''8''
-            era ''Múltiplas fontes'', CNV ''Multiplas fontes'''
+            era ''Múltiplas fontes'', CNV ''Multiplas fontes''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: dtcadinv
       type: date
       label: Data cadastro investigação
@@ -2635,7 +2635,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: d4ad5b77f67a58e430a04744d41964acde289f98d6e2ce09c7a5ad1ba44e8c7c
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -2643,7 +2643,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: XTp instal SCB, STCODIFICA, 1, CODIFICA1.CNV; OBITOS_CID10_TAB/tabdo/CODIFICA1.cnv'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 3f5546d76ea3b144e90de3565494f017b09ff4f2cdfe986a3035df2e3369d4c2
           status: unreviewed
@@ -2657,9 +2657,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Codificadora'', CNV ''Com
-            SCB ou "codificadora"''; ''N'' era ''Não'', CNV ''Sem SCB ou "não codificadora"'''
+            SCB ou "codificadora"''; ''N'' era ''Não'', CNV ''Sem SCB ou "não codificadora"''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: codificado
       type: string
       label: Codificado
@@ -2999,7 +2999,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 46544b8609bf9423688dea275b19781ac716ede9102e3fe953299269e93fd2d2
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -3007,7 +3007,7 @@ schema:
           - source_id: sim-tab-bb1c9f02668e
             pages: []
             locator: 'Obito_1996_CID10.def: X*DO novo modelo, STDONOVA, 1, DONOVA.CNV; OBITOS_CID10_TAB/tabdo/DONOVA.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-11-18; texto no issue cnv-difere-do-mapa-anterior.
         - target: /field/description
           value_sha256: 778af9746a02501b8bc0ac8f7e50c1b11169c95db44cd1c16e3e5262da51cfbe
           status: unreviewed
@@ -3021,9 +3021,9 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''0'' era ''Formulário antigo'', CNV
-            ''Não''; ''1'' era ''Formulário novo (pós-2011)'', CNV ''Sim'''
+            ''Não''; ''1'' era ''Formulário novo (pós-2011)'', CNV ''Sim''. Resolvido em 2026-11-18: o mapa anterior não tinha fonte; vale o CNV.'
     - name: difdata
       type: integer
       label: Diferença de datas
@@ -3281,7 +3281,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: DO
-x-version: "2.10.0"
+x-version: "2.11.0"
 
 x-analytics:
   version: 1.2.0
