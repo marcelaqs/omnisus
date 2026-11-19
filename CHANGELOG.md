@@ -130,10 +130,11 @@
   the 15 claims also quotes the first DEF line that names the field. In all, 45 of the
   118 labels have a verified claim (25 from this document, 19 from the layout of
   2006-2007, `fonte_orc` from the DEF); the other 73 have none (#182).
-- `sih_servicos_profissionais` (1.4.0) and `sih_aih_rejeitada` (1.10.0) declare
+- `sih_servicos_profissionais` (1.4.1) and `sih_aih_rejeitada` (1.10.1) declare
   `fonte_orc`, the field every `SP` and `RJ` file has had since 2025-03: C(2), the last
-  of the header in the 510 files of each prefix up to 2026-09. `check_columns` reported it
-  as "not in dictionary". It has no label and no map, because neither `SP2008.DEF` nor
+  of the header in the 510 files of each prefix up to 2026-09. On a real RJ file (the new
+  fixture `sih_rj_rr_2026_08_mini`), `check_columns` reported it as "not in dictionary".
+  It has no label and no map, because neither `SP2008.DEF` nor
   `RJ2008.DEF` names the field and the line of `RD2008.DEF` is the RD's; the issue
   `fonte_orc-sem-def` says so. The evidence is the DBF header of every `SP` and `RJ` file
   the server listed on 2026-11-19, read without any record

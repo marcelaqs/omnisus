@@ -5,8 +5,9 @@ from one fixture each, of Roraima in 2024-01. This census reads what every file 
 two prefixes declares, to see which layouts those dictionaries have to cover.
 
 A `.dbc` stores the DBF header uncompressed at its start. `censo.py` asks the server
-for each file, keeps the header (1,185 to 2,945 bytes) and closes the transfer: no record
-is read, so no SP file, which names the professional in `SP_PF_DOC`, was downloaded.
+for each file, keeps the header (1,185 to 2,945 bytes) and closes the transfer. The
+script reads no record and keeps nothing past the header; for this census, that is all
+that was read of the SP files.
 
     python evidence/2026-11-19-sih-cabecalhos/censo.py read \
         /dissemin/publicos/SIHSUS/200801_/Dados SP sp.cache.csv
@@ -48,7 +49,8 @@ have `SP_NF` C8 and others C20. No field changes between text and number in eith
   `FONTE_ORC` to `CNV/fonterem.CNV`; that line is the RD's.
 - **Types.** Every other field the two dictionaries declare has, in every layout, the
   type family the dictionary gives it (`C` text; `N` a whole number, or a number when
-  the descriptor has decimals).
+  the descriptor has decimals). The five fields declared `date` (`sp_dtinter`,
+  `sp_dtsaida`, `nasc`, `dt_inter`, `dt_saida`) are `C8.0` in the file.
 
 ## The values of `FONTE_ORC` in RJ
 
@@ -57,10 +59,13 @@ have `SP_NF` C8 and others C20. No field changes between text and number in eith
 with each file's size and SHA-256:
 
     uv run --locked python evidence/2026-11-19-sih-cabecalhos/medir_fonte_orc.py DIR \
-        > evidence/2026-11-19-sih-cabecalhos/rj_fonte_orc.csv
+        evidence/2026-11-19-sih-cabecalhos/rj_fonte_orc.csv
 
-The 1,270 records have `00`, a code `fonterem.CNV` does not list. They are 18 files of
-one small UF; another UF may publish another value.
+The 1,270 records have `00`. It is the value the RD publishes in its own `FONTE_ORC`,
+which the RD's map leaves without a label (issue `fonte_orc-00-sem-fonte` of the RD).
+They are 18 files of one small UF; another UF may publish another value. The files
+carry `GESTOR_CPF`, and only counts left them. The fixture `sih_rj_rr_2026_08_mini` is
+`RJRR2608.dbc`, its four records, with that column blanked.
 
 **What it is used for.** `tests/unit/transforms/test_sih_headers.py` compares the two
 dictionaries with the layouts, and the issue `fonte_orc-sem-def` of the field in each

@@ -2,7 +2,7 @@ name: sih_aih_rejeitada
 title: SIHSUS — AIH rejeitada (RJ)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.10.0
+x-version: 1.10.1
 x-source-format: dbc
 x-evidence:
   physical_schema: sih_rj_rr_2024_01_mini.dbc, 90 fields; observed 2026-09-22. FONTE_ORC,
@@ -27733,4 +27733,4 @@ schema:
       issues:
       - id: fonte_orc-sem-def
         status: open
-        description: 'FONTE_ORC C(2) é o último campo do cabeçalho DBF dos 510 arquivos RJ de 2025-03 a 2026-09 e de nenhum dos 5.403 anteriores (evidence/2026-11-19-sih-cabecalhos: os 5.913 arquivos RJ que o servidor listava em 2026-11-19; só o cabeçalho foi lido). O IT_SIHSUS_1603.pdf (sihsus-1e89d5f2cc41) não traz o layout do RJ. O RJ2008.DEF (TAB_SIH.zip, sih-tab-f05b32f32908) não cita o campo. O RD2008.DEF, linha 274, liga o FONTE_ORC do RD a CNV/fonterem.CNV; a linha é do RD e não dá rótulo nem mapa a este campo. Nos 18 arquivos RJRR de 2025-03 a 2026-08, os 1.270 registros têm ''00'' (rj_fonte_orc.csv na mesma pasta), código que fonterem.CNV não lista.'
+        description: 'FONTE_ORC C(2) é o último campo do cabeçalho DBF dos 510 arquivos RJ de 2025-03 a 2026-09 e de nenhum dos 5.403 anteriores (evidence/2026-11-19-sih-cabecalhos: os 5.913 arquivos RJ que o servidor listava em 2026-11-19; só o cabeçalho foi lido). O IT_SIHSUS_1603.pdf (sihsus-1e89d5f2cc41) não traz o layout do RJ. O RJ2008.DEF (TAB_SIH.zip, sih-tab-f05b32f32908) não cita o campo. O RD2008.DEF, linha 274, liga o FONTE_ORC do RD a CNV/fonterem.CNV; a linha é do RD e não dá rótulo nem mapa a este campo. Nos 18 arquivos RJRR de 2025-03 a 2026-08, os 1.270 registros têm ''00'' (rj_fonte_orc.csv na mesma pasta; só contagens saíram dos arquivos, que trazem GESTOR_CPF). É o valor que o RD publica no seu FONTE_ORC, onde o mapa o deixa sem rótulo (issue fonte_orc-00-sem-fonte do RD). A fixture sih_rj_rr_2026_08_mini é o RJRR2608, com GESTOR_CPF em branco.'
