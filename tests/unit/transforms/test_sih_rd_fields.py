@@ -160,6 +160,22 @@ WORDS_OF_THE_OFFICIAL_LAYOUT = {
     "cid_notif": "CID de Notificação",
     "gestrisco": "Indicador se é gestante de risco",
     "gestor_tp": "Tipo de gestor",
+    # second round (#182, C14)
+    "cgc_hosp": "CNPJ do Estabelecimento",
+    "munic_mov": "Município do Estabelecimento",
+    "munic_res": "Município de Residência do Paciente",
+    "natureza": "Natureza jurídica do hospital (com conteúdo até maio/12)",
+    "proc_solic": "Procedimento solicitado",
+    "proc_rea": "Procedimento realizado",
+    "cid_asso": "CID causa",
+    "cid_morte": "CID da morte",
+    "uti_mes_to": "Quantidade de dias de UTI no mês",
+    "uti_int_to": "Quantidade de diárias em unidade intermediaria",
+    "contracep1": "Tipo de contraceptivo utilizado",
+    "contracep2": "Segundo tipo de contraceptivo utilizado",
+    "insc_pn": "Número da gestante no pré-natal",
+    "cnaer": "Código de acidente de trabalho",
+    "gestor_cod": "Motivo de autorização da AIH pelo Gestor",
 }
 
 
@@ -262,23 +278,23 @@ def test_the_page_of_manuals_lists_the_older_layout_under_its_period():
     assert source["url"].endswith("/SIHD/Manuais/Layout_REDUZIDA.pdf")
 
 
-def test_nine_labels_are_the_words_of_the_official_layout():
-    """The nine labels the maintainer chose in #182 (C2 and C3) among those that said
-    more than IT_SIHSUS_1603 says of the field, or something else: "competência" where
-    it says "processamento", "(sífilis)", "alto risco", "cobradas", "autorizador",
-    "notificação compulsória". Each is now the document's description up to its full
-    stop, or up to ", no formato". Other labels of the dictionary still have no claim."""
+def test_24_labels_are_the_words_of_the_official_layout():
+    """The labels the maintainer chose in #182 (C2, C3 and C14) among those that said more
+    than IT_SIHSUS_1603 says of the field, or something else: "competência" where it
+    says "processamento", "(sífilis)", "alto risco", "notificação compulsória", "(IBGE)",
+    "(SIGTAP)", "hospital" where it says "Estabelecimento", "CNAE", "UCI". Each is now
+    the document's description up to its first full stop, or up to ", no formato". The
+    document's own spelling stays ("intermediaria"). The other labels of the dictionary
+    shorten or abbreviate the description and have no claim; no test checks them."""
     official = {row["campo"]: row for row in official_layout()}
     contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
+    assert len(WORDS_OF_THE_OFFICIAL_LAYOUT) == 24
     for name, label in WORDS_OF_THE_OFFICIAL_LAYOUT.items():
         row = official[name]
         assert row["descricao"].startswith(label), name
-        assert row["descricao"].removeprefix(label) in {
-            "",
-            ".",
-            ", no formato aaaa.",
-            ", no formato mm.",
-        }, name
+        rest = row["descricao"].removeprefix(label)
+        assert rest == "" or rest.startswith((".", ", no formato")), name
+        assert "." not in label
         assert contract[name]["field"]["label"] == label
         claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
         assert (claim["status"], claim["method"]) == ("verified_in_source", "pdf-read")

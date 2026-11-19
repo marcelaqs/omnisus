@@ -116,6 +116,16 @@
   line with nothing but such a range raises. The 32 codes the 238 measured RD files
   publish are all among the 100. The open issue `faec_tp-faixa-de-reserva` records these
   points. The field leaves `sem_cnv` (#137) in both datasets.
+- `sih_aih_reduzida` (2.29.0): 15 more labels are the words of `IT_SIHSUS_1603.pdf`, each
+  with a `/field/label` claim, because they said more than the document or something
+  else: `munic_res` and `munic_mov` (no "(IBGE)"; "Município do Estabelecimento"),
+  `proc_rea` and `proc_solic` (no "(SIGTAP)"), `cgc_hosp` ("CNPJ do Estabelecimento"),
+  `natureza`, `cid_asso` ("CID causa"), `cid_morte` ("CID da morte"), `uti_mes_to`,
+  `uti_int_to` ("Quantidade de diárias em unidade intermediaria", not "Total dias UCI"),
+  `contracep1`, `contracep2`, `insc_pn`, `cnaer` ("Código de acidente de trabalho", not
+  "CNAE") and `gestor_cod`. With the nine of 2.23.1, 24 labels are the table's text up
+  to its first full stop. The other labels shorten or abbreviate the description ("SH"
+  for "serviços hospitalares") without adding to it, and keep no claim (#182).
 
 ### omnisus-dbf 0.2.2
 

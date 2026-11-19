@@ -297,7 +297,12 @@ Passo a passo com análise e procedência:
   A Tabela 1 do informe (pp. 1–4) está transcrita linha a linha em
   `evidence/2026-11-18-it-sihsus-1603-layout-rd/tabela1.csv`, e a descrição de 110 campos
   no dicionário (`sus.describe_dataset("sih_aih_reduzida")`) é a frase que a tabela traz,
-  erros de digitação inclusive; 19 campos são descritos só como "Zerado".
+  erros de digitação inclusive; 19 campos são descritos só como "Zerado". O rótulo de 24
+  campos também é o texto da tabela, até o primeiro ponto: os que antes diziam mais do
+  que ela ou outra coisa (por exemplo `munic_res`, "Município de Residência do Paciente",
+  sem o "(IBGE)" de antes, e `uti_int_to`, "Quantidade de diárias em unidade
+  intermediaria", como o documento escreve). Os demais rótulos encurtam ou abreviam a
+  descrição ("SH" por "serviços hospitalares") sem acrescentar nada, e não têm claim.
 - Layout do arquivo de REDUZIDA gerado pelo SIHD (`Layout_REDUZIDA.pdf`), Ministério da
   Saúde / DATASUS, que a página de manuais do SIHD lista sob "SIHD (uso até 12/2007)":
   <ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_REDUZIDA.pdf>

@@ -29,7 +29,8 @@ another SHA-256:
 **What it is used for.** `sih_aih_reduzida.yaml` takes the `description` of 110 fields
 from the column `descricao`, each with a `/field/description` claim that names the page
 and quotes the row; `tests/unit/transforms/test_sih_rd_fields.py` compares the two, and
-the order of the rows with the DBF header of layout 5. No test reads the PDF, which is
+the order of the rows with the DBF header of layout 5. The `label` of 24 fields is the
+same text up to its first full stop, each with a `/field/label` claim. No test reads the PDF, which is
 not in the repository: what ties the CSV to the document is running `extrair.py` again.
 `uf_zi`, `cnes` and `natureza` keep the description they had.
 

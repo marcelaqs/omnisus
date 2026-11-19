@@ -16028,7 +16028,7 @@ schema:
     # ========================================================================
     - name: cgc_hosp
       type: string
-      label: CNPJ do hospital
+      label: CNPJ do Estabelecimento
       description: 'CNPJ do Estabelecimento.'
       x-metadata:
         physical_name: CGC_HOSP
@@ -16036,6 +16036,18 @@ schema:
           type: string
           length: 14
         claims:
+        - target: /field/label
+          value_sha256: a9c1873a34245141d87307908a363e7e3b6b70eba2592379ffe33863999160f0
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 5, CGC_HOSP char(14): "CNPJ do Estabelecimento."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: eeff7c46839a28be403bd93dee0fa2eb00aa8fc6870b7b5d750ee5699e7424ba
           status: verified_in_source
@@ -16122,7 +16134,7 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: munic_mov
       type: string
-      label: Município do hospital (IBGE)
+      label: Município do Estabelecimento
       description: 'Município do Estabelecimento.'
       x-normalization-hint: lpad_6
       foreignKeys:
@@ -16133,6 +16145,18 @@ schema:
           type: string
           length: 6
         claims:
+        - target: /field/label
+          value_sha256: 4e7c3585c704034e12862480fcb94d204f5c87c7e72069a5753f3bdfa2543dfb
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 49, MUNIC_MOV char(6): "Município do Estabelecimento."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
           status: verified_in_source
@@ -16159,7 +16183,7 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: natureza
       type: string
-      label: Natureza jurídica (antigo)
+      label: Natureza jurídica do hospital (com conteúdo até maio/12)
       description: Natureza jurídica do hospital, com conteúdo até maio de 2012.
       x-decode:
         '00': Ignorado
@@ -16268,6 +16292,18 @@ schema:
           type: string
           length: 2
         claims:
+        - target: /field/label
+          value_sha256: 9f7c188dbd7cf5623e3afccdbbf22fbb77ca75d7e93ac5c3236939d357864266
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 44, NATUREZA char(2): "Natureza jurídica do hospital (com conteúdo até maio/12). Era utilizada a classificação de Regime e Natureza."'
+          note: 'A primeira frase da descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
           status: verified_in_source
@@ -16816,7 +16852,7 @@ schema:
           note: Mapa do CNV.
     - name: munic_res
       type: string
-      label: Município de residência (IBGE)
+      label: Município de Residência do Paciente
       description: 'Município de Residência do Paciente'
       x-normalization-hint: lpad_6
       foreignKeys:
@@ -16827,6 +16863,18 @@ schema:
           type: string
           length: 6
         claims:
+        - target: /field/label
+          value_sha256: 7577e846324d705e2059b0d120b72d346ae27aeeca6ad630c159d6662e0d3e95
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 9, MUNIC_RES char(6): "Município de Residência do Paciente"'
+          note: 'A descrição do documento.'
         - target: /field/physical_type
           value_sha256: 1595e2037fca2aed7e903008ad83a4246b4cdc49acbef8c9878753a5a65472f6
           status: verified_in_source
@@ -28093,7 +28141,7 @@ schema:
     # ========================================================================
     - name: proc_solic
       type: string
-      label: Procedimento solicitado (SIGTAP)
+      label: Procedimento solicitado
       description: 'Procedimento solicitado.'
       x-metadata:
         physical_name: PROC_SOLIC
@@ -28101,6 +28149,18 @@ schema:
           type: string
           length: 10
         claims:
+        - target: /field/label
+          value_sha256: 1f753bcfaa9ae1eb0cc6dd09b8777df8bc640d974a0821f25058069ab779c598
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 23, PROC_SOLIC char(10): "Procedimento solicitado."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 19d0f44605970de20d929464711db00e4451ebf3ee4270d38d17262c6ef124e9
           status: verified_in_source
@@ -28127,7 +28187,7 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: proc_rea
       type: string
-      label: Procedimento realizado (SIGTAP)
+      label: Procedimento realizado
       description: 'Procedimento realizado.'
       x-metadata:
         physical_name: PROC_REA
@@ -28135,6 +28195,18 @@ schema:
           type: string
           length: 10
         claims:
+        - target: /field/label
+          value_sha256: aa2e5b43cce8e7e607e310f41adc930e8cfa5286f3fc93ba352ac6bfcf558615
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 24, PROC_REA char(10): "Procedimento realizado."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 19d0f44605970de20d929464711db00e4451ebf3ee4270d38d17262c6ef124e9
           status: verified_in_source
@@ -28289,7 +28361,7 @@ schema:
           description: 'O IT_SIHSUS_1603, p. 3, chama o campo de "CID de Notificação". O RD2008.DEF, linhas 523-527, o chama de "CID laqueadura" e o liga a cinco tabelas da CID-10 (CID10_3D.CNV, CIDX15.CNV, CID10_15.CNV, CIDX09.CNV e CID10_09.CNV), nenhuma empacotada. Em RDRR2401 o campo vem preenchido em 49 das 3.714 linhas, todas com Z302, e em branco nas outras 3.665. Nenhum documento registrado diz que notificação é essa. Nos 238 arquivos RD lidos de 2008-01 a 2026-07 (222 deles de Roraima; evidence/2026-11-18-rd-medidas), o campo traz Z302 em 28.207 dos 28.388 registros preenchidos, um código iniciado por O em 172 e outro valor em 9.'
     - name: cid_asso
       type: string
-      label: CID causa associada
+      label: CID causa
       description: 'CID causa.'
       foreignKeys:
         - { fields: cid_asso, reference: { resource: aux_cid10, fields: codigo } }
@@ -28299,6 +28371,18 @@ schema:
           type: string
           length: 4
         claims:
+        - target: /field/label
+          value_sha256: 07346ccaf727bff5ff81ee693d091d9703c9b718b02f7eb637d17df10e98b1c7
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 78, CID_ASSO char(4): "CID causa."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
           status: verified_in_source
@@ -28325,7 +28409,7 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: cid_morte
       type: string
-      label: CID causa da morte
+      label: CID da morte
       description: 'CID da morte.'
       foreignKeys:
         - { fields: cid_morte, reference: { resource: aux_cid10, fields: codigo } }
@@ -28335,6 +28419,18 @@ schema:
           type: string
           length: 4
         claims:
+        - target: /field/label
+          value_sha256: fe517777d268b3d3a9c555781a6056af6b00834d2dc8871b3ac27757f264718c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 79, CID_MORTE char(4): "CID da morte."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 8a5ad28d33833610cf70db36e30c929ef32d14397d4ea3f3d8c72f35e40021ba
           status: verified_in_source
@@ -28517,10 +28613,22 @@ schema:
           description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam. O campo não vem preenchido em nenhum dos 1.994.690 registros dos 238 arquivos RD lidos de 2008-01 a 2026-07 (222 deles de Roraima); nos 21 arquivos RDRR de 2006-04 a 2007-12, os meses do layout que dá o rótulo, vem preenchido em 395 dos 36.983 registros (evidence/2026-11-18-rd-medidas).'
     - name: uti_mes_to
       type: integer
-      label: Total dias UTI
+      label: Quantidade de dias de UTI no mês
       description: 'Quantidade de dias de UTI no mês.'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 643462a1a89f818d66ec12f837cbc462ded31aeec603969fbcba6659230d8bce
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 15, UTI_MES_TO numeric(3): "Quantidade de dias de UTI no mês."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: 23151c9824e235fa672e7ce82eac5e66a4ccbd0bb8b98a290b3c6de7a038cf68
           status: verified_in_source
@@ -28732,10 +28840,22 @@ schema:
           description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam. O IT_SIHSUS_1603, p. 1, descreve o total da mesma família, UTI_INT_TO, como "Quantidade de diárias em unidade intermediaria."; o layout anterior fala em dias em UTI. O campo não vem preenchido em nenhum dos 1.994.690 registros dos 238 arquivos RD lidos de 2008-01 a 2026-07 (222 deles de Roraima); nos 21 arquivos RDRR de 2006-04 a 2007-12, os meses do layout que dá o rótulo, também não vem em nenhum dos 36.983 registros (evidence/2026-11-18-rd-medidas).'
     - name: uti_int_to
       type: integer
-      label: Total dias UCI
+      label: Quantidade de diárias em unidade intermediaria
       description: 'Quantidade de diárias em unidade intermediaria.'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 2fe876edaf394898653302889b0961d74f8b40ab5c9e6169e673d0463b3896ec
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 20, UTI_INT_TO numeric(3): "Quantidade de diárias em unidade intermediaria."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: dfdc62477a46dbe7c212513af888f64ced81f8aef071fb303b4c3be9774debda
           status: verified_in_source
@@ -29728,7 +29848,7 @@ schema:
             se aplica''. Resolvido em 2026-09-26: o mapa anterior não tinha fonte; vale o CNV.'
     - name: contracep1
       type: string
-      label: 1º método contraceptivo
+      label: Tipo de contraceptivo utilizado
       description: 'Tipo de contraceptivo utilizado.'
       x-decode:
         '00': Ignorado/não se aplica
@@ -29837,6 +29957,18 @@ schema:
           type: string
           length: 2
         claims:
+        - target: /field/label
+          value_sha256: c48fe35fe62b90414ad52e5b65403b60f1f03fea461d8cbdaa12dfef4daf366d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 63, CONTRACEP1 char(2): "Tipo de contraceptivo utilizado."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
           status: verified_in_source
@@ -29874,7 +30006,7 @@ schema:
           note: Mapa do CNV.
     - name: contracep2
       type: string
-      label: 2º método contraceptivo
+      label: Segundo tipo de contraceptivo utilizado
       description: 'Segundo tipo de contraceptivo utilizado.'
       x-decode:
         '00': Ignorado/não se aplica
@@ -29983,6 +30115,18 @@ schema:
           type: string
           length: 2
         claims:
+        - target: /field/label
+          value_sha256: 3a7bce54d238c5899115c01c275271c7efd1ff7c82ffcac3f9912caa3092c101
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 64, CONTRACEP2 char(2): "Segundo tipo de contraceptivo utilizado."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 1e339250f87cdc53f01ad195e6971f2440ead42c4352f6f4a6c0c6cab33c2a0c
           status: verified_in_source
@@ -30082,7 +30226,7 @@ schema:
           note: Mapa do CNV.
     - name: insc_pn
       type: string
-      label: Inscrição pré-natal
+      label: Número da gestante no pré-natal
       description: 'Número da gestante no pré-natal.'
       x-metadata:
         physical_name: INSC_PN
@@ -30090,6 +30234,18 @@ schema:
           type: string
           length: 12
         claims:
+        - target: /field/label
+          value_sha256: 1bc3c24ebdff94963c1197bede5443bb94a9035c2851dbf7695eccd84ecd38fd
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 66, INSC_PN char(12): "Número da gestante no pré-natal."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 7fb033c0f04b39f2581acd9b3d63d52b68f9abf3467698ae77509b624a50a9aa
           status: verified_in_source
@@ -30120,7 +30276,7 @@ schema:
           description: 'IT_SIHSUS_1603, p. 3, dá INSC_PN char(12) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara INSC_PN C(10) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(12) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout); o contrato guarda uma largura por campo, a do último layout lido. Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: cnaer
       type: string
-      label: CNAE (acidente de trabalho)
+      label: Código de acidente de trabalho
       description: 'Código de acidente de trabalho.'
       x-metadata:
         physical_name: CNAER
@@ -30128,6 +30284,18 @@ schema:
           type: string
           length: 3
         claims:
+        - target: /field/label
+          value_sha256: 70ed80219bbfedd9b6a8897047659a42341a994c460d39b3185d6f445755f3b6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 69, CNAER char(3): "Código de acidente de trabalho."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 15e0d976f802a4752f598e8353b384949828c50d0f377d3f552d01ca3d148ed9
           status: verified_in_source
@@ -30389,7 +30557,7 @@ schema:
           description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam. O campo não vem preenchido em nenhum dos 1.994.690 registros dos 238 arquivos RD lidos de 2008-01 a 2026-07 (222 deles de Roraima); nos 21 arquivos RDRR de 2006-04 a 2007-12, os meses do layout que dá o rótulo, vem preenchido em 293 dos 36.983 registros (evidence/2026-11-18-rd-medidas).'
     - name: gestor_cod
       type: string
-      label: Código motivo autorização
+      label: Motivo de autorização da AIH pelo Gestor
       description: 'Motivo de autorização da AIH pelo Gestor.'
       x-metadata:
         physical_name: GESTOR_COD
@@ -30397,6 +30565,18 @@ schema:
           type: string
           length: 5
         claims:
+        - target: /field/label
+          value_sha256: 9cadef024c12a63e8cba46f674c46e92a2bb0bb71d6583ca4b1f7933118f7460
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 71, GESTOR_COD char(3): "Motivo de autorização da AIH pelo Gestor."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/physical_type
           value_sha256: 3c45c15a9d7fb20760f76ba53caa94ff640c468d04b2c78a776403c29208f22b
           status: conflicting
@@ -31667,7 +31847,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.28.1"
+x-version: "2.29.0"
 
 x-analytics:
   version: 1.3.0
