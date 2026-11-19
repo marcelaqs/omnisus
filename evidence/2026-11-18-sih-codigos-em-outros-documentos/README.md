@@ -62,11 +62,12 @@ the field, and the text from the row of that field to the next row of the table.
   `evidence/2026-10-06-rd-2008-layouts`), a year before the SISAIH01 readme says the
   text file gained the fields. Only the SISAIH01 edition for 09/2015 was read; the
   directory lists one for 01/2015 and eight later ones.
-- `homonimo`: both lists stop at `1`. The files read (`evidence/2026-11-18-rd-medidas`)
-  publish `0` and `2` in every year from 2006 to 2026, the 21 months of the layout
-  `Layout_REDUZIDA.pdf` describes included, and `1` in one file of 2026. That document
-  also gives 19 labels to fields the 2008 layout calls "Zerado"; its list for this field
-  is not used because the data has a code it does not list, not because of its date.
-- `tpdisec` again: in the files read, the 12 of 2014 publish the nine fields blank, and
-  the 148 from 2015-01 publish `0` only with the diagnosis of the same number blank,
-  which fits the readme's date for the SISAIH01 fields.
+- `homonimo`: both lists stop at `1`. The files read (`evidence/2026-11-18-rd-medidas`,
+  Roraima for 2006 and 2007) publish `0` and `2` in every year from 2006 to 2026, the 21
+  months of the layout `Layout_REDUZIDA.pdf` describes included, and `1` in one file of
+  2026. That document also gives 19 labels to fields the 2008 layout calls "Zerado"; its
+  list for this field is not used because the data has a code it does not list, not
+  because of its date.
+- `tpdisec` again: in the files read, the 12 Roraima files of 2014 publish the nine
+  fields blank, and the 148 from 2015-01 publish `0` only with the diagnosis of the same
+  number blank. A count is not a source for a label.

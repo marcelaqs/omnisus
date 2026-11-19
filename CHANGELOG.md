@@ -81,16 +81,19 @@
   The three types are C(4), C(2) and N(5) in the 243 files of
   `evidence/2026-10-06-rd-2008-layouts`. Other dictionaries still declare a type their
   files do not stage, such as `insc_pn` of `sih_aih_reduzida_1992_2007` (#182).
-- `sih_aih_reduzida` (2.26.0) and `sih_aih_rejeitada` (1.7.0): counts from 262 real RD
+- `sih_aih_reduzida` (2.26.1) and `sih_aih_rejeitada` (1.7.1): counts from 262 real RD
   files (`evidence/2026-11-18-rd-medidas/`: 238 of 2008-01 to 2026-07 with 1,994,690
-  records, 24 of 2006 and 2007 with 41,547) now back, in the issues of the fields, what
-  the dictionary says. `uf_zi`: every record of the five `RDDF` files read has `530000`,
-  a code `br_municgestor.cnv` reaches only through a range, so the issue no longer says
-  that no file publishes such a key. The 19 "Zerado" fields are filled in no record from
-  2008 and 14 of them are filled in 2006-2007. `homonimo` publishes `0` and `2` in every
-  year from 2006 and `1` only in `RDAP2607`. `tpdisec1-9` are blank in the 12 files of
-  2014 and, from 2015-01, `0` exactly where the diagnosis of the same number is blank.
-  `cid_notif` is `Z302` in 28,207 of its 28,388 filled records. No label changes (#182).
+  records, 222 of them of Roraima, and the 24 Roraima files of 2006 and 2007 with
+  41,547) are quoted in the issues of the fields. `uf_zi`: every record of the five
+  `RDDF` files read has `530000`, a code `br_municgestor.cnv` reaches only through a
+  range, so the issue no longer says that no file publishes such a key (no `RJ` file of
+  the Federal District was read). The 19 "Zerado" fields are filled in no record from
+  2008; 13 of them are filled in the 21 files of 2006-04 to 2007-12, the months of the
+  layout that gives their labels. `homonimo` publishes `0` and `2` in the files of every
+  year from 2006 and `1` only in `RDAP2607`. `tpdisec1-9` are blank in the 12 Roraima
+  files of 2014 and, from 2015-01, `0` exactly where the diagnosis of the same number is
+  blank. `cid_notif` is `Z302` in 28,207 of its 28,388 filled records. No label changes
+  (#182).
 
 ### omnisus-dbf 0.2.2
 

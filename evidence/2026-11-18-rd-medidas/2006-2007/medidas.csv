@@ -64,8 +64,6 @@ RDRR0603.dbc,homonimo,0,1467
 RDRR0603.dbc,homonimo,2,91
 RDRR0603.dbc,cid_notif,0000,1547
 RDRR0603.dbc,cid_notif,Z302,11
-RDRR0603.dbc,cid_notif|proc_rea,Z302|34022040,11
-RDRR0603.dbc,cid_notif|sexo,Z302|3,11
 RDRR0604.dbc,zerado_preenchido,uti_mes_in,16
 RDRR0604.dbc,zerado_preenchido,uti_mes_an,6
 RDRR0604.dbc,zerado_preenchido,uti_mes_al,26
@@ -89,8 +87,6 @@ RDRR0604.dbc,homonimo,0,1709
 RDRR0604.dbc,homonimo,2,65
 RDRR0604.dbc,cid_notif,0000,1772
 RDRR0604.dbc,cid_notif,Z302,2
-RDRR0604.dbc,cid_notif|proc_rea,Z302|34022040,2
-RDRR0604.dbc,cid_notif|sexo,Z302|3,2
 RDRR0605.dbc,zerado_preenchido,uti_mes_in,14
 RDRR0605.dbc,zerado_preenchido,uti_mes_an,4
 RDRR0605.dbc,zerado_preenchido,uti_mes_al,28
@@ -224,9 +220,6 @@ RDRR0610.dbc,homonimo,0,1908
 RDRR0610.dbc,homonimo,2,76
 RDRR0610.dbc,cid_notif,0000,1967
 RDRR0610.dbc,cid_notif,Z302,17
-RDRR0610.dbc,cid_notif|proc_rea,Z302|34022040,1
-RDRR0610.dbc,cid_notif|proc_rea,Z302|35082011,16
-RDRR0610.dbc,cid_notif|sexo,Z302|3,17
 RDRR0611.dbc,zerado_preenchido,uti_mes_in,7
 RDRR0611.dbc,zerado_preenchido,uti_mes_an,8
 RDRR0611.dbc,zerado_preenchido,uti_mes_al,20
@@ -272,9 +265,6 @@ RDRR0612.dbc,homonimo,0,1742
 RDRR0612.dbc,homonimo,2,70
 RDRR0612.dbc,cid_notif,0000,1766
 RDRR0612.dbc,cid_notif,Z302,46
-RDRR0612.dbc,cid_notif|proc_rea,Z302|34022040,36
-RDRR0612.dbc,cid_notif|proc_rea,Z302|35082011,10
-RDRR0612.dbc,cid_notif|sexo,Z302|3,46
 RDRR0701.dbc,zerado_preenchido,uti_mes_in,7
 RDRR0701.dbc,zerado_preenchido,uti_mes_an,12
 RDRR0701.dbc,zerado_preenchido,uti_mes_al,36
@@ -298,9 +288,6 @@ RDRR0701.dbc,homonimo,0,1491
 RDRR0701.dbc,homonimo,2,81
 RDRR0701.dbc,cid_notif,0000,1540
 RDRR0701.dbc,cid_notif,Z302,32
-RDRR0701.dbc,cid_notif|proc_rea,Z302|34022040,12
-RDRR0701.dbc,cid_notif|proc_rea,Z302|35082011,20
-RDRR0701.dbc,cid_notif|sexo,Z302|3,32
 RDRR0702.dbc,zerado_preenchido,uti_mes_in,5
 RDRR0702.dbc,zerado_preenchido,uti_mes_an,3
 RDRR0702.dbc,zerado_preenchido,uti_mes_al,12
@@ -324,9 +311,6 @@ RDRR0702.dbc,homonimo,0,1639
 RDRR0702.dbc,homonimo,2,64
 RDRR0702.dbc,cid_notif,0000,1672
 RDRR0702.dbc,cid_notif,Z302,31
-RDRR0702.dbc,cid_notif|proc_rea,Z302|34022040,7
-RDRR0702.dbc,cid_notif|proc_rea,Z302|35082011,24
-RDRR0702.dbc,cid_notif|sexo,Z302|3,31
 RDRR0703.dbc,zerado_preenchido,uti_mes_in,7
 RDRR0703.dbc,zerado_preenchido,uti_mes_an,8
 RDRR0703.dbc,zerado_preenchido,uti_mes_al,16
@@ -350,8 +334,6 @@ RDRR0703.dbc,homonimo,0,1706
 RDRR0703.dbc,homonimo,2,24
 RDRR0703.dbc,cid_notif,0000,1708
 RDRR0703.dbc,cid_notif,Z302,22
-RDRR0703.dbc,cid_notif|proc_rea,Z302|35082011,22
-RDRR0703.dbc,cid_notif|sexo,Z302|3,22
 RDRR0704.dbc,zerado_preenchido,uti_mes_in,4
 RDRR0704.dbc,zerado_preenchido,uti_mes_an,4
 RDRR0704.dbc,zerado_preenchido,uti_mes_al,17
@@ -375,9 +357,6 @@ RDRR0704.dbc,homonimo,0,1818
 RDRR0704.dbc,homonimo,2,56
 RDRR0704.dbc,cid_notif,0000,1851
 RDRR0704.dbc,cid_notif,Z302,23
-RDRR0704.dbc,cid_notif|proc_rea,Z302|34022040,2
-RDRR0704.dbc,cid_notif|proc_rea,Z302|35082011,21
-RDRR0704.dbc,cid_notif|sexo,Z302|3,23
 RDRR0705.dbc,zerado_preenchido,uti_mes_in,6
 RDRR0705.dbc,zerado_preenchido,uti_mes_an,4
 RDRR0705.dbc,zerado_preenchido,uti_mes_al,14
@@ -401,8 +380,6 @@ RDRR0705.dbc,homonimo,0,1747
 RDRR0705.dbc,homonimo,2,30
 RDRR0705.dbc,cid_notif,0000,1693
 RDRR0705.dbc,cid_notif,Z302,84
-RDRR0705.dbc,cid_notif|proc_rea,Z302|34022040,84
-RDRR0705.dbc,cid_notif|sexo,Z302|3,84
 RDRR0706.dbc,zerado_preenchido,uti_mes_in,18
 RDRR0706.dbc,zerado_preenchido,uti_mes_an,3
 RDRR0706.dbc,zerado_preenchido,uti_mes_al,12
@@ -426,8 +403,6 @@ RDRR0706.dbc,homonimo,0,1861
 RDRR0706.dbc,homonimo,2,75
 RDRR0706.dbc,cid_notif,0000,1923
 RDRR0706.dbc,cid_notif,Z302,13
-RDRR0706.dbc,cid_notif|proc_rea,Z302|34022040,13
-RDRR0706.dbc,cid_notif|sexo,Z302|3,13
 RDRR0707.dbc,zerado_preenchido,uti_mes_in,7
 RDRR0707.dbc,zerado_preenchido,uti_mes_an,3
 RDRR0707.dbc,zerado_preenchido,uti_mes_al,13
@@ -451,8 +426,6 @@ RDRR0707.dbc,homonimo,0,1514
 RDRR0707.dbc,homonimo,2,40
 RDRR0707.dbc,cid_notif,0000,1549
 RDRR0707.dbc,cid_notif,Z302,5
-RDRR0707.dbc,cid_notif|proc_rea,Z302|34022040,5
-RDRR0707.dbc,cid_notif|sexo,Z302|3,5
 RDRR0708.dbc,zerado_preenchido,uti_mes_in,19
 RDRR0708.dbc,zerado_preenchido,uti_mes_an,8
 RDRR0708.dbc,zerado_preenchido,uti_mes_al,15
@@ -476,8 +449,6 @@ RDRR0708.dbc,homonimo,0,1450
 RDRR0708.dbc,homonimo,2,50
 RDRR0708.dbc,cid_notif,0000,1498
 RDRR0708.dbc,cid_notif,Z302,2
-RDRR0708.dbc,cid_notif|proc_rea,Z302|34022040,2
-RDRR0708.dbc,cid_notif|sexo,Z302|3,2
 RDRR0709.dbc,zerado_preenchido,uti_mes_in,11
 RDRR0709.dbc,zerado_preenchido,uti_mes_an,3
 RDRR0709.dbc,zerado_preenchido,uti_mes_al,13
@@ -501,8 +472,6 @@ RDRR0709.dbc,homonimo,0,1969
 RDRR0709.dbc,homonimo,2,76
 RDRR0709.dbc,cid_notif,0000,2039
 RDRR0709.dbc,cid_notif,Z302,6
-RDRR0709.dbc,cid_notif|proc_rea,Z302|34022040,6
-RDRR0709.dbc,cid_notif|sexo,Z302|3,6
 RDRR0710.dbc,zerado_preenchido,uti_mes_in,17
 RDRR0710.dbc,zerado_preenchido,uti_mes_an,5
 RDRR0710.dbc,zerado_preenchido,uti_mes_al,9
@@ -526,9 +495,6 @@ RDRR0710.dbc,homonimo,0,1696
 RDRR0710.dbc,homonimo,2,41
 RDRR0710.dbc,cid_notif,0000,1735
 RDRR0710.dbc,cid_notif,Z302,2
-RDRR0710.dbc,cid_notif|proc_rea,Z302|34022040,1
-RDRR0710.dbc,cid_notif|proc_rea,Z302|35082011,1
-RDRR0710.dbc,cid_notif|sexo,Z302|3,2
 RDRR0711.dbc,zerado_preenchido,uti_mes_in,8
 RDRR0711.dbc,zerado_preenchido,uti_mes_an,8
 RDRR0711.dbc,zerado_preenchido,uti_mes_al,9
@@ -552,8 +518,6 @@ RDRR0711.dbc,homonimo,0,1822
 RDRR0711.dbc,homonimo,2,71
 RDRR0711.dbc,cid_notif,0000,1874
 RDRR0711.dbc,cid_notif,Z302,19
-RDRR0711.dbc,cid_notif|proc_rea,Z302|34022040,19
-RDRR0711.dbc,cid_notif|sexo,Z302|3,19
 RDRR0712.dbc,zerado_preenchido,uti_mes_in,14
 RDRR0712.dbc,zerado_preenchido,uti_mes_an,8
 RDRR0712.dbc,zerado_preenchido,uti_mes_al,23
@@ -577,5 +541,3 @@ RDRR0712.dbc,homonimo,0,1467
 RDRR0712.dbc,homonimo,2,29
 RDRR0712.dbc,cid_notif,0000,1488
 RDRR0712.dbc,cid_notif,Z302,8
-RDRR0712.dbc,cid_notif|proc_rea,Z302|34022040,8
-RDRR0712.dbc,cid_notif|sexo,Z302|3,8

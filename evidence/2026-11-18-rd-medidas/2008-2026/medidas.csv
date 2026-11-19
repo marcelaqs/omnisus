@@ -20,7 +20,6 @@ RDAP2607.dbc,zerado_preenchido,tot_pt_sp,0
 RDAP2607.dbc,zerado_preenchido,cpf_aut,0
 RDAP2607.dbc,homonimo,0,6126
 RDAP2607.dbc,homonimo,1,34
-RDAP2607.dbc,gestor_tp,1,6160
 RDAP2607.dbc,faec_tp,,4572
 RDAP2607.dbc,faec_tp,040024,3
 RDAP2607.dbc,faec_tp,040071,1
@@ -28,13 +27,6 @@ RDAP2607.dbc,faec_tp,040080,1576
 RDAP2607.dbc,faec_tp,040082,8
 RDAP2607.dbc,cid_notif,,6007
 RDAP2607.dbc,cid_notif,Z302,153
-RDAP2607.dbc,cid_notif|proc_rea,Z302|0409040240,18
-RDAP2607.dbc,cid_notif|proc_rea,Z302|0409060186,62
-RDAP2607.dbc,cid_notif|proc_rea,Z302|0409060313,6
-RDAP2607.dbc,cid_notif|proc_rea,Z302|0411010042,65
-RDAP2607.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDAP2607.dbc,cid_notif|sexo,Z302|1,19
-RDAP2607.dbc,cid_notif|sexo,Z302|3,134
 RDAP2607.dbc,tpdisec1,0|diagsec vazio,5553
 RDAP2607.dbc,tpdisec1,1|diagsec preenchido,476
 RDAP2607.dbc,tpdisec1,2|diagsec preenchido,131
@@ -68,7 +60,6 @@ RDDF0801.dbc,zerado_preenchido,tot_pt_sp,0
 RDDF0801.dbc,zerado_preenchido,cpf_aut,0
 RDDF0801.dbc,homonimo,0,6729
 RDDF0801.dbc,homonimo,2,1025
-RDDF0801.dbc,gestor_tp,0,7754
 RDDF0801.dbc,faec_tp,,7251
 RDDF0801.dbc,faec_tp,021014,463
 RDDF0801.dbc,faec_tp,040014,3
@@ -85,25 +76,6 @@ RDDF0801.dbc,cid_notif,Z302,103
 RDDF0801.dbc,cid_notif,Z310,1
 RDDF0801.dbc,cid_notif,Z3Z0,2
 RDDF0801.dbc,cid_notif,ZZ30,2
-RDDF0801.dbc,cid_notif|proc_rea,302|0409040240,2
-RDDF0801.dbc,cid_notif|proc_rea,O101|0411010042,1
-RDDF0801.dbc,cid_notif|proc_rea,O103|0411010042,1
-RDDF0801.dbc,cid_notif|proc_rea,O244|0411010042,3
-RDDF0801.dbc,cid_notif|proc_rea,Z302|0409040240,57
-RDDF0801.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDDF0801.dbc,cid_notif|proc_rea,Z302|0411010042,20
-RDDF0801.dbc,cid_notif|proc_rea,Z310|0409040240,1
-RDDF0801.dbc,cid_notif|proc_rea,Z3Z0|0409040240,2
-RDDF0801.dbc,cid_notif|proc_rea,ZZ30|0409040240,2
-RDDF0801.dbc,cid_notif|sexo,302|1,2
-RDDF0801.dbc,cid_notif|sexo,O101|3,1
-RDDF0801.dbc,cid_notif|sexo,O103|3,1
-RDDF0801.dbc,cid_notif|sexo,O244|3,3
-RDDF0801.dbc,cid_notif|sexo,Z302|1,57
-RDDF0801.dbc,cid_notif|sexo,Z302|3,46
-RDDF0801.dbc,cid_notif|sexo,Z310|1,1
-RDDF0801.dbc,cid_notif|sexo,Z3Z0|1,2
-RDDF0801.dbc,cid_notif|sexo,ZZ30|1,2
 RDDF0801.dbc,uf_zi_em_faixa,530000,7754
 RDDF1201.dbc,zerado_preenchido,uti_mes_in,0
 RDDF1201.dbc,zerado_preenchido,uti_mes_an,0
@@ -126,8 +98,6 @@ RDDF1201.dbc,zerado_preenchido,tot_pt_sp,0
 RDDF1201.dbc,zerado_preenchido,cpf_aut,0
 RDDF1201.dbc,homonimo,0,12939
 RDDF1201.dbc,homonimo,2,2172
-RDDF1201.dbc,gestor_tp,0,11745
-RDDF1201.dbc,gestor_tp,1,3366
 RDDF1201.dbc,faec_tp,,14510
 RDDF1201.dbc,faec_tp,040023,3
 RDDF1201.dbc,faec_tp,040024,1
@@ -141,11 +111,6 @@ RDDF1201.dbc,faec_tp,040051,44
 RDDF1201.dbc,faec_tp,040052,451
 RDDF1201.dbc,cid_notif,,14971
 RDDF1201.dbc,cid_notif,Z302,140
-RDDF1201.dbc,cid_notif|proc_rea,Z302|0409040240,86
-RDDF1201.dbc,cid_notif|proc_rea,Z302|0409060186,41
-RDDF1201.dbc,cid_notif|proc_rea,Z302|0411010042,13
-RDDF1201.dbc,cid_notif|sexo,Z302|1,86
-RDDF1201.dbc,cid_notif|sexo,Z302|3,54
 RDDF1201.dbc,uf_zi_em_faixa,530000,15111
 RDDF1601.dbc,zerado_preenchido,uti_mes_in,0
 RDDF1601.dbc,zerado_preenchido,uti_mes_an,0
@@ -168,8 +133,6 @@ RDDF1601.dbc,zerado_preenchido,tot_pt_sp,0
 RDDF1601.dbc,zerado_preenchido,cpf_aut,0
 RDDF1601.dbc,homonimo,0,13098
 RDDF1601.dbc,homonimo,2,30
-RDDF1601.dbc,gestor_tp,0,10008
-RDDF1601.dbc,gestor_tp,1,3120
 RDDF1601.dbc,faec_tp,,12752
 RDDF1601.dbc,faec_tp,040018,2
 RDDF1601.dbc,faec_tp,040023,2
@@ -180,11 +143,6 @@ RDDF1601.dbc,faec_tp,040054,2
 RDDF1601.dbc,faec_tp,040066,294
 RDDF1601.dbc,cid_notif,,13090
 RDDF1601.dbc,cid_notif,Z302,38
-RDDF1601.dbc,cid_notif|proc_rea,Z302|0409040240,1
-RDDF1601.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDDF1601.dbc,cid_notif|proc_rea,Z302|0411010042,31
-RDDF1601.dbc,cid_notif|sexo,Z302|1,1
-RDDF1601.dbc,cid_notif|sexo,Z302|3,37
 RDDF1601.dbc,tpdisec1,0|diagsec vazio,11415
 RDDF1601.dbc,tpdisec1,1|diagsec preenchido,1063
 RDDF1601.dbc,tpdisec1,2|diagsec preenchido,650
@@ -224,8 +182,6 @@ RDDF2001.dbc,zerado_preenchido,tot_pt_sp,0
 RDDF2001.dbc,zerado_preenchido,cpf_aut,0
 RDDF2001.dbc,homonimo,0,20302
 RDDF2001.dbc,homonimo,2,31
-RDDF2001.dbc,gestor_tp,0,13557
-RDDF2001.dbc,gestor_tp,1,6776
 RDDF2001.dbc,faec_tp,,20060
 RDDF2001.dbc,faec_tp,040032,121
 RDDF2001.dbc,faec_tp,040049,15
@@ -233,13 +189,6 @@ RDDF2001.dbc,faec_tp,040066,137
 RDDF2001.dbc,cid_notif,,20169
 RDDF2001.dbc,cid_notif,O240,1
 RDDF2001.dbc,cid_notif,Z302,163
-RDDF2001.dbc,cid_notif|proc_rea,O240|0411010042,1
-RDDF2001.dbc,cid_notif|proc_rea,Z302|0409040240,45
-RDDF2001.dbc,cid_notif|proc_rea,Z302|0409060186,43
-RDDF2001.dbc,cid_notif|proc_rea,Z302|0411010042,75
-RDDF2001.dbc,cid_notif|sexo,O240|3,1
-RDDF2001.dbc,cid_notif|sexo,Z302|1,45
-RDDF2001.dbc,cid_notif|sexo,Z302|3,118
 RDDF2001.dbc,tpdisec1,0|diagsec vazio,17614
 RDDF2001.dbc,tpdisec1,1|diagsec preenchido,1256
 RDDF2001.dbc,tpdisec1,2|diagsec preenchido,1463
@@ -284,8 +233,6 @@ RDDF2401.dbc,zerado_preenchido,tot_pt_sp,0
 RDDF2401.dbc,zerado_preenchido,cpf_aut,0
 RDDF2401.dbc,homonimo,0,19880
 RDDF2401.dbc,homonimo,2,70
-RDDF2401.dbc,gestor_tp,0,12331
-RDDF2401.dbc,gestor_tp,1,7619
 RDDF2401.dbc,faec_tp,,19071
 RDDF2401.dbc,faec_tp,040024,17
 RDDF2401.dbc,faec_tp,040028,1
@@ -297,12 +244,6 @@ RDDF2401.dbc,faec_tp,040080,642
 RDDF2401.dbc,faec_tp,040082,62
 RDDF2401.dbc,cid_notif,,19677
 RDDF2401.dbc,cid_notif,Z302,273
-RDDF2401.dbc,cid_notif|proc_rea,Z302|0409040240,53
-RDDF2401.dbc,cid_notif|proc_rea,Z302|0409060186,24
-RDDF2401.dbc,cid_notif|proc_rea,Z302|0411010042,192
-RDDF2401.dbc,cid_notif|proc_rea,Z302|0415010012,4
-RDDF2401.dbc,cid_notif|sexo,Z302|1,53
-RDDF2401.dbc,cid_notif|sexo,Z302|3,220
 RDDF2401.dbc,tpdisec1,0|diagsec vazio,16776
 RDDF2401.dbc,tpdisec1,1|diagsec preenchido,1301
 RDDF2401.dbc,tpdisec1,2|diagsec preenchido,1873
@@ -348,7 +289,6 @@ RDRJ0801.dbc,zerado_preenchido,tot_pt_sp,0
 RDRJ0801.dbc,zerado_preenchido,cpf_aut,0
 RDRJ0801.dbc,homonimo,0,33511
 RDRJ0801.dbc,homonimo,2,1348
-RDRJ0801.dbc,gestor_tp,0,34859
 RDRJ0801.dbc,faec_tp,,34593
 RDRJ0801.dbc,faec_tp,021014,205
 RDRJ0801.dbc,faec_tp,040014,10
@@ -359,15 +299,6 @@ RDRJ0801.dbc,cid_notif,,34779
 RDRJ0801.dbc,cid_notif,O229,1
 RDRJ0801.dbc,cid_notif,Z302,78
 RDRJ0801.dbc,cid_notif,Z310,1
-RDRJ0801.dbc,cid_notif|proc_rea,O229|0409060186,1
-RDRJ0801.dbc,cid_notif|proc_rea,Z302|0409040240,37
-RDRJ0801.dbc,cid_notif|proc_rea,Z302|0409060186,18
-RDRJ0801.dbc,cid_notif|proc_rea,Z302|0411010042,23
-RDRJ0801.dbc,cid_notif|proc_rea,Z310|0409040240,1
-RDRJ0801.dbc,cid_notif|sexo,O229|3,1
-RDRJ0801.dbc,cid_notif|sexo,Z302|1,37
-RDRJ0801.dbc,cid_notif|sexo,Z302|3,41
-RDRJ0801.dbc,cid_notif|sexo,Z310|1,1
 RDRJ1201.dbc,zerado_preenchido,uti_mes_in,0
 RDRJ1201.dbc,zerado_preenchido,uti_mes_an,0
 RDRJ1201.dbc,zerado_preenchido,uti_mes_al,0
@@ -389,8 +320,6 @@ RDRJ1201.dbc,zerado_preenchido,tot_pt_sp,0
 RDRJ1201.dbc,zerado_preenchido,cpf_aut,0
 RDRJ1201.dbc,homonimo,0,49702
 RDRJ1201.dbc,homonimo,2,3366
-RDRJ1201.dbc,gestor_tp,0,47628
-RDRJ1201.dbc,gestor_tp,1,5440
 RDRJ1201.dbc,faec_tp,,51455
 RDRJ1201.dbc,faec_tp,040018,42
 RDRJ1201.dbc,faec_tp,040023,6
@@ -404,11 +333,6 @@ RDRJ1201.dbc,faec_tp,040051,120
 RDRJ1201.dbc,faec_tp,040052,1141
 RDRJ1201.dbc,cid_notif,,52837
 RDRJ1201.dbc,cid_notif,Z302,231
-RDRJ1201.dbc,cid_notif|proc_rea,Z302|0409040240,58
-RDRJ1201.dbc,cid_notif|proc_rea,Z302|0409060186,88
-RDRJ1201.dbc,cid_notif|proc_rea,Z302|0411010042,85
-RDRJ1201.dbc,cid_notif|sexo,Z302|1,58
-RDRJ1201.dbc,cid_notif|sexo,Z302|3,173
 RDRJ1601.dbc,zerado_preenchido,uti_mes_in,0
 RDRJ1601.dbc,zerado_preenchido,uti_mes_an,0
 RDRJ1601.dbc,zerado_preenchido,uti_mes_al,0
@@ -430,8 +354,6 @@ RDRJ1601.dbc,zerado_preenchido,tot_pt_sp,0
 RDRJ1601.dbc,zerado_preenchido,cpf_aut,0
 RDRJ1601.dbc,homonimo,0,56637
 RDRJ1601.dbc,homonimo,2,240
-RDRJ1601.dbc,gestor_tp,0,48874
-RDRJ1601.dbc,gestor_tp,1,8003
 RDRJ1601.dbc,faec_tp,,55440
 RDRJ1601.dbc,faec_tp,040014,1
 RDRJ1601.dbc,faec_tp,040018,66
@@ -445,12 +367,6 @@ RDRJ1601.dbc,faec_tp,040054,1
 RDRJ1601.dbc,faec_tp,040066,1164
 RDRJ1601.dbc,cid_notif,,56546
 RDRJ1601.dbc,cid_notif,Z302,331
-RDRJ1601.dbc,cid_notif|proc_rea,Z302|0409040240,145
-RDRJ1601.dbc,cid_notif|proc_rea,Z302|0409060186,74
-RDRJ1601.dbc,cid_notif|proc_rea,Z302|0411010042,111
-RDRJ1601.dbc,cid_notif|proc_rea,Z302|0415020034,1
-RDRJ1601.dbc,cid_notif|sexo,Z302|1,145
-RDRJ1601.dbc,cid_notif|sexo,Z302|3,186
 RDRJ1601.dbc,tpdisec1,0|diagsec vazio,45722
 RDRJ1601.dbc,tpdisec1,1|diagsec preenchido,4872
 RDRJ1601.dbc,tpdisec1,2|diagsec preenchido,6283
@@ -493,8 +409,6 @@ RDRJ2001.dbc,zerado_preenchido,tot_pt_sp,0
 RDRJ2001.dbc,zerado_preenchido,cpf_aut,0
 RDRJ2001.dbc,homonimo,0,61685
 RDRJ2001.dbc,homonimo,2,162
-RDRJ2001.dbc,gestor_tp,0,51353
-RDRJ2001.dbc,gestor_tp,1,10494
 RDRJ2001.dbc,faec_tp,,61501
 RDRJ2001.dbc,faec_tp,040024,2
 RDRJ2001.dbc,faec_tp,040028,1
@@ -505,14 +419,6 @@ RDRJ2001.dbc,faec_tp,040066,13
 RDRJ2001.dbc,cid_notif,,61169
 RDRJ2001.dbc,cid_notif,O101,1
 RDRJ2001.dbc,cid_notif,Z302,677
-RDRJ2001.dbc,cid_notif|proc_rea,O101|0411010042,1
-RDRJ2001.dbc,cid_notif|proc_rea,Z302|0409040240,235
-RDRJ2001.dbc,cid_notif|proc_rea,Z302|0409060186,67
-RDRJ2001.dbc,cid_notif|proc_rea,Z302|0411010042,374
-RDRJ2001.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRJ2001.dbc,cid_notif|sexo,O101|3,1
-RDRJ2001.dbc,cid_notif|sexo,Z302|1,235
-RDRJ2001.dbc,cid_notif|sexo,Z302|3,442
 RDRJ2001.dbc,tpdisec1,0|diagsec vazio,50638
 RDRJ2001.dbc,tpdisec1,1|diagsec preenchido,5117
 RDRJ2001.dbc,tpdisec1,2|diagsec preenchido,6092
@@ -557,8 +463,6 @@ RDRJ2401.dbc,zerado_preenchido,tot_pt_sp,0
 RDRJ2401.dbc,zerado_preenchido,cpf_aut,0
 RDRJ2401.dbc,homonimo,0,72841
 RDRJ2401.dbc,homonimo,2,205
-RDRJ2401.dbc,gestor_tp,0,58313
-RDRJ2401.dbc,gestor_tp,1,14733
 RDRJ2401.dbc,faec_tp,,66375
 RDRJ2401.dbc,faec_tp,040024,162
 RDRJ2401.dbc,faec_tp,040028,3
@@ -578,22 +482,6 @@ RDRJ2401.dbc,cid_notif,O141,1
 RDRJ2401.dbc,cid_notif,O244,4
 RDRJ2401.dbc,cid_notif,O363,1
 RDRJ2401.dbc,cid_notif,Z302,2972
-RDRJ2401.dbc,cid_notif|proc_rea,O100|0411010042,2
-RDRJ2401.dbc,cid_notif|proc_rea,O13|0411010042,2
-RDRJ2401.dbc,cid_notif|proc_rea,O141|0411010042,1
-RDRJ2401.dbc,cid_notif|proc_rea,O244|0411010042,4
-RDRJ2401.dbc,cid_notif|proc_rea,O363|0411010042,1
-RDRJ2401.dbc,cid_notif|proc_rea,Z302|0409040240,807
-RDRJ2401.dbc,cid_notif|proc_rea,Z302|0409060186,985
-RDRJ2401.dbc,cid_notif|proc_rea,Z302|0411010042,1169
-RDRJ2401.dbc,cid_notif|proc_rea,Z302|0415010012,11
-RDRJ2401.dbc,cid_notif|sexo,O100|3,2
-RDRJ2401.dbc,cid_notif|sexo,O13|3,2
-RDRJ2401.dbc,cid_notif|sexo,O141|3,1
-RDRJ2401.dbc,cid_notif|sexo,O244|3,4
-RDRJ2401.dbc,cid_notif|sexo,O363|3,1
-RDRJ2401.dbc,cid_notif|sexo,Z302|1,807
-RDRJ2401.dbc,cid_notif|sexo,Z302|3,2165
 RDRJ2401.dbc,tpdisec1,0|diagsec vazio,57859
 RDRJ2401.dbc,tpdisec1,1|diagsec preenchido,8549
 RDRJ2401.dbc,tpdisec1,2|diagsec preenchido,6638
@@ -638,14 +526,10 @@ RDRR0801.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0801.dbc,zerado_preenchido,cpf_aut,0
 RDRR0801.dbc,homonimo,0,1404
 RDRR0801.dbc,homonimo,2,71
-RDRR0801.dbc,gestor_tp,0,1475
 RDRR0801.dbc,faec_tp,,1464
 RDRR0801.dbc,faec_tp,021014,11
 RDRR0801.dbc,cid_notif,,1454
 RDRR0801.dbc,cid_notif,Z302,21
-RDRR0801.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR0801.dbc,cid_notif|proc_rea,Z302|0411010042,19
-RDRR0801.dbc,cid_notif|sexo,Z302|3,21
 RDRR0802.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0802.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0802.dbc,zerado_preenchido,uti_mes_al,0
@@ -667,12 +551,9 @@ RDRR0802.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0802.dbc,zerado_preenchido,cpf_aut,0
 RDRR0802.dbc,homonimo,0,1683
 RDRR0802.dbc,homonimo,2,129
-RDRR0802.dbc,gestor_tp,0,1812
 RDRR0802.dbc,faec_tp,,1812
 RDRR0802.dbc,cid_notif,,1806
 RDRR0802.dbc,cid_notif,Z302,6
-RDRR0802.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR0802.dbc,cid_notif|sexo,Z302|3,6
 RDRR0803.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0803.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0803.dbc,zerado_preenchido,uti_mes_al,0
@@ -694,14 +575,10 @@ RDRR0803.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0803.dbc,zerado_preenchido,cpf_aut,0
 RDRR0803.dbc,homonimo,0,1711
 RDRR0803.dbc,homonimo,2,102
-RDRR0803.dbc,gestor_tp,0,1813
 RDRR0803.dbc,faec_tp,,1812
 RDRR0803.dbc,faec_tp,040026,1
 RDRR0803.dbc,cid_notif,,1794
 RDRR0803.dbc,cid_notif,Z302,19
-RDRR0803.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR0803.dbc,cid_notif|proc_rea,Z302|0411010042,12
-RDRR0803.dbc,cid_notif|sexo,Z302|3,19
 RDRR0804.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0804.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0804.dbc,zerado_preenchido,uti_mes_al,0
@@ -723,14 +600,10 @@ RDRR0804.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0804.dbc,zerado_preenchido,cpf_aut,0
 RDRR0804.dbc,homonimo,0,1841
 RDRR0804.dbc,homonimo,2,123
-RDRR0804.dbc,gestor_tp,0,1964
 RDRR0804.dbc,faec_tp,,1963
 RDRR0804.dbc,faec_tp,040026,1
 RDRR0804.dbc,cid_notif,,1933
 RDRR0804.dbc,cid_notif,Z302,31
-RDRR0804.dbc,cid_notif|proc_rea,Z302|0409060186,19
-RDRR0804.dbc,cid_notif|proc_rea,Z302|0411010042,12
-RDRR0804.dbc,cid_notif|sexo,Z302|3,31
 RDRR0805.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0805.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0805.dbc,zerado_preenchido,uti_mes_al,0
@@ -752,14 +625,10 @@ RDRR0805.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0805.dbc,zerado_preenchido,cpf_aut,0
 RDRR0805.dbc,homonimo,0,1912
 RDRR0805.dbc,homonimo,2,125
-RDRR0805.dbc,gestor_tp,0,2037
 RDRR0805.dbc,faec_tp,,2036
 RDRR0805.dbc,faec_tp,040026,1
 RDRR0805.dbc,cid_notif,,1978
 RDRR0805.dbc,cid_notif,Z302,59
-RDRR0805.dbc,cid_notif|proc_rea,Z302|0409060186,52
-RDRR0805.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR0805.dbc,cid_notif|sexo,Z302|3,59
 RDRR0806.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0806.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0806.dbc,zerado_preenchido,uti_mes_al,0
@@ -781,14 +650,10 @@ RDRR0806.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0806.dbc,zerado_preenchido,cpf_aut,0
 RDRR0806.dbc,homonimo,0,1913
 RDRR0806.dbc,homonimo,2,117
-RDRR0806.dbc,gestor_tp,0,2030
 RDRR0806.dbc,faec_tp,,2029
 RDRR0806.dbc,faec_tp,040026,1
 RDRR0806.dbc,cid_notif,,1966
 RDRR0806.dbc,cid_notif,Z302,64
-RDRR0806.dbc,cid_notif|proc_rea,Z302|0409060186,53
-RDRR0806.dbc,cid_notif|proc_rea,Z302|0411010042,11
-RDRR0806.dbc,cid_notif|sexo,Z302|3,64
 RDRR0807.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0807.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0807.dbc,zerado_preenchido,uti_mes_al,0
@@ -810,13 +675,9 @@ RDRR0807.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0807.dbc,zerado_preenchido,cpf_aut,0
 RDRR0807.dbc,homonimo,0,2185
 RDRR0807.dbc,homonimo,2,122
-RDRR0807.dbc,gestor_tp,0,2307
 RDRR0807.dbc,faec_tp,,2307
 RDRR0807.dbc,cid_notif,,2250
 RDRR0807.dbc,cid_notif,Z302,57
-RDRR0807.dbc,cid_notif|proc_rea,Z302|0409060186,28
-RDRR0807.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR0807.dbc,cid_notif|sexo,Z302|3,57
 RDRR0808.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0808.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0808.dbc,zerado_preenchido,uti_mes_al,0
@@ -838,13 +699,9 @@ RDRR0808.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0808.dbc,zerado_preenchido,cpf_aut,0
 RDRR0808.dbc,homonimo,0,2027
 RDRR0808.dbc,homonimo,2,126
-RDRR0808.dbc,gestor_tp,0,2153
 RDRR0808.dbc,faec_tp,,2153
 RDRR0808.dbc,cid_notif,,2093
 RDRR0808.dbc,cid_notif,Z302,60
-RDRR0808.dbc,cid_notif|proc_rea,Z302|0409060186,44
-RDRR0808.dbc,cid_notif|proc_rea,Z302|0411010042,16
-RDRR0808.dbc,cid_notif|sexo,Z302|3,60
 RDRR0809.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0809.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0809.dbc,zerado_preenchido,uti_mes_al,0
@@ -866,15 +723,11 @@ RDRR0809.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0809.dbc,zerado_preenchido,cpf_aut,0
 RDRR0809.dbc,homonimo,0,1837
 RDRR0809.dbc,homonimo,2,76
-RDRR0809.dbc,gestor_tp,0,1913
 RDRR0809.dbc,faec_tp,,1910
 RDRR0809.dbc,faec_tp,040026,1
 RDRR0809.dbc,faec_tp,040029,2
 RDRR0809.dbc,cid_notif,,1909
 RDRR0809.dbc,cid_notif,Z302,4
-RDRR0809.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR0809.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR0809.dbc,cid_notif|sexo,Z302|3,4
 RDRR0810.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0810.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0810.dbc,zerado_preenchido,uti_mes_al,0
@@ -896,13 +749,9 @@ RDRR0810.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0810.dbc,zerado_preenchido,cpf_aut,0
 RDRR0810.dbc,homonimo,0,2426
 RDRR0810.dbc,homonimo,2,124
-RDRR0810.dbc,gestor_tp,0,2550
 RDRR0810.dbc,faec_tp,,2550
 RDRR0810.dbc,cid_notif,,2518
 RDRR0810.dbc,cid_notif,Z302,32
-RDRR0810.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDRR0810.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR0810.dbc,cid_notif|sexo,Z302|3,32
 RDRR0811.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0811.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0811.dbc,zerado_preenchido,uti_mes_al,0
@@ -924,13 +773,9 @@ RDRR0811.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0811.dbc,zerado_preenchido,cpf_aut,0
 RDRR0811.dbc,homonimo,0,2275
 RDRR0811.dbc,homonimo,2,141
-RDRR0811.dbc,gestor_tp,0,2416
 RDRR0811.dbc,faec_tp,,2416
 RDRR0811.dbc,cid_notif,,2398
 RDRR0811.dbc,cid_notif,Z302,18
-RDRR0811.dbc,cid_notif|proc_rea,Z302|0409060186,17
-RDRR0811.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR0811.dbc,cid_notif|sexo,Z302|3,18
 RDRR0812.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0812.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0812.dbc,zerado_preenchido,uti_mes_al,0
@@ -952,14 +797,9 @@ RDRR0812.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0812.dbc,zerado_preenchido,cpf_aut,0
 RDRR0812.dbc,homonimo,0,2130
 RDRR0812.dbc,homonimo,2,103
-RDRR0812.dbc,gestor_tp,0,1801
-RDRR0812.dbc,gestor_tp,1,432
 RDRR0812.dbc,faec_tp,,2233
 RDRR0812.dbc,cid_notif,,2222
 RDRR0812.dbc,cid_notif,Z302,11
-RDRR0812.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR0812.dbc,cid_notif|proc_rea,Z302|0411010042,3
-RDRR0812.dbc,cid_notif|sexo,Z302|3,11
 RDRR0901.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0901.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0901.dbc,zerado_preenchido,uti_mes_al,0
@@ -981,14 +821,9 @@ RDRR0901.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0901.dbc,zerado_preenchido,cpf_aut,0
 RDRR0901.dbc,homonimo,0,2063
 RDRR0901.dbc,homonimo,2,127
-RDRR0901.dbc,gestor_tp,0,1181
-RDRR0901.dbc,gestor_tp,1,1009
 RDRR0901.dbc,faec_tp,,2190
 RDRR0901.dbc,cid_notif,,2142
 RDRR0901.dbc,cid_notif,Z302,48
-RDRR0901.dbc,cid_notif|proc_rea,Z302|0409060186,47
-RDRR0901.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR0901.dbc,cid_notif|sexo,Z302|3,48
 RDRR0902.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0902.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0902.dbc,zerado_preenchido,uti_mes_al,0
@@ -1010,15 +845,10 @@ RDRR0902.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0902.dbc,zerado_preenchido,cpf_aut,0
 RDRR0902.dbc,homonimo,0,1876
 RDRR0902.dbc,homonimo,2,95
-RDRR0902.dbc,gestor_tp,0,1131
-RDRR0902.dbc,gestor_tp,1,840
 RDRR0902.dbc,faec_tp,,1934
 RDRR0902.dbc,faec_tp,040043,37
 RDRR0902.dbc,cid_notif,,1898
 RDRR0902.dbc,cid_notif,Z302,73
-RDRR0902.dbc,cid_notif|proc_rea,Z302|0409060186,67
-RDRR0902.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR0902.dbc,cid_notif|sexo,Z302|3,73
 RDRR0903.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0903.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0903.dbc,zerado_preenchido,uti_mes_al,0
@@ -1040,15 +870,10 @@ RDRR0903.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0903.dbc,zerado_preenchido,cpf_aut,0
 RDRR0903.dbc,homonimo,0,2154
 RDRR0903.dbc,homonimo,2,123
-RDRR0903.dbc,gestor_tp,0,1298
-RDRR0903.dbc,gestor_tp,1,979
 RDRR0903.dbc,faec_tp,,2171
 RDRR0903.dbc,faec_tp,040043,106
 RDRR0903.dbc,cid_notif,,2184
 RDRR0903.dbc,cid_notif,Z302,93
-RDRR0903.dbc,cid_notif|proc_rea,Z302|0409060186,81
-RDRR0903.dbc,cid_notif|proc_rea,Z302|0411010042,12
-RDRR0903.dbc,cid_notif|sexo,Z302|3,93
 RDRR0904.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0904.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0904.dbc,zerado_preenchido,uti_mes_al,0
@@ -1070,15 +895,10 @@ RDRR0904.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0904.dbc,zerado_preenchido,cpf_aut,0
 RDRR0904.dbc,homonimo,0,2189
 RDRR0904.dbc,homonimo,2,151
-RDRR0904.dbc,gestor_tp,0,1543
-RDRR0904.dbc,gestor_tp,1,797
 RDRR0904.dbc,faec_tp,,2251
 RDRR0904.dbc,faec_tp,040043,89
 RDRR0904.dbc,cid_notif,,2269
 RDRR0904.dbc,cid_notif,Z302,71
-RDRR0904.dbc,cid_notif|proc_rea,Z302|0409060186,48
-RDRR0904.dbc,cid_notif|proc_rea,Z302|0411010042,23
-RDRR0904.dbc,cid_notif|sexo,Z302|3,71
 RDRR0905.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0905.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0905.dbc,zerado_preenchido,uti_mes_al,0
@@ -1100,15 +920,10 @@ RDRR0905.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0905.dbc,zerado_preenchido,cpf_aut,0
 RDRR0905.dbc,homonimo,0,2695
 RDRR0905.dbc,homonimo,2,279
-RDRR0905.dbc,gestor_tp,0,2087
-RDRR0905.dbc,gestor_tp,1,887
 RDRR0905.dbc,faec_tp,,2944
 RDRR0905.dbc,faec_tp,040043,30
 RDRR0905.dbc,cid_notif,,2919
 RDRR0905.dbc,cid_notif,Z302,55
-RDRR0905.dbc,cid_notif|proc_rea,Z302|0409060186,45
-RDRR0905.dbc,cid_notif|proc_rea,Z302|0411010042,10
-RDRR0905.dbc,cid_notif|sexo,Z302|3,55
 RDRR0906.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0906.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0906.dbc,zerado_preenchido,uti_mes_al,0
@@ -1130,14 +945,9 @@ RDRR0906.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0906.dbc,zerado_preenchido,cpf_aut,0
 RDRR0906.dbc,homonimo,0,2435
 RDRR0906.dbc,homonimo,2,135
-RDRR0906.dbc,gestor_tp,0,1950
-RDRR0906.dbc,gestor_tp,1,620
 RDRR0906.dbc,faec_tp,,2570
 RDRR0906.dbc,cid_notif,,2535
 RDRR0906.dbc,cid_notif,Z302,35
-RDRR0906.dbc,cid_notif|proc_rea,Z302|0409060186,22
-RDRR0906.dbc,cid_notif|proc_rea,Z302|0411010042,13
-RDRR0906.dbc,cid_notif|sexo,Z302|3,35
 RDRR0907.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0907.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0907.dbc,zerado_preenchido,uti_mes_al,0
@@ -1159,14 +969,9 @@ RDRR0907.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0907.dbc,zerado_preenchido,cpf_aut,0
 RDRR0907.dbc,homonimo,0,2603
 RDRR0907.dbc,homonimo,2,225
-RDRR0907.dbc,gestor_tp,0,2156
-RDRR0907.dbc,gestor_tp,1,672
 RDRR0907.dbc,faec_tp,,2828
 RDRR0907.dbc,cid_notif,,2766
 RDRR0907.dbc,cid_notif,Z302,62
-RDRR0907.dbc,cid_notif|proc_rea,Z302|0409060186,55
-RDRR0907.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR0907.dbc,cid_notif|sexo,Z302|3,62
 RDRR0908.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0908.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0908.dbc,zerado_preenchido,uti_mes_al,0
@@ -1188,14 +993,9 @@ RDRR0908.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0908.dbc,zerado_preenchido,cpf_aut,0
 RDRR0908.dbc,homonimo,0,2816
 RDRR0908.dbc,homonimo,2,208
-RDRR0908.dbc,gestor_tp,0,2337
-RDRR0908.dbc,gestor_tp,1,687
 RDRR0908.dbc,faec_tp,,3024
 RDRR0908.dbc,cid_notif,,2969
 RDRR0908.dbc,cid_notif,Z302,55
-RDRR0908.dbc,cid_notif|proc_rea,Z302|0409060186,50
-RDRR0908.dbc,cid_notif|proc_rea,Z302|0411010042,5
-RDRR0908.dbc,cid_notif|sexo,Z302|3,55
 RDRR0909.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0909.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0909.dbc,zerado_preenchido,uti_mes_al,0
@@ -1217,14 +1017,9 @@ RDRR0909.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0909.dbc,zerado_preenchido,cpf_aut,0
 RDRR0909.dbc,homonimo,0,2715
 RDRR0909.dbc,homonimo,2,334
-RDRR0909.dbc,gestor_tp,0,2183
-RDRR0909.dbc,gestor_tp,1,866
 RDRR0909.dbc,faec_tp,,3049
 RDRR0909.dbc,cid_notif,,3028
 RDRR0909.dbc,cid_notif,Z302,21
-RDRR0909.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR0909.dbc,cid_notif|proc_rea,Z302|0411010042,8
-RDRR0909.dbc,cid_notif|sexo,Z302|3,21
 RDRR0910.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0910.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0910.dbc,zerado_preenchido,uti_mes_al,0
@@ -1246,13 +1041,9 @@ RDRR0910.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0910.dbc,zerado_preenchido,cpf_aut,0
 RDRR0910.dbc,homonimo,0,1975
 RDRR0910.dbc,homonimo,2,133
-RDRR0910.dbc,gestor_tp,0,1604
-RDRR0910.dbc,gestor_tp,1,504
 RDRR0910.dbc,faec_tp,,2108
 RDRR0910.dbc,cid_notif,,2106
 RDRR0910.dbc,cid_notif,Z302,2
-RDRR0910.dbc,cid_notif|proc_rea,Z302|0411010042,2
-RDRR0910.dbc,cid_notif|sexo,Z302|3,2
 RDRR0911.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0911.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0911.dbc,zerado_preenchido,uti_mes_al,0
@@ -1274,14 +1065,9 @@ RDRR0911.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0911.dbc,zerado_preenchido,cpf_aut,0
 RDRR0911.dbc,homonimo,0,2408
 RDRR0911.dbc,homonimo,2,184
-RDRR0911.dbc,gestor_tp,0,2014
-RDRR0911.dbc,gestor_tp,1,578
 RDRR0911.dbc,faec_tp,,2592
 RDRR0911.dbc,cid_notif,,2572
 RDRR0911.dbc,cid_notif,Z302,20
-RDRR0911.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR0911.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR0911.dbc,cid_notif|sexo,Z302|3,20
 RDRR0912.dbc,zerado_preenchido,uti_mes_in,0
 RDRR0912.dbc,zerado_preenchido,uti_mes_an,0
 RDRR0912.dbc,zerado_preenchido,uti_mes_al,0
@@ -1303,14 +1089,9 @@ RDRR0912.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR0912.dbc,zerado_preenchido,cpf_aut,0
 RDRR0912.dbc,homonimo,0,1914
 RDRR0912.dbc,homonimo,2,208
-RDRR0912.dbc,gestor_tp,0,1603
-RDRR0912.dbc,gestor_tp,1,519
 RDRR0912.dbc,faec_tp,,2122
 RDRR0912.dbc,cid_notif,,2088
 RDRR0912.dbc,cid_notif,Z302,34
-RDRR0912.dbc,cid_notif|proc_rea,Z302|0409060186,21
-RDRR0912.dbc,cid_notif|proc_rea,Z302|0411010042,13
-RDRR0912.dbc,cid_notif|sexo,Z302|3,34
 RDRR1001.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1001.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1001.dbc,zerado_preenchido,uti_mes_al,0
@@ -1332,14 +1113,9 @@ RDRR1001.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1001.dbc,zerado_preenchido,cpf_aut,0
 RDRR1001.dbc,homonimo,0,2101
 RDRR1001.dbc,homonimo,2,179
-RDRR1001.dbc,gestor_tp,0,1739
-RDRR1001.dbc,gestor_tp,1,541
 RDRR1001.dbc,faec_tp,,2280
 RDRR1001.dbc,cid_notif,,2273
 RDRR1001.dbc,cid_notif,Z302,7
-RDRR1001.dbc,cid_notif|proc_rea,Z302|0409060186,4
-RDRR1001.dbc,cid_notif|proc_rea,Z302|0411010042,3
-RDRR1001.dbc,cid_notif|sexo,Z302|3,7
 RDRR1002.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1002.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1002.dbc,zerado_preenchido,uti_mes_al,0
@@ -1361,13 +1137,9 @@ RDRR1002.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1002.dbc,zerado_preenchido,cpf_aut,0
 RDRR1002.dbc,homonimo,0,1838
 RDRR1002.dbc,homonimo,2,189
-RDRR1002.dbc,gestor_tp,0,1520
-RDRR1002.dbc,gestor_tp,1,507
 RDRR1002.dbc,faec_tp,,2027
 RDRR1002.dbc,cid_notif,,2008
 RDRR1002.dbc,cid_notif,Z302,19
-RDRR1002.dbc,cid_notif|proc_rea,Z302|0409060186,19
-RDRR1002.dbc,cid_notif|sexo,Z302|3,19
 RDRR1003.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1003.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1003.dbc,zerado_preenchido,uti_mes_al,0
@@ -1389,13 +1161,9 @@ RDRR1003.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1003.dbc,zerado_preenchido,cpf_aut,0
 RDRR1003.dbc,homonimo,0,2500
 RDRR1003.dbc,homonimo,2,287
-RDRR1003.dbc,gestor_tp,0,2151
-RDRR1003.dbc,gestor_tp,1,636
 RDRR1003.dbc,faec_tp,,2787
 RDRR1003.dbc,cid_notif,,2750
 RDRR1003.dbc,cid_notif,Z302,37
-RDRR1003.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1003.dbc,cid_notif|sexo,Z302|3,37
 RDRR1004.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1004.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1004.dbc,zerado_preenchido,uti_mes_al,0
@@ -1417,13 +1185,9 @@ RDRR1004.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1004.dbc,zerado_preenchido,cpf_aut,0
 RDRR1004.dbc,homonimo,0,2449
 RDRR1004.dbc,homonimo,2,449
-RDRR1004.dbc,gestor_tp,0,2032
-RDRR1004.dbc,gestor_tp,1,866
 RDRR1004.dbc,faec_tp,,2898
 RDRR1004.dbc,cid_notif,,2859
 RDRR1004.dbc,cid_notif,Z302,39
-RDRR1004.dbc,cid_notif|proc_rea,Z302|0409060186,39
-RDRR1004.dbc,cid_notif|sexo,Z302|3,39
 RDRR1005.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1005.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1005.dbc,zerado_preenchido,uti_mes_al,0
@@ -1445,13 +1209,9 @@ RDRR1005.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1005.dbc,zerado_preenchido,cpf_aut,0
 RDRR1005.dbc,homonimo,0,2482
 RDRR1005.dbc,homonimo,2,458
-RDRR1005.dbc,gestor_tp,0,1959
-RDRR1005.dbc,gestor_tp,1,981
 RDRR1005.dbc,faec_tp,,2940
 RDRR1005.dbc,cid_notif,,2911
 RDRR1005.dbc,cid_notif,Z302,29
-RDRR1005.dbc,cid_notif|proc_rea,Z302|0409060186,29
-RDRR1005.dbc,cid_notif|sexo,Z302|3,29
 RDRR1006.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1006.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1006.dbc,zerado_preenchido,uti_mes_al,0
@@ -1473,13 +1233,9 @@ RDRR1006.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1006.dbc,zerado_preenchido,cpf_aut,0
 RDRR1006.dbc,homonimo,0,2534
 RDRR1006.dbc,homonimo,2,378
-RDRR1006.dbc,gestor_tp,0,2082
-RDRR1006.dbc,gestor_tp,1,830
 RDRR1006.dbc,faec_tp,,2912
 RDRR1006.dbc,cid_notif,,2887
 RDRR1006.dbc,cid_notif,Z302,25
-RDRR1006.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1006.dbc,cid_notif|sexo,Z302|3,25
 RDRR1007.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1007.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1007.dbc,zerado_preenchido,uti_mes_al,0
@@ -1501,15 +1257,10 @@ RDRR1007.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1007.dbc,zerado_preenchido,cpf_aut,0
 RDRR1007.dbc,homonimo,0,2505
 RDRR1007.dbc,homonimo,2,400
-RDRR1007.dbc,gestor_tp,0,1957
-RDRR1007.dbc,gestor_tp,1,948
 RDRR1007.dbc,faec_tp,,2897
 RDRR1007.dbc,faec_tp,040018,8
 RDRR1007.dbc,cid_notif,,2878
 RDRR1007.dbc,cid_notif,Z302,27
-RDRR1007.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDRR1007.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1007.dbc,cid_notif|sexo,Z302|3,27
 RDRR1008.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1008.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1008.dbc,zerado_preenchido,uti_mes_al,0
@@ -1531,15 +1282,9 @@ RDRR1008.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1008.dbc,zerado_preenchido,cpf_aut,0
 RDRR1008.dbc,homonimo,0,2373
 RDRR1008.dbc,homonimo,2,328
-RDRR1008.dbc,gestor_tp,0,2015
-RDRR1008.dbc,gestor_tp,1,686
 RDRR1008.dbc,faec_tp,,2701
 RDRR1008.dbc,cid_notif,,2659
 RDRR1008.dbc,cid_notif,Z302,42
-RDRR1008.dbc,cid_notif|proc_rea,Z302|0409060186,39
-RDRR1008.dbc,cid_notif|proc_rea,Z302|0411010042,2
-RDRR1008.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1008.dbc,cid_notif|sexo,Z302|3,42
 RDRR1009.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1009.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1009.dbc,zerado_preenchido,uti_mes_al,0
@@ -1561,14 +1306,9 @@ RDRR1009.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1009.dbc,zerado_preenchido,cpf_aut,0
 RDRR1009.dbc,homonimo,0,2409
 RDRR1009.dbc,homonimo,2,353
-RDRR1009.dbc,gestor_tp,0,1936
-RDRR1009.dbc,gestor_tp,1,826
 RDRR1009.dbc,faec_tp,,2762
 RDRR1009.dbc,cid_notif,,2737
 RDRR1009.dbc,cid_notif,Z302,25
-RDRR1009.dbc,cid_notif|proc_rea,Z302|0409060186,23
-RDRR1009.dbc,cid_notif|proc_rea,Z302|0411010042,2
-RDRR1009.dbc,cid_notif|sexo,Z302|3,25
 RDRR1010.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1010.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1010.dbc,zerado_preenchido,uti_mes_al,0
@@ -1590,15 +1330,10 @@ RDRR1010.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1010.dbc,zerado_preenchido,cpf_aut,0
 RDRR1010.dbc,homonimo,0,2208
 RDRR1010.dbc,homonimo,2,372
-RDRR1010.dbc,gestor_tp,0,1883
-RDRR1010.dbc,gestor_tp,1,697
 RDRR1010.dbc,faec_tp,,2579
 RDRR1010.dbc,faec_tp,040018,1
 RDRR1010.dbc,cid_notif,,2563
 RDRR1010.dbc,cid_notif,Z302,17
-RDRR1010.dbc,cid_notif|proc_rea,Z302|0409060186,15
-RDRR1010.dbc,cid_notif|proc_rea,Z302|0411010042,2
-RDRR1010.dbc,cid_notif|sexo,Z302|3,17
 RDRR1011.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1011.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1011.dbc,zerado_preenchido,uti_mes_al,0
@@ -1620,16 +1355,10 @@ RDRR1011.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1011.dbc,zerado_preenchido,cpf_aut,0
 RDRR1011.dbc,homonimo,0,2093
 RDRR1011.dbc,homonimo,2,417
-RDRR1011.dbc,gestor_tp,0,1816
-RDRR1011.dbc,gestor_tp,1,694
 RDRR1011.dbc,faec_tp,,2504
 RDRR1011.dbc,faec_tp,040018,6
 RDRR1011.dbc,cid_notif,,2470
 RDRR1011.dbc,cid_notif,Z302,40
-RDRR1011.dbc,cid_notif|proc_rea,Z302|0409060186,38
-RDRR1011.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1011.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1011.dbc,cid_notif|sexo,Z302|3,40
 RDRR1012.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1012.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1012.dbc,zerado_preenchido,uti_mes_al,0
@@ -1651,15 +1380,10 @@ RDRR1012.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1012.dbc,zerado_preenchido,cpf_aut,0
 RDRR1012.dbc,homonimo,0,1683
 RDRR1012.dbc,homonimo,2,214
-RDRR1012.dbc,gestor_tp,0,1411
-RDRR1012.dbc,gestor_tp,1,486
 RDRR1012.dbc,faec_tp,,1896
 RDRR1012.dbc,faec_tp,040018,1
 RDRR1012.dbc,cid_notif,,1880
 RDRR1012.dbc,cid_notif,Z302,17
-RDRR1012.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR1012.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1012.dbc,cid_notif|sexo,Z302|3,17
 RDRR1101.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1101.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1101.dbc,zerado_preenchido,uti_mes_al,0
@@ -1681,15 +1405,10 @@ RDRR1101.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1101.dbc,zerado_preenchido,cpf_aut,0
 RDRR1101.dbc,homonimo,0,1677
 RDRR1101.dbc,homonimo,2,228
-RDRR1101.dbc,gestor_tp,0,1420
-RDRR1101.dbc,gestor_tp,1,485
 RDRR1101.dbc,faec_tp,,1903
 RDRR1101.dbc,faec_tp,040018,2
 RDRR1101.dbc,cid_notif,,1898
 RDRR1101.dbc,cid_notif,Z302,7
-RDRR1101.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR1101.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1101.dbc,cid_notif|sexo,Z302|3,7
 RDRR1102.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1102.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1102.dbc,zerado_preenchido,uti_mes_al,0
@@ -1711,15 +1430,11 @@ RDRR1102.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1102.dbc,zerado_preenchido,cpf_aut,0
 RDRR1102.dbc,homonimo,0,1704
 RDRR1102.dbc,homonimo,2,208
-RDRR1102.dbc,gestor_tp,0,1351
-RDRR1102.dbc,gestor_tp,1,561
 RDRR1102.dbc,faec_tp,,1908
 RDRR1102.dbc,faec_tp,040018,3
 RDRR1102.dbc,faec_tp,040029,1
 RDRR1102.dbc,cid_notif,,1875
 RDRR1102.dbc,cid_notif,Z302,37
-RDRR1102.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1102.dbc,cid_notif|sexo,Z302|3,37
 RDRR1103.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1103.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1103.dbc,zerado_preenchido,uti_mes_al,0
@@ -1741,16 +1456,10 @@ RDRR1103.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1103.dbc,zerado_preenchido,cpf_aut,0
 RDRR1103.dbc,homonimo,0,2015
 RDRR1103.dbc,homonimo,2,326
-RDRR1103.dbc,gestor_tp,0,1597
-RDRR1103.dbc,gestor_tp,1,744
 RDRR1103.dbc,faec_tp,,2338
 RDRR1103.dbc,faec_tp,040018,3
 RDRR1103.dbc,cid_notif,,2303
 RDRR1103.dbc,cid_notif,Z302,38
-RDRR1103.dbc,cid_notif|proc_rea,Z302|0409060186,35
-RDRR1103.dbc,cid_notif|proc_rea,Z302|0411010042,2
-RDRR1103.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1103.dbc,cid_notif|sexo,Z302|3,38
 RDRR1104.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1104.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1104.dbc,zerado_preenchido,uti_mes_al,0
@@ -1772,16 +1481,10 @@ RDRR1104.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1104.dbc,zerado_preenchido,cpf_aut,0
 RDRR1104.dbc,homonimo,0,1962
 RDRR1104.dbc,homonimo,2,300
-RDRR1104.dbc,gestor_tp,0,1626
-RDRR1104.dbc,gestor_tp,1,636
 RDRR1104.dbc,faec_tp,,2261
 RDRR1104.dbc,faec_tp,040018,1
 RDRR1104.dbc,cid_notif,,2217
 RDRR1104.dbc,cid_notif,Z302,45
-RDRR1104.dbc,cid_notif|proc_rea,Z302|0409060186,43
-RDRR1104.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1104.dbc,cid_notif|proc_rea,Z302|0415020034,1
-RDRR1104.dbc,cid_notif|sexo,Z302|3,45
 RDRR1105.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1105.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1105.dbc,zerado_preenchido,uti_mes_al,0
@@ -1803,15 +1506,10 @@ RDRR1105.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1105.dbc,zerado_preenchido,cpf_aut,0
 RDRR1105.dbc,homonimo,0,1671
 RDRR1105.dbc,homonimo,2,176
-RDRR1105.dbc,gestor_tp,0,1334
-RDRR1105.dbc,gestor_tp,1,513
 RDRR1105.dbc,faec_tp,,1843
 RDRR1105.dbc,faec_tp,040018,4
 RDRR1105.dbc,cid_notif,,1813
 RDRR1105.dbc,cid_notif,Z302,34
-RDRR1105.dbc,cid_notif|proc_rea,Z302|0409060186,33
-RDRR1105.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1105.dbc,cid_notif|sexo,Z302|3,34
 RDRR1106.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1106.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1106.dbc,zerado_preenchido,uti_mes_al,0
@@ -1833,14 +1531,10 @@ RDRR1106.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1106.dbc,zerado_preenchido,cpf_aut,0
 RDRR1106.dbc,homonimo,0,1765
 RDRR1106.dbc,homonimo,2,252
-RDRR1106.dbc,gestor_tp,0,1348
-RDRR1106.dbc,gestor_tp,1,669
 RDRR1106.dbc,faec_tp,,2016
 RDRR1106.dbc,faec_tp,040018,1
 RDRR1106.dbc,cid_notif,,1996
 RDRR1106.dbc,cid_notif,Z302,21
-RDRR1106.dbc,cid_notif|proc_rea,Z302|0409060186,21
-RDRR1106.dbc,cid_notif|sexo,Z302|3,21
 RDRR1107.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1107.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1107.dbc,zerado_preenchido,uti_mes_al,0
@@ -1862,14 +1556,10 @@ RDRR1107.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1107.dbc,zerado_preenchido,cpf_aut,0
 RDRR1107.dbc,homonimo,0,1913
 RDRR1107.dbc,homonimo,2,271
-RDRR1107.dbc,gestor_tp,0,1542
-RDRR1107.dbc,gestor_tp,1,642
 RDRR1107.dbc,faec_tp,,2183
 RDRR1107.dbc,faec_tp,040018,1
 RDRR1107.dbc,cid_notif,,2165
 RDRR1107.dbc,cid_notif,Z302,19
-RDRR1107.dbc,cid_notif|proc_rea,Z302|0409060186,19
-RDRR1107.dbc,cid_notif|sexo,Z302|3,19
 RDRR1108.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1108.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1108.dbc,zerado_preenchido,uti_mes_al,0
@@ -1891,16 +1581,11 @@ RDRR1108.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1108.dbc,zerado_preenchido,cpf_aut,0
 RDRR1108.dbc,homonimo,0,2041
 RDRR1108.dbc,homonimo,2,385
-RDRR1108.dbc,gestor_tp,0,1666
-RDRR1108.dbc,gestor_tp,1,760
 RDRR1108.dbc,faec_tp,,2418
 RDRR1108.dbc,faec_tp,040018,6
 RDRR1108.dbc,faec_tp,040029,2
 RDRR1108.dbc,cid_notif,,2420
 RDRR1108.dbc,cid_notif,Z302,6
-RDRR1108.dbc,cid_notif|proc_rea,Z302|0409060186,5
-RDRR1108.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1108.dbc,cid_notif|sexo,Z302|3,6
 RDRR1109.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1109.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1109.dbc,zerado_preenchido,uti_mes_al,0
@@ -1922,15 +1607,10 @@ RDRR1109.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1109.dbc,zerado_preenchido,cpf_aut,0
 RDRR1109.dbc,homonimo,0,2032
 RDRR1109.dbc,homonimo,2,345
-RDRR1109.dbc,gestor_tp,0,1630
-RDRR1109.dbc,gestor_tp,1,747
 RDRR1109.dbc,faec_tp,,2376
 RDRR1109.dbc,faec_tp,040018,1
 RDRR1109.dbc,cid_notif,,2356
 RDRR1109.dbc,cid_notif,Z302,21
-RDRR1109.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR1109.dbc,cid_notif|proc_rea,Z302|0411010042,5
-RDRR1109.dbc,cid_notif|sexo,Z302|3,21
 RDRR1110.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1110.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1110.dbc,zerado_preenchido,uti_mes_al,0
@@ -1952,15 +1632,10 @@ RDRR1110.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1110.dbc,zerado_preenchido,cpf_aut,0
 RDRR1110.dbc,homonimo,0,1981
 RDRR1110.dbc,homonimo,2,303
-RDRR1110.dbc,gestor_tp,0,1804
-RDRR1110.dbc,gestor_tp,1,480
 RDRR1110.dbc,faec_tp,,2283
 RDRR1110.dbc,faec_tp,040018,1
 RDRR1110.dbc,cid_notif,,2267
 RDRR1110.dbc,cid_notif,Z302,17
-RDRR1110.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR1110.dbc,cid_notif|proc_rea,Z302|0411010042,4
-RDRR1110.dbc,cid_notif|sexo,Z302|3,17
 RDRR1111.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1111.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1111.dbc,zerado_preenchido,uti_mes_al,0
@@ -1982,16 +1657,11 @@ RDRR1111.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1111.dbc,zerado_preenchido,cpf_aut,0
 RDRR1111.dbc,homonimo,0,2238
 RDRR1111.dbc,homonimo,2,406
-RDRR1111.dbc,gestor_tp,0,1896
-RDRR1111.dbc,gestor_tp,1,748
 RDRR1111.dbc,faec_tp,,2639
 RDRR1111.dbc,faec_tp,040018,4
 RDRR1111.dbc,faec_tp,040029,1
 RDRR1111.dbc,cid_notif,,2609
 RDRR1111.dbc,cid_notif,Z302,35
-RDRR1111.dbc,cid_notif|proc_rea,Z302|0409060186,28
-RDRR1111.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR1111.dbc,cid_notif|sexo,Z302|3,35
 RDRR1112.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1112.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1112.dbc,zerado_preenchido,uti_mes_al,0
@@ -2013,16 +1683,10 @@ RDRR1112.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1112.dbc,zerado_preenchido,cpf_aut,0
 RDRR1112.dbc,homonimo,0,2587
 RDRR1112.dbc,homonimo,2,483
-RDRR1112.dbc,gestor_tp,0,2031
-RDRR1112.dbc,gestor_tp,1,1039
 RDRR1112.dbc,faec_tp,,3065
 RDRR1112.dbc,faec_tp,040018,5
 RDRR1112.dbc,cid_notif,,3025
 RDRR1112.dbc,cid_notif,Z302,45
-RDRR1112.dbc,cid_notif|proc_rea,Z302|0409060186,36
-RDRR1112.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR1112.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR1112.dbc,cid_notif|sexo,Z302|3,45
 RDRR1201.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1201.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1201.dbc,zerado_preenchido,uti_mes_al,0
@@ -2044,15 +1708,10 @@ RDRR1201.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1201.dbc,zerado_preenchido,cpf_aut,0
 RDRR1201.dbc,homonimo,0,1970
 RDRR1201.dbc,homonimo,2,319
-RDRR1201.dbc,gestor_tp,0,1585
-RDRR1201.dbc,gestor_tp,1,704
 RDRR1201.dbc,faec_tp,,2288
 RDRR1201.dbc,faec_tp,040018,1
 RDRR1201.dbc,cid_notif,,2257
 RDRR1201.dbc,cid_notif,Z302,32
-RDRR1201.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1201.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR1201.dbc,cid_notif|sexo,Z302|3,32
 RDRR1202.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1202.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1202.dbc,zerado_preenchido,uti_mes_al,0
@@ -2074,17 +1733,11 @@ RDRR1202.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1202.dbc,zerado_preenchido,cpf_aut,0
 RDRR1202.dbc,homonimo,0,2310
 RDRR1202.dbc,homonimo,2,398
-RDRR1202.dbc,gestor_tp,0,1820
-RDRR1202.dbc,gestor_tp,1,888
 RDRR1202.dbc,faec_tp,,2687
 RDRR1202.dbc,faec_tp,040018,2
 RDRR1202.dbc,faec_tp,040052,19
 RDRR1202.dbc,cid_notif,,2683
 RDRR1202.dbc,cid_notif,Z302,25
-RDRR1202.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR1202.dbc,cid_notif|proc_rea,Z302|0411010042,8
-RDRR1202.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1202.dbc,cid_notif|sexo,Z302|3,25
 RDRR1203.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1203.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1203.dbc,zerado_preenchido,uti_mes_al,0
@@ -2106,8 +1759,6 @@ RDRR1203.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1203.dbc,zerado_preenchido,cpf_aut,0
 RDRR1203.dbc,homonimo,0,2639
 RDRR1203.dbc,homonimo,2,402
-RDRR1203.dbc,gestor_tp,0,2201
-RDRR1203.dbc,gestor_tp,1,840
 RDRR1203.dbc,faec_tp,,2997
 RDRR1203.dbc,faec_tp,040018,1
 RDRR1203.dbc,faec_tp,040029,1
@@ -2116,9 +1767,6 @@ RDRR1203.dbc,faec_tp,040051,9
 RDRR1203.dbc,faec_tp,040052,32
 RDRR1203.dbc,cid_notif,,3018
 RDRR1203.dbc,cid_notif,Z302,23
-RDRR1203.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR1203.dbc,cid_notif|proc_rea,Z302|0411010042,11
-RDRR1203.dbc,cid_notif|sexo,Z302|3,23
 RDRR1204.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1204.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1204.dbc,zerado_preenchido,uti_mes_al,0
@@ -2140,18 +1788,12 @@ RDRR1204.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1204.dbc,zerado_preenchido,cpf_aut,0
 RDRR1204.dbc,homonimo,0,2685
 RDRR1204.dbc,homonimo,2,422
-RDRR1204.dbc,gestor_tp,0,2295
-RDRR1204.dbc,gestor_tp,1,812
 RDRR1204.dbc,faec_tp,,3047
 RDRR1204.dbc,faec_tp,040018,1
 RDRR1204.dbc,faec_tp,040051,11
 RDRR1204.dbc,faec_tp,040052,48
 RDRR1204.dbc,cid_notif,,3078
 RDRR1204.dbc,cid_notif,Z302,29
-RDRR1204.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1204.dbc,cid_notif|proc_rea,Z302|0411010042,3
-RDRR1204.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1204.dbc,cid_notif|sexo,Z302|3,29
 RDRR1205.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1205.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1205.dbc,zerado_preenchido,uti_mes_al,0
@@ -2173,8 +1815,6 @@ RDRR1205.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1205.dbc,zerado_preenchido,cpf_aut,0
 RDRR1205.dbc,homonimo,0,2823
 RDRR1205.dbc,homonimo,2,428
-RDRR1205.dbc,gestor_tp,0,2315
-RDRR1205.dbc,gestor_tp,1,936
 RDRR1205.dbc,faec_tp,,3203
 RDRR1205.dbc,faec_tp,040018,2
 RDRR1205.dbc,faec_tp,040050,1
@@ -2182,9 +1822,6 @@ RDRR1205.dbc,faec_tp,040051,10
 RDRR1205.dbc,faec_tp,040052,35
 RDRR1205.dbc,cid_notif,,3207
 RDRR1205.dbc,cid_notif,Z302,44
-RDRR1205.dbc,cid_notif|proc_rea,Z302|0409060186,31
-RDRR1205.dbc,cid_notif|proc_rea,Z302|0411010042,13
-RDRR1205.dbc,cid_notif|sexo,Z302|3,44
 RDRR1206.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1206.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1206.dbc,zerado_preenchido,uti_mes_al,0
@@ -2206,17 +1843,12 @@ RDRR1206.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1206.dbc,zerado_preenchido,cpf_aut,0
 RDRR1206.dbc,homonimo,0,2520
 RDRR1206.dbc,homonimo,2,406
-RDRR1206.dbc,gestor_tp,0,2058
-RDRR1206.dbc,gestor_tp,1,868
 RDRR1206.dbc,faec_tp,,2915
 RDRR1206.dbc,faec_tp,040018,1
 RDRR1206.dbc,faec_tp,040051,2
 RDRR1206.dbc,faec_tp,040052,8
 RDRR1206.dbc,cid_notif,,2875
 RDRR1206.dbc,cid_notif,Z302,51
-RDRR1206.dbc,cid_notif|proc_rea,Z302|0409060186,48
-RDRR1206.dbc,cid_notif|proc_rea,Z302|0411010042,3
-RDRR1206.dbc,cid_notif|sexo,Z302|3,51
 RDRR1207.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1207.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1207.dbc,zerado_preenchido,uti_mes_al,0
@@ -2238,15 +1870,10 @@ RDRR1207.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1207.dbc,zerado_preenchido,cpf_aut,0
 RDRR1207.dbc,homonimo,0,2350
 RDRR1207.dbc,homonimo,2,405
-RDRR1207.dbc,gestor_tp,0,1805
-RDRR1207.dbc,gestor_tp,1,950
 RDRR1207.dbc,faec_tp,,2750
 RDRR1207.dbc,faec_tp,040018,5
 RDRR1207.dbc,cid_notif,,2728
 RDRR1207.dbc,cid_notif,Z302,27
-RDRR1207.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDRR1207.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1207.dbc,cid_notif|sexo,Z302|3,27
 RDRR1208.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1208.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1208.dbc,zerado_preenchido,uti_mes_al,0
@@ -2268,16 +1895,10 @@ RDRR1208.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1208.dbc,zerado_preenchido,cpf_aut,0
 RDRR1208.dbc,homonimo,0,2305
 RDRR1208.dbc,homonimo,2,406
-RDRR1208.dbc,gestor_tp,0,1766
-RDRR1208.dbc,gestor_tp,1,945
 RDRR1208.dbc,faec_tp,,2710
 RDRR1208.dbc,faec_tp,040018,1
 RDRR1208.dbc,cid_notif,,2672
 RDRR1208.dbc,cid_notif,Z302,39
-RDRR1208.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1208.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1208.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1208.dbc,cid_notif|sexo,Z302|3,39
 RDRR1209.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1209.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1209.dbc,zerado_preenchido,uti_mes_al,0
@@ -2299,14 +1920,9 @@ RDRR1209.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1209.dbc,zerado_preenchido,cpf_aut,0
 RDRR1209.dbc,homonimo,0,2054
 RDRR1209.dbc,homonimo,2,449
-RDRR1209.dbc,gestor_tp,0,1654
-RDRR1209.dbc,gestor_tp,1,849
 RDRR1209.dbc,faec_tp,,2503
 RDRR1209.dbc,cid_notif,,2485
 RDRR1209.dbc,cid_notif,Z302,18
-RDRR1209.dbc,cid_notif|proc_rea,Z302|0409060186,17
-RDRR1209.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1209.dbc,cid_notif|sexo,Z302|3,18
 RDRR1210.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1210.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1210.dbc,zerado_preenchido,uti_mes_al,0
@@ -2328,15 +1944,10 @@ RDRR1210.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1210.dbc,zerado_preenchido,cpf_aut,0
 RDRR1210.dbc,homonimo,0,1799
 RDRR1210.dbc,homonimo,2,304
-RDRR1210.dbc,gestor_tp,0,1283
-RDRR1210.dbc,gestor_tp,1,820
 RDRR1210.dbc,faec_tp,,2101
 RDRR1210.dbc,faec_tp,040018,2
 RDRR1210.dbc,cid_notif,,2077
 RDRR1210.dbc,cid_notif,Z302,26
-RDRR1210.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1210.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1210.dbc,cid_notif|sexo,Z302|3,26
 RDRR1211.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1211.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1211.dbc,zerado_preenchido,uti_mes_al,0
@@ -2358,16 +1969,10 @@ RDRR1211.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1211.dbc,zerado_preenchido,cpf_aut,0
 RDRR1211.dbc,homonimo,0,2135
 RDRR1211.dbc,homonimo,2,288
-RDRR1211.dbc,gestor_tp,0,1267
-RDRR1211.dbc,gestor_tp,1,1156
 RDRR1211.dbc,faec_tp,,2422
 RDRR1211.dbc,faec_tp,040018,1
 RDRR1211.dbc,cid_notif,,2380
 RDRR1211.dbc,cid_notif,Z302,43
-RDRR1211.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1211.dbc,cid_notif|proc_rea,Z302|0411010042,4
-RDRR1211.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR1211.dbc,cid_notif|sexo,Z302|3,43
 RDRR1212.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1212.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1212.dbc,zerado_preenchido,uti_mes_al,0
@@ -2389,15 +1994,10 @@ RDRR1212.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1212.dbc,zerado_preenchido,cpf_aut,0
 RDRR1212.dbc,homonimo,0,1858
 RDRR1212.dbc,homonimo,2,407
-RDRR1212.dbc,gestor_tp,0,871
-RDRR1212.dbc,gestor_tp,1,1394
 RDRR1212.dbc,faec_tp,,2261
 RDRR1212.dbc,faec_tp,040052,4
 RDRR1212.dbc,cid_notif,,2227
 RDRR1212.dbc,cid_notif,Z302,38
-RDRR1212.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1212.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1212.dbc,cid_notif|sexo,Z302|3,38
 RDRR1301.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1301.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1301.dbc,zerado_preenchido,uti_mes_al,0
@@ -2419,15 +2019,10 @@ RDRR1301.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1301.dbc,zerado_preenchido,cpf_aut,0
 RDRR1301.dbc,homonimo,0,1933
 RDRR1301.dbc,homonimo,2,307
-RDRR1301.dbc,gestor_tp,0,1414
-RDRR1301.dbc,gestor_tp,1,826
 RDRR1301.dbc,faec_tp,,2239
 RDRR1301.dbc,faec_tp,040018,1
 RDRR1301.dbc,cid_notif,,2188
 RDRR1301.dbc,cid_notif,Z302,52
-RDRR1301.dbc,cid_notif|proc_rea,Z302|0409060186,41
-RDRR1301.dbc,cid_notif|proc_rea,Z302|0411010042,11
-RDRR1301.dbc,cid_notif|sexo,Z302|3,52
 RDRR1302.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1302.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1302.dbc,zerado_preenchido,uti_mes_al,0
@@ -2449,15 +2044,10 @@ RDRR1302.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1302.dbc,zerado_preenchido,cpf_aut,0
 RDRR1302.dbc,homonimo,0,2001
 RDRR1302.dbc,homonimo,2,346
-RDRR1302.dbc,gestor_tp,0,1490
-RDRR1302.dbc,gestor_tp,1,857
 RDRR1302.dbc,faec_tp,,2331
 RDRR1302.dbc,faec_tp,040052,16
 RDRR1302.dbc,cid_notif,,2316
 RDRR1302.dbc,cid_notif,Z302,31
-RDRR1302.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDRR1302.dbc,cid_notif|proc_rea,Z302|0411010042,5
-RDRR1302.dbc,cid_notif|sexo,Z302|3,31
 RDRR1303.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1303.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1303.dbc,zerado_preenchido,uti_mes_al,0
@@ -2479,15 +2069,10 @@ RDRR1303.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1303.dbc,zerado_preenchido,cpf_aut,0
 RDRR1303.dbc,homonimo,0,2489
 RDRR1303.dbc,homonimo,2,348
-RDRR1303.dbc,gestor_tp,0,1945
-RDRR1303.dbc,gestor_tp,1,892
 RDRR1303.dbc,faec_tp,,2827
 RDRR1303.dbc,faec_tp,040052,10
 RDRR1303.dbc,cid_notif,,2809
 RDRR1303.dbc,cid_notif,Z302,28
-RDRR1303.dbc,cid_notif|proc_rea,Z302|0409060186,24
-RDRR1303.dbc,cid_notif|proc_rea,Z302|0411010042,4
-RDRR1303.dbc,cid_notif|sexo,Z302|3,28
 RDRR1304.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1304.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1304.dbc,zerado_preenchido,uti_mes_al,0
@@ -2509,16 +2094,10 @@ RDRR1304.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1304.dbc,zerado_preenchido,cpf_aut,0
 RDRR1304.dbc,homonimo,0,2335
 RDRR1304.dbc,homonimo,2,413
-RDRR1304.dbc,gestor_tp,0,1722
-RDRR1304.dbc,gestor_tp,1,1026
 RDRR1304.dbc,faec_tp,,2747
 RDRR1304.dbc,faec_tp,040029,1
 RDRR1304.dbc,cid_notif,,2676
 RDRR1304.dbc,cid_notif,Z302,72
-RDRR1304.dbc,cid_notif|proc_rea,Z302|0409060186,70
-RDRR1304.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1304.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1304.dbc,cid_notif|sexo,Z302|3,72
 RDRR1305.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1305.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1305.dbc,zerado_preenchido,uti_mes_al,0
@@ -2540,18 +2119,12 @@ RDRR1305.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1305.dbc,zerado_preenchido,cpf_aut,0
 RDRR1305.dbc,homonimo,0,2532
 RDRR1305.dbc,homonimo,2,669
-RDRR1305.dbc,gestor_tp,0,1906
-RDRR1305.dbc,gestor_tp,1,1295
 RDRR1305.dbc,faec_tp,,3175
 RDRR1305.dbc,faec_tp,040018,1
 RDRR1305.dbc,faec_tp,040050,1
 RDRR1305.dbc,faec_tp,040052,24
 RDRR1305.dbc,cid_notif,,3122
 RDRR1305.dbc,cid_notif,Z302,79
-RDRR1305.dbc,cid_notif|proc_rea,Z302|0409060186,70
-RDRR1305.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR1305.dbc,cid_notif|proc_rea,Z302|0415010012,3
-RDRR1305.dbc,cid_notif|sexo,Z302|3,79
 RDRR1306.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1306.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1306.dbc,zerado_preenchido,uti_mes_al,0
@@ -2573,17 +2146,12 @@ RDRR1306.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1306.dbc,zerado_preenchido,cpf_aut,0
 RDRR1306.dbc,homonimo,0,2782
 RDRR1306.dbc,homonimo,2,463
-RDRR1306.dbc,gestor_tp,0,2194
-RDRR1306.dbc,gestor_tp,1,1051
 RDRR1306.dbc,faec_tp,,3232
 RDRR1306.dbc,faec_tp,040018,3
 RDRR1306.dbc,faec_tp,040052,9
 RDRR1306.dbc,faec_tp,040054,1
 RDRR1306.dbc,cid_notif,,3224
 RDRR1306.dbc,cid_notif,Z302,21
-RDRR1306.dbc,cid_notif|proc_rea,Z302|0409060186,15
-RDRR1306.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR1306.dbc,cid_notif|sexo,Z302|3,21
 RDRR1307.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1307.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1307.dbc,zerado_preenchido,uti_mes_al,0
@@ -2605,18 +2173,12 @@ RDRR1307.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1307.dbc,zerado_preenchido,cpf_aut,0
 RDRR1307.dbc,homonimo,0,3042
 RDRR1307.dbc,homonimo,2,570
-RDRR1307.dbc,gestor_tp,0,2578
-RDRR1307.dbc,gestor_tp,1,1034
 RDRR1307.dbc,faec_tp,,3607
 RDRR1307.dbc,faec_tp,040018,1
 RDRR1307.dbc,faec_tp,040051,1
 RDRR1307.dbc,faec_tp,040052,3
 RDRR1307.dbc,cid_notif,,3559
 RDRR1307.dbc,cid_notif,Z302,53
-RDRR1307.dbc,cid_notif|proc_rea,Z302|0409060186,43
-RDRR1307.dbc,cid_notif|proc_rea,Z302|0411010042,9
-RDRR1307.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1307.dbc,cid_notif|sexo,Z302|3,53
 RDRR1308.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1308.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1308.dbc,zerado_preenchido,uti_mes_al,0
@@ -2638,18 +2200,12 @@ RDRR1308.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1308.dbc,zerado_preenchido,cpf_aut,0
 RDRR1308.dbc,homonimo,0,2719
 RDRR1308.dbc,homonimo,2,570
-RDRR1308.dbc,gestor_tp,0,2265
-RDRR1308.dbc,gestor_tp,1,1024
 RDRR1308.dbc,faec_tp,,3278
 RDRR1308.dbc,faec_tp,040018,2
 RDRR1308.dbc,faec_tp,040029,1
 RDRR1308.dbc,faec_tp,040052,8
 RDRR1308.dbc,cid_notif,,3207
 RDRR1308.dbc,cid_notif,Z302,82
-RDRR1308.dbc,cid_notif|proc_rea,Z302|0409060186,73
-RDRR1308.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR1308.dbc,cid_notif|proc_rea,Z302|0415010012,3
-RDRR1308.dbc,cid_notif|sexo,Z302|3,82
 RDRR1309.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1309.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1309.dbc,zerado_preenchido,uti_mes_al,0
@@ -2671,17 +2227,12 @@ RDRR1309.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1309.dbc,zerado_preenchido,cpf_aut,0
 RDRR1309.dbc,homonimo,0,2422
 RDRR1309.dbc,homonimo,2,451
-RDRR1309.dbc,gestor_tp,0,2093
-RDRR1309.dbc,gestor_tp,1,780
 RDRR1309.dbc,faec_tp,,2864
 RDRR1309.dbc,faec_tp,040018,5
 RDRR1309.dbc,faec_tp,040052,3
 RDRR1309.dbc,faec_tp,040054,1
 RDRR1309.dbc,cid_notif,,2842
 RDRR1309.dbc,cid_notif,Z302,31
-RDRR1309.dbc,cid_notif|proc_rea,Z302|0409060186,29
-RDRR1309.dbc,cid_notif|proc_rea,Z302|0411010042,2
-RDRR1309.dbc,cid_notif|sexo,Z302|3,31
 RDRR1310.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1310.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1310.dbc,zerado_preenchido,uti_mes_al,0
@@ -2703,16 +2254,11 @@ RDRR1310.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1310.dbc,zerado_preenchido,cpf_aut,0
 RDRR1310.dbc,homonimo,0,2289
 RDRR1310.dbc,homonimo,2,363
-RDRR1310.dbc,gestor_tp,0,1862
-RDRR1310.dbc,gestor_tp,1,790
 RDRR1310.dbc,faec_tp,,2644
 RDRR1310.dbc,faec_tp,040018,2
 RDRR1310.dbc,faec_tp,040052,6
 RDRR1310.dbc,cid_notif,,2614
 RDRR1310.dbc,cid_notif,Z302,38
-RDRR1310.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1310.dbc,cid_notif|proc_rea,Z302|0411010042,1
-RDRR1310.dbc,cid_notif|sexo,Z302|3,38
 RDRR1311.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1311.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1311.dbc,zerado_preenchido,uti_mes_al,0
@@ -2734,16 +2280,11 @@ RDRR1311.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1311.dbc,zerado_preenchido,cpf_aut,0
 RDRR1311.dbc,homonimo,0,2242
 RDRR1311.dbc,homonimo,2,495
-RDRR1311.dbc,gestor_tp,0,1859
-RDRR1311.dbc,gestor_tp,1,878
 RDRR1311.dbc,faec_tp,,2728
 RDRR1311.dbc,faec_tp,040018,2
 RDRR1311.dbc,faec_tp,040052,7
 RDRR1311.dbc,cid_notif,,2713
 RDRR1311.dbc,cid_notif,Z302,24
-RDRR1311.dbc,cid_notif|proc_rea,Z302|0409060186,14
-RDRR1311.dbc,cid_notif|proc_rea,Z302|0411010042,10
-RDRR1311.dbc,cid_notif|sexo,Z302|3,24
 RDRR1312.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1312.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1312.dbc,zerado_preenchido,uti_mes_al,0
@@ -2765,16 +2306,11 @@ RDRR1312.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1312.dbc,zerado_preenchido,cpf_aut,0
 RDRR1312.dbc,homonimo,0,1828
 RDRR1312.dbc,homonimo,2,276
-RDRR1312.dbc,gestor_tp,0,1425
-RDRR1312.dbc,gestor_tp,1,679
 RDRR1312.dbc,faec_tp,,2094
 RDRR1312.dbc,faec_tp,040018,2
 RDRR1312.dbc,faec_tp,040052,8
 RDRR1312.dbc,cid_notif,,2057
 RDRR1312.dbc,cid_notif,Z302,47
-RDRR1312.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1312.dbc,cid_notif|proc_rea,Z302|0411010042,22
-RDRR1312.dbc,cid_notif|sexo,Z302|3,47
 RDRR1401.dbc,zerado_preenchido,uti_mes_in,0
 RDRR1401.dbc,zerado_preenchido,uti_mes_an,0
 RDRR1401.dbc,zerado_preenchido,uti_mes_al,0
@@ -2796,17 +2332,11 @@ RDRR1401.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1401.dbc,zerado_preenchido,cpf_aut,0
 RDRR1401.dbc,homonimo,0,2384
 RDRR1401.dbc,homonimo,2,436
-RDRR1401.dbc,gestor_tp,0,1832
-RDRR1401.dbc,gestor_tp,1,988
 RDRR1401.dbc,faec_tp,,2814
 RDRR1401.dbc,faec_tp,040018,3
 RDRR1401.dbc,faec_tp,040052,3
 RDRR1401.dbc,cid_notif,,2776
 RDRR1401.dbc,cid_notif,Z302,44
-RDRR1401.dbc,cid_notif|proc_rea,Z302|0409060186,23
-RDRR1401.dbc,cid_notif|proc_rea,Z302|0411010042,20
-RDRR1401.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1401.dbc,cid_notif|sexo,Z302|3,44
 RDRR1401.dbc,tpdisec1,|diagsec vazio,2820
 RDRR1401.dbc,tpdisec2,|diagsec vazio,2820
 RDRR1401.dbc,tpdisec3,|diagsec vazio,2820
@@ -2837,17 +2367,12 @@ RDRR1402.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1402.dbc,zerado_preenchido,cpf_aut,0
 RDRR1402.dbc,homonimo,0,2418
 RDRR1402.dbc,homonimo,2,418
-RDRR1402.dbc,gestor_tp,0,1807
-RDRR1402.dbc,gestor_tp,1,1029
 RDRR1402.dbc,faec_tp,,2826
 RDRR1402.dbc,faec_tp,040018,7
 RDRR1402.dbc,faec_tp,040051,1
 RDRR1402.dbc,faec_tp,040052,2
 RDRR1402.dbc,cid_notif,,2776
 RDRR1402.dbc,cid_notif,Z302,60
-RDRR1402.dbc,cid_notif|proc_rea,Z302|0409060186,35
-RDRR1402.dbc,cid_notif|proc_rea,Z302|0411010042,25
-RDRR1402.dbc,cid_notif|sexo,Z302|3,60
 RDRR1402.dbc,tpdisec1,|diagsec vazio,2836
 RDRR1402.dbc,tpdisec2,|diagsec vazio,2836
 RDRR1402.dbc,tpdisec3,|diagsec vazio,2836
@@ -2878,17 +2403,12 @@ RDRR1403.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1403.dbc,zerado_preenchido,cpf_aut,0
 RDRR1403.dbc,homonimo,0,2330
 RDRR1403.dbc,homonimo,2,394
-RDRR1403.dbc,gestor_tp,0,1902
-RDRR1403.dbc,gestor_tp,1,822
 RDRR1403.dbc,faec_tp,,2720
 RDRR1403.dbc,faec_tp,040018,1
 RDRR1403.dbc,faec_tp,040029,1
 RDRR1403.dbc,faec_tp,040052,2
 RDRR1403.dbc,cid_notif,,2674
 RDRR1403.dbc,cid_notif,Z302,50
-RDRR1403.dbc,cid_notif|proc_rea,Z302|0409060186,37
-RDRR1403.dbc,cid_notif|proc_rea,Z302|0411010042,13
-RDRR1403.dbc,cid_notif|sexo,Z302|3,50
 RDRR1403.dbc,tpdisec1,|diagsec vazio,2724
 RDRR1403.dbc,tpdisec2,|diagsec vazio,2724
 RDRR1403.dbc,tpdisec3,|diagsec vazio,2724
@@ -2919,17 +2439,12 @@ RDRR1404.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1404.dbc,zerado_preenchido,cpf_aut,0
 RDRR1404.dbc,homonimo,0,1827
 RDRR1404.dbc,homonimo,2,430
-RDRR1404.dbc,gestor_tp,0,1443
-RDRR1404.dbc,gestor_tp,1,814
 RDRR1404.dbc,faec_tp,,2250
 RDRR1404.dbc,faec_tp,040018,1
 RDRR1404.dbc,faec_tp,040051,2
 RDRR1404.dbc,faec_tp,040052,4
 RDRR1404.dbc,cid_notif,,2214
 RDRR1404.dbc,cid_notif,Z302,43
-RDRR1404.dbc,cid_notif|proc_rea,Z302|0409060186,34
-RDRR1404.dbc,cid_notif|proc_rea,Z302|0411010042,9
-RDRR1404.dbc,cid_notif|sexo,Z302|3,43
 RDRR1404.dbc,tpdisec1,|diagsec vazio,2257
 RDRR1404.dbc,tpdisec2,|diagsec vazio,2257
 RDRR1404.dbc,tpdisec3,|diagsec vazio,2257
@@ -2960,8 +2475,6 @@ RDRR1405.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1405.dbc,zerado_preenchido,cpf_aut,0
 RDRR1405.dbc,homonimo,0,2230
 RDRR1405.dbc,homonimo,2,433
-RDRR1405.dbc,gestor_tp,0,1749
-RDRR1405.dbc,gestor_tp,1,914
 RDRR1405.dbc,faec_tp,,2640
 RDRR1405.dbc,faec_tp,040018,1
 RDRR1405.dbc,faec_tp,040050,1
@@ -2969,10 +2482,6 @@ RDRR1405.dbc,faec_tp,040052,20
 RDRR1405.dbc,faec_tp,040054,1
 RDRR1405.dbc,cid_notif,,2614
 RDRR1405.dbc,cid_notif,Z302,49
-RDRR1405.dbc,cid_notif|proc_rea,Z302|0409060186,41
-RDRR1405.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR1405.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1405.dbc,cid_notif|sexo,Z302|3,49
 RDRR1405.dbc,tpdisec1,|diagsec vazio,2663
 RDRR1405.dbc,tpdisec2,|diagsec vazio,2663
 RDRR1405.dbc,tpdisec3,|diagsec vazio,2663
@@ -3003,18 +2512,12 @@ RDRR1406.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1406.dbc,zerado_preenchido,cpf_aut,0
 RDRR1406.dbc,homonimo,0,2121
 RDRR1406.dbc,homonimo,2,360
-RDRR1406.dbc,gestor_tp,0,1809
-RDRR1406.dbc,gestor_tp,1,672
 RDRR1406.dbc,faec_tp,,2454
 RDRR1406.dbc,faec_tp,040018,1
 RDRR1406.dbc,faec_tp,040051,4
 RDRR1406.dbc,faec_tp,040052,22
 RDRR1406.dbc,cid_notif,,2454
 RDRR1406.dbc,cid_notif,Z302,27
-RDRR1406.dbc,cid_notif|proc_rea,Z302|0409060186,18
-RDRR1406.dbc,cid_notif|proc_rea,Z302|0411010042,8
-RDRR1406.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1406.dbc,cid_notif|sexo,Z302|3,27
 RDRR1406.dbc,tpdisec1,|diagsec vazio,2481
 RDRR1406.dbc,tpdisec2,|diagsec vazio,2481
 RDRR1406.dbc,tpdisec3,|diagsec vazio,2481
@@ -3045,8 +2548,6 @@ RDRR1407.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1407.dbc,zerado_preenchido,cpf_aut,0
 RDRR1407.dbc,homonimo,0,2232
 RDRR1407.dbc,homonimo,2,493
-RDRR1407.dbc,gestor_tp,0,1805
-RDRR1407.dbc,gestor_tp,1,920
 RDRR1407.dbc,faec_tp,,2705
 RDRR1407.dbc,faec_tp,040018,4
 RDRR1407.dbc,faec_tp,040050,1
@@ -3054,9 +2555,6 @@ RDRR1407.dbc,faec_tp,040051,2
 RDRR1407.dbc,faec_tp,040052,13
 RDRR1407.dbc,cid_notif,,2690
 RDRR1407.dbc,cid_notif,Z302,35
-RDRR1407.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1407.dbc,cid_notif|proc_rea,Z302|0411010042,10
-RDRR1407.dbc,cid_notif|sexo,Z302|3,35
 RDRR1407.dbc,tpdisec1,|diagsec vazio,2725
 RDRR1407.dbc,tpdisec2,|diagsec vazio,2725
 RDRR1407.dbc,tpdisec3,|diagsec vazio,2725
@@ -3087,17 +2585,12 @@ RDRR1408.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1408.dbc,zerado_preenchido,cpf_aut,0
 RDRR1408.dbc,homonimo,0,2085
 RDRR1408.dbc,homonimo,2,487
-RDRR1408.dbc,gestor_tp,0,1582
-RDRR1408.dbc,gestor_tp,1,990
 RDRR1408.dbc,faec_tp,,2549
 RDRR1408.dbc,faec_tp,040018,6
 RDRR1408.dbc,faec_tp,040051,2
 RDRR1408.dbc,faec_tp,040052,15
 RDRR1408.dbc,cid_notif,,2535
 RDRR1408.dbc,cid_notif,Z302,37
-RDRR1408.dbc,cid_notif|proc_rea,Z302|0409060186,31
-RDRR1408.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR1408.dbc,cid_notif|sexo,Z302|3,37
 RDRR1408.dbc,tpdisec1,|diagsec vazio,2572
 RDRR1408.dbc,tpdisec2,|diagsec vazio,2572
 RDRR1408.dbc,tpdisec3,|diagsec vazio,2572
@@ -3128,18 +2621,12 @@ RDRR1409.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1409.dbc,zerado_preenchido,cpf_aut,0
 RDRR1409.dbc,homonimo,0,1980
 RDRR1409.dbc,homonimo,2,366
-RDRR1409.dbc,gestor_tp,0,1625
-RDRR1409.dbc,gestor_tp,1,721
 RDRR1409.dbc,faec_tp,,2321
 RDRR1409.dbc,faec_tp,040018,6
 RDRR1409.dbc,faec_tp,040051,3
 RDRR1409.dbc,faec_tp,040052,16
 RDRR1409.dbc,cid_notif,,2311
 RDRR1409.dbc,cid_notif,Z302,35
-RDRR1409.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDRR1409.dbc,cid_notif|proc_rea,Z302|0411010042,8
-RDRR1409.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1409.dbc,cid_notif|sexo,Z302|3,35
 RDRR1409.dbc,tpdisec1,|diagsec vazio,2346
 RDRR1409.dbc,tpdisec2,|diagsec vazio,2346
 RDRR1409.dbc,tpdisec3,|diagsec vazio,2346
@@ -3170,16 +2657,11 @@ RDRR1410.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1410.dbc,zerado_preenchido,cpf_aut,0
 RDRR1410.dbc,homonimo,0,2069
 RDRR1410.dbc,homonimo,2,346
-RDRR1410.dbc,gestor_tp,0,1585
-RDRR1410.dbc,gestor_tp,1,830
 RDRR1410.dbc,faec_tp,,2403
 RDRR1410.dbc,faec_tp,040018,6
 RDRR1410.dbc,faec_tp,040052,6
 RDRR1410.dbc,cid_notif,,2394
 RDRR1410.dbc,cid_notif,Z302,21
-RDRR1410.dbc,cid_notif|proc_rea,Z302|0409060186,15
-RDRR1410.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR1410.dbc,cid_notif|sexo,Z302|3,21
 RDRR1410.dbc,tpdisec1,|diagsec vazio,2415
 RDRR1410.dbc,tpdisec2,|diagsec vazio,2415
 RDRR1410.dbc,tpdisec3,|diagsec vazio,2415
@@ -3210,17 +2692,12 @@ RDRR1411.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1411.dbc,zerado_preenchido,cpf_aut,0
 RDRR1411.dbc,homonimo,0,2423
 RDRR1411.dbc,homonimo,2,377
-RDRR1411.dbc,gestor_tp,0,1965
-RDRR1411.dbc,gestor_tp,1,835
 RDRR1411.dbc,faec_tp,,2779
 RDRR1411.dbc,faec_tp,040018,6
 RDRR1411.dbc,faec_tp,040051,1
 RDRR1411.dbc,faec_tp,040052,14
 RDRR1411.dbc,cid_notif,,2738
 RDRR1411.dbc,cid_notif,Z302,62
-RDRR1411.dbc,cid_notif|proc_rea,Z302|0409060186,47
-RDRR1411.dbc,cid_notif|proc_rea,Z302|0411010042,15
-RDRR1411.dbc,cid_notif|sexo,Z302|3,62
 RDRR1411.dbc,tpdisec1,|diagsec vazio,2800
 RDRR1411.dbc,tpdisec2,|diagsec vazio,2800
 RDRR1411.dbc,tpdisec3,|diagsec vazio,2800
@@ -3251,17 +2728,12 @@ RDRR1412.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1412.dbc,zerado_preenchido,cpf_aut,0
 RDRR1412.dbc,homonimo,0,1528
 RDRR1412.dbc,homonimo,2,162
-RDRR1412.dbc,gestor_tp,0,1118
-RDRR1412.dbc,gestor_tp,1,572
 RDRR1412.dbc,faec_tp,,1678
 RDRR1412.dbc,faec_tp,040018,4
 RDRR1412.dbc,faec_tp,040029,1
 RDRR1412.dbc,faec_tp,040052,7
 RDRR1412.dbc,cid_notif,,1678
 RDRR1412.dbc,cid_notif,Z302,12
-RDRR1412.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR1412.dbc,cid_notif|proc_rea,Z302|0411010042,6
-RDRR1412.dbc,cid_notif|sexo,Z302|3,12
 RDRR1412.dbc,tpdisec1,|diagsec vazio,1690
 RDRR1412.dbc,tpdisec2,|diagsec vazio,1690
 RDRR1412.dbc,tpdisec3,|diagsec vazio,1690
@@ -3292,18 +2764,12 @@ RDRR1501.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1501.dbc,zerado_preenchido,cpf_aut,0
 RDRR1501.dbc,homonimo,0,2281
 RDRR1501.dbc,homonimo,2,478
-RDRR1501.dbc,gestor_tp,0,1871
-RDRR1501.dbc,gestor_tp,1,888
 RDRR1501.dbc,faec_tp,,2752
 RDRR1501.dbc,faec_tp,040018,4
 RDRR1501.dbc,faec_tp,040029,2
 RDRR1501.dbc,faec_tp,040052,1
 RDRR1501.dbc,cid_notif,,2722
 RDRR1501.dbc,cid_notif,Z302,37
-RDRR1501.dbc,cid_notif|proc_rea,Z302|0409060186,18
-RDRR1501.dbc,cid_notif|proc_rea,Z302|0411010042,18
-RDRR1501.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1501.dbc,cid_notif|sexo,Z302|3,37
 RDRR1501.dbc,tpdisec1,0|diagsec vazio,2197
 RDRR1501.dbc,tpdisec1,1|diagsec preenchido,558
 RDRR1501.dbc,tpdisec1,2|diagsec preenchido,4
@@ -3337,8 +2803,6 @@ RDRR1502.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1502.dbc,zerado_preenchido,cpf_aut,0
 RDRR1502.dbc,homonimo,0,2418
 RDRR1502.dbc,homonimo,2,512
-RDRR1502.dbc,gestor_tp,0,1957
-RDRR1502.dbc,gestor_tp,1,973
 RDRR1502.dbc,faec_tp,,2901
 RDRR1502.dbc,faec_tp,040018,3
 RDRR1502.dbc,faec_tp,040029,1
@@ -3347,8 +2811,6 @@ RDRR1502.dbc,faec_tp,040051,5
 RDRR1502.dbc,faec_tp,040052,19
 RDRR1502.dbc,cid_notif,,2916
 RDRR1502.dbc,cid_notif,Z302,14
-RDRR1502.dbc,cid_notif|proc_rea,Z302|0411010042,14
-RDRR1502.dbc,cid_notif|sexo,Z302|3,14
 RDRR1502.dbc,tpdisec1,0|diagsec vazio,2241
 RDRR1502.dbc,tpdisec1,1|diagsec preenchido,688
 RDRR1502.dbc,tpdisec1,2|diagsec preenchido,1
@@ -3382,16 +2844,11 @@ RDRR1503.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1503.dbc,zerado_preenchido,cpf_aut,0
 RDRR1503.dbc,homonimo,0,2191
 RDRR1503.dbc,homonimo,2,445
-RDRR1503.dbc,gestor_tp,0,1672
-RDRR1503.dbc,gestor_tp,1,964
 RDRR1503.dbc,faec_tp,,2581
 RDRR1503.dbc,faec_tp,040051,10
 RDRR1503.dbc,faec_tp,040052,45
 RDRR1503.dbc,cid_notif,,2621
 RDRR1503.dbc,cid_notif,Z302,15
-RDRR1503.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR1503.dbc,cid_notif|proc_rea,Z302|0411010042,14
-RDRR1503.dbc,cid_notif|sexo,Z302|3,15
 RDRR1503.dbc,tpdisec1,0|diagsec vazio,2059
 RDRR1503.dbc,tpdisec1,1|diagsec preenchido,576
 RDRR1503.dbc,tpdisec1,2|diagsec preenchido,1
@@ -3424,8 +2881,6 @@ RDRR1504.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1504.dbc,zerado_preenchido,cpf_aut,0
 RDRR1504.dbc,homonimo,0,2529
 RDRR1504.dbc,homonimo,2,731
-RDRR1504.dbc,gestor_tp,0,2114
-RDRR1504.dbc,gestor_tp,1,1146
 RDRR1504.dbc,faec_tp,,3214
 RDRR1504.dbc,faec_tp,040018,3
 RDRR1504.dbc,faec_tp,040050,1
@@ -3433,9 +2888,6 @@ RDRR1504.dbc,faec_tp,040051,11
 RDRR1504.dbc,faec_tp,040052,31
 RDRR1504.dbc,cid_notif,,3241
 RDRR1504.dbc,cid_notif,Z302,19
-RDRR1504.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR1504.dbc,cid_notif|proc_rea,Z302|0411010042,17
-RDRR1504.dbc,cid_notif|sexo,Z302|3,19
 RDRR1504.dbc,tpdisec1,0|diagsec vazio,2612
 RDRR1504.dbc,tpdisec1,1|diagsec preenchido,648
 RDRR1504.dbc,tpdisec2,0|diagsec vazio,3258
@@ -3468,8 +2920,6 @@ RDRR1505.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1505.dbc,zerado_preenchido,cpf_aut,0
 RDRR1505.dbc,homonimo,0,2184
 RDRR1505.dbc,homonimo,2,521
-RDRR1505.dbc,gestor_tp,0,1777
-RDRR1505.dbc,gestor_tp,1,928
 RDRR1505.dbc,faec_tp,,2674
 RDRR1505.dbc,faec_tp,040018,3
 RDRR1505.dbc,faec_tp,040029,1
@@ -3477,9 +2927,6 @@ RDRR1505.dbc,faec_tp,040051,2
 RDRR1505.dbc,faec_tp,040052,25
 RDRR1505.dbc,cid_notif,,2678
 RDRR1505.dbc,cid_notif,Z302,27
-RDRR1505.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR1505.dbc,cid_notif|proc_rea,Z302|0411010042,21
-RDRR1505.dbc,cid_notif|sexo,Z302|3,27
 RDRR1505.dbc,tpdisec1,0|diagsec vazio,2177
 RDRR1505.dbc,tpdisec1,1|diagsec preenchido,526
 RDRR1505.dbc,tpdisec1,2|diagsec preenchido,2
@@ -3513,17 +2960,12 @@ RDRR1506.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1506.dbc,zerado_preenchido,cpf_aut,0
 RDRR1506.dbc,homonimo,0,2134
 RDRR1506.dbc,homonimo,2,397
-RDRR1506.dbc,gestor_tp,0,1748
-RDRR1506.dbc,gestor_tp,1,783
 RDRR1506.dbc,faec_tp,,2514
 RDRR1506.dbc,faec_tp,040018,1
 RDRR1506.dbc,faec_tp,040051,3
 RDRR1506.dbc,faec_tp,040052,13
 RDRR1506.dbc,cid_notif,,2509
 RDRR1506.dbc,cid_notif,Z302,22
-RDRR1506.dbc,cid_notif|proc_rea,Z302|0409060186,4
-RDRR1506.dbc,cid_notif|proc_rea,Z302|0411010042,18
-RDRR1506.dbc,cid_notif|sexo,Z302|3,22
 RDRR1506.dbc,tpdisec1,0|diagsec vazio,2149
 RDRR1506.dbc,tpdisec1,1|diagsec preenchido,380
 RDRR1506.dbc,tpdisec1,2|diagsec preenchido,2
@@ -3556,8 +2998,6 @@ RDRR1507.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1507.dbc,zerado_preenchido,cpf_aut,0
 RDRR1507.dbc,homonimo,0,2537
 RDRR1507.dbc,homonimo,2,573
-RDRR1507.dbc,gestor_tp,0,2085
-RDRR1507.dbc,gestor_tp,1,1025
 RDRR1507.dbc,faec_tp,,3082
 RDRR1507.dbc,faec_tp,040018,7
 RDRR1507.dbc,faec_tp,040029,1
@@ -3565,9 +3005,6 @@ RDRR1507.dbc,faec_tp,040051,2
 RDRR1507.dbc,faec_tp,040052,18
 RDRR1507.dbc,cid_notif,,3091
 RDRR1507.dbc,cid_notif,Z302,19
-RDRR1507.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR1507.dbc,cid_notif|proc_rea,Z302|0411010042,12
-RDRR1507.dbc,cid_notif|sexo,Z302|3,19
 RDRR1507.dbc,tpdisec1,0|diagsec vazio,2507
 RDRR1507.dbc,tpdisec1,1|diagsec preenchido,602
 RDRR1507.dbc,tpdisec1,2|diagsec preenchido,1
@@ -3601,8 +3038,6 @@ RDRR1508.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1508.dbc,zerado_preenchido,cpf_aut,0
 RDRR1508.dbc,homonimo,0,3422
 RDRR1508.dbc,homonimo,2,32
-RDRR1508.dbc,gestor_tp,0,2419
-RDRR1508.dbc,gestor_tp,1,1035
 RDRR1508.dbc,faec_tp,,3419
 RDRR1508.dbc,faec_tp,040018,3
 RDRR1508.dbc,faec_tp,040029,1
@@ -3610,9 +3045,6 @@ RDRR1508.dbc,faec_tp,040052,18
 RDRR1508.dbc,faec_tp,040066,13
 RDRR1508.dbc,cid_notif,,3408
 RDRR1508.dbc,cid_notif,Z302,46
-RDRR1508.dbc,cid_notif|proc_rea,Z302|0409060186,17
-RDRR1508.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR1508.dbc,cid_notif|sexo,Z302|3,46
 RDRR1508.dbc,tpdisec1,0|diagsec vazio,2855
 RDRR1508.dbc,tpdisec1,1|diagsec preenchido,599
 RDRR1508.dbc,tpdisec2,0|diagsec vazio,3451
@@ -3645,8 +3077,6 @@ RDRR1509.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1509.dbc,zerado_preenchido,cpf_aut,0
 RDRR1509.dbc,homonimo,0,3121
 RDRR1509.dbc,homonimo,2,51
-RDRR1509.dbc,gestor_tp,0,2278
-RDRR1509.dbc,gestor_tp,1,894
 RDRR1509.dbc,faec_tp,,3158
 RDRR1509.dbc,faec_tp,040018,1
 RDRR1509.dbc,faec_tp,040029,2
@@ -3654,10 +3084,6 @@ RDRR1509.dbc,faec_tp,040052,1
 RDRR1509.dbc,faec_tp,040066,10
 RDRR1509.dbc,cid_notif,,3119
 RDRR1509.dbc,cid_notif,Z302,53
-RDRR1509.dbc,cid_notif|proc_rea,Z302|0409060186,34
-RDRR1509.dbc,cid_notif|proc_rea,Z302|0411010042,18
-RDRR1509.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1509.dbc,cid_notif|sexo,Z302|3,53
 RDRR1509.dbc,tpdisec1,0|diagsec vazio,2676
 RDRR1509.dbc,tpdisec1,1|diagsec preenchido,496
 RDRR1509.dbc,tpdisec2,0|diagsec vazio,3172
@@ -3689,8 +3115,6 @@ RDRR1510.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1510.dbc,zerado_preenchido,cpf_aut,0
 RDRR1510.dbc,homonimo,0,3140
 RDRR1510.dbc,homonimo,2,61
-RDRR1510.dbc,gestor_tp,0,2300
-RDRR1510.dbc,gestor_tp,1,901
 RDRR1510.dbc,faec_tp,,3185
 RDRR1510.dbc,faec_tp,040018,8
 RDRR1510.dbc,faec_tp,040029,1
@@ -3698,10 +3122,6 @@ RDRR1510.dbc,faec_tp,040052,2
 RDRR1510.dbc,faec_tp,040066,5
 RDRR1510.dbc,cid_notif,,3166
 RDRR1510.dbc,cid_notif,Z302,35
-RDRR1510.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR1510.dbc,cid_notif|proc_rea,Z302|0411010042,21
-RDRR1510.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1510.dbc,cid_notif|sexo,Z302|3,35
 RDRR1510.dbc,tpdisec1,0|diagsec vazio,2669
 RDRR1510.dbc,tpdisec1,1|diagsec preenchido,532
 RDRR1510.dbc,tpdisec2,0|diagsec vazio,3195
@@ -3734,17 +3154,11 @@ RDRR1511.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1511.dbc,zerado_preenchido,cpf_aut,0
 RDRR1511.dbc,homonimo,0,2706
 RDRR1511.dbc,homonimo,2,19
-RDRR1511.dbc,gestor_tp,0,2006
-RDRR1511.dbc,gestor_tp,1,719
 RDRR1511.dbc,faec_tp,,2713
 RDRR1511.dbc,faec_tp,040018,5
 RDRR1511.dbc,faec_tp,040066,7
 RDRR1511.dbc,cid_notif,,2702
 RDRR1511.dbc,cid_notif,Z302,23
-RDRR1511.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR1511.dbc,cid_notif|proc_rea,Z302|0411010042,9
-RDRR1511.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR1511.dbc,cid_notif|sexo,Z302|3,23
 RDRR1511.dbc,tpdisec1,0|diagsec vazio,2198
 RDRR1511.dbc,tpdisec1,1|diagsec preenchido,527
 RDRR1511.dbc,tpdisec2,0|diagsec vazio,2703
@@ -3777,17 +3191,12 @@ RDRR1512.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1512.dbc,zerado_preenchido,cpf_aut,0
 RDRR1512.dbc,homonimo,0,2332
 RDRR1512.dbc,homonimo,2,19
-RDRR1512.dbc,gestor_tp,0,1783
-RDRR1512.dbc,gestor_tp,1,568
 RDRR1512.dbc,faec_tp,,2335
 RDRR1512.dbc,faec_tp,040018,2
 RDRR1512.dbc,faec_tp,040029,2
 RDRR1512.dbc,faec_tp,040066,12
 RDRR1512.dbc,cid_notif,,2325
 RDRR1512.dbc,cid_notif,Z302,26
-RDRR1512.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR1512.dbc,cid_notif|proc_rea,Z302|0411010042,23
-RDRR1512.dbc,cid_notif|sexo,Z302|3,26
 RDRR1512.dbc,tpdisec1,0|diagsec vazio,1825
 RDRR1512.dbc,tpdisec1,1|diagsec preenchido,526
 RDRR1512.dbc,tpdisec2,0|diagsec vazio,2335
@@ -3820,17 +3229,11 @@ RDRR1601.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1601.dbc,zerado_preenchido,cpf_aut,0
 RDRR1601.dbc,homonimo,0,2712
 RDRR1601.dbc,homonimo,2,36
-RDRR1601.dbc,gestor_tp,0,2062
-RDRR1601.dbc,gestor_tp,1,686
 RDRR1601.dbc,faec_tp,,2714
 RDRR1601.dbc,faec_tp,040018,6
 RDRR1601.dbc,faec_tp,040066,28
 RDRR1601.dbc,cid_notif,,2717
 RDRR1601.dbc,cid_notif,Z302,31
-RDRR1601.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR1601.dbc,cid_notif|proc_rea,Z302|0411010042,23
-RDRR1601.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1601.dbc,cid_notif|sexo,Z302|3,31
 RDRR1601.dbc,tpdisec1,0|diagsec vazio,2302
 RDRR1601.dbc,tpdisec1,1|diagsec preenchido,445
 RDRR1601.dbc,tpdisec1,2|diagsec preenchido,1
@@ -3864,16 +3267,11 @@ RDRR1602.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1602.dbc,zerado_preenchido,cpf_aut,0
 RDRR1602.dbc,homonimo,0,2401
 RDRR1602.dbc,homonimo,2,22
-RDRR1602.dbc,gestor_tp,0,1744
-RDRR1602.dbc,gestor_tp,1,679
 RDRR1602.dbc,faec_tp,,2417
 RDRR1602.dbc,faec_tp,040018,4
 RDRR1602.dbc,faec_tp,040066,2
 RDRR1602.dbc,cid_notif,,2403
 RDRR1602.dbc,cid_notif,Z302,20
-RDRR1602.dbc,cid_notif|proc_rea,Z302|0409060186,9
-RDRR1602.dbc,cid_notif|proc_rea,Z302|0411010042,11
-RDRR1602.dbc,cid_notif|sexo,Z302|3,20
 RDRR1602.dbc,tpdisec1,0|diagsec vazio,1830
 RDRR1602.dbc,tpdisec1,1|diagsec preenchido,593
 RDRR1602.dbc,tpdisec2,0|diagsec vazio,2388
@@ -3906,16 +3304,11 @@ RDRR1603.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1603.dbc,zerado_preenchido,cpf_aut,0
 RDRR1603.dbc,homonimo,0,2913
 RDRR1603.dbc,homonimo,2,15
-RDRR1603.dbc,gestor_tp,0,2118
-RDRR1603.dbc,gestor_tp,1,810
 RDRR1603.dbc,faec_tp,,2900
 RDRR1603.dbc,faec_tp,040018,7
 RDRR1603.dbc,faec_tp,040066,21
 RDRR1603.dbc,cid_notif,,2893
 RDRR1603.dbc,cid_notif,Z302,35
-RDRR1603.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR1603.dbc,cid_notif|proc_rea,Z302|0411010042,10
-RDRR1603.dbc,cid_notif|sexo,Z302|3,35
 RDRR1603.dbc,tpdisec1,0|diagsec vazio,2203
 RDRR1603.dbc,tpdisec1,1|diagsec preenchido,725
 RDRR1603.dbc,tpdisec2,0|diagsec vazio,2910
@@ -3948,17 +3341,12 @@ RDRR1604.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1604.dbc,zerado_preenchido,cpf_aut,0
 RDRR1604.dbc,homonimo,0,3303
 RDRR1604.dbc,homonimo,2,24
-RDRR1604.dbc,gestor_tp,0,2338
-RDRR1604.dbc,gestor_tp,1,989
 RDRR1604.dbc,faec_tp,,3317
 RDRR1604.dbc,faec_tp,040018,8
 RDRR1604.dbc,faec_tp,040029,1
 RDRR1604.dbc,faec_tp,040066,1
 RDRR1604.dbc,cid_notif,,3294
 RDRR1604.dbc,cid_notif,Z302,33
-RDRR1604.dbc,cid_notif|proc_rea,Z302|0409060186,15
-RDRR1604.dbc,cid_notif|proc_rea,Z302|0411010042,18
-RDRR1604.dbc,cid_notif|sexo,Z302|3,33
 RDRR1604.dbc,tpdisec1,0|diagsec vazio,2672
 RDRR1604.dbc,tpdisec1,1|diagsec preenchido,655
 RDRR1604.dbc,tpdisec2,0|diagsec vazio,3302
@@ -3992,14 +3380,10 @@ RDRR1605.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1605.dbc,zerado_preenchido,cpf_aut,0
 RDRR1605.dbc,homonimo,0,3466
 RDRR1605.dbc,homonimo,2,10
-RDRR1605.dbc,gestor_tp,0,2386
-RDRR1605.dbc,gestor_tp,1,1090
 RDRR1605.dbc,faec_tp,,3468
 RDRR1605.dbc,faec_tp,040018,8
 RDRR1605.dbc,cid_notif,,3464
 RDRR1605.dbc,cid_notif,Z302,12
-RDRR1605.dbc,cid_notif|proc_rea,Z302|0411010042,12
-RDRR1605.dbc,cid_notif|sexo,Z302|3,12
 RDRR1605.dbc,tpdisec1,0|diagsec vazio,2662
 RDRR1605.dbc,tpdisec1,1|diagsec preenchido,813
 RDRR1605.dbc,tpdisec1,2|diagsec preenchido,1
@@ -4033,14 +3417,10 @@ RDRR1606.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1606.dbc,zerado_preenchido,cpf_aut,0
 RDRR1606.dbc,homonimo,0,3358
 RDRR1606.dbc,homonimo,2,26
-RDRR1606.dbc,gestor_tp,0,2360
-RDRR1606.dbc,gestor_tp,1,1024
 RDRR1606.dbc,faec_tp,,3378
 RDRR1606.dbc,faec_tp,040018,6
 RDRR1606.dbc,cid_notif,,3367
 RDRR1606.dbc,cid_notif,Z302,17
-RDRR1606.dbc,cid_notif|proc_rea,Z302|0411010042,17
-RDRR1606.dbc,cid_notif|sexo,Z302|3,17
 RDRR1606.dbc,tpdisec1,0|diagsec vazio,2676
 RDRR1606.dbc,tpdisec1,1|diagsec preenchido,708
 RDRR1606.dbc,tpdisec2,0|diagsec vazio,3367
@@ -4073,16 +3453,11 @@ RDRR1607.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1607.dbc,zerado_preenchido,cpf_aut,0
 RDRR1607.dbc,homonimo,0,3776
 RDRR1607.dbc,homonimo,2,35
-RDRR1607.dbc,gestor_tp,0,2887
-RDRR1607.dbc,gestor_tp,1,924
 RDRR1607.dbc,faec_tp,,3800
 RDRR1607.dbc,faec_tp,040018,10
 RDRR1607.dbc,faec_tp,040029,1
 RDRR1607.dbc,cid_notif,,3794
 RDRR1607.dbc,cid_notif,Z302,17
-RDRR1607.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR1607.dbc,cid_notif|proc_rea,Z302|0411010042,14
-RDRR1607.dbc,cid_notif|sexo,Z302|3,17
 RDRR1607.dbc,tpdisec1,0|diagsec vazio,2989
 RDRR1607.dbc,tpdisec1,1|diagsec preenchido,820
 RDRR1607.dbc,tpdisec1,2|diagsec preenchido,2
@@ -4117,17 +3492,11 @@ RDRR1608.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1608.dbc,zerado_preenchido,cpf_aut,0
 RDRR1608.dbc,homonimo,0,3718
 RDRR1608.dbc,homonimo,2,10
-RDRR1608.dbc,gestor_tp,0,2825
-RDRR1608.dbc,gestor_tp,1,903
 RDRR1608.dbc,faec_tp,,3722
 RDRR1608.dbc,faec_tp,040018,5
 RDRR1608.dbc,faec_tp,040029,1
 RDRR1608.dbc,cid_notif,,3681
 RDRR1608.dbc,cid_notif,Z302,47
-RDRR1608.dbc,cid_notif|proc_rea,Z302|0409060186,28
-RDRR1608.dbc,cid_notif|proc_rea,Z302|0411010042,17
-RDRR1608.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR1608.dbc,cid_notif|sexo,Z302|3,47
 RDRR1608.dbc,tpdisec1,0|diagsec vazio,2885
 RDRR1608.dbc,tpdisec1,1|diagsec preenchido,843
 RDRR1608.dbc,tpdisec2,0|diagsec vazio,3661
@@ -4161,17 +3530,11 @@ RDRR1609.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1609.dbc,zerado_preenchido,cpf_aut,0
 RDRR1609.dbc,homonimo,0,3702
 RDRR1609.dbc,homonimo,2,15
-RDRR1609.dbc,gestor_tp,0,2735
-RDRR1609.dbc,gestor_tp,1,982
 RDRR1609.dbc,faec_tp,,3714
 RDRR1609.dbc,faec_tp,040018,2
 RDRR1609.dbc,faec_tp,040054,1
 RDRR1609.dbc,cid_notif,,3689
 RDRR1609.dbc,cid_notif,Z302,28
-RDRR1609.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR1609.dbc,cid_notif|proc_rea,Z302|0411010042,15
-RDRR1609.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1609.dbc,cid_notif|sexo,Z302|3,28
 RDRR1609.dbc,tpdisec1,0|diagsec vazio,2899
 RDRR1609.dbc,tpdisec1,1|diagsec preenchido,818
 RDRR1609.dbc,tpdisec2,0|diagsec vazio,3689
@@ -4205,17 +3568,11 @@ RDRR1610.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1610.dbc,zerado_preenchido,cpf_aut,0
 RDRR1610.dbc,homonimo,0,3706
 RDRR1610.dbc,homonimo,2,26
-RDRR1610.dbc,gestor_tp,0,2665
-RDRR1610.dbc,gestor_tp,1,1067
 RDRR1610.dbc,faec_tp,,3725
 RDRR1610.dbc,faec_tp,040018,6
 RDRR1610.dbc,faec_tp,040029,1
 RDRR1610.dbc,cid_notif,,3703
 RDRR1610.dbc,cid_notif,Z302,29
-RDRR1610.dbc,cid_notif|proc_rea,Z302|0409060186,21
-RDRR1610.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR1610.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1610.dbc,cid_notif|sexo,Z302|3,29
 RDRR1610.dbc,tpdisec1,0|diagsec vazio,2963
 RDRR1610.dbc,tpdisec1,1|diagsec preenchido,769
 RDRR1610.dbc,tpdisec2,0|diagsec vazio,3697
@@ -4250,16 +3607,11 @@ RDRR1611.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1611.dbc,zerado_preenchido,cpf_aut,0
 RDRR1611.dbc,homonimo,0,3786
 RDRR1611.dbc,homonimo,2,16
-RDRR1611.dbc,gestor_tp,0,2956
-RDRR1611.dbc,gestor_tp,1,846
 RDRR1611.dbc,faec_tp,,3788
 RDRR1611.dbc,faec_tp,040018,12
 RDRR1611.dbc,faec_tp,040029,2
 RDRR1611.dbc,cid_notif,,3788
 RDRR1611.dbc,cid_notif,Z302,14
-RDRR1611.dbc,cid_notif|proc_rea,Z302|0409060186,9
-RDRR1611.dbc,cid_notif|proc_rea,Z302|0411010042,5
-RDRR1611.dbc,cid_notif|sexo,Z302|3,14
 RDRR1611.dbc,tpdisec1,0|diagsec vazio,3027
 RDRR1611.dbc,tpdisec1,1|diagsec preenchido,775
 RDRR1611.dbc,tpdisec2,0|diagsec vazio,3768
@@ -4294,17 +3646,11 @@ RDRR1612.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1612.dbc,zerado_preenchido,cpf_aut,0
 RDRR1612.dbc,homonimo,0,3166
 RDRR1612.dbc,homonimo,2,27
-RDRR1612.dbc,gestor_tp,0,2296
-RDRR1612.dbc,gestor_tp,1,897
 RDRR1612.dbc,faec_tp,,3190
 RDRR1612.dbc,faec_tp,040018,2
 RDRR1612.dbc,faec_tp,040029,1
 RDRR1612.dbc,cid_notif,,3173
 RDRR1612.dbc,cid_notif,Z302,20
-RDRR1612.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR1612.dbc,cid_notif|proc_rea,Z302|0411010042,7
-RDRR1612.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR1612.dbc,cid_notif|sexo,Z302|3,20
 RDRR1612.dbc,tpdisec1,0|diagsec vazio,2434
 RDRR1612.dbc,tpdisec1,1|diagsec preenchido,758
 RDRR1612.dbc,tpdisec1,2|diagsec preenchido,1
@@ -4339,17 +3685,11 @@ RDRR1701.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1701.dbc,zerado_preenchido,cpf_aut,0
 RDRR1701.dbc,homonimo,0,3161
 RDRR1701.dbc,homonimo,2,12
-RDRR1701.dbc,gestor_tp,0,2429
-RDRR1701.dbc,gestor_tp,1,744
 RDRR1701.dbc,faec_tp,,3167
 RDRR1701.dbc,faec_tp,040018,5
 RDRR1701.dbc,faec_tp,040029,1
 RDRR1701.dbc,cid_notif,,3146
 RDRR1701.dbc,cid_notif,Z302,27
-RDRR1701.dbc,cid_notif|proc_rea,Z302|0409060186,18
-RDRR1701.dbc,cid_notif|proc_rea,Z302|0411010042,8
-RDRR1701.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1701.dbc,cid_notif|sexo,Z302|3,27
 RDRR1701.dbc,tpdisec1,0|diagsec vazio,2588
 RDRR1701.dbc,tpdisec1,1|diagsec preenchido,585
 RDRR1701.dbc,tpdisec2,0|diagsec vazio,3153
@@ -4383,16 +3723,11 @@ RDRR1702.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1702.dbc,zerado_preenchido,cpf_aut,0
 RDRR1702.dbc,homonimo,0,2985
 RDRR1702.dbc,homonimo,2,4
-RDRR1702.dbc,gestor_tp,0,2217
-RDRR1702.dbc,gestor_tp,1,772
 RDRR1702.dbc,faec_tp,,2978
 RDRR1702.dbc,faec_tp,040018,10
 RDRR1702.dbc,faec_tp,040029,1
 RDRR1702.dbc,cid_notif,,2978
 RDRR1702.dbc,cid_notif,Z302,11
-RDRR1702.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR1702.dbc,cid_notif|proc_rea,Z302|0411010042,5
-RDRR1702.dbc,cid_notif|sexo,Z302|3,11
 RDRR1702.dbc,tpdisec1,0|diagsec vazio,2332
 RDRR1702.dbc,tpdisec1,1|diagsec preenchido,655
 RDRR1702.dbc,tpdisec1,2|diagsec preenchido,2
@@ -4429,16 +3764,10 @@ RDRR1703.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1703.dbc,zerado_preenchido,cpf_aut,0
 RDRR1703.dbc,homonimo,0,3482
 RDRR1703.dbc,homonimo,2,28
-RDRR1703.dbc,gestor_tp,0,2636
-RDRR1703.dbc,gestor_tp,1,874
 RDRR1703.dbc,faec_tp,,3500
 RDRR1703.dbc,faec_tp,040018,10
 RDRR1703.dbc,cid_notif,,3481
 RDRR1703.dbc,cid_notif,Z302,29
-RDRR1703.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR1703.dbc,cid_notif|proc_rea,Z302|0411010042,17
-RDRR1703.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1703.dbc,cid_notif|sexo,Z302|3,29
 RDRR1703.dbc,tpdisec1,0|diagsec vazio,2939
 RDRR1703.dbc,tpdisec1,1|diagsec preenchido,567
 RDRR1703.dbc,tpdisec1,2|diagsec preenchido,4
@@ -4474,16 +3803,11 @@ RDRR1704.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1704.dbc,zerado_preenchido,cpf_aut,0
 RDRR1704.dbc,homonimo,0,3802
 RDRR1704.dbc,homonimo,2,27
-RDRR1704.dbc,gestor_tp,0,2931
-RDRR1704.dbc,gestor_tp,1,898
 RDRR1704.dbc,faec_tp,,3815
 RDRR1704.dbc,faec_tp,040018,11
 RDRR1704.dbc,faec_tp,040029,3
 RDRR1704.dbc,cid_notif,,3797
 RDRR1704.dbc,cid_notif,Z302,32
-RDRR1704.dbc,cid_notif|proc_rea,Z302|0409060186,5
-RDRR1704.dbc,cid_notif|proc_rea,Z302|0411010042,27
-RDRR1704.dbc,cid_notif|sexo,Z302|3,32
 RDRR1704.dbc,tpdisec1,0|diagsec vazio,3215
 RDRR1704.dbc,tpdisec1,1|diagsec preenchido,611
 RDRR1704.dbc,tpdisec1,2|diagsec preenchido,3
@@ -4519,16 +3843,11 @@ RDRR1705.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1705.dbc,zerado_preenchido,cpf_aut,0
 RDRR1705.dbc,homonimo,0,3834
 RDRR1705.dbc,homonimo,2,44
-RDRR1705.dbc,gestor_tp,0,2690
-RDRR1705.dbc,gestor_tp,1,1188
 RDRR1705.dbc,faec_tp,,3867
 RDRR1705.dbc,faec_tp,040018,9
 RDRR1705.dbc,faec_tp,040029,2
 RDRR1705.dbc,cid_notif,,3805
 RDRR1705.dbc,cid_notif,Z302,73
-RDRR1705.dbc,cid_notif|proc_rea,Z302|0409060186,18
-RDRR1705.dbc,cid_notif|proc_rea,Z302|0411010042,55
-RDRR1705.dbc,cid_notif|sexo,Z302|3,73
 RDRR1705.dbc,tpdisec1,0|diagsec vazio,3106
 RDRR1705.dbc,tpdisec1,1|diagsec preenchido,769
 RDRR1705.dbc,tpdisec1,2|diagsec preenchido,3
@@ -4564,17 +3883,11 @@ RDRR1706.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1706.dbc,zerado_preenchido,cpf_aut,0
 RDRR1706.dbc,homonimo,0,3892
 RDRR1706.dbc,homonimo,2,23
-RDRR1706.dbc,gestor_tp,0,2849
-RDRR1706.dbc,gestor_tp,1,1066
 RDRR1706.dbc,faec_tp,,3896
 RDRR1706.dbc,faec_tp,040018,16
 RDRR1706.dbc,faec_tp,040029,3
 RDRR1706.dbc,cid_notif,,3849
 RDRR1706.dbc,cid_notif,Z302,66
-RDRR1706.dbc,cid_notif|proc_rea,Z302|0409060186,17
-RDRR1706.dbc,cid_notif|proc_rea,Z302|0411010042,47
-RDRR1706.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR1706.dbc,cid_notif|sexo,Z302|3,66
 RDRR1706.dbc,tpdisec1,0|diagsec vazio,3258
 RDRR1706.dbc,tpdisec1,1|diagsec preenchido,652
 RDRR1706.dbc,tpdisec1,2|diagsec preenchido,5
@@ -4610,16 +3923,11 @@ RDRR1707.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1707.dbc,zerado_preenchido,cpf_aut,0
 RDRR1707.dbc,homonimo,0,4157
 RDRR1707.dbc,homonimo,2,32
-RDRR1707.dbc,gestor_tp,0,2745
-RDRR1707.dbc,gestor_tp,1,1444
 RDRR1707.dbc,faec_tp,,3980
 RDRR1707.dbc,faec_tp,040018,6
 RDRR1707.dbc,faec_tp,040066,203
 RDRR1707.dbc,cid_notif,,4119
 RDRR1707.dbc,cid_notif,Z302,70
-RDRR1707.dbc,cid_notif|proc_rea,Z302|0409060186,27
-RDRR1707.dbc,cid_notif|proc_rea,Z302|0411010042,43
-RDRR1707.dbc,cid_notif|sexo,Z302|3,70
 RDRR1707.dbc,tpdisec1,0|diagsec vazio,3649
 RDRR1707.dbc,tpdisec1,1|diagsec preenchido,537
 RDRR1707.dbc,tpdisec1,2|diagsec preenchido,3
@@ -4653,18 +3961,12 @@ RDRR1708.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1708.dbc,zerado_preenchido,cpf_aut,0
 RDRR1708.dbc,homonimo,0,3938
 RDRR1708.dbc,homonimo,2,31
-RDRR1708.dbc,gestor_tp,0,3010
-RDRR1708.dbc,gestor_tp,1,959
 RDRR1708.dbc,faec_tp,,3702
 RDRR1708.dbc,faec_tp,040018,6
 RDRR1708.dbc,faec_tp,040029,1
 RDRR1708.dbc,faec_tp,040066,260
 RDRR1708.dbc,cid_notif,,3904
 RDRR1708.dbc,cid_notif,Z302,65
-RDRR1708.dbc,cid_notif|proc_rea,Z302|0409060186,21
-RDRR1708.dbc,cid_notif|proc_rea,Z302|0411010042,43
-RDRR1708.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1708.dbc,cid_notif|sexo,Z302|3,65
 RDRR1708.dbc,tpdisec1,0|diagsec vazio,3383
 RDRR1708.dbc,tpdisec1,1|diagsec preenchido,585
 RDRR1708.dbc,tpdisec1,2|diagsec preenchido,1
@@ -4698,17 +4000,12 @@ RDRR1709.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1709.dbc,zerado_preenchido,cpf_aut,0
 RDRR1709.dbc,homonimo,0,3509
 RDRR1709.dbc,homonimo,2,40
-RDRR1709.dbc,gestor_tp,0,2634
-RDRR1709.dbc,gestor_tp,1,915
 RDRR1709.dbc,faec_tp,,3325
 RDRR1709.dbc,faec_tp,040018,10
 RDRR1709.dbc,faec_tp,040029,1
 RDRR1709.dbc,faec_tp,040066,213
 RDRR1709.dbc,cid_notif,,3513
 RDRR1709.dbc,cid_notif,Z302,36
-RDRR1709.dbc,cid_notif|proc_rea,Z302|0409060186,14
-RDRR1709.dbc,cid_notif|proc_rea,Z302|0411010042,22
-RDRR1709.dbc,cid_notif|sexo,Z302|3,36
 RDRR1709.dbc,tpdisec1,0|diagsec vazio,3142
 RDRR1709.dbc,tpdisec1,1|diagsec preenchido,405
 RDRR1709.dbc,tpdisec1,2|diagsec preenchido,2
@@ -4742,16 +4039,11 @@ RDRR1710.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1710.dbc,zerado_preenchido,cpf_aut,0
 RDRR1710.dbc,homonimo,0,3626
 RDRR1710.dbc,homonimo,2,29
-RDRR1710.dbc,gestor_tp,0,2569
-RDRR1710.dbc,gestor_tp,1,1086
 RDRR1710.dbc,faec_tp,,3502
 RDRR1710.dbc,faec_tp,040018,5
 RDRR1710.dbc,faec_tp,040066,148
 RDRR1710.dbc,cid_notif,,3614
 RDRR1710.dbc,cid_notif,Z302,41
-RDRR1710.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR1710.dbc,cid_notif|proc_rea,Z302|0411010042,30
-RDRR1710.dbc,cid_notif|sexo,Z302|3,41
 RDRR1710.dbc,tpdisec1,0|diagsec vazio,3114
 RDRR1710.dbc,tpdisec1,1|diagsec preenchido,536
 RDRR1710.dbc,tpdisec1,2|diagsec preenchido,5
@@ -4784,17 +4076,12 @@ RDRR1711.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1711.dbc,zerado_preenchido,cpf_aut,0
 RDRR1711.dbc,homonimo,0,3482
 RDRR1711.dbc,homonimo,2,7
-RDRR1711.dbc,gestor_tp,0,2417
-RDRR1711.dbc,gestor_tp,1,1072
 RDRR1711.dbc,faec_tp,,3330
 RDRR1711.dbc,faec_tp,040018,7
 RDRR1711.dbc,faec_tp,040029,1
 RDRR1711.dbc,faec_tp,040066,151
 RDRR1711.dbc,cid_notif,,3445
 RDRR1711.dbc,cid_notif,Z302,44
-RDRR1711.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR1711.dbc,cid_notif|proc_rea,Z302|0411010042,33
-RDRR1711.dbc,cid_notif|sexo,Z302|3,44
 RDRR1711.dbc,tpdisec1,0|diagsec vazio,2966
 RDRR1711.dbc,tpdisec1,1|diagsec preenchido,520
 RDRR1711.dbc,tpdisec1,2|diagsec preenchido,3
@@ -4828,17 +4115,12 @@ RDRR1712.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1712.dbc,zerado_preenchido,cpf_aut,0
 RDRR1712.dbc,homonimo,0,3489
 RDRR1712.dbc,homonimo,2,24
-RDRR1712.dbc,gestor_tp,0,2430
-RDRR1712.dbc,gestor_tp,1,1083
 RDRR1712.dbc,faec_tp,,3350
 RDRR1712.dbc,faec_tp,040018,6
 RDRR1712.dbc,faec_tp,040029,1
 RDRR1712.dbc,faec_tp,040066,156
 RDRR1712.dbc,cid_notif,,3481
 RDRR1712.dbc,cid_notif,Z302,32
-RDRR1712.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR1712.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR1712.dbc,cid_notif|sexo,Z302|3,32
 RDRR1712.dbc,tpdisec1,0|diagsec vazio,2963
 RDRR1712.dbc,tpdisec1,1|diagsec preenchido,545
 RDRR1712.dbc,tpdisec1,2|diagsec preenchido,5
@@ -4871,17 +4153,12 @@ RDRR1801.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1801.dbc,zerado_preenchido,cpf_aut,0
 RDRR1801.dbc,homonimo,0,3688
 RDRR1801.dbc,homonimo,2,29
-RDRR1801.dbc,gestor_tp,0,2454
-RDRR1801.dbc,gestor_tp,1,1263
 RDRR1801.dbc,faec_tp,,3567
 RDRR1801.dbc,faec_tp,040018,8
 RDRR1801.dbc,faec_tp,040029,2
 RDRR1801.dbc,faec_tp,040066,140
 RDRR1801.dbc,cid_notif,,3682
 RDRR1801.dbc,cid_notif,Z302,35
-RDRR1801.dbc,cid_notif|proc_rea,Z302|0409060186,4
-RDRR1801.dbc,cid_notif|proc_rea,Z302|0411010042,31
-RDRR1801.dbc,cid_notif|sexo,Z302|3,35
 RDRR1801.dbc,tpdisec1,0|diagsec vazio,3134
 RDRR1801.dbc,tpdisec1,1|diagsec preenchido,581
 RDRR1801.dbc,tpdisec1,2|diagsec preenchido,2
@@ -4916,16 +4193,11 @@ RDRR1802.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1802.dbc,zerado_preenchido,cpf_aut,0
 RDRR1802.dbc,homonimo,0,3718
 RDRR1802.dbc,homonimo,2,58
-RDRR1802.dbc,gestor_tp,0,2506
-RDRR1802.dbc,gestor_tp,1,1270
 RDRR1802.dbc,faec_tp,,3608
 RDRR1802.dbc,faec_tp,040018,3
 RDRR1802.dbc,faec_tp,040066,165
 RDRR1802.dbc,cid_notif,,3745
 RDRR1802.dbc,cid_notif,Z302,31
-RDRR1802.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR1802.dbc,cid_notif|proc_rea,Z302|0411010042,25
-RDRR1802.dbc,cid_notif|sexo,Z302|3,31
 RDRR1802.dbc,tpdisec1,0|diagsec vazio,3193
 RDRR1802.dbc,tpdisec1,1|diagsec preenchido,582
 RDRR1802.dbc,tpdisec1,2|diagsec preenchido,1
@@ -4959,16 +4231,11 @@ RDRR1803.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1803.dbc,zerado_preenchido,cpf_aut,0
 RDRR1803.dbc,homonimo,0,3522
 RDRR1803.dbc,homonimo,2,45
-RDRR1803.dbc,gestor_tp,0,2436
-RDRR1803.dbc,gestor_tp,1,1131
 RDRR1803.dbc,faec_tp,,3377
 RDRR1803.dbc,faec_tp,040032,1
 RDRR1803.dbc,faec_tp,040066,189
 RDRR1803.dbc,cid_notif,,3525
 RDRR1803.dbc,cid_notif,Z302,42
-RDRR1803.dbc,cid_notif|proc_rea,Z302|0409060186,21
-RDRR1803.dbc,cid_notif|proc_rea,Z302|0411010042,21
-RDRR1803.dbc,cid_notif|sexo,Z302|3,42
 RDRR1803.dbc,tpdisec1,0|diagsec vazio,2912
 RDRR1803.dbc,tpdisec1,1|diagsec preenchido,655
 RDRR1803.dbc,tpdisec2,0|diagsec vazio,3564
@@ -5001,15 +4268,10 @@ RDRR1804.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1804.dbc,zerado_preenchido,cpf_aut,0
 RDRR1804.dbc,homonimo,0,3427
 RDRR1804.dbc,homonimo,2,34
-RDRR1804.dbc,gestor_tp,0,2163
-RDRR1804.dbc,gestor_tp,1,1298
 RDRR1804.dbc,faec_tp,,3272
 RDRR1804.dbc,faec_tp,040066,189
 RDRR1804.dbc,cid_notif,,3410
 RDRR1804.dbc,cid_notif,Z302,51
-RDRR1804.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR1804.dbc,cid_notif|proc_rea,Z302|0411010042,35
-RDRR1804.dbc,cid_notif|sexo,Z302|3,51
 RDRR1804.dbc,tpdisec1,0|diagsec vazio,2868
 RDRR1804.dbc,tpdisec1,1|diagsec preenchido,593
 RDRR1804.dbc,tpdisec2,0|diagsec vazio,3461
@@ -5041,15 +4303,10 @@ RDRR1805.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1805.dbc,zerado_preenchido,cpf_aut,0
 RDRR1805.dbc,homonimo,0,3479
 RDRR1805.dbc,homonimo,2,25
-RDRR1805.dbc,gestor_tp,0,2394
-RDRR1805.dbc,gestor_tp,1,1110
 RDRR1805.dbc,faec_tp,,3246
 RDRR1805.dbc,faec_tp,040066,258
 RDRR1805.dbc,cid_notif,,3463
 RDRR1805.dbc,cid_notif,Z302,41
-RDRR1805.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR1805.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR1805.dbc,cid_notif|sexo,Z302|3,41
 RDRR1805.dbc,tpdisec1,0|diagsec vazio,2917
 RDRR1805.dbc,tpdisec1,1|diagsec preenchido,583
 RDRR1805.dbc,tpdisec1,2|diagsec preenchido,4
@@ -5084,15 +4341,10 @@ RDRR1806.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1806.dbc,zerado_preenchido,cpf_aut,0
 RDRR1806.dbc,homonimo,0,3641
 RDRR1806.dbc,homonimo,2,20
-RDRR1806.dbc,gestor_tp,0,2457
-RDRR1806.dbc,gestor_tp,1,1204
 RDRR1806.dbc,faec_tp,,3417
 RDRR1806.dbc,faec_tp,040066,244
 RDRR1806.dbc,cid_notif,,3628
 RDRR1806.dbc,cid_notif,Z302,33
-RDRR1806.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR1806.dbc,cid_notif|proc_rea,Z302|0411010042,22
-RDRR1806.dbc,cid_notif|sexo,Z302|3,33
 RDRR1806.dbc,tpdisec1,0|diagsec vazio,3019
 RDRR1806.dbc,tpdisec1,1|diagsec preenchido,642
 RDRR1806.dbc,tpdisec2,0|diagsec vazio,3661
@@ -5124,15 +4376,10 @@ RDRR1807.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1807.dbc,zerado_preenchido,cpf_aut,0
 RDRR1807.dbc,homonimo,0,3635
 RDRR1807.dbc,homonimo,2,26
-RDRR1807.dbc,gestor_tp,0,2452
-RDRR1807.dbc,gestor_tp,1,1209
 RDRR1807.dbc,faec_tp,,3505
 RDRR1807.dbc,faec_tp,040066,156
 RDRR1807.dbc,cid_notif,,3623
 RDRR1807.dbc,cid_notif,Z302,38
-RDRR1807.dbc,cid_notif|proc_rea,Z302|0409060186,10
-RDRR1807.dbc,cid_notif|proc_rea,Z302|0411010042,28
-RDRR1807.dbc,cid_notif|sexo,Z302|3,38
 RDRR1807.dbc,tpdisec1,0|diagsec vazio,3114
 RDRR1807.dbc,tpdisec1,1|diagsec preenchido,546
 RDRR1807.dbc,tpdisec1,2|diagsec preenchido,1
@@ -5166,16 +4413,10 @@ RDRR1808.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1808.dbc,zerado_preenchido,cpf_aut,0
 RDRR1808.dbc,homonimo,0,3692
 RDRR1808.dbc,homonimo,2,47
-RDRR1808.dbc,gestor_tp,0,2390
-RDRR1808.dbc,gestor_tp,1,1349
 RDRR1808.dbc,faec_tp,,3656
 RDRR1808.dbc,faec_tp,040066,83
 RDRR1808.dbc,cid_notif,,3703
 RDRR1808.dbc,cid_notif,Z302,36
-RDRR1808.dbc,cid_notif|proc_rea,Z302|0409060186,9
-RDRR1808.dbc,cid_notif|proc_rea,Z302|0411010042,26
-RDRR1808.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1808.dbc,cid_notif|sexo,Z302|3,36
 RDRR1808.dbc,tpdisec1,0|diagsec vazio,3025
 RDRR1808.dbc,tpdisec1,1|diagsec preenchido,714
 RDRR1808.dbc,tpdisec2,0|diagsec vazio,3736
@@ -5208,15 +4449,10 @@ RDRR1809.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1809.dbc,zerado_preenchido,cpf_aut,0
 RDRR1809.dbc,homonimo,0,3424
 RDRR1809.dbc,homonimo,2,47
-RDRR1809.dbc,gestor_tp,0,2372
-RDRR1809.dbc,gestor_tp,1,1099
 RDRR1809.dbc,faec_tp,,3291
 RDRR1809.dbc,faec_tp,040066,180
 RDRR1809.dbc,cid_notif,,3411
 RDRR1809.dbc,cid_notif,Z302,60
-RDRR1809.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR1809.dbc,cid_notif|proc_rea,Z302|0411010042,44
-RDRR1809.dbc,cid_notif|sexo,Z302|3,60
 RDRR1809.dbc,tpdisec1,0|diagsec vazio,2885
 RDRR1809.dbc,tpdisec1,1|diagsec preenchido,584
 RDRR1809.dbc,tpdisec1,2|diagsec preenchido,2
@@ -5250,15 +4486,10 @@ RDRR1810.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1810.dbc,zerado_preenchido,cpf_aut,0
 RDRR1810.dbc,homonimo,0,3862
 RDRR1810.dbc,homonimo,2,39
-RDRR1810.dbc,gestor_tp,0,2701
-RDRR1810.dbc,gestor_tp,1,1200
 RDRR1810.dbc,faec_tp,,3739
 RDRR1810.dbc,faec_tp,040066,162
 RDRR1810.dbc,cid_notif,,3878
 RDRR1810.dbc,cid_notif,Z302,23
-RDRR1810.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR1810.dbc,cid_notif|proc_rea,Z302|0411010042,20
-RDRR1810.dbc,cid_notif|sexo,Z302|3,23
 RDRR1810.dbc,tpdisec1,0|diagsec vazio,3252
 RDRR1810.dbc,tpdisec1,1|diagsec preenchido,646
 RDRR1810.dbc,tpdisec1,2|diagsec preenchido,3
@@ -5292,15 +4523,10 @@ RDRR1811.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1811.dbc,zerado_preenchido,cpf_aut,0
 RDRR1811.dbc,homonimo,0,3642
 RDRR1811.dbc,homonimo,2,54
-RDRR1811.dbc,gestor_tp,0,2535
-RDRR1811.dbc,gestor_tp,1,1161
 RDRR1811.dbc,faec_tp,,3624
 RDRR1811.dbc,faec_tp,040066,72
 RDRR1811.dbc,cid_notif,,3650
 RDRR1811.dbc,cid_notif,Z302,46
-RDRR1811.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR1811.dbc,cid_notif|proc_rea,Z302|0411010042,33
-RDRR1811.dbc,cid_notif|sexo,Z302|3,46
 RDRR1811.dbc,tpdisec1,0|diagsec vazio,3162
 RDRR1811.dbc,tpdisec1,1|diagsec preenchido,532
 RDRR1811.dbc,tpdisec1,2|diagsec preenchido,2
@@ -5334,16 +4560,10 @@ RDRR1812.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1812.dbc,zerado_preenchido,cpf_aut,0
 RDRR1812.dbc,homonimo,0,3533
 RDRR1812.dbc,homonimo,2,58
-RDRR1812.dbc,gestor_tp,0,2522
-RDRR1812.dbc,gestor_tp,1,1069
 RDRR1812.dbc,faec_tp,,3527
 RDRR1812.dbc,faec_tp,040066,64
 RDRR1812.dbc,cid_notif,,3553
 RDRR1812.dbc,cid_notif,Z302,38
-RDRR1812.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR1812.dbc,cid_notif|proc_rea,Z302|0411010042,36
-RDRR1812.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1812.dbc,cid_notif|sexo,Z302|3,38
 RDRR1812.dbc,tpdisec1,0|diagsec vazio,3075
 RDRR1812.dbc,tpdisec1,1|diagsec preenchido,514
 RDRR1812.dbc,tpdisec1,2|diagsec preenchido,2
@@ -5377,15 +4597,10 @@ RDRR1901.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1901.dbc,zerado_preenchido,cpf_aut,0
 RDRR1901.dbc,homonimo,0,3241
 RDRR1901.dbc,homonimo,2,33
-RDRR1901.dbc,gestor_tp,0,2256
-RDRR1901.dbc,gestor_tp,1,1018
 RDRR1901.dbc,faec_tp,,3218
 RDRR1901.dbc,faec_tp,040066,56
 RDRR1901.dbc,cid_notif,,3240
 RDRR1901.dbc,cid_notif,Z302,34
-RDRR1901.dbc,cid_notif|proc_rea,Z302|0411010042,33
-RDRR1901.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1901.dbc,cid_notif|sexo,Z302|3,34
 RDRR1901.dbc,tpdisec1,0|diagsec vazio,2834
 RDRR1901.dbc,tpdisec1,1|diagsec preenchido,440
 RDRR1901.dbc,tpdisec2,0|diagsec vazio,3273
@@ -5418,15 +4633,10 @@ RDRR1902.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1902.dbc,zerado_preenchido,cpf_aut,0
 RDRR1902.dbc,homonimo,0,3084
 RDRR1902.dbc,homonimo,2,2
-RDRR1902.dbc,gestor_tp,0,2247
-RDRR1902.dbc,gestor_tp,1,839
 RDRR1902.dbc,faec_tp,,3012
 RDRR1902.dbc,faec_tp,040066,74
 RDRR1902.dbc,cid_notif,,3052
 RDRR1902.dbc,cid_notif,Z302,34
-RDRR1902.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR1902.dbc,cid_notif|proc_rea,Z302|0411010042,27
-RDRR1902.dbc,cid_notif|sexo,Z302|3,34
 RDRR1902.dbc,tpdisec1,0|diagsec vazio,2561
 RDRR1902.dbc,tpdisec1,1|diagsec preenchido,525
 RDRR1902.dbc,tpdisec2,0|diagsec vazio,3085
@@ -5459,15 +4669,10 @@ RDRR1903.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1903.dbc,zerado_preenchido,cpf_aut,0
 RDRR1903.dbc,homonimo,0,2866
 RDRR1903.dbc,homonimo,2,5
-RDRR1903.dbc,gestor_tp,0,2302
-RDRR1903.dbc,gestor_tp,1,569
 RDRR1903.dbc,faec_tp,,2797
 RDRR1903.dbc,faec_tp,040066,74
 RDRR1903.dbc,cid_notif,,2834
 RDRR1903.dbc,cid_notif,Z302,37
-RDRR1903.dbc,cid_notif|proc_rea,Z302|0409060186,10
-RDRR1903.dbc,cid_notif|proc_rea,Z302|0411010042,27
-RDRR1903.dbc,cid_notif|sexo,Z302|3,37
 RDRR1903.dbc,tpdisec1,0|diagsec vazio,2484
 RDRR1903.dbc,tpdisec1,1|diagsec preenchido,387
 RDRR1903.dbc,tpdisec2,0|diagsec vazio,2867
@@ -5500,15 +4705,10 @@ RDRR1904.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1904.dbc,zerado_preenchido,cpf_aut,0
 RDRR1904.dbc,homonimo,0,3167
 RDRR1904.dbc,homonimo,2,5
-RDRR1904.dbc,gestor_tp,0,2346
-RDRR1904.dbc,gestor_tp,1,826
 RDRR1904.dbc,faec_tp,,3081
 RDRR1904.dbc,faec_tp,040066,91
 RDRR1904.dbc,cid_notif,,3114
 RDRR1904.dbc,cid_notif,Z302,58
-RDRR1904.dbc,cid_notif|proc_rea,Z302|0409060186,26
-RDRR1904.dbc,cid_notif|proc_rea,Z302|0411010042,32
-RDRR1904.dbc,cid_notif|sexo,Z302|3,58
 RDRR1904.dbc,tpdisec1,0|diagsec vazio,2669
 RDRR1904.dbc,tpdisec1,1|diagsec preenchido,501
 RDRR1904.dbc,tpdisec1,2|diagsec preenchido,2
@@ -5541,15 +4741,10 @@ RDRR1905.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1905.dbc,zerado_preenchido,cpf_aut,0
 RDRR1905.dbc,homonimo,0,3031
 RDRR1905.dbc,homonimo,2,2
-RDRR1905.dbc,gestor_tp,0,2159
-RDRR1905.dbc,gestor_tp,1,874
 RDRR1905.dbc,faec_tp,,2922
 RDRR1905.dbc,faec_tp,040066,111
 RDRR1905.dbc,cid_notif,,3012
 RDRR1905.dbc,cid_notif,Z302,21
-RDRR1905.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR1905.dbc,cid_notif|proc_rea,Z302|0411010042,18
-RDRR1905.dbc,cid_notif|sexo,Z302|3,21
 RDRR1905.dbc,tpdisec1,0|diagsec vazio,2490
 RDRR1905.dbc,tpdisec1,1|diagsec preenchido,543
 RDRR1905.dbc,tpdisec2,0|diagsec vazio,3032
@@ -5582,15 +4777,10 @@ RDRR1906.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1906.dbc,zerado_preenchido,cpf_aut,0
 RDRR1906.dbc,homonimo,0,3590
 RDRR1906.dbc,homonimo,2,1
-RDRR1906.dbc,gestor_tp,0,2594
-RDRR1906.dbc,gestor_tp,1,997
 RDRR1906.dbc,faec_tp,,3498
 RDRR1906.dbc,faec_tp,040066,93
 RDRR1906.dbc,cid_notif,,3545
 RDRR1906.dbc,cid_notif,Z302,46
-RDRR1906.dbc,cid_notif|proc_rea,Z302|0409060186,17
-RDRR1906.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR1906.dbc,cid_notif|sexo,Z302|3,46
 RDRR1906.dbc,tpdisec1,0|diagsec vazio,3066
 RDRR1906.dbc,tpdisec1,1|diagsec preenchido,524
 RDRR1906.dbc,tpdisec1,2|diagsec preenchido,1
@@ -5624,15 +4814,10 @@ RDRR1907.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1907.dbc,zerado_preenchido,cpf_aut,0
 RDRR1907.dbc,homonimo,0,4283
 RDRR1907.dbc,homonimo,2,41
-RDRR1907.dbc,gestor_tp,0,3022
-RDRR1907.dbc,gestor_tp,1,1302
 RDRR1907.dbc,faec_tp,,4200
 RDRR1907.dbc,faec_tp,040066,124
 RDRR1907.dbc,cid_notif,,4268
 RDRR1907.dbc,cid_notif,Z302,56
-RDRR1907.dbc,cid_notif|proc_rea,Z302|0409060186,18
-RDRR1907.dbc,cid_notif|proc_rea,Z302|0411010042,38
-RDRR1907.dbc,cid_notif|sexo,Z302|3,56
 RDRR1907.dbc,tpdisec1,0|diagsec vazio,3728
 RDRR1907.dbc,tpdisec1,1|diagsec preenchido,590
 RDRR1907.dbc,tpdisec1,2|diagsec preenchido,6
@@ -5666,16 +4851,10 @@ RDRR1908.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1908.dbc,zerado_preenchido,cpf_aut,0
 RDRR1908.dbc,homonimo,0,4814
 RDRR1908.dbc,homonimo,2,67
-RDRR1908.dbc,gestor_tp,0,3212
-RDRR1908.dbc,gestor_tp,1,1669
 RDRR1908.dbc,faec_tp,,4674
 RDRR1908.dbc,faec_tp,040066,207
 RDRR1908.dbc,cid_notif,,4803
 RDRR1908.dbc,cid_notif,Z302,78
-RDRR1908.dbc,cid_notif|proc_rea,Z302|0409060186,29
-RDRR1908.dbc,cid_notif|proc_rea,Z302|0411010042,48
-RDRR1908.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR1908.dbc,cid_notif|sexo,Z302|3,78
 RDRR1908.dbc,tpdisec1,0|diagsec vazio,4200
 RDRR1908.dbc,tpdisec1,1|diagsec preenchido,680
 RDRR1908.dbc,tpdisec1,2|diagsec preenchido,1
@@ -5708,15 +4887,10 @@ RDRR1909.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1909.dbc,zerado_preenchido,cpf_aut,0
 RDRR1909.dbc,homonimo,0,4320
 RDRR1909.dbc,homonimo,2,46
-RDRR1909.dbc,gestor_tp,0,2966
-RDRR1909.dbc,gestor_tp,1,1400
 RDRR1909.dbc,faec_tp,,4210
 RDRR1909.dbc,faec_tp,040066,156
 RDRR1909.dbc,cid_notif,,4294
 RDRR1909.dbc,cid_notif,Z302,72
-RDRR1909.dbc,cid_notif|proc_rea,Z302|0409060186,28
-RDRR1909.dbc,cid_notif|proc_rea,Z302|0411010042,44
-RDRR1909.dbc,cid_notif|sexo,Z302|3,72
 RDRR1909.dbc,tpdisec1,0|diagsec vazio,3816
 RDRR1909.dbc,tpdisec1,1|diagsec preenchido,547
 RDRR1909.dbc,tpdisec1,2|diagsec preenchido,3
@@ -5750,15 +4924,10 @@ RDRR1910.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1910.dbc,zerado_preenchido,cpf_aut,0
 RDRR1910.dbc,homonimo,0,4239
 RDRR1910.dbc,homonimo,2,49
-RDRR1910.dbc,gestor_tp,0,2998
-RDRR1910.dbc,gestor_tp,1,1290
 RDRR1910.dbc,faec_tp,,4094
 RDRR1910.dbc,faec_tp,040066,194
 RDRR1910.dbc,cid_notif,,4243
 RDRR1910.dbc,cid_notif,Z302,45
-RDRR1910.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR1910.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR1910.dbc,cid_notif|sexo,Z302|3,45
 RDRR1910.dbc,tpdisec1,0|diagsec vazio,3645
 RDRR1910.dbc,tpdisec1,1|diagsec preenchido,641
 RDRR1910.dbc,tpdisec1,2|diagsec preenchido,2
@@ -5792,15 +4961,10 @@ RDRR1911.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1911.dbc,zerado_preenchido,cpf_aut,0
 RDRR1911.dbc,homonimo,0,3973
 RDRR1911.dbc,homonimo,2,46
-RDRR1911.dbc,gestor_tp,0,2523
-RDRR1911.dbc,gestor_tp,1,1496
 RDRR1911.dbc,faec_tp,,3802
 RDRR1911.dbc,faec_tp,040066,217
 RDRR1911.dbc,cid_notif,,3972
 RDRR1911.dbc,cid_notif,Z302,47
-RDRR1911.dbc,cid_notif|proc_rea,Z302|0409060186,15
-RDRR1911.dbc,cid_notif|proc_rea,Z302|0411010042,32
-RDRR1911.dbc,cid_notif|sexo,Z302|3,47
 RDRR1911.dbc,tpdisec1,0|diagsec vazio,3437
 RDRR1911.dbc,tpdisec1,1|diagsec preenchido,582
 RDRR1911.dbc,tpdisec2,0|diagsec vazio,4019
@@ -5832,15 +4996,10 @@ RDRR1912.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR1912.dbc,zerado_preenchido,cpf_aut,0
 RDRR1912.dbc,homonimo,0,3736
 RDRR1912.dbc,homonimo,2,31
-RDRR1912.dbc,gestor_tp,0,2349
-RDRR1912.dbc,gestor_tp,1,1418
 RDRR1912.dbc,faec_tp,,3623
 RDRR1912.dbc,faec_tp,040066,144
 RDRR1912.dbc,cid_notif,,3732
 RDRR1912.dbc,cid_notif,Z302,35
-RDRR1912.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR1912.dbc,cid_notif|proc_rea,Z302|0411010042,24
-RDRR1912.dbc,cid_notif|sexo,Z302|3,35
 RDRR1912.dbc,tpdisec1,0|diagsec vazio,3255
 RDRR1912.dbc,tpdisec1,1|diagsec preenchido,511
 RDRR1912.dbc,tpdisec1,2|diagsec preenchido,1
@@ -5873,16 +5032,11 @@ RDRR2001.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2001.dbc,zerado_preenchido,cpf_aut,0
 RDRR2001.dbc,homonimo,0,3629
 RDRR2001.dbc,homonimo,2,50
-RDRR2001.dbc,gestor_tp,0,2438
-RDRR2001.dbc,gestor_tp,1,1241
 RDRR2001.dbc,faec_tp,,3593
 RDRR2001.dbc,faec_tp,040032,1
 RDRR2001.dbc,faec_tp,040066,85
 RDRR2001.dbc,cid_notif,,3648
 RDRR2001.dbc,cid_notif,Z302,31
-RDRR2001.dbc,cid_notif|proc_rea,Z302|0411010042,30
-RDRR2001.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2001.dbc,cid_notif|sexo,Z302|3,31
 RDRR2001.dbc,tpdisec1,0|diagsec vazio,3088
 RDRR2001.dbc,tpdisec1,1|diagsec preenchido,590
 RDRR2001.dbc,tpdisec1,2|diagsec preenchido,1
@@ -5916,15 +5070,10 @@ RDRR2002.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2002.dbc,zerado_preenchido,cpf_aut,0
 RDRR2002.dbc,homonimo,0,3744
 RDRR2002.dbc,homonimo,2,31
-RDRR2002.dbc,gestor_tp,0,2603
-RDRR2002.dbc,gestor_tp,1,1172
 RDRR2002.dbc,faec_tp,,3672
 RDRR2002.dbc,faec_tp,040066,103
 RDRR2002.dbc,cid_notif,,3700
 RDRR2002.dbc,cid_notif,Z302,75
-RDRR2002.dbc,cid_notif|proc_rea,Z302|0409060186,39
-RDRR2002.dbc,cid_notif|proc_rea,Z302|0411010042,36
-RDRR2002.dbc,cid_notif|sexo,Z302|3,75
 RDRR2002.dbc,tpdisec1,0|diagsec vazio,3222
 RDRR2002.dbc,tpdisec1,1|diagsec preenchido,552
 RDRR2002.dbc,tpdisec1,2|diagsec preenchido,1
@@ -5958,15 +5107,10 @@ RDRR2003.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2003.dbc,zerado_preenchido,cpf_aut,0
 RDRR2003.dbc,homonimo,0,3544
 RDRR2003.dbc,homonimo,2,32
-RDRR2003.dbc,gestor_tp,0,2493
-RDRR2003.dbc,gestor_tp,1,1083
 RDRR2003.dbc,faec_tp,,3512
 RDRR2003.dbc,faec_tp,040066,64
 RDRR2003.dbc,cid_notif,,3542
 RDRR2003.dbc,cid_notif,Z302,34
-RDRR2003.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR2003.dbc,cid_notif|proc_rea,Z302|0411010042,22
-RDRR2003.dbc,cid_notif|sexo,Z302|3,34
 RDRR2003.dbc,tpdisec1,0|diagsec vazio,3027
 RDRR2003.dbc,tpdisec1,1|diagsec preenchido,548
 RDRR2003.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6000,15 +5144,10 @@ RDRR2004.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2004.dbc,zerado_preenchido,cpf_aut,0
 RDRR2004.dbc,homonimo,0,3088
 RDRR2004.dbc,homonimo,2,44
-RDRR2004.dbc,gestor_tp,0,2070
-RDRR2004.dbc,gestor_tp,1,1062
 RDRR2004.dbc,faec_tp,,3101
 RDRR2004.dbc,faec_tp,040066,31
 RDRR2004.dbc,cid_notif,,3096
 RDRR2004.dbc,cid_notif,Z302,36
-RDRR2004.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR2004.dbc,cid_notif|proc_rea,Z302|0411010042,34
-RDRR2004.dbc,cid_notif|sexo,Z302|3,36
 RDRR2004.dbc,tpdisec1,0|diagsec vazio,2649
 RDRR2004.dbc,tpdisec1,1|diagsec preenchido,483
 RDRR2004.dbc,tpdisec2,0|diagsec vazio,3131
@@ -6041,15 +5180,10 @@ RDRR2005.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2005.dbc,zerado_preenchido,cpf_aut,0
 RDRR2005.dbc,homonimo,0,2877
 RDRR2005.dbc,homonimo,2,39
-RDRR2005.dbc,gestor_tp,0,1830
-RDRR2005.dbc,gestor_tp,1,1086
 RDRR2005.dbc,faec_tp,,2908
 RDRR2005.dbc,faec_tp,040066,8
 RDRR2005.dbc,cid_notif,,2889
 RDRR2005.dbc,cid_notif,Z302,27
-RDRR2005.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR2005.dbc,cid_notif|proc_rea,Z302|0411010042,26
-RDRR2005.dbc,cid_notif|sexo,Z302|3,27
 RDRR2005.dbc,tpdisec1,0|diagsec vazio,2471
 RDRR2005.dbc,tpdisec1,1|diagsec preenchido,445
 RDRR2005.dbc,tpdisec2,0|diagsec vazio,2910
@@ -6082,14 +5216,10 @@ RDRR2006.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2006.dbc,zerado_preenchido,cpf_aut,0
 RDRR2006.dbc,homonimo,0,2826
 RDRR2006.dbc,homonimo,2,20
-RDRR2006.dbc,gestor_tp,0,1648
-RDRR2006.dbc,gestor_tp,1,1198
 RDRR2006.dbc,faec_tp,,2829
 RDRR2006.dbc,faec_tp,040066,17
 RDRR2006.dbc,cid_notif,,2821
 RDRR2006.dbc,cid_notif,Z302,25
-RDRR2006.dbc,cid_notif|proc_rea,Z302|0411010042,25
-RDRR2006.dbc,cid_notif|sexo,Z302|3,25
 RDRR2006.dbc,tpdisec1,0|diagsec vazio,2468
 RDRR2006.dbc,tpdisec1,1|diagsec preenchido,377
 RDRR2006.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6122,14 +5252,10 @@ RDRR2007.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2007.dbc,zerado_preenchido,cpf_aut,0
 RDRR2007.dbc,homonimo,0,2880
 RDRR2007.dbc,homonimo,2,19
-RDRR2007.dbc,gestor_tp,0,1929
-RDRR2007.dbc,gestor_tp,1,970
 RDRR2007.dbc,faec_tp,,2883
 RDRR2007.dbc,faec_tp,040066,16
 RDRR2007.dbc,cid_notif,,2876
 RDRR2007.dbc,cid_notif,Z302,23
-RDRR2007.dbc,cid_notif|proc_rea,Z302|0411010042,23
-RDRR2007.dbc,cid_notif|sexo,Z302|3,23
 RDRR2007.dbc,tpdisec1,0|diagsec vazio,2550
 RDRR2007.dbc,tpdisec1,1|diagsec preenchido,349
 RDRR2007.dbc,tpdisec2,0|diagsec vazio,2898
@@ -6162,16 +5288,10 @@ RDRR2008.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2008.dbc,zerado_preenchido,cpf_aut,0
 RDRR2008.dbc,homonimo,0,3240
 RDRR2008.dbc,homonimo,2,23
-RDRR2008.dbc,gestor_tp,0,2193
-RDRR2008.dbc,gestor_tp,1,1070
 RDRR2008.dbc,faec_tp,,3237
 RDRR2008.dbc,faec_tp,040066,26
 RDRR2008.dbc,cid_notif,,3236
 RDRR2008.dbc,cid_notif,Z302,27
-RDRR2008.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR2008.dbc,cid_notif|proc_rea,Z302|0411010042,23
-RDRR2008.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2008.dbc,cid_notif|sexo,Z302|3,27
 RDRR2008.dbc,tpdisec1,0|diagsec vazio,2796
 RDRR2008.dbc,tpdisec1,1|diagsec preenchido,466
 RDRR2008.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6205,15 +5325,10 @@ RDRR2009.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2009.dbc,zerado_preenchido,cpf_aut,0
 RDRR2009.dbc,homonimo,0,3043
 RDRR2009.dbc,homonimo,2,20
-RDRR2009.dbc,gestor_tp,0,2110
-RDRR2009.dbc,gestor_tp,1,953
 RDRR2009.dbc,faec_tp,,3027
 RDRR2009.dbc,faec_tp,040066,36
 RDRR2009.dbc,cid_notif,,3026
 RDRR2009.dbc,cid_notif,Z302,37
-RDRR2009.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR2009.dbc,cid_notif|proc_rea,Z302|0411010042,30
-RDRR2009.dbc,cid_notif|sexo,Z302|3,37
 RDRR2009.dbc,tpdisec1,0|diagsec vazio,2564
 RDRR2009.dbc,tpdisec1,1|diagsec preenchido,497
 RDRR2009.dbc,tpdisec1,2|diagsec preenchido,2
@@ -6246,15 +5361,10 @@ RDRR2010.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2010.dbc,zerado_preenchido,cpf_aut,0
 RDRR2010.dbc,homonimo,0,3451
 RDRR2010.dbc,homonimo,2,30
-RDRR2010.dbc,gestor_tp,0,2384
-RDRR2010.dbc,gestor_tp,1,1097
 RDRR2010.dbc,faec_tp,,3448
 RDRR2010.dbc,faec_tp,040066,33
 RDRR2010.dbc,cid_notif,,3431
 RDRR2010.dbc,cid_notif,Z302,50
-RDRR2010.dbc,cid_notif|proc_rea,Z302|0409060186,19
-RDRR2010.dbc,cid_notif|proc_rea,Z302|0411010042,31
-RDRR2010.dbc,cid_notif|sexo,Z302|3,50
 RDRR2010.dbc,tpdisec1,0|diagsec vazio,2984
 RDRR2010.dbc,tpdisec1,1|diagsec preenchido,491
 RDRR2010.dbc,tpdisec1,2|diagsec preenchido,6
@@ -6289,15 +5399,10 @@ RDRR2011.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2011.dbc,zerado_preenchido,cpf_aut,0
 RDRR2011.dbc,homonimo,0,3423
 RDRR2011.dbc,homonimo,2,12
-RDRR2011.dbc,gestor_tp,0,2496
-RDRR2011.dbc,gestor_tp,1,939
 RDRR2011.dbc,faec_tp,,3404
 RDRR2011.dbc,faec_tp,040066,31
 RDRR2011.dbc,cid_notif,,3397
 RDRR2011.dbc,cid_notif,Z302,38
-RDRR2011.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR2011.dbc,cid_notif|proc_rea,Z302|0411010042,26
-RDRR2011.dbc,cid_notif|sexo,Z302|3,38
 RDRR2011.dbc,tpdisec1,0|diagsec vazio,2901
 RDRR2011.dbc,tpdisec1,1|diagsec preenchido,510
 RDRR2011.dbc,tpdisec1,2|diagsec preenchido,24
@@ -6330,15 +5435,10 @@ RDRR2012.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2012.dbc,zerado_preenchido,cpf_aut,0
 RDRR2012.dbc,homonimo,0,3473
 RDRR2012.dbc,homonimo,2,23
-RDRR2012.dbc,gestor_tp,0,2316
-RDRR2012.dbc,gestor_tp,1,1180
 RDRR2012.dbc,faec_tp,,3472
 RDRR2012.dbc,faec_tp,040066,24
 RDRR2012.dbc,cid_notif,,3472
 RDRR2012.dbc,cid_notif,Z302,24
-RDRR2012.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR2012.dbc,cid_notif|proc_rea,Z302|0411010042,21
-RDRR2012.dbc,cid_notif|sexo,Z302|3,24
 RDRR2012.dbc,tpdisec1,0|diagsec vazio,2914
 RDRR2012.dbc,tpdisec1,1|diagsec preenchido,574
 RDRR2012.dbc,tpdisec1,2|diagsec preenchido,8
@@ -6372,15 +5472,10 @@ RDRR2101.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2101.dbc,zerado_preenchido,cpf_aut,0
 RDRR2101.dbc,homonimo,0,3155
 RDRR2101.dbc,homonimo,2,2
-RDRR2101.dbc,gestor_tp,0,2163
-RDRR2101.dbc,gestor_tp,1,994
 RDRR2101.dbc,faec_tp,,3141
 RDRR2101.dbc,faec_tp,040066,16
 RDRR2101.dbc,cid_notif,,3133
 RDRR2101.dbc,cid_notif,Z302,24
-RDRR2101.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2101.dbc,cid_notif|proc_rea,Z302|0411010042,16
-RDRR2101.dbc,cid_notif|sexo,Z302|3,24
 RDRR2101.dbc,tpdisec1,0|diagsec vazio,2665
 RDRR2101.dbc,tpdisec1,1|diagsec preenchido,492
 RDRR2101.dbc,tpdisec2,0|diagsec vazio,3154
@@ -6414,15 +5509,10 @@ RDRR2102.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2102.dbc,zerado_preenchido,cpf_aut,0
 RDRR2102.dbc,homonimo,0,3299
 RDRR2102.dbc,homonimo,2,5
-RDRR2102.dbc,gestor_tp,0,1998
-RDRR2102.dbc,gestor_tp,1,1306
 RDRR2102.dbc,faec_tp,,3292
 RDRR2102.dbc,faec_tp,040066,12
 RDRR2102.dbc,cid_notif,,3285
 RDRR2102.dbc,cid_notif,Z302,19
-RDRR2102.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR2102.dbc,cid_notif|proc_rea,Z302|0411010042,16
-RDRR2102.dbc,cid_notif|sexo,Z302|3,19
 RDRR2102.dbc,tpdisec1,0|diagsec vazio,2925
 RDRR2102.dbc,tpdisec1,1|diagsec preenchido,373
 RDRR2102.dbc,tpdisec1,2|diagsec preenchido,6
@@ -6458,15 +5548,10 @@ RDRR2103.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2103.dbc,zerado_preenchido,cpf_aut,0
 RDRR2103.dbc,homonimo,0,3681
 RDRR2103.dbc,homonimo,2,12
-RDRR2103.dbc,gestor_tp,0,2371
-RDRR2103.dbc,gestor_tp,1,1322
 RDRR2103.dbc,faec_tp,,3685
 RDRR2103.dbc,faec_tp,040066,8
 RDRR2103.dbc,cid_notif,,3670
 RDRR2103.dbc,cid_notif,Z302,23
-RDRR2103.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR2103.dbc,cid_notif|proc_rea,Z302|0411010042,21
-RDRR2103.dbc,cid_notif|sexo,Z302|3,23
 RDRR2103.dbc,tpdisec1,0|diagsec vazio,3236
 RDRR2103.dbc,tpdisec1,1|diagsec preenchido,457
 RDRR2103.dbc,tpdisec2,0|diagsec vazio,3692
@@ -6499,15 +5584,10 @@ RDRR2104.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2104.dbc,zerado_preenchido,cpf_aut,0
 RDRR2104.dbc,homonimo,0,3332
 RDRR2104.dbc,homonimo,2,1
-RDRR2104.dbc,gestor_tp,0,2184
-RDRR2104.dbc,gestor_tp,1,1149
 RDRR2104.dbc,faec_tp,,3322
 RDRR2104.dbc,faec_tp,040066,11
 RDRR2104.dbc,cid_notif,,3312
 RDRR2104.dbc,cid_notif,Z302,21
-RDRR2104.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR2104.dbc,cid_notif|proc_rea,Z302|0411010042,20
-RDRR2104.dbc,cid_notif|sexo,Z302|3,21
 RDRR2104.dbc,tpdisec1,0|diagsec vazio,2859
 RDRR2104.dbc,tpdisec1,1|diagsec preenchido,474
 RDRR2104.dbc,tpdisec2,0|diagsec vazio,3331
@@ -6539,15 +5619,10 @@ RDRR2105.dbc,zerado_preenchido,num_proc,0
 RDRR2105.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2105.dbc,zerado_preenchido,cpf_aut,0
 RDRR2105.dbc,homonimo,0,3215
-RDRR2105.dbc,gestor_tp,0,2290
-RDRR2105.dbc,gestor_tp,1,925
 RDRR2105.dbc,faec_tp,,3199
 RDRR2105.dbc,faec_tp,040066,16
 RDRR2105.dbc,cid_notif,,3182
 RDRR2105.dbc,cid_notif,Z302,33
-RDRR2105.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2105.dbc,cid_notif|proc_rea,Z302|0411010042,25
-RDRR2105.dbc,cid_notif|sexo,Z302|3,33
 RDRR2105.dbc,tpdisec1,0|diagsec vazio,2805
 RDRR2105.dbc,tpdisec1,1|diagsec preenchido,408
 RDRR2105.dbc,tpdisec1,2|diagsec preenchido,2
@@ -6581,14 +5656,9 @@ RDRR2106.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2106.dbc,zerado_preenchido,cpf_aut,0
 RDRR2106.dbc,homonimo,0,3271
 RDRR2106.dbc,homonimo,2,5
-RDRR2106.dbc,gestor_tp,0,2230
-RDRR2106.dbc,gestor_tp,1,1046
 RDRR2106.dbc,faec_tp,,3276
 RDRR2106.dbc,cid_notif,,3252
 RDRR2106.dbc,cid_notif,Z302,24
-RDRR2106.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR2106.dbc,cid_notif|proc_rea,Z302|0411010042,18
-RDRR2106.dbc,cid_notif|sexo,Z302|3,24
 RDRR2106.dbc,tpdisec1,0|diagsec vazio,2812
 RDRR2106.dbc,tpdisec1,1|diagsec preenchido,463
 RDRR2106.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6621,15 +5691,10 @@ RDRR2107.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2107.dbc,zerado_preenchido,cpf_aut,0
 RDRR2107.dbc,homonimo,0,4004
 RDRR2107.dbc,homonimo,2,17
-RDRR2107.dbc,gestor_tp,0,2745
-RDRR2107.dbc,gestor_tp,1,1276
 RDRR2107.dbc,faec_tp,,4011
 RDRR2107.dbc,faec_tp,040066,10
 RDRR2107.dbc,cid_notif,,3994
 RDRR2107.dbc,cid_notif,Z302,27
-RDRR2107.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR2107.dbc,cid_notif|proc_rea,Z302|0411010042,20
-RDRR2107.dbc,cid_notif|sexo,Z302|3,27
 RDRR2107.dbc,tpdisec1,0|diagsec vazio,3550
 RDRR2107.dbc,tpdisec1,1|diagsec preenchido,470
 RDRR2107.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6663,15 +5728,10 @@ RDRR2108.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2108.dbc,zerado_preenchido,cpf_aut,0
 RDRR2108.dbc,homonimo,0,3915
 RDRR2108.dbc,homonimo,2,14
-RDRR2108.dbc,gestor_tp,0,2771
-RDRR2108.dbc,gestor_tp,1,1158
 RDRR2108.dbc,faec_tp,,3901
 RDRR2108.dbc,faec_tp,040066,28
 RDRR2108.dbc,cid_notif,,3891
 RDRR2108.dbc,cid_notif,Z302,38
-RDRR2108.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR2108.dbc,cid_notif|proc_rea,Z302|0411010042,22
-RDRR2108.dbc,cid_notif|sexo,Z302|3,38
 RDRR2108.dbc,tpdisec1,0|diagsec vazio,3407
 RDRR2108.dbc,tpdisec1,1|diagsec preenchido,522
 RDRR2108.dbc,tpdisec2,0|diagsec vazio,3925
@@ -6704,15 +5764,10 @@ RDRR2109.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2109.dbc,zerado_preenchido,cpf_aut,0
 RDRR2109.dbc,homonimo,0,3505
 RDRR2109.dbc,homonimo,2,14
-RDRR2109.dbc,gestor_tp,0,2679
-RDRR2109.dbc,gestor_tp,1,840
 RDRR2109.dbc,faec_tp,,3501
 RDRR2109.dbc,faec_tp,040066,18
 RDRR2109.dbc,cid_notif,,3489
 RDRR2109.dbc,cid_notif,Z302,30
-RDRR2109.dbc,cid_notif|proc_rea,Z302|0409060186,5
-RDRR2109.dbc,cid_notif|proc_rea,Z302|0411010042,25
-RDRR2109.dbc,cid_notif|sexo,Z302|3,30
 RDRR2109.dbc,tpdisec1,0|diagsec vazio,2969
 RDRR2109.dbc,tpdisec1,1|diagsec preenchido,550
 RDRR2109.dbc,tpdisec2,0|diagsec vazio,3517
@@ -6745,15 +5800,10 @@ RDRR2110.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2110.dbc,zerado_preenchido,cpf_aut,0
 RDRR2110.dbc,homonimo,0,3524
 RDRR2110.dbc,homonimo,2,6
-RDRR2110.dbc,gestor_tp,0,2691
-RDRR2110.dbc,gestor_tp,1,839
 RDRR2110.dbc,faec_tp,,3511
 RDRR2110.dbc,faec_tp,040066,19
 RDRR2110.dbc,cid_notif,,3496
 RDRR2110.dbc,cid_notif,Z302,34
-RDRR2110.dbc,cid_notif|proc_rea,Z302|0409060186,4
-RDRR2110.dbc,cid_notif|proc_rea,Z302|0411010042,30
-RDRR2110.dbc,cid_notif|sexo,Z302|3,34
 RDRR2110.dbc,tpdisec1,0|diagsec vazio,2996
 RDRR2110.dbc,tpdisec1,1|diagsec preenchido,534
 RDRR2110.dbc,tpdisec2,0|diagsec vazio,3530
@@ -6785,15 +5835,10 @@ RDRR2111.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2111.dbc,zerado_preenchido,cpf_aut,0
 RDRR2111.dbc,homonimo,0,3576
 RDRR2111.dbc,homonimo,2,11
-RDRR2111.dbc,gestor_tp,0,2793
-RDRR2111.dbc,gestor_tp,1,794
 RDRR2111.dbc,faec_tp,,3553
 RDRR2111.dbc,faec_tp,040066,34
 RDRR2111.dbc,cid_notif,,3539
 RDRR2111.dbc,cid_notif,Z302,48
-RDRR2111.dbc,cid_notif|proc_rea,Z302|0409060186,15
-RDRR2111.dbc,cid_notif|proc_rea,Z302|0411010042,33
-RDRR2111.dbc,cid_notif|sexo,Z302|3,48
 RDRR2111.dbc,tpdisec1,0|diagsec vazio,3085
 RDRR2111.dbc,tpdisec1,1|diagsec preenchido,499
 RDRR2111.dbc,tpdisec1,2|diagsec preenchido,3
@@ -6826,15 +5871,10 @@ RDRR2112.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2112.dbc,zerado_preenchido,cpf_aut,0
 RDRR2112.dbc,homonimo,0,3650
 RDRR2112.dbc,homonimo,2,16
-RDRR2112.dbc,gestor_tp,0,2800
-RDRR2112.dbc,gestor_tp,1,866
 RDRR2112.dbc,faec_tp,,3629
 RDRR2112.dbc,faec_tp,040066,37
 RDRR2112.dbc,cid_notif,,3621
 RDRR2112.dbc,cid_notif,Z302,45
-RDRR2112.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR2112.dbc,cid_notif|proc_rea,Z302|0411010042,38
-RDRR2112.dbc,cid_notif|sexo,Z302|3,45
 RDRR2112.dbc,tpdisec1,0|diagsec vazio,3135
 RDRR2112.dbc,tpdisec1,1|diagsec preenchido,531
 RDRR2112.dbc,tpdisec2,0|diagsec vazio,3665
@@ -6867,14 +5907,10 @@ RDRR2201.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2201.dbc,zerado_preenchido,cpf_aut,0
 RDRR2201.dbc,homonimo,0,3433
 RDRR2201.dbc,homonimo,2,7
-RDRR2201.dbc,gestor_tp,0,2686
-RDRR2201.dbc,gestor_tp,1,754
 RDRR2201.dbc,faec_tp,,3393
 RDRR2201.dbc,faec_tp,040066,47
 RDRR2201.dbc,cid_notif,,3403
 RDRR2201.dbc,cid_notif,Z302,37
-RDRR2201.dbc,cid_notif|proc_rea,Z302|0411010042,37
-RDRR2201.dbc,cid_notif|sexo,Z302|3,37
 RDRR2201.dbc,tpdisec1,0|diagsec vazio,2963
 RDRR2201.dbc,tpdisec1,1|diagsec preenchido,476
 RDRR2201.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6907,15 +5943,10 @@ RDRR2202.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2202.dbc,zerado_preenchido,cpf_aut,0
 RDRR2202.dbc,homonimo,0,3337
 RDRR2202.dbc,homonimo,2,3
-RDRR2202.dbc,gestor_tp,0,2572
-RDRR2202.dbc,gestor_tp,1,768
 RDRR2202.dbc,faec_tp,,3240
 RDRR2202.dbc,faec_tp,040066,100
 RDRR2202.dbc,cid_notif,,3298
 RDRR2202.dbc,cid_notif,Z302,42
-RDRR2202.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR2202.dbc,cid_notif|proc_rea,Z302|0411010042,29
-RDRR2202.dbc,cid_notif|sexo,Z302|3,42
 RDRR2202.dbc,tpdisec1,0|diagsec vazio,2864
 RDRR2202.dbc,tpdisec1,1|diagsec preenchido,475
 RDRR2202.dbc,tpdisec1,2|diagsec preenchido,1
@@ -6949,15 +5980,10 @@ RDRR2203.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2203.dbc,zerado_preenchido,cpf_aut,0
 RDRR2203.dbc,homonimo,0,4200
 RDRR2203.dbc,homonimo,2,6
-RDRR2203.dbc,gestor_tp,0,3410
-RDRR2203.dbc,gestor_tp,1,796
 RDRR2203.dbc,faec_tp,,4004
 RDRR2203.dbc,faec_tp,040066,202
 RDRR2203.dbc,cid_notif,,4168
 RDRR2203.dbc,cid_notif,Z302,38
-RDRR2203.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2203.dbc,cid_notif|proc_rea,Z302|0411010042,30
-RDRR2203.dbc,cid_notif|sexo,Z302|3,38
 RDRR2203.dbc,tpdisec1,0|diagsec vazio,3709
 RDRR2203.dbc,tpdisec1,1|diagsec preenchido,493
 RDRR2203.dbc,tpdisec1,2|diagsec preenchido,4
@@ -6992,15 +6018,10 @@ RDRR2204.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2204.dbc,zerado_preenchido,cpf_aut,0
 RDRR2204.dbc,homonimo,0,3924
 RDRR2204.dbc,homonimo,2,6
-RDRR2204.dbc,gestor_tp,0,3145
-RDRR2204.dbc,gestor_tp,1,785
 RDRR2204.dbc,faec_tp,,3739
 RDRR2204.dbc,faec_tp,040066,191
 RDRR2204.dbc,cid_notif,,3896
 RDRR2204.dbc,cid_notif,Z302,34
-RDRR2204.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR2204.dbc,cid_notif|proc_rea,Z302|0411010042,28
-RDRR2204.dbc,cid_notif|sexo,Z302|3,34
 RDRR2204.dbc,tpdisec1,0|diagsec vazio,3452
 RDRR2204.dbc,tpdisec1,1|diagsec preenchido,476
 RDRR2204.dbc,tpdisec1,2|diagsec preenchido,2
@@ -7034,14 +6055,10 @@ RDRR2205.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2205.dbc,zerado_preenchido,cpf_aut,0
 RDRR2205.dbc,homonimo,0,4360
 RDRR2205.dbc,homonimo,2,12
-RDRR2205.dbc,gestor_tp,0,3250
-RDRR2205.dbc,gestor_tp,1,1122
 RDRR2205.dbc,faec_tp,,4187
 RDRR2205.dbc,faec_tp,040066,185
 RDRR2205.dbc,cid_notif,,4341
 RDRR2205.dbc,cid_notif,Z302,31
-RDRR2205.dbc,cid_notif|proc_rea,Z302|0411010042,31
-RDRR2205.dbc,cid_notif|sexo,Z302|3,31
 RDRR2205.dbc,tpdisec1,0|diagsec vazio,3744
 RDRR2205.dbc,tpdisec1,1|diagsec preenchido,623
 RDRR2205.dbc,tpdisec1,2|diagsec preenchido,5
@@ -7074,8 +6091,6 @@ RDRR2206.dbc,zerado_preenchido,num_proc,0
 RDRR2206.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2206.dbc,zerado_preenchido,cpf_aut,0
 RDRR2206.dbc,homonimo,0,668
-RDRR2206.dbc,gestor_tp,0,581
-RDRR2206.dbc,gestor_tp,1,87
 RDRR2206.dbc,faec_tp,,668
 RDRR2206.dbc,cid_notif,,668
 RDRR2206.dbc,tpdisec1,0|diagsec vazio,624
@@ -7111,14 +6126,9 @@ RDRR2207.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2207.dbc,zerado_preenchido,cpf_aut,0
 RDRR2207.dbc,homonimo,0,4120
 RDRR2207.dbc,homonimo,2,14
-RDRR2207.dbc,gestor_tp,0,3313
-RDRR2207.dbc,gestor_tp,1,821
 RDRR2207.dbc,faec_tp,,4134
 RDRR2207.dbc,cid_notif,,4043
 RDRR2207.dbc,cid_notif,Z302,91
-RDRR2207.dbc,cid_notif|proc_rea,Z302|0409060186,52
-RDRR2207.dbc,cid_notif|proc_rea,Z302|0411010042,39
-RDRR2207.dbc,cid_notif|sexo,Z302|3,91
 RDRR2207.dbc,tpdisec1,0|diagsec vazio,3573
 RDRR2207.dbc,tpdisec1,1|diagsec preenchido,556
 RDRR2207.dbc,tpdisec1,2|diagsec preenchido,5
@@ -7152,15 +6162,9 @@ RDRR2208.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2208.dbc,zerado_preenchido,cpf_aut,0
 RDRR2208.dbc,homonimo,0,4845
 RDRR2208.dbc,homonimo,2,18
-RDRR2208.dbc,gestor_tp,0,3766
-RDRR2208.dbc,gestor_tp,1,1097
 RDRR2208.dbc,faec_tp,,4863
 RDRR2208.dbc,cid_notif,,4795
 RDRR2208.dbc,cid_notif,Z302,68
-RDRR2208.dbc,cid_notif|proc_rea,Z302|0409060186,32
-RDRR2208.dbc,cid_notif|proc_rea,Z302|0411010042,34
-RDRR2208.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR2208.dbc,cid_notif|sexo,Z302|3,68
 RDRR2208.dbc,tpdisec1,0|diagsec vazio,4254
 RDRR2208.dbc,tpdisec1,1|diagsec preenchido,601
 RDRR2208.dbc,tpdisec1,2|diagsec preenchido,8
@@ -7194,15 +6198,9 @@ RDRR2209.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2209.dbc,zerado_preenchido,cpf_aut,0
 RDRR2209.dbc,homonimo,0,3964
 RDRR2209.dbc,homonimo,2,8
-RDRR2209.dbc,gestor_tp,0,2960
-RDRR2209.dbc,gestor_tp,1,1012
 RDRR2209.dbc,faec_tp,,3972
 RDRR2209.dbc,cid_notif,,3919
 RDRR2209.dbc,cid_notif,Z302,53
-RDRR2209.dbc,cid_notif|proc_rea,Z302|0409060186,28
-RDRR2209.dbc,cid_notif|proc_rea,Z302|0411010042,24
-RDRR2209.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2209.dbc,cid_notif|sexo,Z302|3,53
 RDRR2209.dbc,tpdisec1,0|diagsec vazio,3401
 RDRR2209.dbc,tpdisec1,1|diagsec preenchido,562
 RDRR2209.dbc,tpdisec1,2|diagsec preenchido,9
@@ -7236,14 +6234,9 @@ RDRR2210.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2210.dbc,zerado_preenchido,cpf_aut,0
 RDRR2210.dbc,homonimo,0,4692
 RDRR2210.dbc,homonimo,2,21
-RDRR2210.dbc,gestor_tp,0,3619
-RDRR2210.dbc,gestor_tp,1,1094
 RDRR2210.dbc,faec_tp,,4713
 RDRR2210.dbc,cid_notif,,4629
 RDRR2210.dbc,cid_notif,Z302,84
-RDRR2210.dbc,cid_notif|proc_rea,Z302|0409060186,42
-RDRR2210.dbc,cid_notif|proc_rea,Z302|0411010042,42
-RDRR2210.dbc,cid_notif|sexo,Z302|3,84
 RDRR2210.dbc,tpdisec1,0|diagsec vazio,3995
 RDRR2210.dbc,tpdisec1,1|diagsec preenchido,706
 RDRR2210.dbc,tpdisec1,2|diagsec preenchido,12
@@ -7277,14 +6270,9 @@ RDRR2211.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2211.dbc,zerado_preenchido,cpf_aut,0
 RDRR2211.dbc,homonimo,0,4468
 RDRR2211.dbc,homonimo,2,18
-RDRR2211.dbc,gestor_tp,0,3610
-RDRR2211.dbc,gestor_tp,1,876
 RDRR2211.dbc,faec_tp,,4486
 RDRR2211.dbc,cid_notif,,4402
 RDRR2211.dbc,cid_notif,Z302,84
-RDRR2211.dbc,cid_notif|proc_rea,Z302|0409060186,44
-RDRR2211.dbc,cid_notif|proc_rea,Z302|0411010042,40
-RDRR2211.dbc,cid_notif|sexo,Z302|3,84
 RDRR2211.dbc,tpdisec1,0|diagsec vazio,3721
 RDRR2211.dbc,tpdisec1,1|diagsec preenchido,757
 RDRR2211.dbc,tpdisec1,2|diagsec preenchido,8
@@ -7319,15 +6307,9 @@ RDRR2212.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2212.dbc,zerado_preenchido,cpf_aut,0
 RDRR2212.dbc,homonimo,0,4464
 RDRR2212.dbc,homonimo,2,25
-RDRR2212.dbc,gestor_tp,0,3517
-RDRR2212.dbc,gestor_tp,1,972
 RDRR2212.dbc,faec_tp,,4489
 RDRR2212.dbc,cid_notif,,4437
 RDRR2212.dbc,cid_notif,Z302,52
-RDRR2212.dbc,cid_notif|proc_rea,Z302|0409060186,14
-RDRR2212.dbc,cid_notif|proc_rea,Z302|0411010042,37
-RDRR2212.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2212.dbc,cid_notif|sexo,Z302|3,52
 RDRR2212.dbc,tpdisec1,0|diagsec vazio,3645
 RDRR2212.dbc,tpdisec1,1|diagsec preenchido,839
 RDRR2212.dbc,tpdisec1,2|diagsec preenchido,5
@@ -7361,14 +6343,9 @@ RDRR2301.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2301.dbc,zerado_preenchido,cpf_aut,0
 RDRR2301.dbc,homonimo,0,4710
 RDRR2301.dbc,homonimo,2,24
-RDRR2301.dbc,gestor_tp,0,3633
-RDRR2301.dbc,gestor_tp,1,1101
 RDRR2301.dbc,faec_tp,,4734
 RDRR2301.dbc,cid_notif,,4684
 RDRR2301.dbc,cid_notif,Z302,50
-RDRR2301.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR2301.dbc,cid_notif|proc_rea,Z302|0411010042,38
-RDRR2301.dbc,cid_notif|sexo,Z302|3,50
 RDRR2301.dbc,tpdisec1,0|diagsec vazio,4101
 RDRR2301.dbc,tpdisec1,1|diagsec preenchido,625
 RDRR2301.dbc,tpdisec1,2|diagsec preenchido,8
@@ -7401,15 +6378,10 @@ RDRR2302.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2302.dbc,zerado_preenchido,cpf_aut,0
 RDRR2302.dbc,homonimo,0,3914
 RDRR2302.dbc,homonimo,2,22
-RDRR2302.dbc,gestor_tp,0,3047
-RDRR2302.dbc,gestor_tp,1,889
 RDRR2302.dbc,faec_tp,,3935
 RDRR2302.dbc,faec_tp,040032,1
 RDRR2302.dbc,cid_notif,,3897
 RDRR2302.dbc,cid_notif,Z302,39
-RDRR2302.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR2302.dbc,cid_notif|proc_rea,Z302|0411010042,36
-RDRR2302.dbc,cid_notif|sexo,Z302|3,39
 RDRR2302.dbc,tpdisec1,0|diagsec vazio,3291
 RDRR2302.dbc,tpdisec1,1|diagsec preenchido,637
 RDRR2302.dbc,tpdisec1,2|diagsec preenchido,8
@@ -7443,16 +6415,10 @@ RDRR2303.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2303.dbc,zerado_preenchido,cpf_aut,0
 RDRR2303.dbc,homonimo,0,4485
 RDRR2303.dbc,homonimo,2,10
-RDRR2303.dbc,gestor_tp,0,3382
-RDRR2303.dbc,gestor_tp,1,1113
 RDRR2303.dbc,faec_tp,,4467
 RDRR2303.dbc,faec_tp,040080,28
 RDRR2303.dbc,cid_notif,,4450
 RDRR2303.dbc,cid_notif,Z302,45
-RDRR2303.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR2303.dbc,cid_notif|proc_rea,Z302|0411010042,41
-RDRR2303.dbc,cid_notif|proc_rea,Z302|0415010012,2
-RDRR2303.dbc,cid_notif|sexo,Z302|3,45
 RDRR2303.dbc,tpdisec1,0|diagsec vazio,3872
 RDRR2303.dbc,tpdisec1,1|diagsec preenchido,619
 RDRR2303.dbc,tpdisec1,2|diagsec preenchido,4
@@ -7486,15 +6452,10 @@ RDRR2304.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2304.dbc,zerado_preenchido,cpf_aut,0
 RDRR2304.dbc,homonimo,0,4455
 RDRR2304.dbc,homonimo,2,37
-RDRR2304.dbc,gestor_tp,0,3386
-RDRR2304.dbc,gestor_tp,1,1106
 RDRR2304.dbc,faec_tp,,4397
 RDRR2304.dbc,faec_tp,040080,95
 RDRR2304.dbc,cid_notif,,4424
 RDRR2304.dbc,cid_notif,Z302,68
-RDRR2304.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR2304.dbc,cid_notif|proc_rea,Z302|0411010042,66
-RDRR2304.dbc,cid_notif|sexo,Z302|3,68
 RDRR2304.dbc,tpdisec1,0|diagsec vazio,3909
 RDRR2304.dbc,tpdisec1,1|diagsec preenchido,578
 RDRR2304.dbc,tpdisec1,2|diagsec preenchido,5
@@ -7528,15 +6489,10 @@ RDRR2305.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2305.dbc,zerado_preenchido,cpf_aut,0
 RDRR2305.dbc,homonimo,0,4045
 RDRR2305.dbc,homonimo,2,9
-RDRR2305.dbc,gestor_tp,0,3048
-RDRR2305.dbc,gestor_tp,1,1006
 RDRR2305.dbc,faec_tp,,3784
 RDRR2305.dbc,faec_tp,040080,270
 RDRR2305.dbc,cid_notif,,3985
 RDRR2305.dbc,cid_notif,Z302,69
-RDRR2305.dbc,cid_notif|proc_rea,Z302|0409060186,9
-RDRR2305.dbc,cid_notif|proc_rea,Z302|0411010042,60
-RDRR2305.dbc,cid_notif|sexo,Z302|3,69
 RDRR2305.dbc,tpdisec1,0|diagsec vazio,3563
 RDRR2305.dbc,tpdisec1,1|diagsec preenchido,490
 RDRR2305.dbc,tpdisec1,2|diagsec preenchido,1
@@ -7570,15 +6526,10 @@ RDRR2306.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2306.dbc,zerado_preenchido,cpf_aut,0
 RDRR2306.dbc,homonimo,0,3886
 RDRR2306.dbc,homonimo,2,29
-RDRR2306.dbc,gestor_tp,0,2986
-RDRR2306.dbc,gestor_tp,1,929
 RDRR2306.dbc,faec_tp,,3518
 RDRR2306.dbc,faec_tp,040080,397
 RDRR2306.dbc,cid_notif,,3853
 RDRR2306.dbc,cid_notif,Z302,62
-RDRR2306.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR2306.dbc,cid_notif|proc_rea,Z302|0411010042,56
-RDRR2306.dbc,cid_notif|sexo,Z302|3,62
 RDRR2306.dbc,tpdisec1,0|diagsec vazio,3173
 RDRR2306.dbc,tpdisec1,1|diagsec preenchido,740
 RDRR2306.dbc,tpdisec1,2|diagsec preenchido,2
@@ -7611,15 +6562,10 @@ RDRR2307.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2307.dbc,zerado_preenchido,cpf_aut,0
 RDRR2307.dbc,homonimo,0,4173
 RDRR2307.dbc,homonimo,2,28
-RDRR2307.dbc,gestor_tp,0,3079
-RDRR2307.dbc,gestor_tp,1,1122
 RDRR2307.dbc,faec_tp,,3897
 RDRR2307.dbc,faec_tp,040080,304
 RDRR2307.dbc,cid_notif,,4143
 RDRR2307.dbc,cid_notif,Z302,58
-RDRR2307.dbc,cid_notif|proc_rea,Z302|0409060186,7
-RDRR2307.dbc,cid_notif|proc_rea,Z302|0411010042,51
-RDRR2307.dbc,cid_notif|sexo,Z302|3,58
 RDRR2307.dbc,tpdisec1,0|diagsec vazio,3438
 RDRR2307.dbc,tpdisec1,1|diagsec preenchido,759
 RDRR2307.dbc,tpdisec1,2|diagsec preenchido,4
@@ -7653,15 +6599,10 @@ RDRR2308.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2308.dbc,zerado_preenchido,cpf_aut,0
 RDRR2308.dbc,homonimo,0,4647
 RDRR2308.dbc,homonimo,2,8
-RDRR2308.dbc,gestor_tp,0,3433
-RDRR2308.dbc,gestor_tp,1,1222
 RDRR2308.dbc,faec_tp,,4291
 RDRR2308.dbc,faec_tp,040080,364
 RDRR2308.dbc,cid_notif,,4575
 RDRR2308.dbc,cid_notif,Z302,80
-RDRR2308.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR2308.dbc,cid_notif|proc_rea,Z302|0411010042,67
-RDRR2308.dbc,cid_notif|sexo,Z302|3,80
 RDRR2308.dbc,tpdisec1,0|diagsec vazio,3846
 RDRR2308.dbc,tpdisec1,1|diagsec preenchido,809
 RDRR2308.dbc,tpdisec2,0|diagsec vazio,4651
@@ -7694,8 +6635,6 @@ RDRR2309.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2309.dbc,zerado_preenchido,cpf_aut,0
 RDRR2309.dbc,homonimo,0,1520
 RDRR2309.dbc,homonimo,2,15
-RDRR2309.dbc,gestor_tp,0,1181
-RDRR2309.dbc,gestor_tp,1,354
 RDRR2309.dbc,faec_tp,,1372
 RDRR2309.dbc,faec_tp,040080,163
 RDRR2309.dbc,cid_notif,,1535
@@ -7735,17 +6674,11 @@ RDRR2310.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2310.dbc,zerado_preenchido,cpf_aut,0
 RDRR2310.dbc,homonimo,0,2153
 RDRR2310.dbc,homonimo,2,18
-RDRR2310.dbc,gestor_tp,0,1660
-RDRR2310.dbc,gestor_tp,1,511
 RDRR2310.dbc,faec_tp,,1885
 RDRR2310.dbc,faec_tp,040080,286
 RDRR2310.dbc,cid_notif,,2165
 RDRR2310.dbc,cid_notif,O13,1
 RDRR2310.dbc,cid_notif,Z302,5
-RDRR2310.dbc,cid_notif|proc_rea,O13|0411010042,1
-RDRR2310.dbc,cid_notif|proc_rea,Z302|0411010042,5
-RDRR2310.dbc,cid_notif|sexo,O13|3,1
-RDRR2310.dbc,cid_notif|sexo,Z302|3,5
 RDRR2310.dbc,tpdisec1,0|diagsec vazio,1718
 RDRR2310.dbc,tpdisec1,1|diagsec preenchido,453
 RDRR2310.dbc,tpdisec2,0|diagsec vazio,2094
@@ -7780,15 +6713,10 @@ RDRR2311.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2311.dbc,zerado_preenchido,cpf_aut,0
 RDRR2311.dbc,homonimo,0,3594
 RDRR2311.dbc,homonimo,2,38
-RDRR2311.dbc,gestor_tp,0,2697
-RDRR2311.dbc,gestor_tp,1,935
 RDRR2311.dbc,faec_tp,,3348
 RDRR2311.dbc,faec_tp,040080,284
 RDRR2311.dbc,cid_notif,,3597
 RDRR2311.dbc,cid_notif,Z302,35
-RDRR2311.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR2311.dbc,cid_notif|proc_rea,Z302|0411010042,32
-RDRR2311.dbc,cid_notif|sexo,Z302|3,35
 RDRR2311.dbc,tpdisec1,0|diagsec vazio,3110
 RDRR2311.dbc,tpdisec1,1|diagsec preenchido,519
 RDRR2311.dbc,tpdisec1,2|diagsec preenchido,3
@@ -7825,15 +6753,10 @@ RDRR2312.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2312.dbc,zerado_preenchido,cpf_aut,0
 RDRR2312.dbc,homonimo,0,3500
 RDRR2312.dbc,homonimo,2,34
-RDRR2312.dbc,gestor_tp,0,2796
-RDRR2312.dbc,gestor_tp,1,738
 RDRR2312.dbc,faec_tp,,3297
 RDRR2312.dbc,faec_tp,040080,237
 RDRR2312.dbc,cid_notif,,3466
 RDRR2312.dbc,cid_notif,Z302,68
-RDRR2312.dbc,cid_notif|proc_rea,Z302|0409060186,10
-RDRR2312.dbc,cid_notif|proc_rea,Z302|0411010042,58
-RDRR2312.dbc,cid_notif|sexo,Z302|3,68
 RDRR2312.dbc,tpdisec1,0|diagsec vazio,3023
 RDRR2312.dbc,tpdisec1,1|diagsec preenchido,508
 RDRR2312.dbc,tpdisec1,2|diagsec preenchido,3
@@ -7868,15 +6791,10 @@ RDRR2401.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2401.dbc,zerado_preenchido,cpf_aut,0
 RDRR2401.dbc,homonimo,0,3675
 RDRR2401.dbc,homonimo,2,39
-RDRR2401.dbc,gestor_tp,0,2985
-RDRR2401.dbc,gestor_tp,1,729
 RDRR2401.dbc,faec_tp,,3432
 RDRR2401.dbc,faec_tp,040080,282
 RDRR2401.dbc,cid_notif,,3665
 RDRR2401.dbc,cid_notif,Z302,49
-RDRR2401.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR2401.dbc,cid_notif|proc_rea,Z302|0411010042,48
-RDRR2401.dbc,cid_notif|sexo,Z302|3,49
 RDRR2401.dbc,tpdisec1,0|diagsec vazio,3092
 RDRR2401.dbc,tpdisec1,1|diagsec preenchido,622
 RDRR2401.dbc,tpdisec2,0|diagsec vazio,3699
@@ -7909,15 +6827,10 @@ RDRR2402.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2402.dbc,zerado_preenchido,cpf_aut,0
 RDRR2402.dbc,homonimo,0,3385
 RDRR2402.dbc,homonimo,2,28
-RDRR2402.dbc,gestor_tp,0,2807
-RDRR2402.dbc,gestor_tp,1,606
 RDRR2402.dbc,faec_tp,,3159
 RDRR2402.dbc,faec_tp,040080,254
 RDRR2402.dbc,cid_notif,,3345
 RDRR2402.dbc,cid_notif,Z302,68
-RDRR2402.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2402.dbc,cid_notif|proc_rea,Z302|0411010042,60
-RDRR2402.dbc,cid_notif|sexo,Z302|3,68
 RDRR2402.dbc,tpdisec1,0|diagsec vazio,2834
 RDRR2402.dbc,tpdisec1,1|diagsec preenchido,579
 RDRR2402.dbc,tpdisec2,0|diagsec vazio,3374
@@ -7951,16 +6864,10 @@ RDRR2403.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2403.dbc,zerado_preenchido,cpf_aut,0
 RDRR2403.dbc,homonimo,0,3573
 RDRR2403.dbc,homonimo,2,46
-RDRR2403.dbc,gestor_tp,0,2875
-RDRR2403.dbc,gestor_tp,1,744
 RDRR2403.dbc,faec_tp,,3258
 RDRR2403.dbc,faec_tp,040080,361
 RDRR2403.dbc,cid_notif,,3539
 RDRR2403.dbc,cid_notif,Z302,80
-RDRR2403.dbc,cid_notif|proc_rea,Z302|0409060186,22
-RDRR2403.dbc,cid_notif|proc_rea,Z302|0411010042,57
-RDRR2403.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2403.dbc,cid_notif|sexo,Z302|3,80
 RDRR2403.dbc,tpdisec1,0|diagsec vazio,2899
 RDRR2403.dbc,tpdisec1,1|diagsec preenchido,720
 RDRR2403.dbc,tpdisec2,0|diagsec vazio,3582
@@ -7995,15 +6902,10 @@ RDRR2404.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2404.dbc,zerado_preenchido,cpf_aut,0
 RDRR2404.dbc,homonimo,0,3014
 RDRR2404.dbc,homonimo,2,27
-RDRR2404.dbc,gestor_tp,0,2381
-RDRR2404.dbc,gestor_tp,1,660
 RDRR2404.dbc,faec_tp,,2737
 RDRR2404.dbc,faec_tp,040080,304
 RDRR2404.dbc,cid_notif,,2942
 RDRR2404.dbc,cid_notif,Z302,99
-RDRR2404.dbc,cid_notif|proc_rea,Z302|0409060186,36
-RDRR2404.dbc,cid_notif|proc_rea,Z302|0411010042,63
-RDRR2404.dbc,cid_notif|sexo,Z302|3,99
 RDRR2404.dbc,tpdisec1,0|diagsec vazio,2563
 RDRR2404.dbc,tpdisec1,1|diagsec preenchido,477
 RDRR2404.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8038,16 +6940,10 @@ RDRR2405.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2405.dbc,zerado_preenchido,cpf_aut,0
 RDRR2405.dbc,homonimo,0,2771
 RDRR2405.dbc,homonimo,2,34
-RDRR2405.dbc,gestor_tp,0,2225
-RDRR2405.dbc,gestor_tp,1,580
 RDRR2405.dbc,faec_tp,,2510
 RDRR2405.dbc,faec_tp,040080,295
 RDRR2405.dbc,cid_notif,,2742
 RDRR2405.dbc,cid_notif,Z302,63
-RDRR2405.dbc,cid_notif|proc_rea,Z302|0409060186,25
-RDRR2405.dbc,cid_notif|proc_rea,Z302|0411010042,37
-RDRR2405.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2405.dbc,cid_notif|sexo,Z302|3,63
 RDRR2405.dbc,tpdisec1,0|diagsec vazio,2295
 RDRR2405.dbc,tpdisec1,1|diagsec preenchido,510
 RDRR2405.dbc,tpdisec2,0|diagsec vazio,2781
@@ -8081,15 +6977,10 @@ RDRR2406.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2406.dbc,zerado_preenchido,cpf_aut,0
 RDRR2406.dbc,homonimo,0,2934
 RDRR2406.dbc,homonimo,2,62
-RDRR2406.dbc,gestor_tp,0,2306
-RDRR2406.dbc,gestor_tp,1,690
 RDRR2406.dbc,faec_tp,,2758
 RDRR2406.dbc,faec_tp,040080,238
 RDRR2406.dbc,cid_notif,,2948
 RDRR2406.dbc,cid_notif,Z302,48
-RDRR2406.dbc,cid_notif|proc_rea,Z302|0409060186,12
-RDRR2406.dbc,cid_notif|proc_rea,Z302|0411010042,36
-RDRR2406.dbc,cid_notif|sexo,Z302|3,48
 RDRR2406.dbc,tpdisec1,0|diagsec vazio,2424
 RDRR2406.dbc,tpdisec1,1|diagsec preenchido,568
 RDRR2406.dbc,tpdisec1,2|diagsec preenchido,4
@@ -8125,16 +7016,10 @@ RDRR2407.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2407.dbc,zerado_preenchido,cpf_aut,0
 RDRR2407.dbc,homonimo,0,2599
 RDRR2407.dbc,homonimo,2,38
-RDRR2407.dbc,gestor_tp,0,1909
-RDRR2407.dbc,gestor_tp,1,728
 RDRR2407.dbc,faec_tp,,2397
 RDRR2407.dbc,faec_tp,040080,240
 RDRR2407.dbc,cid_notif,,2609
 RDRR2407.dbc,cid_notif,Z302,28
-RDRR2407.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR2407.dbc,cid_notif|proc_rea,Z302|0411010042,26
-RDRR2407.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2407.dbc,cid_notif|sexo,Z302|3,28
 RDRR2407.dbc,tpdisec1,0|diagsec vazio,2091
 RDRR2407.dbc,tpdisec1,1|diagsec preenchido,545
 RDRR2407.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8169,17 +7054,10 @@ RDRR2408.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2408.dbc,zerado_preenchido,cpf_aut,0
 RDRR2408.dbc,homonimo,0,3037
 RDRR2408.dbc,homonimo,2,90
-RDRR2408.dbc,gestor_tp,0,2205
-RDRR2408.dbc,gestor_tp,1,922
 RDRR2408.dbc,faec_tp,,2950
 RDRR2408.dbc,faec_tp,040080,177
 RDRR2408.dbc,cid_notif,,3026
 RDRR2408.dbc,cid_notif,Z302,101
-RDRR2408.dbc,cid_notif|proc_rea,Z302|0409040240,7
-RDRR2408.dbc,cid_notif|proc_rea,Z302|0409060186,3
-RDRR2408.dbc,cid_notif|proc_rea,Z302|0411010042,91
-RDRR2408.dbc,cid_notif|sexo,Z302|1,7
-RDRR2408.dbc,cid_notif|sexo,Z302|3,94
 RDRR2408.dbc,tpdisec1,0|diagsec vazio,2452
 RDRR2408.dbc,tpdisec1,1|diagsec preenchido,675
 RDRR2408.dbc,tpdisec2,0|diagsec vazio,3095
@@ -8213,17 +7091,10 @@ RDRR2409.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2409.dbc,zerado_preenchido,cpf_aut,0
 RDRR2409.dbc,homonimo,0,2849
 RDRR2409.dbc,homonimo,2,33
-RDRR2409.dbc,gestor_tp,0,2248
-RDRR2409.dbc,gestor_tp,1,634
 RDRR2409.dbc,faec_tp,,2601
 RDRR2409.dbc,faec_tp,040080,281
 RDRR2409.dbc,cid_notif,,2798
 RDRR2409.dbc,cid_notif,Z302,84
-RDRR2409.dbc,cid_notif|proc_rea,Z302|0409040240,26
-RDRR2409.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2409.dbc,cid_notif|proc_rea,Z302|0411010042,50
-RDRR2409.dbc,cid_notif|sexo,Z302|1,27
-RDRR2409.dbc,cid_notif|sexo,Z302|3,57
 RDRR2409.dbc,tpdisec1,0|diagsec vazio,2351
 RDRR2409.dbc,tpdisec1,1|diagsec preenchido,530
 RDRR2409.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8258,17 +7129,10 @@ RDRR2410.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2410.dbc,zerado_preenchido,cpf_aut,0
 RDRR2410.dbc,homonimo,0,3155
 RDRR2410.dbc,homonimo,2,66
-RDRR2410.dbc,gestor_tp,0,2430
-RDRR2410.dbc,gestor_tp,1,791
 RDRR2410.dbc,faec_tp,,3033
 RDRR2410.dbc,faec_tp,040080,188
 RDRR2410.dbc,cid_notif,,3099
 RDRR2410.dbc,cid_notif,Z302,122
-RDRR2410.dbc,cid_notif|proc_rea,Z302|0409040240,21
-RDRR2410.dbc,cid_notif|proc_rea,Z302|0409060186,17
-RDRR2410.dbc,cid_notif|proc_rea,Z302|0411010042,84
-RDRR2410.dbc,cid_notif|sexo,Z302|1,21
-RDRR2410.dbc,cid_notif|sexo,Z302|3,101
 RDRR2410.dbc,tpdisec1,0|diagsec vazio,2527
 RDRR2410.dbc,tpdisec1,1|diagsec preenchido,692
 RDRR2410.dbc,tpdisec1,2|diagsec preenchido,2
@@ -8303,18 +7167,10 @@ RDRR2411.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2411.dbc,zerado_preenchido,cpf_aut,0
 RDRR2411.dbc,homonimo,0,3286
 RDRR2411.dbc,homonimo,2,63
-RDRR2411.dbc,gestor_tp,0,2418
-RDRR2411.dbc,gestor_tp,1,931
 RDRR2411.dbc,faec_tp,,3250
 RDRR2411.dbc,faec_tp,040080,99
 RDRR2411.dbc,cid_notif,,3234
 RDRR2411.dbc,cid_notif,Z302,115
-RDRR2411.dbc,cid_notif|proc_rea,Z302|0409040240,3
-RDRR2411.dbc,cid_notif|proc_rea,Z302|0409060186,28
-RDRR2411.dbc,cid_notif|proc_rea,Z302|0409060216,1
-RDRR2411.dbc,cid_notif|proc_rea,Z302|0411010042,83
-RDRR2411.dbc,cid_notif|sexo,Z302|1,3
-RDRR2411.dbc,cid_notif|sexo,Z302|3,112
 RDRR2411.dbc,tpdisec1,0|diagsec vazio,2721
 RDRR2411.dbc,tpdisec1,1|diagsec preenchido,627
 RDRR2411.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8349,17 +7205,10 @@ RDRR2412.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2412.dbc,zerado_preenchido,cpf_aut,0
 RDRR2412.dbc,homonimo,0,2550
 RDRR2412.dbc,homonimo,2,34
-RDRR2412.dbc,gestor_tp,0,1922
-RDRR2412.dbc,gestor_tp,1,662
 RDRR2412.dbc,faec_tp,,2467
 RDRR2412.dbc,faec_tp,040080,117
 RDRR2412.dbc,cid_notif,,2488
 RDRR2412.dbc,cid_notif,Z302,96
-RDRR2412.dbc,cid_notif|proc_rea,Z302|0409040240,1
-RDRR2412.dbc,cid_notif|proc_rea,Z302|0409060186,13
-RDRR2412.dbc,cid_notif|proc_rea,Z302|0411010042,82
-RDRR2412.dbc,cid_notif|sexo,Z302|1,1
-RDRR2412.dbc,cid_notif|sexo,Z302|3,95
 RDRR2412.dbc,tpdisec1,0|diagsec vazio,2051
 RDRR2412.dbc,tpdisec1,1|diagsec preenchido,532
 RDRR2412.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8395,17 +7244,10 @@ RDRR2501.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2501.dbc,zerado_preenchido,cpf_aut,0
 RDRR2501.dbc,homonimo,0,3816
 RDRR2501.dbc,homonimo,2,66
-RDRR2501.dbc,gestor_tp,0,2789
-RDRR2501.dbc,gestor_tp,1,1093
 RDRR2501.dbc,faec_tp,,3748
 RDRR2501.dbc,faec_tp,040080,134
 RDRR2501.dbc,cid_notif,,3759
 RDRR2501.dbc,cid_notif,Z302,123
-RDRR2501.dbc,cid_notif|proc_rea,Z302|0409040240,2
-RDRR2501.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR2501.dbc,cid_notif|proc_rea,Z302|0411010042,105
-RDRR2501.dbc,cid_notif|sexo,Z302|1,3
-RDRR2501.dbc,cid_notif|sexo,Z302|3,120
 RDRR2501.dbc,tpdisec1,0|diagsec vazio,3064
 RDRR2501.dbc,tpdisec1,1|diagsec preenchido,817
 RDRR2501.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8441,18 +7283,10 @@ RDRR2502.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2502.dbc,zerado_preenchido,cpf_aut,0
 RDRR2502.dbc,homonimo,0,2808
 RDRR2502.dbc,homonimo,2,47
-RDRR2502.dbc,gestor_tp,0,1945
-RDRR2502.dbc,gestor_tp,1,910
 RDRR2502.dbc,faec_tp,,2715
 RDRR2502.dbc,faec_tp,040080,140
 RDRR2502.dbc,cid_notif,,2743
 RDRR2502.dbc,cid_notif,Z302,112
-RDRR2502.dbc,cid_notif|proc_rea,Z302|0409040240,2
-RDRR2502.dbc,cid_notif|proc_rea,Z302|0409060186,23
-RDRR2502.dbc,cid_notif|proc_rea,Z302|0411010042,86
-RDRR2502.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2502.dbc,cid_notif|sexo,Z302|1,2
-RDRR2502.dbc,cid_notif|sexo,Z302|3,110
 RDRR2502.dbc,tpdisec1,0|diagsec vazio,2243
 RDRR2502.dbc,tpdisec1,1|diagsec preenchido,611
 RDRR2502.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8488,15 +7322,10 @@ RDRR2503.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2503.dbc,zerado_preenchido,cpf_aut,0
 RDRR2503.dbc,homonimo,0,3411
 RDRR2503.dbc,homonimo,2,48
-RDRR2503.dbc,gestor_tp,0,2413
-RDRR2503.dbc,gestor_tp,1,1046
 RDRR2503.dbc,faec_tp,,3257
 RDRR2503.dbc,faec_tp,040080,202
 RDRR2503.dbc,cid_notif,,3362
 RDRR2503.dbc,cid_notif,Z302,97
-RDRR2503.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR2503.dbc,cid_notif|proc_rea,Z302|0411010042,81
-RDRR2503.dbc,cid_notif|sexo,Z302|3,97
 RDRR2503.dbc,tpdisec1,0|diagsec vazio,2729
 RDRR2503.dbc,tpdisec1,1|diagsec preenchido,730
 RDRR2503.dbc,tpdisec2,0|diagsec vazio,3395
@@ -8532,15 +7361,10 @@ RDRR2504.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2504.dbc,zerado_preenchido,cpf_aut,0
 RDRR2504.dbc,homonimo,0,2858
 RDRR2504.dbc,homonimo,2,37
-RDRR2504.dbc,gestor_tp,0,2097
-RDRR2504.dbc,gestor_tp,1,798
 RDRR2504.dbc,faec_tp,,2743
 RDRR2504.dbc,faec_tp,040080,152
 RDRR2504.dbc,cid_notif,,2822
 RDRR2504.dbc,cid_notif,Z302,73
-RDRR2504.dbc,cid_notif|proc_rea,Z302|0409060186,5
-RDRR2504.dbc,cid_notif|proc_rea,Z302|0411010042,68
-RDRR2504.dbc,cid_notif|sexo,Z302|3,73
 RDRR2504.dbc,tpdisec1,0|diagsec vazio,2307
 RDRR2504.dbc,tpdisec1,1|diagsec preenchido,588
 RDRR2504.dbc,tpdisec2,0|diagsec vazio,2826
@@ -8575,21 +7399,11 @@ RDRR2505.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2505.dbc,zerado_preenchido,cpf_aut,0
 RDRR2505.dbc,homonimo,0,2884
 RDRR2505.dbc,homonimo,2,14
-RDRR2505.dbc,gestor_tp,0,2314
-RDRR2505.dbc,gestor_tp,1,584
 RDRR2505.dbc,faec_tp,,2740
 RDRR2505.dbc,faec_tp,040080,158
 RDRR2505.dbc,cid_notif,,2812
 RDRR2505.dbc,cid_notif,O13,1
 RDRR2505.dbc,cid_notif,Z302,85
-RDRR2505.dbc,cid_notif|proc_rea,O13|0411010042,1
-RDRR2505.dbc,cid_notif|proc_rea,Z302|0409040240,3
-RDRR2505.dbc,cid_notif|proc_rea,Z302|0409060186,9
-RDRR2505.dbc,cid_notif|proc_rea,Z302|0411010042,72
-RDRR2505.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2505.dbc,cid_notif|sexo,O13|3,1
-RDRR2505.dbc,cid_notif|sexo,Z302|1,3
-RDRR2505.dbc,cid_notif|sexo,Z302|3,82
 RDRR2505.dbc,tpdisec1,0|diagsec vazio,2264
 RDRR2505.dbc,tpdisec1,1|diagsec preenchido,633
 RDRR2505.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8625,18 +7439,10 @@ RDRR2506.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2506.dbc,zerado_preenchido,cpf_aut,0
 RDRR2506.dbc,homonimo,0,2928
 RDRR2506.dbc,homonimo,2,7
-RDRR2506.dbc,gestor_tp,0,2279
-RDRR2506.dbc,gestor_tp,1,656
 RDRR2506.dbc,faec_tp,,2797
 RDRR2506.dbc,faec_tp,040080,138
 RDRR2506.dbc,cid_notif,,2847
 RDRR2506.dbc,cid_notif,Z302,88
-RDRR2506.dbc,cid_notif|proc_rea,Z302|0409040240,2
-RDRR2506.dbc,cid_notif|proc_rea,Z302|0409060186,2
-RDRR2506.dbc,cid_notif|proc_rea,Z302|0411010042,83
-RDRR2506.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2506.dbc,cid_notif|sexo,Z302|1,2
-RDRR2506.dbc,cid_notif|sexo,Z302|3,86
 RDRR2506.dbc,tpdisec1,0|diagsec vazio,2343
 RDRR2506.dbc,tpdisec1,1|diagsec preenchido,592
 RDRR2506.dbc,tpdisec2,0|diagsec vazio,2881
@@ -8671,18 +7477,11 @@ RDRR2507.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2507.dbc,zerado_preenchido,cpf_aut,0
 RDRR2507.dbc,homonimo,0,2999
 RDRR2507.dbc,homonimo,2,4
-RDRR2507.dbc,gestor_tp,0,2431
-RDRR2507.dbc,gestor_tp,1,572
 RDRR2507.dbc,faec_tp,,2825
 RDRR2507.dbc,faec_tp,040080,178
 RDRR2507.dbc,cid_notif,,2926
 RDRR2507.dbc,cid_notif,O244,1
 RDRR2507.dbc,cid_notif,Z302,76
-RDRR2507.dbc,cid_notif|proc_rea,O244|0411010042,1
-RDRR2507.dbc,cid_notif|proc_rea,Z302|0409060186,5
-RDRR2507.dbc,cid_notif|proc_rea,Z302|0411010042,71
-RDRR2507.dbc,cid_notif|sexo,O244|3,1
-RDRR2507.dbc,cid_notif|sexo,Z302|3,76
 RDRR2507.dbc,tpdisec1,0|diagsec vazio,2379
 RDRR2507.dbc,tpdisec1,1|diagsec preenchido,624
 RDRR2507.dbc,tpdisec2,0|diagsec vazio,2939
@@ -8716,19 +7515,11 @@ RDRR2508.dbc,zerado_preenchido,num_proc,0
 RDRR2508.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2508.dbc,zerado_preenchido,cpf_aut,0
 RDRR2508.dbc,homonimo,0,3193
-RDRR2508.dbc,gestor_tp,0,2633
-RDRR2508.dbc,gestor_tp,1,560
 RDRR2508.dbc,faec_tp,,3048
 RDRR2508.dbc,faec_tp,040080,145
 RDRR2508.dbc,cid_notif,,3100
 RDRR2508.dbc,cid_notif,O13,1
 RDRR2508.dbc,cid_notif,Z302,92
-RDRR2508.dbc,cid_notif|proc_rea,O13|0411010042,1
-RDRR2508.dbc,cid_notif|proc_rea,Z302|0409060186,10
-RDRR2508.dbc,cid_notif|proc_rea,Z302|0411010042,82
-RDRR2508.dbc,cid_notif|sexo,O13|3,1
-RDRR2508.dbc,cid_notif|sexo,Z302|1,1
-RDRR2508.dbc,cid_notif|sexo,Z302|3,91
 RDRR2508.dbc,tpdisec1,0|diagsec vazio,2517
 RDRR2508.dbc,tpdisec1,1|diagsec preenchido,676
 RDRR2508.dbc,tpdisec2,0|diagsec vazio,3138
@@ -8761,15 +7552,10 @@ RDRR2509.dbc,zerado_preenchido,num_proc,0
 RDRR2509.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2509.dbc,zerado_preenchido,cpf_aut,0
 RDRR2509.dbc,homonimo,0,2738
-RDRR2509.dbc,gestor_tp,0,2178
-RDRR2509.dbc,gestor_tp,1,560
 RDRR2509.dbc,faec_tp,,2516
 RDRR2509.dbc,faec_tp,040080,222
 RDRR2509.dbc,cid_notif,,2662
 RDRR2509.dbc,cid_notif,Z302,76
-RDRR2509.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR2509.dbc,cid_notif|proc_rea,Z302|0411010042,60
-RDRR2509.dbc,cid_notif|sexo,Z302|3,76
 RDRR2509.dbc,tpdisec1,0|diagsec vazio,2115
 RDRR2509.dbc,tpdisec1,1|diagsec preenchido,623
 RDRR2509.dbc,tpdisec2,0|diagsec vazio,2662
@@ -8803,16 +7589,11 @@ RDRR2510.dbc,zerado_preenchido,num_proc,0
 RDRR2510.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2510.dbc,zerado_preenchido,cpf_aut,0
 RDRR2510.dbc,homonimo,0,2346
-RDRR2510.dbc,gestor_tp,0,1837
-RDRR2510.dbc,gestor_tp,1,509
 RDRR2510.dbc,faec_tp,,2179
 RDRR2510.dbc,faec_tp,040071,1
 RDRR2510.dbc,faec_tp,040080,166
 RDRR2510.dbc,cid_notif,,2276
 RDRR2510.dbc,cid_notif,Z302,70
-RDRR2510.dbc,cid_notif|proc_rea,Z302|0409060186,11
-RDRR2510.dbc,cid_notif|proc_rea,Z302|0411010042,59
-RDRR2510.dbc,cid_notif|sexo,Z302|3,70
 RDRR2510.dbc,tpdisec1,0|diagsec vazio,1849
 RDRR2510.dbc,tpdisec1,1|diagsec preenchido,497
 RDRR2510.dbc,tpdisec2,0|diagsec vazio,2257
@@ -8846,15 +7627,10 @@ RDRR2511.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2511.dbc,zerado_preenchido,cpf_aut,0
 RDRR2511.dbc,homonimo,0,2735
 RDRR2511.dbc,homonimo,2,5
-RDRR2511.dbc,gestor_tp,0,2147
-RDRR2511.dbc,gestor_tp,1,593
 RDRR2511.dbc,faec_tp,,2532
 RDRR2511.dbc,faec_tp,040080,208
 RDRR2511.dbc,cid_notif,,2692
 RDRR2511.dbc,cid_notif,Z302,48
-RDRR2511.dbc,cid_notif|proc_rea,Z302|0409060186,1
-RDRR2511.dbc,cid_notif|proc_rea,Z302|0411010042,47
-RDRR2511.dbc,cid_notif|sexo,Z302|3,48
 RDRR2511.dbc,tpdisec1,0|diagsec vazio,2171
 RDRR2511.dbc,tpdisec1,1|diagsec preenchido,569
 RDRR2511.dbc,tpdisec2,0|diagsec vazio,2669
@@ -8889,15 +7665,10 @@ RDRR2512.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2512.dbc,zerado_preenchido,cpf_aut,0
 RDRR2512.dbc,homonimo,0,2123
 RDRR2512.dbc,homonimo,2,5
-RDRR2512.dbc,gestor_tp,0,1625
-RDRR2512.dbc,gestor_tp,1,503
 RDRR2512.dbc,faec_tp,,1933
 RDRR2512.dbc,faec_tp,040080,195
 RDRR2512.dbc,cid_notif,,2071
 RDRR2512.dbc,cid_notif,Z302,57
-RDRR2512.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2512.dbc,cid_notif|proc_rea,Z302|0411010042,49
-RDRR2512.dbc,cid_notif|sexo,Z302|3,57
 RDRR2512.dbc,tpdisec1,0|diagsec vazio,1703
 RDRR2512.dbc,tpdisec1,1|diagsec preenchido,424
 RDRR2512.dbc,tpdisec1,2|diagsec preenchido,1
@@ -8933,17 +7704,11 @@ RDRR2601.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2601.dbc,zerado_preenchido,cpf_aut,0
 RDRR2601.dbc,homonimo,0,2593
 RDRR2601.dbc,homonimo,2,4
-RDRR2601.dbc,gestor_tp,0,1957
-RDRR2601.dbc,gestor_tp,1,640
 RDRR2601.dbc,faec_tp,,2383
 RDRR2601.dbc,faec_tp,040071,1
 RDRR2601.dbc,faec_tp,040080,213
 RDRR2601.dbc,cid_notif,,2514
 RDRR2601.dbc,cid_notif,Z302,83
-RDRR2601.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR2601.dbc,cid_notif|proc_rea,Z302|0411010042,66
-RDRR2601.dbc,cid_notif|proc_rea,Z302|0415010012,1
-RDRR2601.dbc,cid_notif|sexo,Z302|3,83
 RDRR2601.dbc,tpdisec1,0|diagsec vazio,2062
 RDRR2601.dbc,tpdisec1,1|diagsec preenchido,531
 RDRR2601.dbc,tpdisec1,2|diagsec preenchido,4
@@ -8979,15 +7744,10 @@ RDRR2602.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2602.dbc,zerado_preenchido,cpf_aut,0
 RDRR2602.dbc,homonimo,0,2957
 RDRR2602.dbc,homonimo,2,4
-RDRR2602.dbc,gestor_tp,0,2190
-RDRR2602.dbc,gestor_tp,1,771
 RDRR2602.dbc,faec_tp,,2768
 RDRR2602.dbc,faec_tp,040080,193
 RDRR2602.dbc,cid_notif,,2883
 RDRR2602.dbc,cid_notif,Z302,78
-RDRR2602.dbc,cid_notif|proc_rea,Z302|0409060186,8
-RDRR2602.dbc,cid_notif|proc_rea,Z302|0411010042,70
-RDRR2602.dbc,cid_notif|sexo,Z302|3,78
 RDRR2602.dbc,tpdisec1,0|diagsec vazio,2284
 RDRR2602.dbc,tpdisec1,1|diagsec preenchido,674
 RDRR2602.dbc,tpdisec1,2|diagsec preenchido,3
@@ -9023,18 +7783,11 @@ RDRR2603.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2603.dbc,zerado_preenchido,cpf_aut,0
 RDRR2603.dbc,homonimo,0,3080
 RDRR2603.dbc,homonimo,2,2
-RDRR2603.dbc,gestor_tp,0,2251
-RDRR2603.dbc,gestor_tp,1,831
 RDRR2603.dbc,faec_tp,,2896
 RDRR2603.dbc,faec_tp,040080,186
 RDRR2603.dbc,cid_notif,,3024
 RDRR2603.dbc,cid_notif,O244,1
 RDRR2603.dbc,cid_notif,Z302,57
-RDRR2603.dbc,cid_notif|proc_rea,O244|0411010042,1
-RDRR2603.dbc,cid_notif|proc_rea,Z302|0409060186,9
-RDRR2603.dbc,cid_notif|proc_rea,Z302|0411010042,48
-RDRR2603.dbc,cid_notif|sexo,O244|3,1
-RDRR2603.dbc,cid_notif|sexo,Z302|3,57
 RDRR2603.dbc,tpdisec1,0|diagsec vazio,2379
 RDRR2603.dbc,tpdisec1,1|diagsec preenchido,701
 RDRR2603.dbc,tpdisec1,2|diagsec preenchido,2
@@ -9070,15 +7823,10 @@ RDRR2604.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2604.dbc,zerado_preenchido,cpf_aut,0
 RDRR2604.dbc,homonimo,0,3007
 RDRR2604.dbc,homonimo,2,6
-RDRR2604.dbc,gestor_tp,0,2246
-RDRR2604.dbc,gestor_tp,1,767
 RDRR2604.dbc,faec_tp,,2750
 RDRR2604.dbc,faec_tp,040080,263
 RDRR2604.dbc,cid_notif,,2902
 RDRR2604.dbc,cid_notif,Z302,111
-RDRR2604.dbc,cid_notif|proc_rea,Z302|0409060186,16
-RDRR2604.dbc,cid_notif|proc_rea,Z302|0411010042,95
-RDRR2604.dbc,cid_notif|sexo,Z302|3,111
 RDRR2604.dbc,tpdisec1,0|diagsec vazio,2308
 RDRR2604.dbc,tpdisec1,1|diagsec preenchido,701
 RDRR2604.dbc,tpdisec1,2|diagsec preenchido,4
@@ -9114,15 +7862,10 @@ RDRR2605.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2605.dbc,zerado_preenchido,cpf_aut,0
 RDRR2605.dbc,homonimo,0,3197
 RDRR2605.dbc,homonimo,2,2
-RDRR2605.dbc,gestor_tp,0,2169
-RDRR2605.dbc,gestor_tp,1,1030
 RDRR2605.dbc,faec_tp,,2974
 RDRR2605.dbc,faec_tp,040080,225
 RDRR2605.dbc,cid_notif,,3115
 RDRR2605.dbc,cid_notif,Z302,84
-RDRR2605.dbc,cid_notif|proc_rea,Z302|0409060186,6
-RDRR2605.dbc,cid_notif|proc_rea,Z302|0411010042,78
-RDRR2605.dbc,cid_notif|sexo,Z302|3,84
 RDRR2605.dbc,tpdisec1,0|diagsec vazio,2658
 RDRR2605.dbc,tpdisec1,1|diagsec preenchido,539
 RDRR2605.dbc,tpdisec1,2|diagsec preenchido,2
@@ -9158,15 +7901,10 @@ RDRR2606.dbc,zerado_preenchido,tot_pt_sp,0
 RDRR2606.dbc,zerado_preenchido,cpf_aut,0
 RDRR2606.dbc,homonimo,0,3914
 RDRR2606.dbc,homonimo,2,22
-RDRR2606.dbc,gestor_tp,0,2759
-RDRR2606.dbc,gestor_tp,1,1177
 RDRR2606.dbc,faec_tp,,3646
 RDRR2606.dbc,faec_tp,040080,290
 RDRR2606.dbc,cid_notif,,3804
 RDRR2606.dbc,cid_notif,Z302,132
-RDRR2606.dbc,cid_notif|proc_rea,Z302|0409060186,39
-RDRR2606.dbc,cid_notif|proc_rea,Z302|0411010042,93
-RDRR2606.dbc,cid_notif|sexo,Z302|3,132
 RDRR2606.dbc,tpdisec1,0|diagsec vazio,3368
 RDRR2606.dbc,tpdisec1,1|diagsec preenchido,568
 RDRR2606.dbc,tpdisec2,0|diagsec vazio,3853
@@ -9201,7 +7939,6 @@ RDSP0801.dbc,zerado_preenchido,tot_pt_sp,0
 RDSP0801.dbc,zerado_preenchido,cpf_aut,0
 RDSP0801.dbc,homonimo,0,116519
 RDSP0801.dbc,homonimo,2,8842
-RDSP0801.dbc,gestor_tp,0,125361
 RDSP0801.dbc,faec_tp,,123101
 RDSP0801.dbc,faec_tp,021014,871
 RDSP0801.dbc,faec_tp,040014,2
@@ -9222,25 +7959,6 @@ RDSP0801.dbc,cid_notif,O149,12
 RDSP0801.dbc,cid_notif,O269,1
 RDSP0801.dbc,cid_notif,Z302,807
 RDSP0801.dbc,cid_notif,Z320,1
-RDSP0801.dbc,cid_notif|proc_rea,O109|0409060186,1
-RDSP0801.dbc,cid_notif|proc_rea,O140|0409060186,6
-RDSP0801.dbc,cid_notif|proc_rea,O141|0411010042,1
-RDSP0801.dbc,cid_notif|proc_rea,O149|0409060186,6
-RDSP0801.dbc,cid_notif|proc_rea,O149|0411010042,6
-RDSP0801.dbc,cid_notif|proc_rea,O269|0411010034,1
-RDSP0801.dbc,cid_notif|proc_rea,Z302|0409040240,161
-RDSP0801.dbc,cid_notif|proc_rea,Z302|0409060186,365
-RDSP0801.dbc,cid_notif|proc_rea,Z302|0411010034,1
-RDSP0801.dbc,cid_notif|proc_rea,Z302|0411010042,280
-RDSP0801.dbc,cid_notif|proc_rea,Z320|0409040240,1
-RDSP0801.dbc,cid_notif|sexo,O109|3,1
-RDSP0801.dbc,cid_notif|sexo,O140|3,6
-RDSP0801.dbc,cid_notif|sexo,O141|3,1
-RDSP0801.dbc,cid_notif|sexo,O149|3,12
-RDSP0801.dbc,cid_notif|sexo,O269|3,1
-RDSP0801.dbc,cid_notif|sexo,Z302|1,161
-RDSP0801.dbc,cid_notif|sexo,Z302|3,646
-RDSP0801.dbc,cid_notif|sexo,Z320|1,1
 RDSP1201.dbc,zerado_preenchido,uti_mes_in,0
 RDSP1201.dbc,zerado_preenchido,uti_mes_an,0
 RDSP1201.dbc,zerado_preenchido,uti_mes_al,0
@@ -9262,8 +7980,6 @@ RDSP1201.dbc,zerado_preenchido,tot_pt_sp,0
 RDSP1201.dbc,zerado_preenchido,cpf_aut,0
 RDSP1201.dbc,homonimo,0,171160
 RDSP1201.dbc,homonimo,2,22104
-RDSP1201.dbc,gestor_tp,0,159688
-RDSP1201.dbc,gestor_tp,1,33576
 RDSP1201.dbc,faec_tp,,188459
 RDSP1201.dbc,faec_tp,040010,14
 RDSP1201.dbc,faec_tp,040014,9
@@ -9290,34 +8006,6 @@ RDSP1201.dbc,cid_notif,O903,1
 RDSP1201.dbc,cid_notif,O990,1
 RDSP1201.dbc,cid_notif,O992,1
 RDSP1201.dbc,cid_notif,Z302,1922
-RDSP1201.dbc,cid_notif|proc_rea,O100|0409060186,2
-RDSP1201.dbc,cid_notif|proc_rea,O13|0409060186,1
-RDSP1201.dbc,cid_notif|proc_rea,O13|0411010042,1
-RDSP1201.dbc,cid_notif|proc_rea,O149|0409060186,2
-RDSP1201.dbc,cid_notif|proc_rea,O149|0411010042,23
-RDSP1201.dbc,cid_notif|proc_rea,O229|0409060186,1
-RDSP1201.dbc,cid_notif|proc_rea,O229|0411010042,3
-RDSP1201.dbc,cid_notif|proc_rea,O244|0411010042,1
-RDSP1201.dbc,cid_notif|proc_rea,O368|0411010042,6
-RDSP1201.dbc,cid_notif|proc_rea,O903|0411010042,1
-RDSP1201.dbc,cid_notif|proc_rea,O990|0411010042,1
-RDSP1201.dbc,cid_notif|proc_rea,O992|0411010042,1
-RDSP1201.dbc,cid_notif|proc_rea,Z302|0409040240,701
-RDSP1201.dbc,cid_notif|proc_rea,Z302|0409060186,639
-RDSP1201.dbc,cid_notif|proc_rea,Z302|0411010042,549
-RDSP1201.dbc,cid_notif|proc_rea,Z302|0415010012,30
-RDSP1201.dbc,cid_notif|proc_rea,Z302|0415020034,3
-RDSP1201.dbc,cid_notif|sexo,O100|3,2
-RDSP1201.dbc,cid_notif|sexo,O13|3,2
-RDSP1201.dbc,cid_notif|sexo,O149|3,25
-RDSP1201.dbc,cid_notif|sexo,O229|3,4
-RDSP1201.dbc,cid_notif|sexo,O244|3,1
-RDSP1201.dbc,cid_notif|sexo,O368|3,6
-RDSP1201.dbc,cid_notif|sexo,O903|3,1
-RDSP1201.dbc,cid_notif|sexo,O990|3,1
-RDSP1201.dbc,cid_notif|sexo,O992|3,1
-RDSP1201.dbc,cid_notif|sexo,Z302|1,704
-RDSP1201.dbc,cid_notif|sexo,Z302|3,1218
 RDSP1601.dbc,zerado_preenchido,uti_mes_in,0
 RDSP1601.dbc,zerado_preenchido,uti_mes_an,0
 RDSP1601.dbc,zerado_preenchido,uti_mes_al,0
@@ -9339,8 +8027,6 @@ RDSP1601.dbc,zerado_preenchido,tot_pt_sp,0
 RDSP1601.dbc,zerado_preenchido,cpf_aut,0
 RDSP1601.dbc,homonimo,0,193606
 RDSP1601.dbc,homonimo,2,15
-RDSP1601.dbc,gestor_tp,0,167597
-RDSP1601.dbc,gestor_tp,1,26024
 RDSP1601.dbc,faec_tp,,190493
 RDSP1601.dbc,faec_tp,040014,2
 RDSP1601.dbc,faec_tp,040016,10
@@ -9361,26 +8047,6 @@ RDSP1601.dbc,cid_notif,O149,5
 RDSP1601.dbc,cid_notif,O229,9
 RDSP1601.dbc,cid_notif,O368,3
 RDSP1601.dbc,cid_notif,Z302,1824
-RDSP1601.dbc,cid_notif|proc_rea,O13|0411010042,1
-RDSP1601.dbc,cid_notif|proc_rea,O141|0411010042,1
-RDSP1601.dbc,cid_notif|proc_rea,O149|0409060186,1
-RDSP1601.dbc,cid_notif|proc_rea,O149|0411010042,4
-RDSP1601.dbc,cid_notif|proc_rea,O229|0411010042,9
-RDSP1601.dbc,cid_notif|proc_rea,O368|0411010042,2
-RDSP1601.dbc,cid_notif|proc_rea,O368|0415020034,1
-RDSP1601.dbc,cid_notif|proc_rea,Z302|0409040070,2
-RDSP1601.dbc,cid_notif|proc_rea,Z302|0409040240,671
-RDSP1601.dbc,cid_notif|proc_rea,Z302|0409060186,460
-RDSP1601.dbc,cid_notif|proc_rea,Z302|0411010042,674
-RDSP1601.dbc,cid_notif|proc_rea,Z302|0415010012,15
-RDSP1601.dbc,cid_notif|proc_rea,Z302|0415020034,2
-RDSP1601.dbc,cid_notif|sexo,O13|3,1
-RDSP1601.dbc,cid_notif|sexo,O141|3,1
-RDSP1601.dbc,cid_notif|sexo,O149|3,5
-RDSP1601.dbc,cid_notif|sexo,O229|3,9
-RDSP1601.dbc,cid_notif|sexo,O368|3,3
-RDSP1601.dbc,cid_notif|sexo,Z302|1,675
-RDSP1601.dbc,cid_notif|sexo,Z302|3,1149
 RDSP1601.dbc,tpdisec1,0|diagsec vazio,126934
 RDSP1601.dbc,tpdisec1,1|diagsec preenchido,45374
 RDSP1601.dbc,tpdisec1,2|diagsec preenchido,21313
@@ -9425,8 +8091,6 @@ RDSP2001.dbc,zerado_preenchido,tot_pt_sp,0
 RDSP2001.dbc,zerado_preenchido,cpf_aut,0
 RDSP2001.dbc,homonimo,0,215761
 RDSP2001.dbc,homonimo,2,5
-RDSP2001.dbc,gestor_tp,0,182367
-RDSP2001.dbc,gestor_tp,1,33399
 RDSP2001.dbc,faec_tp,,212683
 RDSP2001.dbc,faec_tp,040024,161
 RDSP2001.dbc,faec_tp,040028,23
@@ -9444,25 +8108,6 @@ RDSP2001.dbc,cid_notif,O229,2
 RDSP2001.dbc,cid_notif,O360,1
 RDSP2001.dbc,cid_notif,O368,4
 RDSP2001.dbc,cid_notif,Z302,2955
-RDSP2001.dbc,cid_notif|proc_rea,O141|0411010042,16
-RDSP2001.dbc,cid_notif|proc_rea,O149|0409060186,5
-RDSP2001.dbc,cid_notif|proc_rea,O149|0411010042,22
-RDSP2001.dbc,cid_notif|proc_rea,O229|0411010042,2
-RDSP2001.dbc,cid_notif|proc_rea,O360|0411010042,1
-RDSP2001.dbc,cid_notif|proc_rea,O368|0411010042,4
-RDSP2001.dbc,cid_notif|proc_rea,Z302|0409040240,1239
-RDSP2001.dbc,cid_notif|proc_rea,Z302|0409060186,799
-RDSP2001.dbc,cid_notif|proc_rea,Z302|0409060216,1
-RDSP2001.dbc,cid_notif|proc_rea,Z302|0411010042,879
-RDSP2001.dbc,cid_notif|proc_rea,Z302|0415010012,30
-RDSP2001.dbc,cid_notif|proc_rea,Z302|0415020034,7
-RDSP2001.dbc,cid_notif|sexo,O141|3,16
-RDSP2001.dbc,cid_notif|sexo,O149|3,27
-RDSP2001.dbc,cid_notif|sexo,O229|3,2
-RDSP2001.dbc,cid_notif|sexo,O360|3,1
-RDSP2001.dbc,cid_notif|sexo,O368|3,4
-RDSP2001.dbc,cid_notif|sexo,Z302|1,1245
-RDSP2001.dbc,cid_notif|sexo,Z302|3,1710
 RDSP2001.dbc,tpdisec1,0|diagsec vazio,120240
 RDSP2001.dbc,tpdisec1,1|diagsec preenchido,68291
 RDSP2001.dbc,tpdisec1,2|diagsec preenchido,27235
@@ -9507,8 +8152,6 @@ RDSP2401.dbc,zerado_preenchido,tot_pt_sp,0
 RDSP2401.dbc,zerado_preenchido,cpf_aut,0
 RDSP2401.dbc,homonimo,0,222822
 RDSP2401.dbc,homonimo,2,27
-RDSP2401.dbc,gestor_tp,0,185420
-RDSP2401.dbc,gestor_tp,1,37429
 RDSP2401.dbc,faec_tp,,208926
 RDSP2401.dbc,faec_tp,040024,595
 RDSP2401.dbc,faec_tp,040028,13
@@ -9527,20 +8170,6 @@ RDSP2401.dbc,cid_notif,O229,3
 RDSP2401.dbc,cid_notif,O360,6
 RDSP2401.dbc,cid_notif,O368,7
 RDSP2401.dbc,cid_notif,Z302,5829
-RDSP2401.dbc,cid_notif|proc_rea,O229|0411010042,3
-RDSP2401.dbc,cid_notif|proc_rea,O360|0411010042,6
-RDSP2401.dbc,cid_notif|proc_rea,O368|0411010042,7
-RDSP2401.dbc,cid_notif|proc_rea,Z302|0407040170,1
-RDSP2401.dbc,cid_notif|proc_rea,Z302|0409040240,1651
-RDSP2401.dbc,cid_notif|proc_rea,Z302|0409060186,1831
-RDSP2401.dbc,cid_notif|proc_rea,Z302|0411010042,2287
-RDSP2401.dbc,cid_notif|proc_rea,Z302|0415010012,54
-RDSP2401.dbc,cid_notif|proc_rea,Z302|0415020034,5
-RDSP2401.dbc,cid_notif|sexo,O229|3,3
-RDSP2401.dbc,cid_notif|sexo,O360|3,6
-RDSP2401.dbc,cid_notif|sexo,O368|3,7
-RDSP2401.dbc,cid_notif|sexo,Z302|1,1652
-RDSP2401.dbc,cid_notif|sexo,Z302|3,4177
 RDSP2401.dbc,tpdisec1,0|diagsec vazio,114814
 RDSP2401.dbc,tpdisec1,1|diagsec preenchido,79234
 RDSP2401.dbc,tpdisec1,2|diagsec preenchido,28801

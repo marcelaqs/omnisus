@@ -33,8 +33,8 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   para a marca de homônimo: o layout dos arquivos RD de 2006-04 a 2007-12
   (`Layout_REDUZIDA.pdf`, p. 2) e o dicionário de dados das tabelas `TB_AIH` e `TB_HAIH`
   (`dicionario_de_dados_AIH.pdf`, pp. 8-9). Os arquivos lidos publicam `0` e `2` em
-  todos os anos de 2006 a 2026, inclusive nos 21 meses do layout que diz 0 e 1, e `1` só
-  em `RDAP2607` (34 registros); por isso a lista dos dois documentos não virou mapa
+  todos os anos de 2006 a 2026, inclusive os 21 de Roraima dos meses do layout que diz 0
+  e 1, e `1` só em `RDAP2607` (34 registros); por isso a lista dos dois documentos não virou mapa
   (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`,
   `evidence/2026-11-18-rd-medidas/`).
 - `diag_princ` é o código do diagnóstico principal pela CID-10, com 4 caracteres
@@ -81,7 +81,7 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   issue `uf_zi-faixa-em-codigo-longo` do campo diz isso. Uma delas é publicada: `530000`
   está em todos os 76.276 registros dos cinco arquivos `RDDF` lidos (janeiro de 2008,
   2012, 2016, 2020 e 2024, `evidence/2026-11-18-rd-medidas/`), e a tabela só chega a ela
-  pela faixa `530000-530009`. O campo não tem referência a `aux_municipios`: lá `140000` é "Município
+  pela faixa `530000-530009`. Nenhum arquivo `RJ` do Distrito Federal foi lido. O campo não tem referência a `aux_municipios`: lá `140000` é "Município
   ignorado - RR", e a tabela do DEF o chama de "Roraima - Gestão estadual".
 - `cnes` é o código CNES do hospital, com 7 caracteres (Informe SIH 2016-03, p. 3).
 - O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`; `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa ([vocabulários](vocabularios.md)).
@@ -164,9 +164,11 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   `TB_AIH` e `TB_HAIH` (p. 4). Nenhum DEF liga `tpdisec1` a `tpdisec9` a eles, e por
   decisão do mantenedor (#182) o `0` segue sem rótulo
   (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`). Nos arquivos lidos
-  (`evidence/2026-11-18-rd-medidas/`), os 12 de 2014 publicam `tpdisec1` a `tpdisec9` em
-  branco, e os 148 de 2015-01 em diante publicam `0` só com o diagnóstico do mesmo
-  número em branco e `1` ou `2` só com ele preenchido.
+  (`evidence/2026-11-18-rd-medidas/`), os 12 de 2014, todos de Roraima, publicam
+  `tpdisec1` a `tpdisec9` em branco, e os 148 de 2015-01 em diante publicam `0` só com o
+  diagnóstico do mesmo número em branco e `1` ou `2` só com ele preenchido (`tpdisec8` e
+  `tpdisec9` só trazem `0`). A contagem diz o que os arquivos trazem, não o que o `0`
+  quer dizer.
 - Em `sih_aih_reduzida_1992_2007`, `diag_princ` grava CID-9 (6 algarismos, `065099`) de
   1992-01 a 1997-12 e CID-10 (`O800`) de 1998-01 a 2007-12, na mesma coluna: um filtro
   como `LIKE 'I21%'` sobre 1992–2007 perde 1992–1997. Separe por `ano` antes de juntar à
@@ -290,10 +292,11 @@ Passo a passo com análise e procedência:
   2016 descreve só como "Zerado" levam como rótulo o texto deste layout anterior (por
   exemplo `val_sadtsr`, "Valor de SADT sem rateio"): o rótulo diz o que o campo era em
   2006 e 2007, os meses em que os arquivos RD lidos têm exatamente os 75 campos do
-  documento. Nos 238 arquivos RD lidos de 2008-01 a 2026-07 (1.994.690 registros,
-  `evidence/2026-11-18-rd-medidas/`) nenhum dos 19 vem preenchido em registro algum; nos
-  24 arquivos de Roraima de 2006 e 2007, 14 deles vêm (`val_sadt` em 41.405 dos 41.547
-  registros). Cada um traz a
+  documento. Nos 238 arquivos RD lidos de 2008-01 a 2026-07 (1.994.690 registros, 222
+  dos arquivos de Roraima; `evidence/2026-11-18-rd-medidas/`) nenhum dos 19 vem
+  preenchido em registro algum. Nos 21 arquivos de Roraima de 2006-04 a 2007-12, os
+  meses desse layout, 13 deles vêm (`val_sadt` em 36.858 dos 36.983 registros);
+  `num_proc` não vem em nenhum, só nos três arquivos de 2006-01 a 2006-03. Cada um traz a
   issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
   texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
   COMPETÊNCIA" e é "Ano de processamento da AIH").

@@ -6,9 +6,8 @@ DIR holds `RD*.dbc` files downloaded from `SIHSUS/200801_/Dados/` (DATASET
 `sih_aih_reduzida`) or `SIHSUS/199201_200712/Dados/` (`sih_aih_reduzida_1992_2007`) of
 `ftp://ftp.datasus.gov.br/dissemin/publicos/`. A field a file lacks is left out. Writes
 two files in OUT_DIR: `arquivos.csv` (file, bytes, SHA-256, records) and `medidas.csv` (file,
-measure, key, rows). Only counts leave the files: no row is copied, and the two fields
-that could hold a person's number (CPF_AUT, GESTOR_CPF) are read only as blank or not
-(CPF_AUT) or not at all (GESTOR_CPF).
+measure, key, rows). Only counts leave the files. The decoder loads every column, but no
+measure uses GESTOR_CPF, and CPF_AUT is only counted as filled or not.
 """
 
 from __future__ import annotations
@@ -44,7 +43,7 @@ ZERADO = [
     "cpf_aut",
 ]
 """The 19 fields IT_SIHSUS_1603 describes only as "Zerado"."""
-COUNTED = ("homonimo", "gestor_tp", "faec_tp", "cid_notif")
+COUNTED = ("homonimo", "faec_tp", "cid_notif")
 RANGES = ((334501, 334530), (358001, 358058), (530000, 530009), (530011, 539999))
 """The ranges br_municgestor.cnv writes for UF_ZI (Rio de Janeiro, São Paulo, DF)."""
 
@@ -69,9 +68,6 @@ def measures(frame: pl.DataFrame) -> list[tuple[str, str, int]]:
     for name in COUNTED:
         if name in frame.columns:
             out += [(name, key, rows) for key, rows in counts(frame, name)]
-    notified = frame.filter(filled(frame, "cid_notif"))
-    out += [("cid_notif|proc_rea", k, n) for k, n in counts(notified, "cid_notif", "proc_rea")]
-    out += [("cid_notif|sexo", k, n) for k, n in counts(notified, "cid_notif", "sexo")]
     for n in range(1, 10):
         if f"tpdisec{n}" in frame.columns:
             crossed = frame.with_columns(
