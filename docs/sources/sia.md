@@ -161,9 +161,19 @@ DEF no `TAB_SIA.zip`, por isso não tem rótulos. Todas declaram identidade de a
   (`src/omnisus/data/dicionarios/sia_apac_*.yaml` e `sia_psicossocial.yaml`,
   comentário inicial e `label`).
 - No BPA-I, `sexopac`, `catend`, `mn_ind` e `complex` ficam sem rótulos, com os códigos
-  como publicados: nenhum dos 12 DEF empacotados do `TAB_SIA.zip` lê `BI*.DBC`, e o DEF de
+  como publicados: nenhum dos 13 DEF empacotados do `TAB_SIA.zip` lê `BI*.DBC`, e o DEF de
   outro produto não diz que o BPA-I segue a mesma tabela (issue `bpai-sem-def` de cada
   campo em `src/omnisus/data/dicionarios/sia_bpa_individualizado.yaml`).
+- `ap_natjur` (natureza jurídica do estabelecimento) tem rótulo em nove bases de APAC
+  (AQ, AR, AM, AD, ABO, AB, AN, ACF e ATD), pela tabela `natjurc.cnv` do `TAB_SIA.zip`.
+  - O campo só existe nos arquivos de 2011-12, em parte dos de 2014-10 e de 2016-07 em
+    diante; o valor em branco fica sem rótulo.
+  - O vínculo vem do `APAC_Dados_Comuns.DEF`, e não do DEF de cada base. A issue
+    `ap_natjur-nem-sempre-publicado` do campo, em cada dicionário, diz o que foi medido.
+  - AD, AM, AQ, AR e ATD foram lidas só em RR, AC e AP
+    (`evidence/2026-11-19-apac-ap-natjur/README.md`).
+  - Na AMP o campo vem sempre em branco e fica sem rótulo. `pa_nat_jur` (PA) e `nat_jur`
+    (RAAS e SAD) seguem sem rótulo.
 - Quantidade e valor aparecem apresentados e aprovados: `qt_apres` e `qt_aprov`,
   `vl_apres` e `vl_aprov` no BPA-I (Informe SIASUS 2019-07, p. 17–18).
 - No BPA-I, o número de autorização `autoriz` não é obrigatório e não é criticado

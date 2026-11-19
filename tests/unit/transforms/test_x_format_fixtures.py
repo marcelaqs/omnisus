@@ -2,7 +2,8 @@
 
 Real data: ``sih_rj_rr_2024_01_mini.dbc`` (RJRR2401, 30 records), ``sih_sp_rr_2024_01_mini.dbc``
 (SPRR2401, 35.669) and ``sih_er_rr_2024_01_mini.dbc`` (ERRR2401, 31), read back through
-``sus.load``; their server SHA-256 are in ``tests/fixtures/FIXTURES.md``.
+``sus.load``; their server SHA-256 are in ``tests/fixtures/FIXTURES.md``. The dates of the
+APAC de Nefrologia (#183) are read from ``sia_an_pa_2014_10_mini.dbc`` (ANPA1410, 2 records).
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ import polars as pl
 import pytest
 
 import omnisus as sus
+from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 from omnisus.transforms.cnv import parse_def
 from omnisus.transforms.dictionaries import DATE_FORMATS, load_dicionario
 from tests.support.lake_rows import load_fixture
@@ -30,13 +32,16 @@ FORMATTED = sorted(
 )
 RJ_DATES = ("nasc", "dt_inter", "dt_saida")
 SP_DATES = ("sp_dtinter", "sp_dtsaida")
+AN = "sia_apac_nefrologia"
+AN_DEF_DATES = {"ap_dtinic": 66, "ap_dtfim": 68, "ap_dtsolic": 81, "ap_dtaut": 83}
+AN_DATES = (*AN_DEF_DATES, "an_dtpdr")
 CNV = files("omnisus.data.dicionarios") / "sources" / "cnv"
 
 
 @pytest.fixture(scope="module")
 def frames(tmp_path_factory) -> dict[str, pl.DataFrame]:
     out = {}
-    for dataset in {*FORMATTED, "sih_aih_rejeitada", "sih_servicos_profissionais"}:
+    for dataset in {*FORMATTED, "sih_aih_rejeitada", "sih_servicos_profissionais", AN}:
         fixture, scope = _FIXTURE_FOR[dataset]
         out[dataset] = load_fixture(dataset, fixture, scope, tmp_path_factory.mktemp(dataset))
     return out
@@ -75,9 +80,13 @@ def test_every_x_format_reads_the_fixture_strictly(dataset, frames) -> None:
 
 @pytest.mark.parametrize(
     ("dataset", "names"),
-    [("sih_aih_rejeitada", RJ_DATES), ("sih_servicos_profissionais", SP_DATES)],
+    [
+        ("sih_aih_rejeitada", RJ_DATES),
+        ("sih_servicos_profissionais", SP_DATES),
+        (AN, AN_DEF_DATES),
+    ],
 )
-def test_rj_and_sp_dates_declare_the_format_the_fixtures_show(dataset, names) -> None:
+def test_rj_sp_and_an_dates_declare_the_format_the_fixtures_show(dataset, names) -> None:
     for name in names:
         field = _field(dataset, name)
         assert field["type"] == "date" and field["x-format"] == "yyyyMMdd", name
@@ -91,14 +100,15 @@ def test_rj_and_sp_dates_declare_the_format_the_fixtures_show(dataset, names) ->
 
 
 @pytest.mark.parametrize(
-    ("dataset", "fixture", "names"),
+    ("dataset", "fixture", "uf", "names"),
     [
-        ("sih_aih_rejeitada", "sih_rj_rr_2024_01_mini", RJ_DATES),
-        ("sih_servicos_profissionais", "sih_sp_rr_2024_01_mini", SP_DATES),
+        ("sih_aih_rejeitada", "sih_rj_rr_2024_01_mini", "RR", RJ_DATES),
+        ("sih_servicos_profissionais", "sih_sp_rr_2024_01_mini", "RR", SP_DATES),
+        (AN, "sia_an_pa_2014_10_mini", "PA", AN_DATES),
     ],
 )
 def test_the_observation_names_the_server_file_and_what_the_fixture_shows(
-    dataset, fixture, names, frames
+    dataset, fixture, uf, names, frames
 ) -> None:
     row = next(r for r in load_fixture_rows() if r["file"] == f"dbc/{fixture}.dbc")
     for name in names:
@@ -106,7 +116,7 @@ def test_the_observation_names_the_server_file_and_what_the_fixture_shows(
         assert observation["sha256"] == row["source_sha256"], name
         assert observation["url"] == row["source"], name
         assert observation["file"] == row["source"].rsplit("/", 1)[1], name
-        assert observation["field_name"] == name and observation["uf"] == "RR"
+        assert observation["field_name"] == name and observation["uf"] == uf
         values = _filled(frames[dataset], name)
         observed = observation["observed"]
         assert observed["pattern"] == "yyyyMMdd"
@@ -173,10 +183,129 @@ def test_rj_gestor_dt_stays_a_string_because_no_fixture_fills_it(frames) -> None
     assert {i["id"] for i in field["x-metadata"]["issues"]} == {"formato-sem-valor"}
 
 
-def test_check_columns_now_checks_the_rj_and_sp_dates(frames) -> None:
+@pytest.mark.parametrize(("name", "line"), sorted({**AN_DEF_DATES, "ap_dtocor": 79}.items()))
+def test_the_an_def_places_the_year_and_the_year_month_at_1_and_no_day(name, line) -> None:
+    """APAC_Nefrologia.DEF (TAB_SIA.zip, hash in ``vinculos.json``) binds the field at
+    position 1 to ANOMES2008.CNV and to ANO_2008.CNV, on the two lines the claim cites; no
+    line starts anywhere else, so the day is still only measured."""
+    text = (CNV / "sia/APAC_Nefrologia.DEF").read_bytes().decode("latin-1")
+    year_month, year = (parse_def(text.splitlines()[n - 1])[0] for n in (line, line + 1))
+    assert (year_month.field, year_month.start) == (name.upper(), 1)
+    assert (year.field, year.start) == (name.upper(), 1)
+    assert (year_month.table, year.table) == ("CNV/ANOMES2008.CNV", "CNV/ANO_2008.CNV")
+    assert {b.start for b in parse_def(text) if b.field == name.upper()} == {1}
+    claim = next(
+        c for c in _field(AN, name)["x-metadata"]["claims"] if c["target"] == "/field/format"
+    )
+    cited = "; ".join(
+        f"{b.kind}{b.label}, {b.field}, {b.start}, {b.table}" for b in (year_month, year)
+    )
+    assert claim["evidence"] == [
+        {
+            "source_id": "sia-tab-e5812b51d802",
+            "pages": [],
+            "locator": f"APAC_Nefrologia.DEF, linhas {line}-{line + 1}: {cited}",
+        }
+    ]
+
+
+def test_an_dtpdr_takes_the_format_the_informe_gives_and_the_def_has_no_line_for_it() -> None:
+    """Informe Técnico SIASUS 2019-07, p. 8, layout of ANUFAAMM.DBF: AN_DTPDR is the only
+    date whose format the AN layout writes. An agent read the page, so the claim stays
+    ``unreviewed``; the document is not packaged, and the fixture is what this test reads."""
+    field = _field(AN, "an_dtpdr")
+    assert field["type"] == "date" and field["x-format"] == "yyyyMMdd"
+    text = (CNV / "sia/APAC_Nefrologia.DEF").read_bytes().decode("latin-1")
+    assert not [b for b in parse_def(text) if b.field == "AN_DTPDR"]
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/format"]
+    assert claim["status"] == "unreviewed" and claim["reviewer"] is None
+    assert claim["method"] != "fixture-measure"
+    assert claim["evidence"] == [
+        {
+            "source_id": "siasus-70fe69dbd4cf",
+            "pages": [8],
+            "locator": 'AN_DTPDR CHAR (8): "Data (AAAAMMDD) da PRIMEIRA diálise realizada"',
+        }
+    ]
+    assert {i["id"] for i in field["x-metadata"]["issues"]} == {"data-implausivel"}
+
+
+@pytest.mark.parametrize("name", [*AN_DEF_DATES, "ap_dtocor"])
+def test_the_an_layout_of_the_informe_gives_no_format_to_the_ap_dates(name) -> None:
+    """Same page: the AN layout describes the five AP_DT* without a format, so the field
+    issue names the page and says so."""
+    (issue,) = [
+        i for i in _field(AN, name)["x-metadata"]["issues"] if i["id"].startswith("formato")
+    ]
+    assert "siasus-70fe69dbd4cf), p. 8" in issue["description"]
+    assert "não foi conferido" not in issue["description"]
+
+
+def test_an_ap_dtocor_takes_the_format_the_one_filled_record_of_anrr1401_shows(
+    frames, dbc_fixture
+) -> None:
+    """ANPA1410 leaves AP_DTOCOR blank in its 2 records; ANRR1401 fills it in 1 of 162."""
+    assert _filled(frames[AN], "ap_dtocor").len() == 0
+    fixture = "sia_an_rr_2014_01_mini"
+    frame = dbc_bytes_to_lazyframe(dbc_fixture(fixture).read_bytes(), dataset=AN).collect()
+    values = _filled(frame, "ap_dtocor")
+    assert frame.height == 162 and values.to_list() == ["20140129"]
+    field = _field(AN, "ap_dtocor")
+    assert field["type"] == "date" and field["x-format"] == "yyyyMMdd"
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/format"]
+    assert (claim["method"], claim["status"], claim["reviewer"]) == (
+        "fixture-measure",
+        "unreviewed",
+        None,
+    )
+    row = next(r for r in load_fixture_rows() if r["file"] == f"dbc/{fixture}.dbc")
+    (observation,) = field["x-metadata"]["observations"]
+    assert (observation["sha256"], observation["url"]) == (row["source_sha256"], row["source"])
+    assert (observation["file"], observation["uf"]) == ("ANRR1401.dbc", "RR")
+    assert observation["observed"] == {
+        "pattern": "yyyyMMdd",
+        "filled": 1,
+        "valid": 1,
+        "valid_min": "2014-01-29",
+        "valid_max": "2014-01-29",
+        "also_valid_as_ddMMyyyy": 0,
+    }
+    assert {i["id"] for i in field["x-metadata"]["issues"]} == {"formato-sem-documento"}
+
+
+def test_anrr1401_reads_the_five_other_an_dates_as_yyyymmdd_and_holds_two_implausible_ones(
+    dbc_fixture,
+) -> None:
+    """The 162 records fill the five dates with 8 digits that are valid yyyyMMdd dates, none
+    of them a ddMMyyyy date. Two values are valid and implausible for a file of 2014-01: an
+    authorization in 2043 and a first dialysis in 2016-11. Each field says so in an issue."""
+    raw = dbc_fixture("sia_an_rr_2014_01_mini").read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=AN).collect()
+    for name in AN_DATES:
+        values = _filled(frame, name)
+        assert values.len() == 162 and values.str.contains(r"^\d{8}$").all(), name
+        assert values.str.strptime(pl.Date, "%Y%m%d", strict=False).null_count() == 0, name
+        assert values.str.strptime(pl.Date, "%d%m%Y", strict=False).drop_nulls().len() == 0, name
+    after = {name: sorted(v for v in _filled(frame, name) if v > "20140228") for name in AN_DATES}
+    assert after == {
+        "ap_dtinic": [],
+        "ap_dtfim": ["20140331"] * 97,
+        "ap_dtsolic": [],
+        "ap_dtaut": ["20430101"],
+        "an_dtpdr": ["20161101"],
+    }
+    for name in ("ap_dtaut", "an_dtpdr"):
+        (issue,) = [
+            i for i in _field(AN, name)["x-metadata"]["issues"] if i["id"] == "data-implausivel"
+        ]
+        assert issue["status"] == "open" and after[name][0] in issue["description"], name
+
+
+def test_check_columns_now_checks_the_rj_sp_and_an_dates(frames) -> None:
     for dataset, names in (
         ("sih_aih_rejeitada", RJ_DATES),
         ("sih_servicos_profissionais", SP_DATES),
+        (AN, AN_DATES),
     ):
         report = sus.check_columns(dataset, frames[dataset]).rows_by_key(
             "column", named=True, unique=True

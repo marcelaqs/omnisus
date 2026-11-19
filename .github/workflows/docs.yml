@@ -6,8 +6,6 @@ on:
   push:
     tags: ["v*"]
   workflow_dispatch:
-  # Build (without deploying) on PRs, so a docs break is caught before merge.
-  pull_request:
 
 concurrency:
   group: docs-${{ github.ref }}

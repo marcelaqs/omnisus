@@ -103,7 +103,7 @@ def test_in_the_fixtures_only_three_files_have_a_field_staged_with_another_type(
         for name, kind in physical_arrow_types(dbc.decompress_bytes(raw)).items():
             if staged.field(name).type != kind:
                 differ.add((source.name, name, str(kind), str(staged.field(name).type)))
-    assert staged_files == 65
+    assert staged_files == 66
     assert differ == (
         {("RDAC0909.dbc", name, "int64", "double") for name in VALUES}
         | {("RDAC0909.dbc", name, "int64", "string") for name in TEXT}

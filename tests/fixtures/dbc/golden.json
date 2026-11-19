@@ -21,6 +21,7 @@
   "sia_am_rr_2024_01_mini.dbc": {"length": 534914, "sha256": "8340db4848de88e94e4444f6b81e5a8a4175c45d82bb438d5cc97b17d994fe21"},
   "sia_amp_df_2024_01_mini.dbc": {"length": 9689, "sha256": "63ae709eab3afc7ce98850f02d6807e415c256fa9374238ab0bdb30c2baef5cd"},
   "sia_an_pa_2014_10_mini.dbc": {"length": 2566, "sha256": "297e853ebf093d2db1efc0c1a3ecda8ac571cbee0453b0e657e1404117bf117c"},
+  "sia_an_rr_2014_01_mini.dbc": {"length": 48286, "sha256": "ec0682ce266abc12606ee7008481d5b50ce70c0bd5ab3f459d97f7fc9fa63d23"},
   "sia_aq_rr_2024_01_mini.dbc": {"length": 8471, "sha256": "fa6398c04d3da11a8e83751e78392d1b60e5e5d52981b24bff78af38d1a9b692"},
   "sia_ar_ac_2024_01_mini.dbc": {"length": 17495, "sha256": "8718d4e08131e5ce0e8ea03e6ef6aafe4bebc76f621ec444c72b5112660c1be1"},
   "sia_ar_sp_2022_12_excerpt.dbc": {"length": 2789, "sha256": "ef768c7f62804bc3ab986f6e7deb0d471b3b8352b41f823659571daa24a162c3"},

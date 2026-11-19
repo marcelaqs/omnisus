@@ -9,7 +9,7 @@
   no zeros to its left, and as a number with decimals when it is `number`. Nothing else
   is converted. Staged as published, such a field had one type in some files and another
   in the rest, and the lake refused whichever was imported second (`UnsafeSchemaError`).
-  Of the 65 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
+  Of the 66 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
   `num_proc` is `368` beside the `0489` of `RDRR9709`; `RDRR0407`, where `insc_pn` and
   `seq_aih5` are `0` in the 91 records of the fixture beside the `0000000000` and `000`
   of `RDRR0712` (#40); and `RDAC0909`, where 17 fields are `N1.0` (#219). In the headers
@@ -29,6 +29,114 @@
 
 ### Dictionaries
 
+- `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map seven other APAC
+  datasets carry (`2` Dias, `3` Meses, `4` Anos, `5` Anos (somar 100)), with a
+  `fixture-measure`, `unreviewed` claim and the open issue `ap_coidade-sem-tabela`:
+  `APAC_Nefrologia.DEF` lines 387-388 bind `AP_COIDADE` to `IDADEDET.CNV` and
+  `IDADE18.CNV`. `ANPA1410` publishes only `4`; `2`, `3` and `5` were not measured in
+  an AN file. `sus.label` now adds
+  `ap_coidade_rotulo` for this dataset (#183).
+- `sia_apac_nefrologia` (1.3.0): `ap_dtinic`, `ap_dtfim`, `ap_dtsolic`, `ap_dtaut` and
+  `an_dtpdr` are `date` with `x-format: yyyyMMdd`, each with the observation of the 2
+  records of `ANPA1410`. The Informe Técnico SIASUS 2019-07 (p. 8, layout of the AN)
+  writes `AAAAMMDD` only for `AN_DTPDR`, whose `/field/format` claim cites the page and
+  stays `unreviewed` (read by an agent). The four `ap_dt*` have no format in that layout:
+  their claim is `fixture-measure`, `unreviewed`, with the open issue
+  `formato-sem-documento`; `APAC_Nefrologia.DEF` places their year and year-month at
+  position 1 and has no line for the day. `ap_dtocor`, blank in both records, stays
+  `string` with the open issue `formato-sem-valor`. `check_columns` now checks the five
+  dates; the lake still stores them as published, as strings (#183).
+- `sia_apac_nefrologia` (1.4.0): the 60 fields of the AN layout of the Informe Técnico
+  SIASUS 2019-07 (section 3.4.3, pp. 7-9) carry the document's `description`, each with
+  a `/field/description` claim that quotes the row and stays `unreviewed` (read by an
+  agent). Those 60 rows are the first 60 fields of `ANPA1410`, with the same order, name,
+  type and width; `ap_natjur`, the 61st, is not in the layout and gets no description.
+  The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while
+  `ANPA1410` publishes `0` in the first and `1` in the second, codes `Invasao.CNV`
+  labels: both fields keep the CNV map and gain the open issue
+  `informe-diverge-do-arquivo` (#183).
+- `registry.json` registers the `TAB_SIA.zip` republished on 2026-10-15
+  (`sia-tab-1ce232b217c6`). The 49 members whose hash `vinculos.json` holds are identical
+  to those of `sia-tab-e5812b51d802`, so the packaged members stay on that edition;
+  `evidence/2026-11-18-tab-sia-republicado/` has the member census and what was not
+  compared (#183).
+- `sia_apac_nefrologia` (1.5.0): `ap_ufnacio` takes the 328 codes of `UFNACIO.CNV`
+  (`010` BRASIL, the value `ANPA1410` publishes), with a `cnv-parse` claim:
+  `APAC_Nefrologia.DEF` line 390 binds `AP_UFNACIO` to it. The member is packaged from
+  the `TAB_SIA.zip` republished on 2026-10-15 (`sia-tab-1ce232b217c6`). `sus.label` now
+  adds `ap_ufnacio_rotulo` for this dataset. The open issues of the five `ap_dt*`
+  fields now give the widths the same edition has for `ANO_2008.CNV` (4) and
+  `anomes2008.CNV` (6), which place the year in characters 1-4 (#183).
+- `sia_apac_nefrologia` (1.6.0), from a second real file, `ANRR1401` (162 records, new
+  fixture `sia_an_rr_2014_01_mini.dbc`, with `AP_CNSPCN` blanked): `ap_dtocor` is `date` with
+  `x-format: yyyyMMdd`, measured in the one record that fills it (`fixture-measure`,
+  `unreviewed`, open issue `formato-sem-documento` in place of `formato-sem-valor`).
+  The file has 60 fields, the 60 rows of the Informe layout, and no `AP_NATJUR`:
+  `ap_natjur` gains the open issue `ap_natjur-nem-sempre-publicado`. The issue of
+  `ap_coidade` now says `5` was measured in an AN file too. The file reads the five
+  other dates as `yyyyMMdd` in all 162 records; `ap_dtaut` (`20430101`) and `an_dtpdr`
+  (`20161101`) each hold one implausible date and gain the open issue
+  `data-implausivel` (#183).
+- `sia_apac_nefrologia` (1.7.0): `ap_cnspcn` carries `x-crypto: datasus-cns`, as it
+  does in five of the nine APAC dictionaries (the other four still declare the field
+  without the mark). The row of the AN layout (Informe, p. 8) names the field and does
+  not say it is ciphered; the mark is measured: `ANPA1410` fills the column in its 2
+  records, and `ANRR1401` as published in its 162, with 15 characters and no digit.
+  The fixture of `ANRR1401` blanks the column because the cipher is reversible, so the
+  test reads `ANPA1410` only. The library does not decipher the value (#183).
+- `sia_apac_nefrologia` (1.8.0): `ap_tippre` takes the 8 codes of `TIPOPRES.CNV`
+  (`61` FILANTROPICO COM CNAS VALIDO in `ANPA1410`, `20` PRIVADO COM FINS LUCRATIVOS in
+  `ANRR1401`), with a `cnv-parse` claim: `APAC_Nefrologia.DEF` line 220 binds
+  `AP_TIPPRE` to it. Lines 216-218 bind the same field to `ESFERA.CNV` and
+  `ESFERA_C.CNV`, which are not used: `ESFERA_C.CNV` groups the codes into four spheres,
+  and `ESFERA.CNV` has those four rows plus one row, with another wording, for each of
+  `20`, `22`, `60`, `61` and `80`. The field's open issue `def-liga-outra-tabela` records
+  the choice. The member is packaged from the `TAB_SIA.zip` republished on 2026-10-15
+  (`sia-tab-1ce232b217c6`). `sus.label` now adds `ap_tippre_rotulo` for this dataset
+  (#183).
+- `sia_apac_nefrologia` (1.9.0), from a census of the 2,145 `AN*.dbc` files the server
+  lists (6,534,272 records, `evidence/2026-11-18-censo-sia-an/`): no map and no type
+  changes; the open issues of the fields now carry what was counted. `ap_coidade`:
+  `2`, `3` and `5` are counted in AN files, and `0` (18 records) has no label (new
+  issue `codigo-sem-rotulo`). `ap_ufnacio`: 202 records hold a value `UFNACIO.CNV` does
+  not label (new issue `codigo-sem-rotulo`). `ap_natjur`: the field is in the 27 files
+  of 2011-12 and in `ANPA1410`, empty in 87,203 records and filled in 2. `ap_mndif` is
+  `1` in every record and `ap_ufdif` only `0` or `1`; the `SIMNAO.CNV` of `TAB_SIA.zip`,
+  now read, labels `S` and `N`, which no AN file publishes in either field. The six
+  dates say how many filled values read as `yyyyMMdd` in any year; `ap_dtsolic`,
+  `ap_dtaut` and `an_dtpdr` say how many do not, and how many files have a year outside
+  1900-2100 or after 2015 (issue `data-implausivel`, new in `ap_dtsolic`). `an_albumi`
+  and `an_hb` gain the open issue `escala-sem-documento`, with the records that hold
+  integer zero, integers from 1 to 9, integers from 10 to 99 and text such as `3,`; no
+  source read says the scale (#183).
+- `ap_natjur` takes the map of `natjurc.cnv` in nine APAC dictionaries:
+  `sia_apac_quimioterapia`, `sia_apac_medicamentos`, `sia_apac_laudos_diversos`,
+  `sia_apac_cirurgia_bariatrica` and `sia_apac_tratamento_dialitico` (0.5.0),
+  `sia_apac_radioterapia` (1.4.0), `sia_apac_fistula_arteriovenosa` (1.3.0),
+  `sia_apac_acompanhamento_bariatrica` (1.1.0) and `sia_apac_nefrologia` (1.10.0).
+  - The binding. `APAC_Dados_Comuns.DEF` (files `A?*.DBC`), now packaged, binds
+    `AP_NATJUR` to `NATJURC.CNV` on lines 204-205. The DEF of seven of the datasets
+    writes `AP_NAT_JUR`, and those of ACF and ATD have no line for the field, so
+    `vinculos.json` names the common DEF for this field in the new key `def_do_campo`.
+    `gerar_decode_cnv.py` refuses the key for a field a DEF of the dataset binds.
+  - What supports it. The mask of a DEF alone does not say a file follows it (issue
+    `amp-sem-def`). Here the published field has the name the line writes, and in a
+    census of 9,527 files of the nine other APAC datasets
+    (`evidence/2026-11-19-apac-ap-natjur/`) no field is named `AP_NAT_JUR` and each of
+    the 28 values of the 2,276,452 filled records is a code of the table. AD, AM, AQ, AR
+    and ATD were read in RR, AC and AP only; AN has 2 filled records. Each dictionary
+    gains the open issue `ap_natjur-nem-sempre-publicado` with its own counts and the
+    months whose files have no such field.
+  - The table. The same DEF binds the field to `NATJUR.CNV` too, which the CNV reader
+    refuses; the 97 code labels of the two members are the same. The map has those 97
+    codes and the literal key `    -zzzz`, which is how the reader keeps the code of the
+    line "Não especificado ou ignorado"; no four-character value matches it, so an empty
+    `ap_natjur` has no label.
+  - Not touched. `sia_apac_acompanhamento_multiprofissional`: 899 of its 903 files have
+    the field, always empty. `pa_nat_jur` (PA) and `nat_jur` (RAAS, SAD), which their own
+    DEF binds to the same tables, and `nat_jur` of the SIH wait for the choice of table
+    of #7.
+  - `sus.label` now adds `ap_natjur_rotulo` for the nine datasets (#183).
 - `sih_aih_reduzida` (2.20.1): 110 fields take the `description` that Table 1 of
   `IT_SIHSUS_1603.pdf` prints for them, each with a `/field/description` claim
   (`pdf-read`, `verified_in_source`) that names the page and quotes the row;
@@ -185,6 +293,109 @@
 - The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
+
+### Dictionaries
+
+- `seriescfal`, `seriescmae` and `versaoscb` of `sim_obitos` (and of the three SIM subsets,
+  generated from it) gain the code map of the CNV that `Obito_1996_CID10.def` binds each to:
+  `SERIEFAL.CNV` for the two school grades, `VERSCB.CNV` for the SCB version. Both tables were
+  already packaged and `sim_obitos_fetais` already used them. The claims are `cnv-parse`, written
+  by `gerar_decode_cnv.py`; in DORR2022 and DORR2023 every value of the three fields is a key of
+  its table. `SERIEFAL.CNV` also lists `0` and `9` (`Ign`), which the Estrutura do SIM does not:
+  it says "Números de 1 a 8" for both fields, and no fixture holds `0` or `9`; the open issue
+  `seriefal-cnv-lista-0-e-9` records it on each field. The DEF lines of the two grades begin
+  with a lowercase `x`, and TabWin.pdf (p. 87) does not list `X`, in either case, among the
+  functions of a DEF line: the open issue `def-liga-por-linha-x` says so. The same holds for
+  the other maps `Obito_1996_CID10.def` binds by an `X` line, `versaoscb` among them. Versions: `sim_obitos` 2.9.0, the three
+  subsets 1.4.0 (#184).
+- 81 fields of `sim_obitos` have the `description` an official layout document gives them, each
+  with a `/field/description` claim that cites the page: 75 from the Estrutura do SIM of 07/2025
+  (`sim-b4195ac8e0f8`); `origem`, `tpobitocor` and `cb_pre` from the edition of 12/2019
+  (`sim-b014389eca62`); `numerodo` and `ufinform` from the structure of the 2006 file
+  (`sim-anterior-13cabba0b9a1`); `nudiasobin` from the dictionary of the DOM table
+  (`sim-dom-fb396a277981`). The reading was made by an agent: the claims are `unreviewed`, with
+  no reviewer. Two of the 81 replace a description that had no source: `natural` no longer says
+  "código do país" and `peso` no longer says "(óbito fetal/menor 1 ano)", which the document
+  does not say. The seven fields none of the four documents describes (`tp_altera`, `contador`,
+  `estabdescr`, `fontesinf`, `nudiasinf`, `covid_clas`, `mat_clas`) keep `description: null` with
+  a `not_found` claim.
+- The label of `nudiasobco` changes from "Dias óbito-codificação" to "Dias óbito-conclusão da
+  investigação", which is what the editions of 07/2025 (p. 7) and 12/2019 (p. 8) and the
+  dictionary of the DOM table (p. 2) say the field is.
+- Three open issues record where the files and the document differ: `horaobito` (the document
+  says 5 characters, `00:00`; the files write 4 digits), `tppos` (the document says `1 – sim;
+  2 – não`; the files write `S`, `N` or blank, the keys of `INVESTIG.CNV`) and `codestab` (the
+  edition of 07/2025 says 8 characters; the files write 7 digits, as the structure of the 2006
+  file says). The `/field/codes` claim of `origem` now cites the edition of 12/2019 first,
+  which writes `1`, `2`, `3` and `9`, the form of the map; the fixtures hold only `1` and `2`.
+  The issue of `esc2010` and `escmae2010` no longer says `ESCSERIE.CNV` is missing from
+  `OBITOS_CID10_TAB.zip`: it is there, cited by a commented line of `Obito_1996_CID10.def` and
+  by the DEF of the infant and maternal subsets. `registry.json` records the edition of
+  `Estrutura_SIM_para_CD.pdf` (12/2019), that `Estrutura_SIM_Anterior.pdf` holds the layout of
+  2006 and the one up to 2005, and that the five SIM sources read here were hashed again on
+  2026-11-18. The three SIM subsets are regenerated. Versions: `sim_obitos` 2.10.0, the three
+  subsets 1.5.0 (#184).
+
+- 24 `/field/codes` claims of `sim_obitos` written by `gerar_decode_cnv.py` change from
+  `conflicting` to `verified_in_source`, and the issue `cnv-difere-do-mapa-anterior` of each
+  field is `resolved`: the map in force was already the one of the CNV, and the map it replaced
+  had no claim. The issue keeps the older labels, some of which are the spelling of the
+  Estrutura do SIM (`Cesáreo` where `PARTO.CNV` says `Cesário`). Two stay `conflicting`, where
+  the document and the CNV say different things: `tppos` (the document lists `1` and `2`,
+  which `INVESTIG.CNV` does not) and `atestante` (the document calls `1` "Assistente",
+  `ATESTANT.CNV` calls it "Sim"). No code or label changes. Versions: `sim_obitos` 2.11.0, the three subsets 1.6.0 (#184).
+
+- **Labels changed:** `esc2010` and `escmae2010` of `sim_obitos` (and of the three SIM subsets)
+  take the labels the Estrutura do SIM of 07/2025 writes (p. 2 and 3): `1` is "Fundamental I
+  (1ª a 4ª série)", not "Fundamental I (1-5 ano)"; `2` is "Fundamental II (5ª a 8ª série)", not
+  "Fundamental II (6-9 ano)"; `3` is "Médio (antigo 2º Grau)", not "Médio". The older labels
+  had no source; the edition of 12/2019 and the dictionary of the DOM table print the same
+  text, and `ESCSERIE.CNV` the same categories in another spelling (`Fundamental II(5ª a 8ª
+  serie)`, `Medio (antigo 2º Grau)`). `Obito_1996_CID10.def` binds the two fields to
+  `ESCCICLO.CNV`, which no downloaded file has, so the map is read from the document. `esc2010_rotulo` and `escmae2010_rotulo` change accordingly. The
+  claims go from `conflicting` to `unreviewed` (an agent read the page) and the issues are
+  `resolved`. Versions: `sim_obitos` 2.12.0, the three subsets 1.7.0 (#184).
+
+- `sim_obitos_externos`, `sim_obitos_infantis` and `sim_obitos_maternos` no longer declare
+  that `idade` derives `idade_anos_completos`, `idade_status`, `idade_quantidade` and
+  `idade_unidade`. They have no `x-analytics`, so `sus.load` never created those columns in
+  them (ADR 0003); `gerar_subconjuntos_sim.py` copied the declaration from `sim_obitos` and now
+  leaves it out. Nothing `sus.load` returns changes; `describe_dataset(subset)` now gives
+  `derivation: None` for `idade`, and the subset's `metadata_hash` changes with it. The
+  `applicability` text of the copied fields still points at `validated_sources`, which a
+  subset does not have. Validating DOEXT, DOINF and DOMAT files so
+  the subsets can have the age rule stays open in #177. Versions: the three subsets 1.8.0.
+
+- `ocupmae` of `sim_obitos` (and of the three SIM subsets) declares the reference `ocup`
+  already had: `aux_ocupacoes`, scheme `cbo2002`, from 2006. `Obito_1996_CID10.def` binds
+  `OCUPMAE` to `CBO2002.CNV` (lines 331 and 332), and the DORR of each year from 1996 to 2024 writes
+  `ocupmae` with 5 characters until 2005 and 6 digits from 2006. `ocup` does the same, except
+  nine values of DORR2006 with 5 digits, which are the 5-digit form `aux_ocupacoes` keeps for
+  CBO 2002 codes that start with 0. From 2006 on every filled `ocupmae` of those files is a
+  `cbo2002` code of the table. Only Roraima was measured here.
+  `sus.reference_join_sql("sim_obitos", "ocupmae")` now returns the join. Versions: `sim_obitos`
+  2.13.0, the three subsets 1.9.0 (#184).
+
+- **Fields removed:** `covid_clas` and `mat_clas` leave `sim_obitos`. None of the four
+  registered layout documents lists them and none of the 1,011 files read carries them:
+  `evidence/2026-11-18-sim-colunas-do/` has the columns of every `DO` file of `SIM/CID10/DORES`
+  (1996 to 2024), `SIM/PRELIM/DORES` (2025 and 2026), `SIM/CID10/DOFET` and `SIM/PRELIM/DOFET`,
+  read from the DBF headers on 2026-11-18. `sim_obitos` no longer declares `numerodo` as
+  primary key: none of the 868 `DO<UF><year>` files carries the column. `numerodo`, `opor_do`,
+  `tp_altera` and `cb_alt`, which a layout document describes and no `DO<UF><year>` file
+  carries, stay declared, each with an open issue that cites the evidence; `DOREXT21.dbc`,
+  which omnisus does not import, is the one file with `NUMERODO`, `TP_ALTERA` and `CB_ALT`.
+  The issue of `ufinform` is resolved: the column is in the headers from 2002 to 2010. Versions:
+  `sim_obitos` 2.14.0 (#184).
+
+- `evidence/2026-11-18-sim-valores-do/` counts the values of every coded field of `sim_obitos`
+  in 186 DO files: six UF in every year from 1996 to 2024 and four more in 2006, 2015 and
+  2023 (2,557,540 records, each file with its SHA-256). The open issues of `tppos`,
+  `horaobito`, `codestab`, `seriescfal` and `seriescmae` now cite it: `tppos` is never `1` or
+  `2`; `horaobito` has 4 digits in 2,185,721 records, another shape in 1,324 and never
+  `00:00`; `codestab` has 7 digits in every filled record but one; no record holds the `0` or
+  `9` of `SERIEFAL.CNV`. A test lists the 17 fields whose files hold a value
+  the map does not label. Versions: `sim_obitos` 2.15.0, the three subsets 1.10.0 (#184).
 
 ## v0.3.0 — 2026-11-17
 
