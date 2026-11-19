@@ -41,21 +41,26 @@
   them. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
   `aux_municipios`, where `140000` is "Município ignorado - RR" (#182).
   (#182).
-- `sih_aih_reduzida` (2.23.0): 28 labels now come from a registered document, each with
-  a `/field/label` claim. Nine are the words of `IT_SIHSUS_1603.pdf`: `ano_cmpt` and
-  `mes_cmpt` ("Ano/Mês de processamento da AIH", not "competência"), `qt_diarias`,
-  `us_tot`, `cobranca`, `ind_vdrl`, `gestrisco`, `gestor_tp` and `cid_notif` ("CID de
-  Notificação", not "notificação compulsória"). The 19 fields that document describes
-  only as "Zerado" take the description of `Layout_REDUZIDA.pdf`, the layout of the same
-  file until 2007-12 (`sihsus-f6084d22de30`, transcribed in
-  `evidence/2026-11-18-layout-reduzida-sihd/`), and an open issue
-  `rotulo-do-layout-ate-2007` that says the label is of the earlier period. Seven of them
-  said something else: `val_sadtsr` was "Valor tomografia/ressonância" and is "Valor de
-  SADT sem rateio"; `val_obsang`, `val_ped1ac`, `cpf_aut` and the three `uti_int_*`
-  ("UCI") changed too. `cid_notif` declares the reference to `aux_cid10`: `RD2008.DEF`
-  (lines 523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all
-  `Z302`, find their row; the open issue `cid_notif-laqueadura-no-def` records that the
-  DEF calls the field "CID laqueadura" (#182).
+- `sih_aih_reduzida` (2.23.1): 28 labels now come from a registered document, each with
+  a `/field/label` claim; 27 change their text and `num_proc` keeps it. Nine are the
+  words of `IT_SIHSUS_1603.pdf`: `ano_cmpt` and `mes_cmpt` ("Ano/Mês de processamento da
+  AIH"), `qt_diarias`, `us_tot`, `cobranca`, `ind_vdrl`, `gestrisco`, `gestor_tp` and
+  `cid_notif` ("CID de Notificação", not "notificação compulsória"). The 19 fields that
+  document describes only as "Zerado" take the description of `Layout_REDUZIDA.pdf`
+  (`sihsus-f6084d22de30`, transcribed in `evidence/2026-11-18-layout-reduzida-sihd/`),
+  whose 75 fields are those of the RD files read from 2006-04 to 2007-12, and an open
+  issue `rotulo-do-layout-ate-2007` that says the label is of that period. Examples:
+  `val_sadtsr` was "Valor tomografia/ressonância" and is "Valor de SADT sem rateio";
+  `val_obsang` was "Valor analgesia obstétrica" and is "Valor de anestesia"; the three
+  `uti_int_*` said "UCI" and say "Dias em UTI ... (tipo ato = 34 ou 56)", while
+  `IT_SIHSUS_1603` calls their total "unidade intermediaria", which their issue records.
+  Where `IT_SIHSUS_1603` describes a field its text is used, even where the earlier
+  layout said otherwise ("ANO COMPETÊNCIA", "MOTIVO DE COBRANCA", "GESTANTE DE ALTO
+  RISCO"). `cid_notif` declares the reference to `aux_cid10`: `RD2008.DEF` (lines
+  523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all `Z302`,
+  find their row; the open issue `cid_notif-laqueadura-no-def` records that the DEF
+  calls the field "CID laqueadura". Other labels of the dictionary still have no claim
+  (#182).
 
 ### omnisus-dbf 0.2.2
 

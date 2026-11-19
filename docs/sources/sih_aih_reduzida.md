@@ -271,9 +271,13 @@ Passo a passo com análise e procedência:
   `f6084d22de3011fd9d2f490736e6d0469c45ac3ccc45be56f4e5c0ad564cb13d`. Está transcrito em
   `evidence/2026-11-18-layout-reduzida-sihd/layout.csv`. Os 19 campos que o informe de
   2016 descreve só como "Zerado" levam como rótulo o texto deste layout anterior (por
-  exemplo `val_sadtsr`, "Valor de SADT sem rateio"): o rótulo diz o que o campo era até
-  2007, e o campo vem zerado ou em branco nos arquivos de 2008 em diante. Cada um traz a
-  issue `rotulo-do-layout-ate-2007`.
+  exemplo `val_sadtsr`, "Valor de SADT sem rateio"): o rótulo diz o que o campo era em
+  2006 e 2007, os meses em que os arquivos RD lidos têm exatamente os 75 campos do
+  documento. Em RDRR2401 os 17 numéricos são 0 em todas as linhas e os dois de texto vêm
+  em branco; nenhum arquivo de 2008 a 2021 foi lido para esses campos. Cada um traz a
+  issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
+  texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
+  COMPETÊNCIA" e é "Ano de processamento da AIH").
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos
