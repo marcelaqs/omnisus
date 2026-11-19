@@ -2,10 +2,11 @@ name: sia_apac_nefrologia
 title: SIASUS — APAC de Nefrologia (AN)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.1.1
+x-version: 1.8.0
 x-source-format: dbc
 x-evidence:
-  physical_schema: sia_an_pa_2014_10_mini.dbc, 61 fields; observed 2026-09-23
+  physical_schema: sia_an_pa_2014_10_mini.dbc, 61 fields, observed 2026-09-23; sia_an_rr_2014_01_mini.dbc,
+    the first 60 of them (no AP_NATJUR), observed 2026-11-18
   semantic_status: Physical inventory. Category maps only where a TabWin CNV binds the
     field and decodes every non-blank value of the fixture (vinculos.json); no inferred
     mappings.
@@ -15,8 +16,23 @@ schema:
   fields:
   - name: ap_mvm
     type: string
+    description: 'Data de Processamento / Movimento (AAAAMM)'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ee34457a6d9f10012f729d952fdcc9d6ee0daab6d7eafb92676f5ad5e94502c1
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [7]
+          locator: 'Seção 3.4.3, SEQ 1, AP_MVM CHAR (6)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_condic
     type: string
+    description: 'Sigla do Tipo de Gestão no qual o Estado ou Município está habilitado'
     x-decode:
       EC: EC Estado Convencional
       EP: EP Estado Pleno
@@ -27,6 +43,17 @@ schema:
       PG: PG Pacto de Gestão
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 91d68295363684ca853ad0e5f6450c431b04adfa2c49efb49d3cec90a1f50701
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [7]
+          locator: 'Seção 3.4.3, SEQ 2, AP_CONDIC CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 72f3ca35c0ecc8e4db4af7064ff53b13ef82152293010c35bdc942fb930b930c
         status: verified_in_source
@@ -40,20 +67,119 @@ schema:
         note: Mapa do CNV.
   - name: ap_gestao
     type: string
+    description: 'Código da Unidade de Federação + Código Município de Gestão ou UF0000 se a Unidade está sob Gestão Estadual'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ca52786915b75e6fca4cbb276f331e3bc2e7eecfd2956e605b1d98e542d19ea9
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [7]
+          locator: 'Seção 3.4.3, SEQ 3, AP_GESTAO CHAR (6)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_coduni
     type: string
+    description: 'Código do Estabelecimento no CNES (Cadastro Nacional de Estabelecimentos de Saúde)'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 6ae1a269cf9a5d6fc5584c43d8aa35d710c342610998ea542d7d144422ec3d17
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 4, AP_CODUNI CHAR (7)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_autoriz
     type: string
+    description: 'Número da APAC. Lei de formação: UFAATsssssssd, onde UF – Unid. da Federação, AA – ano, T – tipo, sssssss – sequencial, d – dígito'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 8162d111ab103097d6ee93a880f2408a9fcdca4878d39265ff1b2bd15663d29f
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 5, AP_AUTORIZ CHAR (13)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_cmp
     type: string
+    description: 'Data de Atendimento ao paciente / Competência (AAAAMM)'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 35dceff87920c0f6a290b38656778cb15540a45b6ca16ebec105bd26aaae0e5b
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 6, AP_CMP CHAR (6)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_pripal
     type: string
+    description: 'Procedimento Principal da APAC'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ef83b17bf3926b4f69e48a67f58947e009c0bafcb126dc2a34afeeb587e9a177
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 7, AP_PRIPAL CHAR (10)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_vl_ap
     type: number
+    description: 'Valor Total da APAC Aprovado'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 791364861f9b1dcd7f09a6c9a5dfddfdd3540834dc8e54da19ad64aebfd06d0c
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 8, AP_VL_AP NUMERIC (20.2)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_ufmun
     type: string
+    description: 'Código de Unidade da Federação + Código do Município do Estabelecimento'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 8f7ef54275df2949357a21f3d78bbc4d0c48775315dfe8c0698a8da4e799df48
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 9, AP_UFMUN CHAR (6)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_tpups
     type: string
+    description: 'Tipo de Estabelecimento'
     x-decode:
       '  -99': TIPO ESTABELECIMENTO NÃO INFORMADO
       '01': POSTO DE SAUDE
@@ -99,6 +225,17 @@ schema:
       '81': CENTRAL DE REGUALAÇÃO
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 309a7c1526bf358dab4d143d4a68bfc9a3c70dbbff9889d77519f033a64a691f
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 10, AP_TPUPS CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: cd03c42b858f4512695cf4b2d86473ab5aba4012a81b25f19d7c999b746a202f
         status: verified_in_source
@@ -112,13 +249,64 @@ schema:
         note: Mapa do CNV.
   - name: ap_tippre
     type: string
+    description: Tipo de Prestador
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 37cb5d23584ac000eef48e0118d5bd14686944cc3845db19aa696a2f020dca2d
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial, feita por agente; sem revisor humano
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages:
+          - 8
+          locator: Seção 3.4.3, SEQ 11, AP_TIPPRE CHAR (2)
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/codes
+        value_sha256: 7f2226900a7d6bc4eed2793bf609ea11df301ed913c2e73095ddc34908864428
+        status: verified_in_source
+        checked_at: '2026-11-18'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sia-tab-1ce232b217c6
+          pages: []
+          locator: 'APAC_Nefrologia.DEF: XTipo Prestador, AP_TIPPRE, 1, CNV/TIPOPRES.CNV; CNV/TIPOPRES.CNV'
+        note: Mapa do CNV.
+      issues:
+      - id: def-liga-outra-tabela
+        status: open
+        description: 'O APAC_Nefrologia.DEF liga AP_TIPPRE a três tabelas: TIPOPRES.CNV (linha 220, prefixo X), ESFERA.CNV (linhas 216 e 218, prefixos D e S) e ESFERA_C.CNV (linha 217, prefixo C). O mapa é o do TIPOPRES.CNV, que tem uma linha para cada um dos 8 códigos. O ESFERA_C.CNV agrupa os mesmos códigos em 4 esferas (Federal 30, Estadual 40, Municipal 50, Privada 20,22,60,61,80). O ESFERA.CNV tem essas 4 linhas e mais uma, com outra redação, para cada um de 20, 22, 60, 61 e 80, sob a linha da esfera privada; esses rótulos e os nomes das esferas não entram no mapa. O significado dos prefixos das linhas do DEF não foi lido.'
+    x-decode:
+      '20': PRIVADO COM FINS LUCRATIVOS
+      '22': PRIVADO OPTANTE PELO SIMPLES
+      '30': PUBLICO FEDERAL
+      '40': PUBLICO ESTADUAL
+      '50': PUBLICO MUNICIPAL
+      '60': PRIVADO SEM FINS LUCRATIVOS
+      '61': FILANTROPICO COM CNAS VALIDO
+      '80': SINDICATO
   - name: ap_mn_ind
     type: string
+    description: 'Estabelecimento Mantido / Individual'
     x-decode:
       I: Individual
       M: Mantida
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 79e2d78a7e8cf48f9449f5cae88c7ab28937de5b6ca92d6f6fa5d2f6ce3bf617
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 12, AP_MN_IND CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: ed2c4ff4dd32b1a26949333be7166d041d821686abb6546494a31a3621f83697
         status: verified_in_source
@@ -132,16 +320,113 @@ schema:
         note: Mapa do CNV.
   - name: ap_cnpjcpf
     type: string
+    description: 'CNPJ do Estabelecimento executante'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: b485519399b8f579003c86ed5d840d7c6c9c0819b1070543d0588d0380e5d484
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 13, AP_CNPJCPF CHAR (14)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_cnpjmnt
     type: string
+    description: 'CNPJ MANTENEDORA'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: e511c2156319728fe63b4345c16ff638d3b62f92d8e98af31d609e029d9b04fb
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 14, AP_CNPJMNT CHAR (14)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_cnspcn
     type: string
+    description: 'Número do CNS (Cartão Nacional de Saúde) do paciente'
+    x-crypto: datasus-cns
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 821d96eab1d0bcf50ab27546fc6536c361f086b75a7a09ba015f6730dcc4802d
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 15, AP_CNSPCN CHAR (15)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_coidade
     type: string
+    description: 'Código da Idade'
+    x-decode:
+      '2': Dias
+      '3': Meses
+      '4': Anos
+      '5': Anos (somar 100)
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 064f8294576283febf27c02e5035196837779c2849debb7d4a2d5f0cffb14a36
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 16, AP_COIDADE CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/codes
+        value_sha256: 83616371dedaa6efde39e6aa288ca9c043d7a29fcef25633a2fa65a3d37952e0
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: fixture-measure
+        reviewer: null
+        evidence:
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 387-388: AP_COIDADE, 1, CNV/IDADEDET.CNV e CNV/IDADE18.CNV'
+        note: 'Só ''4'' e ''5'' foram medidos em arquivo AN; o mapa é o de AQ (issue ap_coidade-sem-tabela). Os CNV leem 3 caracteres, AP_COIDADE seguido de AP_NUIDADE; nenhuma tabela rotula o código de 1 caractere.'
+      issues:
+      - id: ap_coidade-sem-tabela
+        status: open
+        description: '''4'' foi medido no ANPA1410 (2 linhas) e no ANRR1401 (161 linhas), e ''5'' no ANRR1401 (1 linha); ''2'' e ''3'' vêm do mapa de AQ e não foram medidos em arquivo AN; ''0'', se aparecer, fica sem rótulo.
+          Nenhuma tabela rotula o código de 1 caractere: IDADEDET.CNV e IDADE18.CNV (TAB_SIA), ligados a AP_COIDADE em todos os DEF de APAC, leem 3 caracteres,
+          AP_COIDADE seguido de AP_NUIDADE. No IDADEDET.CNV, ''000'' e ''999'' são ''Idade inválida'' e 500 a 530 são 100 a 130 anos, e por isso ''5'' é ''Anos (somar 100)'';
+          o IDADE18.CNV põe 100 a 312 e 400 em ''<1a'', 401 a 599 em faixas de anos e o que sobra de 000 a 999 em ''Ign''. O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN,
+          descreve AP_COIDADE como CHAR (1), ''Código da Idade'', sem códigos. O mapa é o de AQ: APAC_Nefrologia.DEF (linhas 387-388) liga AP_COIDADE aos mesmos
+          IDADEDET.CNV e IDADE18.CNV que APAC_Quimioterapia.DEF (linhas 416-417).'
   - name: ap_nuidade
     type: string
+    description: 'Número da Idade'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: c21053e519aed5427590daf5ec590236ab2037b0f87e8ff813b20cf63398df08
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 17, AP_NUIDADE CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_sexo
     type: string
+    description: 'Sexo do paciente'
     x-decode:
       ? ''
       : Não exigido
@@ -150,6 +435,17 @@ schema:
       M: Masculino
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: cc1130c7d8eb7c2b015b9e30b207ee6f8fa4b1addc6cb666deadbdae11cf65d2
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 18, AP_SEXO CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 7fee0ffdb9777cfb61481409bb715059d63990a439b59979623692f27044f97f
         status: verified_in_source
@@ -163,6 +459,7 @@ schema:
         note: Mapa do CNV.
   - name: ap_racacor
     type: string
+    description: 'Raça/Cor do paciente: 01 - Branca, 02 - Preta, 03 - Parda, 04 - Amarela, 05 - Indígena, 99 - Sem informação'
     x-decode:
       ? ''
       : SEM INFORMAÇÃO
@@ -183,6 +480,17 @@ schema:
       DE: RAÇA/COR  (OUTROS INDEVIDOS)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 313e8801a7339601ce793ebb09b398cc75a5b65ee4af9ee670ba352c495d42ed
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 19, AP_RACACOR CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 11f9e1a29e3a04fb0a890a686809c331693322d2b5badf0fc35f78a4b193f082
         status: verified_in_source
@@ -196,12 +504,396 @@ schema:
         note: Mapa do CNV.
   - name: ap_munpcn
     type: string
+    description: 'Código da UF + Código do Município de Residência do paciente'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: e0825636c523e72b12a76148a8a14a03140c7dd762cef6eae2eef9ecb4565957
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 20, AP_MUNPCN CHAR (6)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_ufnacio
     type: string
+    description: Nacionalidade do paciente
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 2a32aa92ebdc80f5911a9329516ecc07c7eb86d5374b5c3afea3878b265f052a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: Leitura do PDF oficial, feita por agente; sem revisor humano
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages:
+          - 8
+          locator: Seção 3.4.3, SEQ 21, AP_UFNACIO CHAR (3)
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/codes
+        value_sha256: 470f7ae9682858dd0cbcde5ac2c7b7de6a25e85a91fba4c49ffe3d453f35718d
+        status: verified_in_source
+        checked_at: '2026-11-18'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sia-tab-1ce232b217c6
+          pages: []
+          locator: 'APAC_Nefrologia.DEF: XNacionalidade, AP_UFNACIO, 1, CNV/UFNACIO.CNV; CNV/UFNACIO.CNV'
+        note: Mapa do CNV.
+    x-decode:
+      '010': BRASIL
+      '021': ARGENTINA
+      '022': BOLIVIA
+      '023': CHILE
+      '024': PARAGUAI
+      '025': URUGUAI
+      '026': COLOMBIA
+      '027': EQUADOR
+      '028': ANTIGUA E. DEP. BARBUDA
+      '029': ANTILHAS HOLANDESAS
+      '030': ALEMANHA
+      '031': BELGICA
+      '032': GRA-BRETANHA
+      '033': ARUBA
+      '034': CANADA
+      '035': ESPANHA
+      '036': ESTADOS UNIDOS DA AMERICA (EUA)
+      '037': FRANCA
+      '038': SUICA
+      '039': ITALIA
+      '040': COMUNIDADE DAS BAHAMAS
+      '041': JAPAO
+      '042': CHINA
+      '043': COREIA
+      '044': BARBADOS
+      '045': PORTUGAL
+      '046': BELIZE
+      '047': ILHAS TURKS E CAICOS
+      '051': COSTA RICA
+      '052': CUBA
+      '053': CURACAO
+      '054': COMUNIDADE DOMINICANA
+      '055': REPUBLICA DOMINICANA
+      '056': REPUBLICA DE EL SALVADOR
+      '057': ESTADOS ASSOC. DAS ANTILHAS
+      '058': ILHAS FALKLANDS
+      '059': GRANADA
+      '060': ILHAS GUADALUPE
+      '061': GUATEMALA
+      '062': REPUBLICA DO HAITI
+      '063': HONDURAS BRITANICAS
+      '064': HONDURAS
+      '065': ILHAS SERRANAS
+      '066': JAMAICA
+      '067': ILHAS MALVINAS
+      '068': MARTINICA
+      '069': ILHA MILHOS
+      '070': MONTE SERRAT
+      '071': NICARAGUA
+      '072': PANAMA
+      '073': PANAMA(ZONA DO CANAL)
+      '074': PORTO RICO
+      '075': QUITASUENO
+      '076': RONCADOR
+      '077': SANTA LUCIA
+      '078': SAO CRISTOVAO
+      '079': SAO VICENTE
+      '080': ILHAS TURCA
+      '081': ILHAS VIRGENS BRITANICAS
+      '082': ILHAS VIRGENS AMERICANAS
+      '083': BERMUDAS
+      '084': GROENLANDIA
+      '085': MEXICO
+      '086': ST. PIERRE ET MIQUELON
+      '087': GUIANA FRANCESA
+      '088': REPUBLICA GUIANA
+      '089': PERU
+      '090': SURINAME
+      '091': TRINIDAD E TOBAGO
+      '092': VENEZUELA
+      '093': ALBANIA
+      '094': ANDORRA
+      '095': AUSTRIA
+      '096': BULGARIA
+      '097': CHIPRE
+      '098': DINAMARCA
+      '099': EIRE
+      '100': ESCOCIA
+      '101': ILHAS FAROES
+      '102': FINLANDIA
+      '103': GIBRALTAR
+      '104': GRECIA
+      '105': HOLANDA
+      '106': HUNGRIA
+      '107': ILHAS BALEARES
+      '108': ILHAS COSMOLEDO (LOMORES)
+      '109': ILHAS DO CANAL
+      '110': INGLATERRA
+      '111': IRLANDA DO NORTE
+      '112': IRLANDA
+      '113': ISLANDIA
+      '114': IUGOSLAVIA
+      '115': LIECHTENSTEIN
+      '116': LUXEMBURGO
+      '117': ILHAS DE MAN
+      '118': MONACO
+      '119': NORUEGA
+      '120': REPUBLICA DE MALTA
+      '121': PAIS DE GALES
+      '122': PAISES BAIXOS
+      '123': POLONIA
+      '124': ROMENIA
+      '125': SAN MARINO
+      '126': SUECIA
+      '127': SVALBARD E JAN MAYER,IS
+      '128': TCHECOSLOVAQUIA
+      '129': ESTADO DA CIDADE DO VATICANO
+      '130': CROACIA
+      '131': SERVIA
+      '132': ESLOVENIA
+      '133': REPUBLICA DA MACEDONIA
+      '134': BOSNIA HERZEGOVINA
+      '135': REPUBLICA TCHECA
+      '136': ESLOVAQUIA
+      '137': MONTENEGRO
+      '138': AZERBAIJAO
+      '139': BASHKISTA
+      '140': REPUBLICA DA BIELORRUSSIA
+      '141': BURYAT
+      '142': CARELIA
+      '143': CAZAQUISTAO
+      '144': CHECHEN INGUSTH
+      '145': CHUVASH
+      '146': DAGESTA
+      '147': ESTONIA
+      '148': GEORGIA
+      '149': GORNO ALTAI
+      '150': KABARDINO BALKAR
+      '151': KALMIR
+      '152': KARACHAEVOCHERKESS
+      '153': KHAKASS
+      '154': KOMI
+      '155': LETONIA
+      '156': LITUANIA
+      '157': MARI
+      '158': MOLDAVIA
+      '159': OSSETIA SETENTRIONAL
+      '160': QUIRGUISTAO
+      '161': TADJIQUISTAO
+      '162': TARTARIA
+      '163': TURCOMENISTAO
+      '164': TUVIN
+      '165': UCRANIA
+      '166': UDMURT
+      '167': UNIAO SOVIETICA
+      '168': UZBEQUISTAO
+      '169': YAKUT
+      '170': ABISSINIA
+      '171': ACORES
+      '172': AFAR FRANCES
+      '173': REPUBLICA DA AFRICA DO SUL
+      '174': ALTO VOLTA
+      '175': ANGOLA
+      '176': ARGELIA
+      '177': BECHUANALANDIA
+      '178': BENIN
+      '179': BOTSUANA
+      '180': BURUNDI
+      '181': CAMAROES
+      '182': CEUTA E MELILLA
+      '183': CHADE
+      '184': ILHAS COMORES
+      '185': CONGO
+      '186': COSTA DO MARFIM
+      '187': DAOME
+      '188': DJIBUTI
+      '189': REPUBLICA ARABE DO EGITO
+      '190': ETIOPIA
+      '191': REPUBLICA DO GABAO
+      '192': GAMBIA
+      '193': GANA
+      '194': GAZA
+      '195': GUINE
+      '196': GUINE EQUATORIAL
+      '197': IFNI
+      '198': ASCENSAO E TRISTAO DA CUNHA,IS
+      '199': ILHAS CANARIAS
+      '200': LESOTO
+      '201': LIBERIA
+      '202': LIBIA
+      '203': MADEIRA
+      '204': MALAWI
+      '205': MADAGASCAR
+      '206': MALI
+      '207': MARROCOS
+      '208': MAURICIO
+      '209': MAURITANIA
+      '210': MOCAMBIQUE
+      '211': NGUANE
+      '212': REPUBLICA DO NIGER
+      '213': NIGERIA
+      '214': PAPUA NOVA GUINE
+      '215': PRACAS NORTE AFRICANAS
+      '216': PROTETOR DO SUDOESTE AFRICANO
+      '217': QUENIA
+      '218': REPUBLICA CENTRO AFRICANA
+      '219': REUNIAO
+      '220': RODESIA (ZIMBABWE)
+      '221': RUANDA
+      '222': SAARA ESPANHOL
+      '223': SANTA HELENA
+      '224': SAO TOME E PRINCIPE
+      '225': SEYCHELLES
+      '226': SERRA LEOA
+      '227': SOMALIA, REPUBLICA
+      '228': SUAZILANDIA
+      '229': SUDAO
+      '230': TANGANICA
+      '231': TERRIT. BRITANICO DO OCEANO INDICO
+      '232': TRANSKEI
+      '233': TOGO
+      '234': TUNISIA
+      '235': UGANDA
+      '236': ZAIRE
+      '237': ZAMBIA
+      '238': BURKINA FASSO
+      '239': ZIMBABWE
+      '240': NAMIBIA
+      '241': AFEGANISTAO
+      '242': ARABIA SAUDITA
+      '243': BAHREIN
+      '244': BIRMANIA
+      '245': BRUNEI
+      '246': BHUTAN
+      '247': CATAR
+      '248': CEILAO
+      '249': CHINA (TAIWAN)
+      '250': COVEITE
+      '251': EMIRADOS ARABES UNIDOS
+      '252': FILIPINAS
+      '253': HONG-KONG
+      '254': IEMEN
+      '255': INDIA
+      '256': INDONESIA
+      '257': IRA
+      '258': IRAQUE
+      '259': ISRAEL
+      '260': JORDANIA
+      '261': KMER/CAMBOJA
+      '262': KUWAIT
+      '263': LAOS
+      '264': LIBANO
+      '265': MACAU
+      '266': MALASIA
+      '267': MALDIVAS,IS
+      '268': MASCATE
+      '269': MONGOLIA
+      '270': NEPAL
+      '271': OMAN
+      '272': PALESTINA
+      '273': PAQUISTAO
+      '274': RUIQUIU,IS
+      '275': CINGAPURA
+      '276': SEQUIN
+      '277': SIRIA
+      '278': SRI-LANKA
+      '279': TAILANDIA
+      '280': TREGUA, ESTADO
+      '281': TURQUIA
+      '282': VIETNA DO NORTE
+      '283': VIETNA DO SUL
+      '284': MIANMA
+      '285': ARQUIPELAGO MANAHIKI
+      '286': ARQUIPELAGO MIDWAY
+      '287': ASHMORE E CARTIER
+      '288': AUSTRALIA
+      '289': ARQUIPELAGO DE BISMARK
+      '290': ILHAS COOK
+      '291': REPUBLICA DE FIJI
+      '292': GUAM
+      '293': ILHAS BAKER
+      '294': ILHAS CANTAO E ENDERBURG
+      '295': ILHAS CAROLINAS
+      '296': ILHAS DO PACIFICO
+      '297': ILHAS CHRISTMAS
+      '298': ILHAS GILBERT
+      '299': ILHAS HOWLAND E JARVIS
+      '300': ILHA JOHNSTON E SAND
+      '301': ILHAS KINGMAN REEF
+      '302': ILHAS MACQUAIRE
+      '303': ILHAS MARIANAS
+      '304': ILHAS MARSHALL
+      '305': ILHAS MACDONAL E HEARD
+      '306': ILHAS NIUE
+      '307': ILHAS NORFOLK
+      '308': ILHAS PALAU
+      '309': ILHAS SALOMAO
+      '310': ILHAS TOKELAU
+      '311': ILHAS WAKE
+      '312': KALIMATAN
+      '313': ILHAS LINHA
+      '314': NAURU
+      '315': ILHAS NOVA CALEDONIA
+      '316': NOVA GUINE
+      '317': NOVA ZELANDIA
+      '318': ILHAS NOVAS HEBRIDAS
+      '319': TERRITORIO DE PAPUA
+      '320': ILHAS PASCOA
+      '321': ILHAS PITCAIRIN
+      '322': POLINESIA FRANCESA
+      '323': SABAH
+      '324': SAMOA AMERICANA
+      '325': SAMOA OCIDENTAL
+      '326': ILHAS SANTA CRUZ
+      '327': SARAWAK
+      '328': TERRITORIO DE COCOS
+      '329': TIMOR
+      '330': TONGA
+      '331': TUVALU
+      '332': ILHAS WALLIS E FUTUNA
+      '333': ANTARTICO BRITANICO, TERRITORIO
+      '334': ANTARTICA FRANCESA
+      '335': TERR. ANTARTICO DA AUSTRALIA
+      '336': ANTARTICO CHILENO
+      '337': ANTARTICO ARGENTINO
+      '338': ANTARTICO NORUEGUES
+      '339': APATRIDA
+      '340': DEPENDENCIA DE ROSS
+      '341': TERRAS AUSTRAIS
+      '342': BANGLADESH
+      '343': CABO VERDE
+      '344': GUINE BISSAU
+      '345': IEMEN DO SUL
+      '346': KARA KALPAK
+      '347': ARMENIA
+      '348': RUSSIA
+      '349': SENEGAL
+      '350': TANZANIA
   - name: ap_ceppcn
     type: string
+    description: 'CEP do paciente'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 8a2ae05c9d8dfddf0c88adba85b7778fcc94e7e15401d0ea8f1c875b937cbbe9
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 22, AP_CEPPCN CHAR (8)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_ufdif
     type: string
+    description: 'Indica se a UF de residência do paciente é diferente da UF de localização do estabelecimento (N = não, S = sim)'
     x-decode:
       ? ''
       : Não identificado
@@ -209,6 +901,17 @@ schema:
       '1': Sim (houve invasão)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 9c4b757444b53827b664f5c4ebe447b5538c546d60303b6033a544913747ecab
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 23, AP_UFDIF CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: e50f214e8c49075d2672a183e5995237d51ee9f06cdf659957ead39c951de0a2
         status: verified_in_source
@@ -220,8 +923,13 @@ schema:
           pages: []
           locator: 'APAC_Nefrologia.DEF: TInvasão Estadual, AP_UFDIF, 1, CNV/INVASAO.CNV; CNV/Invasao.CNV'
         note: Mapa do CNV.
+      issues:
+      - id: informe-diverge-do-arquivo
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_UFDIF com "(N = não, S = sim)". ANPA1410 publica 0 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
   - name: ap_mndif
     type: string
+    description: 'Indica se o município de residência do paciente é diferente do município de localização do estabelecimento (N = não, S = sim)'
     x-decode:
       ? ''
       : Não identificado
@@ -229,6 +937,17 @@ schema:
       '1': Sim (houve invasão)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 76f298395310948d90258a55b16ba82bfa6c9f11d00e143cefcc480d0fd5bfc8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 24, AP_MNDIF CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: e50f214e8c49075d2672a183e5995237d51ee9f06cdf659957ead39c951de0a2
         status: verified_in_source
@@ -240,12 +959,109 @@ schema:
           pages: []
           locator: 'APAC_Nefrologia.DEF: TInvasão Municipal, AP_MNDIF, 1, CNV/INVASAO.CNV; CNV/Invasao.CNV'
         note: Mapa do CNV.
+      issues:
+      - id: informe-diverge-do-arquivo
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_MNDIF com "(N = não, S = sim)". ANPA1410 publica 1 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). A linha 455 do DEF liga o campo também a SIMNAO.CNV, que não está empacotado e não foi lido. O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
   - name: ap_dtinic
-    type: string
+    type: date
+    description: 'Data de INÍCIO validade'
+    x-format: yyyyMMdd
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ad8576cc1ebe4ce784f0d0b1594a52356fe910dd45e19ba135eab94d4907caf6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 25, AP_DTINIC CHAR (8)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/format
+        value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: fixture-measure
+        reviewer: null
+        evidence:
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 66-67: XMês de Início-APAC, AP_DTINIC, 1, CNV/ANOMES2008.CNV; XAno de Início-APAC, AP_DTINIC, 1, CNV/ANO_2008.CNV'
+        note: Medido, não lido (issue formato-sem-documento). O APAC_Nefrologia.DEF põe o ano-mês e o ano na posição 1 de AP_DTINIC; nenhuma fonte lida dá a posição do dia.
+      observations:
+      - file: ANPA1410.dbc
+        url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANPA1410.dbc
+        sha256: 2a16136ba196eb64863a9fa9379f4fb5db1a8631f59e010a4e88e2a76ec060e5
+        data_period: '2014-10'
+        uf: PA
+        field_name: ap_dtinic
+        checked_at: '2026-11-18'
+        scope: Fixture sia_an_pa_2014_10_mini, os 2 registros de ANPA1410.
+        observed:
+          pattern: yyyyMMdd
+          filled: 2
+          valid: 2
+          valid_min: '2014-05-01'
+          valid_max: '2014-05-01'
+          also_valid_as_ddMMyyyy: 0
+      issues:
+      - id: formato-sem-documento
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTINIC como CHAR (8), "Data de INÍCIO validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 66-67, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTINIC; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
   - name: ap_dtfim
-    type: string
+    type: date
+    description: 'Data de FIM validade'
+    x-format: yyyyMMdd
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 68bc0d7578f2bb0937a434fb4076f4b35602d8d06992a272dd3114d5909a429f
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 26, AP_DTFIM CHAR (8)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/format
+        value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: fixture-measure
+        reviewer: null
+        evidence:
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 68-69: XMês de FIM-APAC, AP_DTFIM, 1, CNV/ANOMES2008.CNV; XAno de FIM-APAC, AP_DTFIM, 1, CNV/ANO_2008.CNV'
+        note: Medido, não lido (issue formato-sem-documento). O APAC_Nefrologia.DEF põe o ano-mês e o ano na posição 1 de AP_DTFIM; nenhuma fonte lida dá a posição do dia.
+      observations:
+      - file: ANPA1410.dbc
+        url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANPA1410.dbc
+        sha256: 2a16136ba196eb64863a9fa9379f4fb5db1a8631f59e010a4e88e2a76ec060e5
+        data_period: '2014-10'
+        uf: PA
+        field_name: ap_dtfim
+        checked_at: '2026-11-18'
+        scope: Fixture sia_an_pa_2014_10_mini, os 2 registros de ANPA1410.
+        observed:
+          pattern: yyyyMMdd
+          filled: 2
+          valid: 2
+          valid_min: '2014-07-31'
+          valid_max: '2014-07-31'
+          also_valid_as_ddMMyyyy: 0
+      issues:
+      - id: formato-sem-documento
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTFIM como CHAR (8), "Data de FIM validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 68-69, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTFIM; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
   - name: ap_tpaten
     type: string
+    description: 'Tipo de Atendimento de APAC'
     x-decode:
       '00': LAUDO GERAL
       '01': MEDICAMENTOS
@@ -256,6 +1072,17 @@ schema:
       '06': MEDICAMENTOS
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: d7d07796770cb14e9996790e976e35eab293a2c13eaa12eb5b52f16d970b7e15
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 27, AP_TPATEN CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: d24bffc9535b6cf9c8d0e9d1cfb26ebb6e01d7c8c2480e012bf7255b09d58658
         status: verified_in_source
@@ -269,12 +1096,24 @@ schema:
         note: Mapa do CNV.
   - name: ap_tpapac
     type: string
+    description: 'Indica se a APAC é 1 - inicial, 2 - continuidade, 3 - única'
     x-decode:
       '1': Inicial
       '2': Continuidade
       '3': Única
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: bcf5882e1c04a140c7368d5f033ef5ff4c3601c58688463ab40ed858c73ba204
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 28, AP_TPAPAC CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 3e77daea55811733897715a900abbd46206b82c9b91ee962ce2620d3fac105c7
         status: verified_in_source
@@ -288,6 +1127,7 @@ schema:
         note: Mapa do CNV.
   - name: ap_motsai
     type: string
+    description: 'Motivo de Saída e Permanência'
     x-decode:
       '00': PRODUÇÃO SEM MOTIVO DE SAÍDA (BPA-C / BPA-I)
       '11': ALTA CURADO
@@ -313,6 +1153,17 @@ schema:
       '51': ENCERRAMENTO ADMINSTRATIVO
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: d4174ddefa066700fbd5bc6aa1ec4c08afae67a63b154f96c9d85ba6ce742b4d
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 29, AP_MOTSAI CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: c32352b40748bdd2b73db7c50eb49d646a98fd5b0185f4c0bbb871ed8a07be42
         status: verified_in_source
@@ -326,11 +1177,23 @@ schema:
         note: Mapa do CNV.
   - name: ap_obito
     type: string
+    description: 'Indicador de Óbito'
     x-decode:
       '0': Nao houve ÓBITO
       '1': Sim (motivo de saída-ÓBITO)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 8bd2806a2d2eca983c592dfee75ab9b84c376b51e96eb8de0eb2f88d873de498
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 30, AP_OBITO CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: f5896878b93ad73959088576ab8ceaa69528b4d54f750cd3759ec97717f18e7e
         status: verified_in_source
@@ -344,11 +1207,23 @@ schema:
         note: Mapa do CNV.
   - name: ap_encerr
     type: string
+    description: 'Indicador de Encerramento'
     x-decode:
       '0': Nao houve ENCERRAMENTO
       '1': Sim (motivo de saída-ENCERRAMENTO)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: f4e5a669afadc4952e6b24e630f34a667615f03d33b5d35824da3f592f8507a8
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 31, AP_ENCERR CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: e635d1da58b87ea0ec3801d432e2b2ff8c11f90d86601aca7e2edd9e41c0d6c9
         status: verified_in_source
@@ -362,11 +1237,23 @@ schema:
         note: Mapa do CNV.
   - name: ap_perman
     type: string
+    description: 'Indicador de Permanência'
     x-decode:
       '0': Nao houve a PERMANÊNCIA do paciente na unidade
       '1': Sim (motivo de saída-PERMANÊNCIA)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: d47a7e19562b7b5997271b440a16bfb131d36f04aa76fb4bfa4f3d01ab4956e0
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 32, AP_PERMAN CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: fa823e6bcb07e76b0a6d4d83367443c3e034857df377dc01fe721632f97911ee
         status: verified_in_source
@@ -380,11 +1267,23 @@ schema:
         note: Mapa do CNV.
   - name: ap_alta
     type: string
+    description: 'Indicador de Alta'
     x-decode:
       '0': Nao foi dado ALTA ao paciente
       '1': Sim (motivo de saída-ALTA)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 55152f58faa912672be1acd6b994a5e72d7cb981d08bed4bcdd848e4dfec87f6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 33, AP_ALTA CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: cc9bf92868dea681ca88cae93255f8d624435f2ce36d34a9a13c45dfa4a6fb79
         status: verified_in_source
@@ -398,11 +1297,23 @@ schema:
         note: Mapa do CNV.
   - name: ap_transf
     type: string
+    description: 'Indicador de Transferência'
     x-decode:
       '0': Nao houve TRANSFERÊNCIA do paciente
       '1': Sim (motivo de saída-TRANSFERÊNCIA)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 583f2bec31b7441ea5625aa0a8d687d188de424f7715aa7b296499dbfe512d0e
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 34, AP_TRANSF CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 798a13f55c387349e223abc2e3856a3924595eb6d7cc80a312297326d79d9fc1
         status: verified_in_source
@@ -415,11 +1326,72 @@ schema:
           locator: 'APAC_Nefrologia.DEF: XMotivo Saída-Transferência, AP_TRANSF, 1, CNV/TRANSFER.CNV; CNV/TRANSFER.CNV'
         note: Mapa do CNV.
   - name: ap_dtocor
-    type: string
+    type: date
+    x-format: yyyyMMdd
+    description: 'Data de Ocorrência que substitui a data de FIM de validade'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 2bc465eaca11e3da6e2faf4554985a80bee68bb505421ee6553cc82a648785cd
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 35, AP_DTOCOR CHAR (8)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/format
+        value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: fixture-measure
+        reviewer: null
+        evidence:
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 79-80: XMês de Ocorrência, AP_DTOCOR, 1, CNV/ANOMES2008.CNV; XAno de Ocorrência, AP_DTOCOR, 1, CNV/ANO_2008.CNV'
+        note: Medido, não lido (issue formato-sem-documento). O APAC_Nefrologia.DEF põe o ano-mês e o ano na posição 1 de AP_DTOCOR; nenhuma fonte lida dá a posição do dia.
+      observations:
+      - file: ANRR1401.dbc
+        url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANRR1401.dbc
+        sha256: 3fba1547b656ab0c16f4324940f78583f411b591a53ba45b80ca801587a03316
+        data_period: '2014-01'
+        uf: RR
+        field_name: ap_dtocor
+        checked_at: '2026-11-18'
+        scope: Fixture sia_an_rr_2014_01_mini, os 162 registros de ANRR1401 (AP_CNSPCN em branco).
+        observed:
+          pattern: yyyyMMdd
+          filled: 1
+          valid: 1
+          valid_min: '2014-01-29'
+          valid_max: '2014-01-29'
+          also_valid_as_ddMMyyyy: 0
+      issues:
+      - id: formato-sem-documento
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTOCOR como CHAR (8), "Data de Ocorrência que substitui a data de FIM de validade", sem formato. O formato yyyyMMdd foi medido em 1 linha: ANRR1401 preenche o campo em 1 de 162 registros (20140129) e ANPA1410 em 0 de 2; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 79-80, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTOCOR; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
   - name: ap_codemi
     type: string
+    description: 'Código do Órgão emissor'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: f0c4fc8dab4ab61a5a8ec17f63d918398c4ead2bab4e2af27352241ac7d81484
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 36, AP_CODEMI CHAR (10)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_catend
     type: string
+    description: 'Caráter do Atendimento'
     x-decode:
       ? ''
       : CARATER DE ATENDIMENTO NÃO INFORMADO
@@ -443,6 +1415,17 @@ schema:
       '99': INFORMAÇÃO INEXISTENTE  (BPA-C)
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 885f81d61fe013700c4b31c21e8813c2e7d16a7708777b39bd119ce56bb27328
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 37, AP_CATEND CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: d25d681486c1cc8a64ead3cc4cf8284925e623abd08d89a0ef734c88ed18eea1
         status: verified_in_source
@@ -456,43 +1439,336 @@ schema:
         note: Mapa do CNV.
   - name: ap_apacant
     type: string
+    description: 'Número APAC Anterior'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: e35f24d1618a3c68aa5d7c5f11bf2b8bd95ba5a6b876ba0f19ad38da17b05720
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 38, AP_APACANT CHAR (13)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_unisol
     type: string
+    description: 'Código do Estabelecimento solicitante no CNES (Cadastro Nacional de Estabelecimentos de Saúde)'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: a6231a257a9067aaacde5cdeebc31d386d080a3f65351520ea9a25cf551e675b
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 39, AP_UNISOL CHAR (7)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_dtsolic
-    type: string
+    type: date
+    description: 'Data da Solicitação'
+    x-format: yyyyMMdd
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 81a77d4a6bd033348d5314253634450b747b45743cc41957f48d87ac8c3b1353
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 40, AP_DTSOLIC CHAR(8)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/format
+        value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: fixture-measure
+        reviewer: null
+        evidence:
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 81-82: XMês da Solicitação, AP_DTSOLIC, 1, CNV/ANOMES2008.CNV; XAno da Solicitação, AP_DTSOLIC, 1, CNV/ANO_2008.CNV'
+        note: Medido, não lido (issue formato-sem-documento). O APAC_Nefrologia.DEF põe o ano-mês e o ano na posição 1 de AP_DTSOLIC; nenhuma fonte lida dá a posição do dia.
+      observations:
+      - file: ANPA1410.dbc
+        url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANPA1410.dbc
+        sha256: 2a16136ba196eb64863a9fa9379f4fb5db1a8631f59e010a4e88e2a76ec060e5
+        data_period: '2014-10'
+        uf: PA
+        field_name: ap_dtsolic
+        checked_at: '2026-11-18'
+        scope: Fixture sia_an_pa_2014_10_mini, os 2 registros de ANPA1410.
+        observed:
+          pattern: yyyyMMdd
+          filled: 2
+          valid: 2
+          valid_min: '2014-05-01'
+          valid_max: '2014-05-01'
+          also_valid_as_ddMMyyyy: 0
+      issues:
+      - id: formato-sem-documento
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTSOLIC como CHAR(8), "Data da Solicitação", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 81-82, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTSOLIC; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
   - name: ap_dtaut
-    type: string
+    type: date
+    description: 'Data da Autorização'
+    x-format: yyyyMMdd
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: a6e18afecffe2d6ab34a60b6d4a28d193634613c4569cd07831233bcf3f26594
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 41, AP_DTAUT CHAR(8)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/format
+        value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: fixture-measure
+        reviewer: null
+        evidence:
+        - source_id: sia-tab-e5812b51d802
+          pages: []
+          locator: 'APAC_Nefrologia.DEF, linhas 83-84: XMês da Autorização, AP_DTAUT, 1, CNV/ANOMES2008.CNV; XAno da Autorização, AP_DTAUT, 1, CNV/ANO_2008.CNV'
+        note: Medido, não lido (issue formato-sem-documento). O APAC_Nefrologia.DEF põe o ano-mês e o ano na posição 1 de AP_DTAUT; nenhuma fonte lida dá a posição do dia.
+      observations:
+      - file: ANPA1410.dbc
+        url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANPA1410.dbc
+        sha256: 2a16136ba196eb64863a9fa9379f4fb5db1a8631f59e010a4e88e2a76ec060e5
+        data_period: '2014-10'
+        uf: PA
+        field_name: ap_dtaut
+        checked_at: '2026-11-18'
+        scope: Fixture sia_an_pa_2014_10_mini, os 2 registros de ANPA1410.
+        observed:
+          pattern: yyyyMMdd
+          filled: 2
+          valid: 2
+          valid_min: '2014-05-01'
+          valid_max: '2014-05-01'
+          also_valid_as_ddMMyyyy: 0
+      issues:
+      - id: formato-sem-documento
+        status: open
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTAUT como CHAR(8), "Data da Autorização", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 83-84, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTAUT; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
+      - id: data-implausivel
+        status: open
+        description: 'ANRR1401 (2014-01) traz 20430101 em 1 de 162 registros: é uma data yyyyMMdd válida, 29 anos depois do mês do arquivo. O valor fica como publicado.'
   - name: ap_cidcas
     type: string
+    description: 'CID Causas Associadas'
     foreignKeys:
       - { fields: ap_cidcas, reference: { resource: aux_cid10, fields: codigo } }
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 35cbd6131662a425de0ff9fbff0f2b8daef91f42ef3adca0ff65932f3e9e6e11
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 42, AP_CIDCAS CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_cidpri
     type: string
+    description: 'CID Principal'
     foreignKeys:
       - { fields: ap_cidpri, reference: { resource: aux_cid10, fields: codigo } }
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: c2878dd07a3d0fc3589f3aa5e57ff971e854646cd963b5d0e7873798a45dc5fb
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 43, AP_CIDPRI CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_cidsec
     type: string
+    description: 'CID Secundário'
     foreignKeys:
       - { fields: ap_cidsec, reference: { resource: aux_cid10, fields: codigo } }
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ea3442e032bdb6b04941554ff6af892f60352224709e8f49899a9ba28ffa8001
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 44, AP_CIDSEC CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_etnia
     type: string
+    description: 'Etnia do paciente'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: be694e936b2c1c85eee658073804d50c16fc8433b3f2d6d16949e99cb203bc98
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 45, AP_ETNIA CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_dtpdr
-    type: string
+    type: date
+    description: 'Data (AAAAMMDD) da PRIMEIRA diálise realizada'
+    x-format: yyyyMMdd
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 0351d96a97349b43320e17ff472aec72a877c13e7dbb779378d6a364f7fe878d
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 46, AN_DTPDR CHAR (8)'
+        note: Descrição transcrita da linha do leiaute.
+      - target: /field/format
+        value_sha256: 22b7645fd60de2bfe0dc4203b75a4a01b1c8ff1a856491178e3c3bf01d6230d6
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial e comparação com os valores da fixture, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'AN_DTPDR CHAR (8): "Data (AAAAMMDD) da PRIMEIRA diálise realizada"'
+        note: Formato do leiaute da AN; os 2 registros de ANPA1410 leem como yyyyMMdd. O APAC_Nefrologia.DEF não tem linha para AN_DTPDR.
+      observations:
+      - file: ANPA1410.dbc
+        url: ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/ANPA1410.dbc
+        sha256: 2a16136ba196eb64863a9fa9379f4fb5db1a8631f59e010a4e88e2a76ec060e5
+        data_period: '2014-10'
+        uf: PA
+        field_name: an_dtpdr
+        checked_at: '2026-11-18'
+        scope: Fixture sia_an_pa_2014_10_mini, os 2 registros de ANPA1410.
+        observed:
+          pattern: yyyyMMdd
+          filled: 2
+          valid: 2
+          valid_min: '2014-02-01'
+          valid_max: '2014-02-01'
+          also_valid_as_ddMMyyyy: 0
+      issues:
+      - id: data-implausivel
+        status: open
+        description: 'ANRR1401 (2014-01) traz 20161101 em 1 de 162 registros: é uma data yyyyMMdd válida, posterior ao mês do arquivo e à data em que o servidor o lista (2015-06-11), para a primeira diálise. O valor fica como publicado.'
   - name: an_altura
     type: string
+    description: 'Altura do paciente em cm'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: ccb5a08ae075e8fee72a07efa29c5f8bd7cf2f423df3637ad0f037a20876cb43
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 47, AN_ALTURA CHAR (3)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_peso
     type: string
+    description: 'Peso do paciente em kg'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 87e1125e95516d429f43db06054796efd799ccb29442c9c5bd5f899fc5f7e60c
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 48, AN_PESO CHAR (3)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_diures
     type: string
+    description: 'Diurese em ml'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 06eac4948e3ff687db0c9641c6f3ff5ae467c55593b5bfdffb85de73b30609d9
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 49, AN_DIURES CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_glicos
     type: string
+    description: 'Glicose em Mg/dl'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 6df0cc94ee9d9bfac1734a0360fd4a46d01904a27c0d9b4e5d4c5399bd59c76e
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 50, AN_GLICOS CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_acevas
     type: string
+    description: 'Acesso Vascular (S = Sim; N = Não)'
     x-decode:
       N: NÃO
       S: SIM
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: d220e84b6500a33ba006e914bf44ca6f00df566865f3eba81cbb2725270af25a
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 51, AN_ACEVAS CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 694c023c50452a20868e25f318399ba00a863d813a83f28fd07191aa22332639
         status: verified_in_source
@@ -506,11 +1782,23 @@ schema:
         note: Mapa do CNV.
   - name: an_ulsoab
     type: string
+    description: 'Ultrassonografia Abdominal (S = Sim; N = Não)'
     x-decode:
       N: NÃO
       S: SIM
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: a6d86564e2e81c96676465f436093fd24b2f570bc3dc030b0a15fad0356729ab
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 52, AN_ULSOAB CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: 694c023c50452a20868e25f318399ba00a863d813a83f28fd07191aa22332639
         status: verified_in_source
@@ -524,10 +1812,39 @@ schema:
         note: Mapa do CNV.
   - name: an_tru
     type: string
+    description: 'TRU (taxa de redução de ureia)'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: c521df25a5f4f3319353d10e59408b28bdcbcfb6ae5abc8ab76cab79275e8282
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 53, AN_TRU CHAR (4)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_intfis
     type: string
+    description: 'Quantidade de intervenção de Fístula'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: c2ce5f2f3b3f3582fe70755201d201004458f1e1815785de65ee2a2d9fc3b771
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 54, AN_INTFIS CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_cncdo
     type: string
+    description: 'Inscrito na lista da CNCDO (S = Sim; N = Não)'
     x-decode:
       ? ''
       : Não informado
@@ -535,6 +1852,17 @@ schema:
       S: SIM
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 94ab38f2657cbb650083dc323a5370914b98a9c87e6766a1895ef871842ad272
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 55, AN_CNCDO CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: ced5340831b8245161ebbd6e7972121588b14620058439dfb49b38c221ca417c
         status: verified_in_source
@@ -548,13 +1876,39 @@ schema:
         note: Mapa do CNV.
   - name: an_albumi
     type: string
+    description: 'Albumina em g%'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: 21ea6b54d88b17252a4251ec25f3868c8b58d851678734dff9477ca63b8e43fd
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 56, AN_ALBUMI CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
   - name: an_hcv
     type: string
+    description: 'Indicativo de presença de Anticorpos de HCV (P = Positivo; N = Negativo)'
     x-decode:
       N: Negativo
       P: Positivo
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 3a26a81df6cbd2587093a2f3904d6e04de5f823d4712f60588b10510e1ae6a5c
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 57, AN_HCV CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: f5cf1e83245e6257bb567198715c8fae5017908e25bbb76979f467e67a0a3890
         status: verified_in_source
@@ -568,11 +1922,23 @@ schema:
         note: Mapa do CNV.
   - name: an_hbsag
     type: string
+    description: 'Indicativo de HBsAg (P = Positivo; N = Negativo)'
     x-decode:
       N: Negativo
       P: Positivo
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 15160c64f66a310306ce81573dc02452ed29c50ca2c5d97706a02fd32b16dc52
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [8]
+          locator: 'Seção 3.4.3, SEQ 58, AN_HBSAG CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: f5cf1e83245e6257bb567198715c8fae5017908e25bbb76979f467e67a0a3890
         status: verified_in_source
@@ -586,11 +1952,23 @@ schema:
         note: Mapa do CNV.
   - name: an_hiv
     type: string
+    description: 'Indicativo de presença de anticorpos de HIV (P = Positivo; N = Negativo)'
     x-decode:
       N: Negativo
       P: Positivo
     x-metadata:
       claims:
+      - target: /field/description
+        value_sha256: 1500672b0c297a230542d8d2c1cb23712f89da3ede2124f72b7916e4c729287d
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [9]
+          locator: 'Seção 3.4.3, SEQ 59, AN_HIV CHAR (1)'
+        note: Descrição transcrita da linha do leiaute.
       - target: /field/codes
         value_sha256: f5cf1e83245e6257bb567198715c8fae5017908e25bbb76979f467e67a0a3890
         status: verified_in_source
@@ -604,8 +1982,27 @@ schema:
         note: Mapa do CNV.
   - name: an_hb
     type: string
+    description: 'HB em g%'
+    x-metadata:
+      claims:
+      - target: /field/description
+        value_sha256: af4b0c1b6a30cbae1a18bb4fcd87110fd8020b608f0a38ac6174a0ebe894cfce
+        status: unreviewed
+        checked_at: '2026-11-18'
+        method: 'Leitura do PDF oficial, feita por agente; sem revisor humano'
+        reviewer: null
+        evidence:
+        - source_id: siasus-70fe69dbd4cf
+          pages: [9]
+          locator: 'Seção 3.4.3, SEQ 60, AN_HB CHAR (2)'
+        note: Descrição transcrita da linha do leiaute.
   - name: ap_natjur
     type: string
+    x-metadata:
+      issues:
+      - id: ap_natjur-nem-sempre-publicado
+        status: open
+        description: 'ANRR1401 (2014-01) tem 60 campos e termina em AN_HB, sem AP_NATJUR; ANPA1410 (2014-10) tem 61, e AP_NATJUR é o último. O leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), seção 3.4.3, pp. 7-9, lista 60 campos e não traz AP_NATJUR. Só esses dois arquivos foram lidos: não se sabe em que mês o campo entra. O APAC_Nefrologia.DEF (linhas 221-226) liga CNV de natureza jurídica e de esfera jurídica a AP_NAT_JUR, nome que nenhum dos dois arquivos publica.'
 # Identidade do arquivo: ap_mvm vale o mês do arquivo e ap_ufmun começa pelo código IBGE
 # da UF em todos os registros da fixture (tests/fixtures/FIXTURES.md); mesma regra das
 # outras APAC.

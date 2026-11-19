@@ -375,6 +375,16 @@
       "sha256": "da7f026713ae0669d626ae4661cbd33af72df9a7e76337dc0e1cba7f0d41b615",
       "mesmo_que": "sia/CNV/ACES_VASC.CNV"
     },
+    "sia/CNV/TIPOPRES.CNV": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/TIPOPRES.CNV",
+      "sha256": "8ab1f0fd0a3e613cb8a586df5843ffb55a692ea5a23b2ce66e74f74a0365ac9c"
+    },
+    "sia/CNV/UFNACIO.CNV": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/UFNACIO.CNV",
+      "sha256": "30d1c1c37d47ccac77d93d51010fe992b083580589cc3e06c3db0aab38097b12"
+    },
     "sia/CNV/destino.cnv": {
       "fonte": "sia-tab-e5812b51d802",
       "membro": "CNV/destino.cnv",
@@ -1710,11 +1720,16 @@
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
         "ap_sexo": "sia/CNV/SEXO.CNV",
+        "ap_tippre": "sia/CNV/TIPOPRES.CNV",
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_tpaten": "sia/CNV/TP_ATEND.CNV",
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
-        "ap_ufdif": "sia/CNV/Invasao.CNV"
+        "ap_ufdif": "sia/CNV/Invasao.CNV",
+        "ap_ufnacio": "sia/CNV/UFNACIO.CNV"
+      },
+      "sem_cnv": {
+        "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
       }
     },
     "sia_apac_radioterapia": {

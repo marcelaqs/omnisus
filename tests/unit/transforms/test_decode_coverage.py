@@ -194,6 +194,7 @@ REMAINING = {
     ("sia_apac_acompanhamento_bariatrica", "sia_ab_se_2025_07_mini"): [],
     ("sia_apac_fistula_arteriovenosa", "sia_acf_rr_2024_01_mini"): [],
     ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini"): [],
+    ("sia_apac_nefrologia", "sia_an_rr_2014_01_mini"): [],
     ("sia_apac_radioterapia", "sia_ar_ac_2024_01_mini"): [],
     ("sia_atencao_domiciliar", "sia_sad_ma_2018_10_mini"): [],
 }
@@ -448,6 +449,30 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
             {"2": "Dias", "4": "Anos"},
         ),
         ("sia_apac_fistula_arteriovenosa", "sia_acf_rr_2024_01_mini", "ap_coidade", {"4": "Anos"}),
+        # APAC_Nefrologia.DEF lines 387-388 bind AP_COIDADE to the same tables (#183).
+        ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_coidade", {"4": "Anos"}),
+        # APAC_Nefrologia.DEF line 390 binds AP_UFNACIO to UFNACIO.CNV (#183).
+        ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_ufnacio", {"010": "BRASIL"}),
+        # APAC_Nefrologia.DEF line 220 binds AP_TIPPRE to TIPOPRES.CNV (#183).
+        (
+            "sia_apac_nefrologia",
+            "sia_an_pa_2014_10_mini",
+            "ap_tippre",
+            {"61": "FILANTROPICO COM CNAS VALIDO"},
+        ),
+        (
+            "sia_apac_nefrologia",
+            "sia_an_rr_2014_01_mini",
+            "ap_tippre",
+            {"20": "PRIVADO COM FINS LUCRATIVOS"},
+        ),
+        # ANRR1401 has the one AN record measured with unit '5' (age 100 and over).
+        (
+            "sia_apac_nefrologia",
+            "sia_an_rr_2014_01_mini",
+            "ap_coidade",
+            {"4": "Anos", "5": "Anos (somar 100)"},
+        ),
         # #6: IDADEDET.CNV reads 500-530 as 100 to 130 years; the unit '5' alone is
         # measured, not read, and says to add 100.
         (
@@ -725,6 +750,7 @@ APAC_WITH_UNIT_MAP = [
     "sia_apac_cirurgia_bariatrica",
     "sia_apac_radioterapia",
     "sia_apac_fistula_arteriovenosa",
+    "sia_apac_nefrologia",
 ]
 
 
