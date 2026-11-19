@@ -408,6 +408,21 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
                 "": "Não investigado",
             },
         ),
+        # Obito_1996_CID10.def binds SERIESCFAL and SERIESCMAE to SERIEFAL.CNV and
+        # VERSAOSCB to VERSCB.CNV (#184); DORR2022 holds series 1-8 and SCB 3.2-3.4.
+        (
+            "sim_obitos",
+            "sim_rr_2022_mini",
+            "seriescfal",
+            {"": "N Inf", "1": "1", "8": "8"},
+        ),
+        ("sim_obitos", "sim_rr_2022_mini", "seriescmae", {"": "N Inf", "3": "3"}),
+        (
+            "sim_obitos",
+            "sim_rr_2022_mini",
+            "versaoscb",
+            {"": "CD sem Patch", "3.2": "Versao SCB 3.2", "3.4": "Versao SCB 3.4"},
+        ),
         # TAB_SIA FINANC.CNV, the table of PA_TPFIN, which the Informe Técnico describes
         # with the same words as BPA-I TPFIN.
         (

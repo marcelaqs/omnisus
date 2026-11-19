@@ -1232,12 +1232,15 @@
         "obitopuerp": "sim/obitoPUE.cnv",
         "parto": "sim/PARTO.CNV",
         "racacor": "sim/RACACOR.CNV",
+        "seriescfal": "sim/SERIEFAL.CNV",
+        "seriescmae": "sim/SERIEFAL.CNV",
         "stcodifica": "sim/CODIFICA1.cnv",
         "stdoepidem": "sim/DONOVA.CNV",
         "stdonova": "sim/DONOVA.CNV",
         "tipobito": "sim/TIPOBITO.CNV",
         "tpmorteoco": "sim/OMUFER.CNV",
-        "tppos": "sim/INVESTIG.CNV"
+        "tppos": "sim/INVESTIG.CNV",
+        "versaoscb": "sim/VERSCB.CNV"
       },
       "sem_cnv": {
         "sexo": "C\u00f3digos verificados na Estrutura do SIM 2025, p. 2 (claim verified_in_source); SEXO.CNV rotula s\u00f3 M, F e I.",
