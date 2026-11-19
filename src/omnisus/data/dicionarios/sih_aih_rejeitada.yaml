@@ -2,7 +2,7 @@ name: sih_aih_rejeitada
 title: SIHSUS — AIH rejeitada (RJ)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.6.1
+x-version: 1.7.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sih_rj_rr_2024_01_mini.dbc, 90 fields; observed 2026-09-22
@@ -15763,7 +15763,7 @@ schema:
       issues:
       - id: uf_zi-faixa-em-codigo-longo
         status: open
-        description: 'br_municgestor.cnv (TAB_SIH, sih-tab-21e42384645a) declara códigos de 6 caracteres e escreve faixas em três linhas: Rio de Janeiro (334501-334530), São Paulo (358001-358058) e Distrito Federal (530000-530009 e 530011-539999). O TabWin.pdf (pp. 90-91) documenta a faixa só para variáveis de até 4 caracteres e diz que, no código longo, os valores "somente poderão ser separados por vírgulas". O mapa expande essas faixas como as de qualquer tabela: 10.087 das 15.731 chaves recebem rótulo só por elas. Nenhum arquivo lido publica uma dessas chaves: as fixtures do RD e do RJ publicam 140000, 140010, 350390, 352470 e 354130, todas listadas uma a uma na tabela.'
+        description: 'br_municgestor.cnv (TAB_SIH, sih-tab-21e42384645a) declara códigos de 6 caracteres e escreve faixas em três linhas: Rio de Janeiro (334501-334530), São Paulo (358001-358058) e Distrito Federal (530000-530009 e 530011-539999). O TabWin.pdf (pp. 90-91) documenta a faixa só para variáveis de até 4 caracteres e diz que, no código longo, os valores "somente poderão ser separados por vírgulas". O mapa expande essas faixas como as de qualquer tabela: 10.087 das 15.731 chaves recebem rótulo só por elas. As fixtures do RD e do RJ publicam 140000, 140010, 350390, 352470 e 354130, todas listadas uma a uma na tabela. Os arquivos do Distrito Federal publicam uma chave que só a faixa alcança: 530000 em todos os 76.276 registros dos cinco arquivos RDDF lidos (janeiro de 2008, 2012, 2016, 2020 e 2024, evidence/2026-11-18-rd-medidas). Sem a faixa 530000-530009, o Distrito Federal inteiro ficaria sem rótulo.'
   - name: ano_cmpt
     type: string
   - name: mes_cmpt

@@ -37,8 +37,7 @@
   listed as a second code or inside a range shows that line's code (`149999` is "140000
   Roraima - Gestão estadual"). 10,087 of the keys come from three lines that write
   ranges, which TabWin.pdf (pp. 90-91) documents only for codes of up to 4 characters;
-  the open issue `uf_zi-faixa-em-codigo-longo` says so, and no file read publishes one of
-  them. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
+  the open issue `uf_zi-faixa-em-codigo-longo` says so. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
   `aux_municipios`, where `140000` is "Município ignorado - RR" (#182).
   (#182).
 - `sih_aih_reduzida` (2.23.1): 28 labels now come from a registered document, each with
@@ -79,6 +78,16 @@
   `describe_dataset` reports the new `logical_type`. The lake does not change: the
   import reads `type` only for dates, so `ano_cmpt` was already text (`2024`) and
   `mes_cmpt` text with its leading zero (`01`) (#182).
+- `sih_aih_reduzida` (2.26.0) and `sih_aih_rejeitada` (1.7.0): counts from 262 real RD
+  files (`evidence/2026-11-18-rd-medidas/`: 238 of 2008-01 to 2026-07 with 1,994,690
+  records, 24 of 2006 and 2007 with 41,547) now back, in the issues of the fields, what
+  the dictionary says. `uf_zi`: every record of the five `RDDF` files read has `530000`,
+  a code `br_municgestor.cnv` reaches only through a range, so the issue no longer says
+  that no file publishes such a key. The 19 "Zerado" fields are filled in no record from
+  2008 and 14 of them are filled in 2006-2007. `homonimo` publishes `0` and `2` in every
+  year from 2006 and `1` only in `RDAP2607`. `tpdisec1-9` are blank in the 12 files of
+  2014 and, from 2015-01, `0` exactly where the diagnosis of the same number is blank.
+  `cid_notif` is `Z302` in 28,207 of its 28,388 filled records. No label changes (#182).
 
 ### omnisus-dbf 0.2.2
 

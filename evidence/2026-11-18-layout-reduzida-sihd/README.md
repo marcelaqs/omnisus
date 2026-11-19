@@ -54,8 +54,9 @@ the document is running `extrair.py` again.
 
 **What it does not settle.** The document says what a field was called in 2006 and
 2007, not what the RD files publish today: in RDRR2401 the 17 numeric "Zerado" fields
-are 0 in every record and the two text ones are blank. No RD file from 2008 to 2021 was
-read for those fields. The two documents do not always agree on a family of fields:
+are 0 in every record and the two text ones are blank.
+`evidence/2026-11-18-rd-medidas` counts them in 238 files from 2008 (none filled) and in
+24 of 2006 and 2007 (14 of the 19 filled). The two documents do not always agree on a family of fields:
 this one calls `UTI_INT_IN`, `UTI_INT_AN` and `UTI_INT_AL` days "EM UTI ... (tipo ato =
 34 ou 56)", and `IT_SIHSUS_1603` calls their total, `UTI_INT_TO`, "Quantidade de diárias
 em unidade intermediaria."; the issue of those three fields says so. The document's
