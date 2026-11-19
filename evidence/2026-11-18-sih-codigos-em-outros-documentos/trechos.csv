@@ -8,4 +8,13 @@ sihsus-af543b2b2c9b,7,DIAG_SEC_6_CLASS,111 DIAG_SEC_6_CLASS 001 1620 1620 ver ca
 sihsus-af543b2b2c9b,7,DIAG_SEC_7_CLASS,113 DIAG_SEC_7_CLASS 001 1625 1625 ver campo 101 ver campo 101
 sihsus-af543b2b2c9b,7,DIAG_SEC_8_CLASS,115 DIAG_SEC_8_CLASS 001 1630 1630 ver campo 101 ver campo 101
 sihsus-af543b2b2c9b,7,DIAG_SEC_9_CLASS,117 DIAG_SEC_9_CLASS 001 1635 1635 ver campo 101 ver campo 101
+sihsus-f70974716de8,4,AH_DIAG_SEC_1_CLASS,"AH_DIAG_SEC_1_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_2_CLASS,"AH_DIAG_SEC_2_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_3_CLASS,"AH_DIAG_SEC_3_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_4_CLASS,"AH_DIAG_SEC_4_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_5_CLASS,"AH_DIAG_SEC_5_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_6_CLASS,"AH_DIAG_SEC_6_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_7_CLASS,"AH_DIAG_SEC_7_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_8_CLASS,"AH_DIAG_SEC_8_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
+sihsus-f70974716de8,4,AH_DIAG_SEC_9_CLASS,"AH_DIAG_SEC_9_CLASS Text 1 /* 0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO */"
 sihsus-f70974716de8,8-9,AH_ST_DUPLICIDADE,"AH_ST_DUPLICIDADE Text 1 Marca de homônimo, onde: 0 = não. 1 = sim."

@@ -41,32 +41,39 @@
   them. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
   `aux_municipios`, where `140000` is "Município ignorado - RR" (#182).
   (#182).
-- `sih_aih_reduzida` (2.23.0): 28 labels now come from a registered document, each with
-  a `/field/label` claim. Nine are the words of `IT_SIHSUS_1603.pdf`: `ano_cmpt` and
-  `mes_cmpt` ("Ano/Mês de processamento da AIH", not "competência"), `qt_diarias`,
-  `us_tot`, `cobranca`, `ind_vdrl`, `gestrisco`, `gestor_tp` and `cid_notif` ("CID de
-  Notificação", not "notificação compulsória"). The 19 fields that document describes
-  only as "Zerado" take the description of `Layout_REDUZIDA.pdf`, the layout of the same
-  file until 2007-12 (`sihsus-f6084d22de30`, transcribed in
-  `evidence/2026-11-18-layout-reduzida-sihd/`), and an open issue
-  `rotulo-do-layout-ate-2007` that says the label is of the earlier period. Seven of them
-  said something else: `val_sadtsr` was "Valor tomografia/ressonância" and is "Valor de
-  SADT sem rateio"; `val_obsang`, `val_ped1ac`, `cpf_aut` and the three `uti_int_*`
-  ("UCI") changed too. `cid_notif` declares the reference to `aux_cid10`: `RD2008.DEF`
-  (lines 523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all
-  `Z302`, find their row; the open issue `cid_notif-laqueadura-no-def` records that the
-  DEF calls the field "CID laqueadura" (#182).
-- `sih_aih_reduzida` (2.24.0): the `0` of `tpdisec1` to `tpdisec9` and the codes of
-  `homonimo` keep no label, and their open issues now name the documents that were read
-  and why they are not used. The layout of the SISAIH01 text file for 09/2015
-  (`sihsus-af543b2b2c9b`, p. 7) says "0 - Quando não é preenchido o campo anterior" of
-  the class of a secondary diagnosis; the layout of the reduced file until 2007-12
-  (`sihsus-f6084d22de30`, p. 2) and the dictionary of the AIH table
-  (`sihsus-f70974716de8`, pp. 8-9) say "0 = não", "1 = sim" of the homonym mark. None
-  describes the RD files from 2008, no DEF relates the fields to them, and none has the
-  `2` the RD publishes in `homonimo`. The passages are in
+- `sih_aih_reduzida` (2.23.1): 28 labels now come from a registered document, each with
+  a `/field/label` claim; 27 change their text and `num_proc` keeps it. Nine are the
+  words of `IT_SIHSUS_1603.pdf`: `ano_cmpt` and `mes_cmpt` ("Ano/Mês de processamento da
+  AIH"), `qt_diarias`, `us_tot`, `cobranca`, `ind_vdrl`, `gestrisco`, `gestor_tp` and
+  `cid_notif` ("CID de Notificação", not "notificação compulsória"). The 19 fields that
+  document describes only as "Zerado" take the description of `Layout_REDUZIDA.pdf`
+  (`sihsus-f6084d22de30`, transcribed in `evidence/2026-11-18-layout-reduzida-sihd/`),
+  whose 75 fields are those of the RD files read from 2006-04 to 2007-12, and an open
+  issue `rotulo-do-layout-ate-2007` that says the label is of that period. Examples:
+  `val_sadtsr` was "Valor tomografia/ressonância" and is "Valor de SADT sem rateio";
+  `val_obsang` was "Valor analgesia obstétrica" and is "Valor de anestesia"; the three
+  `uti_int_*` said "UCI" and say "Dias em UTI ... (tipo ato = 34 ou 56)", while
+  `IT_SIHSUS_1603` calls their total "unidade intermediaria", which their issue records.
+  Where `IT_SIHSUS_1603` describes a field its text is used, even where the earlier
+  layout said otherwise ("ANO COMPETÊNCIA", "MOTIVO DE COBRANCA", "GESTANTE DE ALTO
+  RISCO"). `cid_notif` declares the reference to `aux_cid10`: `RD2008.DEF` (lines
+  523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all `Z302`,
+  find their row; the open issue `cid_notif-laqueadura-no-def` records that the DEF
+  calls the field "CID laqueadura". Other labels of the dictionary still have no claim
+  (#182).
+- `sih_aih_reduzida` (2.24.1): the `0` of `tpdisec1` to `tpdisec9` and the codes of
+  `homonimo` keep no label, and their open issues now name the documents that were read.
+  Two say what the `0` of the class of a secondary diagnosis is in another file: the
+  layout of the SISAIH01 text interface for 09/2015 (`sihsus-af543b2b2c9b`, p. 7, "0 -
+  Quando não é preenchido o campo anterior") and the dictionary of the tables `TB_AIH`
+  and `TB_HAIH` (`sihsus-f70974716de8`, p. 4, "0-Quando campo anterior em branco"); no
+  DEF relates `TPDISEC1-9` to them, and by the maintainer's decision in #182 a code of
+  another file does not become a label without that. Two give "0 = não", "1 = sim" for
+  the homonym mark: that dictionary (pp. 8-9) and the layout of the RD files of 2006-04
+  to 2007-12 (`sihsus-f6084d22de30`, p. 2); the RD from 2008 publishes `2`, which
+  neither lists. The passages are in
   `evidence/2026-11-18-sih-codigos-em-outros-documentos/` (#182).
-- `sih_aih_reduzida` (2.25.0): `ano_cmpt` and `mes_cmpt` declare `string` and `rubrica`
+- `sih_aih_reduzida` (2.25.1): `ano_cmpt` and `mes_cmpt` declare `string` and `rubrica`
   declares `integer`, the types the library stages from the files (`ANO_CMPT` C(4),
   `MES_CMPT` C(2), `RUBRICA` N(5)); they declared `integer`, `integer` and `string`.
   `describe_dataset` reports the new `logical_type`. The lake does not change: the

@@ -14,18 +14,22 @@ used. The listing of the directory that day is
 | `sihsus-af543b2b2c9b` | `Layout_do_SISAIH01_para_CMPT_201509.zip` | 71,003 | `af543b2b2c9b13de8d11a68ec5fdd04b2b53c864af8b8e77456a23795398d625` |
 | `sihsus-f70974716de8` | `dicionario_de_dados_AIH.pdf` | 47,584 | `f70974716de829b97b341b2f05ba76eb382c09d867abcf1a0ffbdb95a1c57854` |
 
-The zip has three members. The one read is `layout sisaih01-sihd - para cmpt
-09-2015.pdf` (61,467 bytes, 9 pages, SHA-256
-`6c7f1298ed25fbd3efb40a140e93cd6978ba23d62f8af9eaaa86fe049e2f89b1`), titled "Layout da
-interface texto do SISAIH01": the layout of the text file a hospital sends through the
-SISAIH01. `dicionario_de_dados_AIH.pdf` (13 pages, "Atualizado em 02/05/2016") describes
-columns named `AH_...`, not fields of the RD.
+The zip has three members, all read. `layout sisaih01-sihd - para cmpt 09-2015.pdf`
+(61,467 bytes, 9 pages, SHA-256
+`6c7f1298ed25fbd3efb40a140e93cd6978ba23d62f8af9eaaa86fe049e2f89b1`) is titled "Layout da
+interface texto do SISAIH01"; no member says who writes or sends that file.
+`layout sisaih01-sihd - LEIAME.pdf` lists fields 100 to 118 (`DIAG_SEC_1` to
+`DIAG_SEC_9_CLASS` and a filler) as "CAMPO INCLUIDO" among the changes "para uso à
+partir da cmpt 01 / 2015". The third member holds annexes. `dicionario_de_dados_AIH.pdf`
+(13 pages, "Dicionário de Dados – AIH", "Atualizado em 02/05/2016") describes the
+columns of four tables, `TB_AIH` and `TB_HAIH` ("Tabela de AIHs- movimento" and
+"histórico", columns `AH_...`) and two with columns `PA_...`; none is the RD.
 
-`trechos.csv` has ten rows, one per field: the nine `DIAG_SEC_n_CLASS` of the SISAIH01
-layout and `AH_ST_DUPLICIDADE` of the dictionary. Each has the registry id, the pages,
-the name the document gives the field, and the text from the row of that field to the
-next row of the table. `extrair.py` wrote it with pypdf 7.1.0 and stops when a file has another
-SHA-256:
+`trechos.csv` has 19 rows, one per field of each document: the nine `DIAG_SEC_n_CLASS`
+of the SISAIH01 layout, the nine `AH_DIAG_SEC_n_CLASS` of the dictionary and its
+`AH_ST_DUPLICIDADE`. Each has the registry id, the pages, the name the document gives
+the field, and the text from the row of that field to the next row of the table.
+`extrair.py` wrote it with pypdf 7.1.0 and stops when a file has another SHA-256:
 
     uv run --locked --with pypdf==7.1.0 python \
         evidence/2026-11-18-sih-codigos-em-outros-documentos/extrair.py \
@@ -35,6 +39,8 @@ SHA-256:
 - SISAIH01, p. 7, field 101 `DIAG_SEC_1_CLASS`: "0 - Quando não é preenchido o campo
   anterior", "1-Preexistente", "2-Adquirido". Fields 103 to 117 (`DIAG_SEC_2_CLASS` to
   `DIAG_SEC_9_CLASS`) say "ver campo 101".
+- Dictionary of the AIH, p. 4, `AH_DIAG_SEC_1_CLASS` to `AH_DIAG_SEC_9_CLASS`, each:
+  "0-Quando campo anterior em branco, 1- PREEXISTENTE, 2-ADQUIRIDO".
 - Dictionary of the AIH, pp. 8-9, `AH_ST_DUPLICIDADE`: "Marca de homônimo, onde: 0 =
   não. 1 = sim."
 - A third document says the same of the homonym mark: `Layout_REDUZIDA.pdf`
@@ -46,8 +52,17 @@ SHA-256:
 `tests/unit/transforms/test_sih_rd_fields.py` compares the quotes with `trechos.csv` and
 `layout.csv`, and checks that the codes stay without a label.
 
-**What it does not settle.** None of the three documents describes the RD files from
-2008. No DEF of `TAB_SIH.zip` relates `TPDISEC1` or `HOMONIMO` to them, and none
-mentions the `2` the RD publishes in `homonimo`. That the `0` of `tpdisec1` goes with a
-blank `diagsec1` in every row of RDRR2401 agrees with the SISAIH01 text and is not a
-source for a label.
+**What it does not settle.**
+- `tpdisec`: the two documents agree with each other, with the `1` and `2` of
+  `TP_DIAGSEC.CNV` (the table `RD2008.DEF` binds to `TPDISEC1-9`) and with RDRR2401,
+  where every row with `0` has the diagnosis blank. What is missing is a document or a
+  DEF of the RD that gives the `0`; whether that is needed is the maintainer's decision
+  (#182, C11), and the `0` stays without a label.
+- The RD files have `TPDISEC1` from 2014-01 (layout 5 of
+  `evidence/2026-10-06-rd-2008-layouts`), a year before the SISAIH01 readme says the
+  text file gained the fields. Only the SISAIH01 edition for 09/2015 was read; the
+  directory lists one for 01/2015 and eight later ones.
+- `homonimo`: both lists stop at `1`, and the RD from 2008 publishes `0` and `2`.
+  `Layout_REDUZIDA.pdf` is the layout of the RD files of 2006-04 to 2007-12, the same
+  document that gives 19 labels to fields the 2008 layout calls "Zerado"; it is not used
+  here because the data has a code it does not list, not because of its date.

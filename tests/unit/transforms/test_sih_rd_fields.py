@@ -163,10 +163,33 @@ WORDS_OF_THE_OFFICIAL_LAYOUT = {
 }
 
 
+ZERADO_LABELS = {
+    "uti_mes_in": "Qtd de dias de UTI no mês inicial da internação",
+    "uti_mes_an": "Qtd de dias de UTI no mês anterior à alta",
+    "uti_mes_al": "Qtd de dias de UTI no mês da alta",
+    "uti_int_in": "Dias em UTI no mês inicial (tipo ato = 34 ou 56)",
+    "uti_int_an": "Dias em UTI no mês anterior à alta (tipo ato = 34 ou 56)",
+    "uti_int_al": "Dias em UTI no mês da alta (tipo ato = 34 ou 56)",
+    "val_sadt": "Valor de SADT",
+    "val_rn": "Valor de recém-nato",
+    "val_acomp": "Valor de acompanhante",
+    "val_ortp": "Valor de órtese e prótese",
+    "val_sangue": "Valor de sangue",
+    "val_sadtsr": "Valor de SADT sem rateio",
+    "val_transp": "Valor de transplante",
+    "val_obsang": "Valor de anestesia",
+    "val_ped1ac": "Valor de pediatria",
+    "rubrica": "Número da rubrica",
+    "num_proc": "Número do processamento",
+    "tot_pt_sp": "Total de pontos em SP",
+    "cpf_aut": "CPF do auditor que autorizou o homônimo",
+}
+
+
 def older_layout() -> list[dict[str, str]]:
     """Layout_REDUZIDA.pdf (`sihsus-f6084d22de30`), one dict per row: the layout of the
     reduced file the SIHD wrote, which the DATASUS page of manuals lists under "SIHD (uso
-    até 12/2007)"."""
+    até 12/2007)" and whose fields are those of the RD files of 2006-04 to 2007-12."""
     with OLDER_LAYOUT.open(encoding="utf-8", newline="") as f:
         return list(csv.DictReader(f))
 
@@ -178,18 +201,30 @@ def folded(text: str) -> str:
     return "".join(c for c in decomposed if unicodedata.category(c) != "Mn").casefold()
 
 
-def test_the_layout_used_until_2007_is_an_earlier_layout_of_the_rd():
-    """The 75 names of Layout_REDUZIDA.pdf are, in the same order, 75 of the 86 fields of
-    the RD files of layout 1 (2008-01 to 2010-12 in the census). The other 11 are what
-    2008 added. It is the same file one layout earlier, not another product."""
-    older = [row["nome"].lower() for row in older_layout()]
-    assert len(older) == len(set(older)) == 75
+def test_the_older_layout_is_that_of_the_rd_files_of_2006_and_2007():
+    """Layout_REDUZIDA.pdf has, row by row, the name, type, width and decimals of layout
+    19 of the census of the RD files until 2007: the 23 files read from 2006-04 to
+    2007-12. Its 75 names are, in the same order, 75 of the 86 fields of layout 1 of the
+    census from 2008 (38 files, 2008-01 to 2010-12); the other 11 are what 2008 added. So
+    the document describes the same file one layout earlier, not another product."""
+    older = older_layout()
+    names = [row["nome"].lower() for row in older]
+    assert len(names) == len(set(names)) == 75
+    with (ROOT / "evidence/2026-10-01-rd-1992-2007-layouts/census.csv").open(newline="") as f:
+        last_before_2008 = [row for row in csv.DictReader(f) if row["layout"] == "19"]
+    months = sorted(row["month"] for row in last_before_2008)
+    assert (len(months), months[0], months[-1]) == (23, "2006-04", "2007-12")
+    assert {row["fields"] for row in last_before_2008} == {
+        " ".join(f"{row['nome']} {row['tipo']}{row['tam']}.{row['dec']}" for row in older)
+    }
     with CENSUS.open(encoding="utf-8", newline="") as f:
-        first = {row["fields"] for row in csv.DictReader(f) if row["layout"] == "1"}
-    (fields,) = first
+        first_of_2008 = [row for row in csv.DictReader(f) if row["layout"] == "1"]
+    months = sorted(row["month"] for row in first_of_2008)
+    assert (len(months), months[0], months[-1]) == (38, "2008-01", "2010-12")
+    (fields,) = {row["fields"] for row in first_of_2008}
     layout_1 = [name.lower() for name in fields.split(" ")[::2]]
-    assert [name for name in layout_1 if name in older] == older
-    assert set(layout_1) - set(older) == {
+    assert [name for name in layout_1 if name in names] == names
+    assert set(layout_1) - set(names) == {
         "qt_diarias",
         "gestor_tp",
         "cnpj_mant",
@@ -204,11 +239,33 @@ def test_the_layout_used_until_2007_is_an_earlier_layout_of_the_rd():
     }
 
 
+def test_the_page_of_manuals_lists_the_older_layout_under_its_period():
+    """The six lines kept from the DATASUS page of manuals: the heading "SIHD (uso até
+    12/2007)" and, after it and before any other heading, the link to the file. The
+    listing of the directory has the file with the size the registry records."""
+    evidence = OLDER_LAYOUT.parent
+    excerpt = (evidence / "pagina-de-manuais-trecho.html").read_text(encoding="utf-8")
+    heading = "<strong>SIHD (uso at&eacute; 12/2007)</strong>"
+    link = (
+        '<a href="ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/'
+        'Layout_REDUZIDA.pdf">Layout do arquivo de REDUZIDA gerado pelo SIHD</a>'
+    )
+    assert excerpt.count("<strong>") == 1
+    assert 0 <= excerpt.index(heading) < excerpt.index(link)
+    listing = (evidence / "manuais-listing.txt").read_text(encoding="utf-8").splitlines()
+    (line,) = (line for line in listing if line.endswith(" Layout_REDUZIDA.pdf"))
+    (source,) = (s for s in sources_registry()["sources"] if s["id"] == "sihsus-f6084d22de30")
+    assert len(listing) == 81
+    assert int(line.split()[4]) == source["bytes"] == 26945
+    assert source["url"].endswith("/SIHD/Manuais/Layout_REDUZIDA.pdf")
+
+
 def test_nine_labels_are_the_words_of_the_official_layout():
-    """Each of these labels said more than IT_SIHSUS_1603 says of the field, or something
-    else: "competência" where it says "processamento", "(sífilis)", "alto risco",
-    "cobradas", "autorizador", "notificação compulsória" (#182, C2 and C3). The label is
-    now the document's description up to its full stop, or up to ", no formato"."""
+    """The nine labels the maintainer chose in #182 (C2 and C3) among those that said
+    more than IT_SIHSUS_1603 says of the field, or something else: "competência" where
+    it says "processamento", "(sífilis)", "alto risco", "cobradas", "autorizador",
+    "notificação compulsória". Each is now the document's description up to its full
+    stop, or up to ", no formato". Other labels of the dictionary still have no claim."""
     official = {row["campo"]: row for row in official_layout()}
     contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
     for name, label in WORDS_OF_THE_OFFICIAL_LAYOUT.items():
@@ -234,10 +291,11 @@ def test_nine_labels_are_the_words_of_the_official_layout():
 
 def test_the_zerado_fields_take_the_label_of_the_layout_used_until_2007():
     """IT_SIHSUS_1603 says only "Zerado" of 19 fields, so it gives them no name. Their
-    label is what Layout_REDUZIDA.pdf, the layout before 2008, prints for the same field
-    name, in sentence case and with the accents the capitals lack: equal to the document
-    once case and diacritics are set aside. Each field says so in an open issue, because
-    the document is of another period (#182, C2)."""
+    label is what Layout_REDUZIDA.pdf, the layout of 2006 and 2007, prints for the same
+    field name, in sentence case and with the accents the capitals lack: equal to the
+    document once case and diacritics are set aside. Each field says so in an open issue,
+    because the document is of another period (#182, C2). The three UTI_INT fields also
+    say that IT_SIHSUS_1603 calls their total "unidade intermediaria"."""
     zerado = [row["campo"] for row in official_layout() if row["descricao"] == "Zerado"]
     older = {row["nome"].lower(): row for row in older_layout()}
     contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
@@ -254,31 +312,40 @@ def test_the_zerado_fields_take_the_label_of_the_layout_used_until_2007():
         assert evidence["locator"] == f'{row["nome"]}: "{row["descricao"]}"'
         (issue,) = [i for i in item["issues"] if i["id"] == "rotulo-do-layout-ate-2007"]
         assert issue["status"] == "open"
-    assert contract["val_sadtsr"]["field"]["label"] == "Valor de SADT sem rateio"
-    assert contract["cpf_aut"]["field"]["label"] == "CPF do auditor que autorizou o homônimo"
+    assert {name: contract[name]["field"]["label"] for name in zerado} == ZERADO_LABELS
+    (total,) = (row for row in official_layout() if row["campo"] == "uti_int_to")
+    assert total["descricao"] == "Quantidade de diárias em unidade intermediaria."
+    for name in zerado:
+        (issue,) = [i for i in contract[name]["issues"] if i["id"] == "rotulo-do-layout-ate-2007"]
+        assert "2006-04 a 2007-12" in issue["description"]
+        assert (f'"{total["descricao"]}"' in issue["description"]) == name.startswith("uti_int_")
 
 
 OTHER_DOCUMENTS = ROOT / "evidence/2026-11-18-sih-codigos-em-outros-documentos/trechos.csv"
 
 
 def test_tpdisec_0_and_homonimo_stay_unlabelled_and_say_what_was_read(dbc_fixture):
-    """Three DATASUS documents give codes to what looks like these fields in another file:
-    the layout of the SISAIH01 text file ("0 - Quando não é preenchido o campo anterior"
-    for the class of a secondary diagnosis), and the layout of the reduced file until
-    2007-12 and the dictionary of the AIH table ("0 = não", "1 = sim" for the homonym
-    mark). None describes the RD from 2008, no DEF relates the fields to them, and none
-    has the `2` RDRR2401 publishes in `homonimo`. So the codes keep no label (#182, C11
-    and C12), and the open issue of each field names the documents and quotes them."""
+    """Three registered documents give codes to these fields in another file. For the
+    class of a secondary diagnosis, the SISAIH01 text layout ("0 - Quando não é
+    preenchido o campo anterior") and the dictionary of the AIH tables ("0-Quando campo
+    anterior em branco"). For the homonym mark, that dictionary and the layout of the RD
+    files of 2006-2007 ("0 = não", "1 = sim"), while RDRR2401 publishes `0` and `2`. The
+    codes keep no label (#182, C11 and C12), and the open issue of each field names each
+    document, with page and field, and quotes it."""
     with OTHER_DOCUMENTS.open(encoding="utf-8", newline="") as f:
         passages = {row["campo"]: row for row in csv.DictReader(f)}
-    sisaih01, sihd2 = passages["DIAG_SEC_1_CLASS"], passages["AH_ST_DUPLICIDADE"]
+    assert len(passages) == 19
+    sisaih01, mark = passages["DIAG_SEC_1_CLASS"], passages["AH_ST_DUPLICIDADE"]
     (older,) = (row for row in older_layout() if row["nome"] == "HOMONIMO")
-    zero = "0 - Quando não é preenchido o campo anterior"
+    zero, blank = (
+        "0 - Quando não é preenchido o campo anterior",
+        "0-Quando campo anterior em branco",
+    )
     assert zero in sisaih01["trecho"]
-    assert sihd2["trecho"].endswith("Marca de homônimo, onde: 0 = não. 1 = sim.")
+    assert mark["trecho"].endswith("Marca de homônimo, onde: 0 = não. 1 = sim.")
     assert older["descricao"] == "MARCA DE HOMONIMO ( 0 = não , 1 = sim)"
     registered = {source["id"] for source in sources_registry()["sources"]}
-    assert {sisaih01["source_id"], sihd2["source_id"], "sihsus-f6084d22de30"} <= registered
+    assert {sisaih01["source_id"], mark["source_id"], "sihsus-f6084d22de30"} <= registered
 
     dictionary = load_dicionario(DATASET)
     for n in range(1, 10):
@@ -294,13 +361,17 @@ def test_tpdisec_0_and_homonimo_stay_unlabelled_and_say_what_was_read(dbc_fixtur
         assert issue["status"] == "open"
         assert f"({row['source_id']}, p. {row['paginas']}, {named})" in issue["description"]
         assert zero in issue["description"]
+        table = passages[f"AH_DIAG_SEC_{n}_CLASS"]
+        assert table["trecho"].startswith(f"AH_DIAG_SEC_{n}_CLASS Text 1 /* {blank}, 1-")
+        cited = f"({table['source_id']}, p. {table['paginas']}, coluna AH_DIAG_SEC_{n}_CLASS)"
+        assert f'{cited}: "{blank}"' in issue["description"]
     homonimo = dictionary.field_def("homonimo")
     assert "x-decode" not in homonimo
     (issue,) = [i for i in homonimo["x-metadata"]["issues"] if i["id"] == "homonimo-sem-fonte"]
     assert issue["status"] == "open"
     assert f"sihsus-f6084d22de30, p. {older['pagina']}" in issue["description"]
     assert older["descricao"] in issue["description"]
-    assert f"{sihd2['source_id']}, pp. {sihd2['paginas']}" in issue["description"]
+    assert f"{mark['source_id']}, pp. {mark['paginas']}" in issue["description"]
     assert "Marca de homônimo, onde: 0 = não. 1 = sim." in issue["description"]
 
     raw = dbc_fixture("sih_rr_2024_01_mini").read_bytes()
