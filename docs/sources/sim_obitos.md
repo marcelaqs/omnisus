@@ -9,9 +9,11 @@ DATASUS, um por UF e ano.
 
 ## O que um registro representa
 
-- O dicionário da biblioteca descreve a base como declarações de óbito e declara
-  `numerodo` (número da DO) como chave primária
-  (`src/omnisus/data/dicionarios/sim_obitos.yaml`, `title` e `primaryKey`).
+- O dicionário da biblioteca descreve a base como declarações de óbito
+  (`src/omnisus/data/dicionarios/sim_obitos.yaml`, `title`). Nenhum arquivo publicado traz
+  `numerodo`, o número da DO: o cabeçalho dos 868 arquivos `DO<UF><ano>` do servidor, de 1996
+  a 2026, foi lido em 18/11/2026 (`evidence/2026-11-18-sim-colunas-do/`). Não há, nos
+  arquivos públicos, identificador do registro, e o dicionário não declara chave primária.
 - `tipobito` separa óbito fetal (1) de não fetal (2) e é campo obrigatório
   (Estrutura do SIM 2025, p. 1).
 - O documento define óbito fetal como a morte antes da expulsão ou extração completa

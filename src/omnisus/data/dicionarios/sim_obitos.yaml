@@ -31,8 +31,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Descrito na estrutura do arquivo de 2006 e no dicionário da tabela DOM; fica declarado, e o dataset não declara chave primária.'
     - name: contador
       type: integer
       label: Contador
@@ -2918,8 +2917,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 6); fica declarado.'
     - name: ufinform
       type: string
       label: UF informante
@@ -2939,9 +2937,8 @@ schema:
           note: 'Transcrição do documento, com ortografia, artigos e concordância corrigidos; a aplicabilidade a cada arquivo não foi conferida. As edições de 07/2025 e 12/2019 não listam UFINFORM; a descrição é a da estrutura do arquivo de Mortalidade 2006. A estrutura até 2005, no mesmo PDF (p. 7), diz ''Código da UF que informou, conforme código IBGE''.'
         issues:
         - id: absent-in-audited-snapshot
-          status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
+          status: resolved
+          description: 'Ausente de DORR2022 e DORR2023. Resolvido em 2026-11-18: o campo está nos 28 arquivos de cada ano de 2002 a 2010 e em um de 2001, e em nenhum de 2011 em diante (evidence/2026-11-18-sim-colunas-do/).'
     - name: cb_pre
       type: string
       label: Causa básica pré-seleção
@@ -3164,8 +3161,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 9); fica declarado.'
     - name: cb_alt
       type: string
       label: Causa básica alterada
@@ -3188,72 +3184,7 @@ schema:
         issues:
         - id: absent-in-audited-snapshot
           status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
-    - name: covid_clas
-      type: string
-      label: Classificação COVID
-      x-metadata:
-        claims:
-        - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
-          checked_at: '2026-11-18'
-          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
-          reviewer: null
-          evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
-          - source_id: sim-b014389eca62
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
-          - source_id: sim-anterior-13cabba0b9a1
-            pages: [1, 2, 3, 4, 5, 6, 7]
-            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
-          - source_id: sim-dom-fb396a277981
-            pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'COVID_CLAS não aparece na coluna de nome do campo'
-          note: 'Nenhum dos quatro documentos lista o campo.'
-        issues:
-        - id: absent-in-audited-snapshot
-          status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
-    - name: mat_clas
-      type: string
-      label: Classificação materna
-
-    # ========================================================================
-    # Partições + procedência (adicionados pelo ETL)
-    # ========================================================================
-      x-metadata:
-        claims:
-        - target: /field/description
-          value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
-          status: not_found
-          checked_at: '2026-11-18'
-          method: 'Leitura de todas as páginas de cada PDF oficial citado, feita por agente; sem revisor humano'
-          reviewer: null
-          evidence:
-          - source_id: sim-b4195ac8e0f8
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
-          - source_id: sim-b014389eca62
-            pages: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
-          - source_id: sim-anterior-13cabba0b9a1
-            pages: [1, 2, 3, 4, 5, 6, 7]
-            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
-          - source_id: sim-dom-fb396a277981
-            pages: [1, 2, 3, 4, 5, 6, 7, 8]
-            locator: 'MAT_CLAS não aparece na coluna de nome do campo'
-          note: 'Nenhum dos quatro documentos lista o campo.'
-        issues:
-        - id: absent-in-audited-snapshot
-          status: open
-          description: Not disseminated in audited snapshot5. Legacy definition retained;
-            historical applicability unconfirmed.
+          description: 'Em nenhum dos 868 arquivos DO<UF><ano> do servidor: SIM/CID10/DORES de 1996 a 2024 (812) e SIM/PRELIM/DORES de 2025 e 2026 (56), cabeçalhos lidos em 2026-11-18 (evidence/2026-11-18-sim-colunas-do/). Listado no Estrutura_do_SIM_2025.pdf (p. 9); fica declarado.'
     - name: ano
       type: integer
       label: Ano
@@ -3281,11 +3212,10 @@ schema:
           kind: publication
           input: source_uri
           rule: release_from_uri
-  primaryKey: [numerodo]
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: DO
-x-version: "2.13.0"
+x-version: "2.14.0"
 
 x-analytics:
   version: 1.2.0

@@ -135,7 +135,7 @@ DESCRIBED_ELSEWHERE = {
 }
 
 # In no row of the four documents.
-NOT_LISTED = ["contador", "estabdescr", "fontesinf", "nudiasinf", "covid_clas", "mat_clas"]
+NOT_LISTED = ["contador", "estabdescr", "fontesinf", "nudiasinf"]
 
 # Described before #184 in the maintainers' words, with no claim. Each says something the
 # documents do not (the CBO eras, the `aux_cnes` lookup, the `*J189*A419` form), so it stays.
