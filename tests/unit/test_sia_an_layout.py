@@ -97,3 +97,17 @@ def test_the_layout_says_n_and_s_where_the_file_publishes_0_and_1(dbc_fixture, n
         i for i in field["x-metadata"]["issues"] if i["id"] == "informe-diverge-do-arquivo"
     ]
     assert issue["status"] == "open"
+
+
+def test_ap_cnspcn_is_marked_as_the_cipher_anpa1410_publishes(dbc_fixture) -> None:
+    """ANPA1410 fills AP_CNSPCN in its 2 records with 15 characters and no digit, the
+    shape ``x-crypto: datasus-cns`` marks (``test_fixture_provenance``). The Informe row
+    (p. 8) names the field and does not say it is ciphered. ANRR1401 as the server
+    publishes it (SHA-256 in ``FIXTURES.md``) fills the column the same way in its 162
+    records; the fixture blanks it because the cipher is reversible (#183), not because it
+    was in clear, so this test reads ANPA1410 only."""
+    frame = dbc_bytes_to_lazyframe(dbc_fixture(FIXTURE).read_bytes(), dataset=AN).collect()
+    cells = list(frame["ap_cnspcn"])
+    assert len(cells) == 2
+    assert all(len(cell) == 15 and not any(ch.isdigit() for ch in cell) for cell in cells)
+    assert load_dicionario(AN).field_def("ap_cnspcn").get("x-crypto") == "datasus-cns"

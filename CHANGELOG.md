@@ -52,6 +52,13 @@
   other dates as `yyyyMMdd` in all 162 records; `ap_dtaut` (`20430101`) and `an_dtpdr`
   (`20161101`) each hold one implausible date and gain the open issue
   `data-implausivel` (#183).
+- `sia_apac_nefrologia` (1.7.0): `ap_cnspcn` carries `x-crypto: datasus-cns`, as it
+  does in five of the nine APAC dictionaries (the other four still declare the field
+  without the mark). The row of the AN layout (Informe, p. 8) names the field and does
+  not say it is ciphered; the mark is measured: `ANPA1410` fills the column in its 2
+  records, and `ANRR1401` as published in its 162, with 15 characters and no digit.
+  The fixture of `ANRR1401` blanks the column because the cipher is reversible, so the
+  test reads `ANPA1410` only. The library does not decipher the value (#183).
 
 ### omnisus-dbf 0.2.2
 
