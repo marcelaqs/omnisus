@@ -423,6 +423,13 @@ schema:
             pages: []
             locator: 'Obito_1996_CID10.def: x*Escol falec SERIE, SERIESCFAL, 1, SERIEFAL.CNV; OBITOS_CID10_TAB/tabdo/SERIEFAL.CNV'
           note: Mapa do CNV.
+        issues:
+        - id: def-liga-por-linha-x
+          status: open
+          description: 'O Obito_1996_CID10.def liga o campo ao SERIEFAL.CNV numa linha que começa com x minúsculo. O TabWin.pdf (p. 87) lista as funções de linha A, R, S, L, C, Q, D, T, I e G e diz que linha iniciada por caractere sem função definida é tratada como comentário; X não está na lista. O mapa do CNV fica, com esta ressalva, até um documento dizer o que a linha X faz.'
+        - id: seriefal-cnv-lista-0-e-9
+          status: open
+          description: 'O SERIEFAL.CNV rotula 0 (''0'') e 9 (''Ign''). O Estrutura_do_SIM_2025.pdf (p. 2) descreve o campo como ''Números de 1 a 8''. DORR2022 e DORR2023 gravam branco e 1 a 8. O mapa mantém as onze linhas do CNV.'
     - name: escfalagr1
       type: string
       label: Escolaridade agregada
@@ -606,6 +613,13 @@ schema:
             pages: []
             locator: 'Obito_1996_CID10.def: x*Escol Mãe SERIE, SERIESCMAE, 1, SERIEFAL.CNV; OBITOS_CID10_TAB/tabdo/SERIEFAL.CNV'
           note: Mapa do CNV.
+        issues:
+        - id: def-liga-por-linha-x
+          status: open
+          description: 'O Obito_1996_CID10.def liga o campo ao SERIEFAL.CNV numa linha que começa com x minúsculo. O TabWin.pdf (p. 87) lista as funções de linha A, R, S, L, C, Q, D, T, I e G e diz que linha iniciada por caractere sem função definida é tratada como comentário; X não está na lista. O mapa do CNV fica, com esta ressalva, até um documento dizer o que a linha X faz.'
+        - id: seriefal-cnv-lista-0-e-9
+          status: open
+          description: 'O SERIEFAL.CNV rotula 0 (''0'') e 9 (''Ign''). O Estrutura_do_SIM_2025.pdf (p. 3) descreve o campo como ''Números de 1 a 8''. DORR2022 e DORR2023 gravam branco e 1 a 8. O mapa mantém as onze linhas do CNV.'
     - name: escmae
       type: string
       label: Escolaridade da mãe (antigo)
