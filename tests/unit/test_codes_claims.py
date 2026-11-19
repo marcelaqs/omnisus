@@ -61,8 +61,6 @@ def test_a_map_nothing_backs_is_gone(dataset, name) -> None:
 @pytest.mark.parametrize(
     ("dataset", "name"),
     [
-        ("sim_obitos", "esc2010"),
-        ("sim_obitos", "escmae2010"),
         ("sinasc_nascidos_vivos", "stdnnova"),
     ],
 )
@@ -73,3 +71,30 @@ def test_a_label_the_document_contradicts_is_a_conflicting_claim_with_an_issue(
     (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
     assert claim["status"] == "conflicting" and claim["evidence"]
     assert any(i["status"] == "open" for i in field["x-metadata"]["issues"])
+
+
+ESC2010_IN_THE_DOCUMENT = {
+    "0": "Sem escolaridade",
+    "1": "Fundamental I (1ª a 4ª série)",
+    "2": "Fundamental II (5ª a 8ª série)",
+    "3": "Médio (antigo 2º Grau)",
+    "4": "Superior incompleto",
+    "5": "Superior completo",
+    "9": "Ignorado",
+}
+
+
+@pytest.mark.parametrize(("name", "page"), [("esc2010", 2), ("escmae2010", 3)])
+def test_esc2010_labels_are_the_ones_the_estrutura_do_sim_writes(name, page) -> None:
+    """The maintainer chose the document over the older labels, which no source had (#184)."""
+    field = _field("sim_obitos", name)
+    assert field["x-decode"] == ESC2010_IN_THE_DOCUMENT
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["reviewer"]) == ("unreviewed", None)
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
+        ("sim-b4195ac8e0f8", [page])
+    ]
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == f"{name}-rotulo-diverge-do-pdf"
+    ]
+    assert issue["status"] == "resolved" and "1-5 ano" in issue["description"]

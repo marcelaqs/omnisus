@@ -2,7 +2,7 @@ name: sim_obitos_infantis
 title: SIM — Óbitos infantis (DOINF), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.6.0
+x-version: 1.7.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_doinf_br_2023_excerpt.dbc, 87 fields; observed 2026-09-22
@@ -575,18 +575,18 @@ schema:
     description: Escolaridade 2010. Nível da última série concluída pelo falecido.
     x-decode:
       '0': Sem escolaridade
-      '1': Fundamental I (1-5 ano)
-      '2': Fundamental II (6-9 ano)
-      '3': Médio
+      '1': Fundamental I (1ª a 4ª série)
+      '2': Fundamental II (5ª a 8ª série)
+      '3': Médio (antigo 2º Grau)
       '4': Superior incompleto
       '5': Superior completo
       '9': Ignorado
     x-metadata:
       claims:
       - target: /field/codes
-        value_sha256: f49de8bbb4eee151246f695325877c0fb0157e71251d22421ac11016b0def0a3
-        status: conflicting
-        checked_at: '2026-11-15'
+        value_sha256: 3f62f8acbc3b5fb8d9d538446c2fadf44abd5f65c9be4f54433a595e2e1768f2
+        status: unreviewed
+        checked_at: '2026-11-18'
         method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
           sem revisor humano
         reviewer: null
@@ -594,11 +594,12 @@ schema:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 2
-          locator: 'ESC2010, Caracter 1: 0 sem escolaridade; 1 Fundamental I (1ª a 4ª série); 2 Fundamental
-            II (5ª a 8ª série); 3 Médio; 4 Superior incompleto; 5 Superior completo; 9 Ignorado'
-        note: 'Os códigos batem, mas os rótulos de ''1'' e ''2'' não: o x-decode diz ''1-5 ano'' e ''6-9
-          ano'', o PDF diz ''1ª a 4ª série'' e ''5ª a 8ª série''. O Obito_1996_CID10.def liga o campo a
-          ESCSERIE.CNV e ESCCICLO.CNV, que o OBITOS_CID10_TAB.zip não traz.'
+          locator: 'ESC2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 – Fundamental
+            II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior completo;
+            9 – Ignorado'
+        note: Códigos e rótulos como o documento os escreve. O ESCSERIE.CNV (OBITOS_CID10_TAB.zip, tabdo,
+          tabinf e tabmat) traz os mesmos sete códigos, com outra grafia e 'N Inf' para o branco, que este
+          mapa não rotula. Os rótulos anteriores estão no issue esc2010-rotulo-diverge-do-pdf.
       - target: /field/description
         value_sha256: 500f9ded1778914aba57053629d78cb7e969167a7fd44f8c34bb2026dda5faca
         status: unreviewed
@@ -615,7 +616,7 @@ schema:
           a cada arquivo não foi conferida.
       issues:
       - id: esc2010-rotulo-diverge-do-pdf
-        status: open
+        status: resolved
         description: 'Os rótulos de ''1'' (''Fundamental I (1-5 ano)'') e ''2'' (''Fundamental II (6-9 ano)'')
           não são os do Estrutura_do_SIM_2025.pdf (p. 2: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum
           CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo
@@ -625,8 +626,9 @@ schema:
           zip em tabdo, tabinf e tabmat, com os mesmos bytes (SHA-256 efb902c0777178ec6d259beb336d39bd2c8c10c4b50e0ed902f413d820176a10,
           lido em 2026-11-18), e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental
           II(5ª a 8ª serie)'', como o PDF. Os DEF dos subconjuntos, no mesmo zip, citam esse CNV para ESC2010:
-          tabinf/OBITO_Infantil.DEF na linha 410 (ativa) e tabmat/OBITOMAT.DEF na linha 310 (ativa). O mapa
-          fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
+          tabinf/OBITO_Infantil.DEF na linha 410 (ativa) e tabmat/OBITOMAT.DEF na linha 310 (ativa). Resolvido
+          em 2026-11-18: o mantenedor escolheu o documento; os rótulos anteriores não tinham fonte, e ''3''
+          passou de ''Médio'' a ''Médio (antigo 2º Grau)''.'
   - name: seriescfal
     type: string
     label: Escolaridade (série)
@@ -948,18 +950,18 @@ schema:
     description: Escolaridade 2010. Nível da última série concluída pela mãe.
     x-decode:
       '0': Sem escolaridade
-      '1': Fundamental I (1-5 ano)
-      '2': Fundamental II (6-9 ano)
-      '3': Médio
+      '1': Fundamental I (1ª a 4ª série)
+      '2': Fundamental II (5ª a 8ª série)
+      '3': Médio (antigo 2º Grau)
       '4': Superior incompleto
       '5': Superior completo
       '9': Ignorado
     x-metadata:
       claims:
       - target: /field/codes
-        value_sha256: f49de8bbb4eee151246f695325877c0fb0157e71251d22421ac11016b0def0a3
-        status: conflicting
-        checked_at: '2026-11-15'
+        value_sha256: 3f62f8acbc3b5fb8d9d538446c2fadf44abd5f65c9be4f54433a595e2e1768f2
+        status: unreviewed
+        checked_at: '2026-11-18'
         method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
           sem revisor humano
         reviewer: null
@@ -967,11 +969,12 @@ schema:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 3
-          locator: 'ESCMAE2010, Caracter 1: mesmos códigos e rótulos de ESC2010, para a escolaridade da
-            mãe'
-        note: 'Os códigos batem, mas os rótulos de ''1'' e ''2'' não: o x-decode diz ''1-5 ano'' e ''6-9
-          ano'', o PDF diz ''1ª a 4ª série'' e ''5ª a 8ª série''. O Obito_1996_CID10.def liga o campo a
-          ESCSERIE.CNV e ESCCICLO.CNV, que o OBITOS_CID10_TAB.zip não traz.'
+          locator: 'ESCMAE2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 –
+            Fundamental II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior
+            completo; 9 – Ignorado'
+        note: Códigos e rótulos como o documento os escreve. O ESCSERIE.CNV (OBITOS_CID10_TAB.zip, tabdo,
+          tabinf e tabmat) traz os mesmos sete códigos, com outra grafia e 'N Inf' para o branco, que este
+          mapa não rotula. Os rótulos anteriores estão no issue escmae2010-rotulo-diverge-do-pdf.
       - target: /field/description
         value_sha256: 258b626e58f750cecaf7b2ba71a73a1502a7d409179fd1e237a264aeacb992dd
         status: unreviewed
@@ -988,7 +991,7 @@ schema:
           a cada arquivo não foi conferida.
       issues:
       - id: escmae2010-rotulo-diverge-do-pdf
-        status: open
+        status: resolved
         description: 'Os rótulos de ''1'' (''Fundamental I (1-5 ano)'') e ''2'' (''Fundamental II (6-9 ano)'')
           não são os do Estrutura_do_SIM_2025.pdf (p. 3: ''1ª a 4ª série'' e ''5ª a 8ª série''). Nenhum
           CNV registrado traz os rótulos do x-decode; o ESC2010.CNV do SINASC (ligado a ESCMAE2010 pelo
@@ -999,7 +1002,8 @@ schema:
           lido em 2026-11-18), e traz ''1'' como ''Fundamental I (1ª a 4ª serie)'' e ''2'' como ''Fundamental
           II(5ª a 8ª serie)'', como o PDF. Os DEF dos subconjuntos, no mesmo zip, citam esse CNV para ESCMAE2010:
           tabinf/OBITO_Infantil.DEF na linha 507 (comentada) e tabmat/OBITOMAT.DEF na linha 405 (ativa).
-          O mapa fica como estava até o mantenedor escolher entre o PDF e o rótulo atual.'
+          Resolvido em 2026-11-18: o mantenedor escolheu o documento; os rótulos anteriores não tinham fonte,
+          e ''3'' passou de ''Médio'' a ''Médio (antigo 2º Grau)''.'
   - name: seriescmae
     type: string
     label: Escolaridade da mãe (série)
