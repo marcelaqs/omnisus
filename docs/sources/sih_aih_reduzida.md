@@ -25,15 +25,15 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   (Informe SIH 2016-03, p. 1–4); `aud_just` e `sis_just` guardam a justificativa para
   aceitar a AIH sem esse número (p. 3).
 - `homonimo` indica se o paciente da AIH é homônimo do paciente de outra AIH
-  (Informe SIH 2016-03, p. 3). Nenhum documento registrado dá os códigos de `homonimo`
+  (Informe SIH 2016-03, p. 3). Nenhum documento do RD de 2008 em diante dá os códigos de `homonimo`
   nem de `gestor_tp`, e nenhum DEF empacotado cita os dois campos: eles ficam sem
   rótulo. O RD publica `homonimo` `0` e `2`, e o RJ `0` e `1`; não suponha que `2`
   e `1` querem dizer a mesma coisa (issues `homonimo-sem-fonte` e
-  `gestor_tp-sem-fonte`, #10). Dois documentos de outro contexto dão `0` não e `1` sim
-  para a marca de homônimo: o layout do arquivo reduzido de até 12/2007
-  (`Layout_REDUZIDA.pdf`, p. 2) e o dicionário de dados da AIH
-  (`dicionario_de_dados_AIH.pdf`, pp. 8-9). Nenhum descreve o RD de 2008 em diante nem
-  fala em `2`, e por isso não viraram rótulo
+  `gestor_tp-sem-fonte`, #10). Dois documentos registrados dão `0` não e `1` sim
+  para a marca de homônimo: o layout dos arquivos RD de 2006-04 a 2007-12
+  (`Layout_REDUZIDA.pdf`, p. 2) e o dicionário de dados das tabelas `TB_AIH` e `TB_HAIH`
+  (`dicionario_de_dados_AIH.pdf`, pp. 8-9). O RD de 2008 em diante publica `2`, que
+  nenhum dos dois traz, e por isso a lista deles não virou mapa
   (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`).
 - `diag_princ` é o código do diagnóstico principal pela CID-10, com 4 caracteres
   (Informe SIH 2016-03, p. 2), e o dicionário o liga à tabela `aux_cid10`
@@ -154,7 +154,12 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   `CID10.DBF` do SIM (ver [Vocabulários](vocabularios.md)), não do `DBF/cid10.dbf` de
   `TAB_SIH.zip`, que o repositório não empacota. O tipo de cada um, em `tpdisec1` a
   `tpdisec9`, vem de `RD2008.DEF` → `TP_DIAGSEC.CNV`: 1 = preexistente, 2 = adquirido. O
-  `0` que os arquivos publicam não está na tabela e fica sem rótulo.
+  `0` que os arquivos publicam não está na tabela e fica sem rótulo. Dois documentos de
+  outro arquivo dizem que `0` é o diagnóstico secundário não preenchido: o layout da
+  interface texto do SISAIH01 de 09/2015 (p. 7) e o dicionário de dados das tabelas
+  `TB_AIH` e `TB_HAIH` (p. 4). Nenhum DEF liga `tpdisec1` a `tpdisec9` a eles, e por
+  decisão do mantenedor (#182) o `0` segue sem rótulo
+  (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`).
 - Em `sih_aih_reduzida_1992_2007`, `diag_princ` grava CID-9 (6 algarismos, `065099`) de
   1992-01 a 1997-12 e CID-10 (`O800`) de 1998-01 a 2007-12, na mesma coluna: um filtro
   como `LIKE 'I21%'` sobre 1992–2007 perde 1992–1997. Separe por `ano` antes de juntar à
@@ -276,9 +281,13 @@ Passo a passo com análise e procedência:
   `f6084d22de3011fd9d2f490736e6d0469c45ac3ccc45be56f4e5c0ad564cb13d`. Está transcrito em
   `evidence/2026-11-18-layout-reduzida-sihd/layout.csv`. Os 19 campos que o informe de
   2016 descreve só como "Zerado" levam como rótulo o texto deste layout anterior (por
-  exemplo `val_sadtsr`, "Valor de SADT sem rateio"): o rótulo diz o que o campo era até
-  2007, e o campo vem zerado ou em branco nos arquivos de 2008 em diante. Cada um traz a
-  issue `rotulo-do-layout-ate-2007`.
+  exemplo `val_sadtsr`, "Valor de SADT sem rateio"): o rótulo diz o que o campo era em
+  2006 e 2007, os meses em que os arquivos RD lidos têm exatamente os 75 campos do
+  documento. Em RDRR2401 os 17 numéricos são 0 em todas as linhas e os dois de texto vêm
+  em branco; nenhum arquivo de 2008 a 2021 foi lido para esses campos. Cada um traz a
+  issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
+  texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
+  COMPETÊNCIA" e é "Ano de processamento da AIH").
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos

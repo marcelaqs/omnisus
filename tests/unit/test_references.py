@@ -221,8 +221,10 @@ def test_cid_notif_declares_the_cid10_reference(con, dbc_fixture):
         ("LCID laqueadura (Cap09)", "CID_NOTIF", "1", "CNV\\CIDX09.CNV"),
         ("SCID laqueadura (Cap09)", "CID_NOTIF", "1", "CNV\\CID10_09.CNV"),
     ]
-    assert "cid_notif" in referenced_fields("sih_aih_reduzida")
     field = load_dicionario("sih_aih_reduzida").field_def("cid_notif")
+    assert field["foreignKeys"] == [
+        {"fields": "cid_notif", "reference": {"resource": "aux_cid10", "fields": "codigo"}}
+    ]
     (issue,) = [
         i for i in field["x-metadata"]["issues"] if i["id"] == "cid_notif-laqueadura-no-def"
     ]

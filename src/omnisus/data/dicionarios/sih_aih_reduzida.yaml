@@ -27683,17 +27683,14 @@ schema:
         issues:
         - id: homonimo-sem-fonte
           status: open
-          description: 'Sem mapa: nenhum documento registrado dá os códigos. IT_SIHSUS_1603, p. 3,
+          description: 'Sem mapa: nenhum documento do RD de 2008 em diante dá os códigos. IT_SIHSUS_1603, p. 3,
             só descreve o campo ("Indicador se o paciente da AIH é homônimo do paciente de outra
             AIH"), e nenhum dos 37 DEF empacotados (RD2008.DEF, RJ2008.DEF, os RD.DEF da era
             1992-2007 e os demais) cita HOMONIMO. O mapa anterior, ''0'' Não e ''1'' Sim, não tinha
             fonte e contrariava os dados: o RD publica ''0'' e ''2'' (RR 2024-01: ''2'' em 39 AIHs; RR
             2022: 138, evidence/2026-09-23-colunas-e-linkage.md), e o RJ publica ''0'' e ''1''. Saiu
             na issue #10.
-            Dois documentos de outro contexto dão ''0'' não e ''1'' sim: o Layout_REDUZIDA.pdf, do arquivo reduzido de
-            até 12/2007 (sihsus-f6084d22de30, p. 2: "MARCA DE HOMONIMO ( 0 = não , 1 = sim)"), e o dicionário de dados
-            da AIH (sihsus-f70974716de8, pp. 8-9, coluna AH_ST_DUPLICIDADE: "Marca de homônimo, onde: 0 = não. 1 =
-            sim."). Nenhum descreve o RD de 2008 em diante, e nenhum fala em ''2'': o campo segue sem mapa.'
+            Dois documentos registrados dão ''0'' não e ''1'' sim para a marca de homônimo: o Layout_REDUZIDA.pdf, o layout dos arquivos RD de 2006-04 a 2007-12 (sihsus-f6084d22de30, p. 2: "MARCA DE HOMONIMO ( 0 = não , 1 = sim)"), e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, pp. 8-9, coluna AH_ST_DUPLICIDADE: "Marca de homônimo, onde: 0 = não. 1 = sim."). O RD de 2008 em diante publica ''2'', que nenhum dos dois traz, e por isso a lista deles não virou mapa.'
 
     # ========================================================================
     # Internação
@@ -28449,7 +28446,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: uti_mes_an
       type: integer
       label: Qtd de dias de UTI no mês anterior à alta
@@ -28483,7 +28480,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: uti_mes_al
       type: integer
       label: Qtd de dias de UTI no mês da alta
@@ -28517,7 +28514,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: uti_mes_to
       type: integer
       label: Total dias UTI
@@ -28664,7 +28661,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam. O IT_SIHSUS_1603, p. 1, descreve o total da mesma família, UTI_INT_TO, como "Quantidade de diárias em unidade intermediaria."; o layout anterior fala em dias em UTI.'
     - name: uti_int_an
       type: integer
       label: Dias em UTI no mês anterior à alta (tipo ato = 34 ou 56)
@@ -28698,7 +28695,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam. O IT_SIHSUS_1603, p. 1, descreve o total da mesma família, UTI_INT_TO, como "Quantidade de diárias em unidade intermediaria."; o layout anterior fala em dias em UTI.'
     - name: uti_int_al
       type: integer
       label: Dias em UTI no mês da alta (tipo ato = 34 ou 56)
@@ -28732,7 +28729,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam. O IT_SIHSUS_1603, p. 1, descreve o total da mesma família, UTI_INT_TO, como "Quantidade de diárias em unidade intermediaria."; o layout anterior fala em dias em UTI.'
     - name: uti_int_to
       type: integer
       label: Total dias UCI
@@ -28916,7 +28913,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_rn
       type: number
       label: Valor de recém-nato
@@ -28950,7 +28947,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_acomp
       type: number
       label: Valor de acompanhante
@@ -28984,7 +28981,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_ortp
       type: number
       label: Valor de órtese e prótese
@@ -29018,7 +29015,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_sangue
       type: number
       label: Valor de sangue
@@ -29052,7 +29049,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_sadtsr
       type: number
       label: Valor de SADT sem rateio
@@ -29086,7 +29083,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_transp
       type: number
       label: Valor de transplante
@@ -29120,7 +29117,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_obsang
       type: number
       label: Valor de anestesia
@@ -29154,7 +29151,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_ped1ac
       type: number
       label: Valor de pediatria
@@ -29188,7 +29185,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: val_tot
       type: number
       label: Valor total da AIH
@@ -29508,7 +29505,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
 
     # ========================================================================
     # Dados Obstétricos / Trabalho
@@ -30204,7 +30201,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: cpf_aut
       type: string
       label: CPF do auditor que autorizou o homônimo
@@ -30254,7 +30251,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: gestor_cod
       type: string
       label: Código motivo autorização
@@ -30562,7 +30559,7 @@ schema:
         issues:
         - id: rotulo-do-layout-ate-2007
           status: open
-          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)"; os 75 campos do documento são os dos arquivos RD lidos de 2006-04 a 2007-12 (evidence/2026-10-01-rd-1992-2007-layouts, layout 19). O rótulo diz o que o campo era em 2006 e 2007, não o que os arquivos de hoje publicam.'
     - name: seq_aih5
       type: string
       label: Sequencial longa permanência
@@ -30727,9 +30724,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC1 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC1 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.092 linhas com ''0'', todas com diagsec1 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_1_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC1 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec2
       type: string
       label: Diagnóstico secundário 2
@@ -30820,9 +30815,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC2 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC2 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.699 linhas com ''0'', todas com diagsec2 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 103 DIAG_SEC_2_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 103 DIAG_SEC_2_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_2_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC2 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec3
       type: string
       label: Diagnóstico secundário 3
@@ -30913,9 +30906,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC3 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC3 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec3 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 105 DIAG_SEC_3_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 105 DIAG_SEC_3_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_3_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC3 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec4
       type: string
       label: Diagnóstico secundário 4
@@ -31006,9 +30997,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC4 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC4 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec4 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 107 DIAG_SEC_4_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 107 DIAG_SEC_4_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_4_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC4 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec5
       type: string
       label: Diagnóstico secundário 5
@@ -31099,9 +31088,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC5 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC5 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec5 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 109 DIAG_SEC_5_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 109 DIAG_SEC_5_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_5_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC5 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec6
       type: string
       label: Diagnóstico secundário 6
@@ -31192,9 +31179,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC6 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC6 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec6 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 111 DIAG_SEC_6_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 111 DIAG_SEC_6_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_6_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC6 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec7
       type: string
       label: Diagnóstico secundário 7
@@ -31285,9 +31270,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC7 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC7 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec7 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 113 DIAG_SEC_7_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 113 DIAG_SEC_7_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_7_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC7 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec8
       type: string
       label: Diagnóstico secundário 8
@@ -31378,9 +31361,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC8 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC8 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec8 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 115 DIAG_SEC_8_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 115 DIAG_SEC_8_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_8_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC8 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: diagsec9
       type: string
       label: Diagnóstico secundário 9
@@ -31484,9 +31465,7 @@ schema:
           description: '''0'' fica sem rótulo: TP_DIAGSEC.CNV (TAB_SIH), ligado a TPDISEC9 no RD2008.DEF,
             lista só ''1'' e ''2''; o IT SIHSUS 1603 descreve TPDISEC9 sem códigos (p. 4). RR 2024-01 (RDRR2401):
             3.714 linhas com ''0'', todas com diagsec9 vazio; a coincidência não é fonte.
-            O layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 117 DIAG_SEC_9_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS)
-            diz "0 - Quando não é preenchido o campo anterior". É o layout do arquivo que o hospital envia, não o
-            do RD, e nenhum DEF liga os dois: o ''0'' segue sem rótulo.'
+            Dois documentos do diretório de manuais do SIHD dizem o que é o ''0'' em outro arquivo: o layout da interface texto do SISAIH01 para a competência 09/2015 (sihsus-af543b2b2c9b, p. 7, campo 117 DIAG_SEC_9_CLASS, que remete ao campo 101 DIAG_SEC_1_CLASS): "0 - Quando não é preenchido o campo anterior"; e o dicionário de dados das tabelas TB_AIH e TB_HAIH (sihsus-f70974716de8, p. 4, coluna AH_DIAG_SEC_9_CLASS): "0-Quando campo anterior em branco". Nenhum dos dois é o layout do RD, e nenhum DEF liga TPDISEC9 a eles. Por decisão do mantenedor na issue #182, código de outro arquivo não vira rótulo sem essa ligação, e o ''0'' segue sem rótulo.'
     - name: fonte_orc
       type: string
       label: Fonte Orçamentária
@@ -31553,7 +31532,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.24.0"
+x-version: "2.24.1"
 
 x-analytics:
   version: 1.3.0

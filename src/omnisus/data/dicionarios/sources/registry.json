@@ -615,7 +615,7 @@
       "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_do_SISAIH01_para_CMPT_201509.zip",
       "sha256": "af543b2b2c9b13de8d11a68ec5fdd04b2b53c864af8b8e77456a23795398d625",
       "bytes": 71003,
-      "edition": null,
+      "edition": "2015-09",
       "published_on": null,
       "retrieved_on": "2026-11-18",
       "last_checked_on": "2026-11-18"
@@ -629,7 +629,7 @@
       "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/dicionario_de_dados_AIH.pdf",
       "sha256": "f70974716de829b97b341b2f05ba76eb382c09d867abcf1a0ffbdb95a1c57854",
       "bytes": 47584,
-      "edition": "02/05/2016",
+      "edition": "2016-05-02",
       "published_on": null,
       "retrieved_on": "2026-11-18",
       "last_checked_on": "2026-11-18"
