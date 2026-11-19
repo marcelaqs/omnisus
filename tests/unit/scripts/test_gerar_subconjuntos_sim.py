@@ -36,11 +36,15 @@ def test_generator_output_is_committed(monkeypatch):
 
 
 @pytest.mark.parametrize(("dataset", "fixture"), SUBSETS)
-def test_every_shared_field_is_sim_obitos_field(dataset, fixture):
+def test_every_shared_field_is_sim_obitos_field(monkeypatch, dataset, fixture):
+    """Except the age derivation: a subset has no `x-analytics`, so it creates no age column."""
+    copied = _load(monkeypatch).sem_saidas_harmonizadas
     do = {f["name"]: f for f in load_dicionario("sim_obitos").fields}
     fields = load_dicionario(dataset).fields
     assert [f["name"] for f in fields if f["name"] not in do] == []
-    assert [f["name"] for f in fields if f != do[f["name"]]] == []
+    assert [f["name"] for f in fields if f != copied(do[f["name"]])] == []
+    assert [f["name"] for f in fields if f != do[f["name"]]] == ["idade"]
+    assert load_dicionario(dataset).raw.get("x-analytics") is None
 
 
 @pytest.mark.parametrize(("dataset", "fixture"), SUBSETS)

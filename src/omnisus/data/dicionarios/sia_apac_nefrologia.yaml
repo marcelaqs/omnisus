@@ -2,7 +2,7 @@ name: sia_apac_nefrologia
 title: SIASUS — APAC de Nefrologia (AN)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.9.0
+x-version: 1.11.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sia_an_pa_2014_10_mini.dbc, 61 fields, observed 2026-09-23; sia_an_rr_2014_01_mini.dbc,
@@ -430,12 +430,10 @@ schema:
       issues:
       - id: ap_coidade-sem-tabela
         status: open
-        description: '''4'' foi medido no ANPA1410 (2 linhas) e no ANRR1401 (161 linhas), e ''5'' no ANRR1401 (1 linha); ''2'' e ''3'' vêm do mapa de AQ e não foram medidos em arquivo AN; ''0'', se aparecer, fica sem rótulo.
-          Nenhuma tabela rotula o código de 1 caractere: IDADEDET.CNV e IDADE18.CNV (TAB_SIA), ligados a AP_COIDADE em todos os DEF de APAC, leem 3 caracteres,
-          AP_COIDADE seguido de AP_NUIDADE. No IDADEDET.CNV, ''000'' e ''999'' são ''Idade inválida'' e 500 a 530 são 100 a 130 anos, e por isso ''5'' é ''Anos (somar 100)'';
-          o IDADE18.CNV põe 100 a 312 e 400 em ''<1a'', 401 a 599 em faixas de anos e o que sobra de 000 a 999 em ''Ign''. O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN,
-          descreve AP_COIDADE como CHAR (1), ''Código da Idade'', sem códigos. O mapa é o de AQ: APAC_Nefrologia.DEF (linhas 387-388) liga AP_COIDADE aos mesmos
-          IDADEDET.CNV e IDADE18.CNV que APAC_Quimioterapia.DEF (linhas 416-417).'
+        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta ''4'' em 6529357 registros, ''3'' em 3408, ''2'' em 970 e ''5'' em 519; ele conta registros por código e não confere o rótulo, que é o do mapa de AQ. Nas fixtures, ''4'' está no ANPA1410 (2 linhas) e no ANRR1401 (161 linhas), e ''5'' no ANRR1401 (1 linha). ''0'' aparece em 18 registros e fica sem rótulo (issue codigo-sem-rotulo). Nenhuma tabela rotula o código de 1 caractere: IDADEDET.CNV e IDADE18.CNV (TAB_SIA), ligados a AP_COIDADE em todos os DEF de APAC, leem 3 caracteres, AP_COIDADE seguido de AP_NUIDADE. No IDADEDET.CNV, ''000'' e ''999'' são ''Idade inválida'' e 500 a 530 são 100 a 130 anos, e por isso ''5'' é ''Anos (somar 100)''; o IDADE18.CNV põe 100 a 312 e 400 em ''<1a'', 401 a 599 em faixas de anos e o que sobra de 000 a 999 em ''Ign''. O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_COIDADE como CHAR (1), ''Código da Idade'', sem códigos. O mapa é o de AQ: APAC_Nefrologia.DEF (linhas 387-388) liga AP_COIDADE aos mesmos IDADEDET.CNV e IDADE18.CNV que APAC_Quimioterapia.DEF (linhas 416-417).'
+      - id: codigo-sem-rotulo
+        status: open
+        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta ''0'' (18) em 17 arquivos. O mapa não tem ''0'': o valor fica como publicado, sem rótulo.'
   - name: ap_nuidade
     type: string
     description: 'Número da Idade'
@@ -574,6 +572,10 @@ schema:
           pages: []
           locator: 'APAC_Nefrologia.DEF: XNacionalidade, AP_UFNACIO, 1, CNV/UFNACIO.CNV; CNV/UFNACIO.CNV'
         note: Mapa do CNV.
+      issues:
+      - id: codigo-sem-rotulo
+        status: open
+        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta 169 valores distintos de AP_UFNACIO; ''010'' (BRASIL) está em 6516827 dos 6534272 registros. 202 registros têm valor que o UFNACIO.CNV não rotula: ''000'' (122), '' 01'' (39), ''39'' (12), ''24'' (10), ''050'' (7), branco (5), ''41'' (2), ''95'' (2), '' 04'' (1), ''001'' (1), ''43'' (1). '' 01'' e '' 04'' têm espaço à esquerda no arquivo, e ''branco'' é o valor vazio depois que o leitor tira espaços e nulos à direita. Os valores ficam como publicados, sem rótulo.'
     x-decode:
       '010': BRASIL
       '021': ARGENTINA
@@ -954,7 +956,7 @@ schema:
       issues:
       - id: informe-diverge-do-arquivo
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_UFDIF com "(N = não, S = sim)". ANPA1410 publica 0 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_UFDIF com "(N = não, S = sim)". ANPA1410 publica 0 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta 0 em 6467051 registros e 1 em 67221; S e N não aparecem em nenhum arquivo.'
   - name: ap_mndif
     type: string
     description: 'Indica se o município de residência do paciente é diferente do município de localização do estabelecimento (N = não, S = sim)'
@@ -990,7 +992,7 @@ schema:
       issues:
       - id: informe-diverge-do-arquivo
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_MNDIF com "(N = não, S = sim)". ANPA1410 publica 1 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). A linha 455 do DEF liga o campo também a SIMNAO.CNV, que não está empacotado e não foi lido. O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, descreve AP_MNDIF com "(N = não, S = sim)". ANPA1410 publica 1 nas 2 linhas, e o Invasao.CNV, que o APAC_Nefrologia.DEF liga ao campo, rotula 0, 1 e o branco (''Não identificado''). A linha 455 do DEF liga o campo também a SIMNAO.CNV, que não está empacotado: na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv) ele rotula S (''Sim (houve invasão)'') e N (''Nao houve invasão''). O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta 1 em todos os 6534272 registros: S, N e 0 não aparecem em nenhum arquivo, e o campo é constante. O leiaute de Laudos Diversos (p. 6) descreve o campo de mesmo nome com 0 e 1. A descrição é a do documento; o mapa é o do CNV.'
   - name: ap_dtinic
     type: date
     description: 'Data de INÍCIO validade'
@@ -1038,7 +1040,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTINIC como CHAR (8), "Data de INÍCIO validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 66-67, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTINIC; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTINIC como CHAR (8), "Data de INÍCIO validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 66-67, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTINIC; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 6534272 valores preenchidos de AP_DTINIC, dos quais 6534272 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999).'
   - name: ap_dtfim
     type: date
     description: 'Data de FIM validade'
@@ -1086,7 +1088,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTFIM como CHAR (8), "Data de FIM validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 68-69, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTFIM; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTFIM como CHAR (8), "Data de FIM validade", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 68-69, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTFIM; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 6534272 valores preenchidos de AP_DTFIM, dos quais 6534272 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999).'
   - name: ap_tpaten
     type: string
     description: 'Tipo de Atendimento de APAC'
@@ -1400,7 +1402,7 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTOCOR como CHAR (8), "Data de Ocorrência que substitui a data de FIM de validade", sem formato. O formato yyyyMMdd foi medido em 1 linha: ANRR1401 preenche o campo em 1 de 162 registros (20140129) e ANPA1410 em 0 de 2; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 79-80, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTOCOR; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTOCOR como CHAR (8), "Data de Ocorrência que substitui a data de FIM de validade", sem formato. O formato yyyyMMdd foi medido em 1 linha: ANRR1401 preenche o campo em 1 de 162 registros (20140129) e ANPA1410 em 0 de 2; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 79-80, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTOCOR; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 303564 valores preenchidos de AP_DTOCOR, dos quais 303564 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999).'
   - name: ap_codemi
     type: string
     description: 'Código do Órgão emissor'
@@ -1544,7 +1546,10 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTSOLIC como CHAR(8), "Data da Solicitação", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 81-82, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTSOLIC; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTSOLIC como CHAR(8), "Data da Solicitação", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 81-82, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTSOLIC; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 6011478 valores preenchidos de AP_DTSOLIC, dos quais 6008766 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999).'
+      - id: data-implausivel
+        status: open
+        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 6011478 valores preenchidos de AP_DTSOLIC, dos quais 6008766 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999). Os outros 2712 não leem assim. 548 arquivos têm ao menos um valor que lê como yyyyMMdd com ano fora de 1900-2100, e 344 arquivos ao menos um com ano depois de 2015 (o último arquivo AN é de 2014-10); os valores que leem vão de 00080201 a 91530417 (anos 0008 a 9153). O censo conta arquivos, e não valores, fora dessas faixas. Os valores ficam como publicados.'
   - name: ap_dtaut
     type: date
     description: 'Data da Autorização'
@@ -1592,10 +1597,10 @@ schema:
       issues:
       - id: formato-sem-documento
         status: open
-        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTAUT como CHAR(8), "Data da Autorização", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 83-84, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTAUT; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados.'
+        description: 'O Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), p. 8, leiaute da AN, dá AP_DTAUT como CHAR(8), "Data da Autorização", sem formato; o leiaute de Laudos Diversos (p. 6) escreve AAAAMMDD no campo de mesmo nome. O formato yyyyMMdd foi medido nas 2 linhas do ANPA1410 e nas 162 do ANRR1401, todas com 8 dígitos e data válida, nenhuma lida como ddMMyyyy; não vale como documento. O APAC_Nefrologia.DEF (TAB_SIA.zip, sia-tab-e5812b51d802), linhas 83-84, liga o ano-mês (ANOMES2008.CNV) e o ano (ANO_2008.CNV) à posição 1 de AP_DTAUT; não tem linha para o dia. Na edição de 2026-10-15 do TAB_SIA.zip (sia-tab-1ce232b217c6; SHA-256 dos membros em evidence/2026-11-18-tab-sia-republicado/members.csv), ANO_2008.CNV compara 4 caracteres e anomes2008.CNV (o membro que o DEF escreve ANOMES2008.CNV) compara 6: o ano fica nos caracteres 1-4 e o ano-mês nos 1-6, o que é compatível com yyyyMMdd. As categorias de ano-mês vão de 200301 a 202612; lida como ddMMyyyy, nenhuma data de 1300 em diante cairia numa delas. Os dois CNV não estão empacotados. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 6003708 valores preenchidos de AP_DTAUT, dos quais 6001039 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999).'
       - id: data-implausivel
         status: open
-        description: 'ANRR1401 (2014-01) traz 20430101 em 1 de 162 registros: é uma data yyyyMMdd válida, 29 anos depois do mês do arquivo. O valor fica como publicado.'
+        description: 'ANRR1401 (2014-01) traz 20430101 em 1 de 162 registros: é uma data yyyyMMdd válida, 29 anos depois do mês do arquivo. O valor fica como publicado. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 6003708 valores preenchidos de AP_DTAUT, dos quais 6001039 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999). Os outros 2669 não leem assim. 845 arquivos têm ao menos um valor que lê como yyyyMMdd com ano fora de 1900-2100, e 569 arquivos ao menos um com ano depois de 2015 (o último arquivo AN é de 2014-10); os valores que leem vão de 00120201 a 92010601 (anos 0012 a 9201). O censo conta arquivos, e não valores, fora dessas faixas. Os valores ficam como publicados.'
   - name: ap_cidcas
     type: string
     description: 'CID Causas Associadas'
@@ -1713,7 +1718,7 @@ schema:
       issues:
       - id: data-implausivel
         status: open
-        description: 'ANRR1401 (2014-01) traz 20161101 em 1 de 162 registros: é uma data yyyyMMdd válida, posterior ao mês do arquivo e à data em que o servidor o lista (2015-06-11), para a primeira diálise. O valor fica como publicado.'
+        description: 'ANRR1401 (2014-01) traz 20161101 em 1 de 162 registros: é uma data yyyyMMdd válida, posterior ao mês do arquivo e à data em que o servidor o lista (2015-06-11), para a primeira diálise. O valor fica como publicado. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/dates.csv, lido em 2026-11-18) acha 5577583 valores preenchidos de AN_DTPDR, dos quais 5577480 leem como yyyyMMdd (8 dígitos com mês e dia de calendário, em qualquer ano de 0001 a 9999). Os outros 103 não leem assim. 1068 arquivos têm ao menos um valor que lê como yyyyMMdd com ano fora de 1900-2100, e 602 arquivos ao menos um com ano depois de 2015 (o último arquivo AN é de 2014-10); os valores que leem vão de 01000101 a 98270121 (anos 0100 a 9827). O censo conta arquivos, e não valores, fora dessas faixas. Os valores ficam como publicados.'
   - name: an_altura
     type: string
     description: 'Altura do paciente em cm'
@@ -1918,6 +1923,10 @@ schema:
           pages: [8]
           locator: 'Seção 3.4.3, SEQ 56, AN_ALBUMI CHAR (2)'
         note: Descrição transcrita da linha do leiaute.
+      issues:
+      - id: escala-sem-documento
+        status: open
+        description: 'O leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) descreve AN_ALBUMI como CHAR (2), "Albumina em g%", sem dizer se há decimal. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta 1638719 registros com valor inteiro zero, 3440835 com valor inteiro de 1 a 9, 1409033 com valor inteiro de 10 a 99 e 45685 com texto que não é número inteiro, por exemplo ''3,'' (26721), ''3.'' (1207), ''NN'' (368). Grafias como ''4'', ''04'' e '' 4'' contam no mesmo valor inteiro. O censo conta valores publicados e não diz o que cada um mede. Nenhuma fonte lida diz a escala: o dicionário não declara escala, e o valor fica como publicado.'
   - name: an_hcv
     type: string
     description: 'Indicativo de presença de Anticorpos de HCV (P = Positivo; N = Negativo)'
@@ -2024,13 +2033,143 @@ schema:
           pages: [9]
           locator: 'Seção 3.4.3, SEQ 60, AN_HB CHAR (2)'
         note: Descrição transcrita da linha do leiaute.
+      issues:
+      - id: escala-sem-documento
+        status: open
+        description: 'O leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf) descreve AN_HB como CHAR (2), "HB em g%", sem dizer se há decimal. O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/values.csv, lido em 2026-11-18) conta 1159730 registros com valor inteiro zero, 1246883 com valor inteiro de 1 a 9, 4104933 com valor inteiro de 10 a 99 e 22726 com texto que não é número inteiro, por exemplo ''9,'' (6819), ''9.'' (313), ''NN'' (465). Grafias como ''9'', ''09'' e '' 9'' contam no mesmo valor inteiro. O censo conta valores publicados e não diz o que cada um mede. Nenhuma fonte lida diz a escala: o dicionário não declara escala, e o valor fica como publicado.'
   - name: ap_natjur
     type: string
     x-metadata:
       issues:
       - id: ap_natjur-nem-sempre-publicado
         status: open
-        description: 'ANRR1401 (2014-01) tem 60 campos e termina em AN_HB, sem AP_NATJUR; ANPA1410 (2014-10) tem 61, e AP_NATJUR é o último. O leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), seção 3.4.3, pp. 7-9, lista 60 campos e não traz AP_NATJUR. Só esses dois arquivos foram lidos: não se sabe em que mês o campo entra. O APAC_Nefrologia.DEF (linhas 221-226) liga CNV de natureza jurídica e de esfera jurídica a AP_NAT_JUR, nome que nenhum dos dois arquivos publica.'
+        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/files.csv,
+          lido em 2026-11-18) acha AP_NATJUR em 28: os 27 de 2011-12 e o ANPA1410, o único arquivo de 2014-10.
+          Esses 28 têm o cabeçalho de 61 campos da fixture do ANPA1410, em que AP_NATJUR é o último; os
+          outros 2117 têm o cabeçalho de 60 campos da fixture do ANRR1401 (2014-01), sem AP_NATJUR (coluna
+          header_sha256 de files.csv). Nos 28 arquivos o campo vem em branco em 87203 registros e preenchido
+          em 2, os do ANPA1410 (3999) (evidence/2026-11-18-censo-sia-an/values.csv). O leiaute da AN no
+          Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), seção 3.4.3, pp. 7-9, lista 60 campos e
+          não traz AP_NATJUR. O APAC_Nefrologia.DEF (linhas 221-226) liga CNV de natureza jurídica e de
+          esfera jurídica a AP_NAT_JUR, nome que nenhum dos dois cabeçalhos tem. O mapa vem do APAC_Dados_Comuns.DEF
+          (arquivos A?*.DBC), que liga AP_NATJUR a NATJURC.CNV nas linhas 204-205; a linha 203 liga o campo
+          a NATJUR.CNV, que o leitor de CNV recusa (linha fora do leiaute de colunas). O branco fica sem
+          rótulo: a chave ''    -zzzz'' do mapa não casa com nenhum valor de 4 caracteres. A máscara sozinha
+          não diz que um arquivo segue esse DEF (issue amp-sem-def da AMP): o que sustenta o vínculo é o
+          campo publicado ter o nome que a linha escreve e todo valor preenchido lido ser código da tabela.
+          Na AN são 2 registros preenchidos, ambos 3999. A medição do campo nas outras APAC está em evidence/2026-11-19-apac-ap-natjur/.'
+      claims:
+      - target: /field/codes
+        value_sha256: e5ddeebf2ebf9fe3590aa6fb78d748d9f643e8ada5a062c95562117972d870bc
+        status: verified_in_source
+        checked_at: '2026-11-18'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sia-tab-1ce232b217c6
+          pages: []
+          locator: 'APAC_Dados_Comuns.DEF: CNatureza Jurídica, AP_NATJUR, 1, CNV/NATJURC.CNV; CNV/natjurc.cnv'
+        note: Mapa do CNV, ligado pelo APAC_Dados_Comuns.DEF e não pelo DEF do dataset (def_do_campo em
+          vinculos.json); a issue ap_natjur-nem-sempre-publicado diz o que sustenta o vínculo.
+    x-decode:
+      '    -zzzz': '--- Não especificado ou ignorado'
+      '1015': 101-5 Orgao Publico do Poder Executivo Federal
+      '1023': 102-3 Orgao Publico do Poder Executivo Estadual ou do Distrito Federal
+      '1031': 103-1 Orgao Publico do Poder Executivo Municipal
+      '1040': 104-0 Orgao Publico do Poder Legislativo Federal
+      '1058': 105-8 Orgao Publico do Poder Legislativo Estadual ou do Distrito Federal
+      '1066': 106-6 Orgao Publico do Poder Legislativo Municipal
+      '1074': 107-4 Orgao Publico do Poder Judiciario Federal
+      '1082': 108-2 Orgao Publico do Poder Judiciario Estadual
+      '1104': 110-4 Autarquia Federal
+      '1112': 111-2 Autarquia Estadual ou do Distrito Federal
+      '1120': 112-0 Autarquia Municipal
+      '1139': 113-9 Fundacao Publica de Direito Publico Federal
+      '1147': 114-7 Fundacao Publica de Direito Publico Estadual ou do Distrito Federal
+      '1155': 115-5 Fundacao Publica de Direito Publico Municipal
+      '1163': 116-3 Orgao Publico Autonomo Federal
+      '1171': 117-1 Orgao Publico Autonomo Estadual ou do Distrito Federal
+      '1180': 118-0 Orgao Publico Autonomo Municipal
+      '1198': 119-8 Comissao Polinacional
+      '1201': (exc) 120-1 Fundo Publico
+      '1210': 121-0 Consorcio Publico de Direito Publico (Associacao Publica)
+      '1228': 122-8 Consorcio Publico de Direito Privado
+      '1236': 123-6 Estado ou Distrito Federal
+      '1244': 124-4 Municipio
+      '1252': 125-2 Fundacao Publica de Direito Privado Federal
+      '1260': 126-0 Fundacao Publica de Direito Privado Estadual ou do Distrito Federal
+      '1279': 127-9 Fundacao Publica de Direito Privado Municipal
+      '1287': 128-7 - Fundo Publico da Administracao Indireta Federal
+      '1295': 129-5 - Fundo Publico da Administracao Indireta Estadual ou do Distrito Federal
+      '1309': 130-9 - Fundo Publico da Administracao Indireta Municipal
+      '1317': 131-7 - Fundo Publico da Administracao Direta Federal
+      '1325': 132-5 - Fundo Publico da Administracao Direta Estadual ou do Distrito Federal
+      '1333': 133-3 - Fundo Publico da Administracao Direta Municipal
+      '1341': 134-1 - Uniao
+      '2011': 201-1 Empresa Publica
+      '2038': 203-8 Sociedade de Economia Mista
+      '2046': 204-6 Sociedade Anonima Aberta
+      '2054': 205-4 Sociedade Anonima Fechada
+      '2062': 206-2 Sociedade Empresaria Limitada
+      '2070': 207-0 Sociedade Empresaria em Nome Coletivo
+      '2089': 208-9 Sociedade Empresaria em Comandita Simples
+      '2097': 209-7 Sociedade Empresaria em Comandita por Acoes
+      '2100': (exc) 210-0 Sociedade Mercantil de Capital e Industria
+      '2127': 212-7 Sociedade em Conta de Participacao
+      '2135': 213-5 Empresario (Individual)
+      '2143': 214-3 Cooperativa
+      '2151': 215-1 Consorcio de Sociedades
+      '2160': 216-0 Grupo de Sociedades
+      '2178': 217-8 Estabelecimento, no Brasil, de Sociedade Estrangeira
+      '2194': 219-4 Estabelecimento, no Brasil, de Empresa Binacional Argentino-Brasileira
+      '2216': 221-6 Empresa Domiciliada no Exterior
+      '2224': 222-4 Clube/Fundo de Investimento
+      '2232': 223-2 Sociedade Simples Pura
+      '2240': 224-0 Sociedade Simples Limitada
+      '2259': 225-9 Sociedade Simples em Nome Coletivo
+      '2267': 226-7 Sociedade Simples em Comandita Simples
+      '2275': 227-5 Empresa Binacional
+      '2283': 228-3 Consorcio de Empregadores
+      '2291': 229-1 Consorcio Simples
+      '2305': 230-5 Empresa Individual de Responsabilidade Limitada (de Natureza Empresaria)
+      '2313': 231-3 Empresa Individual de Responsabilidade Limitada (de Natureza Simples)
+      '2321': 232-1 Sociedade Unipessoal de Advogados
+      '2330': 233-0 Cooperativas de Consumo
+      '2348': 234-8   Empresa Simples de Inovacao - Inova Simples
+      '2356': 235-6   Investidor Nao Residente
+      '3034': 303-4 Servico Notarial e Registral (Cartorio)
+      '3069': 306-9 Fundacao Privada
+      '3077': 307-7 Servico Social Autonomo
+      '3085': 308-5 Condominio Edilicio
+      '3107': 310-7 Comissao de Conciliacao Previa
+      '3115': 311-5 Entidade de Mediacao e Arbitragem
+      '3123': (exc) 312-3 Partido Politico
+      '3131': 313-1 Entidade Sindical
+      '3204': 320-4 Estabelecimento, no Brasil, de Fundacao ou Associacao Estrangeiras
+      '3212': 321-2 Fundacao ou Associacao Domiciliada no Exterior
+      '3220': 322-0 Organizacao Religiosa
+      '3239': 323-9 Comunidade Indigena
+      '3247': 324-7 Fundo Privado
+      '3255': 325-5 Orgao de Direcao Nacional de Partido Politico
+      '3263': 326-3 Orgao de Direcao Regional de Partido Politico
+      '3271': 327-1 Orgao de Direcao Local de Partido Politico
+      '3280': 328-0 Comite Financeiro de Partido Politico
+      '3298': 329-8 Frente Plebiscitaria ou Referendaria
+      '3301': 330-1 - Organizacao Social (OS)
+      '3310': 331-0 Demais Condominios
+      '3328': 332-8 - Plano de Beneficios de Previdencia Complementar Fechada
+      '3999': 399-9 Associacao Privada
+      '4000': 4000 Pessoa Fisica (registrada no CNES)
+      '4014': 401-4 Empresa Individual Imobiliaria
+      '4022': 402-2 Segurado Especial
+      '4081': 408-1 Contribuinte individual
+      '4090': 409-0 Candidato a Cargo Politico Eletivo
+      '4111': 411-1 Leiloeiro
+      '4120': 412-0 - Produtor Rural (Pessoa Fisica)
+      '4124': (exc) 412-4 Produtor Rural (Pessoa Fisica)
+      '5010': 501-0 Organizacao Internacional
+      '5029': 502-9 Representacao Diplomatica Estrangeira
+      '5037': 503-7 Outras Instituicoes Extraterritoriais
 # Identidade do arquivo: ap_mvm vale o mês do arquivo e ap_ufmun começa pelo código IBGE
 # da UF em todos os registros da fixture (tests/fixtures/FIXTURES.md); mesma regra das
 # outras APAC.

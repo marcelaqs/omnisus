@@ -155,6 +155,11 @@
       "membro": "APAC_Confeccao_de_Fistula.DEF",
       "sha256": "505ddc63faa49c5b63cc8038f2c10ba9b22a1ee9f2093a400a06df07bc586e15"
     },
+    "sia/APAC_Dados_Comuns.DEF": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "APAC_Dados_Comuns.DEF",
+      "sha256": "447a14c7189ba1c495f2ddac1f215aa2843da7f285602c3ddc660c01b24a4f93"
+    },
     "sia/APAC_Laudos_Diversos.DEF": {
       "fonte": "sia-tab-e5812b51d802",
       "membro": "APAC_Laudos_Diversos.DEF",
@@ -384,6 +389,11 @@
       "fonte": "sia-tab-1ce232b217c6",
       "membro": "CNV/UFNACIO.CNV",
       "sha256": "30d1c1c37d47ccac77d93d51010fe992b083580589cc3e06c3db0aab38097b12"
+    },
+    "sia/CNV/natjurc.cnv": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/natjurc.cnv",
+      "sha256": "c9946a2e0ec5864a8820a01f29be7191137718a02bdc61d241f1f35c64ec0fc6"
     },
     "sia/CNV/destino.cnv": {
       "fonte": "sia-tab-e5812b51d802",
@@ -1105,6 +1115,7 @@
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1113,6 +1124,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1.",
@@ -1127,6 +1141,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1134,6 +1149,9 @@
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1147,6 +1165,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1156,6 +1175,9 @@
         "ap_ufdif": "sia/CNV/Invasao.CNV",
         "am_gestant": "sia/CNV/GESTANTE.CNV",
         "am_transpl": "sia/CNV/TRANSPL.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1169,6 +1191,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1176,6 +1199,9 @@
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1189,6 +1215,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1196,6 +1223,9 @@
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1242,12 +1272,15 @@
         "obitopuerp": "sim/obitoPUE.cnv",
         "parto": "sim/PARTO.CNV",
         "racacor": "sim/RACACOR.CNV",
+        "seriescfal": "sim/SERIEFAL.CNV",
+        "seriescmae": "sim/SERIEFAL.CNV",
         "stcodifica": "sim/CODIFICA1.cnv",
         "stdoepidem": "sim/DONOVA.CNV",
         "stdonova": "sim/DONOVA.CNV",
         "tipobito": "sim/TIPOBITO.CNV",
         "tpmorteoco": "sim/OMUFER.CNV",
-        "tppos": "sim/INVESTIG.CNV"
+        "tppos": "sim/INVESTIG.CNV",
+        "versaoscb": "sim/VERSCB.CNV"
       },
       "sem_cnv": {
         "sexo": "C\u00f3digos verificados na Estrutura do SIM 2025, p. 2 (claim verified_in_source); SEXO.CNV rotula s\u00f3 M, F e I.",
@@ -1660,6 +1693,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1668,6 +1702,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       }
     },
     "sia_apac_fistula_arteriovenosa": {
@@ -1682,6 +1719,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1690,6 +1728,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1713,6 +1754,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1724,6 +1766,9 @@
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV",
         "ap_ufnacio": "sia/CNV/UFNACIO.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1741,6 +1786,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1752,6 +1798,9 @@
         "ar_estadi": "sia/CNV/ESTADIO.CNV",
         "ar_finali": "sia/CNV/FINALID.CNV",
         "ar_linfin": "sia/CNV/LINF_INV.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."

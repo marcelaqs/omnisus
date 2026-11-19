@@ -167,7 +167,10 @@ def test_every_field_the_sih_2008_def_binds_has_a_map_or_a_reason_true_to_the_de
         if not fields[f].get("x-decode") and f not in spec["campos"] and f not in reasons
     }
     assert without_word == set(), (dataset, sorted(without_word))
-    packaged = {Path(m).name.lower() for m in vinculos["membros"]}
+    # A member of another package can have the same name: sia/CNV/natjurc.cnv is not
+    # the natjurc.cnv this DEF binds (#183).
+    package = Path(def_path).parent.as_posix() + "/"
+    packaged = {Path(m).name.lower() for m in vinculos["membros"] if m.startswith(package)}
     for field in sorted(bindings.keys() & reasons.keys()):
         reason, where = reasons[field], (dataset, field)
         bound = [b for _, b in bindings[field]]

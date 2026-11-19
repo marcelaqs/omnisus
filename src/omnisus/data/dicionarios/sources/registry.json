@@ -156,7 +156,7 @@
       "edition": "07/2025",
       "published_on": null,
       "retrieved_on": "2026-09-10",
-      "last_checked_on": "2026-09-10"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-24e0d4388ea1",
@@ -226,21 +226,21 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-14",
-      "last_checked_on": "2026-09-14"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sim-anterior-13cabba0b9a1",
       "category": "SIM",
-      "title": "Estrutura SIM anterior — Mortalidade 2006",
+      "title": "Estrutura SIM anterior — Mortalidade 2006 e até 2005",
       "publisher": "Ministério da Saúde / DATASUS",
       "authority": "official",
       "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOCS/Estrutura_SIM_Anterior.pdf",
       "sha256": "13cabba0b9a19d32b836f57762b9bc571e573c4a87737440c8052b737072d890",
       "bytes": 55572,
-      "edition": "2006",
+      "edition": "2006 e até 2005",
       "published_on": null,
       "retrieved_on": "2026-09-14",
-      "last_checked_on": "2026-09-14"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-tab-ff0124f6aecf",
@@ -366,7 +366,7 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-21",
-      "last_checked_on": "2026-09-21"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-tab-de43d0c99630",
@@ -559,10 +559,10 @@
       "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOCS/Estrutura_SIM_para_CD.pdf",
       "sha256": "b014389eca62dfacb8a73ae42bac1543b7923bf71d8403968370f0e002edb144",
       "bytes": 435397,
-      "edition": null,
+      "edition": "12/2019",
       "published_on": null,
       "retrieved_on": "2026-09-23",
-      "last_checked_on": "2026-09-23"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-9ac143d5eae6",
