@@ -17,8 +17,13 @@ discorda vira claim `conflicting` e um issue com o rótulo anterior de cada cód
 claim de códigos existente nunca é substituída: de outro método, ou `cnv-parse` com mapa
 diferente, o script para e pede revisão; com o mesmo mapa, só a evidência e o
 `checked_at` são reescritos, se diferem dos gerados. Uma linha de DEF fora
-do layout só é ignorada se `linhas_fora_do_layout` a lista com o texto exato. Rodar de novo não muda
-nada; `--check` falha se algum dicionário mudaria.
+do layout só é ignorada se `linhas_fora_do_layout` a lista com o texto exato. `def_do_campo`, se
+o dataset o declara para um campo de `campos` ligado a CNV, nomeia o DEF que liga esse campo
+quando nenhum DEF do dataset o liga pelo nome que os arquivos publicam
+(APAC_Dados_Comuns.DEF liga AP_NATJUR; o DEF de cada APAC escreve AP_NAT_JUR ou não tem a
+linha): a evidência do campo é a linha desse DEF, e o gerador recusa o vínculo se um DEF do
+dataset liga o campo. Rodar
+de novo não muda nada; `--check` falha se algum dicionário mudaria.
 """
 
 from __future__ import annotations
@@ -289,6 +294,25 @@ def evidence_for(
     return evidence
 
 
+def defs_for(spec: dict[str, Any], field: str, vinculos: dict[str, Any]) -> list[str]:
+    """The DEF files whose line is the evidence of `field`: the dataset's, or the one
+    `def_do_campo` names.
+
+    `def_do_campo` is for a CNV field no DEF of the dataset binds by its published name.
+    A field one of them does bind, or a DBF member (whose description column is read from
+    the dataset's DEF), raises.
+    """
+    override = spec.get("def_do_campo", {}).get(field)
+    if override is None:
+        return spec["def"]
+    if spec["campos"][field].lower().endswith(".dbf"):
+        raise ValueError(f"def_do_campo names a DEF for {field}, bound to a DBF member")
+    for def_path in spec["def"]:
+        if any(b.field == field.upper() for b in parse_def(read_def(def_path, vinculos))):
+            raise ValueError(f"def_do_campo names a DEF for {field}, which {def_path} binds")
+    return [override]
+
+
 def generate() -> dict[Path, str]:
     """New text of every dictionary the bindings touch."""
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
@@ -302,6 +326,11 @@ def generate() -> dict[Path, str]:
             f["name"]: f for f in yaml.load(text, Loader=yaml.CSafeLoader)["schema"]["fields"]
         }
         defs = spec["def"]
+        unknown = set(spec.get("def_do_campo", {})) - set(spec["campos"])
+        if unknown:
+            raise ValueError(
+                f"{dataset}: def_do_campo names fields outside campos: {sorted(unknown)}"
+            )
         def_text = read_def(defs[0], vinculos)
         for field, member in spec["campos"].items():
             if member.lower().endswith(".dbf"):
@@ -312,7 +341,7 @@ def generate() -> dict[Path, str]:
             else:
                 labels = cnv_map(parse_cnv(read_member(member, membros)))
                 method = METHOD
-            evidence = evidence_for(defs, field, member, vinculos)
+            evidence = evidence_for(defs_for(spec, field, vinculos), field, member, vinculos)
             checked_at = max(registry[e["source_id"]]["retrieved_on"] for e in evidence)
             decode = dict(sorted(labels.items()))
             new = regenerate(dataset, fields[field], decode, evidence, checked_at, method)

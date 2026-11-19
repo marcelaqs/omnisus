@@ -1,0 +1,99 @@
+N 98 4
+       98  --- Não especificado ou ignorado                                                                         -zzzz,
+       01  101-5 Orgao Publico do Poder Executivo Federal                                                       1015
+       02  102-3 Orgao Publico do Poder Executivo Estadual ou do Distrito Federal                               1023
+       03  103-1 Orgao Publico do Poder Executivo Municipal                                                     1031
+       04  104-0 Orgao Publico do Poder Legislativo Federal                                                     1040
+       05  105-8 Orgao Publico do Poder Legislativo Estadual ou do Distrito Federal                             1058
+       06  106-6 Orgao Publico do Poder Legislativo Municipal                                                   1066
+       07  107-4 Orgao Publico do Poder Judiciario Federal                                                      1074
+       08  108-2 Orgao Publico do Poder Judiciario Estadual                                                     1082
+       09  110-4 Autarquia Federal                                                                              1104
+       10  111-2 Autarquia Estadual ou do Distrito Federal                                                      1112
+       11  112-0 Autarquia Municipal                                                                            1120
+       12  113-9 Fundacao Publica de Direito Publico Federal                                                    1139
+       13  114-7 Fundacao Publica de Direito Publico Estadual ou do Distrito Federal                            1147
+       14  115-5 Fundacao Publica de Direito Publico Municipal                                                  1155
+       15  116-3 Orgao Publico Autonomo Federal                                                                 1163
+       16  117-1 Orgao Publico Autonomo Estadual ou do Distrito Federal                                         1171
+       17  118-0 Orgao Publico Autonomo Municipal                                                               1180
+       18  119-8 Comissao Polinacional                                                                          1198
+       19  (exc) 120-1 Fundo Publico                                                                            1201
+       20  121-0 Consorcio Publico de Direito Publico (Associacao Publica)                                      1210
+       21  122-8 Consorcio Publico de Direito Privado                                                           1228
+       22  123-6 Estado ou Distrito Federal                                                                     1236
+       23  124-4 Municipio                                                                                      1244
+       24  125-2 Fundacao Publica de Direito Privado Federal                                                    1252
+       25  126-0 Fundacao Publica de Direito Privado Estadual ou do Distrito Federal                            1260
+       26  127-9 Fundacao Publica de Direito Privado Municipal                                                  1279
+       27  128-7 - Fundo Publico da Administracao Indireta Federal                                              1287
+       28  129-5 - Fundo Publico da Administracao Indireta Estadual ou do Distrito Federal                      1295
+       29  130-9 - Fundo Publico da Administracao Indireta Municipal                                            1309
+       30  131-7 - Fundo Publico da Administracao Direta Federal                                                1317
+       31  132-5 - Fundo Publico da Administracao Direta Estadual ou do Distrito Federal                        1325
+       32  133-3 - Fundo Publico da Administracao Direta Municipal                                              1333
+       33  134-1 - Uniao                                                                                        1341
+       34  201-1 Empresa Publica                                                                                2011
+       35  203-8 Sociedade de Economia Mista                                                                    2038
+       36  204-6 Sociedade Anonima Aberta                                                                       2046
+       37  205-4 Sociedade Anonima Fechada                                                                      2054
+       38  206-2 Sociedade Empresaria Limitada                                                                  2062
+       39  207-0 Sociedade Empresaria em Nome Coletivo                                                          2070
+       40  208-9 Sociedade Empresaria em Comandita Simples                                                      2089
+       41  209-7 Sociedade Empresaria em Comandita por Acoes                                                    2097
+       42  (exc) 210-0 Sociedade Mercantil de Capital e Industria                                               2100
+       43  212-7 Sociedade em Conta de Participacao                                                             2127
+       44  213-5 Empresario (Individual)                                                                        2135
+       45  214-3 Cooperativa                                                                                    2143
+       46  215-1 Consorcio de Sociedades                                                                        2151
+       47  216-0 Grupo de Sociedades                                                                            2160
+       48  217-8 Estabelecimento, no Brasil, de Sociedade Estrangeira                                           2178
+       49  219-4 Estabelecimento, no Brasil, de Empresa Binacional Argentino-Brasileira                         2194
+       50  221-6 Empresa Domiciliada no Exterior                                                                2216
+       51  222-4 Clube/Fundo de Investimento                                                                    2224
+       52  223-2 Sociedade Simples Pura                                                                         2232
+       53  224-0 Sociedade Simples Limitada                                                                     2240
+       54  225-9 Sociedade Simples em Nome Coletivo                                                             2259
+       55  226-7 Sociedade Simples em Comandita Simples                                                         2267
+       56  227-5 Empresa Binacional                                                                             2275
+       57  228-3 Consorcio de Empregadores                                                                      2283
+       58  229-1 Consorcio Simples                                                                              2291
+       59  230-5 Empresa Individual de Responsabilidade Limitada (de Natureza Empresaria)                       2305
+       60  231-3 Empresa Individual de Responsabilidade Limitada (de Natureza Simples)                          2313
+       61  232-1 Sociedade Unipessoal de Advogados                                                              2321
+       62  233-0 Cooperativas de Consumo                                                                        2330
+       63  234-8   Empresa Simples de Inovacao - Inova Simples                                                  2348
+       64  235-6   Investidor Nao Residente                                                                     2356
+       65  303-4 Servico Notarial e Registral (Cartorio)                                                        3034
+       66  306-9 Fundacao Privada                                                                               3069
+       67  307-7 Servico Social Autonomo                                                                        3077
+       68  308-5 Condominio Edilicio                                                                            3085
+       69  310-7 Comissao de Conciliacao Previa                                                                 3107
+       70  311-5 Entidade de Mediacao e Arbitragem                                                              3115
+       71  (exc) 312-3 Partido Politico                                                                         3123
+       72  313-1 Entidade Sindical                                                                              3131
+       73  320-4 Estabelecimento, no Brasil, de Fundacao ou Associacao Estrangeiras                             3204
+       74  321-2 Fundacao ou Associacao Domiciliada no Exterior                                                 3212
+       75  322-0 Organizacao Religiosa                                                                          3220
+       76  323-9 Comunidade Indigena                                                                            3239
+       77  324-7 Fundo Privado                                                                                  3247
+       78  325-5 Orgao de Direcao Nacional de Partido Politico                                                  3255
+       79  326-3 Orgao de Direcao Regional de Partido Politico                                                  3263
+       80  327-1 Orgao de Direcao Local de Partido Politico                                                     3271
+       81  328-0 Comite Financeiro de Partido Politico                                                          3280
+       82  329-8 Frente Plebiscitaria ou Referendaria                                                           3298
+       83  330-1 - Organizacao Social (OS)                                                                      3301
+       84  331-0 Demais Condominios                                                                             3310
+       85  332-8 - Plano de Beneficios de Previdencia Complementar Fechada                                      3328
+       86  399-9 Associacao Privada                                                                             3999
+       87  4000 Pessoa Fisica (registrada no CNES)                                                              4000
+       88  401-4 Empresa Individual Imobiliaria                                                                 4014
+       89  402-2 Segurado Especial                                                                              4022
+       90  408-1 Contribuinte individual                                                                        4081
+       91  409-0 Candidato a Cargo Politico Eletivo                                                             4090
+       92  411-1 Leiloeiro                                                                                      4111
+       93  412-0 - Produtor Rural (Pessoa Fisica)                                                               4120
+       94  (exc) 412-4 Produtor Rural (Pessoa Fisica)                                                           4124
+       95  501-0 Organizacao Internacional                                                                      5010
+       96  502-9 Representacao Diplomatica Estrangeira                                                          5029
+       97  503-7 Outras Instituicoes Extraterritoriais                                                          5037

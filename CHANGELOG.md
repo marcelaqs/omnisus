@@ -84,6 +84,34 @@
   and `an_hb` gain the open issue `escala-sem-documento`, with the records that hold
   integer zero, integers from 1 to 9, integers from 10 to 99 and text such as `3,`; no
   source read says the scale (#183).
+- `ap_natjur` takes the map of `natjurc.cnv` in nine APAC dictionaries:
+  `sia_apac_quimioterapia`, `sia_apac_medicamentos`, `sia_apac_laudos_diversos`,
+  `sia_apac_cirurgia_bariatrica` and `sia_apac_tratamento_dialitico` (0.5.0),
+  `sia_apac_radioterapia` (1.4.0), `sia_apac_fistula_arteriovenosa` (1.3.0),
+  `sia_apac_acompanhamento_bariatrica` (1.1.0) and `sia_apac_nefrologia` (1.10.0).
+  - The binding. `APAC_Dados_Comuns.DEF` (files `A?*.DBC`), now packaged, binds
+    `AP_NATJUR` to `NATJURC.CNV` on lines 204-205. The DEF of seven of the datasets
+    writes `AP_NAT_JUR`, and those of ACF and ATD have no line for the field, so
+    `vinculos.json` names the common DEF for this field in the new key `def_do_campo`.
+    `gerar_decode_cnv.py` refuses the key for a field a DEF of the dataset binds.
+  - What supports it. The mask of a DEF alone does not say a file follows it (issue
+    `amp-sem-def`). Here the published field has the name the line writes, and in a
+    census of 9,527 files of the nine other APAC datasets
+    (`evidence/2026-11-19-apac-ap-natjur/`) no field is named `AP_NAT_JUR` and each of
+    the 28 values of the 2,276,452 filled records is a code of the table. AD, AM, AQ, AR
+    and ATD were read in RR, AC and AP only; AN has 2 filled records. Each dictionary
+    gains the open issue `ap_natjur-nem-sempre-publicado` with its own counts and the
+    months whose files have no such field.
+  - The table. The same DEF binds the field to `NATJUR.CNV` too, which the CNV reader
+    refuses; the 97 code labels of the two members are the same. The map has those 97
+    codes and the literal key `    -zzzz`, which is how the reader keeps the code of the
+    line "Não especificado ou ignorado"; no four-character value matches it, so an empty
+    `ap_natjur` has no label.
+  - Not touched. `sia_apac_acompanhamento_multiprofissional`: 899 of its 903 files have
+    the field, always empty. `pa_nat_jur` (PA) and `nat_jur` (RAAS, SAD), which their own
+    DEF binds to the same tables, and `nat_jur` of the SIH wait for the choice of table
+    of #7.
+  - `sus.label` now adds `ap_natjur_rotulo` for the nine datasets (#183).
 
 ### omnisus-dbf 0.2.2
 

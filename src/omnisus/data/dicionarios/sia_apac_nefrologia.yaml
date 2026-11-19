@@ -2,7 +2,7 @@ name: sia_apac_nefrologia
 title: SIASUS — APAC de Nefrologia (AN)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.9.0
+x-version: 1.10.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sia_an_pa_2014_10_mini.dbc, 61 fields, observed 2026-09-23; sia_an_rr_2014_01_mini.dbc,
@@ -2015,7 +2015,133 @@ schema:
       issues:
       - id: ap_natjur-nem-sempre-publicado
         status: open
-        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/files.csv, lido em 2026-11-18) acha AP_NATJUR em 28: os 27 de 2011-12 e o ANPA1410, o único arquivo de 2014-10. Esses 28 têm o cabeçalho de 61 campos da fixture do ANPA1410, em que AP_NATJUR é o último; os outros 2117 têm o cabeçalho de 60 campos da fixture do ANRR1401 (2014-01), sem AP_NATJUR (coluna header_sha256 de files.csv). Nos 28 arquivos o campo vem em branco em 87203 registros e preenchido em 2, os do ANPA1410 (3999) (evidence/2026-11-18-censo-sia-an/values.csv). O leiaute da AN no Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), seção 3.4.3, pp. 7-9, lista 60 campos e não traz AP_NATJUR. O APAC_Nefrologia.DEF (linhas 221-226) liga CNV de natureza jurídica e de esfera jurídica a AP_NAT_JUR, nome que nenhum dos dois cabeçalhos tem.'
+        description: 'O censo dos 2145 arquivos AN que o servidor lista (evidence/2026-11-18-censo-sia-an/files.csv,
+          lido em 2026-11-18) acha AP_NATJUR em 28: os 27 de 2011-12 e o ANPA1410, o único arquivo de 2014-10.
+          Esses 28 têm o cabeçalho de 61 campos da fixture do ANPA1410, em que AP_NATJUR é o último; os
+          outros 2117 têm o cabeçalho de 60 campos da fixture do ANRR1401 (2014-01), sem AP_NATJUR (coluna
+          header_sha256 de files.csv). Nos 28 arquivos o campo vem em branco em 87203 registros e preenchido
+          em 2, os do ANPA1410 (3999) (evidence/2026-11-18-censo-sia-an/values.csv). O leiaute da AN no
+          Informe Técnico SIASUS 2019-07 (siasus-70fe69dbd4cf), seção 3.4.3, pp. 7-9, lista 60 campos e
+          não traz AP_NATJUR. O APAC_Nefrologia.DEF (linhas 221-226) liga CNV de natureza jurídica e de
+          esfera jurídica a AP_NAT_JUR, nome que nenhum dos dois cabeçalhos tem. O mapa vem do APAC_Dados_Comuns.DEF
+          (arquivos A?*.DBC), que liga AP_NATJUR a NATJURC.CNV nas linhas 204-205; a linha 203 liga o campo
+          a NATJUR.CNV, que o leitor de CNV recusa (linha fora do leiaute de colunas). O branco fica sem
+          rótulo: a chave ''    -zzzz'' do mapa não casa com nenhum valor de 4 caracteres. A máscara sozinha
+          não diz que um arquivo segue esse DEF (issue amp-sem-def da AMP): o que sustenta o vínculo é o
+          campo publicado ter o nome que a linha escreve e todo valor preenchido lido ser código da tabela.
+          Na AN são 2 registros preenchidos, ambos 3999. A medição do campo nas outras APAC está em evidence/2026-11-19-apac-ap-natjur/.'
+      claims:
+      - target: /field/codes
+        value_sha256: e5ddeebf2ebf9fe3590aa6fb78d748d9f643e8ada5a062c95562117972d870bc
+        status: verified_in_source
+        checked_at: '2026-11-18'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sia-tab-1ce232b217c6
+          pages: []
+          locator: 'APAC_Dados_Comuns.DEF: CNatureza Jurídica, AP_NATJUR, 1, CNV/NATJURC.CNV; CNV/natjurc.cnv'
+        note: Mapa do CNV, ligado pelo APAC_Dados_Comuns.DEF e não pelo DEF do dataset (def_do_campo em
+          vinculos.json); a issue ap_natjur-nem-sempre-publicado diz o que sustenta o vínculo.
+    x-decode:
+      '    -zzzz': '--- Não especificado ou ignorado'
+      '1015': 101-5 Orgao Publico do Poder Executivo Federal
+      '1023': 102-3 Orgao Publico do Poder Executivo Estadual ou do Distrito Federal
+      '1031': 103-1 Orgao Publico do Poder Executivo Municipal
+      '1040': 104-0 Orgao Publico do Poder Legislativo Federal
+      '1058': 105-8 Orgao Publico do Poder Legislativo Estadual ou do Distrito Federal
+      '1066': 106-6 Orgao Publico do Poder Legislativo Municipal
+      '1074': 107-4 Orgao Publico do Poder Judiciario Federal
+      '1082': 108-2 Orgao Publico do Poder Judiciario Estadual
+      '1104': 110-4 Autarquia Federal
+      '1112': 111-2 Autarquia Estadual ou do Distrito Federal
+      '1120': 112-0 Autarquia Municipal
+      '1139': 113-9 Fundacao Publica de Direito Publico Federal
+      '1147': 114-7 Fundacao Publica de Direito Publico Estadual ou do Distrito Federal
+      '1155': 115-5 Fundacao Publica de Direito Publico Municipal
+      '1163': 116-3 Orgao Publico Autonomo Federal
+      '1171': 117-1 Orgao Publico Autonomo Estadual ou do Distrito Federal
+      '1180': 118-0 Orgao Publico Autonomo Municipal
+      '1198': 119-8 Comissao Polinacional
+      '1201': (exc) 120-1 Fundo Publico
+      '1210': 121-0 Consorcio Publico de Direito Publico (Associacao Publica)
+      '1228': 122-8 Consorcio Publico de Direito Privado
+      '1236': 123-6 Estado ou Distrito Federal
+      '1244': 124-4 Municipio
+      '1252': 125-2 Fundacao Publica de Direito Privado Federal
+      '1260': 126-0 Fundacao Publica de Direito Privado Estadual ou do Distrito Federal
+      '1279': 127-9 Fundacao Publica de Direito Privado Municipal
+      '1287': 128-7 - Fundo Publico da Administracao Indireta Federal
+      '1295': 129-5 - Fundo Publico da Administracao Indireta Estadual ou do Distrito Federal
+      '1309': 130-9 - Fundo Publico da Administracao Indireta Municipal
+      '1317': 131-7 - Fundo Publico da Administracao Direta Federal
+      '1325': 132-5 - Fundo Publico da Administracao Direta Estadual ou do Distrito Federal
+      '1333': 133-3 - Fundo Publico da Administracao Direta Municipal
+      '1341': 134-1 - Uniao
+      '2011': 201-1 Empresa Publica
+      '2038': 203-8 Sociedade de Economia Mista
+      '2046': 204-6 Sociedade Anonima Aberta
+      '2054': 205-4 Sociedade Anonima Fechada
+      '2062': 206-2 Sociedade Empresaria Limitada
+      '2070': 207-0 Sociedade Empresaria em Nome Coletivo
+      '2089': 208-9 Sociedade Empresaria em Comandita Simples
+      '2097': 209-7 Sociedade Empresaria em Comandita por Acoes
+      '2100': (exc) 210-0 Sociedade Mercantil de Capital e Industria
+      '2127': 212-7 Sociedade em Conta de Participacao
+      '2135': 213-5 Empresario (Individual)
+      '2143': 214-3 Cooperativa
+      '2151': 215-1 Consorcio de Sociedades
+      '2160': 216-0 Grupo de Sociedades
+      '2178': 217-8 Estabelecimento, no Brasil, de Sociedade Estrangeira
+      '2194': 219-4 Estabelecimento, no Brasil, de Empresa Binacional Argentino-Brasileira
+      '2216': 221-6 Empresa Domiciliada no Exterior
+      '2224': 222-4 Clube/Fundo de Investimento
+      '2232': 223-2 Sociedade Simples Pura
+      '2240': 224-0 Sociedade Simples Limitada
+      '2259': 225-9 Sociedade Simples em Nome Coletivo
+      '2267': 226-7 Sociedade Simples em Comandita Simples
+      '2275': 227-5 Empresa Binacional
+      '2283': 228-3 Consorcio de Empregadores
+      '2291': 229-1 Consorcio Simples
+      '2305': 230-5 Empresa Individual de Responsabilidade Limitada (de Natureza Empresaria)
+      '2313': 231-3 Empresa Individual de Responsabilidade Limitada (de Natureza Simples)
+      '2321': 232-1 Sociedade Unipessoal de Advogados
+      '2330': 233-0 Cooperativas de Consumo
+      '2348': 234-8   Empresa Simples de Inovacao - Inova Simples
+      '2356': 235-6   Investidor Nao Residente
+      '3034': 303-4 Servico Notarial e Registral (Cartorio)
+      '3069': 306-9 Fundacao Privada
+      '3077': 307-7 Servico Social Autonomo
+      '3085': 308-5 Condominio Edilicio
+      '3107': 310-7 Comissao de Conciliacao Previa
+      '3115': 311-5 Entidade de Mediacao e Arbitragem
+      '3123': (exc) 312-3 Partido Politico
+      '3131': 313-1 Entidade Sindical
+      '3204': 320-4 Estabelecimento, no Brasil, de Fundacao ou Associacao Estrangeiras
+      '3212': 321-2 Fundacao ou Associacao Domiciliada no Exterior
+      '3220': 322-0 Organizacao Religiosa
+      '3239': 323-9 Comunidade Indigena
+      '3247': 324-7 Fundo Privado
+      '3255': 325-5 Orgao de Direcao Nacional de Partido Politico
+      '3263': 326-3 Orgao de Direcao Regional de Partido Politico
+      '3271': 327-1 Orgao de Direcao Local de Partido Politico
+      '3280': 328-0 Comite Financeiro de Partido Politico
+      '3298': 329-8 Frente Plebiscitaria ou Referendaria
+      '3301': 330-1 - Organizacao Social (OS)
+      '3310': 331-0 Demais Condominios
+      '3328': 332-8 - Plano de Beneficios de Previdencia Complementar Fechada
+      '3999': 399-9 Associacao Privada
+      '4000': 4000 Pessoa Fisica (registrada no CNES)
+      '4014': 401-4 Empresa Individual Imobiliaria
+      '4022': 402-2 Segurado Especial
+      '4081': 408-1 Contribuinte individual
+      '4090': 409-0 Candidato a Cargo Politico Eletivo
+      '4111': 411-1 Leiloeiro
+      '4120': 412-0 - Produtor Rural (Pessoa Fisica)
+      '4124': (exc) 412-4 Produtor Rural (Pessoa Fisica)
+      '5010': 501-0 Organizacao Internacional
+      '5029': 502-9 Representacao Diplomatica Estrangeira
+      '5037': 503-7 Outras Instituicoes Extraterritoriais
 # Identidade do arquivo: ap_mvm vale o mês do arquivo e ap_ufmun começa pelo código IBGE
 # da UF em todos os registros da fixture (tests/fixtures/FIXTURES.md); mesma regra das
 # outras APAC.
