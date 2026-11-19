@@ -18,8 +18,9 @@
   its table. `SERIEFAL.CNV` also lists `0` and `9` (`Ign`), which the Estrutura do SIM does not:
   it says "Números de 1 a 8" for both fields, and no fixture holds `0` or `9`; the open issue
   `seriefal-cnv-lista-0-e-9` records it on each field. The DEF lines of the two grades begin
-  with a lowercase `x`, and TabWin.pdf (p. 87) does not list `X` among the functions of a DEF
-  line: the open issue `def-liga-por-linha-x` says so. Versions: `sim_obitos` 2.9.0, the three
+  with a lowercase `x`, and TabWin.pdf (p. 87) does not list `X`, in either case, among the
+  functions of a DEF line: the open issue `def-liga-por-linha-x` says so. The same holds for
+  the other maps `Obito_1996_CID10.def` binds by an `X` line, `versaoscb` among them. Versions: `sim_obitos` 2.9.0, the three
   subsets 1.4.0 (#184).
 - 81 fields of `sim_obitos` have the `description` an official layout document gives them, each
   with a `/field/description` claim that cites the page: 75 from the Estrutura do SIM of 07/2025
@@ -38,8 +39,9 @@
 - Three open issues record where the files and the document differ: `horaobito` (the document
   says 5 characters, `00:00`; the files write 4 digits), `tppos` (the document says `1 – sim;
   2 – não`; the files write `S`, `N` or blank, the keys of `INVESTIG.CNV`) and `codestab` (the
-  document says 8 characters; the files write 7 digits). The `/field/codes` claim of `origem`
-  now cites the edition of 12/2019 first, which writes `1`, `2`, `3` and `9` as the file does.
+  edition of 07/2025 says 8 characters; the files write 7 digits, as the structure of the 2006
+  file says). The `/field/codes` claim of `origem` now cites the edition of 12/2019 first,
+  which writes `1`, `2`, `3` and `9`, the form of the map; the fixtures hold only `1` and `2`.
   The issue of `esc2010` and `escmae2010` no longer says `ESCSERIE.CNV` is missing from
   `OBITOS_CID10_TAB.zip`: it is there, cited by a commented line of `Obito_1996_CID10.def` and
   by the DEF of the infant and maternal subsets. `registry.json` records the edition of
