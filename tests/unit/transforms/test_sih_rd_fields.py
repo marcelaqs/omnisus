@@ -8,6 +8,7 @@ fixture of each of the last two: RDRR2401 and an excerpt of RDRR2503.
 from __future__ import annotations
 
 import csv
+import unicodedata
 from pathlib import Path
 
 import pytest
@@ -145,6 +146,115 @@ def test_fonte_orc_and_sis_just_are_labelled_as_their_sources_call_them():
         claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
         assert claim["status"] == "verified_in_source"
         assert quoted in claim["evidence"][0]["locator"]
+
+
+OLDER_LAYOUT = ROOT / "evidence/2026-11-18-layout-reduzida-sihd/layout.csv"
+WORDS_OF_THE_OFFICIAL_LAYOUT = {
+    "ano_cmpt": "Ano de processamento da AIH",
+    "mes_cmpt": "Mês de processamento da AIH",
+    "qt_diarias": "Quantidade de diárias",
+    "us_tot": "Valor total, em dólar",
+    "cobranca": "Motivo de Saída/Permanência",
+    "ind_vdrl": "Indica exame VDRL",
+    "cid_notif": "CID de Notificação",
+    "gestrisco": "Indicador se é gestante de risco",
+    "gestor_tp": "Tipo de gestor",
+}
+
+
+def older_layout() -> list[dict[str, str]]:
+    """Layout_REDUZIDA.pdf (`sihsus-f6084d22de30`), one dict per row: the layout of the
+    reduced file the SIHD wrote, which the DATASUS page of manuals lists under "SIHD (uso
+    até 12/2007)"."""
+    with OLDER_LAYOUT.open(encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def folded(text: str) -> str:
+    """Without case and without diacritics: the document prints capitals, some of them
+    without the accent ("INTERNACAO")."""
+    decomposed = unicodedata.normalize("NFD", text)
+    return "".join(c for c in decomposed if unicodedata.category(c) != "Mn").casefold()
+
+
+def test_the_layout_used_until_2007_is_an_earlier_layout_of_the_rd():
+    """The 75 names of Layout_REDUZIDA.pdf are, in the same order, 75 of the 86 fields of
+    the RD files of layout 1 (2008-01 to 2010-12 in the census). The other 11 are what
+    2008 added. It is the same file one layout earlier, not another product."""
+    older = [row["nome"].lower() for row in older_layout()]
+    assert len(older) == len(set(older)) == 75
+    with CENSUS.open(encoding="utf-8", newline="") as f:
+        first = {row["fields"] for row in csv.DictReader(f) if row["layout"] == "1"}
+    (fields,) = first
+    layout_1 = [name.lower() for name in fields.split(" ")[::2]]
+    assert [name for name in layout_1 if name in older] == older
+    assert set(layout_1) - set(older) == {
+        "qt_diarias",
+        "gestor_tp",
+        "cnpj_mant",
+        "complex",
+        "financ",
+        "faec_tp",
+        "regct",
+        "raca_cor",
+        "etnia",
+        "sequencia",
+        "remessa",
+    }
+
+
+def test_nine_labels_are_the_words_of_the_official_layout():
+    """Each of these labels said more than IT_SIHSUS_1603 says of the field, or something
+    else: "competência" where it says "processamento", "(sífilis)", "alto risco",
+    "cobradas", "autorizador", "notificação compulsória" (#182, C2 and C3). The label is
+    now the document's description up to its full stop, or up to ", no formato"."""
+    official = {row["campo"]: row for row in official_layout()}
+    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
+    for name, label in WORDS_OF_THE_OFFICIAL_LAYOUT.items():
+        row = official[name]
+        assert row["descricao"].startswith(label), name
+        assert row["descricao"].removeprefix(label) in {
+            "",
+            ".",
+            ", no formato aaaa.",
+            ", no formato mm.",
+        }, name
+        assert contract[name]["field"]["label"] == label
+        claim = next(c for c in contract[name]["claims"] if c["target"] == "/field/label")
+        assert (claim["status"], claim["method"]) == ("verified_in_source", "pdf-read")
+        (evidence,) = claim["evidence"]
+        assert evidence["source_id"] == "sihsus-1e89d5f2cc41"
+        assert evidence["pages"] == [int(row["pagina"])]
+        assert evidence["locator"] == (
+            f"Tabela 1, linha {row['seq']}, {row['nome_no_documento']} {row['tipo']}: "
+            f'"{row["descricao"]}"'
+        )
+
+
+def test_the_zerado_fields_take_the_label_of_the_layout_used_until_2007():
+    """IT_SIHSUS_1603 says only "Zerado" of 19 fields, so it gives them no name. Their
+    label is what Layout_REDUZIDA.pdf, the layout before 2008, prints for the same field
+    name, in sentence case and with the accents the capitals lack: equal to the document
+    once case and diacritics are set aside. Each field says so in an open issue, because
+    the document is of another period (#182, C2)."""
+    zerado = [row["campo"] for row in official_layout() if row["descricao"] == "Zerado"]
+    older = {row["nome"].lower(): row for row in older_layout()}
+    contract = {item["field"]["name"]: item for item in sus.describe_dataset(DATASET)["fields"]}
+    assert len(zerado) == 19
+    for name in zerado:
+        row, item = older[name], contract[name]
+        assert folded(item["field"]["label"]) == folded(row["descricao"]), name
+        assert item["field"]["description"] == "Zerado"
+        claim = next(c for c in item["claims"] if c["target"] == "/field/label")
+        assert (claim["status"], claim["method"]) == ("verified_in_source", "pdf-read")
+        (evidence,) = claim["evidence"]
+        assert evidence["source_id"] == "sihsus-f6084d22de30"
+        assert evidence["pages"] == [int(row["pagina"])]
+        assert evidence["locator"] == f'{row["nome"]}: "{row["descricao"]}"'
+        (issue,) = [i for i in item["issues"] if i["id"] == "rotulo-do-layout-ate-2007"]
+        assert issue["status"] == "open"
+    assert contract["val_sadtsr"]["field"]["label"] == "Valor de SADT sem rateio"
+    assert contract["cpf_aut"]["field"]["label"] == "CPF do auditor que autorizou o homônimo"
 
 
 def census_files() -> dict[str, dict[int, list[str]]]:

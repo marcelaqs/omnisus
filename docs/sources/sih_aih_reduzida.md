@@ -264,6 +264,16 @@ Passo a passo com análise e procedência:
   `evidence/2026-11-18-it-sihsus-1603-layout-rd/tabela1.csv`, e a descrição de 110 campos
   no dicionário (`sus.describe_dataset("sih_aih_reduzida")`) é a frase que a tabela traz,
   erros de digitação inclusive; 19 campos são descritos só como "Zerado".
+- Layout do arquivo de REDUZIDA gerado pelo SIHD (`Layout_REDUZIDA.pdf`), Ministério da
+  Saúde / DATASUS, que a página de manuais do SIHD lista sob "SIHD (uso até 12/2007)":
+  <ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_REDUZIDA.pdf>
+  — consultado em 2026-11-18; SHA-256
+  `f6084d22de3011fd9d2f490736e6d0469c45ac3ccc45be56f4e5c0ad564cb13d`. Está transcrito em
+  `evidence/2026-11-18-layout-reduzida-sihd/layout.csv`. Os 19 campos que o informe de
+  2016 descreve só como "Zerado" levam como rótulo o texto deste layout anterior (por
+  exemplo `val_sadtsr`, "Valor de SADT sem rateio"): o rótulo diz o que o campo era até
+  2007, e o campo vem zerado ou em branco nos arquivos de 2008 em diante. Cada um traz a
+  issue `rotulo-do-layout-ate-2007`.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos

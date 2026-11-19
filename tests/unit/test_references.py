@@ -207,6 +207,38 @@ def test_secondary_diagnoses_declare_the_cid10_reference(con, dbc_fixture):
     } | {f"diagsec{n}": (0, 0) for n in range(3, 9)}
 
 
+def test_cid_notif_declares_the_cid10_reference(con, dbc_fixture):
+    """IT_SIHSUS_1603, p. 3, calls CID_NOTIF "CID de Notificação", and RD2008.DEF, lines
+    523-527, relates it to five CID-10 tables under the name "CID laqueadura" (#182, C3).
+    The field declares aux_cid10, like the other CID fields. RDRR2401 fills it in 49 rows,
+    all of them Z302, and every one finds its row; the other 3,665 are blank. The
+    difference between the two names is an open issue on the field."""
+    lines = (CNV / "sih" / "RD2008.DEF").read_text(encoding="latin-1").splitlines()[522:527]
+    assert [tuple(part.strip() for part in line.split(",")) for line in lines] == [
+        ("LCID laqueadura (3 car)", "CID_NOTIF", "1", "CNV\\CID10_3D.CNV"),
+        ("LCID laqueadura (Cap15)", "CID_NOTIF", "1", "CNV\\CIDX15.CNV"),
+        ("SCID laqueadura (Cap15)", "CID_NOTIF", "1", "CNV\\CID10_15.CNV"),
+        ("LCID laqueadura (Cap09)", "CID_NOTIF", "1", "CNV\\CIDX09.CNV"),
+        ("SCID laqueadura (Cap09)", "CID_NOTIF", "1", "CNV\\CID10_09.CNV"),
+    ]
+    assert "cid_notif" in referenced_fields("sih_aih_reduzida")
+    field = load_dicionario("sih_aih_reduzida").field_def("cid_notif")
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cid_notif-laqueadura-no-def"
+    ]
+    assert issue["status"] == "open"
+    frame = dbc_bytes_to_lazyframe(
+        dbc_fixture("sih_rr_2024_01_mini").read_bytes(),
+        dataset="sih_aih_reduzida",
+        ano=2024,
+        uf="RR",
+    ).collect()
+    assert dict(frame["cid_notif"].value_counts().iter_rows()) == {"": 3665, "Z302": 49}
+    assert _filled_and_resolved(con, frame, "sih_aih_reduzida", ["cid_notif"]) == {
+        "cid_notif": (49, 49)
+    }
+
+
 # (dataset, fixture, ano, uf) -> {field: (filled, resolved)} on the real fixture (#82).
 # Every field the dataset's DEF relates to S_CID.DBF declares aux_cid10; fields blank in
 # every row of the fixture are listed as (0, 0) instead of being skipped. The CID fields

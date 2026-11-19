@@ -591,6 +591,20 @@
       "published_on": "2026-10-27",
       "retrieved_on": "2026-10-31",
       "last_checked_on": "2026-10-31"
+    },
+    {
+      "id": "sihsus-f6084d22de30",
+      "category": "SIHSUS",
+      "title": "Layout_REDUZIDA.pdf",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_REDUZIDA.pdf",
+      "sha256": "f6084d22de3011fd9d2f490736e6d0469c45ac3ccc45be56f4e5c0ad564cb13d",
+      "bytes": 26945,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
     }
   ]
 }

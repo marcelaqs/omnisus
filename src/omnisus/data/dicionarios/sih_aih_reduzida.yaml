@@ -15783,7 +15783,7 @@ schema:
         '539999': 530000 Distrito Federal
     - name: ano_cmpt
       type: integer
-      label: Ano de competência
+      label: Ano de processamento da AIH
       description: 'Ano de processamento da AIH, no formato aaaa.'
       x-metadata:
         physical_name: ANO_CMPT
@@ -15803,6 +15803,18 @@ schema:
             - 1
             locator: 'Tabela 1, linha 2, ANO_CMPT char(4)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara ANO_CMPT C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 5447e4367c1bcd9627a4f62afe478fa83f9e27900835b2016a4c6532e591ac9b
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 2, ANO_CMPT char(4): "Ano de processamento da AIH, no formato aaaa."'
+          note: 'O início da descrição do documento, até a vírgula.'
         - target: /field/description
           value_sha256: bec0d8e4f3e7234238927e4f3daffdbffe9b7cb56ccbe0e8b7b8553a0fa1c02f
           status: verified_in_source
@@ -15817,7 +15829,7 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: mes_cmpt
       type: integer
-      label: Mês de competência
+      label: Mês de processamento da AIH
       description: 'Mês de processamento da AIH, no formato mm.'
       x-metadata:
         physical_name: MES_CMPT
@@ -15837,6 +15849,18 @@ schema:
             - 1
             locator: 'Tabela 1, linha 3, MÊS_CMPT char(2)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara MES_CMPT C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 9971d5511d5de05ea63de549fd8dba9450e10f117e47c811ad84e514e5adf9df
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 1
+            locator: 'Tabela 1, linha 3, MÊS_CMPT char(2): "Mês de processamento da AIH, no formato mm."'
+          note: 'O início da descrição do documento, até a vírgula.'
         - target: /field/description
           value_sha256: 9e4c548ead1d0c28b33c88e4f9006903cd5fa96bbf3117fe2e4131b2d773f594
           status: verified_in_source
@@ -27820,10 +27844,22 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: qt_diarias
       type: integer
-      label: Diárias cobradas
+      label: Quantidade de diárias
       description: 'Quantidade de diárias.'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 6bc55ed3c67c73bdb21855e19ef8fad838cb04118e644bf946ea18f806798cdc
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 22, QT_DIARIAS numeric(3): "Quantidade de diárias."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: c8ab2c38d0d2716bf182232a0796d6a4263f09ef9d13df2b627365e8e17d02f8
           status: verified_in_source
@@ -27901,7 +27937,7 @@ schema:
             CNV.'
     - name: cobranca
       type: string
-      label: Motivo de saída/cobrança
+      label: Motivo de Saída/Permanência
       description: 'Motivo de Saída/Permanência'
       x-decode:
         '11': Alta curado
@@ -27953,6 +27989,18 @@ schema:
             - 2
             locator: 'Tabela 1, linha 43, COBRANCA char(2)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara COBRANCA C(2) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: de7264b6321f4248b79157c0d604bfb4b8d0f35f8d10bccb256c5f5632f766b6
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 43, COBRANCA char(2): "Motivo de Saída/Permanência"'
+          note: 'A descrição do documento.'
         - target: /field/description
           value_sha256: de7264b6321f4248b79157c0d604bfb4b8d0f35f8d10bccb256c5f5632f766b6
           status: verified_in_source
@@ -28188,8 +28236,10 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: cid_notif
       type: string
-      label: CID notificação compulsória
+      label: CID de Notificação
       description: 'CID de Notificação.'
+      foreignKeys:
+        - { fields: cid_notif, reference: { resource: aux_cid10, fields: codigo } }
       x-metadata:
         physical_name: CID_NOTIF
         physical_type:
@@ -28208,6 +28258,18 @@ schema:
             - 3
             locator: 'Tabela 1, linha 62, CID_NOTIF char(4)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CID_NOTIF C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: d44ed9c07aa633fa03ac08bbd4d99596ee94fa102b4224877d9abfd0a6094f93
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 62, CID_NOTIF char(4): "CID de Notificação."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: 4984ca44a632d9489cbf3d0e6c159f7dc8dd933922be6715751cf888c9dfbccc
           status: verified_in_source
@@ -28220,6 +28282,10 @@ schema:
             - 3
             locator: 'Tabela 1, linha 62, CID_NOTIF char(4): "CID de Notificação."'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: cid_notif-laqueadura-no-def
+          status: open
+          description: 'O IT_SIHSUS_1603, p. 3, chama o campo de "CID de Notificação". O RD2008.DEF, linhas 523-527, o chama de "CID laqueadura" e o liga a cinco tabelas da CID-10 (CID10_3D.CNV, CIDX15.CNV, CID10_15.CNV, CIDX09.CNV e CID10_09.CNV), nenhuma empacotada. Em RDRR2401 o campo vem preenchido em 49 das 3.714 linhas, todas com Z302, e em branco nas outras 3.665. Nenhum documento registrado diz que notificação é essa.'
     - name: cid_asso
       type: string
       label: CID causa associada
@@ -28348,10 +28414,22 @@ schema:
     # ========================================================================
     - name: uti_mes_in
       type: integer
-      label: Dias UTI mês internação
+      label: Qtd de dias de UTI no mês inicial da internação
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 3cd858f69a2a51944f497f5fa57188aa239bf42827b7a19aa9f0bfe500d6a1ce
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'UTI_MES_IN: "QTD DE DIAS DE UTI NO MES INICIAL DA INTERNACAO"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28364,12 +28442,28 @@ schema:
             - 1
             locator: 'Tabela 1, linha 12, UTI_MES_IN numeric(2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: uti_mes_an
       type: integer
-      label: Dias UTI mês anterior
+      label: Qtd de dias de UTI no mês anterior à alta
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 2a9e4f6d8b8a0f70c526eea38325c7226d18c7ee56b2d1beb121ec1a72b4daee
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'UTI_MES_AN: "QTD DE DIAS DE UTI NO MES ANTERIOR A ALTA"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28382,12 +28476,28 @@ schema:
             - 1
             locator: 'Tabela 1, linha 13, UTI_MES_AN numeric(2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: uti_mes_al
       type: integer
-      label: Dias UTI mês alta
+      label: Qtd de dias de UTI no mês da alta
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 934690068b7e95d979ce846b988f923f3046075010a4686e18dca75c368987d2
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'UTI_MES_AL: "QTD DE DIAS DE UTI NO MES DA ALTA"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28400,6 +28510,10 @@ schema:
             - 1
             locator: 'Tabela 1, linha 14, UTI_MES_AL numeric(2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: uti_mes_to
       type: integer
       label: Total dias UTI
@@ -28515,10 +28629,22 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: uti_int_in
       type: integer
-      label: Dias UCI mês internação
+      label: Dias em UTI no mês inicial (tipo ato = 34 ou 56)
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 08bccd7f5aaea03c50eecdd8d983a0fbeb823bd54968bdf8a3ea3349bd17c82c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'UTI_INT_IN: "DIAS EM UTI NO MÊS INICIAL (tipo ato = 34 ou 56)"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28531,12 +28657,28 @@ schema:
             - 1
             locator: 'Tabela 1, linha 17, UTI_INT_IN numeric(2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: uti_int_an
       type: integer
-      label: Dias UCI mês anterior
+      label: Dias em UTI no mês anterior à alta (tipo ato = 34 ou 56)
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: b714928d048ea9e747672efb0c4d2f561630f90c3d7e3949a03dcf0d67bd632e
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'UTI_INT_AN: "DIAS EM UTI NO MÊS ANTERIOR À ALTA (tipo ato = 34 ou 56)"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28549,12 +28691,28 @@ schema:
             - 1
             locator: 'Tabela 1, linha 18, UTI_INT_AN numeric(2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: uti_int_al
       type: integer
-      label: Dias UCI mês alta
+      label: Dias em UTI no mês da alta (tipo ato = 34 ou 56)
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 3f437c4ca77c78498b736dacf58f49c841c43da06767196bd471a8bd5bb68fbf
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'UTI_INT_AL: "DIAS EM UTI NO MÊS DA ALTA (tipo ato = 34 ou 56)"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28567,6 +28725,10 @@ schema:
             - 1
             locator: 'Tabela 1, linha 19, UTI_INT_AL numeric(2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 1, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: uti_int_to
       type: integer
       label: Total dias UCI
@@ -28719,10 +28881,22 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: val_sadt
       type: number
-      label: Valor SADT
+      label: Valor de SADT
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: a1206a78af22ed172b892c29dfba19c916bd47953f99f5327c454d735f9718bf
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_SADT: "VALOR DE SADT"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28735,12 +28909,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 27, VAL_SADT numeric(13,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_rn
       type: number
-      label: Valor recém-nascido
+      label: Valor de recém-nato
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 9533c4c156d315f1baef9d5a1c20bc0d92c22191f4c8480681f7c742de48b192
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_RN: "VALOR DE RECEM-NATO"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28753,12 +28943,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 28, VAL_RN numeric(13,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_acomp
       type: number
-      label: Valor acompanhante
+      label: Valor de acompanhante
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 39af140aabaa00989799afcd019943ceb821b67df432cddf7b98d48905e70563
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_ACOMP: "VALOR DE ACOMPANHANTE"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28771,12 +28977,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 29, VAL_ACOMP numeric(13,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_ortp
       type: number
-      label: Valor órteses/próteses
+      label: Valor de órtese e prótese
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 0f521ecaa0f4973fe0b94190d66bc5775f7d0ab1891e7fd1ea8d0aa71299dcbd
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_ORTP: "VALOR DE ÓRTESE E PRÓTESE"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28789,12 +29011,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 30, VAL_ORTP numeric(13,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_sangue
       type: number
-      label: Valor sangue/hemoderivados
+      label: Valor de sangue
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 29c97e21225d44b829c0013d9210290e02e203d997311efaff2c13ea6d5b0d04
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_SANGUE: "VALOR DE SANGUE"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28807,12 +29045,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 31, VAL_SANGUE numeric(13,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_sadtsr
       type: number
-      label: Valor tomografia/ressonância
+      label: Valor de SADT sem rateio
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 1f7c03073c83d1097a4c64498ac265df93c9a6c29565dc41673c821a94f7dfb1
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_SADTSR: "VALOR DE SADT SEM RATEIO"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28825,12 +29079,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 32, VAL_SADTSR numeric(11,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_transp
       type: number
-      label: Valor transplantes
+      label: Valor de transplante
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: f2d9d21dcd6936e44c8458f399b95880d6c415c6180d152d1777fb364ce6038c
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_TRANSP: "VALOR DE TRANSPLANTE"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28843,12 +29113,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 33, VAL_TRANSP numeric(13,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_obsang
       type: number
-      label: Valor analgesia obstétrica
+      label: Valor de anestesia
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 59f151a74449b3d3ccb8333cf889301536031cd3f6a6298ec426fb295117af9f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_OBSANG: "VALOR DE ANESTESIA"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28861,12 +29147,28 @@ schema:
             - 2
             locator: 'Tabela 1, linha 34, VAL_OBSANG numeric(11,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_ped1ac
       type: number
-      label: Valor acompanhante pediatria
+      label: Valor de pediatria
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: a876712d580a7ca72b7090072d98453aa6c7bdfee393d8b07d294cee0fd3d972
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'VAL_PED1AC: "VALOR DE PEDIATRIA"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -28879,6 +29181,10 @@ schema:
             - 2
             locator: 'Tabela 1, linha 35, VAL_PED1AC numeric(11,2): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: val_tot
       type: number
       label: Valor total da AIH
@@ -28899,10 +29205,22 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: us_tot
       type: number
-      label: Valor total (dólar referência)
+      label: Valor total, em dólar
       description: 'Valor total, em dólar.'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 021f8a5665c90fd4a652045370b9a14913977c63bd98d153686d3f3b0ba7801e
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 38, US_TOT numeric(10,2): "Valor total, em dólar."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: d7e121dd58fa1b282dd3cd5202591629d0afcdf7bd1f9385376169183dc4c6c8
           status: verified_in_source
@@ -29155,10 +29473,22 @@ schema:
           note: Mapa do CNV.
     - name: rubrica
       type: string
-      label: Rubrica orçamentária
+      label: Número da rubrica
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: 7d26cf550b4460a5ad8c43957c79c15787173a35e1b4af13b99237c78abd0a0f
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 1
+            locator: 'RUBRICA: "NUMERO DA RUBRICA"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -29171,6 +29501,10 @@ schema:
             - 2
             locator: 'Tabela 1, linha 47, RUBRICA numeric(5): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
 
     # ========================================================================
     # Dados Obstétricos / Trabalho
@@ -29550,7 +29884,7 @@ schema:
           note: Mapa do CNV.
     - name: gestrisco
       type: string
-      label: Gestante alto risco
+      label: Indicador se é gestante de risco
       description: 'Indicador se é gestante de risco.'
       x-decode:
         ? ''
@@ -29575,6 +29909,18 @@ schema:
             - 3
             locator: 'Tabela 1, linha 65, GESTRISCO char(1)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTRISCO C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: d7f7abbd5a0d0902936144812f722b3eaa37ef44fcf4f8259c0ca95ab0a2c80d
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 65, GESTRISCO char(1): "Indicador se é gestante de risco."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: 14f758dfc2df4663b9fc08420ada9a8f971d41775d4d0dfa6e9fcffa3e743706
           status: verified_in_source
@@ -29734,7 +30080,7 @@ schema:
             não tinha fonte; vale o CNV.'
     - name: ind_vdrl
       type: string
-      label: Exame VDRL (sífilis)
+      label: Indica exame VDRL
       description: 'Indica exame VDRL.'
       x-decode:
         ? ''
@@ -29759,6 +30105,18 @@ schema:
             - 2
             locator: 'Tabela 1, linha 48, IND_VDRL char(1)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara IND_VDRL C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 952addd65757f89ad87b608f3a096e2f6c3bb1c5cc44d02a0ac94835d04da7e9
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 2
+            locator: 'Tabela 1, linha 48, IND_VDRL char(1): "Indica exame VDRL."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: ddcb0c49f207d327cc6ebca11777d973be863f7476e8328751c69fe168e7d25f
           status: verified_in_source
@@ -29815,6 +30173,18 @@ schema:
             - 2
             locator: 'Tabela 1, linha 55, NUM_PROC char(4)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara NUM_PROC C(4) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 0ff988e7d267d7f92f7738c88704d3c479d321d0eb2cfcf2b1d2eacb2b06315b
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 2
+            locator: 'NUM_PROC: "NUMERO DO PROCESSAMENTO"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -29827,9 +30197,13 @@ schema:
             - 2
             locator: 'Tabela 1, linha 55, NUM_PROC char(4): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 2, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: cpf_aut
       type: string
-      label: CPF do autorizador
+      label: CPF do auditor que autorizou o homônimo
       description: 'Zerado'
       x-metadata:
         physical_name: CPF_AUT
@@ -29849,6 +30223,18 @@ schema:
             - 3
             locator: 'Tabela 1, linha 58, CPF_AUT char(11)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara CPF_AUT C(11) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 42d66711013f764f0d8c331f20db42cd35f23123ebf4226db6bad039eb44defa
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 2
+            locator: 'CPF_AUT: "CPF DO AUDITOR QUE AUTORIZOU O HOMONIMO"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -29861,6 +30247,10 @@ schema:
             - 3
             locator: 'Tabela 1, linha 58, CPF_AUT char(11): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: gestor_cod
       type: string
       label: Código motivo autorização
@@ -29901,7 +30291,7 @@ schema:
           description: 'IT_SIHSUS_1603, p. 3, dá GESTOR_COD char(3) na tabela ''para janeiro de 2008 em diante''. O cabeçalho DBF declara GESTOR_COD C(3) nos 54 arquivos RD lidos de 2008-01 a 2011-12 e C(5) nos 189 de 2012-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout); o contrato guarda uma largura por campo, a do último layout lido. Vale o que o arquivo publica: o campo é lido com a largura do DBF, e o documento não é corrigido.'
     - name: gestor_tp
       type: string
-      label: Tipo gestor autorizador
+      label: Tipo de gestor
       description: 'Tipo de gestor.'
       x-metadata:
         physical_name: GESTOR_TP
@@ -29921,6 +30311,18 @@ schema:
             - 3
             locator: 'Tabela 1, linha 72, GESTOR_TP char(1)'
           note: 'O layout oficial dá o mesmo tipo. O cabeçalho DBF declara GESTOR_TP C(1) nos 243 arquivos RD lidos que têm o campo, de 2008-01 a 2026-07 (evidence/2026-10-06-rd-2008-layouts: um arquivo de RR, ou AP, por mês, mais SP e MG nos meses de troca de layout).'
+        - target: /field/label
+          value_sha256: 6a80d6b812187eedf878fe44b41d208862b6e943c1b19f1f136ad48e662814af
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-1e89d5f2cc41
+            pages:
+            - 3
+            locator: 'Tabela 1, linha 72, GESTOR_TP char(1): "Tipo de gestor."'
+          note: 'A descrição do documento, sem o ponto final.'
         - target: /field/description
           value_sha256: 8f45e3cba07d40f3ed5b0362074269f61cd79d2aaf9a8d8733e3cecc6865043d
           status: verified_in_source
@@ -30125,10 +30527,22 @@ schema:
           note: Transcrição da coluna Descrição/Observações.
     - name: tot_pt_sp
       type: integer
-      label: Total pontos serviços profissionais
+      label: Total de pontos em SP
       description: 'Zerado'
       x-metadata:
         claims:
+        - target: /field/label
+          value_sha256: b5668dc5769076f85af33ca4db866b09cbc596d47a233e21d3f7e2a8485e6882
+          status: verified_in_source
+          checked_at: '2026-11-18'
+          method: pdf-read
+          reviewer: Claude Code
+          evidence:
+          - source_id: sihsus-f6084d22de30
+            pages:
+            - 2
+            locator: 'TOT_PT_SP: "TOTAL DE PONTOS EM SP"'
+          note: 'O texto do layout de até 12/2007, em caixa de frase e com os acentos que as maiúsculas do documento não trazem. O IT_SIHSUS_1603 descreve o campo só como "Zerado".'
         - target: /field/description
           value_sha256: be39e4fa28298b98a45af1b760e7a4d215bd56b85887fcba21516c9d85fdc6df
           status: verified_in_source
@@ -30141,6 +30555,10 @@ schema:
             - 3
             locator: 'Tabela 1, linha 57, TOT_PT_SP numeric(6): "Zerado"'
           note: Transcrição da coluna Descrição/Observações.
+        issues:
+        - id: rotulo-do-layout-ate-2007
+          status: open
+          description: 'O IT_SIHSUS_1603, o layout do RD de 2008 em diante, p. 3, descreve o campo só como "Zerado". O rótulo é o texto do Layout_REDUZIDA.pdf, o layout do arquivo reduzido do SIHD, que a página de manuais do DATASUS lista sob "SIHD (uso até 12/2007)": diz o que o campo era antes de 2008, não o que os arquivos de hoje publicam.'
     - name: seq_aih5
       type: string
       label: Sequencial longa permanência
@@ -31104,7 +31522,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.22.1"
+x-version: "2.23.0"
 
 x-analytics:
   version: 1.3.0

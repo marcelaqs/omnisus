@@ -41,6 +41,21 @@
   them. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
   `aux_municipios`, where `140000` is "Município ignorado - RR" (#182).
   (#182).
+- `sih_aih_reduzida` (2.23.0): 28 labels now come from a registered document, each with
+  a `/field/label` claim. Nine are the words of `IT_SIHSUS_1603.pdf`: `ano_cmpt` and
+  `mes_cmpt` ("Ano/Mês de processamento da AIH", not "competência"), `qt_diarias`,
+  `us_tot`, `cobranca`, `ind_vdrl`, `gestrisco`, `gestor_tp` and `cid_notif` ("CID de
+  Notificação", not "notificação compulsória"). The 19 fields that document describes
+  only as "Zerado" take the description of `Layout_REDUZIDA.pdf`, the layout of the same
+  file until 2007-12 (`sihsus-f6084d22de30`, transcribed in
+  `evidence/2026-11-18-layout-reduzida-sihd/`), and an open issue
+  `rotulo-do-layout-ate-2007` that says the label is of the earlier period. Seven of them
+  said something else: `val_sadtsr` was "Valor tomografia/ressonância" and is "Valor de
+  SADT sem rateio"; `val_obsang`, `val_ped1ac`, `cpf_aut` and the three `uti_int_*`
+  ("UCI") changed too. `cid_notif` declares the reference to `aux_cid10`: `RD2008.DEF`
+  (lines 523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all
+  `Z302`, find their row; the open issue `cid_notif-laqueadura-no-def` records that the
+  DEF calls the field "CID laqueadura" (#182).
 
 ### omnisus-dbf 0.2.2
 
