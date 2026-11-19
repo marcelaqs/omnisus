@@ -256,10 +256,11 @@ def test_codestab_is_seven_digits_where_the_document_says_eight(dbc_fixture, fix
     """Real data: every CODESTAB that is filled has 7 digits; the document declares 8."""
     values = _values(dbc_fixture, fixture, "codestab")
     assert values and all(len(v) == 7 and v.isdigit() for v in values)
-    assert "8" in _open_issue("codestab", "codestab-tamanho-diverge-do-pdf")["description"]
+    issue = _open_issue("codestab", "codestab-tamanho-diverge-do-pdf")["description"]
+    assert "8 caracteres" in issue and "C(07)" in issue
 
 
-def test_origem_codes_cite_the_edition_that_writes_them_as_the_file_does() -> None:
+def test_origem_codes_cite_the_edition_that_writes_them_as_the_map_does() -> None:
     """The 12/2019 edition writes 1, 2, 3 and 9; the 07/2025 edition writes 01, 02 and 03."""
     (claim,) = [c for c in _columns()["origem"]["claims"] if c["target"] == "/field/codes"]
     assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
