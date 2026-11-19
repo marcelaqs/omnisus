@@ -316,10 +316,11 @@ def test_an_undeclared_blank_column_takes_its_descriptor_type(monkeypatch, tmp_p
 
 
 def test_a_blank_column_the_dictionary_mistypes_still_accepts_the_next_file(monkeypatch, tmp_path):
-    """A dictionary can declare a type the DBF header does not have: until its
-    version 2.25.0, sih_aih_reduzida declared ``rubrica``, an ``N`` field, as
-    ``string`` (#182). Typing a blank column from the dicionario would pin the
-    lake to VARCHAR and make the next month's integers an unsafe schema change."""
+    """A dictionary can declare a type the DBF header does not have:
+    sih_aih_reduzida_1992_2007 declares ``insc_pn`` as ``string``, and 35 of the
+    files of its census of layouts have it as ``N``. Typing a blank column from
+    the dicionario would pin the lake to VARCHAR and make the next month's
+    integers an unsafe schema change."""
     import omnisus as sus
     from omnisus.sources._base import ScopeKey
     from omnisus.sources.datasus_ftp._runner import ingest_raw

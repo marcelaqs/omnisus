@@ -387,12 +387,14 @@ PROCESSING_MONTH = {
 
 @pytest.mark.parametrize("fixture", sorted(LAYOUTS))
 def test_each_field_declares_the_type_the_library_stages(dbc_fixture, fixture):
-    """`type` in the dictionary is the contract's `logical_type`, "o tipo adotado pela
-    lib" (docs/dicionario/contrato.md). Apart from the four dates, which are text in the
-    file and become dates by their `x-format`, every field of a real file declares the
-    family of the type `dbc_bytes_to_lazyframe` gives it. Three did not (#182, C8):
-    ANO_CMPT C(4) and MES_CMPT C(2) were `integer` and are staged as text, the month with
-    its leading zero; RUBRICA N(5) was `string` and is staged as an integer."""
+    """`type` in the dictionary is the contract's `logical_type`, which
+    docs/dicionario/contrato.md calls "tipo adotado pela lib". Every field a real file
+    publishes declares the family of the type `dbc_bytes_to_lazyframe` gives it, except
+    the four declared `date`, which are text in the file and stay text when staged.
+    Three did not (#182, C8 of the issue): ANO_CMPT and MES_CMPT were `integer` and are
+    staged as text, the month with its leading zero; RUBRICA was `string` and is staged
+    as an integer. The two fixtures are of layouts 5 and 6; in the census the three
+    fields are C(4), C(2) and N(5) in every file of the six layouts."""
     import polars as pl
 
     raw = dbc_fixture(fixture).read_bytes()
@@ -421,6 +423,15 @@ def test_each_field_declares_the_type_the_library_stages(dbc_fixture, fixture):
     assert frame["ano_cmpt"].unique().to_list() == [year]
     assert frame["mes_cmpt"].unique().to_list() == [month]
     assert frame["rubrica"].unique().to_list() == [0]
+    with CENSUS.open(encoding="utf-8", newline="") as f:
+        headers = [row["fields"].split(" ") for row in csv.DictReader(f)]
+    assert len(headers) == 243
+    assert {
+        tuple(
+            dict(zip(h[::2], h[1::2], strict=True))[n] for n in ("ANO_CMPT", "MES_CMPT", "RUBRICA")
+        )
+        for h in headers
+    } == {("C4.0", "C2.0", "N5.0")}
 
 
 def census_files() -> dict[str, dict[int, list[str]]]:
