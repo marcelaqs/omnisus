@@ -67,12 +67,13 @@ def _physical_type_for_null_columns(
     blank in all of HANSBR23). Every value is null, so any type is vacuously
     correct for *this* file; the one that keeps the lake column usable is the
     type a sibling file stages when the column is populated — which is the
-    physical type in the DBF header, not the type the curated dictionary
-    declares. The two disagree: ``sih_aih_reduzida.rubrica`` is an ``N`` field
-    the parser stages as int64 while the dicionario declares ``string``, and
-    typing it from the dictionary would pin the lake to VARCHAR and reject the
-    next month's integers. Declared types are semantics; descriptors are what
-    sibling files actually stage. Fields whose type we cannot map stay ``null``.
+    physical type in the DBF header, not the type a dictionary declares. The
+    two can disagree: until its version 2.25.0, ``sih_aih_reduzida`` declared
+    ``rubrica``, an ``N`` field the parser stages as int64, as ``string``, and
+    typing it from the dictionary would have pinned the lake to VARCHAR and
+    rejected the next month's integers. A declared type can be wrong;
+    descriptors are what sibling files actually stage. Fields whose type we
+    cannot map stay ``null``.
     """
     return pa.schema(
         [

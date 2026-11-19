@@ -66,6 +66,12 @@
   describes the RD files from 2008, no DEF relates the fields to them, and none has the
   `2` the RD publishes in `homonimo`. The passages are in
   `evidence/2026-11-18-sih-codigos-em-outros-documentos/` (#182).
+- `sih_aih_reduzida` (2.25.0): `ano_cmpt` and `mes_cmpt` declare `string` and `rubrica`
+  declares `integer`, the types the library stages from the files (`ANO_CMPT` C(4),
+  `MES_CMPT` C(2), `RUBRICA` N(5)); they declared `integer`, `integer` and `string`.
+  `describe_dataset` reports the new `logical_type`. The lake does not change: the
+  import reads `type` only for dates, so `ano_cmpt` was already text (`2024`) and
+  `mes_cmpt` text with its leading zero (`01`) (#182).
 
 ### omnisus-dbf 0.2.2
 

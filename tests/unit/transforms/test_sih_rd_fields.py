@@ -308,6 +308,50 @@ def test_tpdisec_0_and_homonimo_stay_unlabelled_and_say_what_was_read(dbc_fixtur
     assert dict(frame["homonimo"].value_counts().iter_rows()) == {"0": 3675, "2": 39}
 
 
+PROCESSING_MONTH = {
+    "sih_rr_2024_01_mini": ("2024", "01"),
+    "sih_rd_rr_2025_03_excerpt": ("2025", "03"),
+}
+
+
+@pytest.mark.parametrize("fixture", sorted(LAYOUTS))
+def test_each_field_declares_the_type_the_library_stages(dbc_fixture, fixture):
+    """`type` in the dictionary is the contract's `logical_type`, "o tipo adotado pela
+    lib" (docs/dicionario/contrato.md). Apart from the four dates, which are text in the
+    file and become dates by their `x-format`, every field of a real file declares the
+    family of the type `dbc_bytes_to_lazyframe` gives it. Three did not (#182, C8):
+    ANO_CMPT C(4) and MES_CMPT C(2) were `integer` and are staged as text, the month with
+    its leading zero; RUBRICA N(5) was `string` and is staged as an integer."""
+    import polars as pl
+
+    raw = dbc_fixture(fixture).read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=DATASET).collect()
+    dictionary = load_dicionario(DATASET)
+    declared = {name: dictionary.field_def(name)["type"] for name in frame.columns}
+    staged = {
+        name: "string"
+        if dtype == pl.String
+        else "integer"
+        if dtype.is_integer()
+        else "number"
+        if dtype.is_float()
+        else str(dtype)
+        for name, dtype in frame.schema.items()
+    }
+    dates = {name for name, kind in declared.items() if kind == "date"}
+    assert dates == {"nasc", "dt_inter", "dt_saida", "gestor_dt"}
+    assert {staged[name] for name in dates} == {"string"}
+    assert {
+        name: (declared[name], staged[name])
+        for name in declared
+        if name not in dates and declared[name] != staged[name]
+    } == {}
+    year, month = PROCESSING_MONTH[fixture]
+    assert frame["ano_cmpt"].unique().to_list() == [year]
+    assert frame["mes_cmpt"].unique().to_list() == [month]
+    assert frame["rubrica"].unique().to_list() == [0]
+
+
 def census_files() -> dict[str, dict[int, list[str]]]:
     """Text field -> width -> months of the files that publish it with that width."""
     out: dict[str, dict[int, list[str]]] = {}
