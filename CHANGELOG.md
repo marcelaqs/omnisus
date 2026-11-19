@@ -140,6 +140,16 @@
   the server listed on 2026-11-19, read without any record
   (`evidence/2026-11-19-sih-cabecalhos/`), and the 18 `RJRR` files of 2025-03 to 2026-08,
   where the field is `00` in the 1,270 records (#182).
+- The DBF header of every `RD` file the server listed on 2026-11-19 is in
+  `evidence/2026-11-19-sih-cabecalhos/`: 5,165 files of 1992-2007 and 6,072 from 2008.
+  The censuses of layouts, which read one UF a month, hold in every UF: the 19 layouts of
+  1992-2007 and no other, with `num_proc`, `insc_pn` and `seq_aih5` published as numbers
+  in every file of the months #40 names; and the 6 layouts from 2008 in all files but
+  one. `RDAC0909.dbc`, which the server dates 2024-05-22, has 82 fields, 17 of them of
+  another type, and `val_sh` and `val_sp` zeroed in its 4,540 records. It cannot share a
+  table of the lake with another RD file from 2008: whichever is imported second is
+  refused. The fixture `sih_rd_ac_2009_09_excerpt` and `test_sih_rd_headers.py` record
+  what the import meets today, and the decision is in #219. No dictionary changes.
 
 ### omnisus-dbf 0.2.2
 
