@@ -186,7 +186,7 @@ def test_an_editorial_dictionary_change_keeps_the_scope_unchanged(monkeypatch, t
     ],
     ids=["editorial", "encoding", "x-identity", "type"],
 )
-def test_the_parser_version_follows_only_what_the_import_reads(
+def test_the_parser_version_follows_the_encoding_and_the_identity_and_nothing_else(
     tmp_path, dataset, edit, same
 ) -> None:
     """The version follows the dictionary's ``encoding`` (to decode text) and

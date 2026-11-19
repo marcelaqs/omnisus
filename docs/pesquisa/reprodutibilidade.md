@@ -122,8 +122,8 @@ não expire um snapshot que um trabalho seu cita.
 
 ## Depois de atualizar o omnisus
 
-A versão do parser gravada em cada publicação depende do que a importação lê do
-dicionário (`src/omnisus/sources/datasus_ftp/_runner.py`, `parser_version`). A 0.2.0
+A versão do parser gravada em cada publicação depende do `encoding` e do `x-identity`
+do dicionário (`src/omnisus/sources/datasus_ftp/_runner.py`, `parser_version`). A 0.2.0
 mudou esse cálculo (#19), então todo escopo importado pela 0.1.0 é recusado por
 `skip_same`, o padrão de `load`. Na 0.2.0 o motivo é *different source/parser version
 exists*; nas versões seguintes, *same file, imported by another parser version*. Rode o

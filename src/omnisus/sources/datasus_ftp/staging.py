@@ -37,28 +37,25 @@ _DECLARED_TYPE = {"string": pa.string(), "date": pa.string(), "number": pa.float
 """What a whole number of the file is staged as, by the ``type`` the dictionary declares."""
 
 
-def _staged_types(
-    physical: dict[str, pa.DataType], dic: Dicionario, replaced: set[str]
-) -> dict[str, pa.DataType]:
+def _staged_types(physical: dict[str, pa.DataType], dic: Dicionario) -> dict[str, pa.DataType]:
     """The type each header field is staged with: its descriptor's, with one exception.
 
-    A field the header declares ``N`` with no decimals is a whole number. When the
-    dictionary declares it ``string`` or ``date`` (a date is text in the file), it is
-    staged as text, the number as written and with no zeros added: ``0`` becomes
-    ``"0"``, not the ``"0000"`` a ``C(4)`` month has (#40). When the dictionary declares
-    it ``number``, it is staged as a number with decimals. Staged as published, such a
-    field has one type in some files and another in the rest, and the lake refuses the
-    second: ``num_proc``, ``insc_pn`` and ``seq_aih5`` of the RD are ``N`` in some
-    months of 1992-2007, and 17 fields are ``N1.0`` in RDAC0909 alone (#219).
+    A field the readers give as a whole number (``N`` with no decimals; ``I`` and ``+``
+    are whole numbers too) is staged as text when the dictionary declares it ``string`` or
+    ``date``, and as a number with decimals when the dictionary declares it ``number``.
+    The text is the number, with no zeros to its left: RDRR9603 has ``NUM_PROC`` ``N4.0``
+    and stages ``"368"``, where RDRR9709 has it ``C4`` and stages ``"0489"`` (#40).
+    Staged as published, such a field has one type in some files and another in the
+    rest, and the lake refuses the second: ``num_proc``, ``insc_pn`` and ``seq_aih5`` of
+    the RD in some months of 1992-2007, and 17 fields in RDAC0909 alone (#219).
 
-    Nothing else is converted: text the dictionary declares ``integer`` stays text.
-    ``replaced`` are the columns staging overwrites with the scope's partition value.
+    Nothing else is converted: text the dictionary declares ``integer`` stays text, and a
+    ``D`` date stays a date. ``date`` is text here because the one whole number declared
+    ``date``, ``gestor_dt`` of RDAC0909, is ``C8`` in every other RD file.
     """
     declared = {field["name"]: _DECLARED_TYPE.get(field.get("type", "")) for field in dic.fields}
     return {
-        name: declared.get(name) or kind
-        if pa.types.is_integer(kind) and name not in replaced
-        else kind
+        name: declared.get(name) or kind if pa.types.is_integer(kind) else kind
         for name, kind in physical.items()
     }
 
@@ -197,7 +194,7 @@ def dbc_bytes_to_parquet(
             if "_source_release" in lowered:
                 raise ValueError("DBF uses reserved source column _source_release")
             for index, field in enumerate(table.schema):
-                if field.name in converted and not pa.types.is_null(field.type):
+                if field.name in converted:
                     column = table.column(index).cast(converted[field.name])
                     table = table.set_column(index, field.name, column)
             for name, value, dtype in partitions:
@@ -223,7 +220,7 @@ def dbc_bytes_to_parquet(
             parse._check_dbf_length(dbf_bytes, dataset=dataset)
             if physical is None:
                 physical = physical_arrow_types(dbf_bytes)
-                staged = _staged_types(physical, dic, {name for name, _, _ in partitions})
+                staged = _staged_types(physical, dic)
                 converted = {name: kind for name, kind in staged.items() if kind != physical[name]}
                 empty_schema = physical_arrow_schema(dbf_bytes)
             elif physical_arrow_types(dbf_bytes) != physical:

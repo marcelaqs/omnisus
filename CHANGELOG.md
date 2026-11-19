@@ -4,19 +4,28 @@
 
 ### Import
 
-- A field the DBF header declares `N` with no decimals is staged with the type the
-  dictionary declares: as text when that is `string` or `date`, with the number as
-  written and no zeros added, and as a number with decimals when it is `number`. Nothing
-  else is converted. Staged as published, such a field had one type in some files and
-  another in the rest, and the lake refused whichever was imported second
-  (`UnsafeSchemaError`). In the fixtures of the 43 DATASUS datasets it changes two files:
-  `RDRR0407`, where `insc_pn` and `seq_aih5` are numbers and now come as `0` beside the
-  `0000000000` and `000` of `RDRR0712` (#40), and `RDAC0909`, where 17 fields are `N1.0`
-  (#219). A lake whose table already has one of these columns as a number, because it
-  began with such a file, refuses the files staged from now on and has to be rebuilt.
-  `sih_aih_reduzida_1992_2007` (1.3.2) says in its `x-evidence` what staging does.
-  The parser version stays `dbc-staging-v2` and does not hash the field types, so no
-  other published scope is asked to be replaced.
+- **Breaking.** A field the DBF header declares `N` with no decimals is staged with the
+  type the dictionary declares: as text when that is `string` or `date`, the number with
+  no zeros to its left, and as a number with decimals when it is `number`. Nothing else
+  is converted. Staged as published, such a field had one type in some files and another
+  in the rest, and the lake refused whichever was imported second (`UnsafeSchemaError`).
+  Of the 65 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
+  `num_proc` is `368` beside the `0489` of `RDRR9709`; `RDRR0407`, where `insc_pn` and
+  `seq_aih5` are `0` in the 91 records of the fixture beside the `0000000000` and `000`
+  of `RDRR0712` (#40); and `RDAC0909`, where 17 fields are `N1.0` (#219). In the headers
+  of every `RD`, `SP` and `RJ` file (`evidence/2026-11-19-sih-cabecalhos/`) the fields it
+  reaches are those of the 188 `RD` files of 1996-01 to 1996-07, the 567 of 2004-07 to
+  2006-03 and `RDAC0909`; the files of the other datasets were not surveyed beyond their
+  fixtures. A `Dataset` built by the user takes the same path: a whole number its
+  dictionary declares `string`, `date` or `number` is no longer staged as BIGINT.
+  **Upgrading:** the parser version stays `dbc-staging-v2`, so `skip_same` reports every
+  scope already published as unchanged. A lake whose table has one of these columns as a
+  number, because it began with such a file, refuses the files staged from now on, also
+  under `replace`; no operation of the library changes the type of a column, and the
+  table has to be imported again into a new lake (`docs/architecture.md`).
+  `describe_dataset` gives `storage.dictionary_types` as `applied_to_whole_numbers`, not
+  `descriptive`. `sih_aih_reduzida_1992_2007` (1.3.2) says in its `x-evidence` what
+  staging does. New fixture: `sih_rd_rr_1996_03_excerpt`, five records of `RDRR9603`.
 
 ### Dictionaries
 
@@ -168,7 +177,8 @@
   `zerado-em-rdac0909`. `RDAC0909.dbc` is imported as published, so in the lake the two
   sums for Acre in 2009-09 are zero; `val_tot` is filled in its 4,540 records, and both
   fields are filled in the 4,379 of `RDAC0908.dbc`
-  (`evidence/2026-11-19-sih-cabecalhos/rdac0909.csv`, #219).
+  (`evidence/2026-11-19-sih-cabecalhos/rdac0909.csv`, which now also counts the rows in
+  which each field is blank; #219).
 
 ### omnisus-dbf 0.2.2
 

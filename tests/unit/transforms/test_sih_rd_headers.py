@@ -248,6 +248,10 @@ def test_rdac0909_has_val_sh_and_val_sp_zeroed_and_the_month_before_has_them_fil
         "val_sp": 4379,
     }
     assert (filled[ODD, "val_tot"], filled[ODD, "us_tot"]) == (4540, 4540)
+    blank = {(row["file"], row["field"].lower()): int(row["blank"]) for row in rows}
+    for file, records in ((ODD, 4540), ("RDAC0908.dbc", 4379)):
+        assert {blank[file, f] for f in VALUES_AS_WHOLE_NUMBERS} == {0}
+        assert {blank[file, f] for f in TEXT_AS_WHOLE_NUMBERS} == {records}
     assert (filled["RDAC0908.dbc", "val_tot"], filled["RDAC0908.dbc", "us_tot"]) == (4379, 4379)
     assert {(row["file"], row["sha256"]) for row in rows} == {
         (ODD, "25a4aeccfd1025c88630afb60b782442a0e8471d2803ae42c5da01a2b10c9200"),
@@ -262,7 +266,7 @@ def test_the_dictionary_warns_that_rdac0909_publishes_the_field_zeroed(field):
     `rdac0909.csv`."""
     rows = {(r["file"], r["field"].lower()): r for r in read(HEADERS / "rdac0909.csv")}
     odd, before = rows[ODD, field], rows["RDAC0908.dbc", field]
-    assert (odd["records"], odd["filled"]) == ("4540", "0")
+    assert (odd["records"], odd["filled"], odd["blank"]) == ("4540", "0", "0")
     assert (before["records"], before["filled"]) == ("4379", "4379")
     assert rows[ODD, "val_tot"]["filled"] == "4540"
     issues = load_dicionario(DATASET).field_def(field)["x-metadata"].get("issues", [])

@@ -111,15 +111,16 @@ has and the Rust DBF reader does not read; the library reads this file with the 
 reader.
 
 `rdac0909.csv` has, for that file and for `RDAC0908.dbc`, both downloaded whole on
-2026-11-19, the size, the SHA-256 and the rows in which each field is neither blank nor
-zero:
+2026-11-19, the size, the SHA-256, the rows in which each field is neither blank nor
+zero (`filled`) and the rows in which it is only spaces (`blank`):
 
     uv run --locked python evidence/2026-11-19-sih-cabecalhos/medir_preenchimento.py \
         evidence/2026-11-19-sih-cabecalhos/rdac0909.csv RDAC0908.dbc RDAC0909.dbc
 
 `VAL_SH` and `VAL_SP` are zero in the 4,540 records of `RDAC0909` and filled in the 4,379
-of `RDAC0908`; `VAL_TOT` and `US_TOT` are filled in all records of both. The other 15
-fields that change family are blank or zero in both files. The fixture
+of `RDAC0908`; `VAL_TOT` and `US_TOT` are filled in all records of both. Of the other 15
+fields that change family, the nine value fields are zero in every record of both files,
+and the six text fields are blank in every record of both. The fixture
 `sih_rd_ac_2009_09_excerpt` keeps records 5 to 9 (counted from 0) byte for byte: in them
 `INSC_PN`, the pre-natal number 617 records of the file carry, is zeros, and so is
 `GESTOR_CPF`.

@@ -1,6 +1,8 @@
-"""Rows in which each field of a `.dbc` is filled. Only counts leave the files.
+"""Rows in which each field of a `.dbc` is filled, and rows in which it is blank.
 
-A field is filled when its text is neither blank nor zero (`0`, `0.00`, `0000`).
+A field is filled when its text is neither blank nor zero (`0`, `0.00`, `0000`), and
+blank when it is only spaces; the rest of the rows have a zero. Only counts leave the
+files.
 
     python medir_preenchimento.py rdac0909.csv FILE.dbc [FILE.dbc ...]
 """
@@ -16,7 +18,7 @@ from pathlib import Path
 from omnisus.sources.datasus_ftp import dbc
 
 rows: list[list[object]] = [
-    ["file", "size_bytes", "sha256", "records", "field", "descriptor", "filled"]
+    ["file", "size_bytes", "sha256", "records", "field", "descriptor", "filled", "blank"]
 ]
 for path in map(Path, sys.argv[2:]):
     raw = path.read_bytes()
@@ -28,10 +30,9 @@ for path in map(Path, sys.argv[2:]):
             break
         name, kind = dbf[at : at + 11].split(b"\x00")[0].decode("ascii"), chr(dbf[at + 11])
         width, decimals = dbf[at + 16], dbf[at + 17]
-        filled = sum(
-            bool(dbf[header_size + n * record_size + start :][:width].strip(b" 0."))
-            for n in range(records)
-        )
+        values = [dbf[header_size + n * record_size + start :][:width] for n in range(records)]
+        filled = sum(bool(value.strip(b" 0.")) for value in values)
+        blank = sum(not value.strip() for value in values)
         rows.append(
             [
                 path.name,
@@ -41,6 +42,7 @@ for path in map(Path, sys.argv[2:]):
                 name,
                 f"{kind}{width}.{decimals}",
                 filled,
+                blank,
             ]
         )
         start += width
