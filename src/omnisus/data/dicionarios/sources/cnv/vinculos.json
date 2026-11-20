@@ -912,6 +912,36 @@
       "membro": "TAB_SINANNET/TuberculNET5_0.def",
       "sha256": "2fa0533a2e106ea66618e7073db525a51a29473e7e1d71f4b850dfff7c8f4d7f"
     },
+    "sinan/DengueNETON3.0.def": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/DengueNETON3.0.def",
+      "sha256": "c9abd18c2870b23dba4790b944b0127d173b7bde90d24170625629f7a6cdd110"
+    },
+    "sinan/TipoSistema.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/TipoSistema.cnv",
+      "sha256": "722f1c0d223b7e321b32e330f867817b68edba95a69439a06e6900562ff8654d"
+    },
+    "sinan/Sim_nao.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Sim_nao.cnv",
+      "sha256": "74b8342f044a3783c2755819f271a4b5c588c792d30b2f011679775dc00b95a3"
+    },
+    "sinan/Classdeng.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Classdeng.cnv",
+      "sha256": "4fd488a2996fd3e7fe7f10d40c0d648c61deb9cbd0811049f5c0e74c8f4de7ac"
+    },
+    "sinan/Evideng.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Evideng.cnv",
+      "sha256": "501030566d0f759fd0dd002746c0ddbfd83a31cd009ceb8d39b2b44752c7343a"
+    },
+    "sinan/Graufhd.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Graufhd.cnv",
+      "sha256": "67faea95ede08d85cbdf39561b3bccbed59a04c2bc1066bea1708c9f44018069"
+    },
     "sinan/reacional.cnv": {
       "fonte": "sinan-tab-cad66ee38781",
       "membro": "TAB_SINANNET/reacional.cnv",
@@ -1354,6 +1384,77 @@
       },
       "sem_cnv": {
         "stdnepidem": "DNNOVA.CNV escreve o c\u00f3digo na coluna 60, fora do layout do manual TabWin (c\u00f3digos a partir da coluna 61)."
+      }
+    },
+    "sinan_dengue": {
+      "def": [
+        "sinan/DengueNETON3.0.def"
+      ],
+      "campos": {
+        "tp_sistema": "sinan/TipoSistema.cnv"
+      },
+      "sem_cnv": {
+        "acido_pept": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_abdom": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_hemat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_hepat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_hipot": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_letar": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_liq": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_plaq": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_sang": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_vom": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "artralgia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "artrite": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "auto_imune": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cefaleia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "classi_fin": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "conjuntvit": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "criterio": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_escol_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_gestant": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_raca": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_sexo": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "diabetes": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "dor_costas": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "dor_retro": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "evolucao": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "exantema": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "febre": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_ast": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_consc": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_conv": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_ench": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_extre": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_hemat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_hipot": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_insuf": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_melen": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_metro": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_mioc": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_orgao": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido do CNV que o DEF liga ao campo",
+        "grav_pulso": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_sang": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_taqui": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hematolog": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hepatopat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hipertensa": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "histopa_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hospitaliz": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "imunoh_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "laco": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "leucopenia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "mialgia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "nausea": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "petequia_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "renal": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_ns1": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_pcr_": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_soro": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_vi_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "sorotipo": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "tpautocto": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "vomito": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas"
       }
     },
     "sinan_tuberculose": {

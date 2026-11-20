@@ -381,6 +381,8 @@ SINAN_FILES = [
     ("sinan_chagas", "sinan_chagas_br_2023", 11, {"valid"}),
     ("sinan_hanseniase", "sinan_hanseniase_br_2026", 16, {"valid"}),
     ("sinan_tuberculose", "sinan_tuberculose_br_2020_excerpt", 1, {"valid", "missing"}),
+    # DENGBR17 excerpt: record 2988 holds 36, two digits where the rule needs four.
+    ("sinan_dengue", "sinan_dengue_br_2017_excerpt", 3, {"valid", "invalid"}),
 ]
 
 

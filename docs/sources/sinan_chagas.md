@@ -172,7 +172,7 @@ with sus.LakeReader(alvo) as leitor:
     print(leitor.connect().sql("SELECT _source_ano, _source_release, count(*) FROM lake.sinan_chagas GROUP BY ALL").pl())
 ```
 
-Passo a passo com Chagas, hanseníase e tuberculose, análise e procedência:
+Passo a passo com Chagas, hanseníase, tuberculose e dengue, análise e procedência:
 [notebooks/sinan.py](https://github.com/raphaelfh/omnisus/blob/main/notebooks/sinan.py)
 [![Open in molab](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/github/raphaelfh/omnisus/blob/main/notebooks/sinan.py).
 

@@ -1,0 +1,10 @@
+[
+  {
+    "dataset": "sinan_dengue",
+    "path": "data/lake/sinan-dengue/DENGBR17.dbc",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR17.dbc",
+    "sha256": "ec341731d6bbae5a6c2bcc4c349b6e3ee4f66b34469663fa45c15214912afce0",
+    "scope": {"uf": null, "ano": 2017, "mes": null},
+    "release": "final"
+  }
+]

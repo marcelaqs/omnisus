@@ -178,21 +178,23 @@ def test_additional_audited_files_enable_age_sex_and_dates(dataset, year, month,
 
 
 @pytest.mark.parametrize(
-    ("dataset", "fixture", "year"),
+    ("dataset", "fixture", "year", "release"),
     [
-        ("sinan_chagas", "sinan_chagas_br_2023", 2023),
-        ("sinan_hanseniase", "sinan_hanseniase_br_2026", 2026),
-        ("sinan_tuberculose", "sinan_tuberculose_br_2020_excerpt", 2020),
+        ("sinan_chagas", "sinan_chagas_br_2023", 2023, "prelim"),
+        ("sinan_hanseniase", "sinan_hanseniase_br_2026", 2026, "prelim"),
+        ("sinan_tuberculose", "sinan_tuberculose_br_2020_excerpt", 2020, "prelim"),
+        ("sinan_dengue", "sinan_dengue_br_2017_excerpt", 2017, "final"),
     ],
 )
-def test_sinan_age_is_enabled_only_for_the_audited_file(dataset, fixture, year):
+def test_sinan_age_is_enabled_only_for_the_audited_file(dataset, fixture, year, release):
     """The audited identity is the full server file: FIXTURES.md `source_sha256` (for a
     whole fixture it is also the fixture's own digest; for an excerpt it is not)."""
     from tests.unit.test_fixture_provenance import load_fixture_rows
 
     (row,) = [r for r in load_fixture_rows() if r["file"] == f"dbc/{fixture}.dbc"]
     sha = row["source_sha256"]
-    context = sus.SourceContext(sus.ScopeKey(uf=None, ano=year), "prelim", sha)
+    context = sus.SourceContext(sus.ScopeKey(uf=None, ano=year), release, sha)
+    other = "final" if release == "prelim" else "prelim"
     schema = {"NU_IDADE_N": "BIGINT"}
     projection = sus.analytical_projection(dataset, observed_schema=schema, scopes=[context])
     assert [c.name for c in projection.columns] == [
@@ -203,7 +205,7 @@ def test_sinan_age_is_enabled_only_for_the_audited_file(dataset, fixture, year):
     ]
     for bad in [
         replace(context, source_sha256="0" * 64),
-        replace(context, release="final"),
+        replace(context, release=other),
         replace(context, scope=sus.ScopeKey(uf=None, ano=year - 1)),
     ]:
         for scopes in [[bad], [context, bad]]:
@@ -212,15 +214,21 @@ def test_sinan_age_is_enabled_only_for_the_audited_file(dataset, fixture, year):
             ).columns
 
 
-def test_tuberculose_audited_source_matches_the_evidence_manifest():
-    """The gate isn't just some hash: it's the DBC that
-    evidence/2026-09-22-w6-idade-tb/manifest.json records as audited."""
-    manifest = json.loads(
-        (ROOT / "evidence/2026-09-22-w6-idade-tb/manifest.json").read_text("utf-8")
-    )
-    (entry,) = [m for m in manifest if m["dataset"] == "sinan_tuberculose"]
-    (validated,) = contexts("sinan_tuberculose")
+@pytest.mark.parametrize(
+    ("dataset", "evidence"),
+    [
+        ("sinan_tuberculose", "2026-09-22-w6-idade-tb"),
+        ("sinan_dengue", "2026-11-20-sinan-dengue"),
+    ],
+)
+def test_audited_source_matches_the_evidence_manifest(dataset, evidence):
+    """The gate isn't just some hash: it's the DBC that the evidence folder's
+    manifest.json records as audited."""
+    manifest = json.loads((ROOT / "evidence" / evidence / "manifest.json").read_text("utf-8"))
+    (entry,) = [m for m in manifest if m["dataset"] == dataset]
+    (validated,) = contexts(dataset)
     assert validated.source_sha256 == entry["sha256"]
+    assert validated.release == entry["release"]
 
 
 def test_every_validated_sim_and_sih_source_was_read_by_a_committed_audit():
