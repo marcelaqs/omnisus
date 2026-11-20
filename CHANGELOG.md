@@ -29,114 +29,6 @@
 
 ### Dictionaries
 
-- `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map seven other APAC
-  datasets carry (`2` Dias, `3` Meses, `4` Anos, `5` Anos (somar 100)), with a
-  `fixture-measure`, `unreviewed` claim and the open issue `ap_coidade-sem-tabela`:
-  `APAC_Nefrologia.DEF` lines 387-388 bind `AP_COIDADE` to `IDADEDET.CNV` and
-  `IDADE18.CNV`. `ANPA1410` publishes only `4`; `2`, `3` and `5` were not measured in
-  an AN file. `sus.label` now adds
-  `ap_coidade_rotulo` for this dataset (#183).
-- `sia_apac_nefrologia` (1.3.0): `ap_dtinic`, `ap_dtfim`, `ap_dtsolic`, `ap_dtaut` and
-  `an_dtpdr` are `date` with `x-format: yyyyMMdd`, each with the observation of the 2
-  records of `ANPA1410`. The Informe Técnico SIASUS 2019-07 (p. 8, layout of the AN)
-  writes `AAAAMMDD` only for `AN_DTPDR`, whose `/field/format` claim cites the page and
-  stays `unreviewed` (read by an agent). The four `ap_dt*` have no format in that layout:
-  their claim is `fixture-measure`, `unreviewed`, with the open issue
-  `formato-sem-documento`; `APAC_Nefrologia.DEF` places their year and year-month at
-  position 1 and has no line for the day. `ap_dtocor`, blank in both records, stays
-  `string` with the open issue `formato-sem-valor`. `check_columns` now checks the five
-  dates; the lake still stores them as published, as strings (#183).
-- `sia_apac_nefrologia` (1.4.0): the 60 fields of the AN layout of the Informe Técnico
-  SIASUS 2019-07 (section 3.4.3, pp. 7-9) carry the document's `description`, each with
-  a `/field/description` claim that quotes the row and stays `unreviewed` (read by an
-  agent). Those 60 rows are the first 60 fields of `ANPA1410`, with the same order, name,
-  type and width; `ap_natjur`, the 61st, is not in the layout and gets no description.
-  The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while
-  `ANPA1410` publishes `0` in the first and `1` in the second, codes `Invasao.CNV`
-  labels: both fields keep the CNV map and gain the open issue
-  `informe-diverge-do-arquivo` (#183).
-- `registry.json` registers the `TAB_SIA.zip` republished on 2026-10-15
-  (`sia-tab-1ce232b217c6`). The 49 members whose hash `vinculos.json` holds are identical
-  to those of `sia-tab-e5812b51d802`, so the packaged members stay on that edition;
-  `evidence/2026-11-18-tab-sia-republicado/` has the member census and what was not
-  compared (#183).
-- `sia_apac_nefrologia` (1.5.0): `ap_ufnacio` takes the 328 codes of `UFNACIO.CNV`
-  (`010` BRASIL, the value `ANPA1410` publishes), with a `cnv-parse` claim:
-  `APAC_Nefrologia.DEF` line 390 binds `AP_UFNACIO` to it. The member is packaged from
-  the `TAB_SIA.zip` republished on 2026-10-15 (`sia-tab-1ce232b217c6`). `sus.label` now
-  adds `ap_ufnacio_rotulo` for this dataset. The open issues of the five `ap_dt*`
-  fields now give the widths the same edition has for `ANO_2008.CNV` (4) and
-  `anomes2008.CNV` (6), which place the year in characters 1-4 (#183).
-- `sia_apac_nefrologia` (1.6.0), from a second real file, `ANRR1401` (162 records, new
-  fixture `sia_an_rr_2014_01_mini.dbc`, with `AP_CNSPCN` blanked): `ap_dtocor` is `date` with
-  `x-format: yyyyMMdd`, measured in the one record that fills it (`fixture-measure`,
-  `unreviewed`, open issue `formato-sem-documento` in place of `formato-sem-valor`).
-  The file has 60 fields, the 60 rows of the Informe layout, and no `AP_NATJUR`:
-  `ap_natjur` gains the open issue `ap_natjur-nem-sempre-publicado`. The issue of
-  `ap_coidade` now says `5` was measured in an AN file too. The file reads the five
-  other dates as `yyyyMMdd` in all 162 records; `ap_dtaut` (`20430101`) and `an_dtpdr`
-  (`20161101`) each hold one implausible date and gain the open issue
-  `data-implausivel` (#183).
-- `sia_apac_nefrologia` (1.7.0): `ap_cnspcn` carries `x-crypto: datasus-cns`, as it
-  does in five of the nine APAC dictionaries (the other four still declare the field
-  without the mark). The row of the AN layout (Informe, p. 8) names the field and does
-  not say it is ciphered; the mark is measured: `ANPA1410` fills the column in its 2
-  records, and `ANRR1401` as published in its 162, with 15 characters and no digit.
-  The fixture of `ANRR1401` blanks the column because the cipher is reversible, so the
-  test reads `ANPA1410` only. The library does not decipher the value (#183).
-- `sia_apac_nefrologia` (1.8.0): `ap_tippre` takes the 8 codes of `TIPOPRES.CNV`
-  (`61` FILANTROPICO COM CNAS VALIDO in `ANPA1410`, `20` PRIVADO COM FINS LUCRATIVOS in
-  `ANRR1401`), with a `cnv-parse` claim: `APAC_Nefrologia.DEF` line 220 binds
-  `AP_TIPPRE` to it. Lines 216-218 bind the same field to `ESFERA.CNV` and
-  `ESFERA_C.CNV`, which are not used: `ESFERA_C.CNV` groups the codes into four spheres,
-  and `ESFERA.CNV` has those four rows plus one row, with another wording, for each of
-  `20`, `22`, `60`, `61` and `80`. The field's open issue `def-liga-outra-tabela` records
-  the choice. The member is packaged from the `TAB_SIA.zip` republished on 2026-10-15
-  (`sia-tab-1ce232b217c6`). `sus.label` now adds `ap_tippre_rotulo` for this dataset
-  (#183).
-- `sia_apac_nefrologia` (1.9.0), from a census of the 2,145 `AN*.dbc` files the server
-  lists (6,534,272 records, `evidence/2026-11-18-censo-sia-an/`): no map and no type
-  changes; the open issues of the fields now carry what was counted. `ap_coidade`:
-  `2`, `3` and `5` are counted in AN files, and `0` (18 records) has no label (new
-  issue `codigo-sem-rotulo`). `ap_ufnacio`: 202 records hold a value `UFNACIO.CNV` does
-  not label (new issue `codigo-sem-rotulo`). `ap_natjur`: the field is in the 27 files
-  of 2011-12 and in `ANPA1410`, empty in 87,203 records and filled in 2. `ap_mndif` is
-  `1` in every record and `ap_ufdif` only `0` or `1`; the `SIMNAO.CNV` of `TAB_SIA.zip`,
-  now read, labels `S` and `N`, which no AN file publishes in either field. The six
-  dates say how many filled values read as `yyyyMMdd` in any year; `ap_dtsolic`,
-  `ap_dtaut` and `an_dtpdr` say how many do not, and how many files have a year outside
-  1900-2100 or after 2015 (issue `data-implausivel`, new in `ap_dtsolic`). `an_albumi`
-  and `an_hb` gain the open issue `escala-sem-documento`, with the records that hold
-  integer zero, integers from 1 to 9, integers from 10 to 99 and text such as `3,`; no
-  source read says the scale (#183).
-- `ap_natjur` takes the map of `natjurc.cnv` in nine APAC dictionaries:
-  `sia_apac_quimioterapia`, `sia_apac_medicamentos`, `sia_apac_laudos_diversos`,
-  `sia_apac_cirurgia_bariatrica` and `sia_apac_tratamento_dialitico` (0.5.0),
-  `sia_apac_radioterapia` (1.4.0), `sia_apac_fistula_arteriovenosa` (1.3.0),
-  `sia_apac_acompanhamento_bariatrica` (1.1.0) and `sia_apac_nefrologia` (1.10.0).
-  - The binding. `APAC_Dados_Comuns.DEF` (files `A?*.DBC`), now packaged, binds
-    `AP_NATJUR` to `NATJURC.CNV` on lines 204-205. The DEF of seven of the datasets
-    writes `AP_NAT_JUR`, and those of ACF and ATD have no line for the field, so
-    `vinculos.json` names the common DEF for this field in the new key `def_do_campo`.
-    `gerar_decode_cnv.py` refuses the key for a field a DEF of the dataset binds.
-  - What supports it. The mask of a DEF alone does not say a file follows it (issue
-    `amp-sem-def`). Here the published field has the name the line writes, and in a
-    census of 9,527 files of the nine other APAC datasets
-    (`evidence/2026-11-19-apac-ap-natjur/`) no field is named `AP_NAT_JUR` and each of
-    the 28 values of the 2,276,452 filled records is a code of the table. AD, AM, AQ, AR
-    and ATD were read in RR, AC and AP only; AN has 2 filled records. Each dictionary
-    gains the open issue `ap_natjur-nem-sempre-publicado` with its own counts and the
-    months whose files have no such field.
-  - The table. The same DEF binds the field to `NATJUR.CNV` too, which the CNV reader
-    refuses; the 97 code labels of the two members are the same. The map has those 97
-    codes and the literal key `    -zzzz`, which is how the reader keeps the code of the
-    line "Não especificado ou ignorado"; no four-character value matches it, so an empty
-    `ap_natjur` has no label.
-  - Not touched. `sia_apac_acompanhamento_multiprofissional`: 899 of its 903 files have
-    the field, always empty. `pa_nat_jur` (PA) and `nat_jur` (RAAS, SAD), which their own
-    DEF binds to the same tables, and `nat_jur` of the SIH wait for the choice of table
-    of #7.
-  - `sus.label` now adds `ap_natjur_rotulo` for the nine datasets (#183).
 - `sih_aih_reduzida` (2.20.1): 110 fields take the `description` that Table 1 of
   `IT_SIHSUS_1603.pdf` prints for them, each with a `/field/description` claim
   (`pdf-read`, `verified_in_source`) that names the page and quotes the row;
@@ -301,7 +193,124 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+## v0.4.0 — 2026-11-20
+
+**Upgrading from 0.3.0:** no parser version changed (the import still reads the same
+`encoding` and `x-identity` of every dictionary), so a 0.3.0 lake keeps every scope;
+`load` downloads nothing again. `sim_obitos` loses the fields `covid_clas` and `mat_clas`
+and its primary key, and `esc2010` and `escmae2010` change labels in `sim_obitos` and its
+three subsets (the entries below say which). One dataset is new: `sinan_dengue`.
+
 ### Dictionaries
+
+- `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map seven other APAC
+  datasets carry (`2` Dias, `3` Meses, `4` Anos, `5` Anos (somar 100)), with a
+  `fixture-measure`, `unreviewed` claim and the open issue `ap_coidade-sem-tabela`:
+  `APAC_Nefrologia.DEF` lines 387-388 bind `AP_COIDADE` to `IDADEDET.CNV` and
+  `IDADE18.CNV`. `ANPA1410` publishes only `4`; `2`, `3` and `5` were not measured in
+  an AN file. `sus.label` now adds
+  `ap_coidade_rotulo` for this dataset (#183).
+- `sia_apac_nefrologia` (1.3.0): `ap_dtinic`, `ap_dtfim`, `ap_dtsolic`, `ap_dtaut` and
+  `an_dtpdr` are `date` with `x-format: yyyyMMdd`, each with the observation of the 2
+  records of `ANPA1410`. The Informe Técnico SIASUS 2019-07 (p. 8, layout of the AN)
+  writes `AAAAMMDD` only for `AN_DTPDR`, whose `/field/format` claim cites the page and
+  stays `unreviewed` (read by an agent). The four `ap_dt*` have no format in that layout:
+  their claim is `fixture-measure`, `unreviewed`, with the open issue
+  `formato-sem-documento`; `APAC_Nefrologia.DEF` places their year and year-month at
+  position 1 and has no line for the day. `ap_dtocor`, blank in both records, stays
+  `string` with the open issue `formato-sem-valor`. `check_columns` now checks the five
+  dates; the lake still stores them as published, as strings (#183).
+- `sia_apac_nefrologia` (1.4.0): the 60 fields of the AN layout of the Informe Técnico
+  SIASUS 2019-07 (section 3.4.3, pp. 7-9) carry the document's `description`, each with
+  a `/field/description` claim that quotes the row and stays `unreviewed` (read by an
+  agent). Those 60 rows are the first 60 fields of `ANPA1410`, with the same order, name,
+  type and width; `ap_natjur`, the 61st, is not in the layout and gets no description.
+  The layout describes `ap_ufdif` and `ap_mndif` with "(N = não, S = sim)" while
+  `ANPA1410` publishes `0` in the first and `1` in the second, codes `Invasao.CNV`
+  labels: both fields keep the CNV map and gain the open issue
+  `informe-diverge-do-arquivo` (#183).
+- `registry.json` registers the `TAB_SIA.zip` republished on 2026-10-15
+  (`sia-tab-1ce232b217c6`). The 49 members whose hash `vinculos.json` holds are identical
+  to those of `sia-tab-e5812b51d802`, so the packaged members stay on that edition;
+  `evidence/2026-11-18-tab-sia-republicado/` has the member census and what was not
+  compared (#183).
+- `sia_apac_nefrologia` (1.5.0): `ap_ufnacio` takes the 328 codes of `UFNACIO.CNV`
+  (`010` BRASIL, the value `ANPA1410` publishes), with a `cnv-parse` claim:
+  `APAC_Nefrologia.DEF` line 390 binds `AP_UFNACIO` to it. The member is packaged from
+  the `TAB_SIA.zip` republished on 2026-10-15 (`sia-tab-1ce232b217c6`). `sus.label` now
+  adds `ap_ufnacio_rotulo` for this dataset. The open issues of the five `ap_dt*`
+  fields now give the widths the same edition has for `ANO_2008.CNV` (4) and
+  `anomes2008.CNV` (6), which place the year in characters 1-4 (#183).
+- `sia_apac_nefrologia` (1.6.0), from a second real file, `ANRR1401` (162 records, new
+  fixture `sia_an_rr_2014_01_mini.dbc`, with `AP_CNSPCN` blanked): `ap_dtocor` is `date` with
+  `x-format: yyyyMMdd`, measured in the one record that fills it (`fixture-measure`,
+  `unreviewed`, open issue `formato-sem-documento` in place of `formato-sem-valor`).
+  The file has 60 fields, the 60 rows of the Informe layout, and no `AP_NATJUR`:
+  `ap_natjur` gains the open issue `ap_natjur-nem-sempre-publicado`. The issue of
+  `ap_coidade` now says `5` was measured in an AN file too. The file reads the five
+  other dates as `yyyyMMdd` in all 162 records; `ap_dtaut` (`20430101`) and `an_dtpdr`
+  (`20161101`) each hold one implausible date and gain the open issue
+  `data-implausivel` (#183).
+- `sia_apac_nefrologia` (1.7.0): `ap_cnspcn` carries `x-crypto: datasus-cns`, as it
+  does in five of the nine APAC dictionaries (the other four still declare the field
+  without the mark). The row of the AN layout (Informe, p. 8) names the field and does
+  not say it is ciphered; the mark is measured: `ANPA1410` fills the column in its 2
+  records, and `ANRR1401` as published in its 162, with 15 characters and no digit.
+  The fixture of `ANRR1401` blanks the column because the cipher is reversible, so the
+  test reads `ANPA1410` only. The library does not decipher the value (#183).
+- `sia_apac_nefrologia` (1.8.0): `ap_tippre` takes the 8 codes of `TIPOPRES.CNV`
+  (`61` FILANTROPICO COM CNAS VALIDO in `ANPA1410`, `20` PRIVADO COM FINS LUCRATIVOS in
+  `ANRR1401`), with a `cnv-parse` claim: `APAC_Nefrologia.DEF` line 220 binds
+  `AP_TIPPRE` to it. Lines 216-218 bind the same field to `ESFERA.CNV` and
+  `ESFERA_C.CNV`, which are not used: `ESFERA_C.CNV` groups the codes into four spheres,
+  and `ESFERA.CNV` has those four rows plus one row, with another wording, for each of
+  `20`, `22`, `60`, `61` and `80`. The field's open issue `def-liga-outra-tabela` records
+  the choice. The member is packaged from the `TAB_SIA.zip` republished on 2026-10-15
+  (`sia-tab-1ce232b217c6`). `sus.label` now adds `ap_tippre_rotulo` for this dataset
+  (#183).
+- `sia_apac_nefrologia` (1.9.0), from a census of the 2,145 `AN*.dbc` files the server
+  lists (6,534,272 records, `evidence/2026-11-18-censo-sia-an/`): no map and no type
+  changes; the open issues of the fields now carry what was counted. `ap_coidade`:
+  `2`, `3` and `5` are counted in AN files, and `0` (18 records) has no label (new
+  issue `codigo-sem-rotulo`). `ap_ufnacio`: 202 records hold a value `UFNACIO.CNV` does
+  not label (new issue `codigo-sem-rotulo`). `ap_natjur`: the field is in the 27 files
+  of 2011-12 and in `ANPA1410`, empty in 87,203 records and filled in 2. `ap_mndif` is
+  `1` in every record and `ap_ufdif` only `0` or `1`; the `SIMNAO.CNV` of `TAB_SIA.zip`,
+  now read, labels `S` and `N`, which no AN file publishes in either field. The six
+  dates say how many filled values read as `yyyyMMdd` in any year; `ap_dtsolic`,
+  `ap_dtaut` and `an_dtpdr` say how many do not, and how many files have a year outside
+  1900-2100 or after 2015 (issue `data-implausivel`, new in `ap_dtsolic`). `an_albumi`
+  and `an_hb` gain the open issue `escala-sem-documento`, with the records that hold
+  integer zero, integers from 1 to 9, integers from 10 to 99 and text such as `3,`; no
+  source read says the scale (#183).
+- `ap_natjur` takes the map of `natjurc.cnv` in nine APAC dictionaries:
+  `sia_apac_quimioterapia`, `sia_apac_medicamentos`, `sia_apac_laudos_diversos`,
+  `sia_apac_cirurgia_bariatrica` and `sia_apac_tratamento_dialitico` (0.5.0),
+  `sia_apac_radioterapia` (1.4.0), `sia_apac_fistula_arteriovenosa` (1.3.0),
+  `sia_apac_acompanhamento_bariatrica` (1.1.0) and `sia_apac_nefrologia` (1.10.0).
+  - The binding. `APAC_Dados_Comuns.DEF` (files `A?*.DBC`), now packaged, binds
+    `AP_NATJUR` to `NATJURC.CNV` on lines 204-205. The DEF of seven of the datasets
+    writes `AP_NAT_JUR`, and those of ACF and ATD have no line for the field, so
+    `vinculos.json` names the common DEF for this field in the new key `def_do_campo`.
+    `gerar_decode_cnv.py` refuses the key for a field a DEF of the dataset binds.
+  - What supports it. The mask of a DEF alone does not say a file follows it (issue
+    `amp-sem-def`). Here the published field has the name the line writes, and in a
+    census of 9,527 files of the nine other APAC datasets
+    (`evidence/2026-11-19-apac-ap-natjur/`) no field is named `AP_NAT_JUR` and each of
+    the 28 values of the 2,276,452 filled records is a code of the table. AD, AM, AQ, AR
+    and ATD were read in RR, AC and AP only; AN has 2 filled records. Each dictionary
+    gains the open issue `ap_natjur-nem-sempre-publicado` with its own counts and the
+    months whose files have no such field.
+  - The table. The same DEF binds the field to `NATJUR.CNV` too, which the CNV reader
+    refuses; the 97 code labels of the two members are the same. The map has those 97
+    codes and the literal key `    -zzzz`, which is how the reader keeps the code of the
+    line "Não especificado ou ignorado"; no four-character value matches it, so an empty
+    `ap_natjur` has no label.
+  - Not touched. `sia_apac_acompanhamento_multiprofissional`: 899 of its 903 files have
+    the field, always empty. `pa_nat_jur` (PA) and `nat_jur` (RAAS, SAD), which their own
+    DEF binds to the same tables, and `nat_jur` of the SIH wait for the choice of table
+    of #7.
+  - `sus.label` now adds `ap_natjur_rotulo` for the nine datasets (#183).
 
 - `seriescfal`, `seriescmae` and `versaoscb` of `sim_obitos` (and of the three SIM subsets,
   generated from it) gain the code map of the CNV that `Obito_1996_CID10.def` binds each to:

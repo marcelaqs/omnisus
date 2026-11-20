@@ -11,6 +11,7 @@ from hypothesis import strategies as st
 from polars.testing import assert_frame_equal
 
 from omnisus.sources.datasus_ftp import parse
+from omnisus.sources.datasus_ftp.datasets import resolve
 from omnisus.sources.datasus_ftp.dbf_batches import open_dbf_batches
 from omnisus.sources.datasus_ftp.staging import dbc_bytes_to_parquet
 from tests.support.dbf import DBC_CASES, make_dbf
@@ -26,12 +27,15 @@ def test_all_fixtures_exact_parity(
     if dataset.startswith("sinan_"):  # SINAN national files carry D fields
         request.getfixturevalue("native_reads_date")
     raw = dbc_fixture(name).read_bytes()
+    # A national file has no UF scope; DENGBR publishes an empty UF column, which staging
+    # would refuse against a scope UF.
+    uf = None if resolve(dataset).geography == "national" else "RR"
     monkeypatch.setattr(parse, "BATCH_ROWS", batch_size)
     frames = []
     for backend in ("python", "rust"):
         monkeypatch.setenv("OMNISUS_DBF_BACKEND", backend)
         output = tmp_path / f"{backend}.parquet"
-        result = dbc_bytes_to_parquet(raw, output, dataset=dataset, ano=2024, uf="RR", mes=1)
+        result = dbc_bytes_to_parquet(raw, output, dataset=dataset, ano=2024, uf=uf, mes=1)
         frame = pl.read_parquet(output)
         assert result.rows == frame.height
         frames.append(frame)
