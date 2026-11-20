@@ -3,8 +3,8 @@
     uv run --locked python evidence/2026-11-18-rd-medidas/medir.py DATASET DIR OUT_DIR
 
 DIR holds `RD*.dbc` files downloaded from `SIHSUS/200801_/Dados/` (DATASET
-`sih_aih_reduzida`) or `SIHSUS/199201_200712/Dados/` (`sih_aih_reduzida_1992_2007`) of
-`ftp://ftp.datasus.gov.br/dissemin/publicos/`. A field a file lacks is left out. Writes
+`sih_aih_reduzida`) or `SIHSUS/199201_200712/Dados/` (`sih_aih_reduzida_1998_2007`, the
+months from 1998-01) of `ftp://ftp.datasus.gov.br/dissemin/publicos/`. A field a file lacks is left out. Writes
 two files in OUT_DIR: `arquivos.csv` (file, bytes, SHA-256, records) and `medidas.csv` (file,
 measure, key, rows). Only counts leave the files. The decoder loads every column, but no
 measure uses GESTOR_CPF, and CPF_AUT is only counted as filled or not.

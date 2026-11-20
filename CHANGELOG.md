@@ -45,8 +45,8 @@
   under `replace`; no operation of the library changes the type of a column, and the
   table has to be imported again into a new lake (`docs/architecture.md`).
   `describe_dataset` gives `storage.dictionary_types` as `applied_to_whole_numbers`, not
-  `descriptive`. `sih_aih_reduzida_1992_2007` (1.3.2) says in its `x-evidence` what
-  staging does. New fixture: `sih_rd_rr_1996_03_excerpt`, five records of `RDRR9603`.
+  `descriptive`. `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` say in
+  their `x-evidence` what staging does. New fixture: `sih_rd_rr_1996_03_excerpt`, five records of `RDRR9603`.
 
 ### Dictionaries
 
@@ -62,14 +62,15 @@
   work, `cite` printing the table name as the title. The table `sih_aih_reduzida_1992_2007`
   stays in the lake and nothing writes to it any more; to move on, import the months again
   under the new names. Each new table has only the columns of its era. Both
-  dictionaries start at 1.0.0 with the maps and claims the old one had (the generator
-  output is unchanged); the issue `diag-princ-cid9-ate-1997` becomes `diag-princ-cid9` in
+  dictionaries are new, at 1.0.1, with the maps and claims the old one had (the
+  generator output is unchanged); the issue `diag-princ-cid9-ate-1997` becomes `diag-princ-cid9` in
   the first, and the second declares no issue on `diag_princ`. `travar_versoes.py` gets
-  `RETIRED`, so the old entry stays in `versoes.json`. Dates, foreign keys and the CNVs of
-  the era stay for the next changes of #12; refs #40 (`num_proc`, `insc_pn` and `seq_aih5`
-  keep `string`, and no cast is added to the staging).
+  `RETIRED`, so the old entry stays in `versoes.json`, at 1.3.2. Dates, foreign keys and
+  the CNVs of the era stay for the next changes of #12. `num_proc` (1992-1997) and
+  `insc_pn` and `seq_aih5` (1998-2007) are declared `string`, and the import writes the
+  months that publish them as numbers as text (Import, above; #40).
 - A file name whose scope is outside a dataset's declared `coverage` is no longer read as
-  a file of that dataset: `scopes_for`, `available` and `outdated` stop listing a name
+  a file of that dataset, for state rows as for the national ones of #225: `scopes_for`, `available` and `outdated` stop listing a name
   beyond the declared end (or before the start) of a bounded row, such as
   `sim_obitos_cid9` (1979-01 to 1995-12), which the importer already skipped with
   `outside_coverage`. It is what lets the two RD rows share one directory.
@@ -149,7 +150,7 @@
   `ano_cmpt` was already text (`2024`) and `mes_cmpt` text with its leading zero (`01`).
   The three types are C(4), C(2) and N(5) in the 243 files of
   `evidence/2026-10-06-rd-2008-layouts`. Other dictionaries still declare a type their
-  files do not stage, such as `insc_pn` of `sih_aih_reduzida_1992_2007` (#182).
+  files do not stage, such as `insc_pn` of `sih_aih_reduzida_1998_2007` (#182).
 - `sih_aih_reduzida` (2.26.1) and `sih_aih_rejeitada` (1.7.1): counts from 262 real RD
   files (`evidence/2026-11-18-rd-medidas/`: 238 of 2008-01 to 2026-07 with 1,994,690
   records, 222 of them of Roraima, and the 24 Roraima files of 2006 and 2007 with
