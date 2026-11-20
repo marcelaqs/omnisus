@@ -72,7 +72,7 @@ def test_monthly_coverage_keeps_the_month():
     atd = _system_row("sia_apac_tratamento_dialitico")
     assert atd["Cobertura"] == "2014-08 em diante"
     assert atd["Publicação"] == "por UF, mensal"
-    assert _system_row("cnes_estabelecimentos_ensino")["Cobertura"] == "2007-03 a 2021-07"
+    assert _system_row("cnes_estabelecimentos_ensino")["Cobertura"] == "2007-03 a 2026-10"
 
 
 def test_national_yearly_dataset_says_brasil_anual():

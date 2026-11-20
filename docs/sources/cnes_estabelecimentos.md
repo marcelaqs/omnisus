@@ -74,7 +74,7 @@ arquivos DEF de `TAB_CNES.zip`, cuja linha `A` nomeia o prefixo de cada um.
 | `cnes_dados_complementares` | `DC` | `DadosComplementares.def` | 2005-08 em diante |
 | `cnes_equipamentos` | `EQ` | `Equipamento.def` | 2005-08 em diante |
 | `cnes_equipes` | `EP` | `Equipes.def` | 2007-04 em diante |
-| `cnes_estabelecimentos_ensino` | `EE` | `Estabel_Ensino.def` | 2007-03 a 2019-12, mais um arquivo vazio de 2021-07 (`EEMG2107`) |
+| `cnes_estabelecimentos_ensino` | `EE` | `Estabel_Ensino.def` | 2007-03 a 2019-12, mais um arquivo vazio de 2021-07 (`EEMG2107`) e um de 2026-10 com um registro (`EESP2610`, [evidência](https://github.com/raphaelfh/omnisus/blob/main/evidence/2026-11-20-cnes-ee-2610/README.md)) |
 | `cnes_estabelecimentos_filantropicos` | `EF` | `Estabel_Filantropico.def` | 2007-03 em diante |
 | `cnes_gestao_metas` | `GM` | `Gestao_de_Metas.def` | 2007-03 em diante |
 | `cnes_habilitacoes` | `HB` | `Habilitacao.def` | 2007-03 em diante |
