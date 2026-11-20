@@ -52,7 +52,7 @@ def test_monthly_coverage_keeps_the_month_and_an_open_end(table: pl.DataFrame) -
         None,
     )
     ee = _row(table, "cnes_estabelecimentos_ensino")
-    assert (ee["coverage_start"], ee["coverage_end"]) == ("2007-03", "2021-07")
+    assert (ee["coverage_start"], ee["coverage_end"]) == ("2007-03", "2026-10")
 
 
 def test_yearly_coverage_is_the_year(table: pl.DataFrame) -> None:
