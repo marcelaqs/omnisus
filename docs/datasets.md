@@ -123,7 +123,9 @@ Perfis: [SINAN · doença de Chagas aguda (`sinan_chagas`)](sources/sinan_chagas
 | Base | O que é | Publicação | Cobertura | Colunas com rótulo | Categorias harmonizadas |
 | --- | --- | --- | --- | ---: | --- |
 | `sinan_chagas` | SINAN — Doença de Chagas aguda, notificações preliminares nacionais | Brasil, anual | 2000 em diante + preliminar | [11](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_chagas.yaml) | idade em Brasil, 2023 |
-| `sinan_dengue` | SINAN — Dengue, notificações nacionais | Brasil, anual | 2000 em diante + preliminar | [82](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_dengue.yaml) | idade em Brasil, 2017 |
+| `sinan_dengue` | SINAN — Dengue, notificações nacionais | Brasil, anual | 2014 em diante + preliminar | [82](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_dengue.yaml) | idade em Brasil, 2017 |
+| `sinan_dengue_2000_2012` | SINAN — Dengue, notificações nacionais, 2000 a 2012 | Brasil, anual | 2000 a 2012 | [11](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_dengue_2000_2012.yaml) | — |
+| `sinan_dengue_2013` | SINAN — Dengue, notificações nacionais, 2013 | Brasil, anual | 2013 a 2013 | [10](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_dengue_2013.yaml) | — |
 | `sinan_hanseniase` | SINAN — Hanseníase, notificações nacionais | Brasil, anual | 2001 em diante + preliminar | [13](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_hanseniase.yaml) | idade em Brasil, 2026 |
 | `sinan_tuberculose` | SINAN — Tuberculose, notificações nacionais | Brasil, anual | 2001 em diante + preliminar | [42](https://github.com/raphaelfh/omnisus/blob/v0.4.0/src/omnisus/data/dicionarios/sinan_tuberculose.yaml) | idade em Brasil, 2020 |
 
@@ -183,6 +185,8 @@ nome de cada arquivo; bases que dividem um diretório se distinguem por ele.
 | `sim_obitos_maternos` | `DOMAT` | `SIM/CID10/DOFET` | — |
 | `sinan_chagas` | `CHAG` | `SINAN/DADOS/FINAIS` | `SINAN/DADOS/PRELIM` |
 | `sinan_dengue` | `DENG` | `SINAN/DADOS/FINAIS` | `SINAN/DADOS/PRELIM` |
+| `sinan_dengue_2000_2012` | `DENG` | `SINAN/DADOS/FINAIS` | — |
+| `sinan_dengue_2013` | `DENG` | `SINAN/DADOS/FINAIS` | — |
 | `sinan_hanseniase` | `HANS` | `SINAN/DADOS/FINAIS` | `SINAN/DADOS/PRELIM` |
 | `sinan_tuberculose` | `TUBE` | `SINAN/DADOS/FINAIS` | `SINAN/DADOS/PRELIM` |
 | `sinasc_1994_1995` | `DNR` | `SINASC/1994_1995/Dados/DNRES` | — |

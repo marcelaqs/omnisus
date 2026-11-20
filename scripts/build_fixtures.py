@@ -36,6 +36,12 @@ TARGETS: list[tuple[str, ScopeKey, str]] = [
         ScopeKey(uf=None, ano=2020),
         "sinan_tuberculose_br_2020_excerpt.dbc",
     ),
+    (
+        "sinan_dengue_2000_2012",
+        ScopeKey(uf=None, ano=2012),
+        "sinan_dengue_br_2012_excerpt.dbc",
+    ),
+    ("sinan_dengue_2013", ScopeKey(uf=None, ano=2013), "sinan_dengue_br_2013_excerpt.dbc"),
     ("sinan_dengue", ScopeKey(uf=None, ano=2017), "sinan_dengue_br_2017_excerpt.dbc"),
     ("sim_obitos", ScopeKey(uf="RR", ano=2023), "sim_rr_2023_mini.dbc"),
     ("sinasc_nascidos_vivos", ScopeKey(uf="RR", ano=2022), "sinasc_rr_2022_mini.dbc"),
@@ -136,6 +142,8 @@ or from the registry."""
 
 EXCERPTS: dict[str, int] = {
     "sinan_tuberculose_br_2020_excerpt.dbc": 3000,
+    "sinan_dengue_br_2012_excerpt.dbc": 200,
+    "sinan_dengue_br_2013_excerpt.dbc": 200,
     "sinan_dengue_br_2017_excerpt.dbc": 5000,
     "sim_dofet_br_2023_excerpt.dbc": 1000,
     "sim_doext_br_2023_excerpt.dbc": 1000,

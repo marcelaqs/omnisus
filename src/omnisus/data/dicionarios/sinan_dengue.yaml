@@ -2,12 +2,12 @@ name: sinan_dengue
 title: SINAN — Dengue, notificações nacionais
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.0.0
+x-version: 1.0.1
 x-source-format: dbc
 x-evidence:
   physical_schema: DENGBR17.dbc, 121 fields (layout of DENGBR14 to DENGBR26); observed 2026-11-20.
-    DENGBR00-06 (107 fields), DENGBR07-12 and DENGBR13 (67 fields) are other layouts, kept as
-    staged (evidence/2026-11-20-sinan-dengue).
+    DENGBR00-12 and DENGBR13 are other layouts, in sinan_dengue_2000_2012 and sinan_dengue_2013
+    (evidence/2026-11-20-sinan-dengue).
   semantic_status: Page-sourced maps only; every x-decode code cites an official page
     or TAB_SINANNET CNV. nu_idade_n is audited (x-analytics.age).
   dictionary_url: https://portalsinan.saude.gov.br/images/documentos/Agravos/Dengue/DIC_DADOS_ONLINE.pdf

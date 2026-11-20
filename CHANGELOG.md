@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+### Datasets
+
+- **Breaking:** the dengue series is three datasets, one lake table per layout (#225).
+  `sinan_dengue` now covers 2014 onwards (`DENGBR14` to `DENGBR26`); `DENGBR00` to
+  `DENGBR12` are `sinan_dengue_2000_2012` (147 fields) and `DENGBR13` is
+  `sinan_dengue_2013` (67 fields). In 0.4.0 `sinan_dengue` covered 2000 onwards, and the
+  lake refused 2007–2013 in a table that held 2014 onwards, because `nu_idade_n` and
+  `plaq_menor` change type. `available("sinan_dengue")` no longer lists 2000–2013, and
+  importing one of those years into it returns `outside_coverage`; rows a 0.4.0 lake
+  already holds stay where they are. The two new dictionaries carry the maps of the
+  Notificação Individual block only, and no age rule. Tested on 2026-11-20 with eight
+  files from the server in one lake (`evidence/2026-11-20-sinan-dengue/README.md`).
+  - `Dataset.two_digit_from` names the first year of the hundred years a two-digit year is
+    read in, when it is not the first covered year: `sinan_dengue` sets 2000, so
+    `DENGBR07` is 2007 and not 2107.
+  - A national file name whose year is outside the row's coverage is not read as a file
+    of that row, so rows that share a prefix and a directory split the files by year.
+  - `sinan_dengue` 1.0.1: `x-evidence` names the two datasets that hold the other layouts.
+  - `notebooks/bases.py` lists the fields of a dictionary whose first labelled field comes
+    after the hundredth (`sinan_dengue_2000_2012`); it raised a polars `ComputeError`.
+
 ### Import
 
 - **Breaking.** A field the DBF header declares `N` with no decimals is staged with the

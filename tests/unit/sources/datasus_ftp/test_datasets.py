@@ -25,6 +25,8 @@ ROWS = {
     "sinan_hanseniase",
     "sinan_tuberculose",
     "sinan_dengue",
+    "sinan_dengue_2000_2012",
+    "sinan_dengue_2013",
     "sia_producao_ambulatorial",
     "sia_producao_ambulatorial_1994_2007",
     "sih_aih_rejeitada",
