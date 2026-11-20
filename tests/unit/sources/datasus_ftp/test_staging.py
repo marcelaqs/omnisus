@@ -315,11 +315,11 @@ def test_an_undeclared_blank_column_takes_its_descriptor_type(monkeypatch, tmp_p
     assert schema["extra"] == pl.Int64
 
 
-def test_a_blank_column_the_dictionary_mistypes_still_accepts_the_next_file(monkeypatch, tmp_path):
-    """Curated dictionaries state semantics, not physical types: ``rubrica`` is
-    an ``N`` field sih_aih_reduzida declares as ``string``. Typing a blank
-    column from the dicionario would pin the lake to VARCHAR and make the next
-    month's integers an unsafe schema change."""
+def test_a_blank_whole_number_column_takes_the_type_the_dictionary_declares(monkeypatch, tmp_path):
+    """A whole number the dictionary declares ``string`` is staged as text (#40), and a
+    blank column of that field has to be text too: typed from the descriptor alone, it
+    would pin the lake to BIGINT and make the next file's text an unsafe schema change.
+    The real case is RDAC0909, in test_staged_types.py."""
     import omnisus as sus
     from omnisus.sources._base import ScopeKey
     from omnisus.sources.datasus_ftp._runner import ingest_raw
@@ -339,25 +339,32 @@ def test_a_blank_column_the_dictionary_mistypes_still_accepts_the_next_file(monk
 
         assert len(lake.publications()) == 2
         frame = lake.connect().sql("SELECT n_x FROM lake.adhoc ORDER BY ano").pl()
-        assert frame["n_x"].dtype.is_integer()
-        assert frame["n_x"].to_list() == [None, 42]
+        assert frame["n_x"].dtype == pl.String
+        assert frame["n_x"].to_list() == [None, "42"]
 
 
 def test_an_empty_file_is_typed_from_its_header(monkeypatch, tmp_path):
     """A zero-record file has no values to disagree with its descriptors, so
-    every column is typed from the same source as a blank column's."""
+    every column is typed from the same source as a blank column's: the descriptor,
+    or the dictionary's type for a whole number it declares ``string``."""
     from tests.support.dbf import make_dbf
 
     monkeypatch.setattr("omnisus.sources.datasus_ftp.dbc.decompress_bytes", lambda raw: raw)
-    raw = make_dbf([("V", "C", 1, 0), ("N_X", "N", 4, 0), ("DT_X", "D", 8, 0)], [])
+    fields = [("V", "C", 1, 0), ("N_X", "N", 4, 0), ("DT_X", "D", 8, 0), ("EXTRA", "N", 3, 0)]
+    raw = make_dbf(fields, [])
     target = tmp_path / "output.parquet"
     result = dbc_bytes_to_parquet(
-        raw, target, dataset="adhoc", dictionary=_dictionary_with_a_date(tmp_path), ano=2023
+        raw,
+        target,
+        dataset="adhoc",
+        dictionary=_dictionary_with_a_date(tmp_path, extra_fields=("n_x",)),
+        ano=2023,
     )
     schema = pl.read_parquet_schema(target)
     assert result.rows == 0
     assert schema["v"] == pl.String
-    assert schema["n_x"] == pl.Int64
+    assert schema["n_x"] == pl.String
+    assert schema["extra"] == pl.Int64
     assert schema["dt_x"] == pl.Date
 
 

@@ -520,6 +520,16 @@
       "membro": "CNV/VINCPREV.CNV",
       "sha256": "f5a6c3ec24355fefd3c2d9f439ca0020df028c8ddcd0a2b246ad99831056f1df"
     },
+    "sih/CNV/TP_FINAN.CNV": {
+      "fonte": "sih-tab-21e42384645a",
+      "membro": "CNV/TP_FINAN.CNV",
+      "sha256": "f6986095b663c4a22b69e027c582b7094c56c40abaf26a8183206531d9336683"
+    },
+    "sih/CNV/br_municgestor.cnv": {
+      "fonte": "sih-tab-21e42384645a",
+      "membro": "CNV/br_municgestor.cnv",
+      "sha256": "f2a860f787d4377e5281aa6165bd411532d90b3490d2951277f11c81f490529c"
+    },
     "sih/CNV/etnia.cnv": {
       "fonte": "sih-tab-f05b32f32908",
       "membro": "CNV/etnia.cnv",
@@ -1071,6 +1081,7 @@
         "contracep2": "sih/CNV/CONTRAC.CNV",
         "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
+        "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
         "fonte_orc": "sih/CNV/fonterem.CNV",
         "gestao": "sih/CNV/GESTAO.CNV",
@@ -1096,6 +1107,7 @@
         "tpdisec7": "sih/CNV/TP_DIAGSEC.CNV",
         "tpdisec8": "sih/CNV/TP_DIAGSEC.CNV",
         "tpdisec9": "sih/CNV/TP_DIAGSEC.CNV",
+        "uf_zi": "sih/CNV/br_municgestor.cnv",
         "vincprev": "sih/CNV/VINCPREV.CNV"
       },
       "sem_cnv": {
@@ -1105,14 +1117,13 @@
         "ano_cmpt": "RD2008.DEF (linhas 179 e 181-183) liga ANO_CMPT a ANO.CNV, ANOMES.CNV e ANOMESC.CNV; nenhum está empacotado. Issue 137.",
         "cid_asso": "RD2008.DEF (linhas 497-504) liga CID_ASSO a 6 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Causa Associada(capit)', 'Causa Associada(grupo)' e 'Causa Associada(categ)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "cid_morte": "RD2008.DEF (linhas 510-517) liga CID_MORTE a 6 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Causa Óbito(capit)', 'Causa Óbito(grupo)' e 'Causa Óbito(categ)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
-        "cid_notif": "RD2008.DEF (linhas 523-527) liga CID_NOTIF a 5 tabelas, entre elas CID10_3D.CNV e CIDX15.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'CID laqueadura (3 car)', 'CID laqueadura (Cap15)' e 'CID laqueadura (Cap09)'. Issue 137.",
+        "cid_notif": "RD2008.DEF (linhas 523-527) liga CID_NOTIF a 5 tabelas, entre elas CID10_3D.CNV e CIDX15.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'CID laqueadura (3 car)', 'CID laqueadura (Cap15)' e 'CID laqueadura (Cap09)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "cnes": "RD2008.DEF (linhas 46-47) liga CNES a HOSFEDRJ.CNV; não está empacotado. O código tem rótulo pela referência a aux_cnes. Issue 137.",
         "diag_princ": "RD2008.DEF (linhas 309-380) liga DIAG_PRINC a 64 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Diagnóstico CID10 (capítulo)', 'Diagnóstico CID10 (grupo)' e 'Diagnóstico CID10 (categoria)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "diag_secun": "RD2008.DEF (linhas 434-490) liga DIAG_SECUN a 55 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Diagnóstico Sec. CID10 (capit)', 'Diagnóstico Sec. CID10 (grupo)' e 'Diagnóstico Sec. CID10 (categ)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "dias_perm": "RD2008.DEF (linha 249) liga DIAS_PERM a PERM.CNV a partir da posição 2; não está empacotado. Issue 137.",
         "dt_inter": "RD2008.DEF (linhas 239-243) liga DT_INTER a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de internação', 'Mês de internação' e 'Ano/Mês internação'. Issue 137.",
         "dt_saida": "RD2008.DEF (linhas 244-248) liga DT_SAIDA a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de saída', 'Mês de saída' e 'Ano/Mês de saída'. Issue 137.",
-        "faec_tp": "RD2008.DEF (linhas 271-273) liga FAEC_TP a TP_FINAN.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (DS_TPFIN), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "insc_pn": "RD2008.DEF (linha 531) liga INSC_PN a INSCPN.CNV; não está empacotado. Issue 137.",
         "mes_cmpt": "RD2008.DEF (linha 180) liga MES_CMPT a MESES.CNV; não está empacotado. Issue 137.",
         "munic_mov": "RD2008.DEF (linhas 26-40) liga MUNIC_MOV a 13 tabelas, entre elas br_regiaouf.cnv e br_uf.cnv; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Região e UF internação', 'UF internação' e 'Região internação'. O código tem rótulo pela referência a aux_municipios. Issue 137.",
@@ -1121,7 +1132,6 @@
         "num_filhos": "RD2008.DEF (linha 521) liga NUM_FILHOS a NUMFILH.CNV; não está empacotado. Issue 137.",
         "proc_rea": "RD2008.DEF (linhas 281-283) liga PROC_REA a PROCOBS2b.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (IP_DSCR), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "seq_aih5": "RD2008.DEF (linha 232) liga SEQ_AIH5 a SEQAIH.CNV; não está empacotado. Issue 137.",
-        "uf_zi": "RD2008.DEF (linhas 175-176) liga UF_ZI a br_municgestor.cnv, com o rótulo 'Município gestor'; não está empacotado. Issue 137.",
         "uti_mes_to": "RD2008.DEF (linha 236) liga UTI_MES_TO a DIARIASUTI.CNV; não está empacotado. Issue 137."
       }
     },
@@ -1539,6 +1549,7 @@
         "contracep2": "sih/CNV/CONTRAC.CNV",
         "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
+        "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
         "gestao": "sih/CNV/GESTAO.CNV",
         "gestrisco": "sih/CNV/SIMNAO.CNV",
@@ -1556,6 +1567,7 @@
         "st_bloq": "sih/CNV/sitbloqueio.cnv",
         "st_mot_blo": "sih/CNV/motbloqueio.cnv",
         "st_situac": "sih/CNV/sitrejeicao.cnv",
+        "uf_zi": "sih/CNV/br_municgestor.cnv",
         "vincprev": "sih/CNV/VINCPREV.CNV"
       },
       "sem_cnv": {
@@ -1572,7 +1584,6 @@
         "dias_perm": "RJ2008.DEF (linha 252) liga DIAS_PERM a PERM.CNV a partir da posição 2; não está empacotado. Issue 137.",
         "dt_inter": "RJ2008.DEF (linhas 242-246) liga DT_INTER a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de internação', 'Mês de internação' e 'Ano/Mês internação'. Issue 137.",
         "dt_saida": "RJ2008.DEF (linhas 247-251) liga DT_SAIDA a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de saída', 'Mês de saída' e 'Ano/Mês de saída'. Issue 137.",
-        "faec_tp": "RJ2008.DEF (linhas 274-276) liga FAEC_TP a TP_FINAN.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (DS_TPFIN), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "insc_pn": "RJ2008.DEF (linha 488) liga INSC_PN a INSCPN.CNV; não está empacotado. Issue 137.",
         "mes_cmpt": "RJ2008.DEF (linha 182) liga MES_CMPT a MESES.CNV; não está empacotado. Issue 137.",
         "munic_mov": "RJ2008.DEF (linhas 21-44) liga MUNIC_MOV a 13 tabelas, entre elas br_regiao.cnv e br_regiaouf.cnv; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Região de Atendimento', 'Região/UF de Atendimento' e 'Unid da Federação de Atend.'. Issue 137.",
@@ -1581,7 +1592,6 @@
         "num_filhos": "RJ2008.DEF (linha 478) liga NUM_FILHOS a NUMFILH.CNV; não está empacotado. Issue 137.",
         "proc_rea": "RJ2008.DEF (linhas 283-285) liga PROC_REA a PROCOBS2b.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (IP_DSCR), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "seq_aih5": "RJ2008.DEF (linha 236) liga SEQ_AIH5 a SEQAIH.CNV; não está empacotado. Issue 137.",
-        "uf_zi": "RJ2008.DEF (linhas 177-178) liga UF_ZI a br_municgestor.cnv, com o rótulo 'Município gestor'; não está empacotado. Issue 137.",
         "uti_mes_to": "RJ2008.DEF (linha 240) liga UTI_MES_TO a DIARIASUTI.CNV; não está empacotado. Issue 137."
       }
     },
@@ -1952,6 +1962,24 @@
       }
     }
   },
+  "inicio_revisto": [
+    {
+      "membro": "sih/RD2008.DEF",
+      "campo": "faec_tp",
+      "tabela": "sih/CNV/TP_FINAN.CNV",
+      "inicio": 1,
+      "escrito": "DS_TPFIN",
+      "motivo": "As três linhas (L, C e S) têm a forma da relação com DBF do TabWin.pdf (p. 88: campo, coluna da descrição, arquivo), mas nomeiam um CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote. Lida como CNV, a linha não traz coluna inicial: o campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Vale o CNV, o arquivo que o DEF nomeia; as duas tabelas estão comparadas em evidence/2026-11-18-tp-finan-cnv-e-dbf. Decisão do mantenedor na issue 182 (C10)."
+    },
+    {
+      "membro": "sih/RJ2008.DEF",
+      "campo": "faec_tp",
+      "tabela": "sih/CNV/TP_FINAN.CNV",
+      "inicio": 1,
+      "escrito": "DS_TPFIN",
+      "motivo": "As três linhas (L, C e S) têm a forma da relação com DBF do TabWin.pdf (p. 88: campo, coluna da descrição, arquivo), mas nomeiam um CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote. Lida como CNV, a linha não traz coluna inicial: o campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Vale o CNV, o arquivo que o DEF nomeia; as duas tabelas estão comparadas em evidence/2026-11-18-tp-finan-cnv-e-dbf. Decisão do mantenedor na issue 182 (C10)."
+    }
+  ],
   "linhas_fora_do_layout": [
     {
       "membro": "sia/APAC_Quimioterapia.DEF",

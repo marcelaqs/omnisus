@@ -41,7 +41,7 @@ FIXTURES = [
     "sih_rd_rr_2007_12_mini",
 ]
 # C in some layouts, N in others (census.csv): no one type is the DBF's. The dictionary
-# keeps the type it had from RDRR0712 until that is decided (#40).
+# declares the text of RDRR0712, and staging writes the N months as text (#40).
 CHANGES_TYPE = {"num_proc", "insc_pn", "seq_aih5"}
 
 

@@ -2,6 +2,191 @@
 
 ## Unreleased
 
+### Import
+
+- **Breaking.** A field the DBF header declares `N` with no decimals is staged with the
+  type the dictionary declares: as text when that is `string` or `date`, the number with
+  no zeros to its left, and as a number with decimals when it is `number`. Nothing else
+  is converted. Staged as published, such a field had one type in some files and another
+  in the rest, and the lake refused whichever was imported second (`UnsafeSchemaError`).
+  Of the 70 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
+  `num_proc` is `368` beside the `0489` of `RDRR9709`; `RDRR0407`, where `insc_pn` and
+  `seq_aih5` are `0` in the 91 records of the fixture beside the `0000000000` and `000`
+  of `RDRR0712` (#40); and `RDAC0909`, where 17 fields are `N1.0` (#219). In the headers
+  of every `RD`, `SP` and `RJ` file (`evidence/2026-11-19-sih-cabecalhos/`) the fields it
+  reaches are those of the 188 `RD` files of 1996-01 to 1996-07, the 567 of 2004-07 to
+  2006-03 and `RDAC0909`; the files of the other datasets were not surveyed beyond their
+  fixtures. A `Dataset` built by the user takes the same path: a whole number its
+  dictionary declares `string`, `date` or `number` is no longer staged as BIGINT.
+  **Upgrading:** the parser version stays `dbc-staging-v2`, so `skip_same` reports every
+  scope already published as unchanged. A lake whose table has one of these columns as a
+  number, because it began with such a file, refuses the files staged from now on, also
+  under `replace`; no operation of the library changes the type of a column, and the
+  table has to be imported again into a new lake (`docs/architecture.md`).
+  `describe_dataset` gives `storage.dictionary_types` as `applied_to_whole_numbers`, not
+  `descriptive`. `sih_aih_reduzida_1992_2007` (1.3.2) says in its `x-evidence` what
+  staging does. New fixture: `sih_rd_rr_1996_03_excerpt`, five records of `RDRR9603`.
+
+### Dictionaries
+
+- `sih_aih_reduzida` (2.20.1): 110 fields take the `description` that Table 1 of
+  `IT_SIHSUS_1603.pdf` prints for them, each with a `/field/description` claim
+  (`pdf-read`, `verified_in_source`) that names the page and quotes the row;
+  `describe_dataset` returned `description: null` for them. The table is transcribed in
+  `evidence/2026-11-18-it-sihsus-1603-layout-rd/`. `fonte_orc` gets the label the
+  `RD2008.DEF` gives it, "Fonte Orçamentária", and `sis_just` is "Justificativa do
+  estabelecimento", as the document says, not "Justificativa do sistema"; each of the two
+  labels has a `/field/label` claim (#182).
+- `sih_aih_reduzida` (2.21.1): the 72 text fields that had no `physical_type` declare the
+  width of their DBF descriptor in the last layout read (6, 2025-03 to 2026-07), from the
+  census of `evidence/2026-10-06-rd-2008-layouts` (one file of RR, or AP, a month, plus SP
+  and MG at the months a layout changes). The `/field/physical_type` claim is
+  `verified_in_source` where Table 1 of `IT_SIHSUS_1603.pdf` prints the same width (66
+  fields) and `conflicting` where it prints another: `nacional` (char(2), published
+  C(3)), `raca_cor` (char(4), C(2)), `cbor` (char(3), C(6)), `gestor_cpf` (char(11),
+  C(15)) and `gestor_cod` (char(3), C(5)). In the files read, `gestor_cod` and `insc_pn`
+  are C(3) and C(10) until 2011-12 and C(5) and C(12) from 2012-01, while the table, "para
+  janeiro de 2008 em diante", prints char(3) and char(12). Each of the six has the open
+  issue `largura-difere-do-documento`. `fonte_orc`, which the document does not list,
+  declares C(2) with an unreviewed claim that cites the census. Numeric fields stay
+  without `physical_type`: the contract's `{type, length}` has no place for the decimals
+  of 19 of the 36, and no dictionary uses a type other than `string` for the other 17
+- `uf_zi` of `sih_aih_reduzida` (2.22.1) and of `sih_aih_rejeitada` (1.6.1) takes the labels
+  of `CNV/br_municgestor.cnv`, the table `RD2008.DEF` (lines 175-176) and `RJ2008.DEF`
+  (lines 177-178) bind it to, packaged from `TAB_SIH.zip` (`sih-tab-21e42384645a`):
+  15,731 codes, a new `uf_zi_rotulo` column. The table has 5,569 municipality lines
+  (Brasília's `530010` is on the line "530000 Distrito Federal") and, for each of the 26
+  states, a line "Gestão estadual" for the code of the UF followed by `0000`: RDRR2401
+  publishes `140000`, "140000 Roraima - Gestão estadual", in 2,920 of its 3,714 records.
+  Each label starts with the code of its table line, as the table prints it, so a key
+  listed as a second code or inside a range shows that line's code (`149999` is "140000
+  Roraima - Gestão estadual"). 10,087 of the keys come from three lines that write
+  ranges, which TabWin.pdf (pp. 90-91) documents only for codes of up to 4 characters;
+  the open issue `uf_zi-faixa-em-codigo-longo` says so. The field leaves `sem_cnv` (#137) in both datasets. It keeps no reference to
+  `aux_municipios`, where `140000` is "Município ignorado - RR" (#182).
+  (#182).
+- `sih_aih_reduzida` (2.23.1): 28 labels now come from a registered document, each with
+  a `/field/label` claim; 27 change their text and `num_proc` keeps it. Nine are the
+  words of `IT_SIHSUS_1603.pdf`: `ano_cmpt` and `mes_cmpt` ("Ano/Mês de processamento da
+  AIH"), `qt_diarias`, `us_tot`, `cobranca`, `ind_vdrl`, `gestrisco`, `gestor_tp` and
+  `cid_notif` ("CID de Notificação", not "notificação compulsória"). The 19 fields that
+  document describes only as "Zerado" take the description of `Layout_REDUZIDA.pdf`
+  (`sihsus-f6084d22de30`, transcribed in `evidence/2026-11-18-layout-reduzida-sihd/`),
+  whose 75 fields are those of the RD files read from 2006-04 to 2007-12, and an open
+  issue `rotulo-do-layout-ate-2007` that says the label is of that period. Examples:
+  `val_sadtsr` was "Valor tomografia/ressonância" and is "Valor de SADT sem rateio";
+  `val_obsang` was "Valor analgesia obstétrica" and is "Valor de anestesia"; the three
+  `uti_int_*` said "UCI" and say "Dias em UTI ... (tipo ato = 34 ou 56)", while
+  `IT_SIHSUS_1603` calls their total "unidade intermediaria", which their issue records.
+  Where `IT_SIHSUS_1603` describes a field its text is used, even where the earlier
+  layout said otherwise ("ANO COMPETÊNCIA", "MOTIVO DE COBRANCA", "GESTANTE DE ALTO
+  RISCO"). `cid_notif` declares the reference to `aux_cid10`: `RD2008.DEF` (lines
+  523-527) relates it to CID-10 tables, and the 49 filled rows of RDRR2401, all `Z302`,
+  find their row; the open issue `cid_notif-laqueadura-no-def` records that the DEF
+  calls the field "CID laqueadura". Other labels of the dictionary still have no claim
+  (#182).
+- `sih_aih_reduzida` (2.24.1): the `0` of `tpdisec1` to `tpdisec9` and the codes of
+  `homonimo` keep no label, and their open issues now name the documents that were read.
+  Two say what the `0` of the class of a secondary diagnosis is in another file: the
+  layout of the SISAIH01 text interface for 09/2015 (`sihsus-af543b2b2c9b`, p. 7, "0 -
+  Quando não é preenchido o campo anterior") and the dictionary of the tables `TB_AIH`
+  and `TB_HAIH` (`sihsus-f70974716de8`, p. 4, "0-Quando campo anterior em branco"); no
+  DEF relates `TPDISEC1-9` to them, and by the maintainer's decision in #182 a code of
+  another file does not become a label without that. Two give "0 = não", "1 = sim" for
+  the homonym mark: that dictionary (pp. 8-9) and the layout of the RD files of 2006-04
+  to 2007-12 (`sihsus-f6084d22de30`, p. 2); the RD from 2008 publishes `2`, which
+  neither lists. The passages are in
+  `evidence/2026-11-18-sih-codigos-em-outros-documentos/` (#182).
+- `sih_aih_reduzida` (2.25.1): `ano_cmpt` and `mes_cmpt` declare `string` and `rubrica`
+  declares `integer`, the types the library stages from the files (`ANO_CMPT` C(4),
+  `MES_CMPT` C(2), `RUBRICA` N(5)); they declared `integer`, `integer` and `string`.
+  `describe_dataset` reports the new `logical_type`. The lake does not change: the
+  import does not read `type` (only `check_columns` does, to tell the dates), so
+  `ano_cmpt` was already text (`2024`) and `mes_cmpt` text with its leading zero (`01`).
+  The three types are C(4), C(2) and N(5) in the 243 files of
+  `evidence/2026-10-06-rd-2008-layouts`. Other dictionaries still declare a type their
+  files do not stage, such as `insc_pn` of `sih_aih_reduzida_1992_2007` (#182).
+- `sih_aih_reduzida` (2.26.1) and `sih_aih_rejeitada` (1.7.1): counts from 262 real RD
+  files (`evidence/2026-11-18-rd-medidas/`: 238 of 2008-01 to 2026-07 with 1,994,690
+  records, 222 of them of Roraima, and the 24 Roraima files of 2006 and 2007 with
+  41,547) are quoted in the issues of the fields. `uf_zi`: every record of the five
+  `RDDF` files read has `530000`, a code `br_municgestor.cnv` reaches only through a
+  range, so the issue no longer says that no file publishes such a key (no `RJ` file of
+  the Federal District was read). The 19 "Zerado" fields are filled in no record from
+  2008; 13 of them are filled in the 21 files of 2006-04 to 2007-12, the months of the
+  layout that gives their labels. `homonimo` publishes `0` and `2` in the files of every
+  year from 2006 and `1` only in `RDAP2607`. `tpdisec1-9` are blank in the 12 Roraima
+  files of 2014 and, from 2015-01, `0` exactly where the diagnosis of the same number is
+  blank. `cid_notif` is `Z302` in 28,207 of its 28,388 filled records. No label changes
+  (#182).
+- `sih_aih_reduzida` (2.27.0) and `sih_aih_rejeitada` (1.8.0): the issue
+  `uf_zi-faixa-em-codigo-longo` is resolved. The map keeps expanding the ranges
+  `br_municgestor.cnv` writes in its 6-character codes, as the maintainer decided in
+  #182: the table is followed as published, and the range `530000-530009` is the only
+  reference to the code the `RDDF` files read publish. The reader's documentation
+  (`transforms/cnv.py`) now says that it expands ranges of any width and why.
+- `faec_tp` of `sih_aih_reduzida` (2.28.1) and of `sih_aih_rejeitada` (1.9.1) takes the
+  labels of `CNV/TP_FINAN.CNV`, packaged from `TAB_SIH.zip` (`sih-tab-21e42384645a`): the
+  100 codes the table lists one by one and the blank code, a new `faec_tp_rotulo` column.
+  Two things were decided in #182. `RD2008.DEF` (lines 271-273) and `RJ2008.DEF` (lines
+  274-276) write `DS_TPFIN` where the start column goes: the line has the shape of a DBF
+  relation and names a CNV, and the package also has a `DBF/TP_FINAN.dbf` with that
+  column, which differs from the CNV in 17 codes and 2 labels
+  (`evidence/2026-11-18-tp-finan-cnv-e-dbf/`). The generator reads the CNV at position 1
+  for the bindings `inicio_revisto` of `vinculos.json` lists, each pinned to what the
+  line writes, and still refuses any other (`PROC_REA`). The first line of the table has
+  the range `000000-999999`, "Não discriminado/Não se aplica"; `parse_cnv` no longer
+  refuses the table and does not apply a range that spans every code of a long width
+  (the one exception to expanding ranges), so a code outside the 100 has no label; a
+  line with nothing but such a range raises. The 32 codes the 238 measured RD files
+  publish are all among the 100. The open issue `faec_tp-faixa-de-reserva` records these
+  points. The field leaves `sem_cnv` (#137) in both datasets.
+- `sih_aih_reduzida` (2.29.1): 15 more labels are the words of `IT_SIHSUS_1603.pdf`, each
+  with a `/field/label` claim, because they said more than that document or something
+  else: `munic_res` and `munic_mov` (no "(IBGE)"; "Município do Estabelecimento"),
+  `proc_rea` and `proc_solic` (no "(SIGTAP)"), `cgc_hosp` ("CNPJ do Estabelecimento"),
+  `natureza`, `cid_asso` ("CID causa"), `cid_morte` ("CID da morte"), `uti_mes_to`,
+  `uti_int_to` ("Quantidade de diárias em unidade intermediaria", not "Total dias UCI"),
+  `contracep1`, `contracep2`, `insc_pn`, `cnaer` ("Código de acidente de trabalho", not
+  "CNAE") and `gestor_cod`. With the nine of 2.23.1, 24 labels are the table's text up
+  to its first full stop (up to ", no formato" for `ano_cmpt` and `mes_cmpt`). Some of
+  the words that left were `RD2008.DEF`'s, not the document's ("Inscrição pré-natal",
+  "Diárias UCI", "Causa Associada", `DBF\TB_SIGTAW.DBF` for the procedures), so each of
+  the 15 claims also quotes the first DEF line that names the field. In all, 45 of the
+  118 labels have a verified claim (25 from this document, 19 from the layout of
+  2006-2007, `fonte_orc` from the DEF); the other 73 have none (#182).
+- `sih_servicos_profissionais` (1.4.1) and `sih_aih_rejeitada` (1.10.1) declare
+  `fonte_orc`, the field every `SP` and `RJ` file has had since 2025-03: C(2), the last
+  of the header in the 510 files of each prefix up to 2026-09. On a real RJ file (the new
+  fixture `sih_rj_rr_2026_08_mini`), `check_columns` reported it as "not in dictionary".
+  It has no label and no map, because neither `SP2008.DEF` nor
+  `RJ2008.DEF` names the field and the line of `RD2008.DEF` is the RD's; the issue
+  `fonte_orc-sem-def` says so. The evidence is the DBF header of every `SP` and `RJ` file
+  the server listed on 2026-11-19, read without any record
+  (`evidence/2026-11-19-sih-cabecalhos/`), and the 18 `RJRR` files of 2025-03 to 2026-08,
+  where the field is `00` in the 1,270 records (#182).
+- The DBF header of every `RD` file the server listed on 2026-11-19 is in
+  `evidence/2026-11-19-sih-cabecalhos/`: 5,165 files of 1992-2007 and 6,072 from 2008.
+  The censuses of layouts, which read one UF a month, hold in every UF: the 19 layouts of
+  1992-2007 and no other, with `num_proc`, `insc_pn` and `seq_aih5` published as numbers
+  in every file of the months #40 names; and the 6 layouts from 2008 in all files but
+  one. `RDAC0909.dbc`, which the server dates 2024-05-22, has 82 fields, 17 of them of
+  another type, and `val_sh` and `val_sp` zeroed in its 4,540 records (#219). The fixture
+  `sih_rd_ac_2009_09_excerpt` keeps five of them.
+- `sih_aih_reduzida` (2.29.2): `val_sh` and `val_sp` have the open issue
+  `zerado-em-rdac0909`. `RDAC0909.dbc` is imported as published, so in the lake the two
+  sums for Acre in 2009-09 are zero; `val_tot` is filled in its 4,540 records, and both
+  fields are filled in the 4,379 of `RDAC0908.dbc`
+  (`evidence/2026-11-19-sih-cabecalhos/rdac0909.csv`, which now also counts the rows in
+  which each field is blank; #219).
+- `sih_aih_reduzida` (2.29.3): the issues `homonimo-sem-fonte` and `gestor_tp-sem-fonte`
+  say that none of the 38 packaged DEF names the field. They said 37, the count before
+  `APAC_Dados_Comuns.DEF` was packaged (#218); the test that reads every DEF now compares
+  the count in the text.
+- `sih_aih_reduzida` (2.29.4): the same two issues say 39 packaged DEF, the count with
+  `DengueNETON3.0.def` (#226). The `main` changed the same lines as 2.19.1; the version
+  goes past both so that neither locked content changes.
+
 ### omnisus-dbf 0.2.2
 
 - The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so

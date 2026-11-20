@@ -2,10 +2,12 @@ name: sih_servicos_profissionais
 title: SIHSUS — Serviços profissionais (SP)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.3.0
+x-version: 1.4.1
 x-source-format: dbc
 x-evidence:
-  physical_schema: sih_sp_rr_2024_01_mini.dbc, 36 fields; observed 2026-09-22
+  physical_schema: sih_sp_rr_2024_01_mini.dbc, 36 fields; observed 2026-09-22. FONTE_ORC,
+    the 37th, from the headers of the files of 2025-03 on
+    (evidence/2026-11-19-sih-cabecalhos).
   semantic_status: Physical inventory. Category maps only where a TabWin CNV binds the
     field and decodes every non-blank value of the fixture (vinculos.json); no inferred
     mappings.
@@ -171,3 +173,10 @@ schema:
     type: integer
   - name: sp_u_aih
     type: string
+  - name: fonte_orc
+    type: string
+    x-metadata:
+      issues:
+      - id: fonte_orc-sem-def
+        status: open
+        description: 'FONTE_ORC C(2) é o último campo do cabeçalho DBF dos 510 arquivos SP de 2025-03 a 2026-09 e de nenhum dos 5.562 anteriores (evidence/2026-11-19-sih-cabecalhos: os 6.072 arquivos SP que o servidor listava em 2026-11-19; só o cabeçalho foi lido). O IT_SIHSUS_1603.pdf (sihsus-1e89d5f2cc41), Tabela 2, p. 4-5, lista 36 campos e não tem FONTE_ORC. O SP2008.DEF (TAB_SIH.zip, sih-tab-f05b32f32908) não cita o campo. O RD2008.DEF, linha 274, liga o FONTE_ORC do RD a CNV/fonterem.CNV; a linha é do RD e não dá rótulo nem mapa a este campo. Nenhum valor do campo foi lido: para este registro, só o cabeçalho dos arquivos SP foi lido.'

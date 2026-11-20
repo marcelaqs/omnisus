@@ -142,7 +142,7 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-10",
-      "last_checked_on": "2026-09-10"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sim-b4195ac8e0f8",
@@ -633,6 +633,48 @@
       "published_on": "2026-10-27",
       "retrieved_on": "2026-10-31",
       "last_checked_on": "2026-10-31"
+    },
+    {
+      "id": "sihsus-f6084d22de30",
+      "category": "SIHSUS",
+      "title": "Layout_REDUZIDA.pdf",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_REDUZIDA.pdf",
+      "sha256": "f6084d22de3011fd9d2f490736e6d0469c45ac3ccc45be56f4e5c0ad564cb13d",
+      "bytes": 26945,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sihsus-af543b2b2c9b",
+      "category": "SIHSUS",
+      "title": "Layout_do_SISAIH01_para_CMPT_201509.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_do_SISAIH01_para_CMPT_201509.zip",
+      "sha256": "af543b2b2c9b13de8d11a68ec5fdd04b2b53c864af8b8e77456a23795398d625",
+      "bytes": 71003,
+      "edition": "2015-09",
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sihsus-f70974716de8",
+      "category": "SIHSUS",
+      "title": "dicionario_de_dados_AIH.pdf",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/dicionario_de_dados_AIH.pdf",
+      "sha256": "f70974716de829b97b341b2f05ba76eb382c09d867abcf1a0ffbdb95a1c57854",
+      "bytes": 47584,
+      "edition": "2016-05-02",
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
     }
   ]
 }

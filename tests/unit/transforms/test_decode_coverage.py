@@ -807,8 +807,8 @@ def test_sih_homonimo_and_gestor_tp_stay_undecoded_without_a_def(
     dbc_fixture, field, published, issue
 ):
     """#10: none of the 39 packaged DEF (RD2008.DEF, RJ2008.DEF, the RD.DEF of 1992-2007
-    and the rest) names HOMONIMO or GESTOR_TP, and no registered document lists their
-    codes. RDRR2401 holds homonimo 0/2, which contradicted the {0: Não, 1: Sim} map, and
+    and the rest) names HOMONIMO or GESTOR_TP, and no document of the RD from 2008 lists
+    their codes. RDRR2401 holds homonimo 0/2, which contradicted the {0: Não, 1: Sim} map, and
     gestor_tp 0/1; neither field gets a map, and the field's issue says what was read."""
     defs = [p for p in Path(str(CNV)).rglob("*") if p.suffix.lower() == ".def"]
     assert len(defs) == 39
@@ -818,7 +818,8 @@ def test_sih_homonimo_and_gestor_tp_stay_undecoded_without_a_def(
     definition = load_dicionario("sih_aih_reduzida").field_def(field)
     assert "x-decode" not in definition
     (entry,) = [i for i in definition["x-metadata"]["issues"] if i["id"] == issue]
-    assert entry["status"] == "open" and "DEF" in entry["description"]
+    assert entry["status"] == "open"
+    assert f"nenhum dos {len(defs)} DEF empacotados" in " ".join(entry["description"].split())
 
 
 APAC_WITH_UNIT_MAP = [

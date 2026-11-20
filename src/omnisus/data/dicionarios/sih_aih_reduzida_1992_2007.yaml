@@ -2,7 +2,7 @@ name: sih_aih_reduzida_1992_2007
 title: SIHSUS — AIH reduzida (RD), 1992-01 a 2007-12
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.3.1
+x-version: 1.3.2
 x-source-format: dbc
 x-evidence:
   physical_schema: >-
@@ -11,7 +11,8 @@ x-evidence:
     layout changes (evidence/2026-10-01-rd-1992-2007-layouts/). Each is in
     sih_rd_rr_1994_12_mini.dbc, sih_rd_rr_1997_09_mini.dbc, sih_rd_rr_2004_07_excerpt.dbc or
     sih_rd_rr_2007_12_mini.dbc. num_proc, insc_pn and seq_aih5 are C in some layouts and N
-    in others; they keep the type of sih_rd_rr_2007_12_mini.dbc until #40 decides.
+    in others; they are declared string, the type of sih_rd_rr_2007_12_mini.dbc, and staging
+    writes the N months as text with no zeros added (#40).
   semantic_status: >-
     Physical inventory; individual semantic fields not audited. The code maps of ident,
     sexo, morte, natureza, gestao, semiplen, instru and vincprev come from the CNV that
