@@ -78,7 +78,9 @@ and `sih_rd_rr_2007_12_mini.dbc` are `RDRR9412`, `RDRR9709` and `RDRR0712`, with
 of their rows here (layouts 3, 7 and 19). `sih_rd_rr_2004_07_excerpt.dbc` is records 481 to
 571 (0-based) of `RDRR0407` (layout 15) under that file's header: the longest run of records
 with no CPF in `CPF_AUT` or `GESTOR_CPF`. Together they hold every field of the 19 layouts.
+`tests/unit/transforms/test_sih_rd_eras_fields.py` reads `census.csv` to check that, and
+that the two dictionaries the dataset was split into at 1998-01 (#12),
+`sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007`, declare exactly these 89
+fields between them.
 `sih_rd_rr_1996_02_mini.dbc` is `RDRR9602`, with the SHA-256 of its row (layout 5, the one
 with `NUM_PROC` N4.0).
-`tests/unit/transforms/test_sih_rd_1992_2007_fields.py` reads `census.csv` to check that,
-and that the dictionary declares exactly these 89 fields.

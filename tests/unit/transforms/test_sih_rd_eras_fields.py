@@ -3,9 +3,9 @@
 The files of `SIHSUS/199201_200712/Dados` the census read (one RR file a month, AP where
 RR is missing, and SP and MG in the months a layout changes) have 19 layouts
 (evidence/2026-10-01-rd-1992-2007-layouts/census.csv): 7 until 1997-12 and 12 from 1998-01.
-The dataset is split at 1998-01 (issue #12, decision 1), one dictionary per era. Two whole RR
-files and an excerpt carry every field of each era; each field is declared with the type
-scripts/gen_dicionario.py gives it.
+The dataset is split at 1998-01 (issue #12, decision 1), one dictionary per era. Two RR
+fixtures of each era carry every field of its layouts, except `uti_total` in 1998-2007;
+each field is declared with the type scripts/gen_dicionario.py gives it.
 
 `diag_princ` holds CID-9 until 1997-12 and CID-10 from 1998-01 (docs/sources/vocabularios.md,
 "CID-9 e CID-10 nos sistemas do SUS"): the split puts each in its own dictionary.
@@ -95,6 +95,7 @@ def test_every_fixture_field_is_declared_with_the_generator_type(dbc_fixture, da
 def test_the_dictionary_declares_the_fields_of_every_layout_of_its_era(dbc_fixture, dataset):
     """The era's fixtures hold every field of its layouts, and the dictionary no other."""
     in_fixtures = {n for f in ERAS[dataset][2] for n in fixture_fields(dbc_fixture, f)}
+    assert NO_FIXTURE[dataset].isdisjoint(in_fixtures)
     assert set(declared(dataset)) == set(census(dataset)) == in_fixtures | NO_FIXTURE[dataset]
 
 

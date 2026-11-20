@@ -27,8 +27,8 @@
   0.4.1 and earlier name the dataset as it was then.
 - A file name whose scope is outside a dataset's declared `coverage` is no longer read as
   a file of that dataset, for state rows as for the national ones of #225:
-  `scopes_for`, `available` and `outdated` stop listing a name beyond the declared end
-  (or before the start) of a bounded row, such as
+  `available` stops listing a name beyond the declared end (or before the start) of a
+  bounded row, such as
   `sim_obitos_cid9` (1979-01 to 1995-12), which the importer already skipped with
   `outside_coverage`. It is what lets the two RD rows share one directory.
 - `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` (1.1.2): `num_proc`,
