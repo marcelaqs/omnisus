@@ -40,7 +40,7 @@ RUN = "uv run python scripts/metadados/travar_versoes.py"
 # Dictionary -> its last locked x-version. sih_aih_reduzida_1992_2007 was split at 1998-01
 # into sih_aih_reduzida_1992_1997 and sih_aih_reduzida_1998_2007 (issue #12, decision 1;
 # ADR 0002 amendment).
-RETIRED = {"sih_aih_reduzida_1992_2007": "1.3.1"}
+RETIRED = {"sih_aih_reduzida_1992_2007": "1.3.2"}
 
 
 def digest(raw: dict[str, Any]) -> str:

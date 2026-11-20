@@ -59,7 +59,8 @@ VALUES = {
 TEXT = {"num_proc", "cpf_aut", "gestor_cod", "gestor_dt", "infehosp", "faec_tp"}
 
 RD = "sih_aih_reduzida"
-RD_BEFORE_2008 = "sih_aih_reduzida_1992_2007"
+RD_1992_1997 = "sih_aih_reduzida_1992_1997"
+RD_1998_2007 = "sih_aih_reduzida_1998_2007"
 USUAL = ("sih_rd_rr_2025_01_excerpt", "RDRR2501.dbc", ScopeKey("RR", 2025, 1))
 APART = ("sih_rd_ac_2009_09_excerpt", "RDAC0909.dbc", ScopeKey("AC", 2009, 9))
 RDRR0407 = ("sih_rd_rr_2004_07_excerpt", "RDRR0407.dbc", ScopeKey("RR", 2004, 7))
@@ -170,40 +171,43 @@ def test_rdac0909_and_another_rd_file_share_a_lake_in_either_order(
 
 @pytest.mark.parametrize("backend", ["python", "auto"])
 @pytest.mark.parametrize(
-    ("order", "fields", "rows"),
+    ("era", "order", "fields", "rows"),
     [
         (
+            RD_1998_2007,
             (RDRR0712, RDRR0407),
             ("insc_pn", "seq_aih5"),
             [(2004, "0", "0"), (2007, "0000000000", "000")],
         ),
         (
+            RD_1998_2007,
             (RDRR0407, RDRR0712),
             ("insc_pn", "seq_aih5"),
             [(2004, "0", "0"), (2007, "0000000000", "000")],
         ),
-        ((RDRR9709, RDRR9603), ("num_proc",), [(1996, "368"), (1997, "0489")]),
-        ((RDRR9603, RDRR9709), ("num_proc",), [(1996, "368"), (1997, "0489")]),
+        (RD_1992_1997, (RDRR9709, RDRR9603), ("num_proc",), [(1996, "368"), (1997, "0489")]),
+        (RD_1992_1997, (RDRR9603, RDRR9709), ("num_proc",), [(1996, "368"), (1997, "0489")]),
     ],
     ids=["insc_pn, N second", "insc_pn, N first", "num_proc, N second", "num_proc, N first"],
 )
 def test_a_month_with_the_field_as_a_number_and_one_with_it_as_text_share_a_lake(
-    dbc_fixture, tmp_path, monkeypatch, backend, order, fields, rows
+    dbc_fixture, tmp_path, monkeypatch, backend, era, order, fields, rows
 ):
     """The decision of #40: the number is written as text with no zeros to its left. The
     91 records of the RDRR0407 fixture have `0` where the 1,496 of RDRR0712 have the zeros
     of the field's width, and the 5 of RDRR9603 have `368` where the 794 of RDRR9709 have
-    `0489`. Staged as published, the second import failed (`VARCHAR versus BIGINT`)."""
+    `0489`. Staged as published, the second import failed (`VARCHAR versus BIGINT`). Each
+    pair is of one era of the RD, so of one table of the lake (#12)."""
     monkeypatch.setenv("OMNISUS_DBF_BACKEND", backend)
     as_number = {name for _, name, _ in order} & {RDRR0407[1], RDRR9603[1]}
     for fixture, name, _ in order:
         published = whole_numbers_in_header(dbc_fixture(fixture).read_bytes()) & set(fields)
         assert published == (set(fields) if name in as_number else set())
     with Lake.local(f"ducklake:{tmp_path}/x.ducklake") as lake:
-        import_in_order(REGISTRY[RD_BEFORE_2008], dbc_fixture, lake, *order)
+        import_in_order(REGISTRY[era], dbc_fixture, lake, *order)
         assert len(lake.publications()) == 2
         columns = ", ".join(fields)
-        query = f"SELECT DISTINCT ano, {columns} FROM lake.{RD_BEFORE_2008} ORDER BY ano"
+        query = f"SELECT DISTINCT ano, {columns} FROM lake.{era} ORDER BY ano"
         table = lake.connect().sql(query).pl()
     assert {table.schema[name] for name in fields} == {pl.String}
     assert table.rows() == rows
@@ -222,17 +226,17 @@ def test_a_lake_that_has_the_column_as_a_number_refuses_the_files_staged_as_text
             if field["name"] in ("insc_pn", "seq_aih5"):
                 field["type"] = "integer"
 
-    packaged = REGISTRY[RD_BEFORE_2008]
+    packaged = REGISTRY[RD_1998_2007]
     raw = yaml.load(
-        (files("omnisus.data.dicionarios") / f"{RD_BEFORE_2008}.yaml").read_text("utf-8"),
+        (files("omnisus.data.dicionarios") / f"{RD_1998_2007}.yaml").read_text("utf-8"),
         Loader=yaml.CSafeLoader,
     )
     as_before(raw)
-    edited = tmp_path / f"{RD_BEFORE_2008}.yaml"
+    edited = tmp_path / f"{RD_1998_2007}.yaml"
     edited.write_text(yaml.safe_dump(raw, allow_unicode=True, sort_keys=False), encoding="utf-8")
     with Lake.local(f"ducklake:{tmp_path}/x.ducklake") as lake:
         import_in_order(replace(packaged, dictionary=edited), dbc_fixture, lake, RDRR0407)
-        described = lake.connect().sql(f"DESCRIBE lake.{RD_BEFORE_2008}").pl()
+        described = lake.connect().sql(f"DESCRIBE lake.{RD_1998_2007}").pl()
         types = dict(zip(described["column_name"], described["column_type"], strict=True))
         assert (types["insc_pn"], types["seq_aih5"]) == ("BIGINT", "BIGINT")
         with pytest.raises(UnsafeSchemaError, match="BIGINT versus VARCHAR"):
