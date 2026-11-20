@@ -158,7 +158,8 @@ _ROWS: tuple[Dataset, ...] = (
     Dataset(name="cnes_dados_complementares", prefix="DC", ftp_dir=_CNES + "DC", cadence="monthly", partition_by=_MONTHLY, coverage=((2005, 8), None)),
     Dataset(name="cnes_equipamentos", prefix="EQ", ftp_dir=_CNES + "EQ", cadence="monthly", partition_by=_MONTHLY, coverage=((2005, 8), None)),
     Dataset(name="cnes_equipes", prefix="EP", ftp_dir=_CNES + "EP", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 4), None)),
-    Dataset(name="cnes_estabelecimentos_ensino", prefix="EE", ftp_dir=_CNES + "EE", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), (2021, 7))),
+    # EE ends with one file of 2026-10 after EEMG2107 (evidence/2026-11-20-cnes-ee-2610).
+    Dataset(name="cnes_estabelecimentos_ensino", prefix="EE", ftp_dir=_CNES + "EE", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), (2026, 10))),
     Dataset(name="cnes_estabelecimentos_filantropicos", prefix="EF", ftp_dir=_CNES + "EF", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), None)),
     Dataset(name="cnes_gestao_metas", prefix="GM", ftp_dir=_CNES + "GM", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), None)),
     Dataset(name="cnes_habilitacoes", prefix="HB", ftp_dir=_CNES + "HB", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), None)),
