@@ -165,7 +165,7 @@ def test_a_retired_dictionary_with_a_yaml_again_is_refused(monkeypatch, tmp_path
     module = _load(monkeypatch)
     dicionarios, lock = _copy(tmp_path)
     shutil.copy(dicionarios / "sih_aih_reduzida_1998_2007.yaml", dicionarios / f"{RETIRED}.yaml")
-    with pytest.raises(ValueError, match=RETIRED):
+    with pytest.raises(ValueError, match=f"{RETIRED} is retired and must not have a YAML"):
         module.generate(dicionarios, lock)
 
 

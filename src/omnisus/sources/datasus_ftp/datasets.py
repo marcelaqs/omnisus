@@ -221,9 +221,10 @@ def resolve(dataset: str | Dataset) -> Dataset:
 def in_coverage(dataset: str | Dataset, scope: ScopeKey) -> bool:
     """Whether ``scope`` falls inside the dataset's declared coverage window.
 
-    The cheapest possible filter: a scope outside coverage cannot exist
-    upstream, so rejecting it here saves a full FTP connect, login, CWD and
-    PASV setup before the 550 that would have said the same thing.
+    The cheapest possible filter: a scope outside coverage is not a file of the
+    row, so rejecting it here saves a full FTP connect, login, CWD and PASV
+    setup. The file may exist upstream as another row's: two rows of one
+    directory and prefix split its files by coverage (ADR 0002).
 
     Yearly datasets carry no month, so their scopes are compared at month 1.
     A ``last`` of ``None`` means the dataset is ongoing and has no end bound.

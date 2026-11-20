@@ -122,9 +122,7 @@ def test_every_registry_row_has_a_golden_case() -> None:
 )
 def test_round_trip_property(dataset: str, uf: str, offset: int, mes: int) -> None:
     d = REGISTRY[dataset]
-    first = d.coverage[0][0]
-    last = d.coverage[1][0] if d.coverage[1] else first + 99
-    ano = first + offset % (last - first + 1)
+    ano = d.coverage[0][0] + offset
     scope = (
         ScopeKey(uf=None, ano=ano)
         if d.geography == "national"

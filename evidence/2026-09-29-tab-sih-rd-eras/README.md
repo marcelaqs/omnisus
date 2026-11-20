@@ -25,8 +25,9 @@ on the three zips, writes it with the repository's DEF and CNV parsers.
   under `sih/CNV/` (`mesmo_que`).
 
 So one map per field serves 1992-01 to 2007-12, and the `/field/codes` claims of
-`sih_aih_reduzida_1992_2007` cite the three packages. `vinculos.json` lists the three
-`RD.DEF` as the dataset's `def`; `gerar_decode_cnv.py` verifies, in each package's own
+`sih_aih_reduzida_1992_2007` (since #12, of the two datasets it was split into,
+`sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007`) cite the three packages. `vinculos.json` lists the three
+`RD.DEF` as each dataset's `def`; `gerar_decode_cnv.py` verifies, in each package's own
 `RD.DEF`, the line that binds the field to a CNV with the same SHA-256, and writes one
 evidence entry per package. The two later `RD.DEF` are packaged next to the first:
 
