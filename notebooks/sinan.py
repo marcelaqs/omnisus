@@ -2,17 +2,17 @@
 # requires-python = ">=3.12"
 # dependencies = [
 #     "marimo>=0.25.1,<0.26",
-#     "omnisus==0.3.0",
+#     "omnisus==0.4.0",
 #     "polars>=1.44.2,<2.0",
 # ]
 # ///
 
-"""SINAN · notificações nacionais de Chagas aguda, hanseníase e tuberculose, em seis etapas."""
+"""SINAN · notificações nacionais de Chagas aguda, hanseníase, tuberculose e dengue, em seis etapas."""
 
 import marimo
 
 __generated_with = "0.23.16"
-app = marimo.App(width="medium", app_title="SINAN · Chagas, hanseníase e tuberculose")
+app = marimo.App(width="medium", app_title="SINAN · Chagas, hanseníase, tuberculose e dengue")
 
 
 @app.cell
@@ -30,7 +30,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    # SINAN · Chagas aguda, hanseníase e tuberculose
+    # SINAN · Chagas aguda, hanseníase, tuberculose e dengue
 
     [![Open in molab](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/github/raphaelfh/omnisus/blob/main/notebooks/sinan.py)
 
@@ -38,7 +38,8 @@ def _(mo):
     publicadas pelo DATASUS em **um arquivo nacional por ano**, com diretório final e
     preliminar. Este notebook percorre as seis etapas do
     [guia do pesquisador](https://raphaelfh.github.io/omnisus/pesquisa/) com
-    **Chagas aguda, 2023** (troque `BASE` para `sinan_hanseniase` ou `sinan_tuberculose`).
+    **Chagas aguda, 2023** (troque `BASE` para `sinan_hanseniase`, `sinan_tuberculose` ou
+    `sinan_dengue`).
 
     **Abrir este notebook não baixa nem grava nada.** Edite os parâmetros na célula
     seguinte e ponha `EXECUTAR = True` (ou exporte com `-- --executar true`) para
@@ -46,8 +47,9 @@ def _(mo):
 
     Antes de contar, leia as Armadilhas do perfil do agravo:
     [Chagas](https://raphaelfh.github.io/omnisus/sources/sinan_chagas/#armadilhas),
-    [hanseníase](https://raphaelfh.github.io/omnisus/sources/sinan_hanseniase/#armadilhas) e
-    [tuberculose](https://raphaelfh.github.io/omnisus/sources/sinan_tuberculose/#armadilhas).
+    [hanseníase](https://raphaelfh.github.io/omnisus/sources/sinan_hanseniase/#armadilhas),
+    [tuberculose](https://raphaelfh.github.io/omnisus/sources/sinan_tuberculose/#armadilhas) e
+    [dengue](https://raphaelfh.github.io/omnisus/sources/sinan_dengue/#armadilhas).
     """)
     return
 
@@ -183,7 +185,7 @@ def _(BASE, dados, sus, pl):
         .len("notificacoes")
         .sort("notificacoes", descending=True),
     }
-    if BASE == "sinan_chagas":
+    if BASE in ("sinan_chagas", "sinan_dengue"):
         tabelas["classificacao_e_evolucao"] = (
             sus.label(BASE, dados, columns=["classi_fin", "evolucao"])
             .group_by("classi_fin", "classi_fin_rotulo", "evolucao", "evolucao_rotulo")

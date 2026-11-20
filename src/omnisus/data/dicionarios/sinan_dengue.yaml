@@ -1,0 +1,1837 @@
+name: sinan_dengue
+title: SINAN — Dengue, notificações nacionais
+profile: tabular-data-resource
+encoding: latin-1
+x-version: 1.0.1
+x-source-format: dbc
+x-evidence:
+  physical_schema: DENGBR17.dbc, 121 fields (layout of DENGBR14 to DENGBR26); observed 2026-11-20.
+    DENGBR00-12 and DENGBR13 are other layouts, in sinan_dengue_2000_2012 and sinan_dengue_2013
+    (evidence/2026-11-20-sinan-dengue).
+  semantic_status: Page-sourced maps only; every x-decode code cites an official page
+    or TAB_SINANNET CNV. nu_idade_n is audited (x-analytics.age).
+  dictionary_url: https://portalsinan.saude.gov.br/images/documentos/Agravos/Dengue/DIC_DADOS_ONLINE.pdf
+  source_url: ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR17.dbc
+schema:
+  fields:
+  - name: tp_not
+    type: string
+    x-decode:
+      '1': Negativa
+      '2': Individual
+      '3': Surto
+      '4': Agregado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: dcf8c99c8d2fbadd5d45f06c1382ef31a9652bfffd995898322cf68b8230ce2c
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 1
+          locator: '1. Tipo de Notificação (TP_NOT): 1 – Negativa, 2 – Individual, 3 – Surto, 4 – Agregado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: id_agravo
+    type: string
+  - name: dt_notific
+    type: date
+  - name: sem_not
+    type: string
+  - name: nu_ano
+    type: string
+  - name: sg_uf_not
+    type: string
+  - name: id_municip
+    type: string
+  - name: id_regiona
+    type: string
+  - name: id_unidade
+    type: string
+  - name: dt_sin_pri
+    type: date
+  - name: sem_pri
+    type: string
+  - name: ano_nasc
+    type: string
+  - name: nu_idade_n
+    type: integer
+    label: Idade
+    x-metadata:
+      physical_name: NU_IDADE_N
+      unit: encoded
+      derivation:
+        kind: coded_age
+        inputs:
+        - nu_idade_n
+        rule_version: 1.0.0
+        output:
+        - idade_anos_completos
+        - idade_status
+        - idade_quantidade
+        - idade_unidade
+      applicability:
+        status: confirmed
+        data_period: null
+        valid_from: null
+        valid_until: null
+        conditions:
+        - Only the exact source identities in dataset.analytics.validated_sources.
+        reason: Documented rule compared with the complete-file audits of 2026-09-21 (evidence/2026-09-21-w3-idade-sinan/)
+          and 2026-09-22 (evidence/2026-09-22-w6-idade-tb/); no applicability to other source hashes is
+          inferred.
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 3
+          - 4
+          locator: '10. Idade (NU_IDADE_N): 1º dígito 1 Hora, 2 Dia, 3 Mês, 4 Ano; ex. 3009 = nove meses,
+            4018 = dezoito anos'
+  - name: cs_sexo
+    type: string
+    x-decode:
+      M: Masculino
+      F: Feminino
+      I: Ignorado
+    x-metadata:
+      missing_codes:
+        I: ignored
+      claims:
+      - target: /field/codes
+        value_sha256: 03f1b56525c2bd3ad4b5365e1dd3e7a67a53c0d24389f0038e4031d642e4596b
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 4
+          locator: '11. Sexo (CS_SEXO): M- Masculino, F- Feminino, I- Ignorado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: cs_gestant
+    type: string
+    x-decode:
+      '1': 1º Trimestre
+      '2': 2º Trimestre
+      '3': 3º Trimestre
+      '4': Idade gestacional ignorada
+      '5': Não
+      '6': Não se aplica
+      '9': Ignorado
+    x-metadata:
+      missing_codes:
+        '6': not_applicable
+        '9': ignored
+      claims:
+      - target: /field/codes
+        value_sha256: 56e8fb62503aa12594230ef14613fbffe8b421b388913657b0375496d99f2b76
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 4
+          locator: '12. Gestante (CS_GESTANT): 1 a 6 e 9. Ignorado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: cs_raca
+    type: string
+    x-decode:
+      '1': branca
+      '2': preta
+      '3': amarela
+      '4': parda
+      '5': indígena
+      '9': Ignorado
+    x-metadata:
+      missing_codes:
+        '9': ignored
+      claims:
+      - target: /field/codes
+        value_sha256: 1cf71f1e71941e48b0c970bef202cffa953417dbbdf85e410186cbf1f09a5e26
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 5
+          locator: '13. Raça/Cor (CS_RACA): 1- branca, 2- preta, 3- amarela, 4- parda, 5- indígena, 9 Ignorado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: cs_escol_n
+    type: string
+    x-decode:
+      '0': Analfabeto
+      '00': Analfabeto
+      '1': 1ª a 4ª série incompleta do EF
+      '01': 1ª a 4ª série incompleta do EF
+      '2': 4ª série completa do EF (antigo 1° grau)
+      '02': 4ª série completa do EF (antigo 1° grau)
+      '3': 5ª à 8ª série incompleta do EF (antigo ginásio ou 1° grau)
+      '03': 5ª à 8ª série incompleta do EF (antigo ginásio ou 1° grau)
+      '4': Ensino fundamental completo (antigo ginásio ou 1° grau)
+      '04': Ensino fundamental completo (antigo ginásio ou 1° grau)
+      '5': Ensino médio incompleto (antigo colegial ou 2° grau)
+      '05': Ensino médio incompleto (antigo colegial ou 2° grau)
+      '6': Ensino médio completo (antigo colegial ou 2° grau)
+      '06': Ensino médio completo (antigo colegial ou 2° grau)
+      '7': Educação superior incompleta
+      '07': Educação superior incompleta
+      '8': Educação superior completa
+      '08': Educação superior completa
+      '9': Ignorado
+      '09': Ignorado
+      '10': Não se aplica
+    x-metadata:
+      missing_codes:
+        '9': ignored
+        '09': ignored
+        '10': not_applicable
+      claims:
+      - target: /field/codes
+        value_sha256: 6eb1368615a3cf03d6f2928e0a47dcc30d0ea885788a18620fcc6056e7c156a6
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 5
+          locator: '14. Escolaridade (CS_ESCOL_N): 1. a 8., 9. Ignorado, 10. Não se aplica; a primeira categoria
+            está impressa como "43 Analfabeto"'
+        - source_id: sinan-tab-cad66ee38781
+          pages: []
+          locator: 'TAB_SINANNET/Escolarnet.cnv: 0 e 00 Analfabeto; 01 a 09 na mesma linha de 1 a 9'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: sg_uf
+    type: string
+  - name: id_mn_resi
+    type: string
+  - name: id_rg_resi
+    type: string
+  - name: id_pais
+    type: string
+  - name: dt_invest
+    type: date
+  - name: id_ocupa_n
+    type: string
+  - name: febre
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Febre) (FEBRE): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: mialgia
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Mialgia) (MIALGIA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: cefaleia
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Cefaleia) (CEFALEIA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: exantema
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Exantema) (EXANTEMA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: vomito
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Vômito) (VOMITO): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: nausea
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Náusea) (NAUSEA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dor_costas
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Dor nas costas) (DOR_COSTAS): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: conjuntvit
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Conjuntivite) (CONJUNTVIT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: artrite
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Artrite) (ARTRITE): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: artralgia
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Artralgia intensa) (ARTRALGIA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: petequia_n
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Petéquias) (dicionário: PETÉQUIA_N; DBF: PETEQUIA_N): 1 – Sim,
+            2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: leucopenia
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 3
+          locator: '33. Sinais clínicos (Leucopenia) (LEUCOPENIA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: laco
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '33. Sinais clínicos (Prova do laço) (LACO): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dor_retro
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '33. Sinais clínicos (Dor retroorbital) (DOR_RETRO): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: diabetes
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Diabetes) (DIABETES): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: hematolog
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Doenças hematológicas) (HEMATOLOG): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: hepatopat
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Hepatopatias) (HEPATOPAT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: renal
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Doença renal crônica) (RENAL): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: hipertensa
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Hipertensão arterial) (HIPERTENSA): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: acido_pept
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Doença ácido-péptica) (dicionário: ÁCIDO_PEPT; DBF: ACIDO_PEPT):
+            1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: auto_imune
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 4
+          locator: '34. Doenças pré-existentes (Doenças auto-imunes) (AUTO_IMUNE): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_chik_s1
+    type: date
+  - name: dt_chik_s2
+    type: date
+  - name: dt_prnt
+    type: date
+  - name: res_chiks1
+    type: string
+    x-decode:
+      '1': Reagente
+      '2': Não Reagente
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: a3ec7e9352392d6cbd7d1d22d4d0ff1f673c7db4861ae7bc756df9781ce5ffe5
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 5
+          locator: '38. Exame sorológico (IgM) Chikungunya Soro 1, Resultado (RES_CHIKS1): 1-Reagente, 2-Não
+            Reagente, 3-Inconclusivo, 4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: res_chiks2
+    type: string
+    x-decode:
+      '1': Reagente
+      '2': Não Reagente
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: a3ec7e9352392d6cbd7d1d22d4d0ff1f673c7db4861ae7bc756df9781ce5ffe5
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 5
+          locator: '38. Exame sorológico (IgM) Chikungunya Soro 2, Resultado (RES_CHIKS2): 1-Reagente, 2-Não
+            Reagente, 3-Inconclusivo, 4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: resul_prnt
+    type: string
+    x-decode:
+      '1': Reagente
+      '2': Não Reagente
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: a3ec7e9352392d6cbd7d1d22d4d0ff1f673c7db4861ae7bc756df9781ce5ffe5
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 5
+          locator: '38. Exame PRNT, Resultado (RESUL_PRNT): 1-Reagente, 2-Não Reagente, 3-Inconclusivo,
+            4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_soro
+    type: date
+  - name: resul_soro
+    type: string
+    x-decode:
+      '1': Reagente
+      '2': Não Reagente
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: a3ec7e9352392d6cbd7d1d22d4d0ff1f673c7db4861ae7bc756df9781ce5ffe5
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 5
+          locator: '40. Exame sorológico (IgM) Dengue, Resultado (RESUL_SORO): 1-Reagente, 2-Não Reagente,
+            3-Inconclusivo, 4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_ns1
+    type: date
+  - name: resul_ns1
+    type: string
+    x-decode:
+      '1': Positivo
+      '2': Negativo
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 3a0769932b592ce8d5e7b9879f776140a4fa25c91366da16b4d2064fd4d0ee0b
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 6
+          locator: '42. Exame NS1, Resultado (RESUL_NS1): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não
+            realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_viral
+    type: date
+  - name: resul_vi_n
+    type: string
+    x-decode:
+      '1': Positivo
+      '2': Negativo
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 3a0769932b592ce8d5e7b9879f776140a4fa25c91366da16b4d2064fd4d0ee0b
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 6
+          locator: '43. Isolamento Viral, Resultado (RESUL_VI_N): 1-Positivo, 2-Negativo, 3-Inconclusivo,
+            4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_pcr
+    type: date
+  - name: resul_pcr_
+    type: string
+    x-decode:
+      '1': Positivo
+      '2': Negativo
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 3a0769932b592ce8d5e7b9879f776140a4fa25c91366da16b4d2064fd4d0ee0b
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 6
+          locator: '46. RT-PCR, Resultado (RESUL_PCR_): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: sorotipo
+    type: string
+    x-decode:
+      '1': DEN 1
+      '2': DEN 2
+      '3': DEN 3
+      '4': DEN 4
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 238bcadf510fac86ce741831f01ab4de03aecb61a559f282cfa93eba8d7a8311
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 7
+          locator: '47. Sorotipo (SOROTIPO): 1-DEN 1, 2-DEN 2, 3 DEN 3, 4-DEN 4'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: histopa_n
+    type: string
+    x-decode:
+      '1': Positivo
+      '2': Negativo
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 3a0769932b592ce8d5e7b9879f776140a4fa25c91366da16b4d2064fd4d0ee0b
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 7
+          locator: '48. Histopatologia, Resultado (HISTOPA_N): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não
+            realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: imunoh_n
+    type: string
+    x-decode:
+      '1': Positivo
+      '2': Negativo
+      '3': Inconclusivo
+      '4': Não realizado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 3a0769932b592ce8d5e7b9879f776140a4fa25c91366da16b4d2064fd4d0ee0b
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 7
+          locator: '49. Imunohistoquímica, Resultado (IMUNOH_N): 1-Positivo, 2-Negativo, 3-Inconclusivo,
+            4-Não realizado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: hospitaliz
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+      '9': Ignorado
+    x-metadata:
+      missing_codes:
+        '9': ignored
+      claims:
+      - target: /field/codes
+        value_sha256: b755ad46809d5437fbf97eece5d1a9274f9dc92b6461c4e280ae4ce2ff94fbe9
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 7
+          locator: '50. Ocorreu Hospitalização? (HOSPITALIZ): 1-Sim, 2-Não, 9-Ignorado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_interna
+    type: date
+  - name: uf
+    type: string
+  - name: municipio
+    type: string
+  - name: tpautocto
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+      '3': Indeterminado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: d9debcb33142e3c052485d69c2c3a8464e3613b96b2753d046e3b699ba65aaf5
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 9
+          locator: '34-O caso é Autóctone de residência? (TPAUTOCTO): 1 – Sim, 2 – Não, 3 – Indeterminado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: coufinf
+    type: string
+  - name: copaisinf
+    type: string
+  - name: comuninf
+    type: string
+  - name: classi_fin
+    type: string
+    x-decode:
+      '5': Descartado
+      '8': Inconclusivo
+      '10': Dengue
+      '11': Dengue com sinais de alarme
+      '12': Dengue grave
+      '13': Chikungunya
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 077e5aab3cf19d1bf9a24c7f098f03ea5455b1bb89d0151c79526188ad97c54d
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 14
+          locator: '62. Classificação (CLASSI_FIN): 5-Descartado, 10-Dengue, 11-Dengue com sinais de alarme,
+            12-Dengue grave, 13-Chikungunya'
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNETON3.0.def: XClassificação, CLASSI_FIN, 1, Classdeng.cnv; TAB_SINANNET/Classdeng.cnv:
+            Inconclusivo 8'
+        note: 'Cada código citado por uma página ou um CNV oficial. O código 8 (Inconclusivo) vem de Classdeng.cnv:
+          a página não o lista e DENGBR17 o traz em 73.852 registros.'
+  - name: criterio
+    type: string
+    x-decode:
+      '1': Laboratório
+      '2': Clínico Epidemiológico
+      '3': Em investigação
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: cb8b62e1d21b8a5b6b4a1d932c43ed94e0b6189202710e2a0c7ce43dd696e306
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 14
+          locator: '63. Critério de Confirmação/Descarte (CRITERIO): 1-Laboratório, 2-Clínico Epidemiológico,
+            3-Em investigação'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: doenca_tra
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+      '9': Ignorado
+    x-metadata:
+      missing_codes:
+        '9': ignored
+      claims:
+      - target: /field/codes
+        value_sha256: b755ad46809d5437fbf97eece5d1a9274f9dc92b6461c4e280ae4ce2ff94fbe9
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 13
+          locator: '40-Doença relacionada ao trabalho (DOENCA_TRA): 1 – Sim, 2 – Não, 9 – Ignorado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: clinc_chik
+    type: string
+    x-decode:
+      '1': Aguda
+      '2': Crônica
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 3108b3c6cd5ad92382ca93b0ec17a39eb10b04a9429a40e3dbbbbd47437e4507
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 15
+          locator: '64. Apresentação clínica Chikungunya (dicionário: CLINIC_CHIK; DBF: CLINC_CHIK): 1-
+            Aguda, 2- Crônica'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: evolucao
+    type: string
+    x-decode:
+      '1': cura
+      '2': óbito pelo agravo
+      '3': óbito por outras causas
+      '4': óbito em investigação
+      '9': ignorado
+    x-metadata:
+      missing_codes:
+        '9': ignored
+      claims:
+      - target: /field/codes
+        value_sha256: 14ff7423d5aa92b30ec88687dbe9424d897d592e3d52e3624a1ebe9f27ae074e
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 15
+          locator: '65. Evolução do Caso (EVOLUCAO): 1- cura, 2- óbito pelo agravo, 3- óbito por outras
+            causas, 4- óbito em investigação, 9- ignorado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_obito
+    type: date
+  - name: dt_encerra
+    type: date
+  - name: alrm_hipot
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 16
+          locator: '68. Dengue com sinais de alarme (Hipotensão) (ALRM_HIPOT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_plaq
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 16
+          locator: '68. Dengue com sinais de alarme (Queda abrupta de plaquetas) (ALRM_PLAQ): 1 – Sim, 2
+            – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_vom
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 17
+          locator: '68. Dengue com sinais de alarme (Vômitos persistentes) (ALRM_VOM): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_sang
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 19
+          locator: '68. Dengue com sinais de alarme (Sangramento de mucosa/outras hemorragias) (ALRM_SANG):
+            1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_hemat
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 19
+          locator: '68. Dengue com sinais de alarme (Aumento hematócrito) (ALRM_HEMAT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_abdom
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 17
+          - 18
+          locator: '68. Dengue com sinais de alarme (Dor abdominal) (ALRM_ABDOM): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_letar
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 18
+          locator: '68. Dengue com sinais de alarme (Letargia ou irritabilidade) (ALRM_LETAR): 1 – Sim,
+            2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_hepat
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 20
+          locator: '68. Dengue com sinais de alarme (Hepatomegalia) (ALRM_HEPAT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: alrm_liq
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 21
+          locator: '68. Dengue com sinais de alarme (Acúmulo de líquidos) (ALRM_LIQ): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_alrm
+    type: date
+  - name: grav_pulso
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 22
+          locator: '70. Dengue grave (Pulso débil ou indectável) (GRAV_PULSO): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_conv
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 22
+          locator: '70. Dengue grave (PA convergente) (GRAV_CONV): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_ench
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 23
+          locator: '70. Dengue grave (Tempo de enchimento capilar) (GRAV_ENCH): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_insuf
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 23
+          locator: '70. Dengue grave (Acúmulo de líquidos com insuficiência respiratória) (GRAV_INSUF):
+            1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_taqui
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 23
+          locator: '70. Dengue grave (Taquicardia) (GRAV_TAQUI): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_extre
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 23
+          locator: '70. Dengue grave (Extremidade frias) (GRAV_EXTRE): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_hipot
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 24
+          locator: '70. Dengue grave (Hipotensão arterial em fase tardia) (GRAV_HIPOT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_hemat
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 24
+          locator: '70. Dengue grave (Hematêmese) (GRAV_HEMAT): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_melen
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 24
+          locator: '70. Dengue grave (Melena) (GRAV_MELEN): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_metro
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 25
+          locator: '70. Dengue grave (Metrorragia volumosa) (GRAV_METRO): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_sang
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 25
+          locator: '70. Dengue grave (Sangramento do SNC) (GRAV_SANG): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_ast
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 25
+          locator: '70. Dengue grave (AST/ALT >1 .000) (GRAV_AST): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_mioc
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 26
+          locator: '70. Dengue grave (Miocardite) (GRAV_MIOC): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_consc
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-da262c3b9f20
+          pages:
+          - 26
+          locator: '70. Dengue grave (Alteração da consciência) (GRAV_CONSC): 1 – Sim, 2 – Não'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: grav_orgao
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNETON3.0.def: XGrave:Outros órg., GRAV_ORGAO, 1, Sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv:
+            Sim 1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_grav
+    type: date
+  - name: mani_hemor
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xManifestações Hemorrágicas, MANI_HEMOR, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv:
+            Sim 1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: epistaxe
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xEpistaxe, EPISTAXE, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1,
+            Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: gengivo
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xGengivorragia, GENGIVO, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim
+            1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: metro
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xMetrorragia, METRO, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1,
+            Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: petequias
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xPetéquias, PETEQUIAS, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim
+            1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: hematura
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xHematúria, HEMATURA, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1,
+            Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: sangram
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xSangramento gastrointestinal, SANGRAM, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv:
+            Sim 1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: laco_n
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xProva do laço, LACO_N, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim
+            1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: plasmatico
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xExtravasamento plasmático, PLASMATICO, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv:
+            Sim 1, Não 2'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: evidencia
+    type: string
+    x-decode:
+      '1': Hemoconcentração
+      '2': Derrames cavitários
+      '3': Hipoproteinemia
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: b16a63a8c31d46de31e378ebec9c8f6d6cc73889c1a193a8a92f7d74c4a96048
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xEvidenciado por, EVIDENCIA, 1, Evideng.cnv; TAB_SINANNET/Evideng.cnv:
+            1 a 3'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: plaq_menor
+    type: string
+  - name: con_fhd
+    type: string
+    x-decode:
+      '1': Grau I
+      '2': Grau II
+      '3': Grau III
+      '4': Grau IV
+      '5': Não se aplica
+    x-metadata:
+      missing_codes:
+        '5': not_applicable
+      claims:
+      - target: /field/codes
+        value_sha256: 62fa23bf905ca1ae0dfb54cc33569347d1709528d56f9f7f78d4bc334dbff929
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNET.def: xGrau FHD, CON_FHD, 1, graufhd.cnv; TAB_SINANNET/Graufhd.cnv: 1 a 5'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: complica
+    type: string
+    description: 'Complicações: DengueNET.def liga o campo a CompdengM50mil.cnv (até 2010) e a CompdengM20mil.cnv
+      (depois de 2010), que dão rótulos diferentes ao código 4, e o dicionário do Sinan Online não o lista,
+      por isso fica sem decodificação.'
+  - name: tp_sistema
+    type: string
+    x-decode:
+      ? ''
+      : Sinan NET
+      '1': Sinan NET
+      '2': Sinan ONLINE
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 6f28a6fedeea300b8e3f87cdf9c6d73e89058cba7679aa9af55c4c38b6c28da5
+        status: verified_in_source
+        checked_at: '2026-11-20'
+        method: cnv-parse
+        reviewer: scripts/metadados/gerar_decode_cnv.py
+        evidence:
+        - source_id: sinan-tab-24ac0c62fb84
+          pages: []
+          locator: 'DengueNETON3.0.def: xTipo Sistema, TP_SISTEMA, 1, TIPOSISTEMA.CNV; TAB_SINANNET/TipoSistema.cnv'
+        note: Mapa do CNV.
+  - name: nduplic_n
+    type: string
+    x-decode:
+      ? ''
+      : Não identificado
+      '0': Não identificado
+      '1': Não é duplicidade (não listar)
+      '2': Duplicidade (não contar)
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 6e5d75325fc5e6773be557e9440b7cf256d6ac76b5cfaecf219814b46eb7c6a1
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 8
+          locator: 'Não Listar/Não Contar (NDUPLIC_N): 0 ou branco – Não identificado, 1 – Não é duplicidade
+            (não listar), 2 – Duplicidade (não contar)'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: dt_digita
+    type: date
+  - name: cs_flxret
+    type: string
+    x-decode:
+      '0': Não
+      '1': habilitado para envio
+      '2': enviado
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 2675e40a7bf7d485ebe11588ae9bc5736fb8a9e09d2eee513adaff68283f2585
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 15
+          locator: 'Fluxo de retorno (CS_FLXRET): 0 - Não, 1 - habilitado para envio., 2 - enviado'
+        note: Cada código citado por uma página ou um CNV oficial.
+  - name: flxrecebi
+    type: string
+  - name: migrado_w
+    type: string
+    x-decode:
+      '1': migrado do Sinan Windows
+    x-metadata:
+      claims:
+      - target: /field/codes
+        value_sha256: 6c6609ba7be3b500fc5ca2f14011d216c1848d521c796937860276ccffb134a7
+        status: verified_in_source
+        checked_at: '2026-09-22'
+        method: page-read
+        reviewer: scripts/metadados/sinan_bloco_comum.yaml
+        evidence:
+        - source_id: sinan-b3e0561c7a2d
+          pages:
+          - 15
+          locator: 'Identifica migração (MIGRADO_W): 1- migrado do Sinan Windows'
+        note: Cada código citado por uma página ou um CNV oficial.
+x-identity:
+  year_column: nu_ano
+  code_column: id_agravo
+  code: A90
+x-analytics:
+  version: 1.0.0
+  applicability_policy: exact_audited_source_identity
+  validated_sources:
+  - uf: null
+    ano: 2017
+    release: final
+    source_sha256: ec341731d6bbae5a6c2bcc4c349b6e3ee4f66b34469663fa45c15214912afce0
+  age:
+    field: nu_idade_n
+    kind: sinan
+    units:
+      '1':
+        unit: hour
+      '2':
+        unit: day
+      '3':
+        unit: month
+      '4':
+        unit: year
+    evidence:
+    - source_id: sinan-b3e0561c7a2d
+      pages: [3, 4]
+      locator: '10. Idade (NU_IDADE_N): 1º dígito 1 Hora, 2 Dia, 3 Mês, 4 Ano; ex. 3009 = nove meses, 4018 = dezoito anos'
+    notes:
+    - Three quantity digits; 4088 is 88 years. A SIM-width slice would read 8.
+    - The audit covers the complete FINAIS DENGBR17.dbc; observed units 1, 2, 3 and 4; 19
+      values with fewer than four digits are invalid.
+    - No maximum is declared, so the 15 records holding 4401 to 4407 read as 401 to 407 years.
+    - No ignored sentinel is declared; other unit codes are unsupported.

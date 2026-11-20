@@ -136,6 +136,85 @@ REMAINING = {
         ("bac_apos_6", "0", 1),
         ("transf", "", 2943),
     ],
+    # DENGBR17 excerpt: every gap is a blank; no page or CNV names the blank of these fields.
+    ("sinan_dengue", "sinan_dengue_br_2017_excerpt"): [
+        ("cs_gestant", "", 1),
+        ("cs_escol_n", "", 686),
+        ("febre", "", 207),
+        ("mialgia", "", 207),
+        ("cefaleia", "", 207),
+        ("exantema", "", 207),
+        ("vomito", "", 207),
+        ("nausea", "", 207),
+        ("dor_costas", "", 207),
+        ("conjuntvit", "", 207),
+        ("artrite", "", 207),
+        ("artralgia", "", 207),
+        ("petequia_n", "", 207),
+        ("leucopenia", "", 207),
+        ("laco", "", 207),
+        ("dor_retro", "", 207),
+        ("diabetes", "", 207),
+        ("hematolog", "", 207),
+        ("hepatopat", "", 207),
+        ("renal", "", 207),
+        ("hipertensa", "", 207),
+        ("acido_pept", "", 207),
+        ("auto_imune", "", 207),
+        ("res_chiks1", "", 4959),
+        ("res_chiks2", "", 4960),
+        ("resul_prnt", "", 4961),
+        ("resul_soro", "", 1079),
+        ("resul_ns1", "", 1632),
+        ("resul_vi_n", "", 1660),
+        ("resul_pcr_", "", 1678),
+        ("sorotipo", "", 4995),
+        ("histopa_n", "", 2194),
+        ("imunoh_n", "", 2173),
+        ("hospitaliz", "", 1375),
+        ("tpautocto", "", 1454),
+        ("classi_fin", "", 8),
+        ("criterio", "", 447),
+        ("doenca_tra", "", 5000),
+        ("clinc_chik", "", 4968),
+        ("evolucao", "", 560),
+        ("alrm_hipot", "", 4981),
+        ("alrm_plaq", "", 4981),
+        ("alrm_vom", "", 4981),
+        ("alrm_sang", "", 4981),
+        ("alrm_hemat", "", 4981),
+        ("alrm_abdom", "", 4981),
+        ("alrm_letar", "", 4981),
+        ("alrm_hepat", "", 4981),
+        ("alrm_liq", "", 4981),
+        ("grav_pulso", "", 4994),
+        ("grav_conv", "", 4994),
+        ("grav_ench", "", 4994),
+        ("grav_insuf", "", 4994),
+        ("grav_taqui", "", 4994),
+        ("grav_extre", "", 4994),
+        ("grav_hipot", "", 4994),
+        ("grav_hemat", "", 4994),
+        ("grav_melen", "", 4994),
+        ("grav_metro", "", 4994),
+        ("grav_sang", "", 4994),
+        ("grav_ast", "", 4994),
+        ("grav_mioc", "", 4994),
+        ("grav_consc", "", 4994),
+        ("grav_orgao", "", 4994),
+        ("mani_hemor", "", 5000),
+        ("epistaxe", "", 5000),
+        ("gengivo", "", 5000),
+        ("metro", "", 5000),
+        ("petequias", "", 5000),
+        ("hematura", "", 5000),
+        ("sangram", "", 5000),
+        ("laco_n", "", 5000),
+        ("plasmatico", "", 5000),
+        ("evidencia", "", 5000),
+        ("con_fhd", "", 5000),
+        ("migrado_w", "", 5000),
+    ],
     # tpdocresp 0 is not in the Estrutura (issue tpdocresp-0-sem-fonte).
     ("sinasc_nascidos_vivos", "sinasc_rr_2022_mini"): [
         ("tpdocresp", "", 1),
@@ -194,6 +273,7 @@ REMAINING = {
     ("sia_apac_acompanhamento_bariatrica", "sia_ab_se_2025_07_mini"): [],
     ("sia_apac_fistula_arteriovenosa", "sia_acf_rr_2024_01_mini"): [],
     ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini"): [],
+    ("sia_apac_nefrologia", "sia_an_rr_2014_01_mini"): [],
     ("sia_apac_radioterapia", "sia_ar_ac_2024_01_mini"): [],
     ("sia_atencao_domiciliar", "sia_sad_ma_2018_10_mini"): [],
 }
@@ -408,6 +488,21 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
                 "": "Não investigado",
             },
         ),
+        # Obito_1996_CID10.def binds SERIESCFAL and SERIESCMAE to SERIEFAL.CNV and
+        # VERSAOSCB to VERSCB.CNV (#184); DORR2022 holds series 1-8 and SCB 3.2-3.4.
+        (
+            "sim_obitos",
+            "sim_rr_2022_mini",
+            "seriescfal",
+            {"": "N Inf", "1": "1", "8": "8"},
+        ),
+        ("sim_obitos", "sim_rr_2022_mini", "seriescmae", {"": "N Inf", "3": "3"}),
+        (
+            "sim_obitos",
+            "sim_rr_2022_mini",
+            "versaoscb",
+            {"": "CD sem Patch", "3.2": "Versao SCB 3.2", "3.4": "Versao SCB 3.4"},
+        ),
         # TAB_SIA FINANC.CNV, the table of PA_TPFIN, which the Informe Técnico describes
         # with the same words as BPA-I TPFIN.
         (
@@ -433,6 +528,30 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
             {"2": "Dias", "4": "Anos"},
         ),
         ("sia_apac_fistula_arteriovenosa", "sia_acf_rr_2024_01_mini", "ap_coidade", {"4": "Anos"}),
+        # APAC_Nefrologia.DEF lines 387-388 bind AP_COIDADE to the same tables (#183).
+        ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_coidade", {"4": "Anos"}),
+        # APAC_Nefrologia.DEF line 390 binds AP_UFNACIO to UFNACIO.CNV (#183).
+        ("sia_apac_nefrologia", "sia_an_pa_2014_10_mini", "ap_ufnacio", {"010": "BRASIL"}),
+        # APAC_Nefrologia.DEF line 220 binds AP_TIPPRE to TIPOPRES.CNV (#183).
+        (
+            "sia_apac_nefrologia",
+            "sia_an_pa_2014_10_mini",
+            "ap_tippre",
+            {"61": "FILANTROPICO COM CNAS VALIDO"},
+        ),
+        (
+            "sia_apac_nefrologia",
+            "sia_an_rr_2014_01_mini",
+            "ap_tippre",
+            {"20": "PRIVADO COM FINS LUCRATIVOS"},
+        ),
+        # ANRR1401 has the one AN record measured with unit '5' (age 100 and over).
+        (
+            "sia_apac_nefrologia",
+            "sia_an_rr_2014_01_mini",
+            "ap_coidade",
+            {"4": "Anos", "5": "Anos (somar 100)"},
+        ),
         # #6: IDADEDET.CNV reads 500-530 as 100 to 130 years; the unit '5' alone is
         # measured, not read, and says to add 100.
         (
@@ -655,8 +774,8 @@ def test_amp_age_unit_and_sex_stay_undecoded_without_a_def(dbc_fixture):
     ],
 )
 def test_bpai_fields_stay_undecoded_without_a_def(dbc_fixture, field, published):
-    """As with AMP: none of the 12 packaged TAB_SIA DEF reads BI*.DBC, so no DEF binds a
-    BPA-I field to a table. The DEF of another product (PS, SAD, PA) binding a field of
+    """None of the 13 packaged TAB_SIA DEF reads BI*.DBC (APAC_Dados_Comuns.DEF, packaged
+    for AP_NATJUR in #183, reads A?*.DBC), so no DEF binds a BPA-I field to a table. The DEF of another product (PS, SAD, PA) binding a field of
     the same or another name does not say BPA-I follows that table: BIRR2401 holds the
     codes, and the four fields get no map."""
     masks = [
@@ -666,7 +785,7 @@ def test_bpai_fields_stay_undecoded_without_a_def(dbc_fixture, field, published)
         for line in path.read_text(encoding="latin-1").splitlines()
         if line.upper().startswith("ADADOS")
     ]
-    assert len(masks) == 12 and not [m for m in masks if m.startswith("ADADOS\\BI")]
+    assert len(masks) == 13 and not [m for m in masks if m.startswith("ADADOS\\BI")]
     assert "sia_bpa_individualizado" not in VINCULOS["datasets"]
     frame = _read("sia_bpa_individualizado", dbc_fixture("sia_bi_rr_2024_01_mini"))
     assert set(frame[field]) == published
@@ -687,19 +806,20 @@ def test_bpai_fields_stay_undecoded_without_a_def(dbc_fixture, field, published)
 def test_sih_homonimo_and_gestor_tp_stay_undecoded_without_a_def(
     dbc_fixture, field, published, issue
 ):
-    """#10: none of the 37 packaged DEF (RD2008.DEF, RJ2008.DEF, the RD.DEF of 1992-2007
-    and the rest) names HOMONIMO or GESTOR_TP, and no registered document lists their
-    codes. RDRR2401 holds homonimo 0/2, which contradicted the {0: Não, 1: Sim} map, and
+    """#10: none of the 39 packaged DEF (RD2008.DEF, RJ2008.DEF, the RD.DEF of 1992-2007
+    and the rest) names HOMONIMO or GESTOR_TP, and no document of the RD from 2008 lists
+    their codes. RDRR2401 holds homonimo 0/2, which contradicted the {0: Não, 1: Sim} map, and
     gestor_tp 0/1; neither field gets a map, and the field's issue says what was read."""
     defs = [p for p in Path(str(CNV)).rglob("*") if p.suffix.lower() == ".def"]
-    assert len(defs) == 37
+    assert len(defs) == 39
     assert not [p.name for p in defs if field.upper() in p.read_text(encoding="latin-1").upper()]
     frame = _read("sih_aih_reduzida", dbc_fixture("sih_rr_2024_01_mini"))
     assert set(frame[field]) == published
     definition = load_dicionario("sih_aih_reduzida").field_def(field)
     assert "x-decode" not in definition
     (entry,) = [i for i in definition["x-metadata"]["issues"] if i["id"] == issue]
-    assert entry["status"] == "open" and "DEF" in entry["description"]
+    assert entry["status"] == "open"
+    assert f"nenhum dos {len(defs)} DEF empacotados" in " ".join(entry["description"].split())
 
 
 APAC_WITH_UNIT_MAP = [
@@ -710,6 +830,7 @@ APAC_WITH_UNIT_MAP = [
     "sia_apac_cirurgia_bariatrica",
     "sia_apac_radioterapia",
     "sia_apac_fistula_arteriovenosa",
+    "sia_apac_nefrologia",
 ]
 
 

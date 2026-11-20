@@ -12,8 +12,12 @@
 # está no CNV. O branco ('') só entra onde a página o nomeia ("0 ou branco").
 #
 # `revisado_em` é o `checked_at` de toda claim `/field/codes` gerada deste bloco:
-# mudar a data aqui redata as claims de todos os dicionários SINAN.
+# mudar a data aqui redata as claims de todos os dicionários SINAN, menos as dos mapas de
+# um agravo listado em `revisado_em_agravo`.
 revisado_em: '2026-09-22'
+# Data de leitura dos mapas de `agravo.<dataset>`, quando não é a de `revisado_em`.
+revisado_em_agravo:
+  sinan_dengue: '2026-11-20'
 comum:
 - name: tp_not
   type: string
@@ -664,3 +668,618 @@ agravo:
       locator: '63. Se transferência (TRANSF): 1. Mesmo município, 2. Município diferente (mesma
         UF), 3. UF diferente, 4. País diferente, 9. Ignorado'
       codigos: ['1', '2', '3', '4', '9']
+  # DENGBR07-12 publica NU_IDADE_N como F 4 e DENGBR13 como N 4 (leiautes.json da evidência
+  # de 2026-11-20). Nenhum arquivo dessas duas bases foi auditado, então o campo não declara
+  # a derivação de idade do bloco comum.
+  sinan_dengue_2000_2012:
+  - name: nu_idade_n
+    type: number
+    label: Idade
+    x-metadata:
+      physical_name: NU_IDADE_N
+  sinan_dengue_2013:
+  - name: nu_idade_n
+    type: integer
+    label: Idade
+    x-metadata:
+      physical_name: NU_IDADE_N
+  sinan_dengue:
+  # Dicionário de Dados Sinan Online, Dengue/Chikungunya (DIC_DADOS_ONLINE.pdf, revisado em
+  # 21/10/2015, registro sinan-da262c3b9f20), lido em 2026-11-20 com as páginas
+  # renderizadas. Um campo que a página não lista tem o CNV de TAB_SINANNET (edição
+  # sinan-tab-24ac0c62fb84) que o DEF do TabWin liga a ele; o 0 e o 9 que DENGBR26 traz
+  # nos campos Sim/Não não estão em nenhuma página e ficam sem rótulo.
+  - &deng_sim_nao
+    name: febre
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Febre) (FEBRE): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: mialgia
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Mialgia) (MIALGIA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: cefaleia
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Cefaleia) (CEFALEIA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: exantema
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Exantema) (EXANTEMA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: vomito
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Vômito) (VOMITO): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: nausea
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Náusea) (NAUSEA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: dor_costas
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Dor nas costas) (DOR_COSTAS): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: conjuntvit
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Conjuntivite) (CONJUNTVIT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: artrite
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Artrite) (ARTRITE): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: artralgia
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Artralgia intensa) (ARTRALGIA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: petequia_n
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Petéquias) (dicionário: PETÉQUIA_N; DBF: PETEQUIA_N): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: leucopenia
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [3]
+      locator: '33. Sinais clínicos (Leucopenia) (LEUCOPENIA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: laco
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '33. Sinais clínicos (Prova do laço) (LACO): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: dor_retro
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '33. Sinais clínicos (Dor retroorbital) (DOR_RETRO): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: diabetes
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Diabetes) (DIABETES): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: hematolog
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Doenças hematológicas) (HEMATOLOG): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: hepatopat
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Hepatopatias) (HEPATOPAT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: renal
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Doença renal crônica) (RENAL): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: hipertensa
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Hipertensão arterial) (HIPERTENSA): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: acido_pept
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Doença ácido-péptica) (dicionário: ÁCIDO_PEPT; DBF: ACIDO_PEPT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: auto_imune
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [4]
+      locator: '34. Doenças pré-existentes (Doenças auto-imunes) (AUTO_IMUNE): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - &deng_reagente
+    name: res_chiks1
+    type: string
+    x-decode:
+      '1': Reagente
+      '2': Não Reagente
+      '3': Inconclusivo
+      '4': Não realizado
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [5]
+      locator: '38. Exame sorológico (IgM) Chikungunya Soro 1, Resultado (RES_CHIKS1): 1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_reagente
+    name: res_chiks2
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [5]
+      locator: '38. Exame sorológico (IgM) Chikungunya Soro 2, Resultado (RES_CHIKS2): 1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_reagente
+    name: resul_prnt
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [5]
+      locator: '38. Exame PRNT, Resultado (RESUL_PRNT): 1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_reagente
+    name: resul_soro
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [5]
+      locator: '40. Exame sorológico (IgM) Dengue, Resultado (RESUL_SORO): 1-Reagente, 2-Não Reagente, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - &deng_positivo
+    name: resul_ns1
+    type: string
+    x-decode:
+      '1': Positivo
+      '2': Negativo
+      '3': Inconclusivo
+      '4': Não realizado
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [6]
+      locator: '42. Exame NS1, Resultado (RESUL_NS1): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_positivo
+    name: resul_vi_n
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [6]
+      locator: '43. Isolamento Viral, Resultado (RESUL_VI_N): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_positivo
+    name: resul_pcr_
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [6]
+      locator: '46. RT-PCR, Resultado (RESUL_PCR_): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - name: sorotipo
+    type: string
+    x-decode:
+      '1': DEN 1
+      '2': DEN 2
+      '3': DEN 3
+      '4': DEN 4
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [7]
+      locator: '47. Sorotipo (SOROTIPO): 1-DEN 1, 2-DEN 2, 3 DEN 3, 4-DEN 4'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_positivo
+    name: histopa_n
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [7]
+      locator: '48. Histopatologia, Resultado (HISTOPA_N): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - <<: *deng_positivo
+    name: imunoh_n
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [7]
+      locator: '49. Imunohistoquímica, Resultado (IMUNOH_N): 1-Positivo, 2-Negativo, 3-Inconclusivo, 4-Não realizado'
+      codigos: ['1', '2', '3', '4']
+  - name: hospitaliz
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+      '9': Ignorado
+    x-metadata:
+      missing_codes:
+        '9': ignored
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [7]
+      locator: '50. Ocorreu Hospitalização? (HOSPITALIZ): 1-Sim, 2-Não, 9-Ignorado'
+      codigos: ['1', '2', '9']
+  - name: classi_fin
+    type: string
+    x-decode:
+      '5': Descartado
+      '8': Inconclusivo
+      '10': Dengue
+      '11': Dengue com sinais de alarme
+      '12': Dengue grave
+      '13': Chikungunya
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [14]
+      locator: '62. Classificação (CLASSI_FIN): 5-Descartado, 10-Dengue, 11-Dengue com sinais de
+        alarme, 12-Dengue grave, 13-Chikungunya'
+      codigos: ['5', '10', '11', '12', '13']
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Classdeng.cnv
+      pages: []
+      locator: 'DengueNETON3.0.def: XClassificação, CLASSI_FIN, 1, Classdeng.cnv;
+        TAB_SINANNET/Classdeng.cnv: Inconclusivo 8'
+      codigos: ['8']
+    nota: ['O código 8 (Inconclusivo) vem de Classdeng.cnv: a página não o lista e DENGBR17 o traz em 73.852 registros.']
+  - name: criterio
+    type: string
+    x-decode:
+      '1': Laboratório
+      '2': Clínico Epidemiológico
+      '3': Em investigação
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [14]
+      locator: '63. Critério de Confirmação/Descarte (CRITERIO): 1-Laboratório, 2-Clínico Epidemiológico, 3-Em investigação'
+      codigos: ['1', '2', '3']
+  - name: clinc_chik
+    type: string
+    x-decode:
+      '1': Aguda
+      '2': Crônica
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [15]
+      locator: '64. Apresentação clínica Chikungunya (dicionário: CLINIC_CHIK; DBF: CLINC_CHIK): 1- Aguda, 2- Crônica'
+      codigos: ['1', '2']
+  - name: evolucao
+    type: string
+    x-decode:
+      '1': cura
+      '2': óbito pelo agravo
+      '3': óbito por outras causas
+      '4': óbito em investigação
+      '9': ignorado
+    x-metadata:
+      missing_codes:
+        '9': ignored
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [15]
+      locator: '65. Evolução do Caso (EVOLUCAO): 1- cura, 2- óbito pelo agravo, 3- óbito por outras causas, 4- óbito em investigação, 9- ignorado'
+      codigos: ['1', '2', '3', '4', '9']
+  - <<: *deng_sim_nao
+    name: alrm_hipot
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [16]
+      locator: '68. Dengue com sinais de alarme (Hipotensão) (ALRM_HIPOT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_plaq
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [16]
+      locator: '68. Dengue com sinais de alarme (Queda abrupta de plaquetas) (ALRM_PLAQ): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_vom
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [17]
+      locator: '68. Dengue com sinais de alarme (Vômitos persistentes) (ALRM_VOM): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_sang
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [19]
+      locator: '68. Dengue com sinais de alarme (Sangramento de mucosa/outras hemorragias) (ALRM_SANG): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_hemat
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [19]
+      locator: '68. Dengue com sinais de alarme (Aumento hematócrito) (ALRM_HEMAT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_abdom
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [17, 18]
+      locator: '68. Dengue com sinais de alarme (Dor abdominal) (ALRM_ABDOM): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_letar
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [18]
+      locator: '68. Dengue com sinais de alarme (Letargia ou irritabilidade) (ALRM_LETAR): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_hepat
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [20]
+      locator: '68. Dengue com sinais de alarme (Hepatomegalia) (ALRM_HEPAT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: alrm_liq
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [21]
+      locator: '68. Dengue com sinais de alarme (Acúmulo de líquidos) (ALRM_LIQ): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_pulso
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [22]
+      locator: '70. Dengue grave (Pulso débil ou indectável) (GRAV_PULSO): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_conv
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [22]
+      locator: '70. Dengue grave (PA convergente) (GRAV_CONV): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_ench
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [23]
+      locator: '70. Dengue grave (Tempo de enchimento capilar) (GRAV_ENCH): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_insuf
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [23]
+      locator: '70. Dengue grave (Acúmulo de líquidos com insuficiência respiratória) (GRAV_INSUF): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_taqui
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [23]
+      locator: '70. Dengue grave (Taquicardia) (GRAV_TAQUI): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_extre
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [23]
+      locator: '70. Dengue grave (Extremidade frias) (GRAV_EXTRE): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_hipot
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [24]
+      locator: '70. Dengue grave (Hipotensão arterial em fase tardia) (GRAV_HIPOT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_hemat
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [24]
+      locator: '70. Dengue grave (Hematêmese) (GRAV_HEMAT): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_melen
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [24]
+      locator: '70. Dengue grave (Melena) (GRAV_MELEN): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_metro
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [25]
+      locator: '70. Dengue grave (Metrorragia volumosa) (GRAV_METRO): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_sang
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [25]
+      locator: '70. Dengue grave (Sangramento do SNC) (GRAV_SANG): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_ast
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [25]
+      locator: '70. Dengue grave (AST/ALT >1 .000) (GRAV_AST): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_mioc
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [26]
+      locator: '70. Dengue grave (Miocardite) (GRAV_MIOC): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao
+    name: grav_consc
+    fontes:
+    - source_id: sinan-da262c3b9f20
+      pages: [26]
+      locator: '70. Dengue grave (Alteração da consciência) (GRAV_CONSC): 1 – Sim, 2 – Não'
+      codigos: ['1', '2']
+  # GRAV_ORGAO: a página 26 não lista categorias; o DEF do Sinan Online o liga a Sim_nao.cnv.
+  - &deng_sim_nao_cnv
+    name: grav_orgao
+    type: string
+    x-decode:
+      '1': Sim
+      '2': Não
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNETON3.0.def: XGrave:Outros órg., GRAV_ORGAO, 1, Sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  # Campos da ficha do Sinan NET (dengue até 2013), que o dicionário do Sinan Online não
+  # lista: DengueNET.def, da mesma edição de TAB_SINANNET, liga cada um ao CNV citado.
+  - <<: *deng_sim_nao_cnv
+    name: mani_hemor
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xManifestações Hemorrágicas, MANI_HEMOR, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: epistaxe
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xEpistaxe, EPISTAXE, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: gengivo
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xGengivorragia, GENGIVO, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: metro
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xMetrorragia, METRO, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: petequias
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xPetéquias, PETEQUIAS, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: hematura
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xHematúria, HEMATURA, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: sangram
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xSangramento gastrointestinal, SANGRAM, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: laco_n
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xProva do laço, LACO_N, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - <<: *deng_sim_nao_cnv
+    name: plasmatico
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Sim_nao.cnv
+      pages: []
+      locator: 'DengueNET.def: xExtravasamento plasmático, PLASMATICO, 1, sim_nao.cnv; TAB_SINANNET/Sim_nao.cnv: Sim 1, Não 2'
+      codigos: ['1', '2']
+  - name: evidencia
+    type: string
+    x-decode:
+      '1': Hemoconcentração
+      '2': Derrames cavitários
+      '3': Hipoproteinemia
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Evideng.cnv
+      pages: []
+      locator: 'DengueNET.def: xEvidenciado por, EVIDENCIA, 1, Evideng.cnv; TAB_SINANNET/Evideng.cnv: 1 a 3'
+      codigos: ['1', '2', '3']
+  - name: con_fhd
+    type: string
+    x-decode:
+      '1': Grau I
+      '2': Grau II
+      '3': Grau III
+      '4': Grau IV
+      '5': Não se aplica
+    x-metadata:
+      missing_codes:
+        '5': not_applicable
+    fontes:
+    - source_id: sinan-tab-24ac0c62fb84
+      membro: sinan/Graufhd.cnv
+      pages: []
+      locator: 'DengueNET.def: xGrau FHD, CON_FHD, 1, graufhd.cnv; TAB_SINANNET/Graufhd.cnv: 1 a 5'
+      codigos: ['1', '2', '3', '4', '5']
+  - name: complica
+    type: string
+    description: >-
+      Complicações: DengueNET.def liga o campo a CompdengM50mil.cnv (até 2010) e a
+      CompdengM20mil.cnv (depois de 2010), que dão rótulos diferentes ao código 4, e o
+      dicionário do Sinan Online não o lista, por isso fica sem decodificação.

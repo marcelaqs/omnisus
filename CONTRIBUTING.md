@@ -59,7 +59,7 @@ precisa de acesso ao repositório de extensões do DuckDB.
 
 ## Conferir antes do PR
 
-Os mesmos passos do CI:
+Rode localmente antes de cada push; o GitHub Actions não testa pull request:
 
 ```bash
 uv run ruff check .
@@ -72,7 +72,7 @@ uv run mkdocs build --strict
 ```
 
 Testes que acessam o servidor do DATASUS levam os marcadores `integration` e `e2e` e
-ficam fora do CI de pull request.
+ficam fora destes comandos.
 
 ## Como mudar o comportamento
 

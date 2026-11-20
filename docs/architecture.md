@@ -19,8 +19,8 @@ recorded on each active publication with what the server lists today — by
 path, and by size or server mtime when recorded — and returns the scopes
 that differ, to be re-imported with `policy="replace"`.
 
-National datasets (the SINAN agravos `sinan_chagas`, `sinan_hanseniase` and
-`sinan_tuberculose`, and the SIM subsets `sim_obitos_fetais`, `sim_obitos_externos`,
+National datasets (the SINAN agravos `sinan_chagas`, `sinan_hanseniase`,
+`sinan_tuberculose` and the three `sinan_dengue` rows, and the SIM subsets `sim_obitos_fetais`, `sim_obitos_externos`,
 `sim_obitos_infantis` and `sim_obitos_maternos`) use
 `ScopeKey(uf=None, ano=year)` and a reserved `_source_ano` publication column.
 They preserve original geography and dates instead of assigning an artificial
@@ -36,7 +36,7 @@ unknown (NULL) URIs. See [the Chagas contract](sources/sinan_chagas.md).
 - **`Dataset`** is an immutable, keyword-only DATASUS FTP registry row. It holds
   identity, FTP location, cadence, partitioning, coverage and a dictionary path.
   The registry covers SIM (with CID-9 and the national subsets), SINASC, SIH,
-  SIA/APAC, the CNES file groups and SINAN (Chagas, Hanseníase, Tuberculose);
+  SIA/APAC, the CNES file groups and SINAN (Chagas, Hanseníase, Tuberculose, Dengue);
   [datasets](datasets.md) lists every row. Callers can also construct a `Dataset`
   with their own dictionary.
 - **Importers** orchestrate fetching, parsing and writing. IBGE population and
@@ -80,7 +80,11 @@ require its timeout to finish.
 New columns widen the lake table; absent columns become NULL through
 `INSERT BY NAME`. Existing types must match or allow a lossless widening within
 the same signed-integer, unsigned-integer or floating-point family. Incompatible
-families and decimal changes fail before insertion. The staging parser also
+families and decimal changes fail before insertion. Staging writes one such
+difference away: a field the DBF header declares `N` with no decimals is staged
+as text when the dictionary declares it `string` or `date`, with the number as
+written and no zeros added, and as a number with decimals when the dictionary
+declares it `number` (#40, #219). Nothing else is converted. The staging parser also
 rejects incompatible values before Arrow inference can erase information.
 Previously coerced values require an explicit source rebuild to recover.
 
@@ -107,13 +111,24 @@ Parquet replacement remain in Python. Rust owns its input buffer and each Arrow
 batch owns its exported data; the initial DBF copy is included in resource
 measurements. This does not make DBC decompression incremental.
 
-`dbc-staging-v2:<hash>` identifies output semantics rather than the execution
-language. The hash covers only what the import reads from the dictionary, its
-`encoding` and `x-identity`; labels, code maps and claims are read at query time, so
-editing them keeps `skip_same` skipping. Backend and native package version are
-logged separately.
+`dbc-staging-v2:<hash>` names the parser contract rather than the execution
+language. The hash covers the dictionary's `encoding` and `x-identity`; labels, code
+maps and claims are read at query time, so editing them keeps `skip_same` skipping.
+Backend and native package version are logged separately.
 Changing between equivalent backends therefore preserves `skip_same`; a change
 in decoding semantics requires a new parser contract version.
+
+One change did not get a new version: the conversion of whole numbers above (#40,
+#219). Staging reads the `type` of each field for it, and neither the types nor the
+change are in the version. The rows that differ are those of files with a whole
+number the dictionary declares otherwise. Among the `RD`, `SP` and `RJ` headers of
+`evidence/2026-11-19-sih-cabecalhos/` they are the 188 `RD` files of 1996-01 to
+1996-07, the 567 of 2004-07 to 2006-03 and `RDAC0909.dbc`; the files of the other
+datasets were not surveyed. `skip_same` reports a scope imported from one of them
+before the change as unchanged. A new version would not repair it: the lake refuses a
+column of another type under `replace` too, and no operation of the library changes
+the type of a column, so the table has to be imported again into a new lake. The same
+holds after editing the `type` of such a field in a dictionary.
 
 `Lake.ingest` remains append. FTP imports use `Lake.publish_scope`, with `append`
 as the default and explicit `skip_same`, `error_if_exists` and `replace` policies.

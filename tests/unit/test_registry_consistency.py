@@ -5,8 +5,8 @@ no public door) impossible.
 
 from __future__ import annotations
 
+import itertools
 from importlib.resources import files
-from itertools import pairwise
 
 import pytest
 
@@ -42,16 +42,21 @@ def test_b_python_api_accepts_every_row() -> None:
 
 
 def test_d_prefixes_are_unique() -> None:
-    """Per directory: RD and PA each have a row in two directories (one per era). Rows of
-    one directory share a prefix only when their `coverage` windows do not overlap (RD
-    1992-1997 and 1998-2007, ADR 0002 amendment of 2026-11-16)."""
-    by_key: dict[tuple[str, str], list[tuple[tuple[int, int], tuple[int, int]]]] = {}
+    """Per directory and year: RD and PA each have a row in two directories (one per era).
+    Rows of one directory share a prefix only when their coverages do not overlap: DENG
+    has three, one per layout (#225), and RD has two in `199201_200712`, 1992-1997 and
+    1998-2007 (ADR 0002 amendment of 2026-11-16)."""
+    by_key: dict[tuple[str, str], list] = {}
     for d in REGISTRY.values():
-        first, last = d.coverage
-        by_key.setdefault((d.prefix, d.ftp_dir), []).append((first, last or (9999, 12)))
-    for key, windows in by_key.items():
-        windows.sort()
-        assert all(a[1] < b[0] for a, b in pairwise(windows)), key
+        by_key.setdefault((d.prefix, d.ftp_dir), []).append(d.coverage)
+    assert {k for k, v in by_key.items() if len(v) > 1} == {
+        ("DENG", "/dissemin/publicos/SINAN/DADOS/FINAIS"),
+        ("RD", "/dissemin/publicos/SIHSUS/199201_200712/Dados"),
+    }
+    for key, coverages in by_key.items():
+        ordered = sorted(coverages, key=lambda c: c[0])
+        for (_, last), (first, _) in itertools.pairwise(ordered):
+            assert last is not None and last < first, key
 
 
 def test_e_cadence_agrees_with_partition_layout() -> None:

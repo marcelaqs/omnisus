@@ -14,6 +14,8 @@ campo). Um campo com claim `page-read` sem entrada no bloco faz o gerador parar:
 um mapa do bloco não deixa o mapa antigo para trás. Uma entrada de `comum` que nenhum
 dicionário SINAN tem, ou de `agravo.<dataset>` que aquele dicionário não tem, também faz
 o gerador parar. `nota` de uma entrada vai para a nota da claim, não para o campo.
+A claim de um campo de `agravo.<dataset>` leva a data de `revisado_em_agravo.<dataset>`,
+se houver; as demais, a de `revisado_em`.
 Rodar de novo não muda nada; `--check` falha se algum dicionário mudaria.
 """
 
@@ -117,7 +119,9 @@ def generate() -> dict[Path, str]:
         if missing:
             raise ValueError(f"{dataset}: agravo names no field {missing}")
         entries = {e["name"]: e for e in bloco["comum"]}
-        entries.update({e["name"]: e for e in bloco["agravo"].get(dataset, [])})
+        do_agravo = {e["name"]: e for e in bloco["agravo"].get(dataset, [])}
+        entries.update(do_agravo)
+        lido_em = bloco.get("revisado_em_agravo", {}).get(dataset, bloco["revisado_em"])
         for name, field in fields.items():
             claims = field.get("x-metadata", {}).get("claims", [])
             if name not in entries and any(c.get("method") == METHOD for c in claims):
@@ -134,7 +138,8 @@ def generate() -> dict[Path, str]:
                     f"{where}: cnv-parse claim from gerar_decode_cnv.py; "
                     "review it by hand before the block may replace it"
                 )
-            new = definition_for(entry, where, bloco["revisado_em"], vinculos["membros"])
+            checked_at = lido_em if name in do_agravo else bloco["revisado_em"]
+            new = definition_for(entry, where, checked_at, vinculos["membros"])
             if new != fields[name]:
                 text = replace_field(text, name, new)
         out[path] = text

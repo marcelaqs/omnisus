@@ -89,7 +89,9 @@ def test_age_derivation_lists_quantity_and_unit_outputs(dataset, field_name):
     ]
 
 
-@pytest.mark.parametrize("dataset", ["sinan_chagas", "sinan_hanseniase", "sinan_tuberculose"])
+@pytest.mark.parametrize(
+    "dataset", ["sinan_chagas", "sinan_hanseniase", "sinan_tuberculose", "sinan_dengue"]
+)
 def test_sinan_age_field_has_derivation_metadata(dataset):
     description = sus.describe_dataset(dataset)
     field = next(x for x in description["fields"] if x["field"]["name"] == "nu_idade_n")
@@ -133,15 +135,16 @@ def test_age_derivation_output_is_what_the_harmonisation_creates():
         dataset = path.stem
         raw = load_dicionario(dataset).raw
         expected = [c for c in harmonised_inputs(raw.get("x-analytics")) if c.startswith("idade_")]
-        if not expected:  # SIM subsets copy sim_obitos' fields; they have no x-analytics
-            continue
         listed = [
             field["x-metadata"]["derivation"]["output"]
             for field in raw["schema"]["fields"]
             if "idade_anos_completos"
             in field.get("x-metadata", {}).get("derivation", {}).get("output", [])
         ]
+        if not expected:  # no age rule, so `sus.load` creates no age column (ADR 0003)
+            assert not listed, dataset
+            continue
         if listed:
             age_datasets.append(dataset)
         assert all(output == expected for output in listed), dataset
-    assert len(age_datasets) == 9
+    assert len(age_datasets) == 10

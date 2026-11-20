@@ -9,7 +9,7 @@ independent statement of what the filenames must be.
 from __future__ import annotations
 
 import pytest
-from hypothesis import assume, given, settings
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from omnisus import ALL_UFS
@@ -23,6 +23,11 @@ GOLDEN: list[tuple[str, ScopeKey, str]] = [
     ("sinan_chagas", ScopeKey(uf=None, ano=2023), "CHAGBR23.dbc"),
     ("sinan_hanseniase", ScopeKey(uf=None, ano=2026), "HANSBR26.dbc"),
     ("sinan_tuberculose", ScopeKey(uf=None, ano=2020), "TUBEBR20.dbc"),
+    ("sinan_dengue_2000_2012", ScopeKey(uf=None, ano=2000), "DENGBR00.dbc"),
+    ("sinan_dengue_2000_2012", ScopeKey(uf=None, ano=2012), "DENGBR12.dbc"),
+    ("sinan_dengue_2013", ScopeKey(uf=None, ano=2013), "DENGBR13.dbc"),
+    ("sinan_dengue", ScopeKey(uf=None, ano=2014), "DENGBR14.dbc"),
+    ("sinan_dengue", ScopeKey(uf=None, ano=2017), "DENGBR17.dbc"),
     ("sim_obitos",    ScopeKey(uf="SP", ano=2024),         "DOSP2024.dbc"),
     ("sim_obitos",    ScopeKey(uf="RR", ano=1996),         "DORR1996.dbc"),
     ("sinasc_nascidos_vivos", ScopeKey(uf="MG", ano=2022),         "DNMG2022.dbc"),
@@ -104,8 +109,8 @@ def test_every_registry_row_has_a_golden_case() -> None:
 
 
 # --- round-trip property over the whole space ------------------------------
-# A two-digit year round-trips within the hundred years from the row's first year, and a
-# name is a file of the row only inside its coverage.
+# A two-digit year round-trips within the hundred years from the row's first year, or from
+# `two_digit_from`. A name outside the row's coverage is not the row's file.
 
 
 @settings(max_examples=300)
@@ -125,8 +130,9 @@ def test_round_trip_property(dataset: str, uf: str, offset: int, mes: int) -> No
         if d.geography == "national"
         else ScopeKey(uf=uf, ano=ano, mes=mes if d.monthly else None)
     )
-    assume(in_coverage(d, scope))
-    assert decode_for(d, filename_for(d, scope)) == scope
+    start = d.two_digit_from if d.two_digit_from is not None else d.coverage[0][0]
+    readable = ano < start + 100 and in_coverage(d, scope)
+    assert decode_for(d, filename_for(d, scope)) == (scope if readable else None)
 
 
 @pytest.mark.parametrize(

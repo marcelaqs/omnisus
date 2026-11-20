@@ -116,6 +116,12 @@ CASOS = {
         "prelim",
         "tipo_de_entrada_e_encerramento",
     ),
+    ("sinan.py", "sinan_dengue"): (
+        ScopeKey(uf=None, ano=2017),
+        "sinan_dengue_br_2017_excerpt",
+        "final",
+        "classificacao_e_evolucao",
+    ),
     **{("bases.py", d): (*ARQUIVO[d], "registros_no_recorte") for d in ARQUIVO},
     **{("sia.py", d): (*ARQUIVO[d], SIA_ANALISADAS.get(d, "registros_no_recorte")) for d in SIA},
 }

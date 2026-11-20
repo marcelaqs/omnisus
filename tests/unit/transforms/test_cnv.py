@@ -243,13 +243,44 @@ def test_a_real_line_outside_the_layout_fails():
             "long code '12345' twice: explicit and explicit",
         ),
         ("2 2", "      1  Todos" + " " * 46 + "0-99\n", "unequal width"),
+        ("1 6", "      1  Todos" + " " * 46 + "000000-999999\n", "only code is a reserve range"),
     ],
 )
 def test_a_long_code_claimed_twice_or_an_uneven_range_fails(header, body, message):
     """Synthetic malformed tables (AGENTS.md rule 2). TabWin.pdf p. 91 keeps the first
-    reference of a long code; no packaged CNV repeats one, so the parser refuses it."""
+    reference of a long code; no packaged CNV repeats one, so the parser refuses it. A
+    line with nothing but a range over every long code would lose its label, and no
+    packaged CNV has one."""
     with pytest.raises(CnvFormatError, match=message):
         parse_cnv(header + "\n" + body)
+
+
+def test_tp_finan_reserves_every_long_code_and_lists_100_one_by_one():
+    """The first line of TP_FINAN.CNV (TAB_SIH) is category 101, "Não discriminado/Não se
+    aplica", whose codes are the range 000000-999999 and the blank code; the other 100
+    lines list one code of 6 characters each. TabWin.pdf has no hyphen range for a long
+    code (pp. 91-92), so what TabWin does with it is not documented. The reader does not
+    apply a range that spans every code of a long width (#182): the first line keeps the
+    blank code, each of the 100 codes keeps its own line, and a code no line lists,
+    000000 included, has no label."""
+    text = member("sih/CNV/TP_FINAN.CNV")
+    assert text.splitlines()[0] == "N 101 6 L"
+    assert "000000-999999," in text.splitlines()[1].split()
+    reserve, *listed = parse_cnv(text)
+    assert (reserve.category, reserve.label, reserve.codes, reserve.ranged) == (
+        101,
+        "Não discriminado/Não se aplica",
+        ("      ",),
+        (),
+    )
+    assert sorted(line.category for line in listed) == list(range(1, 101))
+    assert all(len(line.codes) == 1 and not line.ranged for line in listed)
+    assert all(len(line.codes[0]) == 6 and line.codes[0].isdigit() for line in listed)
+    decode = cnv_map([reserve, *listed])
+    assert len(decode) == 101
+    assert decode[""] == "Não discriminado/Não se aplica"
+    assert decode["010000"] == "Atenção Básica (PAB)"
+    assert "999999" not in decode and "000000" not in decode
 
 
 def test_sinan_defs_bind_every_cnv_at_a_known_column():

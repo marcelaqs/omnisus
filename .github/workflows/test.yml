@@ -1,9 +1,8 @@
 name: test
 
+# Manual only: the checks run locally before every push (AGENTS.md, Commands).
 on:
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
 
 concurrency:
   # Stacked pushes otherwise race each other.

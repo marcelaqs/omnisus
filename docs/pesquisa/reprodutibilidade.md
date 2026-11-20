@@ -80,7 +80,7 @@ Confira `relatorio.failed`, não o valor verdadeiro ou falso do relatório
 | `release` | `final` ou `prelim`, deduzido de `source_uri` | `publication.py`, `publications` |
 | `source_uri` | o endereço do arquivo de origem | `publication.py` |
 | `source_sha256` | o SHA-256 do arquivo comprimido baixado | [reprocessing and maintenance](../guides/reprocessing-and-maintenance.md#choose-a-replay-policy) |
-| `parser_version` | `dbc-staging-v2:` seguido do SHA-256 do que o import lê do dicionário (`encoding` e `x-identity`); rótulos, mapas de códigos e claims ficam de fora | `src/omnisus/sources/datasus_ftp/dbf_contract.py`, `publication_parser_version` |
+| `parser_version` | `dbc-staging-v2:` seguido do SHA-256 de `encoding` e `x-identity` do dicionário; rótulos, mapas de códigos, claims e o `type` dos campos ficam de fora | `src/omnisus/sources/datasus_ftp/dbf_contract.py`, `publication_parser_version` |
 | `run_id` | o `run_id` passado à importação | `publication.py` |
 | `published_at` | o instante UTC em que a publicação foi gravada | `publication.py`, `datetime.now(UTC)` |
 | `rows` | as linhas publicadas | `publication.py` |
@@ -122,8 +122,8 @@ não expire um snapshot que um trabalho seu cita.
 
 ## Depois de atualizar o omnisus
 
-A versão do parser gravada em cada publicação depende do que a importação lê do
-dicionário (`src/omnisus/sources/datasus_ftp/_runner.py`, `parser_version`). A 0.2.0
+A versão do parser gravada em cada publicação depende do `encoding` e do `x-identity`
+do dicionário (`src/omnisus/sources/datasus_ftp/_runner.py`, `parser_version`). A 0.2.0
 mudou esse cálculo (#19), então todo escopo importado pela 0.1.0 é recusado por
 `skip_same`, o padrão de `load`. Na 0.2.0 o motivo é *different source/parser version
 exists*; nas versões seguintes, *same file, imported by another parser version*. Rode o

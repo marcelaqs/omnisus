@@ -207,6 +207,40 @@ def test_secondary_diagnoses_declare_the_cid10_reference(con, dbc_fixture):
     } | {f"diagsec{n}": (0, 0) for n in range(3, 9)}
 
 
+def test_cid_notif_declares_the_cid10_reference(con, dbc_fixture):
+    """IT_SIHSUS_1603, p. 3, calls CID_NOTIF "CID de Notificação", and RD2008.DEF, lines
+    523-527, relates it to five CID-10 tables under the name "CID laqueadura" (#182, C3).
+    The field declares aux_cid10, like the other CID fields. RDRR2401 fills it in 49 rows,
+    all of them Z302, and every one finds its row; the other 3,665 are blank. The
+    difference between the two names is an open issue on the field."""
+    lines = (CNV / "sih" / "RD2008.DEF").read_text(encoding="latin-1").splitlines()[522:527]
+    assert [tuple(part.strip() for part in line.split(",")) for line in lines] == [
+        ("LCID laqueadura (3 car)", "CID_NOTIF", "1", "CNV\\CID10_3D.CNV"),
+        ("LCID laqueadura (Cap15)", "CID_NOTIF", "1", "CNV\\CIDX15.CNV"),
+        ("SCID laqueadura (Cap15)", "CID_NOTIF", "1", "CNV\\CID10_15.CNV"),
+        ("LCID laqueadura (Cap09)", "CID_NOTIF", "1", "CNV\\CIDX09.CNV"),
+        ("SCID laqueadura (Cap09)", "CID_NOTIF", "1", "CNV\\CID10_09.CNV"),
+    ]
+    field = load_dicionario("sih_aih_reduzida").field_def("cid_notif")
+    assert field["foreignKeys"] == [
+        {"fields": "cid_notif", "reference": {"resource": "aux_cid10", "fields": "codigo"}}
+    ]
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cid_notif-laqueadura-no-def"
+    ]
+    assert issue["status"] == "open"
+    frame = dbc_bytes_to_lazyframe(
+        dbc_fixture("sih_rr_2024_01_mini").read_bytes(),
+        dataset="sih_aih_reduzida",
+        ano=2024,
+        uf="RR",
+    ).collect()
+    assert dict(frame["cid_notif"].value_counts().iter_rows()) == {"": 3665, "Z302": 49}
+    assert _filled_and_resolved(con, frame, "sih_aih_reduzida", ["cid_notif"]) == {
+        "cid_notif": (49, 49)
+    }
+
+
 # (dataset, fixture, ano, uf) -> {field: (filled, resolved)} on the real fixture (#82).
 # Every field the dataset's DEF relates to S_CID.DBF declares aux_cid10; fields blank in
 # every row of the fixture are listed as (0, 0) instead of being skipped. The CID fields
@@ -389,6 +423,26 @@ def test_occupation_joins_cbo2002_from_2006_only(con, dbc_fixture):
     con.register("d", frame_2005.to_arrow())
     assert con.execute(
         f"SELECT count(ref_ocup.codigo) FROM d {join} WHERE d.ocup <> ''"
+    ).fetchone() == (0,)
+    con.unregister("d")
+
+
+def test_mother_occupation_joins_cbo2002_from_2006_only(con, dbc_fixture):
+    """SIM ``ocupmae`` takes the reference of ``ocup``: `Obito_1996_CID10.def` binds both to
+    CBO2002.CNV, and DORR writes ``ocupmae`` with 6 digits from 2006 and 5 characters until
+    2005. The 2005 half relabels the 2023 fixture: no fixture of a year before 2006 exists."""
+    frame = dbc_bytes_to_lazyframe(
+        dbc_fixture("sim_rr_2023_mini").read_bytes(), dataset="sim_obitos", ano=2023, uf="RR"
+    ).collect()
+    con.register("d", frame.to_arrow())
+    join = sus.reference_join_sql("sim_obitos", "ocupmae", alias="d")
+    rows = con.execute(
+        f"SELECT ref_ocupmae.esquema, count(*) FROM d {join} WHERE d.ocupmae = '622020' GROUP BY 1"
+    ).fetchall()
+    assert rows == [("cbo2002", rows[0][1])] and rows[0][1] > 0
+    con.register("d", frame.with_columns(pl.lit(2005).alias("ano")).to_arrow())
+    assert con.execute(
+        f"SELECT count(ref_ocupmae.codigo) FROM d {join} WHERE d.ocupmae <> ''"
     ).fetchone() == (0,)
     con.unregister("d")
 

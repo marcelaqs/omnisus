@@ -142,7 +142,7 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-10",
-      "last_checked_on": "2026-09-10"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sim-b4195ac8e0f8",
@@ -156,7 +156,7 @@
       "edition": "07/2025",
       "published_on": null,
       "retrieved_on": "2026-09-10",
-      "last_checked_on": "2026-09-10"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-24e0d4388ea1",
@@ -226,21 +226,21 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-14",
-      "last_checked_on": "2026-09-14"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sim-anterior-13cabba0b9a1",
       "category": "SIM",
-      "title": "Estrutura SIM anterior — Mortalidade 2006",
+      "title": "Estrutura SIM anterior — Mortalidade 2006 e até 2005",
       "publisher": "Ministério da Saúde / DATASUS",
       "authority": "official",
       "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOCS/Estrutura_SIM_Anterior.pdf",
       "sha256": "13cabba0b9a19d32b836f57762b9bc571e573c4a87737440c8052b737072d890",
       "bytes": 55572,
-      "edition": "2006",
+      "edition": "2006 e até 2005",
       "published_on": null,
       "retrieved_on": "2026-09-14",
-      "last_checked_on": "2026-09-14"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-tab-ff0124f6aecf",
@@ -366,7 +366,7 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-21",
-      "last_checked_on": "2026-09-21"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-tab-de43d0c99630",
@@ -425,6 +425,20 @@
       "last_checked_on": "2026-09-21"
     },
     {
+      "id": "sia-tab-1ce232b217c6",
+      "category": "SIASUS",
+      "title": "TAB_SIA.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Auxiliar/TAB_SIA.zip",
+      "sha256": "1ce232b217c6e9bfd53ad5ceb7a42b6c01f7cd8686a29b3e8b828e88e944e119",
+      "bytes": 73814622,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
+    },
+    {
       "id": "sinan-tab-cad66ee38781",
       "category": "SINAN",
       "title": "TAB_SINANNET.zip",
@@ -451,6 +465,34 @@
       "published_on": null,
       "retrieved_on": "2026-09-22",
       "last_checked_on": "2026-09-22"
+    },
+    {
+      "id": "sinan-da262c3b9f20",
+      "category": "SINAN",
+      "title": "DIC_DADOS_ONLINE.pdf",
+      "publisher": null,
+      "authority": "official",
+      "url": "https://portalsinan.saude.gov.br/images/documentos/Agravos/Dengue/DIC_DADOS_ONLINE.pdf",
+      "sha256": "da262c3b9f20f242d01ee235e64c221dd97e6ad9a53d38cc94da9316bf98c4eb",
+      "bytes": 339721,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-20",
+      "last_checked_on": "2026-11-20"
+    },
+    {
+      "id": "sinan-tab-24ac0c62fb84",
+      "category": "SINAN",
+      "title": "TAB_SINANNET.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/AUXILIAR/TAB_SINANNET.zip",
+      "sha256": "24ac0c62fb84e5458574fef5a9939b4e47f33ba67038549752b787006ca5944e",
+      "bytes": 44001396,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-20",
+      "last_checked_on": "2026-11-20"
     },
     {
       "id": "sim-tabelas-tabuf-273f7e756a1a",
@@ -545,10 +587,10 @@
       "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOCS/Estrutura_SIM_para_CD.pdf",
       "sha256": "b014389eca62dfacb8a73ae42bac1543b7923bf71d8403968370f0e002edb144",
       "bytes": 435397,
-      "edition": null,
+      "edition": "12/2019",
       "published_on": null,
       "retrieved_on": "2026-09-23",
-      "last_checked_on": "2026-09-23"
+      "last_checked_on": "2026-11-18"
     },
     {
       "id": "sinasc-9ac143d5eae6",
@@ -591,6 +633,48 @@
       "published_on": "2026-10-27",
       "retrieved_on": "2026-10-31",
       "last_checked_on": "2026-10-31"
+    },
+    {
+      "id": "sihsus-f6084d22de30",
+      "category": "SIHSUS",
+      "title": "Layout_REDUZIDA.pdf",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_REDUZIDA.pdf",
+      "sha256": "f6084d22de3011fd9d2f490736e6d0469c45ac3ccc45be56f4e5c0ad564cb13d",
+      "bytes": 26945,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sihsus-af543b2b2c9b",
+      "category": "SIHSUS",
+      "title": "Layout_do_SISAIH01_para_CMPT_201509.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/Layout_do_SISAIH01_para_CMPT_201509.zip",
+      "sha256": "af543b2b2c9b13de8d11a68ec5fdd04b2b53c864af8b8e77456a23795398d625",
+      "bytes": 71003,
+      "edition": "2015-09",
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sihsus-f70974716de8",
+      "category": "SIHSUS",
+      "title": "dicionario_de_dados_AIH.pdf",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/dicionario_de_dados_AIH.pdf",
+      "sha256": "f70974716de829b97b341b2f05ba76eb382c09d867abcf1a0ffbdb95a1c57854",
+      "bytes": 47584,
+      "edition": "2016-05-02",
+      "published_on": null,
+      "retrieved_on": "2026-11-18",
+      "last_checked_on": "2026-11-18"
     }
   ]
 }

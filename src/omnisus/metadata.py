@@ -211,7 +211,7 @@ def describe_dataset(dataset: str) -> dict[str, Any]:
         "analytics": raw.get("x-analytics"),
         "storage": {
             "policy": "source_physical_types",
-            "dictionary_types": "descriptive",
+            "dictionary_types": "applied_to_whole_numbers",
             "provenance": "LakeReader.publications()",
             "observed_schema": None,
         },

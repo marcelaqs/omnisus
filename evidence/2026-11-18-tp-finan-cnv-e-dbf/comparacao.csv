@@ -1,0 +1,104 @@
+codigo,rotulo_no_cnv,descricao_no_dbf
+,Não discriminado/Não se aplica,
+000000,,Não identificado
+010000,Atenção Básica (PAB),Atenção Básica (PAB)
+020000,Assistência Farmacêutica,Assistência Farmacêutica
+021012,FAEC CNRAC (21012-cód ant à tab unif-vál p/2008-01),
+021014,FAEC Eletiv(21014-cód ant à tab unif-vál p/2008-01),
+040000,,Sem definição
+040001,Coleta de material,Coleta de material
+040002,Diagnóstico em laboratório clínico,Diagnóstico em laboratório clínico
+040003,Coleta/exame anátomo-patológico colo uterino,Coleta/exame anátomo-patológico colo uterino
+040004,Diagnóstico em neurologia,Diagnóstico em neurologia
+040005,Diagnóstico em otorrinolaringologia/fonoaudiologia,Diagnóstico em otorrinolaringologia/fonoaudiologia
+040006,Diagnóstico em psicologia/psiquiatria,Diagnóstico em psicologia/psiquiatria
+040007,Consultas médicas/outros profissionais de nível superior,Consultas médicas/outros profissionais de nível superior
+040008,Atenção domiciliar,Atenção domiciliar
+040009,"Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências","Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências"
+040010,Atendimento/acompanhamento psicossocial,Atendimento/acompanhamento psicossocial
+040011,Atendimento/acompanhamento em saúde do idoso,Atendimento/acompanhamento em saúde do idoso
+040012,Atendimento/acompanhamento de queimados,Atendimento/acompanhamento de queimados
+040013,Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais,Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais
+040014,Tratamento de doenças do sistema nervoso central e periférico,Tratamento de doenças do sistema nervoso central e periférico
+040015,Tratamento de doenças do aparelho da visão,Tratamento de doenças do aparelho da visão
+040016,Tratamento em oncologia,Tratamento em oncologia
+040017,Nefrologia,Nefrologia
+040018,Tratamentos odontológicos,Tratamentos odontológicos
+040019,Cirurgia do sistema nervoso central e periférico,Cirurgia do sistema nervoso central e periférico
+040020,"Cirurgias de ouvido, nariz e garganta","Cirurgias de ouvido, nariz e garganta"
+040021,Deformidade labio-palatal e crânio-facial,Deformidade labio-palatal e crânio-facial
+040022,Cirurgia do aparelho da visão,Cirurgia do aparelho da visão
+040023,Cirurgia do aparelho circulatório,Cirurgia do aparelho circulatório
+040024,"Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)","Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)"
+040025,Cirurgia do aparelho geniturinário,Cirurgia do aparelho geniturinário
+040026,Tratamento de queimados,Tratamento de queimados
+040027,Cirurgia reparadora para lipodistrofia,Cirurgia reparadora para lipodistrofia
+040028,Outras cirurgias plásticas/reparadoras,Outras cirurgias plásticas/reparadoras
+040029,Cirurgia orofacial,Cirurgia orofacial
+040030,Sequenciais,Sequenciais
+040031,Cirurgias em nefrologia,Cirurgias em nefrologia
+040032,"Transplantes de orgãos, tecidos e células","Transplantes de orgãos, tecidos e células"
+040033,Medicamentos para transplante,Medicamentos para transplante
+040034,OPM auditivas,OPM auditivas
+040035,OPM em odontologia,OPM em odontologia
+040036,OPM em queimados,OPM em queimados
+040037,OPM em nefrologia,OPM em nefrologia
+040038,OPM para transplantes,OPM para transplantes
+040039,Incentivos ao pré-natal e nascimento,Incentivos ao pré-natal e nascimento
+040040,Incentivo ao registro cívil de nascimento,Incentivo ao registro cívil de nascimento
+040041,Central Nacional de Regulação de Alta Complexidade (CNRAC),Central Nacional de Regulação de Alta Complexidade (CNRAC)
+040042,Reguladores de Atividade hormonal - Inibidores de prolactina,Reguladores de Atividade hormonal - Inibidores de prolactina
+040043,Política Nacional de Cirurgias Eletivas,Política Nacional de Cirurgias Eletivas
+040044,Redesignação e Acompanhamento,Redesignação e Acompanhamento
+040045,Projeto Olhar Brasil,Projeto Olhar Brasil
+040046,Mamografia para Rastreamento,Mamografia para Rastreamento
+040047,Projeto Olhar Brasil - Consulta,Projeto Olhar Brasil - Consulta
+040048,Projeto Olhar Brasil - Óculos,Projeto Olhar Brasil - Óculos
+040049,Implementar Cirg. CV Pediátrica,Implementar Cirg. CV Pediátrica
+040050,Cirurgias Eletivas - Componente I,Cirurgias Eletivas - Componente I
+040051,Cirurgias Eletivas - Componente II,Cirurgias Eletivas - Componente II
+040052,Cirurgias Eletivas - Componente III,Cirurgias Eletivas - Componente III
+040053,Prótese Mamária - Exames,Prótese Mamária - Exames
+040054,Prótese Mamária - Cirurgia,Prótese Mamária - Cirurgia
+040055,Transplante - Histocompatibilidade,Transplante - Histocompatibilidade
+040056,Triagem Neonatal,Triagem Neonatal
+040057,Controle de qualidade do exame citopatológico do colo de útero,Controle de qualidade do exame citopatológico do colo de útero
+040058,Exames do Leite Materno,Exames do Leite Materno
+040059,Atenção as Pessoas em Situação de Violência Sexual,Atenção as Pessoas em Situação de Violência Sexual
+040060,Sangue e Hemoderivados,Sangue e Hemoderivados
+040061,Mamografia para rastreamento em faixa etária recomendada,Mamografia para rastreamento em faixa etária recomendada
+040062,Doenças Raras,Doenças Raras
+040063,Cadeiras de Rodas,Cadeiras de Rodas
+040064,Sistema de Frequencia Modulada Pessoal-FM,Sistema de Frequencia Modulada Pessoal-FM
+040065,Medicamentos em Urgência,Medicamentos em Urgência
+040066,Cirurgias Eletivas - Componente Único,Cirurgias Eletivas - Componente Único
+040067,Atenção Especializada em Saúde Auditiva,Atenção Especializada em Saúde Auditiva
+040068,Terapias Especializadas em Angiologia,Terapias Especializadas em Angiologia
+040069,Tratamento de Doença Macular,Tratamento de Doença Macular
+040070,OPME Não Relacionados ao Ato Cirúrgico,OPME Não Relacionados ao Ato Cirúrgico
+040071,Diagnóstico/tratamento em oncologia,Diagnóstico/tratamento em oncologia
+040072,Diagnóstico de trombofilia em gestante,Diagnóstico de trombofilia em gestante
+040073,Reabilitação Pós-COVID-19,Reabilitação Pós-COVID-19
+040074,Telemedicina em Urgência,Telemedicina em Urgência
+040075,Fisioterapia Cardiovascular,Fisioterapia Cardiovascular
+040076,Hemodinâmica em atendimento de urgência,Hemodinâmica em atendimento de urgência
+040077,Exames Sorológicos e Imunológicos,Exames Sorológicos e Imunológicos
+040078,QualiSUS Cardio,QualiSUS Cardio.
+040079,Pré-cirúrgico em Cirurgias Prioritárias,Pré-cirúrgico em Cirurgias Prioritárias
+040080,Programa Agora Tem Especialistas - Componente Cirúrgico   (antigo Reduçäo das Filas),Reduçäo das Filas de Procedimentos Eletivos.
+040081,Síndrome Respiratória Aguda Grave - SRAG,
+040082,Alta Complexidade em Cardiologia,
+040083,Cirurgia da Face e do Sistema Estomatognático,
+040084,Neurocirurgias,
+040085,Exames coprológicos,
+040086,Programa Agora Tem Especialistas - Componente Ambulatorial,
+040087,Saúde Bucal,
+040088,Radioterapia,
+040089,Recursos Vinculados a Parcela Única,
+040090,Recursos Vinculados a Emendas Parlamentares,
+040091,Materno Infântil,
+040092,Saúde da Mulher,
+050000,Incentivo - MAC,Incentivo - MAC
+060000,Média e Alta Complexidade (MAC),Média e Alta Complexidade (MAC)
+070000,Vigilância em Saúde,Vigilância em Saúde
+080000,Gestão do SUS,Gestão do SUS

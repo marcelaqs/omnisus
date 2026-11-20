@@ -9,9 +9,12 @@ DATASUS, um por UF e ano.
 
 ## O que um registro representa
 
-- O dicionário da biblioteca descreve a base como declarações de óbito e declara
-  `numerodo` (número da DO) como chave primária
-  (`src/omnisus/data/dicionarios/sim_obitos.yaml`, `title` e `primaryKey`).
+- O dicionário da biblioteca descreve a base como declarações de óbito
+  (`src/omnisus/data/dicionarios/sim_obitos.yaml`, `title`). Nenhum dos 868 arquivos
+  `DO<UF><ano>` do servidor, de 1996 a 2026, traz `numerodo`, o número da DO: os cabeçalhos
+  foram lidos em 18/11/2026 (`evidence/2026-11-18-sim-colunas-do/`). O dicionário não
+  declara chave primária. `contador` está nos 868 arquivos; não foi conferido se identifica
+  o mesmo registro de uma publicação para outra.
 - `tipobito` separa óbito fetal (1) de não fetal (2) e é campo obrigatório
   (Estrutura do SIM 2025, p. 1).
 - O documento define óbito fetal como a morte antes da expulsão ou extração completa
@@ -90,7 +93,8 @@ que é. `DORBR79`–`DORBR95` são o Brasil, não uma UF.
 
 `sim_obitos_infantis`, `sim_obitos_maternos` e `sim_obitos_externos` usam os campos de
 `sim_obitos`, copiados por `scripts/metadados/gerar_subconjuntos_sim.py`: os
-registros do DOINF, DOMAT e DOEXT são registros do DO. Em 11 anos de 1996 a 2024, os 7.999
+registros do DOINF, DOMAT e DOEXT são registros do DO. A única diferença é em `idade`: os
+subconjuntos não declaram as colunas de idade harmonizadas, que só `sim_obitos` cria. Em 11 anos de 1996 a 2024, os 7.999
 residentes de RR com um único par no DORR (mesmas data e hora do óbito, nascimento, sexo e
 causa básica) são iguais a ele, exceto `CONTADOR`, a numeração do arquivo.
 Em 2010 e 2015 o subconjunto deixa vazios `CODBAIRES`, `CODBAIOCOR` e `NUDIASOBIN`, que o
@@ -133,6 +137,20 @@ fica sem rótulo no DOFET e no CID-9: `SEXO.CNV` rotula só com as letras M, F e
   (Estrutura do SIM 2025, p. 9); `semagestac` traz as semanas com dois algarismos
   (p. 4).
 - `peso` é o peso ao nascer em gramas (Estrutura do SIM 2025, p. 4).
+- `horaobito` vem como quatro dígitos, HHMM, sem os dois-pontos (`0600`): o documento declara
+  5 caracteres no padrão `00:00` (Estrutura do SIM 2025, p. 1), e os arquivos de Roraima de
+  2022 e 2023 gravam 4 (`tests/unit/test_sim_descricoes.py`).
+- `nudiasobco` é a diferença em dias entre a data do óbito e a data de conclusão da
+  investigação (Estrutura do SIM 2025, p. 7), não da codificação.
+- `tppos` vem como `S`, `N` ou em branco, as chaves do `INVESTIG.CNV`; o documento dá ao
+  campo os códigos `1 – sim; 2 – não` (Estrutura do SIM 2025, p. 8), que os arquivos de 2022
+  e 2023 não gravam (`tests/unit/test_sim_descricoes.py`).
+- `codestab` vem com 7 dígitos; a edição de 2025 declara 8 caracteres (Estrutura do SIM 2025,
+  p. 3) e a estrutura do arquivo de 2006 declara 7 (`Estrutura_SIM_Anterior.pdf`, p. 2).
+- `fontes` tem 6 caracteres e é, no documento, um "combinado de caracteres conforme o
+  preenchimento dos campos de fontes (FONTENTREV, FONTEAMBUL, FONTEPRONT, FONTESVO, FONTEIML,
+  FONTEPROF)": `S` se preenchido, `X` se o campo estiver vazio (Estrutura do SIM 2025, p. 8).
+  O documento não diz qual posição corresponde a qual campo.
 - O documento é a edição atualizada em 07/2025 (Estrutura do SIM 2025, p. 1).
 - O documento não descreve `numerodo` nem `contador`, que o dicionário da biblioteca
   declara (Estrutura do SIM 2025, p. 1–9;

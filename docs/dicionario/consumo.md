@@ -21,7 +21,11 @@ print(sus.display_row("sim_obitos", {"idade": "469", "sexo": "2"}))  # sexo: "Fe
 Cada chamada devolve dados independentes. `fields` contém documentos por coluna,
 com referências resolvidas e estados de revisão; `schema.fields` preserva as
 definições de autoria para consumidores de apresentação. Tipos legados são
-**descritivos**: nenhum deles autoriza cast ou recodificação automática.
+**descritivos**, com uma exceção: o campo que o DBF publica como número inteiro é
+gravado com o `type` do dicionário quando este é `string`, `date` ou `number`
+(`storage.dictionary_types` vale `applied_to_whole_numbers`; ver
+[contrato](contrato.md#extensao-de-autoria)). Nenhum outro tipo autoriza cast ou
+recodificação automática.
 `label` (DataFrame) e `display_row` (uma linha) usam a mesma consulta: cada código
 com mapa `x-decode` ganha o rótulo do dicionário, e um código que o mapa não
 conhece fica sem rótulo (`None`). Datas, idades e horas saem como publicadas;
@@ -29,7 +33,8 @@ idade, sexo e datas comparáveis vêm só das projeções abaixo.
 
 `physical_type` descreve o documento de origem, com comprimento desconhecido como
 `null`. O tipo SQL efetivo vem de `DESCRIBE` no snapshot da consulta. Os valores
-originais do lake continuam preservados.
+originais do lake continuam preservados; o número inteiro gravado como texto sai sem
+zeros à esquerda, como número que é no arquivo.
 
 ## Projeções para análise
 
@@ -93,11 +98,12 @@ de RR/2022-01 e RR/2024-01, a RAAS psicossocial de RR/2024-01 e a atenção domi
 MA/2018-10 (`x-analytics.validated_sources` de cada dicionário).
 [Evidência e limites](https://github.com/raphaelfh/omnisus/blob/main/evidence/2026-09-14-extensao-regras/README.md).
 
-No SINAN (`sinan_chagas`, `sinan_hanseniase`, `sinan_tuberculose`),
+No SINAN (`sinan_chagas`, `sinan_hanseniase`, `sinan_tuberculose`, `sinan_dengue`),
 `idade_anos_completos` interpreta `nu_idade_n`: um dígito de unidade (1 hora, 2 dia, 3 mês, 4 ano) seguido de três de
-quantidade, então `4088` são 88 anos. A regra 1.0.0 cobre só os arquivos preliminares
-auditados CHAGBR23, HANSBR26 e TUBEBR20.
-[Evidência](https://github.com/raphaelfh/omnisus/blob/main/evidence/2026-09-21-w3-idade-sinan/README.md).
+quantidade, então `4088` são 88 anos. A regra 1.0.0 cobre só os arquivos auditados: os
+preliminares CHAGBR23, HANSBR26 e TUBEBR20 e o final DENGBR17.
+[Evidência](https://github.com/raphaelfh/omnisus/blob/main/evidence/2026-09-21-w3-idade-sinan/README.md);
+[dengue](https://github.com/raphaelfh/omnisus/blob/main/evidence/2026-11-20-sinan-dengue/README.md).
 
 Versão analítica solicitada e ausente gera erro. Colisão de nome derivado também.
 Campo obrigatório ausente, dataset sem regra e contexto não confirmado retornam

@@ -155,6 +155,11 @@
       "membro": "APAC_Confeccao_de_Fistula.DEF",
       "sha256": "505ddc63faa49c5b63cc8038f2c10ba9b22a1ee9f2093a400a06df07bc586e15"
     },
+    "sia/APAC_Dados_Comuns.DEF": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "APAC_Dados_Comuns.DEF",
+      "sha256": "447a14c7189ba1c495f2ddac1f215aa2843da7f285602c3ddc660c01b24a4f93"
+    },
     "sia/APAC_Laudos_Diversos.DEF": {
       "fonte": "sia-tab-e5812b51d802",
       "membro": "APAC_Laudos_Diversos.DEF",
@@ -375,6 +380,21 @@
       "sha256": "da7f026713ae0669d626ae4661cbd33af72df9a7e76337dc0e1cba7f0d41b615",
       "mesmo_que": "sia/CNV/ACES_VASC.CNV"
     },
+    "sia/CNV/TIPOPRES.CNV": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/TIPOPRES.CNV",
+      "sha256": "8ab1f0fd0a3e613cb8a586df5843ffb55a692ea5a23b2ce66e74f74a0365ac9c"
+    },
+    "sia/CNV/UFNACIO.CNV": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/UFNACIO.CNV",
+      "sha256": "30d1c1c37d47ccac77d93d51010fe992b083580589cc3e06c3db0aab38097b12"
+    },
+    "sia/CNV/natjurc.cnv": {
+      "fonte": "sia-tab-1ce232b217c6",
+      "membro": "CNV/natjurc.cnv",
+      "sha256": "c9946a2e0ec5864a8820a01f29be7191137718a02bdc61d241f1f35c64ec0fc6"
+    },
     "sia/CNV/destino.cnv": {
       "fonte": "sia-tab-e5812b51d802",
       "membro": "CNV/destino.cnv",
@@ -499,6 +519,16 @@
       "fonte": "sih-tab-f05b32f32908",
       "membro": "CNV/VINCPREV.CNV",
       "sha256": "f5a6c3ec24355fefd3c2d9f439ca0020df028c8ddcd0a2b246ad99831056f1df"
+    },
+    "sih/CNV/TP_FINAN.CNV": {
+      "fonte": "sih-tab-21e42384645a",
+      "membro": "CNV/TP_FINAN.CNV",
+      "sha256": "f6986095b663c4a22b69e027c582b7094c56c40abaf26a8183206531d9336683"
+    },
+    "sih/CNV/br_municgestor.cnv": {
+      "fonte": "sih-tab-21e42384645a",
+      "membro": "CNV/br_municgestor.cnv",
+      "sha256": "f2a860f787d4377e5281aa6165bd411532d90b3490d2951277f11c81f490529c"
     },
     "sih/CNV/etnia.cnv": {
       "fonte": "sih-tab-f05b32f32908",
@@ -892,6 +922,36 @@
       "membro": "TAB_SINANNET/TuberculNET5_0.def",
       "sha256": "2fa0533a2e106ea66618e7073db525a51a29473e7e1d71f4b850dfff7c8f4d7f"
     },
+    "sinan/DengueNETON3.0.def": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/DengueNETON3.0.def",
+      "sha256": "c9abd18c2870b23dba4790b944b0127d173b7bde90d24170625629f7a6cdd110"
+    },
+    "sinan/TipoSistema.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/TipoSistema.cnv",
+      "sha256": "722f1c0d223b7e321b32e330f867817b68edba95a69439a06e6900562ff8654d"
+    },
+    "sinan/Sim_nao.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Sim_nao.cnv",
+      "sha256": "74b8342f044a3783c2755819f271a4b5c588c792d30b2f011679775dc00b95a3"
+    },
+    "sinan/Classdeng.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Classdeng.cnv",
+      "sha256": "4fd488a2996fd3e7fe7f10d40c0d648c61deb9cbd0811049f5c0e74c8f4de7ac"
+    },
+    "sinan/Evideng.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Evideng.cnv",
+      "sha256": "501030566d0f759fd0dd002746c0ddbfd83a31cd009ceb8d39b2b44752c7343a"
+    },
+    "sinan/Graufhd.cnv": {
+      "fonte": "sinan-tab-24ac0c62fb84",
+      "membro": "TAB_SINANNET/Graufhd.cnv",
+      "sha256": "67faea95ede08d85cbdf39561b3bccbed59a04c2bc1066bea1708c9f44018069"
+    },
     "sinan/reacional.cnv": {
       "fonte": "sinan-tab-cad66ee38781",
       "membro": "TAB_SINANNET/reacional.cnv",
@@ -1021,6 +1081,7 @@
         "contracep2": "sih/CNV/CONTRAC.CNV",
         "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
+        "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
         "fonte_orc": "sih/CNV/fonterem.CNV",
         "gestao": "sih/CNV/GESTAO.CNV",
@@ -1046,6 +1107,7 @@
         "tpdisec7": "sih/CNV/TP_DIAGSEC.CNV",
         "tpdisec8": "sih/CNV/TP_DIAGSEC.CNV",
         "tpdisec9": "sih/CNV/TP_DIAGSEC.CNV",
+        "uf_zi": "sih/CNV/br_municgestor.cnv",
         "vincprev": "sih/CNV/VINCPREV.CNV"
       },
       "sem_cnv": {
@@ -1055,14 +1117,13 @@
         "ano_cmpt": "RD2008.DEF (linhas 179 e 181-183) liga ANO_CMPT a ANO.CNV, ANOMES.CNV e ANOMESC.CNV; nenhum está empacotado. Issue 137.",
         "cid_asso": "RD2008.DEF (linhas 497-504) liga CID_ASSO a 6 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Causa Associada(capit)', 'Causa Associada(grupo)' e 'Causa Associada(categ)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "cid_morte": "RD2008.DEF (linhas 510-517) liga CID_MORTE a 6 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Causa Óbito(capit)', 'Causa Óbito(grupo)' e 'Causa Óbito(categ)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
-        "cid_notif": "RD2008.DEF (linhas 523-527) liga CID_NOTIF a 5 tabelas, entre elas CID10_3D.CNV e CIDX15.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'CID laqueadura (3 car)', 'CID laqueadura (Cap15)' e 'CID laqueadura (Cap09)'. Issue 137.",
+        "cid_notif": "RD2008.DEF (linhas 523-527) liga CID_NOTIF a 5 tabelas, entre elas CID10_3D.CNV e CIDX15.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'CID laqueadura (3 car)', 'CID laqueadura (Cap15)' e 'CID laqueadura (Cap09)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "cnes": "RD2008.DEF (linhas 46-47) liga CNES a HOSFEDRJ.CNV; não está empacotado. O código tem rótulo pela referência a aux_cnes. Issue 137.",
         "diag_princ": "RD2008.DEF (linhas 309-380) liga DIAG_PRINC a 64 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Diagnóstico CID10 (capítulo)', 'Diagnóstico CID10 (grupo)' e 'Diagnóstico CID10 (categoria)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "diag_secun": "RD2008.DEF (linhas 434-490) liga DIAG_SECUN a 55 tabelas, entre elas CID10CAP.CNV e CID10CAC.CNV; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Diagnóstico Sec. CID10 (capit)', 'Diagnóstico Sec. CID10 (grupo)' e 'Diagnóstico Sec. CID10 (categ)'. O código tem rótulo pela referência a aux_cid10. Issue 137.",
         "dias_perm": "RD2008.DEF (linha 249) liga DIAS_PERM a PERM.CNV a partir da posição 2; não está empacotado. Issue 137.",
         "dt_inter": "RD2008.DEF (linhas 239-243) liga DT_INTER a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de internação', 'Mês de internação' e 'Ano/Mês internação'. Issue 137.",
         "dt_saida": "RD2008.DEF (linhas 244-248) liga DT_SAIDA a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de saída', 'Mês de saída' e 'Ano/Mês de saída'. Issue 137.",
-        "faec_tp": "RD2008.DEF (linhas 271-273) liga FAEC_TP a TP_FINAN.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (DS_TPFIN), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "insc_pn": "RD2008.DEF (linha 531) liga INSC_PN a INSCPN.CNV; não está empacotado. Issue 137.",
         "mes_cmpt": "RD2008.DEF (linha 180) liga MES_CMPT a MESES.CNV; não está empacotado. Issue 137.",
         "munic_mov": "RD2008.DEF (linhas 26-40) liga MUNIC_MOV a 13 tabelas, entre elas br_regiaouf.cnv e br_uf.cnv; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Região e UF internação', 'UF internação' e 'Região internação'. O código tem rótulo pela referência a aux_municipios. Issue 137.",
@@ -1071,7 +1132,6 @@
         "num_filhos": "RD2008.DEF (linha 521) liga NUM_FILHOS a NUMFILH.CNV; não está empacotado. Issue 137.",
         "proc_rea": "RD2008.DEF (linhas 281-283) liga PROC_REA a PROCOBS2b.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (IP_DSCR), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "seq_aih5": "RD2008.DEF (linha 232) liga SEQ_AIH5 a SEQAIH.CNV; não está empacotado. Issue 137.",
-        "uf_zi": "RD2008.DEF (linhas 175-176) liga UF_ZI a br_municgestor.cnv, com o rótulo 'Município gestor'; não está empacotado. Issue 137.",
         "uti_mes_to": "RD2008.DEF (linha 236) liga UTI_MES_TO a DIARIASUTI.CNV; não está empacotado. Issue 137."
       }
     },
@@ -1095,6 +1155,7 @@
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1103,6 +1164,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1.",
@@ -1117,6 +1181,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1124,6 +1189,9 @@
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1137,6 +1205,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1146,6 +1215,9 @@
         "ap_ufdif": "sia/CNV/Invasao.CNV",
         "am_gestant": "sia/CNV/GESTANTE.CNV",
         "am_transpl": "sia/CNV/TRANSPL.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1159,6 +1231,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1166,6 +1239,9 @@
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1179,6 +1255,7 @@
         "ap_alta": "sia/CNV/ALTA.CNV",
         "ap_encerr": "sia/CNV/ENCERRAM.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1186,6 +1263,9 @@
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1232,12 +1312,15 @@
         "obitopuerp": "sim/obitoPUE.cnv",
         "parto": "sim/PARTO.CNV",
         "racacor": "sim/RACACOR.CNV",
+        "seriescfal": "sim/SERIEFAL.CNV",
+        "seriescmae": "sim/SERIEFAL.CNV",
         "stcodifica": "sim/CODIFICA1.cnv",
         "stdoepidem": "sim/DONOVA.CNV",
         "stdonova": "sim/DONOVA.CNV",
         "tipobito": "sim/TIPOBITO.CNV",
         "tpmorteoco": "sim/OMUFER.CNV",
-        "tppos": "sim/INVESTIG.CNV"
+        "tppos": "sim/INVESTIG.CNV",
+        "versaoscb": "sim/VERSCB.CNV"
       },
       "sem_cnv": {
         "sexo": "C\u00f3digos verificados na Estrutura do SIM 2025, p. 2 (claim verified_in_source); SEXO.CNV rotula s\u00f3 M, F e I.",
@@ -1311,6 +1394,77 @@
       },
       "sem_cnv": {
         "stdnepidem": "DNNOVA.CNV escreve o c\u00f3digo na coluna 60, fora do layout do manual TabWin (c\u00f3digos a partir da coluna 61)."
+      }
+    },
+    "sinan_dengue": {
+      "def": [
+        "sinan/DengueNETON3.0.def"
+      ],
+      "campos": {
+        "tp_sistema": "sinan/TipoSistema.cnv"
+      },
+      "sem_cnv": {
+        "acido_pept": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_abdom": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_hemat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_hepat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_hipot": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_letar": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_liq": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_plaq": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_sang": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "alrm_vom": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "artralgia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "artrite": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "auto_imune": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cefaleia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "classi_fin": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "conjuntvit": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "criterio": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_escol_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_gestant": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_raca": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "cs_sexo": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "diabetes": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "dor_costas": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "dor_retro": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "evolucao": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "exantema": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "febre": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_ast": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_consc": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_conv": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_ench": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_extre": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_hemat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_hipot": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_insuf": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_melen": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_metro": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_mioc": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_orgao": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido do CNV que o DEF liga ao campo",
+        "grav_pulso": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_sang": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "grav_taqui": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hematolog": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hepatopat": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hipertensa": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "histopa_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "hospitaliz": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "imunoh_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "laco": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "leucopenia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "mialgia": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "nausea": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "petequia_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "renal": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_ns1": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_pcr_": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_soro": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "resul_vi_n": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "sorotipo": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "tpautocto": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas",
+        "vomito": "mapa do bloco SINAN (scripts/metadados/sinan_bloco_comum.yaml), lido das p\u00e1ginas"
       }
     },
     "sinan_tuberculose": {
@@ -1395,6 +1549,7 @@
         "contracep2": "sih/CNV/CONTRAC.CNV",
         "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
+        "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
         "gestao": "sih/CNV/GESTAO.CNV",
         "gestrisco": "sih/CNV/SIMNAO.CNV",
@@ -1412,6 +1567,7 @@
         "st_bloq": "sih/CNV/sitbloqueio.cnv",
         "st_mot_blo": "sih/CNV/motbloqueio.cnv",
         "st_situac": "sih/CNV/sitrejeicao.cnv",
+        "uf_zi": "sih/CNV/br_municgestor.cnv",
         "vincprev": "sih/CNV/VINCPREV.CNV"
       },
       "sem_cnv": {
@@ -1428,7 +1584,6 @@
         "dias_perm": "RJ2008.DEF (linha 252) liga DIAS_PERM a PERM.CNV a partir da posição 2; não está empacotado. Issue 137.",
         "dt_inter": "RJ2008.DEF (linhas 242-246) liga DT_INTER a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de internação', 'Mês de internação' e 'Ano/Mês internação'. Issue 137.",
         "dt_saida": "RJ2008.DEF (linhas 247-251) liga DT_SAIDA a ANO.CNV, MESES.CNV, ANOMES.CNV e ANOMESC.CNV (MESES.CNV a partir da posição 5); nenhum está empacotado. É agrupamento do código: o DEF chama as linhas de 'Ano de saída', 'Mês de saída' e 'Ano/Mês de saída'. Issue 137.",
-        "faec_tp": "RJ2008.DEF (linhas 274-276) liga FAEC_TP a TP_FINAN.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (DS_TPFIN), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "insc_pn": "RJ2008.DEF (linha 488) liga INSC_PN a INSCPN.CNV; não está empacotado. Issue 137.",
         "mes_cmpt": "RJ2008.DEF (linha 182) liga MES_CMPT a MESES.CNV; não está empacotado. Issue 137.",
         "munic_mov": "RJ2008.DEF (linhas 21-44) liga MUNIC_MOV a 13 tabelas, entre elas br_regiao.cnv e br_regiaouf.cnv; nenhuma está empacotada. É agrupamento do código: o DEF chama as linhas de 'Região de Atendimento', 'Região/UF de Atendimento' e 'Unid da Federação de Atend.'. Issue 137.",
@@ -1437,7 +1592,6 @@
         "num_filhos": "RJ2008.DEF (linha 478) liga NUM_FILHOS a NUMFILH.CNV; não está empacotado. Issue 137.",
         "proc_rea": "RJ2008.DEF (linhas 283-285) liga PROC_REA a PROCOBS2b.CNV; as linhas trazem um nome de campo no lugar da coluna inicial (IP_DSCR), forma que as pp. 87-88 do TabWin.pdf não documentam para CNV; não está empacotado. Issue 137.",
         "seq_aih5": "RJ2008.DEF (linha 236) liga SEQ_AIH5 a SEQAIH.CNV; não está empacotado. Issue 137.",
-        "uf_zi": "RJ2008.DEF (linhas 177-178) liga UF_ZI a br_municgestor.cnv, com o rótulo 'Município gestor'; não está empacotado. Issue 137.",
         "uti_mes_to": "RJ2008.DEF (linha 240) liga UTI_MES_TO a DIARIASUTI.CNV; não está empacotado. Issue 137."
       }
     },
@@ -1650,6 +1804,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1658,6 +1813,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       }
     },
     "sia_apac_fistula_arteriovenosa": {
@@ -1672,6 +1830,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1680,6 +1839,9 @@
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
         "ap_ufdif": "sia/CNV/Invasao.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1703,15 +1865,24 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
         "ap_sexo": "sia/CNV/SEXO.CNV",
+        "ap_tippre": "sia/CNV/TIPOPRES.CNV",
         "ap_tpapac": "sia/CNV/TP_APAC.CNV",
         "ap_tpaten": "sia/CNV/TP_ATEND.CNV",
         "ap_tpups": "sia/CNV/TP_ESTAB.CNV",
         "ap_transf": "sia/CNV/TRANSFER.CNV",
-        "ap_ufdif": "sia/CNV/Invasao.CNV"
+        "ap_ufdif": "sia/CNV/Invasao.CNV",
+        "ap_ufnacio": "sia/CNV/UFNACIO.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
+      },
+      "sem_cnv": {
+        "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
       }
     },
     "sia_apac_radioterapia": {
@@ -1726,6 +1897,7 @@
         "ap_mn_ind": "sia/CNV/MANT_IND.CNV",
         "ap_mndif": "sia/CNV/Invasao.CNV",
         "ap_motsai": "sia/CNV/MOTSAIPE.CNV",
+        "ap_natjur": "sia/CNV/natjurc.cnv",
         "ap_obito": "sia/CNV/OBITO.CNV",
         "ap_perman": "sia/CNV/PERMANEN.CNV",
         "ap_racacor": "sia/CNV/RACA_COR.CNV",
@@ -1737,6 +1909,9 @@
         "ar_estadi": "sia/CNV/ESTADIO.CNV",
         "ar_finali": "sia/CNV/FINALID.CNV",
         "ar_linfin": "sia/CNV/LINF_INV.CNV"
+      },
+      "def_do_campo": {
+        "ap_natjur": "sia/APAC_Dados_Comuns.DEF"
       },
       "sem_cnv": {
         "ap_coidade": "IDADEDET e IDADE18.CNV comparam 3 caracteres a partir de AP_COIDADE, que tem 1."
@@ -1800,6 +1975,24 @@
       }
     }
   },
+  "inicio_revisto": [
+    {
+      "membro": "sih/RD2008.DEF",
+      "campo": "faec_tp",
+      "tabela": "sih/CNV/TP_FINAN.CNV",
+      "inicio": 1,
+      "escrito": "DS_TPFIN",
+      "motivo": "As três linhas (L, C e S) têm a forma da relação com DBF do TabWin.pdf (p. 88: campo, coluna da descrição, arquivo), mas nomeiam um CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote. Lida como CNV, a linha não traz coluna inicial: o campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Vale o CNV, o arquivo que o DEF nomeia; as duas tabelas estão comparadas em evidence/2026-11-18-tp-finan-cnv-e-dbf. Decisão do mantenedor na issue 182 (C10)."
+    },
+    {
+      "membro": "sih/RJ2008.DEF",
+      "campo": "faec_tp",
+      "tabela": "sih/CNV/TP_FINAN.CNV",
+      "inicio": 1,
+      "escrito": "DS_TPFIN",
+      "motivo": "As três linhas (L, C e S) têm a forma da relação com DBF do TabWin.pdf (p. 88: campo, coluna da descrição, arquivo), mas nomeiam um CNV; DS_TPFIN é a coluna de descrição do DBF/TP_FINAN.dbf do mesmo pacote. Lida como CNV, a linha não traz coluna inicial: o campo é C(6) nos cabeçalhos DBF e os códigos da tabela têm 6 caracteres, então só a posição 1 cabe. Vale o CNV, o arquivo que o DEF nomeia; as duas tabelas estão comparadas em evidence/2026-11-18-tp-finan-cnv-e-dbf. Decisão do mantenedor na issue 182 (C10)."
+    }
+  ],
   "linhas_fora_do_layout": [
     {
       "membro": "sia/APAC_Quimioterapia.DEF",

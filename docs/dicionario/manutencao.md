@@ -131,6 +131,13 @@ gerador procura o membro na mesma posição relativa à pasta do DEF, exige o me
 e escreve uma evidência por pacote, na ordem da lista; `checked_at` é a data de coleta
 mais recente entre essas fontes.
 
+`def_do_campo` (por dataset, por campo) nomeia o DEF que liga um campo quando os DEF do
+dataset não o ligam pelo nome que os arquivos publicam. O `APAC_Dados_Comuns.DEF` liga
+`AP_NATJUR` a `NATJURC.CNV`; o DEF de cada APAC escreve `AP_NAT_JUR`, nome que nenhum
+arquivo lido tem, ou não tem linha para o campo
+(`evidence/2026-11-19-apac-ap-natjur/README.md`). A evidência do campo é a linha do DEF
+nomeado, e o gerador recusa um DEF que não ligue o campo ao membro na posição 1.
+
 Rodar de novo não muda nada quando os vínculos e os membros empacotados não
 mudaram; em revisão, usar `--check`, que falha se algum dicionário mudaria. Um
 arquivo TabWin republicado entra no registro com um novo id e novos membros —
@@ -153,7 +160,8 @@ mão: a claim passa a `verified_in_source` e o issue `cnv-difere-do-mapa-anterio
 `resolved`, guardando o texto do mapa anterior.
 
 Os campos de `sim_obitos_infantis`, `sim_obitos_maternos` e `sim_obitos_externos` são os
-de `sim_obitos` (os registros são do DO). Depois de mudar `sim_obitos.yaml`,
+de `sim_obitos` (os registros são do DO), menos a `derivation` de `idade`: sem
+`x-analytics`, os subconjuntos não criam as colunas harmonizadas. Depois de mudar `sim_obitos.yaml`,
 regenerar com `uv run --locked python scripts/metadados/gerar_subconjuntos_sim.py`; o teste
 `tests/unit/scripts/test_gerar_subconjuntos_sim.py` falha enquanto não se regenera.
 

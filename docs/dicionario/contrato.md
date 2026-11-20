@@ -109,7 +109,11 @@ período observado. Não preencher um dia fictício quando a fonte só informa m
 ## Extensão de autoria
 
 Nos YAMLs atuais, conservar `description`, `type`, `x-decode`, `x-format` e
-demais propriedades usadas pela lib. Acrescentar `x-metadata` com identidade,
+demais propriedades usadas pela lib. O `type` também é lido na importação: o campo que
+o DBF publica como número inteiro (`N` sem casas) e o dicionário declara `string` ou
+`date` é gravado como texto, com o número como está no arquivo e sem zeros à esquerda;
+o que o dicionário declara `number` é gravado como número com casas (issues #40 e #219).
+Nenhuma outra diferença entre o `type` e o DBF é convertida. Acrescentar `x-metadata` com identidade,
 tipo físico, domínio, procedência e aplicabilidade. O resolvedor transforma essa autoria no contrato resolvido:
 
 | Autoria | Exportação |

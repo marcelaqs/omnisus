@@ -1,24 +1,10 @@
 name: native package
 
 on:
-  # Branch pushes and pull requests only when the native package or the code it
-  # plugs into changes; tags, dispatch and release.yml always build.
+  # No branch push or pull request run: the checks run locally (AGENTS.md,
+  # Commands). Tags, dispatch and release.yml build.
   push:
-    branches: [main]
     tags: ["dbf-v*"]
-    paths: &native_paths
-      - "native/**"
-      - "src/omnisus/sources/datasus_ftp/**"
-      - "src/omnisus/lake/publication.py"
-      - "scripts/smoke_native_wheel.py"
-      - "tests/fixtures/dbf/**"
-      - "tests/fixtures/blast/**"
-      - "tests/integration/test_rust_dbf_pipeline.py"
-      - "pyproject.toml"
-      - "uv.lock"
-      - ".github/workflows/native.yml"
-  pull_request:
-    paths: *native_paths
   workflow_dispatch:
   # release.yml calls it so a v* tag run tests the native wheels at that commit.
   workflow_call:
