@@ -9,6 +9,7 @@ from types import ModuleType
 
 import pytest
 
+from omnisus.sources.datasus_ftp.library_columns import is_library_field
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 from omnisus.transforms.dictionaries import load_dicionario
 
@@ -30,6 +31,11 @@ def _load(monkeypatch: pytest.MonkeyPatch) -> ModuleType:
     return module
 
 
+def _physical(fields):
+    """The fields the DBF publishes, without the columns the import adds."""
+    return [f for f in fields if not is_library_field(f)]
+
+
 def test_generator_output_is_committed(monkeypatch):
     for path, text in _load(monkeypatch).generate().items():
         assert path.read_text(encoding="utf-8") == text, path.name
@@ -39,8 +45,8 @@ def test_generator_output_is_committed(monkeypatch):
 def test_every_shared_field_is_sim_obitos_field(monkeypatch, dataset, fixture):
     """Except the age derivation: a subset has no `x-analytics`, so it creates no age column."""
     copied = _load(monkeypatch).sem_saidas_harmonizadas
-    do = {f["name"]: f for f in load_dicionario("sim_obitos").fields}
-    fields = load_dicionario(dataset).fields
+    do = {f["name"]: f for f in _physical(load_dicionario("sim_obitos").fields)}
+    fields = _physical(load_dicionario(dataset).fields)
     assert [f["name"] for f in fields if f["name"] not in do] == []
     assert [f["name"] for f in fields if f != copied(do[f["name"]])] == []
     assert [f["name"] for f in fields if f != do[f["name"]]] == ["idade"]

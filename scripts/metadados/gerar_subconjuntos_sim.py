@@ -9,6 +9,9 @@ mesmo rótulo nos dois dicionários. O DOFET fica de fora: é outro registro, n�
 A `derivation` que lista colunas harmonizadas (`output`) não é copiada: os subconjuntos
 não têm `x-analytics`, então o `sus.load` não cria essas colunas neles (ADR 0003).
 
+Só os campos físicos, os que o DBF publica, são copiados: as colunas que o import acrescenta
+(`gerar_colunas_lib.py`) são de cada subconjunto.
+
 Rodar de novo não muda nada; `--check` falha se algum dicionário mudaria.
 """
 
@@ -25,6 +28,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from gerar_decode_cnv import DICIONARIOS, ROOT, replace_field
 
+from omnisus.sources.datasus_ftp.library_columns import is_library_field
+
 SUBCONJUNTOS = ("sim_obitos_infantis", "sim_obitos_maternos", "sim_obitos_externos")
 
 
@@ -36,18 +41,21 @@ def sem_saidas_harmonizadas(definition: dict[str, Any]) -> dict[str, Any]:
     return {**definition, "x-metadata": {k: v for k, v in meta.items() if k != "derivation"}}
 
 
+def physical(fields: list[dict]) -> list[dict]:
+    """The fields the DBF publishes, without the columns the import adds."""
+    return [f for f in fields if not is_library_field(f)]
+
+
 def generate() -> dict[Path, str]:
     """New text of each subset dictionary, with sim_obitos' definition of every shared field."""
     do_text = (DICIONARIOS / "sim_obitos.yaml").read_text(encoding="utf-8")
-    do = {
-        f["name"]: sem_saidas_harmonizadas(f)
-        for f in yaml.load(do_text, Loader=yaml.CSafeLoader)["schema"]["fields"]
-    }
+    do_fields = yaml.load(do_text, Loader=yaml.CSafeLoader)["schema"]["fields"]
+    do = {f["name"]: sem_saidas_harmonizadas(f) for f in physical(do_fields)}
     out = {}
     for dataset in SUBCONJUNTOS:
         path = DICIONARIOS / f"{dataset}.yaml"
         text = path.read_text(encoding="utf-8")
-        for field in yaml.load(text, Loader=yaml.CSafeLoader)["schema"]["fields"]:
+        for field in physical(yaml.load(text, Loader=yaml.CSafeLoader)["schema"]["fields"]):
             name = field["name"]
             if name not in do:
                 raise ValueError(f"{dataset}.{name} is not a sim_obitos field")
