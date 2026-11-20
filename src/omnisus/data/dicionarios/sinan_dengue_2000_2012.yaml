@@ -2,7 +2,7 @@ name: sinan_dengue_2000_2012
 title: SINAN — Dengue, notificações nacionais, 2000 a 2012
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.0.0
+x-version: 1.1.0
 x-source-format: dbc
 x-evidence:
   physical_schema: DENGBR00 to DENGBR06, 107 fields, and DENGBR07 to DENGBR12, 67 fields, 147 distinct;
@@ -555,6 +555,27 @@ schema:
     type: string
   - name: tp_sistema
     type: string
+  - name: _source_ano
+    type: integer
+    label: Ano do arquivo de origem
+    constraints:
+      required: true
+      minimum: 2000
+    x-metadata:
+      derivation:
+        kind: source_partition
+        input: source_uri
+        rule: DATASUS filename scope
+  - name: _source_release
+    type: string
+    label: Modalidade da fonte
+    constraints:
+      required: true
+    x-metadata:
+      derivation:
+        kind: publication
+        input: source_uri
+        rule: release_from_uri
 x-identity:
   year_column: nu_ano
   code_column: id_agravo

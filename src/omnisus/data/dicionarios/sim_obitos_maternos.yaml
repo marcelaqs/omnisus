@@ -2,7 +2,7 @@ name: sim_obitos_maternos
 title: SIM — Óbitos maternos (DOMAT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.10.0
+x-version: 1.11.0
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_domat_br_2023_mini.dbc, 87 fields; observed 2026-09-22
@@ -3555,3 +3555,24 @@ schema:
           - 8
           locator: CONTADOR não aparece na coluna de nome do campo
         note: Nenhum dos quatro documentos lista o campo.
+  - name: _source_ano
+    type: integer
+    label: Ano do arquivo de origem
+    constraints:
+      required: true
+      minimum: 1996
+    x-metadata:
+      derivation:
+        kind: source_partition
+        input: source_uri
+        rule: DATASUS filename scope
+  - name: _source_release
+    type: string
+    label: Modalidade da fonte
+    constraints:
+      required: true
+    x-metadata:
+      derivation:
+        kind: publication
+        input: source_uri
+        rule: release_from_uri
