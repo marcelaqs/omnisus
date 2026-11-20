@@ -65,8 +65,9 @@ Layout 19 is the 75 fields `sih_aih_reduzida_1992_2007` was first written from
 
 Each has the same type in every layout that has it. Of the 89 fields, only `NUM_PROC`,
 `INSC_PN` and `SEQ_AIH5` change type (C or N) between layouts. The library stages the N
-months of these three as text, without zero padding, so `0` is `"0"` there and
-`"0000000000"` (`INSC_PN`) in a C month (#40).
+months of these three as text, without zero padding (#40). This census read no values;
+in the fixtures, `INSC_PN` is `"0"` in the 91 records of the excerpt of `RDRR0407` (N)
+and `"0000000000"` in the 1,496 of `RDRR0712` (C).
 
 The `RD.DEF` of the three era packages (`evidence/2026-09-29-tab-sih-rd-eras/`) binds
 `SEMIPLEN` ("Gestão (95-97)") to `GESTAO.CNV` at position 1 and `DIAG_SEC` to CID-9
@@ -77,5 +78,7 @@ and `sih_rd_rr_2007_12_mini.dbc` are `RDRR9412`, `RDRR9709` and `RDRR0712`, with
 of their rows here (layouts 3, 7 and 19). `sih_rd_rr_2004_07_excerpt.dbc` is records 481 to
 571 (0-based) of `RDRR0407` (layout 15) under that file's header: the longest run of records
 with no CPF in `CPF_AUT` or `GESTOR_CPF`. Together they hold every field of the 19 layouts.
+`sih_rd_rr_1996_02_mini.dbc` is `RDRR9602`, with the SHA-256 of its row (layout 5, the one
+with `NUM_PROC` N4.0).
 `tests/unit/transforms/test_sih_rd_1992_2007_fields.py` reads `census.csv` to check that,
 and that the dictionary declares exactly these 89 fields.

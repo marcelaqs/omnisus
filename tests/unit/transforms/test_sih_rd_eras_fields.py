@@ -263,3 +263,39 @@ def test_cid_morte_and_cid_asso_have_an_open_issue_on_the_leading_zero(field):
     months = {r["month"] for r in census_rows() if _spec(r, field.upper()) == "C4.0"}
     assert months == {r["month"] for r in census_rows() if r["month"] >= "2006-04"}
     assert "de 2006-04 a 2007-12" in description
+
+
+# --- issue #40: fields published as numbers in some months --------------------
+# field -> (era, a fixture that publishes it as a number, one that publishes it as text)
+NO_ZEROS = {
+    "num_proc": (ERA1, "sih_rd_rr_1996_02_mini", "sih_rd_rr_1997_09_mini"),
+    "insc_pn": (ERA2, "sih_rd_rr_2004_07_excerpt", "sih_rd_rr_2007_12_mini"),
+    "seq_aih5": (ERA2, "sih_rd_rr_2004_07_excerpt", "sih_rd_rr_2007_12_mini"),
+}
+
+
+@pytest.mark.parametrize("field", sorted(NO_ZEROS))
+def test_a_field_published_as_a_number_has_an_open_issue_with_its_months_and_values(
+    dbc_fixture, field
+):
+    """The issue `sem-zeros-a-esquerda` gives the months the census has the field as `N`,
+    says the field is text in the other months that have it, and quotes the one value each
+    of the two fixtures holds, as the import writes it."""
+    dataset, as_number, as_text = NO_ZEROS[field]
+    description = " ".join(_open_issue(dataset, field, "sem-zeros-a-esquerda").split())
+    rows = {
+        kind: [r for r in census_rows(dataset) if (_spec(r, field.upper()) or "")[:1] == kind]
+        for kind in "NC"
+    }
+    months = sorted({r["month"] for r in rows["N"]})
+    counted = (
+        f"{months[0]} a {months[-1]} ({len(rows['N'])} arquivos do censo, {len(months)} meses)"
+    )
+    assert counted in description
+    assert len(rows["N"]) + len(rows["C"]) < len(census_rows(dataset))
+    assert "nos outros meses em que existe" in description
+    for fixture in (as_number, as_text):
+        frame = _frame(dbc_fixture, fixture, dataset)
+        (value,) = frame[field].unique().to_list()
+        records = f"{frame.height:,}".replace(",", ".")
+        assert f"{fixture} traz '{value}' nos {records} registros" in description

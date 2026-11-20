@@ -2,7 +2,7 @@ name: sih_aih_reduzida_1992_1997
 title: "SIHSUS: AIH reduzida (RD), 1992-01 a 1997-12"
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.1.1
+x-version: 1.1.2
 x-source-format: dbc
 x-evidence:
   physical_schema: >-
@@ -304,11 +304,12 @@ schema:
         status: open
         description: >-
           O DBF publica num_proc como N4 em 1996-01 a 1996-07 (11 arquivos do censo, 7
-          meses) e como C4 nos outros meses. O staging grava o número como ele vem, sem
-          completar com zeros até 4 caracteres: nesses meses o código sai sem os zeros
-          à esquerda que o C4 tem. RDRR9602 (N4) traz '364' nos 264 registros, e RDRR9709
-          (C4), '0489' nos 794. Quem une as duas formas faz isso na consulta.
-          Evidência: evidence/2026-10-01-rd-1992-2007-layouts/census.csv (issues #40 e #197).
+          meses) e como C4 nos outros meses em que existe. O staging grava o número como
+          ele vem, sem completar com zeros até 4 caracteres: nesses meses o código sai sem
+          os zeros à esquerda que o C4 tem. A fixture sih_rd_rr_1996_02_mini traz
+          '364' nos 264 registros, e a sih_rd_rr_1997_09_mini traz '0489' nos
+          794 registros. Quem une as duas formas faz isso na consulta. Evidência dos
+          meses: evidence/2026-10-01-rd-1992-2007-layouts/census.csv (issues #40 e #197).
   - name: uti_total
     type: integer
   - name: us_sh

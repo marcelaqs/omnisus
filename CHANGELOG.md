@@ -31,7 +31,7 @@
   (or before the start) of a bounded row, such as
   `sim_obitos_cid9` (1979-01 to 1995-12), which the importer already skipped with
   `outside_coverage`. It is what lets the two RD rows share one directory.
-- `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` (1.1.1): `num_proc`,
+- `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` (1.1.2): `num_proc`,
   `insc_pn` and `seq_aih5` have the open issue `sem-zeros-a-esquerda`, with the months
   the DBF publishes each as a number and the code therefore has no zeros to its left:
   1996-01 to 1996-07 for `num_proc` (11 of the files of the census, #197) and 2004-07
