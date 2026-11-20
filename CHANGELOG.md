@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Datasets
+
+- `cnes_estabelecimentos_ensino` covers 2007-03 to 2026-10, not to 2021-07: on 2026-11-20
+  the server lists `EESP2610.dbc` (2026-11-17, one record, the 31 fields of the other EE
+  files), the only file of 2020 onwards besides the empty `EEMG2107.dbc`. The weekly
+  registry probe had failed on it (`evidence/2026-11-20-cnes-ee-2610/README.md`).
+
 ### omnisus-dbf 0.2.2
 
 - The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
