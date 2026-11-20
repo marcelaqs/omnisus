@@ -9,7 +9,7 @@
   no zeros to its left, and as a number with decimals when it is `number`. Nothing else
   is converted. Staged as published, such a field had one type in some files and another
   in the rest, and the lake refused whichever was imported second (`UnsafeSchemaError`).
-  Of the 66 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
+  Of the 70 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
   `num_proc` is `368` beside the `0489` of `RDRR9709`; `RDRR0407`, where `insc_pn` and
   `seq_aih5` are `0` in the 91 records of the fixture beside the `0000000000` and `000`
   of `RDRR0712` (#40); and `RDAC0909`, where 17 fields are `N1.0` (#219). In the headers
@@ -291,6 +291,9 @@
   say that none of the 38 packaged DEF names the field. They said 37, the count before
   `APAC_Dados_Comuns.DEF` was packaged (#218); the test that reads every DEF now compares
   the count in the text.
+- `sih_aih_reduzida` (2.29.4): the same two issues say 39 packaged DEF, the count with
+  `DengueNETON3.0.def` (#226). The `main` changed the same lines as 2.19.1; the version
+  goes past both so that neither locked content changes.
 
 ### omnisus-dbf 0.2.2
 
@@ -479,6 +482,23 @@ goes away and `sus.label(columns=[field])` raises for those fields (the entries 
   `analytical_projection` reads, `x-analytics` of the dictionary (#69).
 
 ### Dictionaries
+
+- New dataset `sinan_dengue` (1.0.0): SINAN dengue notifications, one national file per
+  year, `DENGBR00` to `DENGBR25` final and `DENGBR26` preliminary (listing of 2026-11-20).
+  The dictionary is the 121-field layout of `DENGBR14` to `DENGBR26`, read from `DENGBR17`.
+  82 fields have labels, each code citing a page of the Sinan Online Dengue/Chikungunya
+  dictionary (`sinan-da262c3b9f20`) or a CNV of the `TAB_SINANNET.zip` read on 2026-11-20
+  (`sinan-tab-24ac0c62fb84`, a republication in which the seven members already packaged
+  are unchanged); `classi_fin` 8, "Inconclusivo", is in `Classdeng.cnv` only. The age rule
+  is enabled for the audited final `DENGBR17`. The 27 files have four layouts: 2000–2006
+  and 2014 onwards share a lake table, while the lake refuses 2007–2012 and 2013 in a
+  table that holds 2014 onwards, because `nu_idade_n` and `plaq_menor` change type;
+  `docs/sources/sinan_dengue.md` and `evidence/2026-11-20-sinan-dengue/` say what
+  was read. `sinan.py` runs with `BASE = "sinan_dengue"`.
+  - `gerar_sinan.py` dates the maps of an agravo listed in `revisado_em_agravo` with its
+    own reading date; the other claims keep `revisado_em`.
+  - `sih_aih_reduzida` 2.19.1: the issues `homonimo-sem-fonte` and `gestor_tp-sem-fonte`
+    count 38 packaged DEF, with `DengueNETON3.0.def`.
 
 - `registry.json` registers the `TAB_SIH.zip` republished on 2026-10-15
   (`sih-tab-21e42384645a`). The 33 members whose hash the repository holds are identical to

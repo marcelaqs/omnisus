@@ -467,6 +467,34 @@
       "last_checked_on": "2026-09-22"
     },
     {
+      "id": "sinan-da262c3b9f20",
+      "category": "SINAN",
+      "title": "DIC_DADOS_ONLINE.pdf",
+      "publisher": null,
+      "authority": "official",
+      "url": "https://portalsinan.saude.gov.br/images/documentos/Agravos/Dengue/DIC_DADOS_ONLINE.pdf",
+      "sha256": "da262c3b9f20f242d01ee235e64c221dd97e6ad9a53d38cc94da9316bf98c4eb",
+      "bytes": 339721,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-20",
+      "last_checked_on": "2026-11-20"
+    },
+    {
+      "id": "sinan-tab-24ac0c62fb84",
+      "category": "SINAN",
+      "title": "TAB_SINANNET.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/AUXILIAR/TAB_SINANNET.zip",
+      "sha256": "24ac0c62fb84e5458574fef5a9939b4e47f33ba67038549752b787006ca5944e",
+      "bytes": 44001396,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-20",
+      "last_checked_on": "2026-11-20"
+    },
+    {
       "id": "sim-tabelas-tabuf-273f7e756a1a",
       "category": "SIM",
       "title": "TABUF.DBF",

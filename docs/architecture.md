@@ -19,8 +19,8 @@ recorded on each active publication with what the server lists today — by
 path, and by size or server mtime when recorded — and returns the scopes
 that differ, to be re-imported with `policy="replace"`.
 
-National datasets (the SINAN agravos `sinan_chagas`, `sinan_hanseniase` and
-`sinan_tuberculose`, and the SIM subsets `sim_obitos_fetais`, `sim_obitos_externos`,
+National datasets (the SINAN agravos `sinan_chagas`, `sinan_hanseniase`,
+`sinan_tuberculose` and `sinan_dengue`, and the SIM subsets `sim_obitos_fetais`, `sim_obitos_externos`,
 `sim_obitos_infantis` and `sim_obitos_maternos`) use
 `ScopeKey(uf=None, ano=year)` and a reserved `_source_ano` publication column.
 They preserve original geography and dates instead of assigning an artificial
@@ -36,7 +36,7 @@ unknown (NULL) URIs. See [the Chagas contract](sources/sinan_chagas.md).
 - **`Dataset`** is an immutable, keyword-only DATASUS FTP registry row. It holds
   identity, FTP location, cadence, partitioning, coverage and a dictionary path.
   The registry covers SIM (with CID-9 and the national subsets), SINASC, SIH,
-  SIA/APAC, the CNES file groups and SINAN (Chagas, Hanseníase, Tuberculose);
+  SIA/APAC, the CNES file groups and SINAN (Chagas, Hanseníase, Tuberculose, Dengue);
   [datasets](datasets.md) lists every row. Callers can also construct a `Dataset`
   with their own dictionary.
 - **Importers** orchestrate fetching, parsing and writing. IBGE population and
