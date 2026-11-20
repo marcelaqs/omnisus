@@ -277,7 +277,8 @@ atomicamente. Nada é atualizado por conta própria.
 
 ### Dicionário
 
-Os 63 campos de `src/omnisus/data/dicionarios/sinan_hanseniase.yaml` são um
+Os 63 campos do DBF em `src/omnisus/data/dicionarios/sinan_hanseniase.yaml` (o
+dicionário declara também as duas colunas que a importação acrescenta) são um
 inventário físico observado em `HANSBR26.dbc`. Treze têm as categorias decodificadas
 por fonte por código, citando página ou CNV oficial (D8; ver "O que um registro
 representa"); os demais seguem como inventário físico, sem auditoria semântica. Campos

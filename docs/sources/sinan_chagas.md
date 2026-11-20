@@ -261,7 +261,8 @@ cooperativo; isso não estabelece recuperação distribuída.
 
 ### Dicionário
 
-Os 108 campos de `src/omnisus/data/dicionarios/sinan_chagas.yaml` são um inventário
+Os 108 campos do DBF em `src/omnisus/data/dicionarios/sinan_chagas.yaml` (o dicionário
+declara também as duas colunas que a importação acrescenta) são um inventário
 físico observado em `CHAGBR23.dbc`, não uma auditoria semântica. Campos adicionais são
 preservados; incompatibilidades de tipo seguem a política geral de esquema. A validação
 da identidade da fonte não comprova qualidade clínica, completude da vigilância nem

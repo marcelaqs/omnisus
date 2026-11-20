@@ -14,6 +14,7 @@ import omnisus as sus
 import omnisus.cli.main as cli_main
 from omnisus.cli.main import dataset_choices
 from omnisus.sources.datasus_ftp.datasets import REGISTRY
+from omnisus.sources.datasus_ftp.library_columns import library_columns
 
 NON_FTP_DATASETS = set(cli_main._NON_FTP.values())
 """Datasets with their own importer and YAML but no registry row.
@@ -63,6 +64,13 @@ def test_e_cadence_agrees_with_partition_layout() -> None:
     """Agreement between two distinct facts — never derivation."""
     for d in REGISTRY.values():
         assert d.monthly == ("mes" in d.partition_by), d.name
+
+
+def test_e2_every_partition_is_a_column_the_import_adds() -> None:
+    """`partition_by` names lake columns; each must be one `library_columns` gives the row,
+    or the table would be partitioned by a column no file is staged with (#11)."""
+    for d in REGISTRY.values():
+        assert set(d.partition_by) <= {c.name for c in library_columns(d)}, d.name
 
 
 def test_f_every_non_aux_yaml_has_exactly_one_owner() -> None:

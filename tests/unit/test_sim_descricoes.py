@@ -17,6 +17,8 @@ import pytest
 
 import omnisus as sus
 from omnisus.metadata import sources_registry
+from omnisus.sources.datasus_ftp.datasets import REGISTRY
+from omnisus.sources.datasus_ftp.library_columns import library_columns
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 ESTRUTURA_2025 = "sim-b4195ac8e0f8"
@@ -142,7 +144,7 @@ NOT_LISTED = ["contador", "estabdescr", "fontesinf", "nudiasinf"]
 AUTHORED_BEFORE = ["ocup", "codestab", "linhaa", "linhab", "linhac", "linhad"]
 
 # Columns the import adds; the document is about the DBF.
-ADDED_BY_THE_IMPORT = ["ano", "uf", "_source_release"]
+ADDED_BY_THE_IMPORT = [c.name for c in library_columns(REGISTRY["sim_obitos"])]
 
 
 def _columns() -> dict[str, dict]:

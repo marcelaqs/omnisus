@@ -4,8 +4,9 @@
 as grava a partir do nome e do diretório do arquivo. `library_columns(dataset)`
 (`omnisus.sources.datasus_ftp.library_columns`) diz quais delas cada linha do registro
 recebe, e o runner usa a mesma função. Este script declara cada uma no dicionário da
-linha, com `type`, `label`, `constraints` e `x-metadata.derivation`, então um campo sem
-`derivation` é um campo que o DBF publica. Uma coluna nova vai para o fim da lista de
+linha, com `type`, `label`, `constraints` e `x-metadata.derivation` (`kind:
+source_partition` ou `publication`), e é por essa `derivation` que se sabe que o campo é
+da biblioteca (`is_library_field`). Uma coluna nova vai para o fim da lista de
 campos; uma já declarada é reescrita no lugar, e o que o script não gera (`physical_name`,
 `physical_type`, claims, issues) fica como estava. `x-decode` e a chave `derivation:`
 solta, que nenhum leitor usa, saem.
@@ -98,7 +99,7 @@ def generate() -> dict[Path, str]:
     cnv = _cnv_module()
     out = {}
     for d in REGISTRY.values():
-        path = DICIONARIOS / f"{d.dictionary or d.name}.yaml"
+        path = DICIONARIOS / f"{d.name}.yaml"
         out[path] = generate_one(d, path.read_text(encoding="utf-8"), cnv)
     return out
 

@@ -107,7 +107,7 @@ linha de `versoes.json`.
 `ano`, `uf`, `mes`, `_source_ano` e `_source_release` não são campos do DBF: o import as
 grava a partir do nome e do diretório do arquivo. `library_columns(dataset)`
 (`src/omnisus/sources/datasus_ftp/library_columns.py`) diz quais cada linha do registro
-recebe e com que tipo, o runner e o staging a usam, e
+recebe e com que tipo; o runner a usa, o staging tira os tipos do mesmo módulo, e
 `uv run python scripts/metadados/gerar_colunas_lib.py` as declara em cada dicionário com
 `x-metadata.derivation` (`kind: source_partition` ou `publication`). Um campo com essa
 `derivation` é da biblioteca; os testes que comparam o inventário do dicionário com o DBF

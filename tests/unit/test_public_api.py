@@ -5,6 +5,7 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 
+import pyarrow as pa
 import pytest
 
 import omnisus as sus
@@ -258,12 +259,12 @@ def test_import_dataset_reaches_every_registry_row(
     added = library_columns(REGISTRY[dataset_name])
     assert set(written) == {name.lower() for name in published} | {c.name for c in added}
     declared = {f["name"]: f for f in load_dicionario(dataset_name).fields}
-    stored = {"integer": {"USMALLINT", "UTINYINT"}, "string": {"VARCHAR"}}
+    stored = {pa.uint16(): "USMALLINT", pa.uint8(): "UTINYINT", pa.string(): "VARCHAR"}
     for column in added:
         assert column.name in declared, f"{dataset_name} does not declare {column.name}"
         assert is_library_field(declared[column.name]), f"{dataset_name}.{column.name}"
         assert declared[column.name]["type"] == column.type
-        assert written[column.name] in stored[column.type], (dataset_name, column.name)
+        assert written[column.name] == stored[column.arrow], (dataset_name, column.name)
 
 
 def test_available_and_browse_are_exported() -> None:

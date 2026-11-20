@@ -50,7 +50,8 @@
   `sinasc_nascidos_vivos`, `sih_aih_rejeitada_erro`) and only `sih_aih_reduzida` and
   `sim_obitos` declared all; `sus.check_columns` called the missing ones `not in
   dictionary`, and now gives them their label (#11). They come from
-  `library_columns(dataset)`, the function the runner and staging use, and are written by
+  `library_columns(dataset)`, the function the runner uses (staging takes the types from
+  the same module), and are written by
   `scripts/metadados/gerar_colunas_lib.py`; the inventory tests count only the fields
   without a `derivation` of kind `source_partition` or `publication`. Each dictionary has
   a new minor `x-version`. The removal of the `_source_release` map already landed in

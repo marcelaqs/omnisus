@@ -36,6 +36,26 @@ def test_generator_output_is_committed(monkeypatch):
         assert path.read_text(encoding="utf-8") == text, path.name
 
 
+@pytest.mark.parametrize("name", ["cnes_leitos", "sia_psicossocial", "sinan_dengue_2013"])
+def test_the_generator_appends_the_columns_to_a_dictionary_without_them(monkeypatch, name):
+    """The committed text without its last fields, the library's, is the dictionary as it
+    was before the generator; generating from it gives the committed text back. One file
+    with the fields indented by two spaces, one by four, and a national row."""
+    module = _load(monkeypatch)
+    committed = (DICIONARIOS / f"{name}.yaml").read_text(encoding="utf-8")
+    first = library_columns(REGISTRY[name])[0].name
+    lines = committed.splitlines(keepends=True)
+    (start,) = [i for i, line in enumerate(lines) if line.strip() == f"- name: {first}"]
+    indent = lines[start][: len(lines[start]) - len(lines[start].lstrip(" "))]
+    rest = [
+        i for i in range(start, len(lines)) if lines[i].strip() and not lines[i].startswith(indent)
+    ]
+    end = rest[0] if rest else len(lines)
+    before = "".join(lines[:start] + lines[end:])
+    assert not any(is_library_field(f) for f in yaml.safe_load(before)["schema"]["fields"])
+    assert module.generate_one(REGISTRY[name], before, module._cnv_module()) == committed
+
+
 @pytest.mark.parametrize("name", sorted(REGISTRY))
 def test_a_dictionary_declares_exactly_the_columns_the_import_adds(name):
     declared = [f["name"] for f in load_dicionario(name).fields if is_library_field(f)]
