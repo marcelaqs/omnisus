@@ -19,6 +19,7 @@ import polars as pl
 import pytest
 
 import omnisus as sus
+from omnisus.sources.datasus_ftp.library_columns import is_library_field
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 from omnisus.transforms.dictionaries import load_dicionario
 
@@ -70,8 +71,10 @@ def issue(dataset: str) -> str:
 
 @pytest.mark.parametrize(("dataset", "census"), CENSUSES)
 def test_the_dictionary_declares_the_fields_the_files_publish_and_no_other(dataset, census):
+    """The columns the import adds are the dictionary's too, and are not the files'."""
     published = {field for layout in layouts(census).values() for field in layout}
-    assert {f["name"] for f in load_dicionario(dataset).fields} == published
+    declared = {f["name"] for f in load_dicionario(dataset).fields if not is_library_field(f)}
+    assert declared == published
 
 
 @pytest.mark.parametrize(("dataset", "census"), CENSUSES)
