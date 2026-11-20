@@ -88,7 +88,7 @@ substituir o valor bruto por um palpite ou descartar códigos desconhecidos.
 ## Versão do dicionário
 
 Toda mudança no conteúdo de um dicionário — inclusive a saída de `gerar_decode_cnv.py`,
-`gerar_sinan.py`, `gerar_subconjuntos_sim.py` e `validar_fonte.py --accept` — exige
+`gerar_sinan.py`, `gerar_subconjuntos_sim.py`, `gerar_colunas_lib.py` e `validar_fonte.py --accept` — exige
 trocar a `x-version` do dicionário por uma maior e rodar
 `uv run python scripts/metadados/travar_versoes.py`, que registra o SHA-256 do conteúdo
 da nova versão em `src/omnisus/data/dicionarios/versoes.json`. O teste
@@ -101,6 +101,21 @@ mesma versão do mesmo dicionário: resolve-se trocando de novo a `x-version` e 
 script, nunca editando ou apagando entradas à mão. O script não percebe uma entrada
 apagada e regerada; por isso, na revisão, recusar todo diff que remove ou altera uma
 linha de `versoes.json`.
+
+## Colunas que o import acrescenta
+
+`ano`, `uf`, `mes`, `_source_ano` e `_source_release` não são campos do DBF: o import as
+grava a partir do nome e do diretório do arquivo. `library_columns(dataset)`
+(`src/omnisus/sources/datasus_ftp/library_columns.py`) diz quais cada linha do registro
+recebe e com que tipo; o runner a usa, o staging tira os tipos do mesmo módulo, e
+`uv run python scripts/metadados/gerar_colunas_lib.py` as declara em cada dicionário com
+`x-metadata.derivation` (`kind: source_partition` ou `publication`). Um campo com essa
+`derivation` é da biblioteca; os testes que comparam o inventário do dicionário com o DBF
+só contam os outros (`is_library_field`). Uma coluna que o DBF também publica, como o
+`ANO` C(4) e o `MES` C(2) do ER, guarda `physical_name` e `physical_type` e declara o tipo
+que o lake grava. Mudou a regra ou o tipo: rode o script, troque a `x-version` de cada
+dicionário que mudou e rode `travar_versoes.py`; `gerar_colunas_lib.py --check` falha
+enquanto o texto dos dicionários diverge.
 
 ## Regenerar os rótulos
 
@@ -124,7 +139,7 @@ seu `sha256`, e o gerador lê os bytes do membro nomeado e confere o hash contra
 
 `def` é sempre uma lista de DEF. Quando vários pacotes publicam os mesmos vínculos, a
 lista tem um DEF por pacote, o primeiro sendo o que já servia de base (é o caso de
-`sih_aih_reduzida_1992_2007`, com os três `RD.DEF` das eras); um campo ligado a DBF aceita
+`sih_aih_reduzida_1992_1997` e `sih_aih_reduzida_1998_2007`, cada um com os três `RD.DEF` das eras); um campo ligado a DBF aceita
 um DEF só, porque a coluna de descrição é lida de um DEF. Para cada DEF da lista o
 gerador procura o membro na mesma posição relativa à pasta do DEF, exige o mesmo
 `sha256` do membro de `campos`, confere que aquele DEF liga o campo a ele na posição 1

@@ -24,6 +24,7 @@ from omnisus.sources.datasus_ftp.dbf_batches import (
     physical_arrow_schema,
     physical_arrow_types,
 )
+from omnisus.sources.datasus_ftp.library_columns import ARROW_TYPES
 from omnisus.transforms.dictionaries import Dicionario, load_dicionario
 
 
@@ -159,13 +160,13 @@ def dbc_bytes_to_parquet(
         raise ValueError("no DBC payload to stage")
     dic = load_dicionario(dictionary if dictionary is not None else dataset)
     partitions = [
-        (name, value, dtype)
-        for name, value, dtype in [
-            ("ano", ano, pa.uint16()),
-            ("uf", uf, pa.string()),
-            ("mes", mes, pa.uint8()),
-            ("_source_ano", source_ano, pa.uint16()),
-            ("_source_release", release, pa.string()),
+        (name, value, ARROW_TYPES[name])
+        for name, value in [
+            ("ano", ano),
+            ("uf", uf),
+            ("mes", mes),
+            ("_source_ano", source_ano),
+            ("_source_release", release),
         ]
         if value is not None
     ]

@@ -3,14 +3,16 @@
 A field the DBF header declares `N` with no decimals is read as a whole number. When the
 dictionary declares it `string` or `date`, staging writes the number as text, with no
 zeros to its left; when it declares `number`, staging writes a number with decimals. No
-other difference is converted. Three fixtures have such fields, and no other does:
+other difference is converted. Four fixtures have such fields, and no other does:
 
 - `RDAC0909.dbc` (`sih_rd_ac_2009_09_excerpt`): eleven value fields and six text fields
   are `N1.0`, in no other RD file from 2008 on;
 - `RDRR0407.dbc` (`sih_rd_rr_2004_07_excerpt`): `INSC_PN` and `SEQ_AIH5` are `N`, and
   text in `RDRR0712.dbc` (`sih_rd_rr_2007_12_mini`);
-- `RDRR9603.dbc` (`sih_rd_rr_1996_03_excerpt`): `NUM_PROC` is `N4.0`, and `C4` in
-  `RDRR9709.dbc` (`sih_rd_rr_1997_09_mini`).
+- `RDRR9603.dbc` (`sih_rd_rr_1996_03_excerpt`) and `RDRR9602.dbc`
+  (`sih_rd_rr_1996_02_mini`): `NUM_PROC` is `N4.0`, and `C4` in `RDRR9709.dbc`
+  (`sih_rd_rr_1997_09_mini`). `test_rd_n_as_text.py` imports RDRR9602 through
+  `import_dataset`.
 """
 
 from __future__ import annotations
@@ -59,7 +61,8 @@ VALUES = {
 TEXT = {"num_proc", "cpf_aut", "gestor_cod", "gestor_dt", "infehosp", "faec_tp"}
 
 RD = "sih_aih_reduzida"
-RD_BEFORE_2008 = "sih_aih_reduzida_1992_2007"
+RD_1992_1997 = "sih_aih_reduzida_1992_1997"
+RD_1998_2007 = "sih_aih_reduzida_1998_2007"
 USUAL = ("sih_rd_rr_2025_01_excerpt", "RDRR2501.dbc", ScopeKey("RR", 2025, 1))
 APART = ("sih_rd_ac_2009_09_excerpt", "RDAC0909.dbc", ScopeKey("AC", 2009, 9))
 RDRR0407 = ("sih_rd_rr_2004_07_excerpt", "RDRR0407.dbc", ScopeKey("RR", 2004, 7))
@@ -80,9 +83,9 @@ def import_in_order(dataset, dbc_fixture, lake, *files_, policy="append") -> Non
         ingest_raw(dataset, scope, [(entry, raw)], lake, policy=policy)
 
 
-def test_in_the_fixtures_only_three_files_have_a_field_staged_with_another_type(tmp_path):
+def test_in_the_fixtures_only_four_files_have_a_field_staged_with_another_type(tmp_path):
     """Every real DBC fixture is staged with the dictionary of its dataset, and each field
-    is compared with the type of its descriptor. The 20 that differ are whole numbers the
+    is compared with the type of its descriptor. The 21 that differ are whole numbers the
     dictionary declares `number`, `string` or `date`. Everything else keeps the
     descriptor's type: the text the SIM declares `integer`, the `D` dates of the SINAN."""
     differ, staged_files = set(), 0
@@ -103,12 +106,13 @@ def test_in_the_fixtures_only_three_files_have_a_field_staged_with_another_type(
         for name, kind in physical_arrow_types(dbc.decompress_bytes(raw)).items():
             if staged.field(name).type != kind:
                 differ.add((source.name, name, str(kind), str(staged.field(name).type)))
-    assert staged_files == 70
+    assert staged_files == 71
     assert differ == (
         {("RDAC0909.dbc", name, "int64", "double") for name in VALUES}
         | {("RDAC0909.dbc", name, "int64", "string") for name in TEXT}
         | {("RDRR0407.dbc", name, "int64", "string") for name in ("insc_pn", "seq_aih5")}
         | {("RDRR9603.dbc", "num_proc", "int64", "string")}
+        | {("RDRR9602.dbc", "num_proc", "int64", "string")}
     )
 
 
@@ -170,40 +174,43 @@ def test_rdac0909_and_another_rd_file_share_a_lake_in_either_order(
 
 @pytest.mark.parametrize("backend", ["python", "auto"])
 @pytest.mark.parametrize(
-    ("order", "fields", "rows"),
+    ("era", "order", "fields", "rows"),
     [
         (
+            RD_1998_2007,
             (RDRR0712, RDRR0407),
             ("insc_pn", "seq_aih5"),
             [(2004, "0", "0"), (2007, "0000000000", "000")],
         ),
         (
+            RD_1998_2007,
             (RDRR0407, RDRR0712),
             ("insc_pn", "seq_aih5"),
             [(2004, "0", "0"), (2007, "0000000000", "000")],
         ),
-        ((RDRR9709, RDRR9603), ("num_proc",), [(1996, "368"), (1997, "0489")]),
-        ((RDRR9603, RDRR9709), ("num_proc",), [(1996, "368"), (1997, "0489")]),
+        (RD_1992_1997, (RDRR9709, RDRR9603), ("num_proc",), [(1996, "368"), (1997, "0489")]),
+        (RD_1992_1997, (RDRR9603, RDRR9709), ("num_proc",), [(1996, "368"), (1997, "0489")]),
     ],
     ids=["insc_pn, N second", "insc_pn, N first", "num_proc, N second", "num_proc, N first"],
 )
 def test_a_month_with_the_field_as_a_number_and_one_with_it_as_text_share_a_lake(
-    dbc_fixture, tmp_path, monkeypatch, backend, order, fields, rows
+    dbc_fixture, tmp_path, monkeypatch, backend, era, order, fields, rows
 ):
     """The decision of #40: the number is written as text with no zeros to its left. The
     91 records of the RDRR0407 fixture have `0` where the 1,496 of RDRR0712 have the zeros
     of the field's width, and the 5 of RDRR9603 have `368` where the 794 of RDRR9709 have
-    `0489`. Staged as published, the second import failed (`VARCHAR versus BIGINT`)."""
+    `0489`. Staged as published, the second import failed (`VARCHAR versus BIGINT`). Each
+    pair is of one era of the RD, so of one table of the lake (#12)."""
     monkeypatch.setenv("OMNISUS_DBF_BACKEND", backend)
     as_number = {name for _, name, _ in order} & {RDRR0407[1], RDRR9603[1]}
     for fixture, name, _ in order:
         published = whole_numbers_in_header(dbc_fixture(fixture).read_bytes()) & set(fields)
         assert published == (set(fields) if name in as_number else set())
     with Lake.local(f"ducklake:{tmp_path}/x.ducklake") as lake:
-        import_in_order(REGISTRY[RD_BEFORE_2008], dbc_fixture, lake, *order)
+        import_in_order(REGISTRY[era], dbc_fixture, lake, *order)
         assert len(lake.publications()) == 2
         columns = ", ".join(fields)
-        query = f"SELECT DISTINCT ano, {columns} FROM lake.{RD_BEFORE_2008} ORDER BY ano"
+        query = f"SELECT DISTINCT ano, {columns} FROM lake.{era} ORDER BY ano"
         table = lake.connect().sql(query).pl()
     assert {table.schema[name] for name in fields} == {pl.String}
     assert table.rows() == rows
@@ -222,17 +229,17 @@ def test_a_lake_that_has_the_column_as_a_number_refuses_the_files_staged_as_text
             if field["name"] in ("insc_pn", "seq_aih5"):
                 field["type"] = "integer"
 
-    packaged = REGISTRY[RD_BEFORE_2008]
+    packaged = REGISTRY[RD_1998_2007]
     raw = yaml.load(
-        (files("omnisus.data.dicionarios") / f"{RD_BEFORE_2008}.yaml").read_text("utf-8"),
+        (files("omnisus.data.dicionarios") / f"{RD_1998_2007}.yaml").read_text("utf-8"),
         Loader=yaml.CSafeLoader,
     )
     as_before(raw)
-    edited = tmp_path / f"{RD_BEFORE_2008}.yaml"
+    edited = tmp_path / f"{RD_1998_2007}.yaml"
     edited.write_text(yaml.safe_dump(raw, allow_unicode=True, sort_keys=False), encoding="utf-8")
     with Lake.local(f"ducklake:{tmp_path}/x.ducklake") as lake:
         import_in_order(replace(packaged, dictionary=edited), dbc_fixture, lake, RDRR0407)
-        described = lake.connect().sql(f"DESCRIBE lake.{RD_BEFORE_2008}").pl()
+        described = lake.connect().sql(f"DESCRIBE lake.{RD_1998_2007}").pl()
         types = dict(zip(described["column_name"], described["column_type"], strict=True))
         assert (types["insc_pn"], types["seq_aih5"]) == ("BIGINT", "BIGINT")
         with pytest.raises(UnsafeSchemaError, match="BIGINT versus VARCHAR"):

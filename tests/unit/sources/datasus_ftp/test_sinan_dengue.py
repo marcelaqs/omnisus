@@ -8,6 +8,7 @@ import pytest
 import omnisus as sus
 from omnisus.sources._base import ScopeKey
 from omnisus.sources.datasus_ftp.identity import validate_identity
+from omnisus.sources.datasus_ftp.library_columns import is_library_field
 from omnisus.sources.datasus_ftp.staging import dbc_bytes_to_parquet
 from omnisus.transforms.dictionaries import load_dicionario
 
@@ -16,6 +17,11 @@ FIXTURE = "sinan_dengue_br_2017_excerpt"
 
 def _fields() -> dict[str, dict]:
     return {f["field"]["name"]: f["field"] for f in sus.describe_dataset("sinan_dengue")["fields"]}
+
+
+def _published(dataset: str) -> list[str]:
+    """The fields the DBF publishes, without the columns the import adds."""
+    return [f["name"] for f in load_dicionario(dataset).fields if not is_library_field(f)]
 
 
 def _stage(dbc_fixture, tmp_path):
@@ -32,8 +38,9 @@ def test_excerpt_stages_every_field_of_the_dictionary(dbc_fixture, tmp_path):
     out, result = _stage(dbc_fixture, tmp_path)
     assert result.rows == 5000
     staged = pq.read_schema(out).names
-    assert staged == [*_fields(), "_source_ano", "_source_release"]
-    assert len(_fields()) == 121
+    assert staged == [*_published("sinan_dengue"), "_source_ano", "_source_release"]
+    assert staged == list(_fields())
+    assert len(_published("sinan_dengue")) == 121
 
 
 def test_identity_is_the_file_year_and_the_agravo_a90(dbc_fixture, tmp_path):
@@ -204,8 +211,7 @@ def test_the_older_layouts_stage_fields_their_dictionary_declares(
 def test_the_older_dictionaries_list_the_fields_of_their_layouts():
     """107 fields of DENGBR00-06 plus the 40 that only DENGBR07-12 has; 67 of DENGBR13."""
     counts = {
-        name: len(load_dicionario(name).raw["schema"]["fields"])
-        for name in ("sinan_dengue_2000_2012", "sinan_dengue_2013")
+        name: len(_published(name)) for name in ("sinan_dengue_2000_2012", "sinan_dengue_2013")
     }
     assert counts == {"sinan_dengue_2000_2012": 147, "sinan_dengue_2013": 67}
 

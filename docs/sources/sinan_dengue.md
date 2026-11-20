@@ -42,7 +42,8 @@ Esta página descreve os campos de `sinan_dengue`.
   3 mês, 4 ano) e os três seguintes a quantidade; `4088` = 88 anos (Dicionário
   Notificação Individual v5, pp. 3–4). `analytical_projection` só a interpreta para o
   `DENGBR17` final auditado (`x-analytics.validated_sources`).
-- O dicionário da biblioteca é um inventário físico de `DENGBR17.dbc` (121 campos). Têm
+- O dicionário da biblioteca é um inventário físico de `DENGBR17.dbc` (121 campos), mais
+  as duas colunas que a importação acrescenta. Têm
   rótulo 82 campos: cada código cita a página do dicionário oficial ou o CNV de
   `TAB_SINANNET` que o nomeia. Branco fica sem rótulo, salvo em `nduplic_n` e
   `tp_sistema`, onde a fonte o nomeia. Os códigos armazenados não mudam.

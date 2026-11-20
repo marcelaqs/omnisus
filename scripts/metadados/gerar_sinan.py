@@ -3,7 +3,8 @@
 Cada campo de `comum` vai para todo `sinan_*.yaml` que já tem um campo com esse nome;
 cada campo de `agravo.<dataset>` vai só para aquele dicionário e, com o mesmo nome,
 substitui o de `comum`. O gerador não acrescenta nem remove campos: a lista de campos
-continua sendo a do descritor DBF.
+continua sendo a do descritor DBF, mais as colunas que a importação acrescenta, que
+`gerar_colunas_lib.py` escreve.
 
 Um campo com `x-decode` recebe uma claim `/field/codes` (`method: page-read`) cujas
 evidências são as `fontes` do bloco. Antes de escrever, o gerador confere que a união

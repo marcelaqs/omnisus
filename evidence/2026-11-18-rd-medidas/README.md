@@ -7,7 +7,11 @@ fields rest on more than one fixture. `medir.py` wrote the four CSV files:
     uv run --locked python evidence/2026-11-18-rd-medidas/medir.py \
         sih_aih_reduzida DIR_2008 evidence/2026-11-18-rd-medidas/2008-2026
     uv run --locked python evidence/2026-11-18-rd-medidas/medir.py \
-        sih_aih_reduzida_1992_2007 DIR_2006 evidence/2026-11-18-rd-medidas/2006-2007
+        sih_aih_reduzida_1998_2007 DIR_2006 evidence/2026-11-18-rd-medidas/2006-2007
+
+The second command was run as `sih_aih_reduzida_1992_2007`, the name of the row until
+it was split at 1998-01 (#12); the months of 2006 and 2007 are of
+`sih_aih_reduzida_1998_2007`.
 
 Each directory has `arquivos.csv` (file, bytes, SHA-256, records) and `medidas.csv`
 (file, measure, key, rows). Only counts leave the files. A count of 1 is one

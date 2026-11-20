@@ -42,8 +42,9 @@ GOLDEN: list[tuple[str, ScopeKey, str]] = [
     ("sia_psicossocial",    ScopeKey(uf="RR", ano=2024, mes=1),  "PSRR2401.dbc"),
     ("cnes_estabelecimentos",   ScopeKey(uf="RR", ano=2024, mes=1),  "STRR2401.dbc"),
     # two-digit years: the century is the row's, counted from its first covered year
-    ("sih_aih_reduzida_1992_2007", ScopeKey(uf="SP", ano=1999, mes=6), "RDSP9906.dbc"),
-    ("sih_aih_reduzida_1992_2007", ScopeKey(uf="SP", ano=2007, mes=12), "RDSP0712.dbc"),
+    ("sih_aih_reduzida_1992_1997", ScopeKey(uf="SP", ano=1997, mes=6), "RDSP9706.dbc"),
+    ("sih_aih_reduzida_1998_2007", ScopeKey(uf="SP", ano=1999, mes=6), "RDSP9906.dbc"),
+    ("sih_aih_reduzida_1998_2007", ScopeKey(uf="SP", ano=2007, mes=12), "RDSP0712.dbc"),
     ("sim_obitos_cid9",     ScopeKey(uf="RR", ano=1979),         "DORRR79.dbc"),
     ("sim_obitos_cid9",     ScopeKey(uf="RR", ano=1995),         "DORRR95.dbc"),
     # One real listed name per row (listings of 2026-09-22)
@@ -109,7 +110,7 @@ def test_every_registry_row_has_a_golden_case() -> None:
 
 # --- round-trip property over the whole space ------------------------------
 # A two-digit year round-trips within the hundred years from the row's first year, or from
-# `two_digit_from`. A national name outside the row's coverage is not the row's file.
+# `two_digit_from`. A name outside the row's coverage is not the row's file.
 
 
 @settings(max_examples=300)
@@ -128,8 +129,22 @@ def test_round_trip_property(dataset: str, uf: str, offset: int, mes: int) -> No
         else ScopeKey(uf=uf, ano=ano, mes=mes if d.monthly else None)
     )
     start = d.two_digit_from if d.two_digit_from is not None else d.coverage[0][0]
-    readable = ano < start + 100 and (d.geography != "national" or in_coverage(d, scope))
+    readable = ano < start + 100 and in_coverage(d, scope)
     assert decode_for(d, filename_for(d, scope)) == (scope if readable else None)
+
+
+@pytest.mark.parametrize(
+    ("dataset", "name"),
+    [
+        ("sih_aih_reduzida_1992_1997", "RDSP9801.dbc"),
+        ("sih_aih_reduzida_1992_1997", "RDSP0712.dbc"),
+        ("sih_aih_reduzida_1998_2007", "RDSP9712.dbc"),
+        ("sih_aih_reduzida_1998_2007", "RDSP9201.dbc"),
+    ],
+)
+def test_a_name_outside_the_coverage_of_the_row_is_not_its_file(dataset: str, name: str) -> None:
+    """Issue #12: the two RD rows share a directory and a prefix; neither reads the other's."""
+    assert decode_for(REGISTRY[dataset], name) is None
 
 
 def test_decode_for_rejects_foreign_and_malformed_names() -> None:

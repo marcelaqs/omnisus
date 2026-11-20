@@ -42,20 +42,27 @@ def parse_name(d: Dataset, name: str) -> SourceName | None:
     ``year_digits`` (``DORR2023.dbc``, SIM CID-9's ``DORRR79.DBC``). National rows read
     ``PREFIX + national_code + YY``. State rows accept only the 27 UFs, so
     national aggregates such as ``DOBR2022.dbc`` or ``DNEX2025.dbc`` are never
-    read as a state. A national name whose year is outside the row's coverage is not the
-    row's file: ``DENGBR07.dbc`` belongs to ``sinan_dengue_2000_2012`` only. Monthly rows accept the two part shapes DATASUS uses when
+    read as a state. Monthly rows accept the two part shapes DATASUS uses when
     it splits a month: ``BIMG2412_1.dbc`` and ``PASP2401a.dbc``. A shorter
     prefix never swallows a longer family's file: the groups are fixed width.
+
+    A name whose scope falls outside the row's ``coverage`` is not a file of the row: the
+    rows of one directory and prefix each read only their own months or years, and none
+    claims another's. ``RDSP9712.dbc`` belongs to ``sih_aih_reduzida_1992_1997`` and
+    ``RDSP9801.dbc`` to ``sih_aih_reduzida_1998_2007`` (ADR 0002); ``DENGBR07.dbc`` belongs
+    to ``sinan_dengue_2000_2012`` only (#225).
     """
+    parsed = _parse_name(d, name)
+    return parsed if parsed is not None and in_coverage(d, parsed.scope) else None
+
+
+def _parse_name(d: Dataset, name: str) -> SourceName | None:
     prefix = re.escape(d.prefix)
     if d.geography == "national":
         m = re.fullmatch(
             prefix + re.escape(d.national_code) + r"(\d{2})\.dbc", name, re.IGNORECASE
         )
-        if m is None:
-            return None
-        scope = ScopeKey(uf=None, ano=_yy_to_year(d, int(m[1])))
-        return SourceName(scope, None) if in_coverage(d, scope) else None
+        return SourceName(ScopeKey(uf=None, ano=_yy_to_year(d, int(m[1]))), None) if m else None
     if d.monthly:
         m = re.fullmatch(
             prefix + r"([A-Z]{2})(\d{2})(\d{2})(?:_(\d+)|((?-i:[a-z])))?\.dbc", name, re.IGNORECASE

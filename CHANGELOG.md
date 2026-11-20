@@ -8,6 +8,63 @@
   the server lists `EESP2610.dbc` (2026-11-17, one record, the 31 fields of the other EE
   files), the only file of 2020 onwards besides the empty `EEMG2107.dbc`. The weekly
   registry probe had failed on it (`evidence/2026-11-20-cnes-ee-2610/README.md`).
+### Dictionaries
+
+- **Breaking:** the dataset `sih_aih_reduzida_1992_2007` is split at 1998-01 into
+  `sih_aih_reduzida_1992_1997` (43 fields, 7 DBF layouts, `diag_princ` in CID-9) and
+  `sih_aih_reduzida_1998_2007` (80 fields, 12 layouts, `diag_princ` in CID-10), as decided
+  in #12 (decision 1, ADR 0002 amendment of 2026-11-16). They share the directory
+  `SIHSUS/199201_200712/Dados` and the prefix `RD`; `coverage` cuts the months. The old
+  name no longer exists. Against a lake that imported it (RDRR0712, checked with the
+  code of this change): `load`, `import_dataset`, `outdated` and `read(..., years=...)`
+  raise `ValueError: unknown dataset`; `describe_dataset` and `label` raise
+  `FileNotFoundError` (no dictionary); `read(table)` without `years` and `cite` still
+  work, `cite` printing the table name as the title. The table `sih_aih_reduzida_1992_2007`
+  stays in the lake and nothing writes to it any more; to move on, import the months again
+  under the new names. Each new table has only the columns of its era. Both
+  dictionaries are new, at 1.0.1, with the maps and claims the old one had (the
+  generator output is unchanged); the issue `diag-princ-cid9-ate-1997` becomes
+  `diag-princ-cid9` in the first, and the second declares no issue on `diag_princ`.
+  `travar_versoes.py` gets
+  `RETIRED`, so the old entry stays in `versoes.json`, at 1.3.2. Dates, foreign keys and
+  the CNVs of the era stay for the next changes of #12. `num_proc` (1992-1997) and
+  `insc_pn` and `seq_aih5` (1998-2007) are declared `string`, and the import writes the
+  months that publish them as numbers as text, as 0.4.1 does (#40). The entries of
+  0.4.1 and earlier name the dataset as it was then.
+- A file name whose scope is outside a dataset's declared `coverage` is no longer read as
+  a file of that dataset, for state rows as for the national ones of #225:
+  `available` stops listing a name beyond the declared end (or before the start) of a
+  bounded row, such as
+  `sim_obitos_cid9` (1979-01 to 1995-12), which the importer already skipped with
+  `outside_coverage`. It is what lets the two RD rows share one directory.
+- `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` (1.1.2): `num_proc`,
+  `insc_pn` and `seq_aih5` have the open issue `sem-zeros-a-esquerda`, with the months
+  the DBF publishes each as a number and the code therefore has no zeros to its left:
+  1996-01 to 1996-07 for `num_proc` (11 of the files of the census, #197) and 2004-07
+  to 2006-03 for `insc_pn` and `seq_aih5` (35 files, #198 and #199). The counts are
+  those of `evidence/2026-10-01-rd-1992-2007-layouts/census.csv`, whose README now says
+  what the import does with the three fields (#40). The import does not change: it is
+  the rule of 0.4.1. New fixture: `sih_rd_rr_1996_02_mini`, the 264 records of
+  `RDRR9602`, where `num_proc` is `364` beside the `0489` of `RDRR9709`;
+  `test_rd_n_as_text.py` imports it through `import_dataset` before and after a month
+  that publishes text, in the two eras of the RD. Of the 71 real DBC fixtures, four now
+  have a field staged with the type of the dictionary (`test_staged_types.py`).
+- Every DATASUS dictionary (47) declares the columns the import adds, each with an
+  `x-metadata.derivation`: `ano` and `uf` of a state file, `mes` of a monthly one,
+  `_source_ano` of a national one, `_source_release` of all. Before, 42 declared none of
+  them, 3 declared some without a `derivation` (`cnes_estabelecimentos`,
+  `sinasc_nascidos_vivos`, `sih_aih_rejeitada_erro`) and only `sih_aih_reduzida` and
+  `sim_obitos` declared all; `sus.check_columns` called the missing ones `not in
+  dictionary`, and now gives them their label (#11). They come from
+  `library_columns(dataset)`, the function the runner uses (staging takes the types from
+  the same module), and are written by
+  `scripts/metadados/gerar_colunas_lib.py`; the inventory tests count only the fields
+  without a `derivation` of kind `source_partition` or `publication`. Each dictionary has
+  a new minor `x-version`. The removal of the `_source_release` map already landed in
+  0.3.0 (#174).
+- `sih_aih_rejeitada_erro` declares `ano` and `mes` as `integer`, the type the lake
+  stores, with `physical_type` `string` 4 and 2: the ER publishes ANO C(4) and MES C(2)
+  and staging replaces them with the scope.
 
 ### omnisus-dbf 0.2.2
 
