@@ -131,33 +131,131 @@ def test_complica_has_no_map_because_two_cnv_disagree():
     assert "CompdengM50mil.cnv" in field["description"]
 
 
+# One table per layout (#225): the registry row of a file is the one whose coverage holds
+# its year, and each row has the dictionary of its own layouts.
+ROW_OF = {
+    2006: "sinan_dengue_2000_2012",
+    2012: "sinan_dengue_2000_2012",
+    2013: "sinan_dengue_2013",
+    2017: "sinan_dengue",
+}
+
+
 def _schema(dbc_fixture, tmp_path, year: int):
     out = tmp_path / f"dengue-{year}.parquet"
     raw = dbc_fixture(f"sinan_dengue_br_{year}_excerpt").read_bytes()
-    result = dbc_bytes_to_parquet(
-        raw, out, dataset="sinan_dengue", source_ano=year, release="final"
-    )
+    result = dbc_bytes_to_parquet(raw, out, dataset=ROW_OF[year], source_ano=year, release="final")
     return out, result, pq.read_schema(out)
 
 
+def test_three_rows_share_the_prefix_and_split_the_years():
+    """Listing of 2026-11-20: DENGBR00 to DENGBR25 in FINAIS, DENGBR26 in PRELIM. The four
+    layouts are in evidence/2026-11-20-sinan-dengue/leiautes.json."""
+    rows = {name: sus.resolve(name) for name in set(ROW_OF.values())}
+    assert {name: (row.prefix, row.coverage) for name, row in rows.items()} == {
+        "sinan_dengue_2000_2012": ("DENG", ((2000, 1), (2012, 12))),
+        "sinan_dengue_2013": ("DENG", ((2013, 1), (2013, 12))),
+        "sinan_dengue": ("DENG", ((2014, 1), None)),
+    }
+    assert rows["sinan_dengue"].prelim_dir is not None
+    assert rows["sinan_dengue_2000_2012"].prelim_dir is None
+    assert rows["sinan_dengue_2013"].prelim_dir is None
+
+
+@pytest.mark.parametrize("yy", range(27))
+def test_a_dengbr_name_is_a_file_of_exactly_one_row(yy):
+    """DENGBR07 is 2007 for the row that covers it and no file of the other two: a row
+    whose coverage starts in 2014 must not read it as 2107."""
+    from omnisus.sources.datasus_ftp.filenames import decode_for
+
+    year = 2000 + yy
+    owner = (
+        "sinan_dengue_2000_2012"
+        if year <= 2012
+        else "sinan_dengue_2013"
+        if year == 2013
+        else "sinan_dengue"
+    )
+    decoded = {
+        name: decode_for(sus.resolve(name), f"DENGBR{yy:02d}.dbc") for name in ROW_OF.values()
+    }
+    assert decoded == {
+        name: ScopeKey(uf=None, ano=year) if name == owner else None for name in ROW_OF.values()
+    }
+
+
 @pytest.mark.parametrize(("year", "fields"), [(2006, 107), (2012, 67), (2013, 67)])
-def test_the_three_older_layouts_stage_as_published_and_pass_identity(
+def test_the_older_layouts_stage_fields_their_dictionary_declares(
     dbc_fixture, tmp_path, year, fields
 ):
-    """DENGBR06, DENGBR12 and DENGBR13: the columns are the file's own, and the file year is
-    the most frequent NU_ANO. DENGBR06 has no ID_AGRAVO, so only the year is checked."""
+    """DENGBR06, DENGBR12 and DENGBR13: every column of the file is a field of the row's
+    dictionary, and the file year is the most frequent NU_ANO. DENGBR06 has no ID_AGRAVO,
+    so only the year is checked."""
     out, result, schema = _schema(dbc_fixture, tmp_path, year)
     assert result.rows == 200
-    assert len(schema.names) == fields + 2  # plus _source_ano and _source_release
-    assert ("id_agravo" in schema.names) == (year != 2006)
-    validate_identity(out, load_dicionario("sinan_dengue"), ScopeKey(uf=None, ano=year))
+    staged = [n for n in schema.names if not n.startswith("_source_")]
+    assert len(staged) == fields
+    declared = [f["name"] for f in load_dicionario(ROW_OF[year]).raw["schema"]["fields"]]
+    assert set(staged) <= set(declared)
+    assert ("id_agravo" in staged) == (year != 2006)
+    validate_identity(out, load_dicionario(ROW_OF[year]), ScopeKey(uf=None, ano=year))
 
 
-def test_the_types_that_keep_2007_to_2013_out_of_the_table_of_2014_onwards(dbc_fixture, tmp_path):
+def test_the_older_dictionaries_list_the_fields_of_their_layouts():
+    """107 fields of DENGBR00-06 plus the 40 that only DENGBR07-12 has; 67 of DENGBR13."""
+    counts = {
+        name: len(load_dicionario(name).raw["schema"]["fields"])
+        for name in ("sinan_dengue_2000_2012", "sinan_dengue_2013")
+    }
+    assert counts == {"sinan_dengue_2000_2012": 147, "sinan_dengue_2013": 67}
+
+
+@pytest.mark.parametrize("dataset", ["sinan_dengue_2000_2012", "sinan_dengue_2013"])
+def test_the_older_rows_have_no_dengue_map_and_no_age_rule(dataset):
+    """The Dengue/Chikungunya dictionary was read for the 121-field layout only, so the
+    older rows carry the maps of the Notificação Individual block and nothing else."""
+    fields = {f["field"]["name"]: f["field"] for f in sus.describe_dataset(dataset)["fields"]}
+    assert fields["cs_sexo"]["codes"]
+    assert fields["classi_fin"]["codes"] == []
+    assert fields["evolucao"]["codes"] == []
+    assert "x-analytics" not in load_dicionario(dataset).raw
+
+
+def test_each_table_takes_its_layouts_in_either_order(dbc_fixture, tmp_path, monkeypatch):
+    """DENGBR06 and DENGBR12 share a lake table whichever is imported first; DENGBR13 has
+    its own; and sinan_dengue refuses a year before 2014 as outside its coverage."""
+    from omnisus.lake import Lake
+    from tests.support import fake_datasus
+
+    def raw(year: int) -> bytes:
+        return dbc_fixture(f"sinan_dengue_br_{year}_excerpt").read_bytes()
+
+    for order in ([2006, 2012], [2012, 2006]):
+        target = f"ducklake:{tmp_path}/{order[0]}.ducklake"
+        scopes = [ScopeKey(uf=None, ano=y) for y in order]
+        fake_datasus.serve(monkeypatch, "sinan_dengue_2000_2012", {s: raw(s.ano) for s in scopes})
+        for scope in scopes:
+            report = sus.import_dataset("sinan_dengue_2000_2012", scopes=[scope], target=target)
+            assert not report.failed, report.failed
+        with Lake.local(target) as lake:
+            assert "sinan_dengue_2000_2012" in lake.tables()
+
+    target = f"ducklake:{tmp_path}/2013.ducklake"
+    scope = ScopeKey(uf=None, ano=2013)
+    fake_datasus.serve(monkeypatch, "sinan_dengue_2013", {scope: raw(2013)})
+    assert not sus.import_dataset("sinan_dengue_2013", scopes=[scope], target=target).failed
+
+    fake_datasus.serve(monkeypatch, "sinan_dengue", {ScopeKey(uf=None, ano=2012): raw(2012)})
+    report = sus.import_dataset(
+        "sinan_dengue", scopes=[ScopeKey(uf=None, ano=2012)], target=target
+    )
+    assert [o.code for o in report.outcomes] == ["outside_coverage"]
+
+
+def test_the_types_that_give_each_layout_its_table(dbc_fixture, tmp_path):
     """NU_IDADE_N is F 4 in DENGBR07-12 and N 4 afterwards; PLAQ_MENOR is N 18 with
     decimals in DENGBR13 and C 7 in the other layouts. The lake widens neither pair, so
-    those years are refused in a table that holds 2014 onwards (docs/sources/sinan_dengue.md,
-    Armadilhas)."""
+    2000-2012, 2013 and 2014 onwards are three tables (#225)."""
     from omnisus.lake.schema import UnsafeSchemaError, compatible_type
 
     types = {

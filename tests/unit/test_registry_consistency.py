@@ -5,6 +5,7 @@ no public door) impossible.
 
 from __future__ import annotations
 
+import itertools
 from importlib.resources import files
 
 import pytest
@@ -41,9 +42,19 @@ def test_b_python_api_accepts_every_row() -> None:
 
 
 def test_d_prefixes_are_unique() -> None:
-    """Per directory: RD and PA each have a row in two directories (one per era)."""
-    keys = [(d.prefix, d.ftp_dir) for d in REGISTRY.values()]
-    assert len(keys) == len(set(keys)), sorted(keys)
+    """Per directory and year: RD and PA each have a row in two directories (one per era),
+    and DENG has three rows in one directory, one per layout, whose coverages do not
+    overlap (#225)."""
+    by_key: dict[tuple[str, str], list] = {}
+    for d in REGISTRY.values():
+        by_key.setdefault((d.prefix, d.ftp_dir), []).append(d.coverage)
+    assert {k for k, v in by_key.items() if len(v) > 1} == {
+        ("DENG", "/dissemin/publicos/SINAN/DADOS/FINAIS")
+    }
+    for key, coverages in by_key.items():
+        ordered = sorted(coverages, key=lambda c: c[0])
+        for (_, last), (first, _) in itertools.pairwise(ordered):
+            assert last is not None and last < first, key
 
 
 def test_e_cadence_agrees_with_partition_layout() -> None:

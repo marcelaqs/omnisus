@@ -76,6 +76,12 @@ class Dataset:
     """What a national file name carries between prefix and year: ``BR`` for SINAN
     (``CHAGBR23.dbc``), nothing for the SIM subsets (``DOEXT23.dbc``)."""
 
+    two_digit_from: int | None = None
+    """First year of the hundred years a two-digit year of a file name is read in.
+    ``None`` is the first covered year. A row that shares its prefix and directory with
+    a row of earlier years names where the shared series starts (``sinan_dengue``: 2000),
+    so ``DENGBR07`` is 2007, outside its coverage, and not 2107."""
+
     prelim_dir: str | None = None
     """Directory where DATASUS publishes this dataset's preliminary files,
     when it has one. Same filenames as ``ftp_dir``; a file is in one or the
@@ -127,7 +133,12 @@ _ROWS: tuple[Dataset, ...] = (
     Dataset(name="sinan_hanseniase",              prefix="HANS", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2001, 1), None), geography="national"),
     Dataset(name="sinan_tuberculose",             prefix="TUBE", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2001, 1), None), geography="national"),
     # Row read from the server listing of 2026-11-20 (evidence/2026-11-20-sinan-dengue).
-    Dataset(name="sinan_dengue",                  prefix="DENG", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2000, 1), None), geography="national"),
+    # DENGBR00-26 has four layouts, and the lake widens neither NU_IDADE_N (F 4 in 2007-2012)
+    # nor PLAQ_MENOR (N 18 in 2013), so the series is three tables (#225; listing and headers
+    # of 2026-11-20 in evidence/2026-11-20-sinan-dengue).
+    Dataset(name="sinan_dengue_2000_2012",        prefix="DENG", ftp_dir=_SINAN_FINAIS, cadence="yearly",  partition_by=("_source_ano",), coverage=((2000, 1), (2012, 12)), geography="national"),
+    Dataset(name="sinan_dengue_2013",             prefix="DENG", ftp_dir=_SINAN_FINAIS, cadence="yearly",  partition_by=("_source_ano",), coverage=((2013, 1), (2013, 12)), geography="national"),
+    Dataset(name="sinan_dengue",                  prefix="DENG", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2014, 1), None), geography="national", two_digit_from=2000),
     Dataset(name="sim_obitos",                    prefix="DO",   ftp_dir=_SIM,     prelim_dir="/dissemin/publicos/SIM/PRELIM/DORES",     cadence="yearly",  partition_by=_YEARLY,  coverage=((1996, 1), None)),
     Dataset(name="sinasc_nascidos_vivos",         prefix="DN",   ftp_dir=_SINASC,  prelim_dir="/dissemin/publicos/SINASC/PRELIM/DNRES",  cadence="yearly",  partition_by=_YEARLY,  coverage=((1996, 1), None)),
     Dataset(name="sih_aih_reduzida",              prefix="RD",   ftp_dir=_SIH,     cadence="monthly", partition_by=_MONTHLY, coverage=((2008, 1), None)),

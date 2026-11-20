@@ -20,7 +20,7 @@ path, and by size or server mtime when recorded — and returns the scopes
 that differ, to be re-imported with `policy="replace"`.
 
 National datasets (the SINAN agravos `sinan_chagas`, `sinan_hanseniase`,
-`sinan_tuberculose` and `sinan_dengue`, and the SIM subsets `sim_obitos_fetais`, `sim_obitos_externos`,
+`sinan_tuberculose` and the three `sinan_dengue` rows, and the SIM subsets `sim_obitos_fetais`, `sim_obitos_externos`,
 `sim_obitos_infantis` and `sim_obitos_maternos`) use
 `ScopeKey(uf=None, ano=year)` and a reserved `_source_ano` publication column.
 They preserve original geography and dates instead of assigning an artificial

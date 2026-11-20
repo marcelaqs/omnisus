@@ -38,8 +38,8 @@ The dictionary describes layout 4, read from `DENGBR17`.
 
 ## One lake table does not hold every layout
 
-`lake_misto.py <empty folder> 2017 2012 2013 2006` imported the four files from the server
-into one new lake, in that order:
+Before the series was split, `lake_misto.py` imported four files from the server into the
+table `sinan_dengue` of one new lake, in this order:
 
 | File | Outcome |
 | --- | --- |
@@ -48,8 +48,29 @@ into one new lake, in that order:
 | `DENGBR13` | `ingest_failed`: `unsafe schema type change: VARCHAR versus DOUBLE; explicit migration required` |
 | `DENGBR06` | ok, 411,022 rows |
 
-Layouts 1 and 4 share a table. Layouts 2 and 3 are refused in a table that holds layout 4,
-and no order of import was tried other than this one.
+`leiautes.json` shows why: `NU_IDADE_N` is `F 4` in `DENGBR07`-`12` and `N 4` from
+`DENGBR13` on (`DENGBR00`-`06` do not have it), and `PLAQ_MENOR` is `N 18` with 9 decimals
+in `DENGBR13` and `C 7` in the other three layouts.
+
+## Three tables (#225)
+
+The maintainer chose one table per layout. The registry has three rows, and on 2026-11-20
+`lake_misto.py <folder> <dataset> <years>` imported these files from the server into one
+lake, in the order written:
+
+| Dataset | File | Outcome |
+| --- | --- | --- |
+| `sinan_dengue_2000_2012` | `DENGBR12` | ok, 580,621 rows |
+| `sinan_dengue_2000_2012` | `DENGBR06` | ok, 411,022 rows |
+| `sinan_dengue_2000_2012` | `DENGBR00` | ok, 172,855 rows |
+| `sinan_dengue_2000_2012` | `DENGBR07` | ok, 497,037 rows |
+| `sinan_dengue_2013` | `DENGBR13` | ok, 1,455,118 rows |
+| `sinan_dengue` | `DENGBR26` | ok, 502,229 rows |
+| `sinan_dengue` | `DENGBR14` | ok, 543,918 rows |
+| `sinan_dengue` | `DENGBR17` | ok, 239,395 rows |
+| `sinan_dengue` | `DENGBR12`, `DENGBR13` | `skipped`, `outside_coverage` |
+
+The other 19 files were not imported in this test.
 
 ## Codes
 

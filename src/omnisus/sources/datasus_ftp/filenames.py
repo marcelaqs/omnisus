@@ -12,7 +12,7 @@ import re
 from dataclasses import dataclass
 
 from omnisus.sources._base import ALL_UFS, ScopeKey
-from omnisus.sources.datasus_ftp.datasets import Dataset
+from omnisus.sources.datasus_ftp.datasets import Dataset, in_coverage
 
 
 def _yy_to_year(d: Dataset, yy: int) -> int:
@@ -21,7 +21,7 @@ def _yy_to_year(d: Dataset, yy: int) -> int:
     A fixed pivot cannot serve SIM CID-9 (``79`` is 1979) and the SIM subsets (``25``
     is 2025) at once; each row's listing-read coverage settles the century.
     """
-    first = d.coverage[0][0]
+    first = d.two_digit_from if d.two_digit_from is not None else d.coverage[0][0]
     return first + (yy - first) % 100
 
 
@@ -42,7 +42,8 @@ def parse_name(d: Dataset, name: str) -> SourceName | None:
     ``year_digits`` (``DORR2023.dbc``, SIM CID-9's ``DORRR79.DBC``). National rows read
     ``PREFIX + national_code + YY``. State rows accept only the 27 UFs, so
     national aggregates such as ``DOBR2022.dbc`` or ``DNEX2025.dbc`` are never
-    read as a state. Monthly rows accept the two part shapes DATASUS uses when
+    read as a state. A national name whose year is outside the row's coverage is not the
+    row's file: ``DENGBR07.dbc`` belongs to ``sinan_dengue_2000_2012`` only. Monthly rows accept the two part shapes DATASUS uses when
     it splits a month: ``BIMG2412_1.dbc`` and ``PASP2401a.dbc``. A shorter
     prefix never swallows a longer family's file: the groups are fixed width.
     """
@@ -51,7 +52,10 @@ def parse_name(d: Dataset, name: str) -> SourceName | None:
         m = re.fullmatch(
             prefix + re.escape(d.national_code) + r"(\d{2})\.dbc", name, re.IGNORECASE
         )
-        return SourceName(ScopeKey(uf=None, ano=_yy_to_year(d, int(m[1]))), None) if m else None
+        if m is None:
+            return None
+        scope = ScopeKey(uf=None, ano=_yy_to_year(d, int(m[1])))
+        return SourceName(scope, None) if in_coverage(d, scope) else None
     if d.monthly:
         m = re.fullmatch(
             prefix + r"([A-Z]{2})(\d{2})(\d{2})(?:_(\d+)|((?-i:[a-z])))?\.dbc", name, re.IGNORECASE

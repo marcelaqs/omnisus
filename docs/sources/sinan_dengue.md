@@ -5,7 +5,9 @@
 Notificações de dengue do Sistema de Informação de Agravos de Notificação (SINAN), com
 sinais clínicos, exames, classificação e evolução do caso, que o DATASUS publica em um
 arquivo nacional por ano: 2000 a 2025 no diretório final e 2026 no preliminar
-(listagem de 2026-11-20).
+(listagem de 2026-11-20). A série tem quatro leiautes e fica em três bases, uma tabela do
+lake cada: `sinan_dengue_2000_2012`, `sinan_dengue_2013` e `sinan_dengue` (2014 em diante).
+Esta página descreve os campos de `sinan_dengue`.
 
 ## O que um registro representa
 
@@ -89,8 +91,22 @@ arquivo nacional por ano: 2000 a 2025 no diretório final e 2026 no preliminar
   | `DENGBR13` | 67 | os mesmos nomes; `NU_IDADE_N` e `PLAQ_MENOR` são do tipo `N` |
   | `DENGBR14` a `DENGBR26` | 121 | ficha do Sinan Online, com sinais de alarme e de gravidade |
 
-- O dicionário da biblioteca descreve o leiaute de 121 campos. Nos outros, a importação
-  grava as colunas como vêm.
+- O lake não converte uma coluna de um tipo para outro, e `NU_IDADE_N` e `PLAQ_MENOR`
+  mudam de tipo entre os leiautes. Por isso a série fica em três bases, cada uma com a
+  sua tabela e o seu dicionário:
+
+  | Base | Arquivos | Campos do dicionário |
+  | --- | --- | ---: |
+  | `sinan_dengue_2000_2012` | `DENGBR00` a `DENGBR12` | 147 (os 107 de 2000–2006 e os 40 que só 2007–2012 tem) |
+  | `sinan_dengue_2013` | `DENGBR13` | 67 |
+  | `sinan_dengue` | `DENGBR14` a `DENGBR26` | 121 |
+
+- Cada base lista e importa só os anos da sua cobertura: `sus.available("sinan_dengue")`
+  começa em 2014, e pedir 2012 a essa base devolve `outside_coverage`.
+- Teste de 2026-11-20 com os arquivos do servidor, num lake só:
+  `sinan_dengue_2000_2012` recebeu `DENGBR12`, `DENGBR06`, `DENGBR00` e `DENGBR07`, nessa
+  ordem; `sinan_dengue_2013` recebeu `DENGBR13`; `sinan_dengue` recebeu `DENGBR26`,
+  `DENGBR14` e `DENGBR17` (`evidence/2026-11-20-sinan-dengue/README.md`).
 - `DENGBR24` é o maior arquivo: 287.558.389 bytes comprimidos e 6.564.924 registros.
 - Os 27 arquivos (27.036.454 registros) foram lidos inteiros em 2026-11-20 e passam na
   conferência de identidade da biblioteca. `DENGBR00` a `DENGBR06` não têm `id_agravo`;
@@ -105,13 +121,14 @@ arquivo nacional por ano: 2000 a 2025 no diretório final e 2026 no preliminar
   inconclusivo (8) das três formas de dengue (10, 11, 12), e fica em branco enquanto o
   caso não é encerrado. Em `DENGBR17`, 73.852 das 239.395 linhas são 8 e 458 estão em
   branco; em `DENGBR26`, preliminar, 33.285 das 502.229 estão em branco.
-- **Os anos de 2007 a 2013 não entram na mesma tabela que os de 2014 em diante.** O lake
-  recusa a troca de tipo de uma coluna: num lake que já tinha `DENGBR17`, a importação
-  de `DENGBR12` falhou com `unsafe schema type change: BIGINT versus DOUBLE`
-  (`nu_idade_n`) e a de `DENGBR13` com `VARCHAR versus DOUBLE` (`plaq_menor`);
-  `DENGBR06` entrou (teste de 2026-11-20,
-  `evidence/2026-11-20-sinan-dengue/README.md`). Para ler 2007–2013, use outro lake
-  (outro `target`).
+- **A série completa são três tabelas.** Para analisar 2000 a 2026, importe as três
+  bases e una as tabelas na consulta, escolhendo as colunas: os leiautes não têm os
+  mesmos campos, e `nu_idade_n` é número com casas em `sinan_dengue_2000_2012` (só de
+  2007 a 2012; antes o campo não existe) e inteiro nas outras duas; `plaq_menor` é
+  número em `sinan_dengue_2013` e texto nas outras.
+- Na versão 0.4.0, `sinan_dengue` cobria 2000 em diante. Um lake que recebeu 2000–2006
+  nessa tabela com a 0.4.0 mantém as linhas, mas esses anos agora pertencem a
+  `sinan_dengue_2000_2012`.
 - `DENGBR26` traz `0` em campos que a página lista como 1 e 2 (por exemplo 20.194 linhas
   em `alrm_hipot`, 20.778 em `res_chiks1`, 4.245 em `classi_fin`) e `9` nos sinais de
   alarme e de gravidade (40 linhas em `alrm_hipot`). Nenhuma página nem CNV dá nome a
@@ -123,13 +140,16 @@ arquivo nacional por ano: 2000 a 2025 no diretório final e 2026 no preliminar
   preenchido é `mani_hemor`, com valor em 638 das 543.918. Os rótulos vêm dos CNV que
   `DengueNET.def` liga a cada um; `complica` fica sem rótulo, porque o arquivo o liga a
   dois CNV que divergem no código 4 (plaquetas abaixo de 50.000 ou de 20.000).
-- Os rótulos foram conferidos só para o leiaute de 121 campos. Em 2000–2013,
-  `sus.label` aplica o rótulo pelo nome da coluna (`febre`, `cs_raca`, `hospitaliz`…),
-  e nenhuma página registrada descreve os códigos daquelas fichas: confira o código
-  antes de usar o rótulo.
+- `sinan_dengue_2000_2012` e `sinan_dengue_2013` têm rótulo só nos campos da
+  notificação individual (`cs_sexo`, `cs_raca`, `cs_gestant`…), que vêm do Dicionário
+  Notificação Individual v5. Os campos da dengue (`classi_fin`, `evolucao`, `febre`,
+  `hospitaliz`…) ficam sem rótulo nessas bases: o dicionário do Sinan Online foi lido só
+  para o leiaute de 121 campos, e nenhum documento registrado descreve as fichas
+  antigas. A idade também não é interpretada nelas.
 - `doenca_tra` está em branco em todas as linhas de `DENGBR17`.
-- Num lake com 2000–2006, a coluna `ano` vem da ficha antiga (campo `ANO` de `DENGBR00`
-  a `DENGBR06`, sem documento registrado): não é o ano do arquivo, que é `_source_ano`.
+- Em `sinan_dengue_2000_2012`, a coluna `ano` vem da ficha antiga (campo `ANO` de
+  `DENGBR00` a `DENGBR06`, sem documento registrado): não é o ano do arquivo, que é
+  `_source_ano`.
 - A idade (`nu_idade_n`) só é interpretada para o `DENGBR17` final auditado. Nele, 19
   linhas têm menos de quatro dígitos e ficam `invalid`, e 15 trazem `4401` a `4407`,
   que a regra lê como 401 a 407 anos: confira o intervalo antes de usar
@@ -143,8 +163,6 @@ arquivo nacional por ano: 2000 a 2025 no diretório final e 2026 no preliminar
 
 ### Em aberto
 
-- Como guardar 2007–2013 e 2014 em diante numa tabela só: depende de uma regra de
-  conversão de tipo que a biblioteca ainda não tem.
 - O que significam o `0` e o `9` de `DENGBR26` nos campos Sim/Não.
 - O dicionário de dados das fichas de 2000–2006 (Sinan Windows) e de 2007–2013
   (Sinan NET): nenhum está no registro de fontes, por isso os campos que só existem
@@ -168,6 +186,9 @@ with sus.LakeReader(alvo) as leitor:
     dados = leitor.connect().sql("SELECT * FROM lake.sinan_dengue WHERE _source_ano = 2017").pl()
 print(sus.label("sinan_dengue", dados, columns=["classi_fin"]).group_by("classi_fin_rotulo").len())
 ```
+
+Para os anos anteriores, troque a base: `sus.available("sinan_dengue_2000_2012", years=[2010])`
+e `lake.sinan_dengue_2000_2012`; para 2013, `sinan_dengue_2013`.
 
 Passo a passo com Chagas, hanseníase, tuberculose e dengue, análise e procedência:
 [notebooks/sinan.py](https://github.com/raphaelfh/omnisus/blob/main/notebooks/sinan.py)

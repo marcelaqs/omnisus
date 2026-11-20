@@ -668,6 +668,21 @@ agravo:
       locator: '63. Se transferência (TRANSF): 1. Mesmo município, 2. Município diferente (mesma
         UF), 3. UF diferente, 4. País diferente, 9. Ignorado'
       codigos: ['1', '2', '3', '4', '9']
+  # DENGBR07-12 publica NU_IDADE_N como F 4 e DENGBR13 como N 4 (leiautes.json da evidência
+  # de 2026-11-20). Nenhum arquivo dessas duas bases foi auditado, então o campo não declara
+  # a derivação de idade do bloco comum.
+  sinan_dengue_2000_2012:
+  - name: nu_idade_n
+    type: number
+    label: Idade
+    x-metadata:
+      physical_name: NU_IDADE_N
+  sinan_dengue_2013:
+  - name: nu_idade_n
+    type: integer
+    label: Idade
+    x-metadata:
+      physical_name: NU_IDADE_N
   sinan_dengue:
   # Dicionário de Dados Sinan Online, Dengue/Chikungunya (DIC_DADOS_ONLINE.pdf, revisado em
   # 21/10/2015, registro sinan-da262c3b9f20), lido em 2026-11-20 com as páginas

@@ -417,8 +417,12 @@ def test_dengue_spans_both_sinan_directories(monkeypatch: pytest.MonkeyPatch) ->
         monkeypatch,
         {row.ftp_dir: "sinan_dados_finais", row.prelim_dir: "sinan_dados_prelim"},
     )
-    releases = available_releases("sinan_dengue")
-    assert releases == {
-        **{ScopeKey(uf=None, ano=y): "final" for y in range(2000, 2026)},
+    # Three rows, one per table (#225); each lists only the years of its coverage.
+    assert available_releases("sinan_dengue_2000_2012") == {
+        ScopeKey(uf=None, ano=y): "final" for y in range(2000, 2013)
+    }
+    assert available_releases("sinan_dengue_2013") == {ScopeKey(uf=None, ano=2013): "final"}
+    assert available_releases("sinan_dengue") == {
+        **{ScopeKey(uf=None, ano=y): "final" for y in range(2014, 2026)},
         ScopeKey(uf=None, ano=2026): "prelim",
     }
