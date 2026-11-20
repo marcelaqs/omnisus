@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### omnisus-dbf 0.2.2
+
+- The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
+  SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
+  (#149).
+
+## v0.4.0 — 2026-11-20
+
+**Upgrading from 0.3.0:** no parser version changed (the import still reads the same
+`encoding` and `x-identity` of every dictionary), so a 0.3.0 lake keeps every scope;
+`load` downloads nothing again. `sim_obitos` loses the fields `covid_clas` and `mat_clas`
+and its primary key, and `esc2010` and `escmae2010` change labels in `sim_obitos` and its
+three subsets (the entries below say which). One dataset is new: `sinan_dengue`.
+
 ### Dictionaries
 
 - `sia_apac_nefrologia` (1.2.0): `ap_coidade` takes the age-unit map seven other APAC
@@ -112,14 +126,6 @@
     DEF binds to the same tables, and `nat_jur` of the SIH wait for the choice of table
     of #7.
   - `sus.label` now adds `ap_natjur_rotulo` for the nine datasets (#183).
-
-### omnisus-dbf 0.2.2
-
-- The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
-  SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
-  (#149).
-
-### Dictionaries
 
 - `seriescfal`, `seriescmae` and `versaoscb` of `sim_obitos` (and of the three SIM subsets,
   generated from it) gain the code map of the CNV that `Obito_1996_CID10.def` binds each to:
