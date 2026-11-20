@@ -30,8 +30,9 @@
   no zeros to its left, and as a number with decimals when it is `number`. Nothing else
   is converted. Staged as published, such a field had one type in some files and another
   in the rest, and the lake refused whichever was imported second (`UnsafeSchemaError`).
-  Of the 70 real DBC fixtures, three change (`test_staged_types.py`): `RDRR9603`, where
-  `num_proc` is `368` beside the `0489` of `RDRR9709`; `RDRR0407`, where `insc_pn` and
+  Of the 71 real DBC fixtures, four change (`test_staged_types.py`): `RDRR9602` and
+  `RDRR9603`, where `num_proc` is `364` and `368` beside the `0489` of `RDRR9709`;
+  `RDRR0407`, where `insc_pn` and
   `seq_aih5` are `0` in the 91 records of the fixture beside the `0000000000` and `000`
   of `RDRR0712` (#40); and `RDAC0909`, where 17 fields are `N1.0` (#219). In the headers
   of every `RD`, `SP` and `RJ` file (`evidence/2026-11-19-sih-cabecalhos/`) the fields it
@@ -46,7 +47,10 @@
   table has to be imported again into a new lake (`docs/architecture.md`).
   `describe_dataset` gives `storage.dictionary_types` as `applied_to_whole_numbers`, not
   `descriptive`. `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` say in
-  their `x-evidence` what staging does. New fixture: `sih_rd_rr_1996_03_excerpt`, five records of `RDRR9603`.
+  their `x-evidence` what staging does. New fixtures: `sih_rd_rr_1996_03_excerpt`, five
+  records of `RDRR9603`, and `sih_rd_rr_1996_02_mini`, the 264 records of `RDRR9602`,
+  which `test_rd_n_as_text.py` imports through `import_dataset` before and after a
+  month that publishes text, in the two eras of the RD.
 
 ### Dictionaries
 
@@ -74,6 +78,13 @@
   beyond the declared end (or before the start) of a bounded row, such as
   `sim_obitos_cid9` (1979-01 to 1995-12), which the importer already skipped with
   `outside_coverage`. It is what lets the two RD rows share one directory.
+- `sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007` (1.1.1): `num_proc`,
+  `insc_pn` and `seq_aih5` have the open issue `sem-zeros-a-esquerda`, with the months
+  the DBF publishes each as a number and the code therefore has no zeros to its left:
+  1996-01 to 1996-07 for `num_proc` (11 of the files of the census, #197) and 2004-07
+  to 2006-03 for `insc_pn` and `seq_aih5` (35 files, #198 and #199). The counts are
+  those of `evidence/2026-10-01-rd-1992-2007-layouts/census.csv`, whose README now says
+  what the import does with the three fields (#40).
 - `sih_aih_reduzida` (2.20.1): 110 fields take the `description` that Table 1 of
   `IT_SIHSUS_1603.pdf` prints for them, each with a `/field/description` claim
   (`pdf-read`, `verified_in_source`) that names the page and quotes the row;

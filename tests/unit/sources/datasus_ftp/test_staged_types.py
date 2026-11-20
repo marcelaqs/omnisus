@@ -3,14 +3,16 @@
 A field the DBF header declares `N` with no decimals is read as a whole number. When the
 dictionary declares it `string` or `date`, staging writes the number as text, with no
 zeros to its left; when it declares `number`, staging writes a number with decimals. No
-other difference is converted. Three fixtures have such fields, and no other does:
+other difference is converted. Four fixtures have such fields, and no other does:
 
 - `RDAC0909.dbc` (`sih_rd_ac_2009_09_excerpt`): eleven value fields and six text fields
   are `N1.0`, in no other RD file from 2008 on;
 - `RDRR0407.dbc` (`sih_rd_rr_2004_07_excerpt`): `INSC_PN` and `SEQ_AIH5` are `N`, and
   text in `RDRR0712.dbc` (`sih_rd_rr_2007_12_mini`);
-- `RDRR9603.dbc` (`sih_rd_rr_1996_03_excerpt`): `NUM_PROC` is `N4.0`, and `C4` in
-  `RDRR9709.dbc` (`sih_rd_rr_1997_09_mini`).
+- `RDRR9603.dbc` (`sih_rd_rr_1996_03_excerpt`) and `RDRR9602.dbc`
+  (`sih_rd_rr_1996_02_mini`): `NUM_PROC` is `N4.0`, and `C4` in `RDRR9709.dbc`
+  (`sih_rd_rr_1997_09_mini`). `test_rd_n_as_text.py` imports RDRR9602 through
+  `import_dataset`.
 """
 
 from __future__ import annotations
@@ -81,9 +83,9 @@ def import_in_order(dataset, dbc_fixture, lake, *files_, policy="append") -> Non
         ingest_raw(dataset, scope, [(entry, raw)], lake, policy=policy)
 
 
-def test_in_the_fixtures_only_three_files_have_a_field_staged_with_another_type(tmp_path):
+def test_in_the_fixtures_only_four_files_have_a_field_staged_with_another_type(tmp_path):
     """Every real DBC fixture is staged with the dictionary of its dataset, and each field
-    is compared with the type of its descriptor. The 20 that differ are whole numbers the
+    is compared with the type of its descriptor. The 21 that differ are whole numbers the
     dictionary declares `number`, `string` or `date`. Everything else keeps the
     descriptor's type: the text the SIM declares `integer`, the `D` dates of the SINAN."""
     differ, staged_files = set(), 0
@@ -104,12 +106,13 @@ def test_in_the_fixtures_only_three_files_have_a_field_staged_with_another_type(
         for name, kind in physical_arrow_types(dbc.decompress_bytes(raw)).items():
             if staged.field(name).type != kind:
                 differ.add((source.name, name, str(kind), str(staged.field(name).type)))
-    assert staged_files == 70
+    assert staged_files == 71
     assert differ == (
         {("RDAC0909.dbc", name, "int64", "double") for name in VALUES}
         | {("RDAC0909.dbc", name, "int64", "string") for name in TEXT}
         | {("RDRR0407.dbc", name, "int64", "string") for name in ("insc_pn", "seq_aih5")}
         | {("RDRR9603.dbc", "num_proc", "int64", "string")}
+        | {("RDRR9602.dbc", "num_proc", "int64", "string")}
     )
 
 
