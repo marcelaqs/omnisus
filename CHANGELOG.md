@@ -2,6 +2,25 @@
 
 ## Unreleased
 
+### omnisus-dbf 0.2.2
+
+- The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
+  SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
+  (#149).
+
+## v0.4.1 — 2026-11-20
+
+**Upgrading from 0.4.0:** two entries are marked **Breaking** below.
+
+- `sinan_dengue` now covers 2014 onwards. Import 2000–2012 with `sinan_dengue_2000_2012`
+  and 2013 with `sinan_dengue_2013`; rows of those years that a 0.4.0 lake already holds
+  in the table `sinan_dengue` stay there and are not moved.
+- A whole-number `N` field is staged with the type its dictionary declares (under Import,
+  with what to do with a lake whose table has such a column as a number).
+
+The parser version stays `dbc-staging-v2`, so `skip_same` reports every scope already
+published as unchanged.
+
 ### Datasets
 
 - **Breaking:** the dengue series is three datasets, one lake table per layout (#225).
@@ -207,12 +226,6 @@
 - `sih_aih_reduzida` (2.29.4): the same two issues say 39 packaged DEF, the count with
   `DengueNETON3.0.def` (#226). The `main` changed the same lines as 2.19.1; the version
   goes past both so that neither locked content changes.
-
-### omnisus-dbf 0.2.2
-
-- The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
-  SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
-  (#149).
 
 ## v0.4.0 — 2026-11-20
 
