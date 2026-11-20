@@ -1,0 +1,701 @@
+[
+ {
+  "file": "DENGBR00.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR00.dbc",
+  "release": "final",
+  "listed_bytes": 3958971,
+  "listed_modified": "02-18-22 10:03AM",
+  "bytes": 3958971,
+  "sha256": "023ba45756feabd0c24af6b9380fa42dc4b99200c879ca0bd623c3fed6c91094",
+  "records": 172855,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 172855,
+  "identity": "ok",
+  "nu_ano": {
+   "1999": 43,
+   "2000": 172807,
+   "2001": 4,
+   "2002": 1
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR01.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR01.dbc",
+  "release": "final",
+  "listed_bytes": 12333933,
+  "listed_modified": "02-18-22 10:03AM",
+  "bytes": 12333933,
+  "sha256": "5ec88343496ee59342f0b13c5a45bfc7cb91f2640202fb30581903590dd2d6a2",
+  "records": 488590,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 488590,
+  "identity": "ok",
+  "nu_ano": {
+   "2000": 229,
+   "2001": 488347,
+   "2002": 14
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR02.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR02.dbc",
+  "release": "final",
+  "listed_bytes": 25287840,
+  "listed_modified": "02-18-22 10:04AM",
+  "bytes": 25287840,
+  "sha256": "d03187da81386185259f068c685e4dca6106d67f5fc7813990d0b1a98a33de04",
+  "records": 897093,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 897093,
+  "identity": "ok",
+  "nu_ano": {
+   "2001": 193,
+   "2002": 896891,
+   "2003": 9
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR03.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR03.dbc",
+  "release": "final",
+  "listed_bytes": 14924094,
+  "listed_modified": "02-18-22 10:04AM",
+  "bytes": 14924094,
+  "sha256": "975035ba7039d7b8b112be1d27762c35c9b4233b2596fd088f98654b3450218f",
+  "records": 416609,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 416609,
+  "identity": "ok",
+  "nu_ano": {
+   "2002": 15,
+   "2003": 416589,
+   "2004": 5
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR04.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR04.dbc",
+  "release": "final",
+  "listed_bytes": 5836857,
+  "listed_modified": "02-18-22 10:04AM",
+  "bytes": 5836857,
+  "sha256": "adb388361ff0297dca60e9b4bad03dea0cb08b1a7adaaaac4efac738630ae5aa",
+  "records": 136867,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 136867,
+  "identity": "ok",
+  "nu_ano": {
+   "2004": 136867
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR05.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR05.dbc",
+  "release": "final",
+  "listed_bytes": 10358720,
+  "listed_modified": "02-18-22 10:04AM",
+  "bytes": 10358720,
+  "sha256": "cf16759f5f0bfd12d699f9643bb41c1e5609ceefba005de108a993daaa26cb7c",
+  "records": 261501,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 261501,
+  "identity": "ok",
+  "nu_ano": {
+   "2005": 261501
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR06.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR06.dbc",
+  "release": "final",
+  "listed_bytes": 16666429,
+  "listed_modified": "02-18-22 10:04AM",
+  "bytes": 16666429,
+  "sha256": "07178438d907bb3f90ca0751e23fc6f807606522ed6662062099ab2b8da555cf",
+  "records": 411022,
+  "fields": 107,
+  "layout": 1,
+  "staged_rows": 411022,
+  "identity": "ok",
+  "nu_ano": {
+   "2006": 411022
+  },
+  "id_agravo": null,
+  "staged_types": {
+   "plaq_menor": "string"
+  }
+ },
+ {
+  "file": "DENGBR07.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR07.dbc",
+  "release": "final",
+  "listed_bytes": 13412714,
+  "listed_modified": "08-12-26 08:28AM",
+  "bytes": 13412714,
+  "sha256": "2003df9831cc3b83a61f53a7021dc8d7e852af64bcc0961fc148d93aa8ccab93",
+  "records": 497037,
+  "fields": 67,
+  "layout": 2,
+  "staged_rows": 497037,
+  "identity": "ok",
+  "nu_ano": {
+   "2006": 1,
+   "2007": 497036
+  },
+  "id_agravo": {
+   "A90": 497037
+  },
+  "staged_types": {
+   "nu_idade_n": "double",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR08.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR08.dbc",
+  "release": "final",
+  "listed_bytes": 17255308,
+  "listed_modified": "08-12-26 08:28AM",
+  "bytes": 17255308,
+  "sha256": "f4696846b6cd7dd9ab8a1e3e44f11d88e8d92650dad452a2b449f7d61a5da646",
+  "records": 628074,
+  "fields": 67,
+  "layout": 2,
+  "staged_rows": 628074,
+  "identity": "ok",
+  "nu_ano": {
+   "2007": 121,
+   "2008": 627330,
+   "2009": 623
+  },
+  "id_agravo": {
+   "A90": 628074
+  },
+  "staged_types": {
+   "nu_idade_n": "double",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR09.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR09.dbc",
+  "release": "final",
+  "listed_bytes": 11155298,
+  "listed_modified": "08-12-26 08:28AM",
+  "bytes": 11155298,
+  "sha256": "c070d277ba483ce541339e5058465325ccd3a956224f14f3a249bbc71ae951de",
+  "records": 404636,
+  "fields": 67,
+  "layout": 2,
+  "staged_rows": 404636,
+  "identity": "ok",
+  "nu_ano": {
+   "2009": 402987,
+   "2010": 1649
+  },
+  "id_agravo": {
+   "A90": 404636
+  },
+  "staged_types": {
+   "nu_idade_n": "double",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR10.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR10.dbc",
+  "release": "final",
+  "listed_bytes": 26534490,
+  "listed_modified": "08-04-26 09:37AM",
+  "bytes": 26534490,
+  "sha256": "0eaf62002421e5fd867cad9ef23244e296ab5bc8142d7c3d9fb124ea53897f08",
+  "records": 1004314,
+  "fields": 67,
+  "layout": 2,
+  "staged_rows": 1004314,
+  "identity": "ok",
+  "nu_ano": {
+   "2010": 1003855,
+   "2011": 459
+  },
+  "id_agravo": {
+   "A90": 1004314
+  },
+  "staged_types": {
+   "nu_idade_n": "double",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR11.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR11.dbc",
+  "release": "final",
+  "listed_bytes": 22683701,
+  "listed_modified": "07-29-26 12:13PM",
+  "bytes": 22683701,
+  "sha256": "2cfc8bcf468546982a01bb1cc5012fb84ef1886b36dc9906f2e5909514d0b184",
+  "records": 739375,
+  "fields": 67,
+  "layout": 2,
+  "staged_rows": 739375,
+  "identity": "ok",
+  "nu_ano": {
+   "2011": 739375
+  },
+  "id_agravo": {
+   "A90": 739375
+  },
+  "staged_types": {
+   "nu_idade_n": "double",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR12.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR12.dbc",
+  "release": "final",
+  "listed_bytes": 19666571,
+  "listed_modified": "07-29-26 09:47AM",
+  "bytes": 19666571,
+  "sha256": "90f5a1c44c479df25a4f32ec7ae1ee171c4b9fa6fd8ace68ae145282378a8bcf",
+  "records": 580621,
+  "fields": 67,
+  "layout": 2,
+  "staged_rows": 580621,
+  "identity": "ok",
+  "nu_ano": {
+   "2012": 580621
+  },
+  "id_agravo": {
+   "A90": 580621
+  },
+  "staged_types": {
+   "nu_idade_n": "double",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR13.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR13.dbc",
+  "release": "final",
+  "listed_bytes": 50267600,
+  "listed_modified": "07-20-26 09:27AM",
+  "bytes": 50267600,
+  "sha256": "479efeb0939ffa00f36f2805bcfc69b1004f24c02bb00796d66c26c26e333b41",
+  "records": 1455118,
+  "fields": 67,
+  "layout": 3,
+  "staged_rows": 1455118,
+  "identity": "ok",
+  "nu_ano": {
+   "2012": 541,
+   "2013": 1454577
+  },
+  "id_agravo": {
+   "A90": 1455118
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "double",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR14.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR14.dbc",
+  "release": "final",
+  "listed_bytes": 22954814,
+  "listed_modified": "06-02-26 08:38AM",
+  "bytes": 22954814,
+  "sha256": "c90a3c667b3625670b73bb70115e1bf5e8c9db07877c5cbed6118c4bcd923eb8",
+  "records": 543918,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 543918,
+  "identity": "ok",
+  "nu_ano": {
+   "2013": 169,
+   "2014": 542335,
+   "2015": 1414
+  },
+  "id_agravo": {
+   "A90": 543918
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR15.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR15.dbc",
+  "release": "final",
+  "listed_bytes": 71822669,
+  "listed_modified": "05-26-26 02:24PM",
+  "bytes": 71822669,
+  "sha256": "d0109ad6ff34afdc7691d6a6de0805af49e9dd004d732c83194bbdddf550b8bc",
+  "records": 1623172,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 1623172,
+  "identity": "ok",
+  "nu_ano": {
+   "2015": 1619394,
+   "2016": 3778
+  },
+  "id_agravo": {
+   "A90": 1623172
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR16.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR16.dbc",
+  "release": "final",
+  "listed_bytes": 60562998,
+  "listed_modified": "05-20-26 10:40AM",
+  "bytes": 60562998,
+  "sha256": "e677ff0cdd890ca9f99840ddcbdc63ac8f7e6ef98e98234f9c925b63571cbdf4",
+  "records": 1450084,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 1450084,
+  "identity": "ok",
+  "nu_ano": {
+   "2016": 1450084
+  },
+  "id_agravo": {
+   "A90": 1450084
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR17.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR17.dbc",
+  "release": "final",
+  "listed_bytes": 9850252,
+  "listed_modified": "05-12-26 03:32PM",
+  "bytes": 9850252,
+  "sha256": "ec341731d6bbae5a6c2bcc4c349b6e3ee4f66b34469663fa45c15214912afce0",
+  "records": 239395,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 239395,
+  "identity": "ok",
+  "nu_ano": {
+   "2017": 239395
+  },
+  "id_agravo": {
+   "A90": 239395
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR18.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR18.dbc",
+  "release": "final",
+  "listed_bytes": 11316425,
+  "listed_modified": "05-12-26 03:32PM",
+  "bytes": 11316425,
+  "sha256": "1885b32fd6d48be68efe30d879e63900a9309776f366b90be89a50995202571c",
+  "records": 262611,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 262611,
+  "identity": "ok",
+  "nu_ano": {
+   "2017": 21,
+   "2018": 262590
+  },
+  "id_agravo": {
+   "A90": 262611
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR19.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR19.dbc",
+  "release": "final",
+  "listed_bytes": 73167792,
+  "listed_modified": "05-06-26 12:19PM",
+  "bytes": 73167792,
+  "sha256": "893bf3e1c18b94ec0162209efffeef3fced7404b5a744c28d1a4fa650b4f0d7b",
+  "records": 1546252,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 1546252,
+  "identity": "ok",
+  "nu_ano": {
+   "2018": 231,
+   "2019": 1545550,
+   "2020": 471
+  },
+  "id_agravo": {
+   "A90": 1546252
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR20.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR20.dbc",
+  "release": "final",
+  "listed_bytes": 47733119,
+  "listed_modified": "04-10-26 12:09PM",
+  "bytes": 47733119,
+  "sha256": "52baabbad73986d078866d1f3b538eb7f58f025dc354ae187720974a137fca02",
+  "records": 975842,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 975842,
+  "identity": "ok",
+  "nu_ano": {
+   "2019": 978,
+   "2020": 974209,
+   "2021": 655
+  },
+  "id_agravo": {
+   "A90": 975842
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR21.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR21.dbc",
+  "release": "final",
+  "listed_bytes": 23488890,
+  "listed_modified": "09-10-26 03:45PM",
+  "bytes": 23488890,
+  "sha256": "40ebda6829d71fbae10d722ec0828989b51971dca5cc3d901fdba17fefaa759c",
+  "records": 540049,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 540049,
+  "identity": "ok",
+  "nu_ano": {
+   "2021": 539333,
+   "2022": 713,
+   "2023": 2,
+   "2024": 1
+  },
+  "id_agravo": {
+   "A90": 540049
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR22.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR22.dbc",
+  "release": "final",
+  "listed_bytes": 64655421,
+  "listed_modified": "03-19-26 03:03PM",
+  "bytes": 64655421,
+  "sha256": "1a5a3a1be0d63c8b179abe63aa1c3b3296336c6dc9e2ce78a867c17591a955c6",
+  "records": 1405095,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 1405095,
+  "identity": "ok",
+  "nu_ano": {
+   "2022": 1405095
+  },
+  "id_agravo": {
+   "": 11218,
+   "A90": 1393877
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR23.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR23.dbc",
+  "release": "final",
+  "listed_bytes": 61969954,
+  "listed_modified": "03-17-26 08:35AM",
+  "bytes": 61969954,
+  "sha256": "c0e7f95ef832c09793adb21fe9a5b7bdfbb5b9a0bb6c8561ef31b7197cb1cf90",
+  "records": 1645956,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 1645956,
+  "identity": "ok",
+  "nu_ano": {
+   "2023": 1645276,
+   "2024": 680
+  },
+  "id_agravo": {
+   "A90": 1645956
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR24.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR24.dbc",
+  "release": "final",
+  "listed_bytes": 287558389,
+  "listed_modified": "02-27-26 11:06AM",
+  "bytes": 287558389,
+  "sha256": "cd66ee77271a9718c81ef0b78f60d906087d9cc61e1b1ced15719227cde5d59a",
+  "records": 6564924,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 6564924,
+  "identity": "ok",
+  "nu_ano": {
+   "2023": 284,
+   "2024": 6564163,
+   "2025": 477
+  },
+  "id_agravo": {
+   "A90": 6564924
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR25.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR25.dbc",
+  "release": "final",
+  "listed_bytes": 66240691,
+  "listed_modified": "07-21-26 04:35PM",
+  "bytes": 66240691,
+  "sha256": "87831a1ee61d03d0f83dcb788c23b1a5cfd938ec22f7e44313833e9eb6445d29",
+  "records": 1643215,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 1643215,
+  "identity": "ok",
+  "nu_ano": {
+   "2024": 2282,
+   "2025": 1633875,
+   "2026": 7058
+  },
+  "id_agravo": {
+   "A90": 1643215
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ },
+ {
+  "file": "DENGBR26.dbc",
+  "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/DENGBR26.dbc",
+  "release": "prelim",
+  "listed_bytes": 25323310,
+  "listed_modified": "11-16-26 03:45PM",
+  "bytes": 25323310,
+  "sha256": "3c93a3b333cfb8c51321216e4c40a1687a3847e4b2e9975ee3f39325d59218ef",
+  "records": 502229,
+  "fields": 121,
+  "layout": 4,
+  "staged_rows": 502229,
+  "identity": "ok",
+  "nu_ano": {
+   "2026": 502229
+  },
+  "id_agravo": {
+   "A90": 502229
+  },
+  "staged_types": {
+   "nu_idade_n": "int64",
+   "plaq_menor": "string",
+   "flxrecebi": "string",
+   "classi_fin": "string"
+  }
+ }
+]

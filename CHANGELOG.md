@@ -301,6 +301,23 @@ goes away and `sus.label(columns=[field])` raises for those fields (the entries 
 
 ### Dictionaries
 
+- New dataset `sinan_dengue` (1.0.0): SINAN dengue notifications, one national file per
+  year, `DENGBR00` to `DENGBR25` final and `DENGBR26` preliminary (listing of 2026-11-20).
+  The dictionary is the 121-field layout of `DENGBR14` to `DENGBR26`, read from `DENGBR17`.
+  82 fields have labels, each code citing a page of the Sinan Online Dengue/Chikungunya
+  dictionary (`sinan-da262c3b9f20`) or a CNV of the `TAB_SINANNET.zip` read on 2026-11-20
+  (`sinan-tab-24ac0c62fb84`, a republication in which the seven members already packaged
+  are unchanged); `classi_fin` 8, "Inconclusivo", is in `Classdeng.cnv` only. The age rule
+  is enabled for the audited final `DENGBR17`. The 27 files have four layouts: 2000–2006
+  and 2014 onwards share a lake table, while the lake refuses 2007–2012 and 2013 in a
+  table that holds 2014 onwards, because `nu_idade_n` and `plaq_menor` change type;
+  `docs/sources/sinan_dengue.md` and `evidence/2026-11-20-sinan-dengue/` say what
+  was read. `sinan.py` runs with `BASE = "sinan_dengue"`.
+  - `gerar_sinan.py` dates the maps of an agravo listed in `revisado_em_agravo` with its
+    own reading date; the other claims keep `revisado_em`.
+  - `sih_aih_reduzida` 2.19.1: the issues `homonimo-sem-fonte` and `gestor_tp-sem-fonte`
+    count 38 packaged DEF, with `DengueNETON3.0.def`.
+
 - `registry.json` registers the `TAB_SIH.zip` republished on 2026-10-15
   (`sih-tab-21e42384645a`). The 33 members whose hash the repository holds are identical to
   those of the two editions already registered, so `vinculos.json` stays on

@@ -1,0 +1,320 @@
+{
+  "audited_at": "2026-11-20T12:48:54.885866+00:00",
+  "library_version": "0.2.3",
+  "script_sha256": "dc62400dd0438b61a3be9ae46ec1f6d0a918e34bfc91d8a954ddc5be00886e16",
+  "manifest_sha256": "6ac0c566efe5c1b97b4b62bc0585bf8b9afedb361b6a71815867f19833c39a1e",
+  "backends": {
+    "OMNISUS_DBC_BACKEND": "auto",
+    "OMNISUS_DBF_BACKEND": "auto"
+  },
+  "files": [
+    {
+      "dataset": "sinan_dengue",
+      "source": {
+        "dataset": "sinan_dengue",
+        "path": "data/lake/sinan-dengue/DENGBR17.dbc",
+        "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/FINAIS/DENGBR17.dbc",
+        "sha256": "ec341731d6bbae5a6c2bcc4c349b6e3ee4f66b34469663fa45c15214912afce0",
+        "scope": {
+          "uf": null,
+          "ano": 2017,
+          "mes": null
+        },
+        "release": "final"
+      },
+      "candidate": false,
+      "rule_version": "1.0.0",
+      "metadata_hash": "5bbdb253c34a01ba1edc4be44fb865d1c9422cdf4f1b788b90ff68ec2f5e1e06",
+      "schema": {
+        "tp_not": "VARCHAR",
+        "id_agravo": "VARCHAR",
+        "dt_notific": "DATE",
+        "sem_not": "VARCHAR",
+        "nu_ano": "VARCHAR",
+        "sg_uf_not": "VARCHAR",
+        "id_municip": "VARCHAR",
+        "id_regiona": "VARCHAR",
+        "id_unidade": "VARCHAR",
+        "dt_sin_pri": "DATE",
+        "sem_pri": "VARCHAR",
+        "ano_nasc": "VARCHAR",
+        "nu_idade_n": "BIGINT",
+        "cs_sexo": "VARCHAR",
+        "cs_gestant": "VARCHAR",
+        "cs_raca": "VARCHAR",
+        "cs_escol_n": "VARCHAR",
+        "sg_uf": "VARCHAR",
+        "id_mn_resi": "VARCHAR",
+        "id_rg_resi": "VARCHAR",
+        "id_pais": "VARCHAR",
+        "dt_invest": "DATE",
+        "id_ocupa_n": "VARCHAR",
+        "febre": "VARCHAR",
+        "mialgia": "VARCHAR",
+        "cefaleia": "VARCHAR",
+        "exantema": "VARCHAR",
+        "vomito": "VARCHAR",
+        "nausea": "VARCHAR",
+        "dor_costas": "VARCHAR",
+        "conjuntvit": "VARCHAR",
+        "artrite": "VARCHAR",
+        "artralgia": "VARCHAR",
+        "petequia_n": "VARCHAR",
+        "leucopenia": "VARCHAR",
+        "laco": "VARCHAR",
+        "dor_retro": "VARCHAR",
+        "diabetes": "VARCHAR",
+        "hematolog": "VARCHAR",
+        "hepatopat": "VARCHAR",
+        "renal": "VARCHAR",
+        "hipertensa": "VARCHAR",
+        "acido_pept": "VARCHAR",
+        "auto_imune": "VARCHAR",
+        "dt_chik_s1": "DATE",
+        "dt_chik_s2": "DATE",
+        "dt_prnt": "DATE",
+        "res_chiks1": "VARCHAR",
+        "res_chiks2": "VARCHAR",
+        "resul_prnt": "VARCHAR",
+        "dt_soro": "DATE",
+        "resul_soro": "VARCHAR",
+        "dt_ns1": "DATE",
+        "resul_ns1": "VARCHAR",
+        "dt_viral": "DATE",
+        "resul_vi_n": "VARCHAR",
+        "dt_pcr": "DATE",
+        "resul_pcr_": "VARCHAR",
+        "sorotipo": "VARCHAR",
+        "histopa_n": "VARCHAR",
+        "imunoh_n": "VARCHAR",
+        "hospitaliz": "VARCHAR",
+        "dt_interna": "DATE",
+        "uf": "VARCHAR",
+        "municipio": "VARCHAR",
+        "tpautocto": "VARCHAR",
+        "coufinf": "VARCHAR",
+        "copaisinf": "VARCHAR",
+        "comuninf": "VARCHAR",
+        "classi_fin": "VARCHAR",
+        "criterio": "VARCHAR",
+        "doenca_tra": "VARCHAR",
+        "clinc_chik": "VARCHAR",
+        "evolucao": "VARCHAR",
+        "dt_obito": "DATE",
+        "dt_encerra": "DATE",
+        "alrm_hipot": "VARCHAR",
+        "alrm_plaq": "VARCHAR",
+        "alrm_vom": "VARCHAR",
+        "alrm_sang": "VARCHAR",
+        "alrm_hemat": "VARCHAR",
+        "alrm_abdom": "VARCHAR",
+        "alrm_letar": "VARCHAR",
+        "alrm_hepat": "VARCHAR",
+        "alrm_liq": "VARCHAR",
+        "dt_alrm": "DATE",
+        "grav_pulso": "VARCHAR",
+        "grav_conv": "VARCHAR",
+        "grav_ench": "VARCHAR",
+        "grav_insuf": "VARCHAR",
+        "grav_taqui": "VARCHAR",
+        "grav_extre": "VARCHAR",
+        "grav_hipot": "VARCHAR",
+        "grav_hemat": "VARCHAR",
+        "grav_melen": "VARCHAR",
+        "grav_metro": "VARCHAR",
+        "grav_sang": "VARCHAR",
+        "grav_ast": "VARCHAR",
+        "grav_mioc": "VARCHAR",
+        "grav_consc": "VARCHAR",
+        "grav_orgao": "VARCHAR",
+        "dt_grav": "DATE",
+        "mani_hemor": "VARCHAR",
+        "epistaxe": "VARCHAR",
+        "gengivo": "VARCHAR",
+        "metro": "VARCHAR",
+        "petequias": "VARCHAR",
+        "hematura": "VARCHAR",
+        "sangram": "VARCHAR",
+        "laco_n": "VARCHAR",
+        "plasmatico": "VARCHAR",
+        "evidencia": "VARCHAR",
+        "plaq_menor": "VARCHAR",
+        "con_fhd": "VARCHAR",
+        "complica": "VARCHAR",
+        "tp_sistema": "VARCHAR",
+        "nduplic_n": "VARCHAR",
+        "dt_digita": "DATE",
+        "cs_flxret": "VARCHAR",
+        "flxrecebi": "VARCHAR",
+        "migrado_w": "VARCHAR",
+        "ano": "USMALLINT",
+        "_source_release": "VARCHAR"
+      },
+      "parsed_rows": 239395,
+      "unavailable": [],
+      "expressions": [
+        {
+          "name": "idade_anos_completos",
+          "sql_type": "INTEGER",
+          "expression": "CAST(CASE WHEN ((trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) IS NULL OR trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) = '')) OR (NOT regexp_full_match(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), '[0-9]{4}')) OR ((FALSE) OR (FALSE)) THEN NULL WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '1' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN 0 WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '2' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN 0 WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '3' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN (TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) // 12) WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '4' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN (TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) + 0) ELSE NULL END AS INTEGER)"
+        },
+        {
+          "name": "idade_status",
+          "sql_type": "VARCHAR",
+          "expression": "CASE WHEN (trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) IS NULL OR trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) = '') THEN 'missing' WHEN NOT regexp_full_match(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), '[0-9]{4}') THEN 'invalid' WHEN (FALSE) OR (FALSE) THEN 'ignored' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '1' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN 'valid' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '2' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN 'valid' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '3' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN 'valid' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '4' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN 'valid' ELSE 'unsupported' END"
+        },
+        {
+          "name": "idade_quantidade",
+          "sql_type": "INTEGER",
+          "expression": "CAST(CASE WHEN ((trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) IS NULL OR trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) = '')) OR (NOT regexp_full_match(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), '[0-9]{4}')) OR ((FALSE) OR (FALSE)) THEN NULL WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '1' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '2' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '3' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '4' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN (TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) + 0) ELSE NULL END AS INTEGER)"
+        },
+        {
+          "name": "idade_unidade",
+          "sql_type": "VARCHAR",
+          "expression": "CAST(CASE WHEN ((trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) IS NULL OR trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))) = '')) OR (NOT regexp_full_match(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), '[0-9]{4}')) OR ((FALSE) OR (FALSE)) THEN NULL WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '1' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN 'hour' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '2' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 99) THEN 'day' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '3' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN 'month' WHEN (substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 1, 1) = '4' AND TRY_CAST(substring(trim(CAST((\"nu_idade_n\") AS VARCHAR), (decode(unhex('20090a0d0b0c1c1d1e1fc285c2a0e19a80e28080e28081e28082e28083e28084e28085e28086e28087e28088e28089e2808ae280a8e280a9e280afe2819fe38080')))), 2, 3) AS BIGINT) BETWEEN 0 AND 999) THEN 'year' ELSE NULL END AS VARCHAR)"
+        }
+      ],
+      "rows": 239395,
+      "states": {
+        "idade_status": [
+          {
+            "status": "invalid",
+            "n": 19
+          },
+          {
+            "status": "valid",
+            "n": 239376
+          }
+        ]
+      },
+      "uninterpreted_age_codes": [
+        {
+          "value": 0,
+          "unit": null,
+          "status": "invalid",
+          "n": 4
+        },
+        {
+          "value": 1,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 2,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 3,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 5,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 6,
+          "unit": null,
+          "status": "invalid",
+          "n": 2
+        },
+        {
+          "value": 9,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 19,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 23,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 28,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 36,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 44,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 50,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 57,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        },
+        {
+          "value": 62,
+          "unit": null,
+          "status": "invalid",
+          "n": 1
+        }
+      ],
+      "age_groups": [
+        {
+          "unit": null,
+          "status": "invalid",
+          "minimum": null,
+          "maximum": null,
+          "n": 19
+        },
+        {
+          "unit": null,
+          "status": "valid",
+          "minimum": 0,
+          "maximum": 407,
+          "n": 239376
+        }
+      ],
+      "sql_scalar_distinct_pairs_checked": 200,
+      "source_and_staged_data_unchanged": true,
+      "queries": [
+        {
+          "name": "rows",
+          "sql": "SELECT count(*) AS n FROM projected"
+        },
+        {
+          "name": "idade_status",
+          "sql": "SELECT \"idade_status\" AS status, count(*) AS n FROM projected GROUP BY ALL ORDER BY 1"
+        },
+        {
+          "name": "uninterpreted_age_codes",
+          "sql": "SELECT \"nu_idade_n\" AS value, NULL AS unit, idade_status AS status, count(*) AS n FROM projected WHERE idade_status IN ('unsupported', 'invalid') GROUP BY ALL ORDER BY ALL"
+        },
+        {
+          "name": "age_groups",
+          "sql": "SELECT NULL AS unit, idade_status AS status, min(idade_anos_completos) AS minimum, max(idade_anos_completos) AS maximum, count(*) AS n FROM projected GROUP BY ALL ORDER BY ALL"
+        }
+      ]
+    }
+  ]
+}
