@@ -28,7 +28,7 @@ import pytest
 
 from omnisus.sources._base import ScopeKey
 from omnisus.sources.datasus_ftp.datasets import REGISTRY, Dataset
-from omnisus.sources.datasus_ftp.filenames import national_variant, parse_name
+from omnisus.sources.datasus_ftp.filenames import _parse_name, national_variant, parse_name
 from omnisus.sources.datasus_ftp.inventory import Listing, sources_for
 from tests.support.listings import listing_per_directory
 
@@ -49,6 +49,29 @@ def listing() -> Callable[[str], Listing]:
 def _scopes(d: Dataset, listing: Callable[[str], Listing]) -> list[ScopeKey]:
     by_release = {release: listing(directory) for release, directory in d.directories().items()}
     return list(sources_for(d, by_release))
+
+
+def _published(d: Dataset, listing: Callable[[str], Listing]) -> list[ScopeKey]:
+    """The scope of every listed name of the row's shape that no other row of the directory
+    reads, inside the row's coverage or not.
+
+    ``parse_name`` gives a name outside the coverage to no row, so ``sources_for`` never
+    returns one and a coverage checked against it could not fail. Two rows may share a
+    directory and a prefix (RD 1992-1997 and 1998-2007, the three DENG rows): the names the
+    other row reads are its files, not a sign that this row's coverage is wrong.
+    """
+    scopes = []
+    for directory in d.directories().values():
+        others = [
+            r
+            for r in REGISTRY.values()
+            if r.name != d.name and directory in r.directories().values()
+        ]
+        for e in listing(directory).files:
+            read = _parse_name(d, e.name)
+            if read is not None and not any(parse_name(r, e.name) for r in others):
+                scopes.append(read.scope)
+    return scopes
 
 
 @pytest.mark.parametrize("d", ROWS)
@@ -92,7 +115,7 @@ def test_coverage_matches_the_earliest_published_file(
     If this fails, fix the row (or investigate a DATASUS reorganisation) —
     do not widen the assertion.
     """
-    scopes = _scopes(d, listing)
+    scopes = _published(d, listing)
     assert scopes, f"{d.name}: nothing decoded"
     earliest = min((s.ano, s.mes or 1) for s in scopes)
     assert earliest == d.coverage[0], (
@@ -122,7 +145,7 @@ def test_coverage_end_is_not_a_stale_claim(d: Dataset, listing: Callable[[str], 
     where a false alarm costs a notification rather than a blocked pull
     request.
     """
-    scopes = _scopes(d, listing)
+    scopes = _published(d, listing)
     assert scopes, f"{d.name}: nothing decoded"
     latest = max((s.ano, s.mes or 12) for s in scopes)
 
