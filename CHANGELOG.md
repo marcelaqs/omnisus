@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+### omnisus-dbf 0.2.2
+
+- The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
+  SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
+  (#149).
+
+## v0.5.0 — 2026-11-21
+
+**Upgrading from 0.4.1:** one entry is marked **Breaking** below. The dataset
+`sih_aih_reduzida_1992_2007` no longer exists: import its months again as
+`sih_aih_reduzida_1992_1997` and `sih_aih_reduzida_1998_2007`. A lake keeps the old
+table, and nothing writes to it any more.
+
+No parser version changed (no dictionary changed its `encoding` or `x-identity`), so
+`skip_same` reports every other scope already published as unchanged.
+
 ### Datasets
 
 - `cnes_estabelecimentos_ensino` covers 2007-03 to 2026-10, not to 2021-07: on 2026-11-20
@@ -74,12 +90,6 @@
   the type: the parser and `sus.label` still return the two fields as published, as
   strings; `describe_dataset` and the mapping panel report the new `logical_type`
   (#183).
-
-### omnisus-dbf 0.2.2
-
-- The native reader reads D (date) fields with the semantics of dbfread's `parseD`, so
-  SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
-  (#149).
 
 ## v0.4.1 — 2026-11-20
 
