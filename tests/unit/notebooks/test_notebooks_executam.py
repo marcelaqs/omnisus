@@ -116,6 +116,12 @@ CASOS = {
         "prelim",
         "tipo_de_entrada_e_encerramento",
     ),
+    ("sinan.py", "sinan_dengue"): (
+        ScopeKey(uf=None, ano=2017),
+        "sinan_dengue_br_2017_excerpt",
+        "final",
+        "classificacao_e_evolucao",
+    ),
     **{("bases.py", d): (*ARQUIVO[d], "registros_no_recorte") for d in ARQUIVO},
     **{("sia.py", d): (*ARQUIVO[d], SIA_ANALISADAS.get(d, "registros_no_recorte")) for d in SIA},
 }
@@ -229,8 +235,8 @@ def test_notebook_stops_at_discovery_when_the_server_lists_no_file_for_the_scope
         ("cnes_leitos", 2024, 1, False),
         ("sim_obitos_cid9", 2024, 1, True),
         ("sim_obitos_cid9", 1995, 1, False),
-        ("cnes_estabelecimentos_ensino", 2021, 7, False),
-        ("cnes_estabelecimentos_ensino", 2021, 8, True),
+        ("cnes_estabelecimentos_ensino", 2026, 10, False),
+        ("cnes_estabelecimentos_ensino", 2026, 11, True),
         ("cnes_estabelecimentos_ensino", 2007, 2, True),
     ],
 )

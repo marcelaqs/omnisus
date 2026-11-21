@@ -257,15 +257,59 @@ def test_a_listed_def_line_whose_text_differs_from_the_member_is_refused(monkeyp
         gerar.read_def(entry["membro"], vinculos)
 
 
-def test_a_binding_with_unknown_start_is_refused_not_generated(monkeypatch):
-    """RD2008.DEF binds FAEC_TP to TP_FINAN.CNV with 'DS_TPFIN' where the start column
-    goes (TabWin.pdf pp. 87-88 documents no such form). The generator never writes a
-    map from such a binding: it names the reason instead of reporting a missing line."""
+def test_a_binding_with_unknown_start_needs_a_reviewed_start(monkeypatch, dbc_fixture):
+    """RD2008.DEF and RJ2008.DEF bind FAEC_TP to TP_FINAN.CNV, and RD2008.DEF binds
+    PROC_REA to PROCOBS2b.CNV, with a field name where the start column goes (TabWin.pdf
+    pp. 87-88 documents no such form). The generator refuses such a binding unless
+    `inicio_revisto` of vinculos.json lists it, with what the line writes there; an entry
+    for another position, or one that binds nothing, raises. It lists FAEC_TP of both DEF,
+    at 1 (#182):
+    the field is C(6) in the DBF headers of RDRR2401 and RJRR2401 and the table's codes
+    have 6 characters, so no other start fits. PROC_REA is not listed and stays refused."""
+    from omnisus.sources.datasus_ftp.dbc import decompress_bytes
+    from omnisus.sources.datasus_ftp.dbf_contract import _read_field_descriptors
+
     gerar = _load(monkeypatch)
+    vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
+    reviewed = vinculos["inicio_revisto"]
+    listed = [(e["membro"], e["campo"], e["tabela"], e["inicio"], e["escrito"]) for e in reviewed]
+    assert listed == [
+        ("sih/RD2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1, "DS_TPFIN"),
+        ("sih/RJ2008.DEF", "faec_tp", "sih/CNV/TP_FINAN.CNV", 1, "DS_TPFIN"),
+    ]
+    for entry in reviewed:  # the reason names what was weighed
+        for cited in ("DBF/TP_FINAN.dbf", "C(6)", "6 caracteres", "issue 182"):
+            assert cited in entry["motivo"]
+    gerar.check_reviewed_starts(vinculos)
+    with pytest.raises(ValueError, match="only position 1 is read"):
+        gerar.check_reviewed_starts({**vinculos, "inicio_revisto": [{**reviewed[0], "inicio": 2}]})
+    with pytest.raises(ValueError, match="binds nothing"):
+        gerar.check_reviewed_starts(
+            {**vinculos, "inicio_revisto": [{**reviewed[0], "campo": "proc_rea"}]}
+        )
+    table_width = int((CNV / "sih/CNV/TP_FINAN.CNV").read_bytes().split(b"\r\n")[0].split()[2])
+    for entry, fixture in zip(
+        reviewed, ("sih_rr_2024_01_mini", "sih_rj_rr_2024_01_mini"), strict=True
+    ):
+        text = (CNV / entry["membro"]).read_bytes().decode("latin-1")
+        unknown = {b.field for b in parse_def(text) if b.start is None}
+        assert "FAEC_TP" in unknown
+        with pytest.raises(ValueError, match="unknown start column"):
+            gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"])
+        locator = gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"], reviewed)
+        assert locator.endswith(
+            "LSubTp FAEC, FAEC_TP, DS_TPFIN, CNV\\TP_FINAN.CNV (lida na posição 1: inicio_revisto)"
+        )
+        other = [{**entry, "escrito": "IP_DSCR"}]  # the entry pins what the line writes
+        with pytest.raises(ValueError, match="unknown start column"):
+            gerar.binding_for(entry["membro"], text, "faec_tp", entry["tabela"], other)
+        header = _read_field_descriptors(decompress_bytes(dbc_fixture(fixture).read_bytes()))
+        (field_width,) = (f.width for f in header if f.name.strip() == "FAEC_TP")
+        assert field_width == table_width == 6
     text = (CNV / "sih/RD2008.DEF").read_bytes().decode("latin-1")
     assert {b.field for b in parse_def(text) if b.start is None} == {"FAEC_TP", "PROC_REA"}
     with pytest.raises(ValueError, match="unknown start column"):
-        gerar.binding_for("sih/RD2008.DEF", text, "faec_tp", "sih/CNV/TP_FINAN.CNV")
+        gerar.binding_for("sih/RD2008.DEF", text, "proc_rea", "sih/CNV/PROCOBS2b.CNV", reviewed)
 
 
 @pytest.mark.parametrize(
@@ -446,10 +490,22 @@ def test_a_mesmo_que_member_whose_sha256_differs_from_the_copy_is_refused(monkey
         gerar.read_member("sih_199201_199712/MORTES.CNV", membros)
 
 
-RD_ERAS = ["ident", "sexo", "morte", "natureza", "gestao", "instru", "vincprev"]
+RD_ERAS = {
+    "sih_aih_reduzida_1992_1997": ["ident", "sexo", "morte", "natureza"],
+    "sih_aih_reduzida_1998_2007": [
+        "ident",
+        "sexo",
+        "morte",
+        "natureza",
+        "gestao",
+        "instru",
+        "vincprev",
+    ],
+}
 
 
-def test_the_rd_era_claims_are_the_generator_output(monkeypatch, tmp_path):
+@pytest.mark.parametrize("dataset", sorted(RD_ERAS))
+def test_the_rd_era_claims_are_the_generator_output(monkeypatch, tmp_path, dataset):
     """Each of the three era packages (TAB_SIH_199201-199712, 199801-200307, 200308-200712)
     binds these fields in its own RD.DEF to the same CNV bytes. Dropping the committed
     claim and map and generating again gives the committed field: one evidence entry per
@@ -458,12 +514,12 @@ def test_the_rd_era_claims_are_the_generator_output(monkeypatch, tmp_path):
     dicionarios = ROOT / "src/omnisus/data/dicionarios"
     for path in dicionarios.glob("*.yaml"):
         (tmp_path / path.name).write_text(path.read_text("utf-8"), encoding="utf-8")
-    target = tmp_path / "sih_aih_reduzida_1992_2007.yaml"
+    target = tmp_path / f"{dataset}.yaml"
     text = target.read_text("utf-8")
     committed = {
         f["name"]: f for f in yaml.load(text, Loader=yaml.CSafeLoader)["schema"]["fields"]
     }
-    for name in RD_ERAS:
+    for name in RD_ERAS[dataset]:
         field = dict(committed[name])
         del field["x-decode"]
         meta = field["x-metadata"]
@@ -474,7 +530,7 @@ def test_the_rd_era_claims_are_the_generator_output(monkeypatch, tmp_path):
     monkeypatch.setattr(gerar, "DICIONARIOS", tmp_path)
     generated = yaml.load(gerar.generate()[target], Loader=yaml.CSafeLoader)["schema"]["fields"]
     for field in generated:
-        if field["name"] in RD_ERAS:
+        if field["name"] in RD_ERAS[dataset]:
             assert field == committed[field["name"]], field["name"]
             (claim,) = field["x-metadata"]["claims"]
             assert [e["source_id"] for e in claim["evidence"]] == [
@@ -512,7 +568,7 @@ def test_a_def_in_the_list_without_the_member_is_refused(monkeypatch):
     gerar = _load(monkeypatch)
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
     del vinculos["membros"]["sih_199801_200307/MORTES.CNV"]
-    defs = vinculos["datasets"]["sih_aih_reduzida_1992_2007"]["def"]
+    defs = vinculos["datasets"]["sih_aih_reduzida_1998_2007"]["def"]
     with pytest.raises(ValueError, match=r"sih_199801_200307/MORTES\.CNV is not a member"):
         gerar.evidence_for(defs, "morte", "sih_199201_199712/MORTES.CNV", vinculos)
 
@@ -536,7 +592,7 @@ def test_a_def_in_the_list_whose_member_has_other_bytes_is_refused(monkeypatch):
     other = membros["sih/CNV/MORTES.CNV"]["sha256"]
     assert other != membros["sih_199201_199712/MORTES.CNV"]["sha256"]
     membros["sih_199801_200307/MORTES.CNV"]["sha256"] = other
-    defs = vinculos["datasets"]["sih_aih_reduzida_1992_2007"]["def"]
+    defs = vinculos["datasets"]["sih_aih_reduzida_1998_2007"]["def"]
     with pytest.raises(ValueError, match=r"sih_199801_200307/MORTES\.CNV is not a member"):
         gerar.evidence_for(defs, "morte", "sih_199201_199712/MORTES.CNV", vinculos)
 

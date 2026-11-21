@@ -172,7 +172,7 @@ with sus.LakeReader(alvo) as leitor:
     print(leitor.connect().sql("SELECT _source_ano, _source_release, count(*) FROM lake.sinan_chagas GROUP BY ALL").pl())
 ```
 
-Passo a passo com Chagas, hanseníase e tuberculose, análise e procedência:
+Passo a passo com Chagas, hanseníase, tuberculose e dengue, análise e procedência:
 [notebooks/sinan.py](https://github.com/raphaelfh/omnisus/blob/main/notebooks/sinan.py)
 [![Open in molab](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/github/raphaelfh/omnisus/blob/main/notebooks/sinan.py).
 
@@ -261,7 +261,8 @@ cooperativo; isso não estabelece recuperação distribuída.
 
 ### Dicionário
 
-Os 108 campos de `src/omnisus/data/dicionarios/sinan_chagas.yaml` são um inventário
+Os 108 campos do DBF em `src/omnisus/data/dicionarios/sinan_chagas.yaml` (o dicionário
+declara também as duas colunas que a importação acrescenta) são um inventário
 físico observado em `CHAGBR23.dbc`, não uma auditoria semântica. Campos adicionais são
 preservados; incompatibilidades de tipo seguem a política geral de esquema. A validação
 da identidade da fonte não comprova qualidade clínica, completude da vigilância nem

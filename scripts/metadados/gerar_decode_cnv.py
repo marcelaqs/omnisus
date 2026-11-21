@@ -17,7 +17,9 @@ discorda vira claim `conflicting` e um issue com o rótulo anterior de cada cód
 claim de códigos existente nunca é substituída: de outro método, ou `cnv-parse` com mapa
 diferente, o script para e pede revisão; com o mesmo mapa, só a evidência e o
 `checked_at` são reescritos, se diferem dos gerados. Uma linha de DEF fora
-do layout só é ignorada se `linhas_fora_do_layout` a lista com o texto exato. `def_do_campo`, se
+do layout só é ignorada se `linhas_fora_do_layout` a lista com o texto exato. Uma linha
+que traz um nome de campo no lugar da coluna inicial só liga o campo se `inicio_revisto`
+a lista, com o motivo da revisão. `def_do_campo`, se
 o dataset o declara para um campo de `campos` ligado a CNV, nomeia o DEF que liga esse campo
 quando nenhum DEF do dataset o liga pelo nome que os arquivos publicam
 (APAC_Dados_Comuns.DEF liga AP_NATJUR; o DEF de cada APAC escreve AP_NAT_JUR ou não tem a
@@ -31,6 +33,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
@@ -125,14 +128,25 @@ def read_def(path: str, vinculos: dict[str, Any]) -> str:
     return "".join(lines)
 
 
-def binding_for(def_path: str, text: str, field: str, member: str) -> str:
+def binding_for(
+    def_path: str, text: str, field: str, member: str, reviewed: Sequence[dict[str, Any]] = ()
+) -> str:
     """The DEF line that binds `field` at position 1 to `member`, as a locator.
 
     A binding with an unknown start column (``start=None``, a field name where the
-    column goes; TabWin.pdf pp. 87-88 documents no such form) is refused by name:
-    such a field belongs in `sem_cnv`, never in `campos`.
+    column goes; TabWin.pdf pp. 87-88 documents no such form) is refused by name,
+    unless `reviewed` (`inicio_revisto` of vinculos.json) lists this DEF, field and
+    table with `inicio` 1 and, in `escrito`, what the line writes there: then the
+    locator quotes the line and says the start was reviewed. Without that entry such
+    a field belongs in `sem_cnv`.
     """
     folder = Path(def_path).parent
+    written = {
+        e["escrito"]
+        for e in reviewed
+        if (e["membro"], e["campo"], e["tabela"].lower(), e["inicio"])
+        == (def_path, field.lower(), member.lower(), 1)
+    }
     unknown = False
     for b in parse_def(text):
         target = (folder / b.table.replace("\\", "/")).as_posix()
@@ -140,6 +154,9 @@ def binding_for(def_path: str, text: str, field: str, member: str) -> str:
             continue
         if b.start == 1:
             return f"{Path(def_path).name}: {b.kind}{b.label}, {b.field}, {b.start}, {b.table}"
+        if b.start is None and b.written_start in written:
+            line = f"{b.kind}{b.label}, {b.field}, {b.written_start}, {b.table}"
+            return f"{Path(def_path).name}: {line} (lida na posição 1: inicio_revisto)"
         unknown = unknown or b.start is None
     if unknown:
         raise ValueError(f"{def_path} binds {field} to {member} with an unknown start column")
@@ -283,7 +300,7 @@ def evidence_for(
         if key.lower().endswith(".dbf"):
             line = lookup_for(def_path, text, field, key)[0]
         else:
-            line = binding_for(def_path, text, field, key)
+            line = binding_for(def_path, text, field, key, vinculos.get("inicio_revisto", []))
         evidence.append(
             {
                 "source_id": membros[key]["fonte"],
@@ -292,6 +309,27 @@ def evidence_for(
             }
         )
     return evidence
+
+
+def check_reviewed_starts(vinculos: dict[str, Any]) -> None:
+    """Every `inicio_revisto` entry reads position 1 for a binding some dataset uses.
+
+    An entry with another `inicio`, or one whose DEF, field and table are not a
+    `campos` binding of a dataset with that DEF, raises: a stale entry would otherwise
+    stay in the file and excuse nothing.
+    """
+    for entry in vinculos.get("inicio_revisto", []):
+        if entry["inicio"] != 1:
+            raise ValueError(f"inicio_revisto: {entry['campo']}: only position 1 is read")
+        used = any(
+            entry["membro"] in spec["def"]
+            and spec["campos"].get(entry["campo"]) == entry["tabela"]
+            for spec in vinculos["datasets"].values()
+        )
+        if not used:
+            raise ValueError(
+                f"inicio_revisto: {entry['campo']} of {entry['membro']} binds nothing"
+            )
 
 
 def defs_for(spec: dict[str, Any], field: str, vinculos: dict[str, Any]) -> list[str]:
@@ -316,6 +354,7 @@ def defs_for(spec: dict[str, Any], field: str, vinculos: dict[str, Any]) -> list
 def generate() -> dict[Path, str]:
     """New text of every dictionary the bindings touch."""
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
+    check_reviewed_starts(vinculos)
     membros = vinculos["membros"]
     registry = {s["id"]: s for s in sources_registry()["sources"]}
     out = {}

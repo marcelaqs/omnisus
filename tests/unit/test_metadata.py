@@ -89,7 +89,9 @@ def test_age_derivation_lists_quantity_and_unit_outputs(dataset, field_name):
     ]
 
 
-@pytest.mark.parametrize("dataset", ["sinan_chagas", "sinan_hanseniase", "sinan_tuberculose"])
+@pytest.mark.parametrize(
+    "dataset", ["sinan_chagas", "sinan_hanseniase", "sinan_tuberculose", "sinan_dengue"]
+)
 def test_sinan_age_field_has_derivation_metadata(dataset):
     description = sus.describe_dataset(dataset)
     field = next(x for x in description["fields"] if x["field"]["name"] == "nu_idade_n")
@@ -145,4 +147,4 @@ def test_age_derivation_output_is_what_the_harmonisation_creates():
         if listed:
             age_datasets.append(dataset)
         assert all(output == expected for output in listed), dataset
-    assert len(age_datasets) == 9
+    assert len(age_datasets) == 10

@@ -5,13 +5,18 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 
+import pyarrow as pa
 import pytest
 
 import omnisus as sus
 from omnisus.lake import Lake
 from omnisus.sources._base import ScopeKey
+from omnisus.sources.datasus_ftp import dbc
 from omnisus.sources.datasus_ftp.datasets import REGISTRY
+from omnisus.sources.datasus_ftp.dbf_batches import physical_arrow_types
 from omnisus.sources.datasus_ftp.inventory import FtpEntry, ResolvedSource
+from omnisus.sources.datasus_ftp.library_columns import is_library_field, library_columns
+from omnisus.transforms.dictionaries import load_dicionario
 from tests.support import fake_datasus
 
 
@@ -125,6 +130,9 @@ _FIXTURE_FOR: dict[str, tuple[str, ScopeKey]] = {
     "sinan_chagas": ("sinan_chagas_br_2023", ScopeKey(uf=None, ano=2023)),
     "sinan_hanseniase": ("sinan_hanseniase_br_2026", ScopeKey(uf=None, ano=2026)),
     "sinan_tuberculose": ("sinan_tuberculose_br_2020_excerpt", ScopeKey(uf=None, ano=2020)),
+    "sinan_dengue_2000_2012": ("sinan_dengue_br_2012_excerpt", ScopeKey(uf=None, ano=2012)),
+    "sinan_dengue_2013": ("sinan_dengue_br_2013_excerpt", ScopeKey(uf=None, ano=2013)),
+    "sinan_dengue": ("sinan_dengue_br_2017_excerpt", ScopeKey(uf=None, ano=2017)),
     "sim_obitos": ("sim_rr_2023_mini", ScopeKey(uf="RR", ano=2023)),
     "sinasc_nascidos_vivos": ("sinasc_rr_2022_mini", ScopeKey(uf="RR", ano=2022)),
     "sih_aih_reduzida": ("sih_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
@@ -150,7 +158,8 @@ _FIXTURE_FOR: dict[str, tuple[str, ScopeKey]] = {
     "sih_aih_rejeitada": ("sih_rj_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
     "sih_servicos_profissionais": ("sih_sp_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
     "sih_aih_rejeitada_erro": ("sih_er_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
-    "sih_aih_reduzida_1992_2007": ("sih_rd_rr_2007_12_mini", ScopeKey(uf="RR", ano=2007, mes=12)),
+    "sih_aih_reduzida_1992_1997": ("sih_rd_rr_1997_09_mini", ScopeKey(uf="RR", ano=1997, mes=9)),
+    "sih_aih_reduzida_1998_2007": ("sih_rd_rr_2007_12_mini", ScopeKey(uf="RR", ano=2007, mes=12)),
     "cnes_dados_complementares": ("cnes_dc_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
     "cnes_equipamentos": ("cnes_eq_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
     "cnes_equipes": ("cnes_ep_rr_2024_01_mini", ScopeKey(uf="RR", ano=2024, mes=1)),
@@ -236,6 +245,26 @@ def test_import_dataset_reaches_every_registry_row(
     assert report.rows > 0
     with Lake.local(target) as lake:
         assert dataset_name in lake.tables()
+        written = {
+            name: dtype
+            for name, dtype, *_ in lake.connect()
+            .execute(f"DESCRIBE lake.{dataset_name}")
+            .fetchall()
+        }
+    # Every column is one the DBF publishes or one the import adds (issue #11); each of the
+    # import's is declared in the dictionary with a derivation and the type the lake stores.
+    published = set(
+        physical_arrow_types(dbc.decompress_bytes(dbc_fixture(fixture_name).read_bytes()))
+    )
+    added = library_columns(REGISTRY[dataset_name])
+    assert set(written) == {name.lower() for name in published} | {c.name for c in added}
+    declared = {f["name"]: f for f in load_dicionario(dataset_name).fields}
+    stored = {pa.uint16(): "USMALLINT", pa.uint8(): "UTINYINT", pa.string(): "VARCHAR"}
+    for column in added:
+        assert column.name in declared, f"{dataset_name} does not declare {column.name}"
+        assert is_library_field(declared[column.name]), f"{dataset_name}.{column.name}"
+        assert declared[column.name]["type"] == column.type
+        assert written[column.name] == stored[column.arrow], (dataset_name, column.name)
 
 
 def test_available_and_browse_are_exported() -> None:

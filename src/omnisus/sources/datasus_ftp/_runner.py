@@ -43,6 +43,7 @@ from omnisus.sources.datasus_ftp.fetch import (
 )
 from omnisus.sources.datasus_ftp.identity import validate_identity
 from omnisus.sources.datasus_ftp.inventory import FtpEntry, ResolvedSource, list_sources
+from omnisus.sources.datasus_ftp.library_columns import library_columns
 from omnisus.transforms.dictionaries import load_dicionario
 
 logger = structlog.get_logger(__name__)
@@ -138,10 +139,11 @@ class StagedScope:
 def parser_version(d: Dataset) -> str:
     """The publication parser version for ``d``, known before any download.
 
-    It hashes only what the import reads from the dictionary: the ``encoding`` that
-    decodes text and the ``x-identity`` that accepts or rejects a file. Labels, code
-    maps and claims are read when rows are queried, so editing them leaves published
-    scopes unchanged.
+    It hashes the ``encoding`` that decodes text and the ``x-identity`` that accepts or
+    rejects a file. Labels, code maps and claims are read when rows are queried, so
+    editing them leaves published scopes unchanged. Staging also reads each field's
+    ``type`` (``staging._staged_types``); the types are not hashed, because a file's
+    rows depend on them only when its header has a whole number declared otherwise.
     """
     from omnisus.sources.datasus_ftp.dbf_contract import publication_parser_version
 
@@ -181,15 +183,16 @@ def stage_raw(
         uri, size_bytes, modified = _listed(entry)
         sources.append(SourceFile(uri, hashlib.sha256(raw).hexdigest(), size_bytes, modified))
     staging = directory / "scope.parquet"
+    added = {column.name for column in library_columns(d)}
     dbc_bytes_to_parquet(
         [raw for _, raw in payloads],
         staging,
         dataset=d.name,
-        ano=scope.ano if d.geography == "state" else None,
-        uf=scope.uf,
+        ano=scope.ano if "ano" in added else None,
+        uf=scope.uf if "uf" in added else None,
         dictionary=d.dictionary,
-        mes=scope.mes if d.monthly else None,
-        source_ano=scope.ano if d.geography == "national" else None,
+        mes=scope.mes if "mes" in added else None,
+        source_ano=scope.ano if "_source_ano" in added else None,
         release=release,
     )
     validate_identity(

@@ -15,6 +15,7 @@ import yaml
 
 from omnisus.metadata import describe_dataset
 from omnisus.sources.datasus_ftp.dbc import decompress_bytes
+from omnisus.sources.datasus_ftp.library_columns import is_library_field
 
 ROOT = Path(__file__).resolve().parents[3]
 DICIONARIOS = ROOT / "src/omnisus/data/dicionarios"
@@ -59,6 +60,7 @@ def test_generator_output_is_committed(monkeypatch):
         ("sinan_chagas", "sinan_chagas_br_2023"),
         ("sinan_hanseniase", "sinan_hanseniase_br_2026"),
         ("sinan_tuberculose", "sinan_tuberculose_br_2020_excerpt"),
+        ("sinan_dengue", "sinan_dengue_br_2017_excerpt"),
     ],
 )
 def test_declared_types_follow_the_real_dbf_descriptor(dataset, fixture):
@@ -75,7 +77,7 @@ def test_declared_types_follow_the_real_dbf_descriptor(dataset, fixture):
         name = dbf[offset : offset + 11].split(b"\0")[0].decode("latin-1").lower()
         physical[name] = TYPES[chr(dbf[offset + 11])]
     doc = yaml.load((DICIONARIOS / f"{dataset}.yaml").read_text("utf-8"), Loader=yaml.CSafeLoader)
-    declared = {f["name"]: f["type"] for f in doc["schema"]["fields"]}
+    declared = {f["name"]: f["type"] for f in doc["schema"]["fields"] if not is_library_field(f)}
     assert declared == physical
 
 
@@ -88,13 +90,15 @@ def test_declared_types_follow_the_real_dbf_descriptor(dataset, fixture):
             {"nduplic_n", "in_vincula", "tpalta_n", "avalia_n", "aval_atu_n", "epis_racio"},
         ),
         ("sinan_tuberculose", {"nduplic_n", "in_vincula"}),
+        ("sinan_dengue", {"nduplic_n", "tp_sistema"}),
     ],
 )
 def test_nine_is_ignored_and_blank_is_a_code_only_where_a_source_names_it(dataset, blank):
     """9 = Ignorado stays distinct from blank; both spellings 9 and 09 are listed.
 
     Blank is a key only where a page says "0 ou branco" (nduplic_n, in_vincula) or a CNV
-    lists the blank code (hanseníase tpalta_n, avalia_n, aval_atu_n, epis_racio)."""
+    lists the blank code (hanseníase tpalta_n, avalia_n, aval_atu_n, epis_racio; dengue
+    tp_sistema)."""
     fields = {f["field"]["name"]: f["field"] for f in describe_dataset(dataset)["fields"]}
     escol = {c["value"]: c["missing_kind"] for c in fields["cs_escol_n"]["codes"]}
     assert escol["9"] == escol["09"] == "ignored"

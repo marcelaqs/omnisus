@@ -406,3 +406,23 @@ def test_tuberculose_spans_both_sinan_directories(monkeypatch: pytest.MonkeyPatc
         **{ScopeKey(uf=None, ano=y): "final" for y in range(2001, 2020)},
         **{ScopeKey(uf=None, ano=y): "prelim" for y in range(2020, 2026)},
     }
+
+
+def test_dengue_spans_both_sinan_directories(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Real listings of 2026-09-22: DENGBR00-25 in FINAIS, DENGBR26 in PRELIM."""
+    from tests.support.listings import serve_listings
+
+    row = REGISTRY["sinan_dengue"]
+    serve_listings(
+        monkeypatch,
+        {row.ftp_dir: "sinan_dados_finais", row.prelim_dir: "sinan_dados_prelim"},
+    )
+    # Three rows, one per table (#225); each lists only the years of its coverage.
+    assert available_releases("sinan_dengue_2000_2012") == {
+        ScopeKey(uf=None, ano=y): "final" for y in range(2000, 2013)
+    }
+    assert available_releases("sinan_dengue_2013") == {ScopeKey(uf=None, ano=2013): "final"}
+    assert available_releases("sinan_dengue") == {
+        **{ScopeKey(uf=None, ano=y): "final" for y in range(2014, 2026)},
+        ScopeKey(uf=None, ano=2026): "prelim",
+    }

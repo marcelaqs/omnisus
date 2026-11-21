@@ -14,8 +14,7 @@ uv build native/omnisus-dbf --sdist --out-dir dist/native
 
 One abi3 wheel per platform (Linux x86_64, Windows x86_64, macOS arm64/x86_64)
 serves CPython 3.12 and later; it is smoke-tested on 3.12, 3.13 and 3.14. The
-`native.yml` workflow produces tested artifacts on pull requests and main pushes
-that change native-related paths (listed in its triggers), on manual dispatch and on
+`native.yml` workflow produces tested artifacts on manual dispatch and on
 `dbf-v*` tags, and `release.yml` runs it for every `v*` tag to test the native
 wheels at the tagged commit. Only a `dbf-v*` tag publishes them (below). Every
 native-only installation must use binary dependencies and pass outside the
@@ -65,7 +64,9 @@ so the tag comes before the merge:
    `docs/datasets.md` (`uv run python scripts/gen_datasets_doc.py`): it names the
    version and links the dictionaries at the `v<version>` tag, so its `--check` fails
    until you do.
-2. When its CI is green and the release is authorized, tag the PR's head commit
+2. When the checks pass (run them locally; pull requests have no automatic run, and
+   `test.yml` is dispatched by hand on the branch for the Windows and wheel-only
+   gates) and the release is authorized, tag the PR's head commit
    and push only the tag:
 
    ```bash

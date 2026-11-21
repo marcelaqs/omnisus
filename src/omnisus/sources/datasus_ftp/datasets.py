@@ -76,6 +76,12 @@ class Dataset:
     """What a national file name carries between prefix and year: ``BR`` for SINAN
     (``CHAGBR23.dbc``), nothing for the SIM subsets (``DOEXT23.dbc``)."""
 
+    two_digit_from: int | None = None
+    """First year of the hundred years a two-digit year of a file name is read in.
+    ``None`` is the first covered year. A row that shares its prefix and directory with
+    a row of earlier years names where the shared series starts (``sinan_dengue``: 2000),
+    so ``DENGBR07`` is 2007, outside its coverage, and not 2107."""
+
     prelim_dir: str | None = None
     """Directory where DATASUS publishes this dataset's preliminary files,
     when it has one. Same filenames as ``ftp_dir``; a file is in one or the
@@ -126,6 +132,13 @@ _ROWS: tuple[Dataset, ...] = (
     Dataset(name="sinan_chagas",                  prefix="CHAG", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2000, 1), None), geography="national"),
     Dataset(name="sinan_hanseniase",              prefix="HANS", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2001, 1), None), geography="national"),
     Dataset(name="sinan_tuberculose",             prefix="TUBE", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2001, 1), None), geography="national"),
+    # Row read from the server listing of 2026-11-20 (evidence/2026-11-20-sinan-dengue).
+    # DENGBR00-26 has four layouts, and the lake widens neither NU_IDADE_N (F 4 in 2007-2012)
+    # nor PLAQ_MENOR (N 18 in 2013), so the series is three tables (#225; listing and headers
+    # of 2026-11-20 in evidence/2026-11-20-sinan-dengue).
+    Dataset(name="sinan_dengue_2000_2012",        prefix="DENG", ftp_dir=_SINAN_FINAIS, cadence="yearly",  partition_by=("_source_ano",), coverage=((2000, 1), (2012, 12)), geography="national"),
+    Dataset(name="sinan_dengue_2013",             prefix="DENG", ftp_dir=_SINAN_FINAIS, cadence="yearly",  partition_by=("_source_ano",), coverage=((2013, 1), (2013, 12)), geography="national"),
+    Dataset(name="sinan_dengue",                  prefix="DENG", ftp_dir=_SINAN_FINAIS, prelim_dir=_SINAN_PRELIM, cadence="yearly",  partition_by=("_source_ano",), coverage=((2014, 1), None), geography="national", two_digit_from=2000),
     Dataset(name="sim_obitos",                    prefix="DO",   ftp_dir=_SIM,     prelim_dir="/dissemin/publicos/SIM/PRELIM/DORES",     cadence="yearly",  partition_by=_YEARLY,  coverage=((1996, 1), None)),
     Dataset(name="sinasc_nascidos_vivos",         prefix="DN",   ftp_dir=_SINASC,  prelim_dir="/dissemin/publicos/SINASC/PRELIM/DNRES",  cadence="yearly",  partition_by=_YEARLY,  coverage=((1996, 1), None)),
     Dataset(name="sih_aih_reduzida",              prefix="RD",   ftp_dir=_SIH,     cadence="monthly", partition_by=_MONTHLY, coverage=((2008, 1), None)),
@@ -145,7 +158,8 @@ _ROWS: tuple[Dataset, ...] = (
     Dataset(name="cnes_dados_complementares", prefix="DC", ftp_dir=_CNES + "DC", cadence="monthly", partition_by=_MONTHLY, coverage=((2005, 8), None)),
     Dataset(name="cnes_equipamentos", prefix="EQ", ftp_dir=_CNES + "EQ", cadence="monthly", partition_by=_MONTHLY, coverage=((2005, 8), None)),
     Dataset(name="cnes_equipes", prefix="EP", ftp_dir=_CNES + "EP", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 4), None)),
-    Dataset(name="cnes_estabelecimentos_ensino", prefix="EE", ftp_dir=_CNES + "EE", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), (2021, 7))),
+    # EE ends with one file of 2026-10 after EEMG2107 (evidence/2026-11-20-cnes-ee-2610).
+    Dataset(name="cnes_estabelecimentos_ensino", prefix="EE", ftp_dir=_CNES + "EE", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), (2026, 10))),
     Dataset(name="cnes_estabelecimentos_filantropicos", prefix="EF", ftp_dir=_CNES + "EF", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), None)),
     Dataset(name="cnes_gestao_metas", prefix="GM", ftp_dir=_CNES + "GM", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), None)),
     Dataset(name="cnes_habilitacoes", prefix="HB", ftp_dir=_CNES + "HB", cadence="monthly", partition_by=_MONTHLY, coverage=((2007, 3), None)),
@@ -158,7 +172,8 @@ _ROWS: tuple[Dataset, ...] = (
     Dataset(name="sim_obitos_infantis", prefix="DOINF", ftp_dir=_SIM_SUBSETS, cadence="yearly", partition_by=("_source_ano",), coverage=((1996, 1), None), geography="national", national_code=""),
     Dataset(name="sim_obitos_maternos", prefix="DOMAT", ftp_dir=_SIM_SUBSETS, cadence="yearly", partition_by=("_source_ano",), coverage=((1996, 1), None), geography="national", national_code=""),
     Dataset(name="sim_obitos_cid9", prefix="DOR", ftp_dir=_SIM_CID9, cadence="yearly", partition_by=_YEARLY, coverage=((1979, 1), (1995, 12)), year_digits=2),
-    Dataset(name="sih_aih_reduzida_1992_2007", prefix="RD", ftp_dir=_SIH_1992, cadence="monthly", partition_by=_MONTHLY, coverage=((1992, 1), (2007, 12))),
+    Dataset(name="sih_aih_reduzida_1992_1997", prefix="RD", ftp_dir=_SIH_1992, cadence="monthly", partition_by=_MONTHLY, coverage=((1992, 1), (1997, 12))),
+    Dataset(name="sih_aih_reduzida_1998_2007", prefix="RD", ftp_dir=_SIH_1992, cadence="monthly", partition_by=_MONTHLY, coverage=((1998, 1), (2007, 12))),
     Dataset(name="sia_producao_ambulatorial_1994_2007", prefix="PA", ftp_dir=_SIA_1994, cadence="monthly", partition_by=_MONTHLY, coverage=((1994, 7), (2007, 12))),
     Dataset(name="sinasc_1994_1995", prefix="DNR", ftp_dir=_SINASC_1994, cadence="yearly", partition_by=_YEARLY, coverage=((1994, 1), (1995, 12))),
     # SIA families of Informe Técnico SIASUS 2019-07, coverage from the listing of
@@ -207,9 +222,10 @@ def resolve(dataset: str | Dataset) -> Dataset:
 def in_coverage(dataset: str | Dataset, scope: ScopeKey) -> bool:
     """Whether ``scope`` falls inside the dataset's declared coverage window.
 
-    The cheapest possible filter: a scope outside coverage cannot exist
-    upstream, so rejecting it here saves a full FTP connect, login, CWD and
-    PASV setup before the 550 that would have said the same thing.
+    The cheapest possible filter: a scope outside coverage is not a file of the
+    row, so rejecting it here saves a full FTP connect, login, CWD and PASV
+    setup. The file may exist upstream as another row's: two rows of one
+    directory and prefix split its files by coverage (ADR 0002).
 
     Yearly datasets carry no month, so their scopes are compared at month 1.
     A ``last`` of ``None`` means the dataset is ongoing and has no end bound.

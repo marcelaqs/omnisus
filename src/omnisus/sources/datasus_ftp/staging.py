@@ -24,13 +24,41 @@ from omnisus.sources.datasus_ftp.dbf_batches import (
     physical_arrow_schema,
     physical_arrow_types,
 )
-from omnisus.transforms.dictionaries import load_dicionario
+from omnisus.sources.datasus_ftp.library_columns import ARROW_TYPES
+from omnisus.transforms.dictionaries import Dicionario, load_dicionario
 
 
 @dataclass(frozen=True)
 class StagingResult:
     rows: int
     bytes: int
+
+
+_DECLARED_TYPE = {"string": pa.string(), "date": pa.string(), "number": pa.float64()}
+"""What a whole number of the file is staged as, by the ``type`` the dictionary declares."""
+
+
+def _staged_types(physical: dict[str, pa.DataType], dic: Dicionario) -> dict[str, pa.DataType]:
+    """The type each header field is staged with: its descriptor's, with one exception.
+
+    A field the readers give as a whole number (``N`` with no decimals; ``I`` and ``+``
+    are whole numbers too) is staged as text when the dictionary declares it ``string`` or
+    ``date``, and as a number with decimals when the dictionary declares it ``number``.
+    The text is the number, with no zeros to its left: RDRR9603 has ``NUM_PROC`` ``N4.0``
+    and stages ``"368"``, where RDRR9709 has it ``C4`` and stages ``"0489"`` (#40).
+    Staged as published, such a field has one type in some files and another in the
+    rest, and the lake refuses the second: ``num_proc``, ``insc_pn`` and ``seq_aih5`` of
+    the RD in some months of 1992-2007, and 17 fields in RDAC0909 alone (#219).
+
+    Nothing else is converted: text the dictionary declares ``integer`` stays text, and a
+    ``D`` date stays a date. ``date`` is text here because the one whole number declared
+    ``date``, ``gestor_dt`` of RDAC0909, is ``C8`` in every other RD file.
+    """
+    declared = {field["name"]: _DECLARED_TYPE.get(field.get("type", "")) for field in dic.fields}
+    return {
+        name: declared.get(name) or kind if pa.types.is_integer(kind) else kind
+        for name, kind in physical.items()
+    }
 
 
 def _merge_schema(existing: pa.Schema, incoming: pa.Schema) -> pa.Schema:
@@ -56,28 +84,22 @@ def _merge_schema(existing: pa.Schema, incoming: pa.Schema) -> pa.Schema:
     return pa.schema(list(fields.values()))
 
 
-def _physical_type_for_null_columns(
-    schema: pa.Schema, physical: dict[str, pa.DataType]
-) -> pa.Schema:
-    """Give a column that is blank in *this* file its own DBF descriptor's type.
+def _staged_type_for_null_columns(schema: pa.Schema, staged: dict[str, pa.DataType]) -> pa.Schema:
+    """Give a column that is blank in *this* file the type its field is staged with.
 
     A DATE column that happens to be empty in one year would otherwise stage as
     Arrow ``null``, pin the lake column to that type, and make the next year's
     real dates an unsafe schema change (``sinan_hanseniase``: ``dt_transrm`` is
     blank in all of HANSBR23). Every value is null, so any type is vacuously
     correct for *this* file; the one that keeps the lake column usable is the
-    type a sibling file stages when the column is populated — which is the
-    physical type in the DBF header, not the type the curated dictionary
-    declares. The two disagree: ``sih_aih_reduzida.rubrica`` is an ``N`` field
-    the parser stages as int64 while the dicionario declares ``string``, and
-    typing it from the dictionary would pin the lake to VARCHAR and reject the
-    next month's integers. Declared types are semantics; descriptors are what
-    sibling files actually stage. Fields whose type we cannot map stay ``null``.
+    type a sibling file stages when the column is populated, which is
+    :func:`_staged_types` of the header. Fields whose type we cannot map stay
+    ``null``.
     """
     return pa.schema(
         [
-            pa.field(field.name, physical[field.name])
-            if pa.types.is_null(field.type) and field.name in physical
+            pa.field(field.name, staged[field.name])
+            if pa.types.is_null(field.type) and field.name in staged
             else field
             for field in schema
         ]
@@ -137,7 +159,20 @@ def dbc_bytes_to_parquet(
     if not payloads:
         raise ValueError("no DBC payload to stage")
     dic = load_dicionario(dictionary if dictionary is not None else dataset)
+    partitions = [
+        (name, value, ARROW_TYPES[name])
+        for name, value in [
+            ("ano", ano),
+            ("uf", uf),
+            ("mes", mes),
+            ("_source_ano", source_ano),
+            ("_source_release", release),
+        ]
+        if value is not None
+    ]
     physical: dict[str, pa.DataType] | None = None
+    staged: dict[str, pa.DataType] = {}
+    converted: dict[str, pa.DataType] = {}
     empty_schema = pa.schema([])
     path = Path(path)
     parsed = 0
@@ -159,23 +194,20 @@ def dbc_bytes_to_parquet(
                 raise ValueError("DBF uses reserved source column _source_ano")
             if "_source_release" in lowered:
                 raise ValueError("DBF uses reserved source column _source_release")
-            for name, value, dtype in [
-                ("ano", ano, pa.uint16()),
-                ("uf", uf, pa.string()),
-                ("mes", mes, pa.uint8()),
-                ("_source_ano", source_ano, pa.uint16()),
-                ("_source_release", release, pa.string()),
-            ]:
-                if value is not None:
-                    column = pa.array([value] * len(table), type=dtype, safe=True)
-                    index = table.schema.get_field_index(name)
-                    if index >= 0:
-                        _require_partition_value(table.column(index), name, value)
-                    table = (
-                        table.set_column(index, name, column)
-                        if index >= 0
-                        else table.append_column(name, column)
-                    )
+            for index, field in enumerate(table.schema):
+                if field.name in converted:
+                    column = table.column(index).cast(converted[field.name])
+                    table = table.set_column(index, field.name, column)
+            for name, value, dtype in partitions:
+                column = pa.array([value] * len(table), type=dtype, safe=True)
+                index = table.schema.get_field_index(name)
+                if index >= 0:
+                    _require_partition_value(table.column(index), name, value)
+                table = (
+                    table.set_column(index, name, column)
+                    if index >= 0
+                    else table.append_column(name, column)
+                )
             schema = _merge_schema(schema, table.schema)
             with (
                 pa.OSFile(str(root / f"{batches}.arrow"), "wb") as sink,
@@ -189,6 +221,8 @@ def dbc_bytes_to_parquet(
             parse._check_dbf_length(dbf_bytes, dataset=dataset)
             if physical is None:
                 physical = physical_arrow_types(dbf_bytes)
+                staged = _staged_types(physical, dic)
+                converted = {name: kind for name, kind in staged.items() if kind != physical[name]}
                 empty_schema = physical_arrow_schema(dbf_bytes)
             elif physical_arrow_types(dbf_bytes) != physical:
                 raise ValueError("parts of one scope have different DBF layouts")
@@ -204,19 +238,17 @@ def dbc_bytes_to_parquet(
             del dbf_bytes
         assert physical is not None, "payloads is not empty"
         if not batches:
-            schema = empty_schema
-            for name, value, dtype in [
-                ("ano", ano, pa.uint16()),
-                ("uf", uf, pa.string()),
-                ("mes", mes, pa.uint8()),
-                ("_source_ano", source_ano, pa.uint16()),
-                ("_source_release", release, pa.string()),
-            ]:
-                if value is not None:
-                    index = schema.get_field_index(name)
-                    field = pa.field(name, dtype)
-                    schema = schema.set(index, field) if index >= 0 else schema.append(field)
-        schema = _physical_type_for_null_columns(schema, physical)
+            schema = pa.schema(
+                [
+                    pa.field(field.name, staged.get(field.name, field.type))
+                    for field in empty_schema
+                ]
+            )
+            for name, _, dtype in partitions:
+                index = schema.get_field_index(name)
+                field = pa.field(name, dtype)
+                schema = schema.set(index, field) if index >= 0 else schema.append(field)
+        schema = _staged_type_for_null_columns(schema, staged)
         output = root / "output.parquet"
         with pq.ParquetWriter(output, schema) as writer:
             for number in range(batches):

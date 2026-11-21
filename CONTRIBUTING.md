@@ -59,7 +59,7 @@ precisa de acesso ao repositório de extensões do DuckDB.
 
 ## Conferir antes do PR
 
-Os mesmos passos do CI:
+Rode localmente antes de cada push; o GitHub Actions não testa pull request:
 
 ```bash
 uv run ruff check .
@@ -72,7 +72,7 @@ uv run mkdocs build --strict
 ```
 
 Testes que acessam o servidor do DATASUS levam os marcadores `integration` e `e2e` e
-ficam fora do CI de pull request.
+ficam fora destes comandos.
 
 ## Como mudar o comportamento
 
@@ -96,7 +96,9 @@ rótulos estão em `x-decode`, e cada afirmação tem uma `claim` com status e e
 3. Se o rótulo vem de uma tabela CNV do TabWin, regenere com
    `uv run python scripts/metadados/gerar_decode_cnv.py` em vez de editar à mão. Os
    dicionários do SINAN e dos subconjuntos do SIM também são gerados
-   (`gerar_sinan.py`, `gerar_subconjuntos_sim.py`).
+   (`gerar_sinan.py`, `gerar_subconjuntos_sim.py`), e as colunas que o import acrescenta
+   (`ano`, `uf`, `mes`, `_source_ano`, `_source_release`) vêm de
+   `gerar_colunas_lib.py`: nunca à mão.
 
 O passo a passo, com os critérios de revisão, está em
 [Manutenção dos dicionários](https://github.com/raphaelfh/omnisus/blob/main/docs/dicionario/manutencao.md).

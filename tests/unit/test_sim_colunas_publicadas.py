@@ -16,10 +16,12 @@ from pathlib import Path
 import pytest
 
 import omnisus as sus
+from omnisus.sources.datasus_ftp.datasets import REGISTRY
+from omnisus.sources.datasus_ftp.library_columns import library_columns
 from omnisus.transforms.dictionaries import load_dicionario
 
 EVIDENCE = Path(__file__).resolve().parents[2] / "evidence/2026-11-18-sim-colunas-do/colunas.csv"
-ADDED_BY_THE_IMPORT = {"ano", "uf", "_source_release"}
+ADDED_BY_THE_IMPORT = {c.name for c in library_columns(REGISTRY["sim_obitos"])}
 DOCUMENTED_AND_NOT_PUBLISHED = ["cb_alt", "numerodo", "opor_do", "tp_altera"]
 
 

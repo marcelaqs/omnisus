@@ -195,7 +195,7 @@ with sus.LakeReader(alvo) as leitor:
     print(leitor.connect().sql("SELECT _source_ano, _source_release, count(*) FROM lake.sinan_hanseniase GROUP BY ALL").pl())
 ```
 
-Passo a passo com Chagas, hanseníase e tuberculose, análise e procedência:
+Passo a passo com Chagas, hanseníase, tuberculose e dengue, análise e procedência:
 [notebooks/sinan.py](https://github.com/raphaelfh/omnisus/blob/main/notebooks/sinan.py)
 [![Open in molab](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/github/raphaelfh/omnisus/blob/main/notebooks/sinan.py).
 
@@ -277,7 +277,8 @@ atomicamente. Nada é atualizado por conta própria.
 
 ### Dicionário
 
-Os 63 campos de `src/omnisus/data/dicionarios/sinan_hanseniase.yaml` são um
+Os 63 campos do DBF em `src/omnisus/data/dicionarios/sinan_hanseniase.yaml` (o
+dicionário declara também as duas colunas que a importação acrescenta) são um
 inventário físico observado em `HANSBR26.dbc`. Treze têm as categorias decodificadas
 por fonte por código, citando página ou CNV oficial (D8; ver "O que um registro
 representa"); os demais seguem como inventário físico, sem auditoria semântica. Campos

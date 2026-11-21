@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = [
 #     "marimo>=0.25.1,<0.26",
-#     "omnisus==0.3.0",
+#     "omnisus==0.4.1",
 #     "polars>=1.44.2,<2.0",
 # ]
 # ///
@@ -175,7 +175,8 @@ def _(BASE, sus, pl):
                 "mapa de códigos": bool(f.get("x-decode")),
             }
             for f in sus.describe_dataset(BASE)["schema"]["fields"]
-        ]
+        ],
+        infer_schema_length=None,  # a primeira `descrição` pode vir depois do campo 100
     ).select(pl.exclude(pl.Null))  # sem `descrição` quando o dicionário não tem nenhuma
     return
 

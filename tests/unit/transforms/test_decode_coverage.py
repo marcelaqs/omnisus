@@ -136,6 +136,85 @@ REMAINING = {
         ("bac_apos_6", "0", 1),
         ("transf", "", 2943),
     ],
+    # DENGBR17 excerpt: every gap is a blank; no page or CNV names the blank of these fields.
+    ("sinan_dengue", "sinan_dengue_br_2017_excerpt"): [
+        ("cs_gestant", "", 1),
+        ("cs_escol_n", "", 686),
+        ("febre", "", 207),
+        ("mialgia", "", 207),
+        ("cefaleia", "", 207),
+        ("exantema", "", 207),
+        ("vomito", "", 207),
+        ("nausea", "", 207),
+        ("dor_costas", "", 207),
+        ("conjuntvit", "", 207),
+        ("artrite", "", 207),
+        ("artralgia", "", 207),
+        ("petequia_n", "", 207),
+        ("leucopenia", "", 207),
+        ("laco", "", 207),
+        ("dor_retro", "", 207),
+        ("diabetes", "", 207),
+        ("hematolog", "", 207),
+        ("hepatopat", "", 207),
+        ("renal", "", 207),
+        ("hipertensa", "", 207),
+        ("acido_pept", "", 207),
+        ("auto_imune", "", 207),
+        ("res_chiks1", "", 4959),
+        ("res_chiks2", "", 4960),
+        ("resul_prnt", "", 4961),
+        ("resul_soro", "", 1079),
+        ("resul_ns1", "", 1632),
+        ("resul_vi_n", "", 1660),
+        ("resul_pcr_", "", 1678),
+        ("sorotipo", "", 4995),
+        ("histopa_n", "", 2194),
+        ("imunoh_n", "", 2173),
+        ("hospitaliz", "", 1375),
+        ("tpautocto", "", 1454),
+        ("classi_fin", "", 8),
+        ("criterio", "", 447),
+        ("doenca_tra", "", 5000),
+        ("clinc_chik", "", 4968),
+        ("evolucao", "", 560),
+        ("alrm_hipot", "", 4981),
+        ("alrm_plaq", "", 4981),
+        ("alrm_vom", "", 4981),
+        ("alrm_sang", "", 4981),
+        ("alrm_hemat", "", 4981),
+        ("alrm_abdom", "", 4981),
+        ("alrm_letar", "", 4981),
+        ("alrm_hepat", "", 4981),
+        ("alrm_liq", "", 4981),
+        ("grav_pulso", "", 4994),
+        ("grav_conv", "", 4994),
+        ("grav_ench", "", 4994),
+        ("grav_insuf", "", 4994),
+        ("grav_taqui", "", 4994),
+        ("grav_extre", "", 4994),
+        ("grav_hipot", "", 4994),
+        ("grav_hemat", "", 4994),
+        ("grav_melen", "", 4994),
+        ("grav_metro", "", 4994),
+        ("grav_sang", "", 4994),
+        ("grav_ast", "", 4994),
+        ("grav_mioc", "", 4994),
+        ("grav_consc", "", 4994),
+        ("grav_orgao", "", 4994),
+        ("mani_hemor", "", 5000),
+        ("epistaxe", "", 5000),
+        ("gengivo", "", 5000),
+        ("metro", "", 5000),
+        ("petequias", "", 5000),
+        ("hematura", "", 5000),
+        ("sangram", "", 5000),
+        ("laco_n", "", 5000),
+        ("plasmatico", "", 5000),
+        ("evidencia", "", 5000),
+        ("con_fhd", "", 5000),
+        ("migrado_w", "", 5000),
+    ],
     # tpdocresp 0 is not in the Estrutura (issue tpdocresp-0-sem-fonte).
     ("sinasc_nascidos_vivos", "sinasc_rr_2022_mini"): [
         ("tpdocresp", "", 1),
@@ -186,10 +265,10 @@ REMAINING = {
         ("tpresginfo", "", 115),
     ],
     ("sim_obitos_cid9", "sim_cid9_rr_1995_mini"): [],
-    ("sih_aih_reduzida_1992_2007", "sih_rd_rr_1994_12_mini"): [],
-    ("sih_aih_reduzida_1992_2007", "sih_rd_rr_1997_09_mini"): [],
-    ("sih_aih_reduzida_1992_2007", "sih_rd_rr_2004_07_excerpt"): [],
-    ("sih_aih_reduzida_1992_2007", "sih_rd_rr_2007_12_mini"): [],
+    ("sih_aih_reduzida_1992_1997", "sih_rd_rr_1994_12_mini"): [],
+    ("sih_aih_reduzida_1992_1997", "sih_rd_rr_1997_09_mini"): [],
+    ("sih_aih_reduzida_1998_2007", "sih_rd_rr_2004_07_excerpt"): [],
+    ("sih_aih_reduzida_1998_2007", "sih_rd_rr_2007_12_mini"): [],
     # SIA families of Informe Técnico SIASUS 2019-07, same rule; AMP has no DEF.
     ("sia_apac_acompanhamento_bariatrica", "sia_ab_se_2025_07_mini"): [],
     ("sia_apac_fistula_arteriovenosa", "sia_acf_rr_2024_01_mini"): [],
@@ -243,8 +322,8 @@ RANGE_ONLY = {
     ],
     # RD 1992-2007: INSTRU.CNV 0-9 "Ignorado/não se aplica", VINCPREV.CNV 0-9 "Não
     # classificado". RDRR9412 and RDRR9709 hold only codes a CNV line names.
-    ("sih_aih_reduzida_1992_2007", "sih_rd_rr_2004_07_excerpt"): [("instru", "0", 90)],
-    ("sih_aih_reduzida_1992_2007", "sih_rd_rr_2007_12_mini"): [
+    ("sih_aih_reduzida_1998_2007", "sih_rd_rr_2004_07_excerpt"): [("instru", "0", 90)],
+    ("sih_aih_reduzida_1998_2007", "sih_rd_rr_2007_12_mini"): [
         ("instru", "0", 1488),
         ("vincprev", "0", 1496),
     ],
@@ -498,34 +577,34 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
         # asserted on RDRR0712 (TAB_SIH_200308-200712.zip); instru 0 and vincprev 0 are
         # labelled by the reserve range 0-9, and RANGE_ONLY records them.
         (
-            "sih_aih_reduzida_1992_2007",
+            "sih_aih_reduzida_1992_1997",
             "sih_rd_rr_1997_09_mini",
             "sexo",
             {"1": "Masculino", "3": "Feminino"},
         ),
-        ("sih_aih_reduzida_1992_2007", "sih_rd_rr_1997_09_mini", "natureza", {"40": "Estadual"}),
-        ("sih_aih_reduzida_1992_2007", "sih_rd_rr_1997_09_mini", "ident", {"1": "Normal"}),
+        ("sih_aih_reduzida_1992_1997", "sih_rd_rr_1997_09_mini", "natureza", {"40": "Estadual"}),
+        ("sih_aih_reduzida_1992_1997", "sih_rd_rr_1997_09_mini", "ident", {"1": "Normal"}),
         (
-            "sih_aih_reduzida_1992_2007",
+            "sih_aih_reduzida_1998_2007",
             "sih_rd_rr_2007_12_mini",
             "gestao",
             {"1": "Municipal plena assist", "2": "Estadual plena"},
         ),
         (
-            "sih_aih_reduzida_1992_2007",
+            "sih_aih_reduzida_1998_2007",
             "sih_rd_rr_2007_12_mini",
             "instru",
             {"0": "Ignorado/não se aplica", "3": "2º grau"},
         ),
         (
-            "sih_aih_reduzida_1992_2007",
+            "sih_aih_reduzida_1998_2007",
             "sih_rd_rr_2007_12_mini",
             "vincprev",
             {"0": "Não classificado"},
         ),
         # The three RD.DEF bind SEMIPLEN ("Gestão (95-97)") to GESTAO.CNV at position 1.
         # It exists from 1995-01 to 1997-12; RDRR9709 holds only 0.
-        ("sih_aih_reduzida_1992_2007", "sih_rd_rr_1997_09_mini", "semiplen", {"0": "Estadual"}),
+        ("sih_aih_reduzida_1992_1997", "sih_rd_rr_1997_09_mini", "semiplen", {"0": "Estadual"}),
         # RD2008.DEF and RJ2008.DEF bind NACIONAL to NACION3D.CNV and CONTRACEP1-2 to
         # CONTRAC.CNV; RJ2008.DEF binds ST_MOT_BLO to MOTBLOQUEIO.CNV. CONTRAC and
         # MOTBLOQUEIO open with a fallback range (00-99).
@@ -727,19 +806,20 @@ def test_bpai_fields_stay_undecoded_without_a_def(dbc_fixture, field, published)
 def test_sih_homonimo_and_gestor_tp_stay_undecoded_without_a_def(
     dbc_fixture, field, published, issue
 ):
-    """#10: none of the 38 packaged DEF (RD2008.DEF, RJ2008.DEF, the RD.DEF of 1992-2007
-    and the rest) names HOMONIMO or GESTOR_TP, and no registered document lists their
-    codes. RDRR2401 holds homonimo 0/2, which contradicted the {0: Não, 1: Sim} map, and
+    """#10: none of the 39 packaged DEF (RD2008.DEF, RJ2008.DEF, the RD.DEF of 1992-2007
+    and the rest) names HOMONIMO or GESTOR_TP, and no document of the RD from 2008 lists
+    their codes. RDRR2401 holds homonimo 0/2, which contradicted the {0: Não, 1: Sim} map, and
     gestor_tp 0/1; neither field gets a map, and the field's issue says what was read."""
     defs = [p for p in Path(str(CNV)).rglob("*") if p.suffix.lower() == ".def"]
-    assert len(defs) == 38
+    assert len(defs) == 39
     assert not [p.name for p in defs if field.upper() in p.read_text(encoding="latin-1").upper()]
     frame = _read("sih_aih_reduzida", dbc_fixture("sih_rr_2024_01_mini"))
     assert set(frame[field]) == published
     definition = load_dicionario("sih_aih_reduzida").field_def(field)
     assert "x-decode" not in definition
     (entry,) = [i for i in definition["x-metadata"]["issues"] if i["id"] == issue]
-    assert entry["status"] == "open" and "DEF" in entry["description"]
+    assert entry["status"] == "open"
+    assert f"nenhum dos {len(defs)} DEF empacotados" in " ".join(entry["description"].split())
 
 
 APAC_WITH_UNIT_MAP = [

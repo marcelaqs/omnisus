@@ -5,6 +5,7 @@ no public door) impossible.
 
 from __future__ import annotations
 
+import itertools
 from importlib.resources import files
 
 import pytest
@@ -13,6 +14,7 @@ import omnisus as sus
 import omnisus.cli.main as cli_main
 from omnisus.cli.main import dataset_choices
 from omnisus.sources.datasus_ftp.datasets import REGISTRY
+from omnisus.sources.datasus_ftp.library_columns import library_columns
 
 NON_FTP_DATASETS = set(cli_main._NON_FTP.values())
 """Datasets with their own importer and YAML but no registry row.
@@ -41,15 +43,34 @@ def test_b_python_api_accepts_every_row() -> None:
 
 
 def test_d_prefixes_are_unique() -> None:
-    """Per directory: RD and PA each have a row in two directories (one per era)."""
-    keys = [(d.prefix, d.ftp_dir) for d in REGISTRY.values()]
-    assert len(keys) == len(set(keys)), sorted(keys)
+    """Per directory and year: RD and PA each have a row in two directories (one per era).
+    Rows of one directory share a prefix only when their coverages do not overlap: DENG
+    has three, one per layout (#225), and RD has two in `199201_200712`, 1992-1997 and
+    1998-2007 (ADR 0002 amendment of 2026-11-16)."""
+    by_key: dict[tuple[str, str], list] = {}
+    for d in REGISTRY.values():
+        by_key.setdefault((d.prefix, d.ftp_dir), []).append(d.coverage)
+    assert {k for k, v in by_key.items() if len(v) > 1} == {
+        ("DENG", "/dissemin/publicos/SINAN/DADOS/FINAIS"),
+        ("RD", "/dissemin/publicos/SIHSUS/199201_200712/Dados"),
+    }
+    for key, coverages in by_key.items():
+        ordered = sorted(coverages, key=lambda c: c[0])
+        for (_, last), (first, _) in itertools.pairwise(ordered):
+            assert last is not None and last < first, key
 
 
 def test_e_cadence_agrees_with_partition_layout() -> None:
     """Agreement between two distinct facts — never derivation."""
     for d in REGISTRY.values():
         assert d.monthly == ("mes" in d.partition_by), d.name
+
+
+def test_e2_every_partition_is_a_column_the_import_adds() -> None:
+    """`partition_by` names lake columns; each must be one `library_columns` gives the row,
+    or the table would be partitioned by a column no file is staged with (#11)."""
+    for d in REGISTRY.values():
+        assert set(d.partition_by) <= {c.name for c in library_columns(d)}, d.name
 
 
 def test_f_every_non_aux_yaml_has_exactly_one_owner() -> None:

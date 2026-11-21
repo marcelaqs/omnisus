@@ -28,6 +28,7 @@ PERFIS = {
     "sinan_chagas": "sinan",
     "sinan_hanseniase": "sinan",
     "sinan_tuberculose": "sinan",
+    "sinan_dengue": "sinan",
     "medicamentos": "medicamentos",
 }
 

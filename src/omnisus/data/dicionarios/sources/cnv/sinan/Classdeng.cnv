@@ -1,0 +1,9 @@
+; CLASSDENG.CNV
+6 2 
+      1  Ign/Branco                                           ,
+      2  Descartado                                         5 ,
+      3  Inconclusivo                                       8 ,
+      4  Dengue                                             10
+      5  Dengue com Sinais de Alarme                        11 
+      6  Dengue grave                                       12
+    

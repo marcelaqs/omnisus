@@ -12,7 +12,7 @@ import re
 from dataclasses import dataclass
 
 from omnisus.sources._base import ALL_UFS, ScopeKey
-from omnisus.sources.datasus_ftp.datasets import Dataset
+from omnisus.sources.datasus_ftp.datasets import Dataset, in_coverage
 
 
 def _yy_to_year(d: Dataset, yy: int) -> int:
@@ -21,7 +21,7 @@ def _yy_to_year(d: Dataset, yy: int) -> int:
     A fixed pivot cannot serve SIM CID-9 (``79`` is 1979) and the SIM subsets (``25``
     is 2025) at once; each row's listing-read coverage settles the century.
     """
-    first = d.coverage[0][0]
+    first = d.two_digit_from if d.two_digit_from is not None else d.coverage[0][0]
     return first + (yy - first) % 100
 
 
@@ -45,7 +45,18 @@ def parse_name(d: Dataset, name: str) -> SourceName | None:
     read as a state. Monthly rows accept the two part shapes DATASUS uses when
     it splits a month: ``BIMG2412_1.dbc`` and ``PASP2401a.dbc``. A shorter
     prefix never swallows a longer family's file: the groups are fixed width.
+
+    A name whose scope falls outside the row's ``coverage`` is not a file of the row: the
+    rows of one directory and prefix each read only their own months or years, and none
+    claims another's. ``RDSP9712.dbc`` belongs to ``sih_aih_reduzida_1992_1997`` and
+    ``RDSP9801.dbc`` to ``sih_aih_reduzida_1998_2007`` (ADR 0002); ``DENGBR07.dbc`` belongs
+    to ``sinan_dengue_2000_2012`` only (#225).
     """
+    parsed = _parse_name(d, name)
+    return parsed if parsed is not None and in_coverage(d, parsed.scope) else None
+
+
+def _parse_name(d: Dataset, name: str) -> SourceName | None:
     prefix = re.escape(d.prefix)
     if d.geography == "national":
         m = re.fullmatch(
