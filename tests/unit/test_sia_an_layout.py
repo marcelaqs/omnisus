@@ -132,3 +132,55 @@ def test_the_def_binds_ap_tippre_to_three_tables_and_the_issue_says_which_one_is
     (issue,) = field["x-metadata"]["issues"]
     assert (issue["id"], issue["status"]) == ("def-liga-outra-tabela", "open")
     assert all(b.table.removeprefix("CNV/") in issue["description"] for b in bound.values())
+
+
+@pytest.mark.parametrize(
+    ("name", "page", "locator", "line"),
+    [
+        (
+            "ap_mvm",
+            7,
+            'Seção 3.4.3, SEQ 1, AP_MVM CHAR (6): "Data de Processamento / Movimento (AAAAMM)"',
+            33,
+        ),
+        (
+            "ap_cmp",
+            8,
+            "Seção 3.4.3, SEQ 6, AP_CMP CHAR (6): "
+            '"Data de Atendimento ao paciente / Competência (AAAAMM)"',
+            39,
+        ),
+    ],
+)
+def test_the_two_competencias_are_yearmonth_as_the_informe_writes_and_the_files_publish(
+    dbc_fixture, name, page, locator, line
+) -> None:
+    """The AN layout writes "(AAAAMM)" in both rows, and every record of ANPA1410 and
+    ANRR1401 publishes six digits that are a year from 2000 on and a month from 01 to 12.
+    The DEF binds each field at position 1 to ANOMES2008.CNV. An agent read the pages, and
+    no test reads the PDF, so the ``/field/logical_type`` claim stays ``unreviewed``."""
+    for fixture in (FIXTURE, FIXTURE_RR):
+        frame = dbc_bytes_to_lazyframe(dbc_fixture(fixture).read_bytes(), dataset=AN).collect()
+        assert all(re.fullmatch(r"20\d\d(0[1-9]|1[0-2])", value) for value in frame[name])
+    assert load_dicionario(AN).field_def(name)["type"] == "yearmonth"
+    described = {f["field"]["name"]: f for f in sus.describe_dataset(AN)["fields"]}[name]
+    assert described["field"]["logical_type"] == "yearmonth"
+    (claim,) = [c for c in described["claims"] if c["target"] == "/field/logical_type"]
+    assert claim["status"] == "unreviewed" and claim["reviewer"] is None
+    informe, tabwin = claim["evidence"]
+    assert informe == {"source_id": "siasus-70fe69dbd4cf", "pages": [page], "locator": locator}
+    member = files("omnisus").joinpath("data/dicionarios/sources/cnv/sia/APAC_Nefrologia.DEF")
+    lines = member.read_bytes().decode("latin-1").splitlines()
+    for n in (line, line + 1):
+        (binding,) = parse_def(lines[n - 1])
+        assert (binding.field, binding.start, binding.table.upper()) == (
+            name.upper(),
+            1,
+            "CNV/ANOMES2008.CNV",
+        )
+    assert tabwin == {
+        "source_id": "sia-tab-e5812b51d802",
+        "pages": [],
+        "locator": f"APAC_Nefrologia.DEF, linhas {line}-{line + 1}: "
+        f"{name.upper()}, 1, CNV/ANOMES2008.CNV",
+    }

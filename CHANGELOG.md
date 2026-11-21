@@ -65,6 +65,15 @@
 - `sih_aih_rejeitada_erro` declares `ano` and `mes` as `integer`, the type the lake
   stores, with `physical_type` `string` 4 and 2: the ER publishes ANO C(4) and MES C(2)
   and staging replaces them with the scope.
+- `sia_apac_nefrologia` (1.12.0): `ap_mvm` and `ap_cmp` are `yearmonth`, like the
+  competência fields of seven other SIA dictionaries, each with a `/field/logical_type`
+  claim that cites the row of the AN layout (Informe Técnico SIASUS 2019-07, pp. 7 and
+  8, "(AAAAMM)") and the lines of `APAC_Nefrologia.DEF` that bind the field to
+  `ANOMES2008.CNV`; it stays `unreviewed` (read by an agent). Every record of `ANPA1410`
+  and `ANRR1401` publishes a year and a month from 01 to 12 in both. No transform reads
+  the type: the parser and `sus.label` still return the two fields as published, as
+  strings; `describe_dataset` and the mapping panel report the new `logical_type`
+  (#183).
 
 ### omnisus-dbf 0.2.2
 
