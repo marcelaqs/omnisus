@@ -144,7 +144,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   2024-01, os 3.714 números têm 13 caracteres, são distintos e começam com 14 (Roraima);
   781 têm ano 23, numerados em 2023 e processados em 2024-01. O 5º dígito é 1 em 3.432 e
   5 em 282, embora todas as 3.714 tenham `ident` 1: não deduza o tipo da AIH do
-  número.
+  número. Em São Paulo 2025-12, as 4.488 AIH com `ident` 5 têm o 5º dígito 1, e as com
+  `ident` 1 têm 1, 3 ou 5 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
 - A consulta `aih_distintas` do notebook compara o número de linhas com o número de
   valores distintos de `n_aih` antes de qualquer contagem
   (`notebooks/sih_aih_reduzida.py`).
@@ -170,8 +171,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   `SAIDAPERM.CNV`). Quem conta óbitos hospitalares por 41 a 43 deixa de fora as mortes
   maternas em AIH de parto; quem conta qualquer código de 61 a 67 com "óbito" no rótulo
   mistura a morte da mãe com a do concepto. Na fixture de Roraima 2024-01, as 90 AIH com
-  41 têm `morte` 1 e as 659 com 61 têm `morte` 0; não há 62 a 67, e a relação entre
-  esses códigos e `morte` não foi medida.
+  41 têm `morte` 1 e as 659 com 61 têm `morte` 0. Em sete arquivos de São Paulo de 2014-12
+  a 2025-12, 65, 66 e 67 vêm sempre com `morte` 1, e 61 a 64 com `morte` 0: `morte`
+  marca a morte da paciente da AIH, não a do concepto
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
 - Os complementos federal e do gestor de serviços hospitalares e profissionais
   (`val_sh_fed`, `val_sp_fed`, `val_sh_ges`, `val_sp_ges`) estão incluídos no valor
   total da AIH (Informe SIH 2016-03, p. 4).
@@ -208,7 +211,9 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   capítulo XIX (S00 a T98), o SISAIH01 exige que o secundário seja do capítulo XX (V01 a
   Y98) ou um de D66, D67, D680, D681 e D684 (Manual SIH 2012, p. 37). Na fixture de
   Roraima 2024-01, as 406 AIH com `diag_princ` de S ou T trazem em `diagsec1` um código
-  de V a Y. Para estudar acidentes e violências, leia `diagsec1` a `diagsec9`.
+  de V a Y; em São Paulo, 18.320 das 18.321 em 2015-02 e 25.556 das 25.840 em 2025-12
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Para estudar acidentes e violências, leia
+  `diagsec1` a `diagsec9`.
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
   CID-10 (`O800`) em `sih_aih_reduzida_1998_2007`: a separação por era põe cada
   classificação em sua tabela, e só os códigos de 1998 em diante juntam à `aux_cid10`.
@@ -232,7 +237,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
 - `sexo` tem 1 caractere (Informe SIH 2016-03, p. 1). A tabela oficial
   `CNV/SEXO.CNV` define 1 masculino e 2/3 feminino. O layout dos arquivos RD de 2006-04
   a 2007-12 dá só "1=MASCULINO; 3=FEMININO" (`Layout_REDUZIDA.pdf`, p. 1), e na fixture
-  de Roraima 2024-01 só aparecem 1 (1.517 AIH) e 3 (2.197). A aplicação dessas regras
+  de Roraima 2024-01 só aparecem 1 (1.517 AIH) e 3 (2.197), como nos sete arquivos de São
+  Paulo de 2014-12 a 2025-12 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). A aplicação dessas regras
   exige os escopos e hashes confirmados no contrato; códigos não documentados
   permanecem desconhecidos.
 - Os códigos ficam no lake como publicados: o dicionário decodifica rótulos, datas e
