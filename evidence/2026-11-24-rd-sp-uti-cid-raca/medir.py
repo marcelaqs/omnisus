@@ -24,6 +24,14 @@ def measure(raw: bytes) -> dict[str, object]:
     deaths = df.filter(pl.col("morte") == 1)
     raca99 = df.filter(pl.col("raca_cor") == "99")
     parto = df.filter(pl.col("cobranca").is_in([f"6{d}" for d in range(1, 8)]))
+    stay = df.with_columns(
+        (
+            pl.col("dt_saida").str.strptime(pl.Date, "%Y%m%d", strict=False)
+            - pl.col("dt_inter").str.strptime(pl.Date, "%Y%m%d", strict=False)
+        )
+        .dt.total_days()
+        .alias("days")
+    )
     injury = df.filter(pl.col("diag_princ").str.slice(0, 1).is_in(["S", "T"]))
     return {
         "sha256": hashlib.sha256(raw).hexdigest(),
@@ -67,6 +75,30 @@ def measure(raw: bytes) -> dict[str, object]:
         ).height,
         "cobranca_61_67": parto.height,
         "cobranca_61_67_diar_acom_gt0": parto.filter(pl.col("diar_acom") > 0).height,
+        "marca_uci": counts(df, "marca_uci"),
+        "uti_int_to_gt0_under_1_year": df.filter(
+            (pl.col("uti_int_to") > 0) & pl.col("cod_idade").is_in(["2", "3"])
+        ).height,
+        "car_int": counts(df, "car_int"),
+        "car_int_03_06_diag_princ_s_t": df.filter(
+            pl.col("car_int").is_in(["03", "04", "05", "06"])
+            & pl.col("diag_princ").str.slice(0, 1).is_in(["S", "T"])
+        ).height,
+        "diag_princ_s_t_car_int_01_02": injury.filter(
+            pl.col("car_int").is_in(["01", "02"])
+        ).height,
+        "dias_perm_equal_dates": stay.filter(pl.col("dias_perm") == pl.col("days")).height,
+        "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+            str(g): {"equal": int(e), "plus_1": int(p1), "rows": int(n)}
+            for g, e, p1, n in stay.group_by(pl.col("cobranca").str.slice(0, 1).alias("g"))
+            .agg(
+                (pl.col("qt_diarias") == pl.col("dias_perm")).sum().alias("equal"),
+                (pl.col("qt_diarias") == pl.col("dias_perm") + 1).sum().alias("plus_1"),
+                pl.len(),
+            )
+            .sort("g")
+            .rows()
+        },
         "diag_princ_s_t": injury.height,
         "diag_princ_s_t_diagsec1_v_y": injury.filter(
             pl.col("diagsec1").str.slice(0, 1).is_in(["V", "W", "X", "Y"])
