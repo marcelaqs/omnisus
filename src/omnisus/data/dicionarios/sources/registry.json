@@ -145,6 +145,20 @@
       "last_checked_on": "2026-11-18"
     },
     {
+      "id": "sihsus-80babfa3a197",
+      "category": "SIHSUS",
+      "title": "Portaria SAES/MS nº 245, de 24 de março de 2020 (republicada)",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção Especializada à Saúde (Saúde Legis)",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/saes/2020/prt0245_15_06_2020_rep.html",
+      "sha256": "80babfa3a19724e8da3b66a92f1e93767f1ddfa4fae360c46de8e717435bb6dd",
+      "bytes": 13926,
+      "edition": "2020-06-15",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
+    },
+    {
       "id": "sim-b4195ac8e0f8",
       "category": "SIM",
       "title": "Estrutura_do_SIM_2025.pdf",
