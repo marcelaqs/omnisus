@@ -42,3 +42,7 @@ The same files, for the other notes of the page:
 - With `diag_princ` of chapter XIX (S or T), `diagsec1` holds a code of V to Y in 18320 of
   18321 AIH in RDSP1502 and 25556 of 25840 in RDSP2512; in RDSP1412, before the
   `diagsec` fields were filled, in none.
+- `etnia` is `0000` in every AIH whose `raca_cor` is not 05; of the AIH with 05, a few
+  carry `0000` (3 of 24 in RDSP1902, 6 of 35 in RDSP2001, none in RDSP1412 and RDSP2512).
+- Of the AIH with `cobranca` 61 to 67 (parto), `diar_acom` is above zero in 9499 of 26207
+  in RDSP1412 and 13909 of 20855 in RDSP2512 (`cobranca_61_67_diar_acom_gt0`).

@@ -677,6 +677,48 @@
       "last_checked_on": "2026-11-24"
     },
     {
+      "id": "sihsus-fe7c64067e02",
+      "category": "SIHSUS",
+      "title": "Portaria SAS/MS nº 719, de 28 de dezembro de 2007",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis)",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/sas/2007/prt0719_28_12_2007.html",
+      "sha256": "fe7c64067e022f0f8038f36c9dac0011e4b05746eea76b29e9332e59be2564bb",
+      "bytes": 61948,
+      "edition": "2007-12-28",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
+    },
+    {
+      "id": "sihsus-f3c9c26255ce",
+      "category": "SIHSUS",
+      "title": "Portaria SAS/MS nº 508, de 28 de setembro de 2010",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis)",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/sas/2010/prt0508_28_09_2010.html",
+      "sha256": "f3c9c26255ce7383b78bc21f82b0a7b2bd26fa0ff3bccb468e9dcb26b4e8f5e4",
+      "bytes": 67227,
+      "edition": "2010-09-28",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
+    },
+    {
+      "id": "sihsus-bb6635f3da71",
+      "category": "SIHSUS",
+      "title": "Portaria SAS/MS nº 1.134, de 23 de outubro de 2014",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis)",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/sas/2014/prt1134_23_10_2014.html",
+      "sha256": "bb6635f3da715a78621c8d1ca7cbf5aaecb042b7a32e3b963956b1199e63bca4",
+      "bytes": 6089,
+      "edition": "2014-10-23",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
+    },
+    {
       "id": "sihsus-f70974716de8",
       "category": "SIHSUS",
       "title": "dicionario_de_dados_AIH.pdf",

@@ -124,7 +124,19 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   com `0000` tem `raca_cor` de 01 a 04, e toda linha com `raca_cor` 05 (indígena) tem um
   código de `0001` a `0264`. O `etnia.cnv` rotula o `0000` "NÃO INFORMADO" só pela faixa
   `0000-9999`; em RR 2024-01 são 3.303 das 3.714 AIHs do RD. Para contar pacientes
-  indígenas, filtre por `raca_cor`.
+  indígenas, filtre por `raca_cor`. A Portaria SAS/MS nº 508/2010 incluiu o campo no SIH,
+  "com efeitos operacionais a partir da competência outubro de 2010" (art. 5º), e o exige
+  "somente" quando o usuário é registrado em raça/cor "como Indígena" (art. 2º). Em sete
+  arquivos de São Paulo de 2014-12 a 2025-12, nenhuma AIH com `raca_cor` diferente de 05
+  traz `etnia` diferente de `0000`, e algumas com 05 trazem `0000` (6 das 35 em 2020-01)
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
+- `raca_cor` entrou no SIH pela Portaria SAS/MS nº 719/2007, com 01 a 05 e 99 "Sem
+  informação", "atendendo a classificação expressada pelo próprio usuário ou seu
+  responsável" (art. 1º). Desde a Portaria SAS/MS nº 1.134/2014, quando a AIH traz o
+  Cartão Nacional de Saúde, o SISAIH01 "irá consumir as informações cadastrais" do
+  CADSUS WEB, que "não poderão ser alteradas no SISAIH01" (art. 1º e § 1º). Como o
+  CADSUS também guarda raça/cor (informe da CIT citado abaixo, p. 1), a raça/cor da AIH
+  pode vir do cadastro, e não de uma pergunta feita na internação.
 - A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião
   ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor")
   diz que, "a partir da competência de abril/2023", o SIA e o SIH não aceitam mais AIH
