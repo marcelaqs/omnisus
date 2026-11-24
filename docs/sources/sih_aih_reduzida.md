@@ -163,13 +163,19 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   três tratam da tabela de leitos do CNES, não do campo do RD, e o RD segue publicando 74:
   em sete arquivos de São Paulo, 423 AIH em 2014-12, 272 em 2019-02, 130 em 2023-03 e 29
   em 2025-12; o 77 aparece em 14 AIH em 2014-12, em 7 em 2023-06 e em nenhuma em 2025-12
-  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). A UCI não tem código no `MARCAUTI.CNV`; as
-  diárias em unidade intermediária estão em `uti_int_to` (p. 1), e muitas AIH com UCI têm
-  `marca_uti` 00: em São Paulo, 1.103 das 1.926 com `uti_int_to` maior que zero em
-  2025-12. Na fixture de Roraima 2024-01, `marca_uti` traz 75 (35 AIH), 78 (34) e 81
-  (32), e as 5 AIH com `uti_int_to` maior que zero e sem dias de UTI têm `marca_uti` 00.
-  Para contar internações em UTI ou UCI, olhe `uti_mes_to` e `uti_int_to`, não só
-  `marca_uti`.
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Na fixture de Roraima 2024-01, `marca_uti`
+  traz 75 (35 AIH), 78 (34) e 81 (32).
+- A UCI adulto e pediátrica não aparece nos campos de UTI e UCI do RD. A UCI não tem código
+  no `MARCAUTI.CNV`; o RD tem `uti_int_to`, as diárias em unidade intermediária (Informe
+  SIH 2016-03, p. 1), e `marca_uci`, o "Tipo de UCI utilizada pelo paciente" (p. 4), cujo
+  `MARCAUCI.cnv` só lista UCI neonatais (01 convencional, 02 canguru, 03 unidade
+  intermediária neonatal). Em sete arquivos de São Paulo, toda AIH com `uti_int_to` maior
+  que zero é de paciente com menos de 1 ano e tem `marca_uci` 01 a 03 (1.926 em 2025-12),
+  e muitas têm `marca_uti` 00 (1.103 delas). A UCI adulto e a pediátrica, que receberam os
+  leitos 74 e 77, ganharam diárias próprias na tabela de procedimentos
+  (08.02.01.029-6 e 08.02.01.028-8, Portaria 298/2019, art. 5º e anexo), que não são
+  campos do RD. Para contar UTI, use `uti_mes_to` e `marca_uti`; para UCI neonatal,
+  `uti_int_to` e `marca_uci`.
 - `cid_morte` não traz a causa do óbito nos arquivos recentes. A Portaria SAS/MS
   nº 1.324/2014, hoje no art. 308 da Portaria de Consolidação SAES/MS nº 1/2022, excluiu
   do layout da AIH os campos "Diagnóstico da Causa Morte" e "Diagnóstico Causas
