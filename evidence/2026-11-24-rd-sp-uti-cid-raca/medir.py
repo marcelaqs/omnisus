@@ -58,6 +58,15 @@ def measure(raw: bytes) -> dict[str, object]:
             .sort("d5", "ident")
             .rows()
         },
+        "raca_cor_05": df.filter(pl.col("raca_cor") == "05").height,
+        "raca_cor_05_etnia_0000": df.filter(
+            (pl.col("raca_cor") == "05") & (pl.col("etnia") == "0000")
+        ).height,
+        "raca_cor_not_05_etnia_not_0000": df.filter(
+            (pl.col("raca_cor") != "05") & (pl.col("etnia") != "0000")
+        ).height,
+        "cobranca_61_67": parto.height,
+        "cobranca_61_67_diar_acom_gt0": parto.filter(pl.col("diar_acom") > 0).height,
         "diag_princ_s_t": injury.height,
         "diag_princ_s_t_diagsec1_v_y": injury.filter(
             pl.col("diagsec1").str.slice(0, 1).is_in(["V", "W", "X", "Y"])
