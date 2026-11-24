@@ -341,6 +341,20 @@
       "last_checked_on": "2026-09-29"
     },
     {
+      "id": "sihsus-92c80feb434a",
+      "category": "SIHSUS",
+      "title": "Portaria GM/MS nº 2.418, de 2 de dezembro de 2005",
+      "publisher": "Ministério da Saúde / Gabinete do Ministro (Saúde Legis)",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/gm/2005/prt2418_02_12_2005.html",
+      "sha256": "92c80feb434abfae35b99a84e8501875eb378e9d9737b9caa991d707cf516464",
+      "bytes": 4257,
+      "edition": "2005-12-02",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
+    },
+    {
       "id": "cnes-tab-50988af5d88b",
       "category": "CNES",
       "title": "TAB_CNES.zip",

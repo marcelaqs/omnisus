@@ -144,6 +144,16 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
 - Os complementos federal e do gestor de serviços hospitalares e profissionais
   (`val_sh_fed`, `val_sp_fed`, `val_sh_ges`, `val_sp_ges`) estão incluídos no valor
   total da AIH (Informe SIH 2016-03, p. 4).
+- `diar_acom` é a "Quantidade de diárias de acompanhante" (Informe SIH 2016-03, p. 2):
+  conta diárias cobradas, não a presença do acompanhante. A Portaria GM/MS nº 2.418/2005
+  regulamenta o acompanhante da mulher no trabalho de parto, parto e pós-parto imediato
+  (Lei nº 11.108/2005) e autoriza "a cobrança, de acordo com as tabelas do SUS, das
+  despesas previstas com acompanhante", "cabendo ao gestor a devida formalização dessa
+  autorização de cobrança" na AIH (art. 1º, § 2º). Em São Paulo, das AIH com motivo de
+  saída de parto (`cobranca` 61 a 67), 9.499 de 26.207 trazem `diar_acom` maior que zero
+  em 2014-12 e 13.909 de 20.855 em 2025-12
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom` zero não mostra que a
+  mulher ficou sem acompanhante.
 - `us_tot` é o valor total em dólar, não em reais (Informe SIH 2016-03, p. 2).
 - Vários campos de valor vêm zerados: `val_sadt`, `val_rn`, `val_acomp`, `val_ortp`,
   `val_sangue`, `val_sadtsr`, `val_transp`, `val_obsang` e `val_ped1ac`
