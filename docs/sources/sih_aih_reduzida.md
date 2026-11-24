@@ -134,8 +134,12 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   ainda pode aparecer em arquivos processados depois de abril de 2023, em internações
   anteriores. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`, "Sem informação".
   Na fixture de Roraima 2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04
-  (9) e 05 (411), e nenhum 99. Numa série da proporção de raça/cor sem informação, a
-  queda a partir de 2023 tem também uma causa de regra, além da coleta.
+  (9) e 05 (411), e nenhum 99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de
+  2014-12, em 27.436 das 215.766 de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de
+  2023-06 e em 97 de 2025-12; nos dois últimos, todas com `dt_inter` até 31/03/2023
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
+  informação, a regra zera o 99 nas internações de abril de 2023 em diante, mas em São
+  Paulo a maior parte da queda veio antes dela.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
 - A consulta `aih_distintas` do notebook compara o número de linhas com o número de
