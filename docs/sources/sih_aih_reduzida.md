@@ -155,6 +155,14 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   meses e, rejeitada dentro desse prazo, pode ser reapresentada até o 6º mês contado da
   alta (Manual SIH 2012, p. 10). Os arquivos de um mês de processamento trazem altas de
   meses anteriores, e as altas de um mês só ficam completas meses depois.
+- `qt_diarias` são diárias cobradas, não dias de permanência. "O sistema paga o último dia
+  de internamento quando o motivo de apresentação for: permanência, óbito e
+  transferência" (Manual SIH 2012, p. 13). Em São Paulo 2025-12, `qt_diarias` é
+  `dias_perm` mais 1 em 8.659 das 9.869 AIH com motivo de transferência (`cobranca` 3x) e
+  em 6.877 das 11.595 com óbito (4x), e é igual a `dias_perm` em 131.170 das 170.082 com
+  alta (1x) e em 20.569 das 20.855 de parto (6x). `dias_perm` é igual a `dt_saida` menos
+  `dt_inter` em 226.276 das 230.747 AIH (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Para
+  tempo de internação, use as datas ou `dias_perm`, não `qt_diarias`.
 - `morte` "indica óbito", com 1 algarismo, e o documento não lista os códigos
   (Informe SIH 2016-03, p. 2); os códigos e rótulos vêm do pacote oficial
   `TAB_SIH.zip`, republicado pelo DATASUS em 2026-09-15, `RD2008.DEF` →
@@ -213,7 +221,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   Roraima 2024-01, as 406 AIH com `diag_princ` de S ou T trazem em `diagsec1` um código
   de V a Y; em São Paulo, 18.320 das 18.321 em 2015-02 e 25.556 das 25.840 em 2025-12
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Para estudar acidentes e violências, leia
-  `diagsec1` a `diagsec9`.
+  `diagsec1` a `diagsec9`. O caráter de atendimento, `car_int`, tem códigos de acidente
+  e lesão (03 a 06; Manual SIH 2012, p. 12), mas não serve para contá-los: em São Paulo
+  2025-12, as 2.588 AIH com 03 a 06 têm `diag_princ` de S ou T, e 23.252 das 25.840 AIH
+  com S ou T têm caráter 01 (eletivo) ou 02 (urgência).
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
   CID-10 (`O800`) em `sih_aih_reduzida_1998_2007`: a separação por era põe cada
   classificação em sua tabela, e só os códigos de 1998 em diante juntam à `aux_cid10`.
