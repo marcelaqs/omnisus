@@ -663,6 +663,20 @@
       "last_checked_on": "2026-11-18"
     },
     {
+      "id": "sihsus-737abb0473fe",
+      "category": "SIHSUS",
+      "title": "Demanda raça/cor: informe do DATASUS à 3ª reunião ordinária da CIT de 2023",
+      "publisher": "Ministério da Saúde / SEIDIGI / DATASUS (arquivo hospedado pelo CONASS)",
+      "authority": "official",
+      "url": "https://www.conass.org.br/wp-content/uploads/2023/03/4.-c-Demanda-rac%CC%A7a-cor.pdf",
+      "sha256": "737abb0473feeddcb9aadeae0f173f1d3e279a67e763b65ce13eb0114052d946",
+      "bytes": 289684,
+      "edition": "2023-03-30",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
+    },
+    {
       "id": "sihsus-f70974716de8",
       "category": "SIHSUS",
       "title": "dicionario_de_dados_AIH.pdf",

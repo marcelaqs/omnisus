@@ -125,6 +125,17 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   código de `0001` a `0264`. O `etnia.cnv` rotula o `0000` "NÃO INFORMADO" só pela faixa
   `0000-9999`; em RR 2024-01 são 3.303 das 3.714 AIHs do RD. Para contar pacientes
   indígenas, filtre por `raca_cor`.
+- A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião
+  ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor")
+  diz que, "a partir da competência de abril/2023", o SIA e o SIH não aceitam mais AIH
+  "cujo campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
+  produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
+  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O 99
+  ainda pode aparecer em arquivos processados depois de abril de 2023, em internações
+  anteriores. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`, "Sem informação".
+  Na fixture de Roraima 2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04
+  (9) e 05 (411), e nenhum 99. Numa série da proporção de raça/cor sem informação, a
+  queda a partir de 2023 tem também uma causa de regra, além da coleta.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
 - A consulta `aih_distintas` do notebook compara o número de linhas com o número de
