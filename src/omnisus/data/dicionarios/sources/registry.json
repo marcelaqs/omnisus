@@ -675,6 +675,20 @@
       "published_on": null,
       "retrieved_on": "2026-11-18",
       "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sihsus-7429b011ee2a",
+      "category": "SIHSUS",
+      "title": "Manual Técnico Operacional do Sistema de Informação Hospitalar do SUS",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção à Saúde / DRAC",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/publicacoes/manual_tecnico_sistema_informacao_hospitalar_sus.pdf",
+      "sha256": "7429b011ee2a7329ffb4084e71bd0ede629985ce3d1bcd9e8e4109a2af85e755",
+      "bytes": 1502594,
+      "edition": "2012-09",
+      "published_on": null,
+      "retrieved_on": "2026-11-24",
+      "last_checked_on": "2026-11-24"
     }
   ]
 }
