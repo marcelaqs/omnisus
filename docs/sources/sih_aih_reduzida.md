@@ -151,6 +151,29 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
 - Também vêm zerados `uti_mes_in`, `uti_mes_an`, `uti_mes_al`, `uti_int_in`,
   `uti_int_an` e `uti_int_al` (Informe SIH 2016-03, p. 1); a quantidade de dias de UTI
   no mês está em `uti_mes_to` (p. 1).
+- A UTI tipo I deixou de existir. `marca_uti` "Indica qual o tipo de UTI utilizada pelo
+  paciente" (Informe SIH 2016-03, p. 1), e o `MARCAUTI.CNV` rotula 74 "UTI adulto - tipo
+  I" e 77 "UTI infantil - tipo I". A Portaria SAS/MS nº 298/2019 reclassificou essas UTI
+  como Unidade de Cuidados Intermediários: os leitos "74 - UTI Adulto - Tipo I" migram
+  para "95 - Unidade de Cuidados Intermediários Adulto", os "77 - UTI Pediátrica - Tipo I"
+  para "94", e os códigos 74 e 77 saem da tabela de leitos do CNES (art. 2º). A Portaria
+  SAES/MS nº 1.202/2023 descontinua no CNES os leitos e as habilitações de UTI tipo I "no
+  prazo de 120 dias" (art. 1º, § 1º), e a Portaria SAES/MS nº 3.511/2025 exclui de novo os
+  leitos 74 e 77, "considerando o fim do prazo de reclassificação" (art. 2º, § 1º). As
+  três tratam da tabela de leitos do CNES, não do campo do RD: confira nos seus dados
+  quando 74 e 77 deixam de aparecer. A UCI não tem código no `MARCAUTI.CNV`; as diárias em
+  unidade intermediária estão em `uti_int_to` (p. 1). Na fixture de Roraima 2024-01,
+  `marca_uti` traz 75 (35 AIH), 78 (34) e 81 (32), nenhum 74 ou 77, e as 5 AIH com
+  `uti_int_to` maior que zero e sem dias de UTI têm `marca_uti` 00. Numa série de
+  internações em UTI que atravesse 2019, parte da queda pode ser reclassificação de leito.
+- `cid_morte` não traz a causa do óbito nos arquivos recentes. A Portaria SAS/MS
+  nº 1.324/2014, hoje no art. 308 da Portaria de Consolidação SAES/MS nº 1/2022, excluiu
+  do layout da AIH os campos "Diagnóstico da Causa Morte" e "Diagnóstico Causas
+  Complementares" e incluiu 8 campos de CID secundário. Na fixture de Roraima 2024-01,
+  `cid_morte` e `cid_asso` são `0000` nas 3.714 AIH, inclusive nas 90 com `morte` 1; na
+  de Roraima 2007-12, as AIH com `morte` 1 trazem códigos em `cid_morte` (por exemplo
+  `J188`). Para a causa do óbito, a fonte é o SIM; no SIH restam `diag_princ` e
+  `diagsec1` a `diagsec9`.
 - `diag_secun` vem preenchido com zeros a partir de 201501
   (Informe SIH 2016-03, p. 2); os diagnósticos secundários estão em `diagsec1` a
   `diagsec9` (p. 4), e o dicionário liga `diagsec1` a `diagsec8` à tabela `aux_cid10`,
