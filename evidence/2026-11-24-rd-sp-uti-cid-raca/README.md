@@ -46,3 +46,12 @@ The same files, for the other notes of the page:
   carry `0000` (3 of 24 in RDSP1902, 6 of 35 in RDSP2001, none in RDSP1412 and RDSP2512).
 - Of the AIH with `cobranca` 61 to 67 (parto), `diar_acom` is above zero in 9499 of 26207
   in RDSP1412 and 13909 of 20855 in RDSP2512 (`cobranca_61_67_diar_acom_gt0`).
+- Every AIH with `uti_int_to` above zero is of a patient under one year (`cod_idade` 2
+  or 3) and has `marca_uci` 01, 02 or 03 (1926 of 1926 in RDSP2512).
+- `car_int` 03 to 06 come only with a `diag_princ` of S or T (2588 of 2588 in RDSP2512),
+  but most AIH with S or T have `car_int` 01 or 02 (23252 of 25840 in RDSP2512).
+- `dias_perm` equals `dt_saida` minus `dt_inter` in 226276 of 230747 AIH in RDSP2512.
+  `qt_diarias` is `dias_perm` plus one in most AIH with `cobranca` 3x (transfer, 8659 of
+  9869) and 4x (death, 6877 of 11595), and equals `dias_perm` in most with 1x (discharge,
+  131170 of 170082) and 6x (parto, 20569 of 20855)
+  (`qt_diarias_vs_dias_perm_by_cobranca_first_digit`).

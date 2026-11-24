@@ -59,6 +59,55 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 26207,
   "cobranca_61_67_diar_acom_gt0": 9499,
+  "marca_uci": {
+   "00": 193304,
+   "01": 148,
+   "02": 1,
+   "03": 336
+  },
+  "uti_int_to_gt0_under_1_year": 485,
+  "car_int": {
+   "01": 54029,
+   "02": 135848,
+   "03": 3,
+   "05": 1132,
+   "06": 2777
+  },
+  "car_int_03_06_diag_princ_s_t": 3912,
+  "diag_princ_s_t_car_int_01_02": 15174,
+  "dias_perm_equal_dates": 183968,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 111049,
+    "plus_1": 15282,
+    "rows": 136664
+   },
+   "2": {
+    "equal": 8920,
+    "plus_1": 4368,
+    "rows": 14577
+   },
+   "3": {
+    "equal": 151,
+    "plus_1": 4861,
+    "rows": 5465
+   },
+   "4": {
+    "equal": 486,
+    "plus_1": 5704,
+    "rows": 8797
+   },
+   "5": {
+    "equal": 1142,
+    "plus_1": 13,
+    "rows": 2079
+   },
+   "6": {
+    "equal": 26082,
+    "plus_1": 38,
+    "rows": 26207
+   }
+  },
   "diag_princ_s_t": 19086,
   "diag_princ_s_t_diagsec1_v_y": 0
  },
@@ -121,6 +170,55 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 29456,
   "cobranca_61_67_diar_acom_gt0": 10264,
+  "marca_uci": {
+   "00": 195350,
+   "01": 160,
+   "02": 5,
+   "03": 307
+  },
+  "uti_int_to_gt0_under_1_year": 472,
+  "car_int": {
+   "01": 52837,
+   "02": 139162,
+   "03": 1,
+   "05": 1078,
+   "06": 2744
+  },
+  "car_int_03_06_diag_princ_s_t": 3823,
+  "diag_princ_s_t_car_int_01_02": 14498,
+  "dias_perm_equal_dates": 186140,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 109926,
+    "plus_1": 14971,
+    "rows": 135167
+   },
+   "2": {
+    "equal": 8878,
+    "plus_1": 4616,
+    "rows": 14673
+   },
+   "3": {
+    "equal": 159,
+    "plus_1": 5021,
+    "rows": 5639
+   },
+   "4": {
+    "equal": 528,
+    "plus_1": 5976,
+    "rows": 9132
+   },
+   "5": {
+    "equal": 987,
+    "plus_1": 15,
+    "rows": 1755
+   },
+   "6": {
+    "equal": 29320,
+    "plus_1": 38,
+    "rows": 29456
+   }
+  },
   "diag_princ_s_t": 18321,
   "diag_princ_s_t_diagsec1_v_y": 18320
  },
@@ -184,6 +282,55 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 29633,
   "cobranca_61_67_diar_acom_gt0": 15645,
+  "marca_uci": {
+   "00": 202271,
+   "01": 1167,
+   "02": 92,
+   "03": 69
+  },
+  "uti_int_to_gt0_under_1_year": 1328,
+  "car_int": {
+   "01": 59956,
+   "02": 140256,
+   "03": 1,
+   "05": 906,
+   "06": 2480
+  },
+  "car_int_03_06_diag_princ_s_t": 3387,
+  "diag_princ_s_t_car_int_01_02": 16069,
+  "dias_perm_equal_dates": 197848,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 119052,
+    "plus_1": 12810,
+    "rows": 143217
+   },
+   "2": {
+    "equal": 5390,
+    "plus_1": 5758,
+    "rows": 12953
+   },
+   "3": {
+    "equal": 150,
+    "plus_1": 5413,
+    "rows": 6145
+   },
+   "4": {
+    "equal": 425,
+    "plus_1": 6430,
+    "rows": 9698
+   },
+   "5": {
+    "equal": 952,
+    "plus_1": 20,
+    "rows": 1953
+   },
+   "6": {
+    "equal": 29439,
+    "plus_1": 55,
+    "rows": 29633
+   }
+  },
   "diag_princ_s_t": 19456,
   "diag_princ_s_t_diagsec1_v_y": 19244
  },
@@ -246,6 +393,54 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 30271,
   "cobranca_61_67_diar_acom_gt0": 16937,
+  "marca_uci": {
+   "00": 213996,
+   "01": 1621,
+   "02": 149
+  },
+  "uti_int_to_gt0_under_1_year": 1770,
+  "car_int": {
+   "01": 59850,
+   "02": 152593,
+   "03": 3,
+   "05": 1078,
+   "06": 2242
+  },
+  "car_int_03_06_diag_princ_s_t": 3323,
+  "diag_princ_s_t_car_int_01_02": 18210,
+  "dias_perm_equal_dates": 210270,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 126654,
+    "plus_1": 12422,
+    "rows": 152082
+   },
+   "2": {
+    "equal": 5278,
+    "plus_1": 6108,
+    "rows": 13466
+   },
+   "3": {
+    "equal": 200,
+    "plus_1": 5908,
+    "rows": 6741
+   },
+   "4": {
+    "equal": 535,
+    "plus_1": 7260,
+    "rows": 11041
+   },
+   "5": {
+    "equal": 998,
+    "plus_1": 25,
+    "rows": 2165
+   },
+   "6": {
+    "equal": 30021,
+    "plus_1": 91,
+    "rows": 30271
+   }
+  },
   "diag_princ_s_t": 21533,
   "diag_princ_s_t_diagsec1_v_y": 21354
  },
@@ -307,6 +502,54 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 29007,
   "cobranca_61_67_diar_acom_gt0": 17013,
+  "marca_uci": {
+   "00": 231502,
+   "01": 1790,
+   "02": 357
+  },
+  "uti_int_to_gt0_under_1_year": 2147,
+  "car_int": {
+   "01": 67468,
+   "02": 163060,
+   "03": 3,
+   "05": 953,
+   "06": 2165
+  },
+  "car_int_03_06_diag_princ_s_t": 3121,
+  "diag_princ_s_t_car_int_01_02": 19797,
+  "dias_perm_equal_dates": 228895,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 135423,
+    "plus_1": 16369,
+    "rows": 168743
+   },
+   "2": {
+    "equal": 4414,
+    "plus_1": 6780,
+    "rows": 13674
+   },
+   "3": {
+    "equal": 216,
+    "plus_1": 7427,
+    "rows": 8529
+   },
+   "4": {
+    "equal": 683,
+    "plus_1": 6736,
+    "rows": 11357
+   },
+   "5": {
+    "equal": 1134,
+    "plus_1": 29,
+    "rows": 2339
+   },
+   "6": {
+    "equal": 28717,
+    "plus_1": 58,
+    "rows": 29007
+   }
+  },
   "diag_princ_s_t": 22918,
   "diag_princ_s_t_diagsec1_v_y": 22682
  },
@@ -369,6 +612,55 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 27274,
   "cobranca_61_67_diar_acom_gt0": 15729,
+  "marca_uci": {
+   "00": 230248,
+   "01": 1692,
+   "02": 323
+  },
+  "uti_int_to_gt0_under_1_year": 2015,
+  "car_int": {
+   "01": 69972,
+   "02": 159012,
+   "03": 1,
+   "04": 1,
+   "05": 1024,
+   "06": 2253
+  },
+  "car_int_03_06_diag_princ_s_t": 3279,
+  "diag_princ_s_t_car_int_01_02": 19184,
+  "dias_perm_equal_dates": 227509,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 132894,
+    "plus_1": 17805,
+    "rows": 167508
+   },
+   "2": {
+    "equal": 4473,
+    "plus_1": 6973,
+    "rows": 13995
+   },
+   "3": {
+    "equal": 261,
+    "plus_1": 7634,
+    "rows": 8773
+   },
+   "4": {
+    "equal": 589,
+    "plus_1": 7559,
+    "rows": 12417
+   },
+   "5": {
+    "equal": 1133,
+    "plus_1": 24,
+    "rows": 2296
+   },
+   "6": {
+    "equal": 26991,
+    "plus_1": 69,
+    "rows": 27274
+   }
+  },
   "diag_princ_s_t": 22463,
   "diag_princ_s_t_diagsec1_v_y": 22224
  },
@@ -430,6 +722,54 @@
   "raca_cor_not_05_etnia_not_0000": 0,
   "cobranca_61_67": 20855,
   "cobranca_61_67_diar_acom_gt0": 13909,
+  "marca_uci": {
+   "00": 228821,
+   "01": 1576,
+   "02": 350
+  },
+  "uti_int_to_gt0_under_1_year": 1926,
+  "car_int": {
+   "01": 72222,
+   "02": 155937,
+   "04": 1,
+   "05": 838,
+   "06": 1749
+  },
+  "car_int_03_06_diag_princ_s_t": 2588,
+  "diag_princ_s_t_car_int_01_02": 23252,
+  "dias_perm_equal_dates": 226276,
+  "qt_diarias_vs_dias_perm_by_cobranca_first_digit": {
+   "1": {
+    "equal": 131170,
+    "plus_1": 21369,
+    "rows": 170082
+   },
+   "2": {
+    "equal": 4269,
+    "plus_1": 8176,
+    "rows": 15364
+   },
+   "3": {
+    "equal": 239,
+    "plus_1": 8659,
+    "rows": 9869
+   },
+   "4": {
+    "equal": 571,
+    "plus_1": 6877,
+    "rows": 11595
+   },
+   "5": {
+    "equal": 1557,
+    "plus_1": 55,
+    "rows": 2982
+   },
+   "6": {
+    "equal": 20569,
+    "plus_1": 96,
+    "rows": 20855
+   }
+  },
   "diag_princ_s_t": 25840,
   "diag_princ_s_t_diagsec1_v_y": 25556
  }
