@@ -90,11 +90,31 @@ def test_esc2010_labels_are_the_ones_the_estrutura_do_sim_writes(name, page) -> 
     field = _field("sim_obitos", name)
     assert field["x-decode"] == ESC2010_IN_THE_DOCUMENT
     (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
-    assert (claim["status"], claim["reviewer"]) == ("unreviewed", None)
-    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
-        ("sim-b4195ac8e0f8", [page])
-    ]
+    assert (claim["evidence"][0]["source_id"], claim["evidence"][0]["pages"]) == (
+        "sim-b4195ac8e0f8",
+        [page],
+    )
     (issue,) = [
         i for i in field["x-metadata"]["issues"] if i["id"] == f"{name}-rotulo-diverge-do-pdf"
     ]
     assert issue["status"] == "resolved" and "1-5 ano" in issue["description"]
+
+
+SIM_DO_DICTIONARY = "sim-do-5d1852acb228"
+
+
+@pytest.mark.parametrize(
+    ("name", "estrutura_page", "do_page"),
+    [("assistmed", 4, 4), ("codificado", 6, 5), ("esc2010", 2, 6), ("escmae2010", 3, 6)],
+)
+def test_a_human_review_against_two_documents_verifies_the_codes(
+    name, estrutura_page, do_page
+) -> None:
+    """A reviewer compared the map with the Estrutura do SIM and the dictionary of table DO."""
+    field = _field("sim_obitos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
+        ("sim-b4195ac8e0f8", [estrutura_page]),
+        (SIM_DO_DICTIONARY, [do_page]),
+    ]

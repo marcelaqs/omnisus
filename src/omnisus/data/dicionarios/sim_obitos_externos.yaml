@@ -2,7 +2,7 @@ name: sim_obitos_externos
 title: SIM — Óbitos por causas externas (DOEXT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.11.0
+x-version: 1.11.1
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_doext_br_2023_excerpt.dbc, 87 fields; observed 2026-09-22
@@ -584,15 +584,21 @@ schema:
       claims:
       - target: /field/codes
         value_sha256: 3f62f8acbc3b5fb8d9d538446c2fadf44abd5f65c9be4f54433a595e2e1768f2
-        status: unreviewed
-        checked_at: '2026-11-18'
-        method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
-          sem revisor humano
-        reviewer: null
+        status: verified_in_source
+        checked_at: '2026-11-25'
+        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
+          da tabela DO, conferida por revisora humana
+        reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 2
+          locator: 'ESC2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 – Fundamental
+            II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior completo;
+            9 – Ignorado'
+        - source_id: sim-do-5d1852acb228
+          pages:
+          - 6
           locator: 'ESC2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 – Fundamental
             II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior completo;
             9 – Ignorado'
@@ -968,15 +974,21 @@ schema:
       claims:
       - target: /field/codes
         value_sha256: 3f62f8acbc3b5fb8d9d538446c2fadf44abd5f65c9be4f54433a595e2e1768f2
-        status: unreviewed
-        checked_at: '2026-11-18'
-        method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
-          sem revisor humano
-        reviewer: null
+        status: verified_in_source
+        checked_at: '2026-11-25'
+        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
+          da tabela DO, conferida por revisora humana
+        reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 3
+          locator: 'ESCMAE2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 –
+            Fundamental II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior
+            completo; 9 – Ignorado'
+        - source_id: sim-do-5d1852acb228
+          pages:
+          - 6
           locator: 'ESCMAE2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 –
             Fundamental II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior
             completo; 9 – Ignorado'
@@ -1515,16 +1527,20 @@ schema:
       claims:
       - target: /field/codes
         value_sha256: ba4c4540ade0bc08b200748ac04aceb58cfa915241b368ef9341cd637bad18be
-        status: unreviewed
-        checked_at: '2026-11-15'
-        method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
-          sem revisor humano
-        reviewer: null
+        status: verified_in_source
+        checked_at: '2026-11-25'
+        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
+          da tabela DO, conferida por revisora humana
+        reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 4
           locator: 'ASSISTMED, Caracter 1: 1 sim; 2 não; 9 ignorado'
+        - source_id: sim-do-5d1852acb228
+          pages:
+          - 4
+          locator: 'ASSISTMED, Caracter 1: Assistência médica: 1 – sim; 2 – não; 9 – ignorado.'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
       - target: /field/description
         value_sha256: cd3da60e01ca5733d70eb8ef07306e40758c9ca6a228dec52b2bead19104bdca
@@ -2313,16 +2329,20 @@ schema:
       claims:
       - target: /field/codes
         value_sha256: 9ba2685b831819fd5247b6b228dc10f83f5fc3671c83581db0e377741f553661
-        status: unreviewed
-        checked_at: '2026-11-15'
-        method: Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente;
-          sem revisor humano
-        reviewer: null
+        status: verified_in_source
+        checked_at: '2026-11-25'
+        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
+          da tabela DO, conferida por revisora humana
+        reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 6
           locator: 'CODIFICADO, Caracter 1: S se estiver codificado; N se não'
+        - source_id: sim-do-5d1852acb228
+          pages:
+          - 5
+          locator: 'CODIFICADO, Caracter 1: Se estiver codificado (valor: S) ou não (valor: N)'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
       - target: /field/description
         value_sha256: 4730246174647bf3f31bbf856f09f92637140ed987bc30bdf30006d56cc6d7d2
