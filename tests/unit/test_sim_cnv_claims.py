@@ -3,9 +3,10 @@
 `gerar_decode_cnv.py` marks a claim `conflicting` when the map it replaces disagreed with
 the CNV. The older maps had no claim, so the disagreement is history: the claim is
 `verified_in_source` and the issue that keeps the older labels is `resolved`, as in
-`sih_aih_reduzida`. Two fields are exceptions, where the Estrutura do SIM and the CNV say
-different things: it gives `tppos` codes the CNV does not list, and it calls `atestante` 1
-"Assistente" where the CNV says "Sim". Their claims stay `conflicting` with the issue open.
+`sih_aih_reduzida`. Two fields were closed by a reviewer instead, where the Estrutura do SIM
+and the CNV word the same answer differently: it gives `tppos` the codes 1 and 2 where the
+files write the S and N of the CNV, and it calls `atestante` 1 "Assistente" where the CNV
+says "Sim".
 """
 
 from __future__ import annotations
@@ -38,13 +39,8 @@ def test_a_map_that_replaced_one_with_no_claim_is_verified(name) -> None:
     assert issue["status"] == "resolved" and "não tinha claim" in issue["description"]
 
 
-def test_tppos_stays_conflicting_because_the_document_lists_other_codes() -> None:
-    claim, issue = _replaced_maps()["tppos"]
-    assert (claim["status"], issue["status"]) == ("conflicting", "open")
-    assert "'1' era 'Sim', CNV não lista" in issue["description"]
-
-
-def test_atestante_stays_conflicting_because_the_document_names_code_1_otherwise() -> None:
-    claim, issue = _replaced_maps()["atestante"]
-    assert (claim["status"], issue["status"]) == ("conflicting", "open")
-    assert "Assistente" in issue["description"] and "ATESTANT.CNV" in issue["description"]
+@pytest.mark.parametrize("name", ["atestante", "tppos"])
+def test_a_reviewer_closed_the_two_maps_the_document_words_otherwise(name) -> None:
+    claim, issue = _replaced_maps()[name]
+    assert (claim["status"], issue["status"]) == ("verified_in_source", "resolved")
+    assert "revisora marcelaqs" in issue["description"]

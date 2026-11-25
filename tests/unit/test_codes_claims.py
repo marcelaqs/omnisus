@@ -153,4 +153,6 @@ def test_a_human_review_against_the_open_data_edition_verifies_the_codes(name, p
 def test_tpnivelinv_also_cites_the_dictionary_of_table_dom() -> None:
     field = _field("sim_obitos", "tpnivelinv")
     (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
-    assert ("sim-dom-fb396a277981", [2]) in [(e["source_id"], e["pages"]) for e in claim["evidence"]]
+    assert ("sim-dom-fb396a277981", [2]) in [
+        (e["source_id"], e["pages"]) for e in claim["evidence"]
+    ]
