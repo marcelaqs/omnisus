@@ -118,3 +118,16 @@ def test_a_human_review_against_two_documents_verifies_the_codes(
         ("sim-b4195ac8e0f8", [estrutura_page]),
         (SIM_DO_DICTIONARY, [do_page]),
     ]
+
+
+@pytest.mark.parametrize("name", ["atestante", "tppos"])
+def test_a_reviewer_closes_a_conflict_of_wording_between_the_cnv_and_the_document(
+    name,
+) -> None:
+    """The CNV and the Estrutura do SIM name the same answer in other words."""
+    field = _field("sim_obitos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["method"]) == ("verified_in_source", "cnv-parse")
+    issues = field["x-metadata"]["issues"]
+    assert issues and all(i["status"] == "resolved" for i in issues)
+    assert all("marcelaqs" in i["description"] for i in issues)

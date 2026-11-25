@@ -2,7 +2,7 @@ name: sim_obitos_externos
 title: SIM — Óbitos por causas externas (DOEXT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.11.1
+x-version: 1.11.2
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_doext_br_2023_excerpt.dbc, 87 fields; observed 2026-09-22
@@ -2038,7 +2038,7 @@ schema:
       claims:
       - target: /field/codes
         value_sha256: f352632d7d1acf143d91f8c0952e362267a947a6856fc485d1f4d43818d50b2d
-        status: conflicting
+        status: verified_in_source
         checked_at: '2026-09-21'
         method: cnv-parse
         reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -2046,7 +2046,9 @@ schema:
         - source_id: sim-tab-bb1c9f02668e
           pages: []
           locator: 'Obito_1996_CID10.def: XObito investigado, TPPOS, 1, INVESTIG.CNV; OBITOS_CID10_TAB/tabdo/INVESTIG.CNV'
-        note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+        note: Mapa do CNV, com as chaves que os arquivos gravam. Os conflitos com o Estrutura do SIM e com
+          o mapa anterior foram encerrados em 2026-11-25; texto nos issues tppos-codigos-divergem-do-pdf
+          e cnv-difere-do-mapa-anterior.
       - target: /field/description
         value_sha256: e5c350acaa9926c1dbae45cfbdcf1829e09f011649a1702314acd42578a668b0
         status: unreviewed
@@ -2063,19 +2065,22 @@ schema:
           a cada arquivo não foi conferida.
       issues:
       - id: tppos-codigos-divergem-do-pdf
-        status: open
-        description: O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos '1 – sim; 2 – não'. DORR2022,
+        status: resolved
+        description: 'O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos ''1 – sim; 2 – não''. DORR2022,
           DORR2023 e os excertos de DOEXT, DOINF e DOMAT de 2023 gravam S, N ou branco, as chaves do INVESTIG.CNV,
           que o Obito_1996_CID10.def liga ao campo numa linha X (a ressalva dessas linhas está no issue
           def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo. Nos arquivos DO
           de AC, AP, DF, RR, SE e TO de cada ano de 1996 a 2024 e de BA, PA, RS e SP de 2006, 2015 e 2023
           (evidence/2026-11-18-sim-valores-do/), TPPOS tem S em 374.509 registros, N em 951.045 e branco
-          em 950.059, e nenhum 1 ou 2.
+          em 950.059, e nenhum 1 ou 2. Resolvido em 2026-11-25 pela revisora marcelaqs: ''1 – sim; 2 – não''
+          do documento e S/N do CNV dizem se o óbito foi investigado; o mapa fica com as chaves que os arquivos
+          gravam.'
       - id: cnv-difere-do-mapa-anterior
-        status: open
+        status: resolved
         description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Investigado'';
           ''N'' era ''Não'', CNV ''Nao Investigado''; ''1'' era ''Sim'', CNV não lista; ''2'' era ''Não'',
-          CNV não lista'
+          CNV não lista. Resolvido em 2026-11-25 pela revisora marcelaqs: os rótulos dizem o mesmo; vale
+          o CNV, que o DEF liga ao campo.'
   - name: dtinvestig
     type: date
     label: Data da investigação
@@ -2245,7 +2250,7 @@ schema:
       claims:
       - target: /field/codes
         value_sha256: 84428dba1e8943e5c653d365dad765579149b2146711067f716692a438f77d51
-        status: conflicting
+        status: verified_in_source
         checked_at: '2026-09-21'
         method: cnv-parse
         reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -2253,7 +2258,8 @@ schema:
         - source_id: sim-tab-bb1c9f02668e
           pages: []
           locator: 'Obito_1996_CID10.def: XMedico Atest, ATESTANTE, 1, ATESTANT.CNV; OBITOS_CID10_TAB/tabdo/ATESTANT.CNV'
-        note: Mapa do CNV; diverge do Estrutura do SIM no código 1, ver o issue cnv-difere-do-mapa-anterior.
+        note: Mapa do CNV. O conflito com o Estrutura do SIM no código 1 foi encerrado em 2026-11-25; texto
+          no issue cnv-difere-do-mapa-anterior.
       - target: /field/description
         value_sha256: a5e2105c0567a798a51fb23958dba37e03843c089a6af0077199569c446adc11
         status: unreviewed
@@ -2270,11 +2276,12 @@ schema:
           a cada arquivo não foi conferida.
       issues:
       - id: cnv-difere-do-mapa-anterior
-        status: open
+        status: resolved
         description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Assistente'', CNV ''Sim''.
           O Estrutura_do_SIM_2025.pdf (p. 5) escreve ''1 - Assistente; 2 – Substituto; 3 – IML; 4 – SVO;
-          5 – Outro''; o ATESTANT.CNV rotula 1 como ''Sim''. A diferença é de significado, não de grafia,
-          e fica aberta.'
+          5 – Outro''; o ATESTANT.CNV rotula 1 como ''Sim''. Resolvido em 2026-11-25 pela revisora marcelaqs:
+          ''Assistente'' e ''Sim'' respondem à mesma pergunta da DO, se o médico que assina atendeu o falecido;
+          vale o CNV, que o DEF liga ao campo.'
   - name: stcodifica
     type: string
     label: Status codificação

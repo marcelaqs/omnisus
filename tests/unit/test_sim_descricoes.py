@@ -250,7 +250,10 @@ def test_tppos_is_s_or_n_where_the_document_says_1_or_2(dbc_fixture, fixture) ->
     assert _values(dbc_fixture, fixture, "tppos") == {"S", "N"}
     codes = {c["value"] for c in _columns()["tppos"]["field"]["codes"]}
     assert {"S", "N"} <= codes and not {"1", "2"} & codes
-    assert "INVESTIG.CNV" in _open_issue("tppos", "tppos-codigos-divergem-do-pdf")["description"]
+    (issue,) = [
+        i for i in _columns()["tppos"]["issues"] if i["id"] == "tppos-codigos-divergem-do-pdf"
+    ]
+    assert "INVESTIG.CNV" in issue["description"]
 
 
 @pytest.mark.parametrize("fixture", SIM_FIXTURES)
