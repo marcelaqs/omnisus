@@ -74,10 +74,10 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 2a575282e815c11490547293aba879fa7968b5349f64f344b4b00b3f93e6bea4
-          status: unreviewed
-          checked_at: '2026-11-18'
-          method: 'Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente; sem revisor humano'
-          reviewer: null
+          status: verified_in_source
+          checked_at: '2026-11-25'
+          method: 'Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS e o do Portal de Dados Abertos do SUS, conferida por revisora humana'
+          reviewer: marcelaqs
           evidence:
           - source_id: sim-b014389eca62
             pages: [6]
@@ -85,6 +85,9 @@ schema:
           - source_id: sim-b4195ac8e0f8
             pages: [5]
             locator: 'ORIGEM, Caracter 1: 01 Oracle, 02 Banco estadual disponibilizado via FTP, 03 Banco SEADE, 9 Ignorado'
+          - source_id: sim-2177e17cf20b
+            pages: [6]
+            locator: 'ORIGEM, Caracter 1: 01- Oracle, 02 Banco estadual diponibilizado via FTP, 03 Banco SEADE 9 Ignorado'
           note: 'A edição de 12/2019 escreve 1, 2, 3 e 9, como o x-decode; a de 07/2025 escreve 01, 02 e 03 (e 9) para um campo de 1 caractere. Os rótulos são abreviações do texto.'
         - target: /field/description
           value_sha256: fd1e53ff65f8f7987c099ba78065ce3dcbda0bcbf2dd39818c2054c39e46c65e
@@ -2332,14 +2335,20 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 6f160ac6b49de2dd353f3d4f4192cd413fe99f399d0dd2724e3e8c75f3bc7c9c
-          status: unreviewed
-          checked_at: '2026-11-15'
-          method: 'Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente; sem revisor humano'
-          reviewer: null
+          status: verified_in_source
+          checked_at: '2026-11-25'
+          method: 'Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS, o do Portal de Dados Abertos do SUS e o dicionário da tabela DOM, conferida por revisora humana'
+          reviewer: marcelaqs
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'TPNIVELINV, Caracter 1: E estadual; R regional; M municipal'
+          - source_id: sim-2177e17cf20b
+            pages: [8]
+            locator: 'TPNIVELINV, Caracter 1: E – estadual; R- regional; M- Municipal'
+          - source_id: sim-dom-fb396a277981
+            pages: [2]
+            locator: 'TPNIVELINV, nivel_inv.cnv, Caracter 1: Tipo de nível investigador. Valores: E – estadual; R- regional; M- Municipal.'
           note: 'Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.'
         - target: /field/description
           value_sha256: 8fae1b7bd99dd2a625e464e6cc4b2199cb6fe5cea66ba80d1e3c9cf13fd0438b
@@ -2425,14 +2434,17 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: a17f1a8e06a68a94fa326f0b10f14f65af03854772aa2d768bc0c081db04828f
-          status: unreviewed
-          checked_at: '2026-11-15'
-          method: 'Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente; sem revisor humano'
-          reviewer: null
+          status: verified_in_source
+          checked_at: '2026-11-25'
+          method: 'Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS e o do Portal de Dados Abertos do SUS, conferida por revisora humana'
+          reviewer: marcelaqs
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'MORTEPARTO, Caracter 1: 1 antes; 2 durante; 3 após; 9 ignorado'
+          - source_id: sim-2177e17cf20b
+            pages: [8]
+            locator: 'MORTEPARTO, Caracter 1: 1 - antes; 2– durante; 3–após; 9– Ignorado'
           note: 'Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.'
         - target: /field/description
           value_sha256: 437422721b2307c9a1488ca493dd693ec85b6a08370a195caadd574bdb1e0818
@@ -2514,14 +2526,17 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 08d71f6a6e09d2e9b5edf81dadcecb4a0b1a74d447bda01930f553295475512c
-          status: unreviewed
-          checked_at: '2026-11-15'
-          method: 'Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente; sem revisor humano'
-          reviewer: null
+          status: verified_in_source
+          checked_at: '2026-11-25'
+          method: 'Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS e o do Portal de Dados Abertos do SUS, conferida por revisora humana'
+          reviewer: marcelaqs
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [8]
             locator: 'ALTCAUSA, Caracter 1: 1 Sim; 2 Não'
+          - source_id: sim-2177e17cf20b
+            pages: [8]
+            locator: 'ALTCAUSA, Caracter 1: 1- Sim; 2 – Não'
           note: 'Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.'
         - target: /field/description
           value_sha256: b0d58782250a8e2a3535e12f82bb3a92244a0a0e83cc62ee5adf1bf1da450af5
@@ -3141,14 +3156,17 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 37d372fa036adb2de82666ca88b52a7499bb48d23e044a30e5bbc7aade2c448b
-          status: unreviewed
-          checked_at: '2026-11-15'
-          method: 'Leitura do PDF oficial e comparação dos códigos e rótulos com o x-decode, feita por agente; sem revisor humano'
-          reviewer: null
+          status: verified_in_source
+          checked_at: '2026-11-25'
+          method: 'Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS e o do Portal de Dados Abertos do SUS, conferida por revisora humana'
+          reviewer: marcelaqs
           evidence:
           - source_id: sim-b4195ac8e0f8
             pages: [9]
             locator: 'TP_ALTERA: 02 a 17 (CausaBas em branco até restrição de idade TP_MSG_6)'
+          - source_id: sim-2177e17cf20b
+            pages: [9]
+            locator: 'TP_ALTERA: 02 = CausaBas em branco até 17 = Óbito com restrição de idade (TP_MSG_6)'
           note: 'Os 16 códigos do PDF (02 a 17) são os do x-decode; os rótulos são abreviações do texto. A issue absent-in-audited-snapshot continua aberta.'
         - target: /field/description
           value_sha256: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
@@ -3228,7 +3246,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: DO
-x-version: "2.16.2"
+x-version: "2.16.3"
 
 x-analytics:
   version: 1.2.0

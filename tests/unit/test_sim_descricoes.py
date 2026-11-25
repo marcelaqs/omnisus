@@ -271,8 +271,9 @@ def test_origem_codes_cite_the_edition_that_writes_them_as_the_map_does() -> Non
     assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
         (ESTRUTURA_2019, [6]),
         (ESTRUTURA_2025, [5]),
+        ("sim-2177e17cf20b", [6]),
     ]
-    assert (claim["status"], claim["reviewer"]) == ("unreviewed", None)
+    assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
 
 
 def test_the_2006_structure_is_registered_with_both_layouts() -> None:

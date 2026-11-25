@@ -131,3 +131,26 @@ def test_a_reviewer_closes_a_conflict_of_wording_between_the_cnv_and_the_documen
     issues = field["x-metadata"]["issues"]
     assert issues and all(i["status"] == "resolved" for i in issues)
     assert all("marcelaqs" in i["description"] for i in issues)
+
+
+SIM_DICIONARIO_2025 = "sim-2177e17cf20b"
+
+
+@pytest.mark.parametrize(
+    ("name", "page"),
+    [("origem", 6), ("tpnivelinv", 8), ("morteparto", 8), ("altcausa", 8), ("tp_altera", 9)],
+)
+def test_a_human_review_against_the_open_data_edition_verifies_the_codes(name, page) -> None:
+    """A reviewer compared the map with the Estrutura do SIM of the open data portal."""
+    field = _field("sim_obitos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
+    assert (SIM_DICIONARIO_2025, [page]) in [
+        (e["source_id"], e["pages"]) for e in claim["evidence"]
+    ]
+
+
+def test_tpnivelinv_also_cites_the_dictionary_of_table_dom() -> None:
+    field = _field("sim_obitos", "tpnivelinv")
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert ("sim-dom-fb396a277981", [2]) in [(e["source_id"], e["pages"]) for e in claim["evidence"]]
