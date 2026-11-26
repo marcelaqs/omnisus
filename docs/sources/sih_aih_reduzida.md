@@ -154,7 +154,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   (art. 6º, VII, no texto original). No texto compilado, os §§ 1º a 3º trazem "Repristinado
   pela PRT GM/MS nº 13 de 13.01.2023", e o caput, com a redação da Portaria GM/MS
   nº 5.350/2024 e a Lei nº 14.737/2023, estende o acompanhante à admissão, internação,
-  alta, consultas, exames e procedimentos. Em São Paulo, das AIH com motivo de
+  alta, consultas, exames e procedimentos. A cobrança de diárias de acompanhante na AIH
+  também vale para pacientes "maiores de 60 (sessenta) anos de idade, quando internados"
+  (Portaria GM/MS nº 280/1999, hoje Anexo 2 do Anexo XI da Portaria de Consolidação GM/MS
+  nº 2/2017): `diar_acom` maior que zero não indica parto. Em São Paulo, das AIH com motivo de
   saída de parto (`cobranca` 61 a 67), 9.499 de 26.207 trazem `diar_acom` maior que zero
   em 2014-12 e 13.909 de 20.855 em 2025-12
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom` zero não mostra que a
