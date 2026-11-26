@@ -61,7 +61,8 @@ def test_a_map_nothing_backs_is_gone(dataset, name) -> None:
 @pytest.mark.parametrize(
     ("dataset", "name"),
     [
-        ("sinasc_nascidos_vivos", "stdnnova"),
+        ("sinasc_nascidos_vivos", "locnasc"),
+        ("sinasc_nascidos_vivos", "sttrabpart"),
     ],
 )
 def test_a_label_the_document_contradicts_is_a_conflicting_claim_with_an_issue(
@@ -98,3 +99,75 @@ def test_esc2010_labels_are_the_ones_the_estrutura_do_sim_writes(name, page) -> 
         i for i in field["x-metadata"]["issues"] if i["id"] == f"{name}-rotulo-diverge-do-pdf"
     ]
     assert issue["status"] == "resolved" and "1-5 ano" in issue["description"]
+
+
+SINASC_ESTRUTURA_1996_2019 = "sinasc-0ffc45994687"
+
+SINASC_CNV_MAPS_SAME_MEANING = [
+    "origem",
+    "estcivmae",
+    "escmae",
+    "escmae2010",
+    "escmaeagr1",
+    "racacormae",
+    "gestacao",
+    "tpmetestim",
+    "consultas",
+    "kotelchuck",
+    "gravidez",
+    "parto",
+    "stcesparto",
+    "tpapresent",
+    "tpnascassi",
+    "tprobson",
+    "sexo",
+    "racacor",
+    "idanomal",
+    "tpfuncresp",
+]
+
+
+@pytest.mark.parametrize("name", SINASC_CNV_MAPS_SAME_MEANING)
+def test_a_sinasc_cnv_map_that_says_what_the_older_map_said_is_verified(name) -> None:
+    """A reviewer closed the conflict: the older map had no claim and meant the same."""
+    field = _field("sinasc_nascidos_vivos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
+    ]
+    assert issue["status"] == "resolved" and "revisora marcelaqs" in issue["description"]
+
+
+@pytest.mark.parametrize(("name", "page"), [("paridade", 2), ("stdnepidem", 2), ("stdnnova", 2)])
+def test_a_sinasc_map_read_from_the_document_is_verified_by_a_reviewer(name, page) -> None:
+    field = _field("sinasc_nascidos_vivos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
+    assert (SINASC_ESTRUTURA_1996_2019, [page]) in [
+        (e["source_id"], e["pages"]) for e in claim["evidence"]
+    ]
+
+
+def test_stdnnova_takes_the_labels_of_the_document() -> None:
+    field = _field("sinasc_nascidos_vivos", "stdnnova")
+    assert field["x-decode"] == {"0": "Não", "1": "Sim"}
+    assert all(i["status"] == "resolved" for i in field["x-metadata"]["issues"])
+
+
+@pytest.mark.parametrize(("name", "code"), [("locnasc", "5"), ("sttrabpart", "3")])
+def test_a_code_the_cnv_misses_stays_open_with_the_document_that_gives_it(name, code) -> None:
+    field = _field("sinasc_nascidos_vivos", name)
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
+    ]
+    assert issue["status"] == "open" and SINASC_ESTRUTURA_1996_2019 in issue["description"]
+
+
+@pytest.mark.parametrize("name", ["locnasc", "sttrabpart"])
+def test_the_open_sinasc_conflicts_cite_the_manual_of_the_dn(name) -> None:
+    field = _field("sinasc_nascidos_vivos", name)
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
+    ]
+    assert "sinasc-5956ea4d8e89" in issue["description"]
