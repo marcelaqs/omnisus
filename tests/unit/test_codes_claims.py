@@ -98,3 +98,61 @@ def test_esc2010_labels_are_the_ones_the_estrutura_do_sim_writes(name, page) -> 
         i for i in field["x-metadata"]["issues"] if i["id"] == f"{name}-rotulo-diverge-do-pdf"
     ]
     assert issue["status"] == "resolved" and "1-5 ano" in issue["description"]
+
+
+SIA_APAC_WITH_THE_COMMON_BLOCK = [
+    "sia_apac_cirurgia_bariatrica",
+    "sia_apac_laudos_diversos",
+    "sia_apac_medicamentos",
+    "sia_apac_quimioterapia",
+    "sia_apac_tratamento_dialitico",
+]
+SIA_APAC_SAME_MEANING = [
+    "ap_racacor",
+    "ap_ufdif",
+    "ap_mndif",
+    "ap_tpapac",
+    "ap_obito",
+    "ap_encerr",
+    "ap_perman",
+    "ap_alta",
+    "ap_transf",
+]
+SIA_CNV_MAPS_SAME_MEANING = [
+    (dataset, name) for dataset in SIA_APAC_WITH_THE_COMMON_BLOCK for name in SIA_APAC_SAME_MEANING
+] + [
+    ("sia_apac_medicamentos", "am_transpl"),
+    ("sia_psicossocial", "racacor"),
+    ("sia_psicossocial", "sit_rua"),
+]
+
+
+@pytest.mark.parametrize(("dataset", "name"), SIA_CNV_MAPS_SAME_MEANING)
+def test_a_sia_cnv_map_that_says_what_the_older_map_said_is_verified(dataset, name) -> None:
+    """A reviewer closed the conflict: the older map had no claim and meant the same."""
+    field = _field(dataset, name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
+    ]
+    assert issue["status"] == "resolved" and "revisora marcelaqs" in issue["description"]
+
+
+@pytest.mark.parametrize(
+    "dataset",
+    ["sia_apac_laudos_diversos", "sia_apac_quimioterapia", "sia_apac_tratamento_dialitico"],
+)
+def test_ap_tpapac_4_stays_an_open_issue(dataset) -> None:
+    issues = _field(dataset, "ap_tpapac")["x-metadata"]["issues"]
+    assert [i["status"] for i in issues if i["id"] == "ap_tpapac-4-sem-fonte"] == ["open"]
+
+
+def test_am_gestant_stays_conflicting_because_the_cnv_contradicts_itself() -> None:
+    field = _field("sia_apac_medicamentos", "am_gestant")
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    (issue,) = [
+        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
+    ]
+    assert (claim["status"], issue["status"]) == ("conflicting", "open")
+    assert "GESTANTE.CNV" in issue["description"]
