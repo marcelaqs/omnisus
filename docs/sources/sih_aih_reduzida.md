@@ -39,7 +39,16 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   todos os anos de 2006 a 2026, inclusive os 21 de Roraima dos meses do layout que diz 0
   e 1, e `1` só em `RDAP2607` (34 registros); por isso a lista dos dois documentos não virou mapa
   (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`,
-  `evidence/2026-11-18-rd-medidas/`).
+  `evidence/2026-11-18-rd-medidas/`). A Nota Técnica SIHD2 nº 001/2015 (DATASUS-RJ,
+  25/08/2015, "válido a partir da competência 08/2015") muda o bloqueio de homônimos: o
+  gerenciador do SIHD2 "passa a realizar o bloqueio de DUPLICIDADES (homônimos) apenas
+  nas AIHs que NÃO POSSUAM número de CNS do paciente", e um bloqueio novo pega as AIH do
+  mesmo CNS com internações sobrepostas ou com até 3 dias de intervalo. A nota não dá os
+  códigos do campo, mas a mudança aparece nos arquivos: nos `RDRR` lidos, `homonimo` `2`
+  está em 3.657 das 19.931 AIH de 2015-01 a 2015-07 (18,3%) e em 182 das 14.903 de
+  2015-08 a 2015-12 (1,2%); de 2008-01 a 2015-07, em 29.532 de 229.443 (12,9%), e de
+  2015-08 a 2026-06, em 3.244 de 452.253 (0,7%) (`evidence/2026-11-18-rd-medidas/`).
+  Uma série de `homonimo` não é comparável antes e depois de 2015-08.
 - `diag_princ` é o código do diagnóstico principal pela CID-10, com 4 caracteres
   (Informe SIH 2016-03, p. 2), e o dicionário o liga à tabela `aux_cid10`
   (`src/omnisus/data/dicionarios/sih_aih_reduzida.yaml`).
@@ -153,7 +162,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   contar internações por mês de ocorrência, use `dt_inter` (p. 2). A AIH pode ser
   apresentada até 3 competências depois da alta, é rejeitada em definitivo com mais de 4
   meses e, rejeitada dentro desse prazo, pode ser reapresentada até o 6º mês contado da
-  alta (Manual SIH 2012, p. 10). Os arquivos de um mês de processamento trazem altas de
+  alta (Manual SIH 2012, p. 10). A regra vem da Portaria SAS/MS nº 472/2008, hoje nos
+  arts. 400 e 401 da Portaria de Consolidação SAES/MS nº 1/2022: no SIH, o mês de
+  produção é o mês da alta, e o mês de processamento aceita AIH "com alta de no máximo
+  4 (quatro) meses anteriores". Os arquivos de um mês de processamento trazem altas de
   meses anteriores, e as altas de um mês só ficam completas meses depois.
 - `qt_diarias` são diárias cobradas, não dias de permanência. "O sistema paga o último dia
   de internamento quando o motivo de apresentação for: permanência, óbito e
@@ -171,7 +183,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   saída ou permanência (p. 2); os códigos e rótulos de `cobranca` vêm do mesmo pacote
   `TAB_SIH.zip`, `RD2008.DEF` → `SAIDAPERM.CNV` — por exemplo, 26 = permanência por
   mudança de procedimento e 31 = transferência para outro estabelecimento
-  (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`).
+  (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`). O motivo de saída ou
+  permanência substituiu o "Motivo de Cobrança" com efeitos a partir de janeiro de 2008,
+  pela Portaria SAS/MS nº 719/2007 (art. 2º), que define a tabela de motivos no art. 5º;
+  os arquivos de 1992 a 2007 seguem outra tabela.
 - Óbitos não estão só em `cobranca` 41 a 43. Os motivos 61 a 67 são "exclusivo[s] para
   as AIH de procedimento principal parto", incluídos pela Portaria SAS/MS n.º 384/2010
   (Manual SIH 2012, p. 13): 63 e 64 registram alta da mãe com óbito do recém-nascido
@@ -194,7 +209,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   `uti_int_an` e `uti_int_al` (Informe SIH 2016-03, p. 1); a quantidade de dias de UTI
   no mês está em `uti_mes_to` (p. 1).
 - `diag_secun` vem preenchido com zeros a partir de 201501
-  (Informe SIH 2016-03, p. 2); os diagnósticos secundários estão em `diagsec1` a
+  (Informe SIH 2016-03, p. 2), quando entram em vigor os 8 campos de CID secundário da
+  Portaria SAS/MS nº 1.324/2014 (art. 1º, III; efeitos a partir de janeiro de 2015).
+  Desde então, o sistema não critica mais a compatibilidade entre procedimento e
+  diagnóstico (art. 4º; hoje art. 311 da Portaria de Consolidação SAES/MS nº 1/2022); os diagnósticos secundários estão em `diagsec1` a
   `diagsec9` (p. 4), e o dicionário liga `diagsec1` a `diagsec8` à tabela `aux_cid10`,
   como o `diag_princ` (`RD2008.DEF`, linhas 389-406, relaciona `DIAGSEC1` a `DIAGSEC9` a
   `DBF/CID10.DBF`). O `diagsec9` fica sem a ligação: a p. 4 dá `char (4)`, mas os 157
@@ -217,12 +235,16 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   quer dizer.
 - A causa externa de uma lesão não fica em `diag_princ`. Quando o CID principal é do
   capítulo XIX (S00 a T98), o SISAIH01 exige que o secundário seja do capítulo XX (V01 a
-  Y98) ou um de D66, D67, D680, D681 e D684 (Manual SIH 2012, p. 37). Na fixture de
+  Y98) ou um de D66, D67, D680, D681 e D684 (Manual SIH 2012, p. 37). A regra do
+  capítulo XX no "primeiro campo de CID secundário" é da Portaria SAS/MS nº 1.324/2014
+  (art. 3º, § 2º), com efeitos a partir de janeiro de 2015, hoje no art. 310, § 2º, da
+  Portaria de Consolidação SAES/MS nº 1/2022. Na fixture de
   Roraima 2024-01, as 406 AIH com `diag_princ` de S ou T trazem em `diagsec1` um código
   de V a Y; em São Paulo, 18.320 das 18.321 em 2015-02 e 25.556 das 25.840 em 2025-12
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Para estudar acidentes e violências, leia
   `diagsec1` a `diagsec9`. O caráter de atendimento, `car_int`, tem códigos de acidente
-  e lesão (03 a 06; Manual SIH 2012, p. 12), mas não serve para contá-los: em São Paulo
+  e lesão (03 a 06; Manual SIH 2012, p. 12; tabela do art. 4º da Portaria SAS/MS
+  nº 719/2007), mas não serve para contá-los: em São Paulo
   2025-12, as 2.588 AIH com 03 a 06 têm `diag_princ` de S ou T, e 23.252 das 25.840 AIH
   com S ou T têm caráter 01 (eletivo) ou 02 (urgência).
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
