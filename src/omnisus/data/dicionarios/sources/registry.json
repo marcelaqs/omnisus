@@ -731,6 +731,34 @@
       "published_on": null,
       "retrieved_on": "2026-11-18",
       "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sihsus-6eca467db02d",
+      "category": "SIHSUS",
+      "title": "Portaria SAS/MS nº 718, de 28 de setembro de 2006",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção à Saúde (portal SIHD)",
+      "authority": "official",
+      "url": "ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Portarias/portaria2006/PT-718.htm",
+      "sha256": "6eca467db02d64f7a589385e5214dc0b98e9f07da8ae53d71478bfcb52ccc82f",
+      "bytes": 2772,
+      "edition": "2006-09-28",
+      "published_on": null,
+      "retrieved_on": "2026-11-26",
+      "last_checked_on": "2026-11-26"
+    },
+    {
+      "id": "sihsus-d3ae36f17dd0",
+      "category": "SIHSUS",
+      "title": "Portaria SAS/MS nº 1.324, de 27 de novembro de 2014",
+      "publisher": "Ministério da Saúde / Secretaria de Atenção à Saúde (impressão do Saúde Legis hospedada pela SES-DF)",
+      "authority": "official",
+      "url": "https://www.saude.df.gov.br/documents/37101/75753/Portaria+MS+n%C2%BA+1.324_2014_Conceitos+de+diagn%C3%B3stico+utilizados+no+Programa+de+Apoio+%C3%A0+Entrada+de+Dados+das+Autoriza%C3%A7%C3%B5es+de+Interna%C3%A7%C3%A3o+Hospitalar.pdf",
+      "sha256": "d3ae36f17dd0815d67f62d0d1f56fe8d3a57d91085082bf4d94f94e96868aaf3",
+      "bytes": 252775,
+      "edition": "2014-11-27",
+      "published_on": null,
+      "retrieved_on": "2026-11-26",
+      "last_checked_on": "2026-11-26"
     }
   ]
 }

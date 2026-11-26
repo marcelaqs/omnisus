@@ -173,13 +173,19 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   que zero é de paciente com menos de 1 ano e tem `marca_uci` 01 a 03 (1.926 em 2025-12),
   e muitas têm `marca_uti` 00 (1.103 delas). A UCI adulto e a pediátrica, que receberam os
   leitos 74 e 77, ganharam diárias próprias na tabela de procedimentos
-  (08.02.01.029-6 e 08.02.01.028-8, Portaria 298/2019, art. 5º e anexo), que não são
+  (08.02.01.029-6 e 08.02.01.028-8, Portaria 298/2019, art. 5º e anexo; o art. 6º exclui
+  as diárias de UTI I, 08.02.01.010-5 e 08.02.01.014-8), que não são
   campos do RD. Para contar UTI, use `uti_mes_to` e `marca_uti`; para UCI neonatal,
   `uti_int_to` e `marca_uci`.
 - `cid_morte` não traz a causa do óbito nos arquivos recentes. A Portaria SAS/MS
   nº 1.324/2014, hoje no art. 308 da Portaria de Consolidação SAES/MS nº 1/2022, excluiu
   do layout da AIH os campos "Diagnóstico da Causa Morte" e "Diagnóstico Causas
-  Complementares" e incluiu 8 campos de CID secundário. Em São Paulo, as 8.801 AIH com
+  Complementares" e incluiu 8 campos de CID secundário, com efeitos a partir de janeiro
+  de 2015 (art. 6º). Antes dela, a Portaria SAS/MS nº 718/2006 tornou obrigatória "a
+  informação da CID (...) da causa da morte nas AIH (...), sempre que o Motivo da Alta
+  for óbito", a partir da competência setembro de 2006: o campo só foi obrigatório de
+  2006-09 a 2014-12. A consolidação mantém as duas regras no texto: o art. 298, com
+  origem na 718/2006, e o art. 308, com origem na 1.324/2014. Em São Paulo, as 8.801 AIH com
   `morte` 1 de 2014-12 trazem uma CID em `cid_morte`; de 2015-02 em diante, `cid_morte` e
   `cid_asso` são `0000` em todas as AIH dos arquivos lidos
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Na fixture de Roraima 2024-01,
