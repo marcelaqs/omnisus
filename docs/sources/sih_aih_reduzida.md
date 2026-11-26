@@ -238,7 +238,12 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   Y98) ou um de D66, D67, D680, D681 e D684 (Manual SIH 2012, p. 37). A regra do
   capítulo XX no "primeiro campo de CID secundário" é da Portaria SAS/MS nº 1.324/2014
   (art. 3º, § 2º), com efeitos a partir de janeiro de 2015, hoje no art. 310, § 2º, da
-  Portaria de Consolidação SAES/MS nº 1/2022. Na fixture de
+  Portaria de Consolidação SAES/MS nº 1/2022. O tipo de causa externa só passou a ser
+  codificado na AIH em 1998: até 1997, os dados de acidentes e violências eram "relativos
+  somente à natureza da lesão", e a codificação veio "em decorrência da Portaria
+  Ministerial N.º 142, de 13 de novembro de 1997" (Portaria de Consolidação GM/MS
+  nº 2/2017, Anexo VII, Política Nacional de Redução da Morbimortalidade por Acidentes e
+  Violências). Na fixture de
   Roraima 2024-01, as 406 AIH com `diag_princ` de S ou T trazem em `diagsec1` um código
   de V a Y; em São Paulo, 18.320 das 18.321 em 2015-02 e 25.556 das 25.840 em 2025-12
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Para estudar acidentes e violências, leia

@@ -745,6 +745,20 @@
       "published_on": null,
       "retrieved_on": "2026-11-24",
       "last_checked_on": "2026-11-24"
+    },
+    {
+      "id": "sihsus-047d0dc65b9f",
+      "category": "SIHSUS",
+      "title": "Portaria de Consolidação GM/MS nº 2, de 28 de setembro de 2017 (prc0002_03_10_2017.html)",
+      "publisher": "Ministério da Saúde / Gabinete do Ministro (Saúde Legis)",
+      "authority": "official",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/gm/2017/prc0002_03_10_2017.html",
+      "sha256": "047d0dc65b9fe2787e635081bdf45c5af5fc82cca374bb2eab478ab3793d796f",
+      "bytes": 5771523,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-26",
+      "last_checked_on": "2026-11-26"
     }
   ]
 }
