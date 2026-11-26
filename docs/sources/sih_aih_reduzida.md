@@ -149,7 +149,11 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   regulamenta o acompanhante da mulher no trabalho de parto, parto e pós-parto imediato
   (Lei nº 11.108/2005) e autoriza "a cobrança, de acordo com as tabelas do SUS, das
   despesas previstas com acompanhante", "cabendo ao gestor a devida formalização dessa
-  autorização de cobrança" na AIH (art. 1º, § 2º). Em São Paulo, das AIH com motivo de
+  autorização de cobrança" na AIH (art. 1º, § 2º). O texto está hoje no art. 92, § 2º, da
+  Portaria de Consolidação GM/MS nº 3/2017, repristinado pela Portaria GM/MS nº 13/2023;
+  o caput, com a redação da Portaria GM/MS nº 5.350/2024 e a Lei nº 14.737/2023, estende o
+  acompanhante à admissão, internação, alta, consultas, exames e procedimentos
+  (`evidence/2026-11-26-prc-gm-3-2017-acompanhante/`). Em São Paulo, das AIH com motivo de
   saída de parto (`cobranca` 61 a 67), 9.499 de 26.207 trazem `diar_acom` maior que zero
   em 2014-12 e 13.909 de 20.855 em 2025-12
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom` zero não mostra que a
