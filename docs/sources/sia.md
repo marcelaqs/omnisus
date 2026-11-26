@@ -180,6 +180,13 @@ DEF no `TAB_SIA.zip`, por isso não tem rótulos. Todas declaram identidade de a
   (Informe SIASUS 2019-07, p. 17).
 - No BPA-I, `etnia` só é preenchida quando `racacor` é 05 (indígena), a partir da
   competência de outubro de 2010 (Informe SIASUS 2019-07, p. 18).
+- A regra de raça/cor muda em abril de 2023, no SIA como no SIH. O informe do DATASUS à
+  3ª reunião ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda
+  raça/cor") diz que, "a partir da competência de abril/2023", o SIA e o SIH não aceitam
+  mais registros com raça/cor 99 (não informado), e que a produção até a competência de
+  março/2023 não é afetada, mesmo enviada depois (p. 2). Vale para `ap_racacor` nas APAC e
+  `racacor` no BPA-I e na RAAS psicossocial: numa série da proporção de raça/cor sem
+  informação, a regra zera o 99 nos atendimentos de abril de 2023 em diante.
 - O CNS do paciente vem cifrado (`cns_pac` na RAAS, "criptografia";
   Informe SIASUS 2019-07, p. 16), e os dicionários marcam os campos de CNS cifrado com
   `x-crypto: datasus-cns` (`src/omnisus/data/dicionarios/sia_*.yaml`).
