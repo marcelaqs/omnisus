@@ -136,8 +136,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   os arquivos de 1992 a 2007 não têm o campo. Desde a Portaria SAS/MS nº 1.134/2014, com
   "efeitos operacionais a partir de novembro de 2014" (art. 6º), quando a AIH traz o
   Cartão Nacional de Saúde, o SISAIH01 "irá consumir as informações cadastrais" do
-  CADSUS WEB, que "não poderão ser alteradas no SISAIH01" (art. 1º e § 1º); o que faltar
-  no CADSUS "poderá ser registrado manualmente" (§ 3º). Como o
+  CADSUS WEB, que "não poderão ser alteradas no SISAIH01" (art. 1º e § 1º); as informações
+  indispensáveis que faltarem no CADSUS "poderão ser registradas manualmente" (§ 3º). Como o
   CADSUS também guarda raça/cor (informe da CIT citado abaixo, p. 1), a raça/cor da AIH
   pode vir do cadastro, e não de uma pergunta feita na internação.
 - A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião
