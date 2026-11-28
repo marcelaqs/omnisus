@@ -115,7 +115,7 @@ De 2008-01 em diante, os arquivos `RD` lidos (um de RR por mês, AP onde RR falt
 
 Os arquivos `SP` e `RJ` ganham `FONTE_ORC` (C(2)) no mesmo mês: é o último campo do cabeçalho DBF dos 510 arquivos de cada prefixo, de 2025-03 a 2026-09, e de nenhum anterior (`evidence/2026-11-19-sih-cabecalhos/`, o cabeçalho de todo arquivo `SP` e `RJ` que o servidor listava em 2026-11-19, lido sem nenhum registro). `sih_servicos_profissionais` e `sih_aih_rejeitada` declaram `fonte_orc` sem rótulo e sem mapa: o `SP2008.DEF` e o `RJ2008.DEF` não citam o campo, e a linha do `RD2008.DEF` é do RD. Nos 18 arquivos `RJRR` de 2025-03 a 2026-08, o campo vale `00` nos 1.270 registros, o mesmo valor que o RD publica; dos arquivos `SP`, só o cabeçalho foi lido para este registro. A issue `fonte_orc-sem-def` do campo diz isso.
 
-Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `contracep2`) e `motbloqueio.cnv` (`st_mot_blo`, só em `RJ`) abrem com a faixa `00-99`, que rotula qualquer código de dois dígitos: um código fora da tabela recebe "Ignorado/não se aplica" ou "NÃO ESPECIFICADO", e não fica sem rótulo. Do mesmo jeito, `etnia.cnv` (`etnia`) lista os códigos `0001` a `0264` e abre com a faixa `0000-9999`: qualquer outro código de quatro dígitos, `0000` inclusive, recebe "NÃO INFORMADO" só pela faixa (issue `etnia-nao-informado-pela-faixa` no campo). Código que não é dígito fica fora da faixa e sem rótulo: RDRR2501 (RR, 2025-01) publica `X389` em 2 AIHs e `X401` em 3, todas com `raca_cor` 05, e a issue `etnia-x389-x401-sem-fonte` do campo diz isso; o excerto `sih_rd_rr_2025_01_excerpt` traz as duas AIHs com `X389`.
+Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `contracep2`), `RACACOR.CNV` (`raca_cor`) e `motbloqueio.cnv` (`st_mot_blo`, só em `RJ`) abrem com a faixa `00-99`, que rotula qualquer código de dois dígitos: um código fora da tabela recebe "Ignorado/não se aplica", "Sem informação" ou "NÃO ESPECIFICADO", e não fica sem rótulo. Do mesmo jeito, `etnia.cnv` (`etnia`) lista os códigos `0001` a `0264` e abre com a faixa `0000-9999`: qualquer outro código de quatro dígitos, `0000` inclusive, recebe "NÃO INFORMADO" só pela faixa (issue `etnia-nao-informado-pela-faixa` no campo). Código que não é dígito fica fora da faixa e sem rótulo: RDRR2501 (RR, 2025-01) publica `X389` em 2 AIHs e `X401` em 3, todas com `raca_cor` 05, e a issue `etnia-x389-x401-sem-fonte` do campo diz isso; o excerto `sih_rd_rr_2025_01_excerpt` traz as duas AIHs com `X389`.
 
 ## Armadilhas
 
@@ -151,7 +151,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   não sofrerão qualquer impacto, mesmo que as produções sejam enviadas após essa
   competência" (p. 2). O 99
   ainda pode aparecer em arquivos processados depois de abril de 2023, em internações
-  anteriores. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`, "Sem informação".
+  anteriores. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`, "Sem informação"
+  (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`).
   Na fixture de Roraima 2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04
   (9) e 05 (411), e nenhum 99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de
   2014-12, em 27.436 das 215.766 de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de
