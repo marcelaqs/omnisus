@@ -24,6 +24,7 @@
   "uti_mes_to_999": 0,
   "deaths": 8801,
   "deaths_cid_morte_not_0000_or_blank": 8801,
+  "not_deaths_cid_morte_blank": 184988,
   "cid_morte_0000": 0,
   "cid_asso_0000": 0,
   "raca_cor": {
@@ -66,6 +67,7 @@
    "03": 336
   },
   "uti_int_to_gt0_under_1_year": 485,
+  "uti_int_to_gt0_marca_uci_01_03": 485,
   "car_int": {
    "01": 54029,
    "02": 135848,
@@ -136,6 +138,7 @@
   "uti_mes_to_999": 0,
   "deaths": 9135,
   "deaths_cid_morte_not_0000_or_blank": 0,
+  "not_deaths_cid_morte_blank": 0,
   "cid_morte_0000": 195822,
   "cid_asso_0000": 195822,
   "raca_cor": {
@@ -177,6 +180,7 @@
    "03": 307
   },
   "uti_int_to_gt0_under_1_year": 472,
+  "uti_int_to_gt0_marca_uci_01_03": 472,
   "car_int": {
    "01": 52837,
    "02": 139162,
@@ -248,6 +252,7 @@
   "uti_mes_to_999": 0,
   "deaths": 9701,
   "deaths_cid_morte_not_0000_or_blank": 0,
+  "not_deaths_cid_morte_blank": 0,
   "cid_morte_0000": 203599,
   "cid_asso_0000": 203599,
   "raca_cor": {
@@ -289,6 +294,7 @@
    "03": 69
   },
   "uti_int_to_gt0_under_1_year": 1328,
+  "uti_int_to_gt0_marca_uci_01_03": 1328,
   "car_int": {
    "01": 59956,
    "02": 140256,
@@ -359,6 +365,7 @@
   "uti_mes_to_999": 0,
   "deaths": 11045,
   "deaths_cid_morte_not_0000_or_blank": 0,
+  "not_deaths_cid_morte_blank": 0,
   "cid_morte_0000": 215766,
   "cid_asso_0000": 215766,
   "raca_cor": {
@@ -399,6 +406,7 @@
    "02": 149
   },
   "uti_int_to_gt0_under_1_year": 1770,
+  "uti_int_to_gt0_marca_uci_01_03": 1770,
   "car_int": {
    "01": 59850,
    "02": 152593,
@@ -468,6 +476,7 @@
   "uti_mes_to_999": 0,
   "deaths": 11363,
   "deaths_cid_morte_not_0000_or_blank": 0,
+  "not_deaths_cid_morte_blank": 0,
   "cid_morte_0000": 233649,
   "cid_asso_0000": 233649,
   "raca_cor": {
@@ -508,6 +517,7 @@
    "02": 357
   },
   "uti_int_to_gt0_under_1_year": 2147,
+  "uti_int_to_gt0_marca_uci_01_03": 2147,
   "car_int": {
    "01": 67468,
    "02": 163060,
@@ -578,6 +588,7 @@
   "uti_mes_to_999": 0,
   "deaths": 12420,
   "deaths_cid_morte_not_0000_or_blank": 0,
+  "not_deaths_cid_morte_blank": 0,
   "cid_morte_0000": 232263,
   "cid_asso_0000": 232263,
   "raca_cor": {
@@ -618,6 +629,7 @@
    "02": 323
   },
   "uti_int_to_gt0_under_1_year": 2015,
+  "uti_int_to_gt0_marca_uci_01_03": 2015,
   "car_int": {
    "01": 69972,
    "02": 159012,
@@ -688,6 +700,7 @@
   "uti_mes_to_999": 0,
   "deaths": 11597,
   "deaths_cid_morte_not_0000_or_blank": 0,
+  "not_deaths_cid_morte_blank": 0,
   "cid_morte_0000": 230747,
   "cid_asso_0000": 230747,
   "raca_cor": {
@@ -728,6 +741,7 @@
    "02": 350
   },
   "uti_int_to_gt0_under_1_year": 1926,
+  "uti_int_to_gt0_marca_uci_01_03": 1926,
   "car_int": {
    "01": 72222,
    "02": 155937,

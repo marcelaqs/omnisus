@@ -29,7 +29,8 @@ fixture. `medir.py` wrote `medidas.json`:
 | RDSP2512 | 230747 | 29 | 0 | 1926 | 1103 | 11597 | 0 | 97 | 20221125 |
 
 From RDSP1502 on, `cid_morte` and `cid_asso` are `0000` in every row; in RDSP1412,
-`cid_morte` is blank outside the deaths. No file has `uti_mes_to` 999.
+`cid_morte` is blank in the 184988 AIH that are not deaths
+(`not_deaths_cid_morte_blank`, 0 in the later files). No file has `uti_mes_to` 999.
 
 The same files, for the other notes of the page:
 
@@ -47,7 +48,9 @@ The same files, for the other notes of the page:
 - Of the AIH with `cobranca` 61 to 67 (parto), `diar_acom` is above zero in 9499 of 26207
   in RDSP1412 and 13909 of 20855 in RDSP2512 (`cobranca_61_67_diar_acom_gt0`).
 - Every AIH with `uti_int_to` above zero is of a patient under one year (`cod_idade` 2
-  or 3) and has `marca_uci` 01, 02 or 03 (1926 of 1926 in RDSP2512).
+  or 3; `uti_int_to_gt0_under_1_year`) and has `marca_uci` 01, 02 or 03
+  (`uti_int_to_gt0_marca_uci_01_03`): both keys equal `uti_int_to_gt0` in the seven
+  files (1926 of 1926 in RDSP2512).
 - `car_int` 03 to 06 come only with a `diag_princ` of S or T (2588 of 2588 in RDSP2512),
   but most AIH with S or T have `car_int` 01 or 02 (23252 of 25840 in RDSP2512).
 - `dias_perm` equals `dt_saida` minus `dt_inter` in 226276 of 230747 AIH in RDSP2512.

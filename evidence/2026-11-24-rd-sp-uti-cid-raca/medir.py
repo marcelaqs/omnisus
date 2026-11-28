@@ -47,6 +47,9 @@ def measure(raw: bytes) -> dict[str, object]:
         "deaths_cid_morte_not_0000_or_blank": deaths.filter(
             ~pl.col("cid_morte").str.strip_chars().is_in(["", "0000"])
         ).height,
+        "not_deaths_cid_morte_blank": df.filter(
+            (pl.col("morte") != 1) & (pl.col("cid_morte").str.strip_chars() == "")
+        ).height,
         "cid_morte_0000": df.filter(pl.col("cid_morte") == "0000").height,
         "cid_asso_0000": df.filter(pl.col("cid_asso") == "0000").height,
         "raca_cor": counts(df, "raca_cor"),
@@ -78,6 +81,9 @@ def measure(raw: bytes) -> dict[str, object]:
         "marca_uci": counts(df, "marca_uci"),
         "uti_int_to_gt0_under_1_year": df.filter(
             (pl.col("uti_int_to") > 0) & pl.col("cod_idade").is_in(["2", "3"])
+        ).height,
+        "uti_int_to_gt0_marca_uci_01_03": df.filter(
+            (pl.col("uti_int_to") > 0) & pl.col("marca_uci").is_in(["01", "02", "03"])
         ).height,
         "car_int": counts(df, "car_int"),
         "car_int_03_06_diag_princ_s_t": df.filter(
