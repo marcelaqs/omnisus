@@ -267,3 +267,29 @@ def test_sttrabpart_3_stays_unlabelled_until_a_real_file_publishes_it(dbc_fixtur
             "13.091",
         )
     )
+
+
+def test_paridade_9_stays_unlabelled_until_a_real_file_publishes_it(dbc_fixture) -> None:
+    """The Estrutura_SINASC_para_CD.pdf (p. 6) lists 9, ignorado, for PARIDADE; the
+    Estrutura of 1996 to 2019 (p. 2) writes only 1 and 0, and no row of DNRR2022.dbc
+    publishes 9. The map keeps 0 and 1, and an open issue says where 9 was read."""
+    assert _labelled_rr_2022(dbc_fixture, "paridade") == {
+        ("0", "Nulípara"): 3739,
+        ("1", "Multípara"): 9352,
+    }
+    field = _field("sinasc_nascidos_vivos", "paridade")
+    assert field["x-decode"] == {"0": "Nulípara", "1": "Multípara"}
+    (issue,) = field["x-metadata"]["issues"]
+    assert (issue["id"], issue["status"]) == ("paridade-9-so-no-estrutura-para-cd", "open")
+    assert all(
+        text in issue["description"]
+        for text in (
+            "'9'",
+            "sinasc-9ac143d5eae6",
+            SINASC_ESTRUTURA_1996_2019,
+            '"1 \u2013 Multípara; 0- Nulípara."',
+            "13.091",
+            "3.739",
+            "9.352",
+        )
+    )
