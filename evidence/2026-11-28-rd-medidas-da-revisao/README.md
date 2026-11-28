@@ -23,7 +23,8 @@ diagnoses cover the seven `RDSP` files of `evidence/2026-11-24-rd-sp-uti-cid-rac
 Key `raca_cor_99` of each São Paulo file.
 
 - No AIH with `dt_inter` from 2023-04-01 on has `raca_cor` 99 in any of the seven files
-  (`dt_inter_from_2023_04_01` is 0 in all).
+  (`dt_inter_from_2023_04_01` is 0 in all); only `RDSP2306` and `RDSP2512` are of a later
+  competence, so only they can hold such AIH.
 - `RDSP2306`: 282 AIH with 99, latest `dt_inter` 2023-03-31. By month of `dt_saida`:
   2023-02 3, 2023-03 50, 2023-04 29, 2023-05 8, 2023-06 192, so 229 left from 2023-04-01
   on. By `ident`: 92 with 1 and 190 with 5.

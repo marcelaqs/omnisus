@@ -188,10 +188,9 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
   informação, o informe anuncia o fim do 99 de abril de 2023 em diante; nos dois arquivos
   de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até
-  31/03/2023, e nenhuma AIH dos sete arquivos de São Paulo com `dt_inter` de 01/04/2023
-  em diante traz 99. Parte dessas AIH tem `dt_saida` depois de março de 2023: das 282 de
-  2023-06, 229 têm `dt_saida` de abril a junho de 2023, e 190 das 282 têm `ident` 5; as
-  97 de 2025-12 têm `ident` 5 e `dt_saida` em dezembro de 2025
+  31/03/2023. Parte das AIH com 99 desses dois arquivos tem `dt_saida` depois de março de
+  2023: das 282 de 2023-06, 229 têm `dt_saida` de abril a junho de 2023, e 190 das 282
+  têm `ident` 5; as 97 de 2025-12 têm `ident` 5 e `dt_saida` em dezembro de 2025
   (`evidence/2026-11-28-rd-medidas-da-revisao/`). Em São Paulo a maior parte da queda
   veio antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
@@ -228,7 +227,9 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   "com alta de no máximo 4 (quatro) meses anteriores"; segundo a nota de origem dos dois
   artigos na consolidação, a regra vem da Portaria SAS/MS nº 472/2008. Na fixture de
   Roraima 2024-01, 3.431 das 3.714 AIH têm `dt_saida` de 2023-10 a 2023-12 e 283, de
-  2024-01: o arquivo de um mês de processamento traz altas de até três meses antes.
+  2024-01: nessa fixture, o arquivo traz altas de até três meses antes; em São Paulo
+  2023-06, 3 das 282 AIH com `raca_cor` 99 têm `dt_saida` de 2023-02, quatro meses antes
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`).
 - `qt_diarias`, a "Quantidade de diárias" (Informe SIH 2016-03, p. 2), não conta dias de
   permanência. "O sistema paga o último dia de internamento quando o motivo de
   apresentação for: permanência, óbito e transferência" (Manual SIH 2012, p. 13). Em São
@@ -292,9 +293,9 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   das AIH com `diar_acom` maior que zero está fora dessas: das 85.178 de 2025-12, 41.243
   são de pacientes de 60 anos ou mais (de 80.284 AIH dessa idade sem `cobranca` 61 a 67),
   16.916 de menores de 18 (de 29.252) e 13.110 de 18 a 59 anos (de 100.356); das 52.346
-  de 2014-12, 21.800 (de 51.449), 15.921 (de 29.007) e 5.126 (de 87.126), com a idade em
-  anos lida de `cod_idade` e `idade`
-  (`evidence/2026-11-28-rd-medidas-da-revisao/`). Um `diar_acom` zero não mostra que a
+  de 2014-12, 21.800 (de 51.449), 15.921 (de 29.007) e 5.126 (de 87.126). Os
+  denominadores excluem `cobranca` 61 a 67, e a idade em anos é calculada de `cod_idade`
+  e `idade` (`evidence/2026-11-28-rd-medidas-da-revisao/`). Um `diar_acom` zero não mostra que a
   paciente ficou sem acompanhante.
 - `us_tot` é o valor total em dólar, não em reais (Informe SIH 2016-03, p. 2).
 - Vários campos de valor vêm zerados: `val_sadt`, `val_rn`, `val_acomp`, `val_ortp`,
@@ -411,9 +412,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   trazem V a Y em `diag_secun`: 39.073 das 39.931 nas 27 UFs em 2008-01, 82.696 das
   82.992 nas 27 UFs em 2012-01 e 18.726 das 19.086 em São Paulo 2014-12; nas 27 UFs em
   2016-01 e em 2025-12, nenhuma (`evidence/2026-11-28-rd-medidas-da-revisao/`). Os
-  outros meses de 2008 a 2014 não foram lidos. O
-  caráter de atendimento, `car_int`, tem códigos de acidente e lesão (03 a 06; Manual SIH
-  2012, p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
+  outros meses de 2008 a 2014 não foram medidos para esse campo. O caráter de
+  atendimento, 2012, p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
   contá-los: em São Paulo 2025-12, as 2.588 AIH com 03 a 06 têm `diag_princ` de S ou T, e
   23.252 das 25.840 AIH com S ou T têm caráter 01 (eletivo) ou 02 (urgência).
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
