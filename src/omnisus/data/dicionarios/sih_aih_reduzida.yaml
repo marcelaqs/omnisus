@@ -16469,6 +16469,7 @@ schema:
         '12': 12-Leito Dia / Intercorrência Pós-Transplante
         '13': 13-Leito Dia / Geriatria
         '14': 14-Leito Dia / Saúde Mental
+        '17': 17-Estabelecimento Exclusivo UTI SUS
         '51': 51-UTI II Adulto COVID 19
         '52': 52-UTI II Pediátrica COVID 19
         '64': 64-Unidade Intermediária
@@ -16527,16 +16528,25 @@ schema:
             locator: 'Tabela 1, linha 4, ESPEC char(2): "Especialidade do Leito"'
           note: Transcrição da coluna Descrição/Observações.
         - target: /field/codes
-          value_sha256: e1b507f238c6949b3f843a2135f0f7a4dfe4a3799dbe86d0b1e3bbc0cd0bab5e
+          value_sha256: cb033ec696ce46db86e7abed9fb5db001285826d6b493a98efe5d27b129a27d0
           status: verified_in_source
-          checked_at: '2026-09-21'
-          method: cnv-parse
-          reviewer: scripts/metadados/gerar_decode_cnv.py
+          checked_at: '2026-11-24'
+          method: cnv-read
+          reviewer: Claude Code
           evidence:
           - source_id: sih-tab-f05b32f32908
             pages: []
             locator: 'RD2008.DEF: XLeito\Especialidade, ESPEC, 1, CNV\LEITOS.CNV; CNV/LEITOS.CNV'
-          note: Mapa do CNV. O mapa anterior, sem fonte, foi descartado em 2026-09-26; texto no issue cnv-difere-do-mapa-anterior.
+          - source_id: sihsus-80babfa3a197
+            pages: []
+            locator: 'art. 2º: "o código 17 - Estabelecimento Exclusivo UTI SUS", incluído na Tabela de Especialidade da AIH'
+          note: 'Mapa mantido à mão (issue 254 do repositório, decisão 4). ''17'' vem da Portaria SAES/MS nº 245/2020:
+            LEITOS.CNV não o lista, e o rótulo é o texto da portaria, "Estabelecimento Exclusivo UTI SUS", na forma
+            "NN-texto" que o CNV dá aos outros códigos. Os outros 41 códigos e rótulos são as linhas de LEITOS.CNV, como
+            o CNV as escreve; tests/unit/transforms/test_sih_rd_fields.py compara o mapa com o CNV empacotado. O art. 2º
+            foi lido em 2026-11-24 no arquivo registrado (SHA-256 80babfa3...) e transcrito na issue
+            espec-17-sem-fonte; o mapa foi escrito em 2026-11-28 a partir dessa transcrição, sem reabrir a portaria
+            (o Saúde Legis devolveu 403). O mapa anterior ao CNV, sem fonte, foi descartado em 2026-09-26; texto no issue cnv-difere-do-mapa-anterior.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -16550,16 +16560,19 @@ schema:
             ''12'' era ''Psiquiatria hospital-dia'', CNV ''12-Leito Dia / Intercorrência Pós-Transplante''.
             Resolvido em 2026-09-26: o mapa anterior não tinha fonte; vale o CNV.'
         - id: espec-17-sem-fonte
-          status: open
-          description: '''17'' fica sem rótulo: LEITOS.CNV (TAB_SIH), ligado a ESPEC no RD2008.DEF e no RJ2008.DEF,
+          status: resolved
+          description: '''17'' ficava sem rótulo: LEITOS.CNV (TAB_SIH), ligado a ESPEC no RD2008.DEF e no RJ2008.DEF,
             lista 41 códigos, 01 a 14, 51, 52, 64, 65 e 74 a 96; o IT SIHSUS 1603 descreve ESPEC sem códigos
-            (p. 1). SP 2022: 36 linhas (RDSP2201 23, RDSP2202 13). A Portaria SAES/MS nº 245/2020, art. 2º
-            (sihsus-80babfa3a197), inclui na Tabela de Especialidade da AIH "o código 17 - Estabelecimento
+            (p. 1). SP 2022: 36 linhas (RDSP2201 23, RDSP2202 13). A Portaria SAES/MS nº 245/2020,
+            art. 2º (sihsus-80babfa3a197), inclui na Tabela de Especialidade da AIH "o código 17 - Estabelecimento
             Exclusivo UTI SUS", e o § 2º restringe o código à AIH do procedimento 03.03.01.022-3 (COVID-19) em
             estabelecimento que só tem leitos de UTI no SUS. O LEITOS.CNV do TAB_SIH republicado em 2026-10-15
             (lido em 2026-11-15) é o mesmo arquivo (SHA-256 040504bd..., evidence/2026-11-15-tab-sih-republicado/members.csv) e
-            continua sem o 17. O código segue sem rótulo porque o x-decode de ESPEC é gerado do CNV
-            (scripts/metadados/gerar_decode_cnv.py), que não aceita um código de outra fonte.'
+            continua sem o 17. Resolvido em 2026-11-28: ''17'' recebe o rótulo da portaria, e o mapa de ESPEC passa a
+            ser mantido à mão, fora dos campos que scripts/metadados/gerar_decode_cnv.py gera (sem_cnv em
+            sources/cnv/vinculos.json). Nos 26 arquivos RDSP de 2020-01 a 2022-02, o 17 aparece de 2020-07 em
+            diante, em 1.963 linhas de 5 CNES, todas com PROC_REA 0303010223 e MARCA_UTI 51
+            (evidence/2026-11-28-sih-espec-17/).'
     - name: complex
       type: string
       label: Complexidade
@@ -31879,7 +31892,7 @@ schema:
 x-source-format: dbc
 x-source-family: datasus_ftp
 x-source-prefix: RD
-x-version: "2.30.2"
+x-version: "2.31.0"
 
 x-analytics:
   version: 1.3.0
