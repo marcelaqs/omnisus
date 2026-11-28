@@ -132,31 +132,30 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
 - `raca_cor` entrou no SIH pela Portaria SAS/MS nº 719/2007, com 01 a 05 e 99 "SEM
   INFORMACAO", "atendendo a classificação expressada pelo próprio usuário ou seu
-  responsável" (art. 1º), "com efeitos operacionais a partir de janeiro de 2008" (art. 8º):
-  os arquivos de 1992 a 2007 não têm o campo (`evidence/2026-11-19-sih-cabecalhos/`). Desde a Portaria SAS/MS nº 1.134/2014, com
-  "efeitos operacionais a partir de novembro de 2014" (art. 6º), quando a AIH traz o
-  Cartão Nacional de Saúde, o SISAIH01 "irá consumir as informações cadastrais" do
-  CADSUS WEB, que "não poderão ser alteradas no SISAIH01" (art. 1º e § 1º); as informações
-  indispensáveis que faltarem no CADSUS "poderão ser registradas manualmente" (§ 3º). A
-  portaria não lista quais informações cadastrais são consumidas. O CADSUS guarda
-  raça/cor (informe da CIT citado abaixo, p. 1, de 2023); se ela estiver entre as
-  consumidas, a raça/cor da AIH vem do cadastro, e não de uma pergunta feita na
-  internação. Nenhum documento registrado diz isso.
-- A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião
-  ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor")
-  diz que, "a partir da competência de abril/2023", os aplicativos de captação e
-  processamento do SIA e do SIH "não mais aceitarão o registro/envio de informações
-  (APAC/BPA/AIH etc) cujo campo raça/cor esteja preenchido com o código 99 (não
-  informado)", e que "as produções/atendimentos feitos até a competência de março/2023
-  não sofrerão qualquer impacto, mesmo que as produções sejam enviadas após essa
-  competência" (p. 2). O 99
-  ainda pode aparecer em arquivos processados depois de abril de 2023, em internações
+  responsável" (art. 1º), "com efeitos operacionais a partir de janeiro de 2008" (art.
+  8º): os arquivos de 1992 a 2007 não têm o campo (`evidence/2026-11-19-sih-cabecalhos/`).
+  Desde a Portaria SAS/MS nº 1.134/2014, com "efeitos operacionais a partir de novembro de
+  2014" (art. 6º), quando a AIH traz o Cartão Nacional de Saúde, o SISAIH01 "irá consumir
+  as informações cadastrais" do CADSUS WEB, que "não poderão ser alteradas no SISAIH01"
+  (art. 1º e § 1º); as informações indispensáveis que faltarem no CADSUS "poderão ser
+  registradas manualmente" (§ 3º). A portaria não lista quais informações cadastrais são
+  consumidas. O CADSUS guarda raça/cor (informe da CIT citado abaixo, p. 1, de 2023); se
+  ela estiver entre as consumidas, a raça/cor da AIH vem do cadastro, e não de uma
+  pergunta feita na internação. Nenhum documento registrado diz isso.
+- A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião ordinária
+  da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
+  "a partir da competência de abril/2023", os aplicativos de captação e processamento do
+  SIA e do SIH "não mais aceitarão o registro/envio de informações (APAC/BPA/AIH etc) cujo
+  campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
+  produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
+  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O 99 ainda
+  pode aparecer em arquivos processados depois de abril de 2023, em internações
   anteriores. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`, "Sem informação"
-  (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`).
-  Na fixture de Roraima 2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04
-  (9) e 05 (411), e nenhum 99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de
-  2014-12, em 27.436 das 215.766 de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de
-  2023-06 e em 97 de 2025-12; nos dois últimos, todas com `dt_inter` até 31/03/2023
+  (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`). Na fixture de Roraima
+  2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04 (9) e 05 (411), e nenhum
+  99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de 2014-12, em 27.436 das 215.766
+  de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de 2023-06 e em 97 de 2025-12; nos
+  dois últimos, todas com `dt_inter` até 31/03/2023
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
   informação, o informe prevê o fim do 99 nas produções de abril de 2023 em diante, e nos
   dois arquivos de São Paulo lidos depois disso nenhuma AIH com 99 tem `dt_inter`
@@ -379,28 +378,31 @@ Passo a passo com análise e procedência:
   issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
   texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
   COMPETÊNCIA" e é "Ano de processamento da AIH").
-- Portaria SAS/MS nº 719, de 28 de dezembro de 2007, Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis):
-  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2007/prt0719_28_12_2007.html>
-  — consultado em 2026-11-24; SHA-256
-  `fe7c64067e022f0f8038f36c9dac0011e4b05746eea76b29e9332e59be2564bb`.
-  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
-- Portaria SAS/MS nº 508, de 28 de setembro de 2010, Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis):
-  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2010/prt0508_28_09_2010.html>
-  — consultado em 2026-11-24; SHA-256
-  `f3c9c26255ce7383b78bc21f82b0a7b2bd26fa0ff3bccb468e9dcb26b4e8f5e4`.
-  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
-- Portaria SAS/MS nº 1.134, de 23 de outubro de 2014, Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis):
-  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2014/prt1134_23_10_2014.html>
-  — consultado em 2026-11-24; SHA-256
-  `bb6635f3da715a78621c8d1ca7cbf5aaecb042b7a32e3b963956b1199e63bca4`.
-  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 719, de 28 de dezembro de 2007, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2007/prt0719_28_12_2007.html> —
+  consultado em 2026-11-24; SHA-256
+  `fe7c64067e022f0f8038f36c9dac0011e4b05746eea76b29e9332e59be2564bb`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 508, de 28 de setembro de 2010, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2010/prt0508_28_09_2010.html> —
+  consultado em 2026-11-24; SHA-256
+  `f3c9c26255ce7383b78bc21f82b0a7b2bd26fa0ff3bccb468e9dcb26b4e8f5e4`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 1.134, de 23 de outubro de 2014, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2014/prt1134_23_10_2014.html> —
+  consultado em 2026-11-24; SHA-256
+  `bb6635f3da715a78621c8d1ca7cbf5aaecb042b7a32e3b963956b1199e63bca4`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
 - Demanda raça/cor, informe do DATASUS à 3ª reunião ordinária da Comissão Intergestores
-  Tripartite de 2023 (30/03/2023), Ministério da Saúde / Secretaria de Informação e Saúde Digital
-  (SEIDIGI) / DATASUS; o arquivo está hospedado no sítio do CONASS:
-  <https://www.conass.org.br/wp-content/uploads/2023/03/4.-c-Demanda-rac%CC%A7a-cor.pdf>
-  — consultado em 2026-11-24; SHA-256
-  `737abb0473feeddcb9aadeae0f173f1d3e279a67e763b65ce13eb0114052d946`.
-  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+  Tripartite de 2023 (30/03/2023), Ministério da Saúde / Secretaria de Informação e Saúde
+  Digital (SEIDIGI) / DATASUS; o arquivo está hospedado no sítio do CONASS:
+  <https://www.conass.org.br/wp-content/uploads/2023/03/4.-c-Demanda-rac%CC%A7a-cor.pdf> —
+  consultado em 2026-11-24; SHA-256
+  `737abb0473feeddcb9aadeae0f173f1d3e279a67e763b65ce13eb0114052d946`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos
