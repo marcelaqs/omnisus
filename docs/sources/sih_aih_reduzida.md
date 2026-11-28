@@ -171,8 +171,9 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
   produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
   impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O 99 ainda
-  pode aparecer em arquivos processados depois de abril de 2023, em internações
-  anteriores. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`, "Sem informação"
+  pode aparecer em arquivos processados depois de abril de 2023, em produções até a
+  competência de março/2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
+  "Sem informação"
   (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`). Na fixture de Roraima
   2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04 (9) e 05 (411), e nenhum
   99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de 2014-12, em 27.436 das 215.766
