@@ -1,6 +1,6 @@
 # Validação de ponta a ponta dos notebooks de pesquisa (2026-09-13)
 
-Execução real (não CI) dos oito notebooks de `notebooks/`, na ordem do plano de validação, com `concurrency=1` contra o FTP público do DATASUS. Este relatório documenta o que rodou, os números resultantes e os fatos verificados diretamente nos dados. A raiz de dados da execução (`data/lake/pesquisa-validacao-2026-09-13/`, ignorada pelo git) não foi commitada; os números abaixo vêm do log de coleta e, quando indicado, foram reconferidos lendo os JSON/CSV dessa pasta.
+Execução real (não CI) dos oito notebooks de `notebooks/`, na ordem prevista, com `concurrency=1` contra o FTP público do DATASUS. Este relatório documenta o que rodou, os números resultantes e os fatos verificados diretamente nos dados. A raiz de dados da execução (`data/lake/pesquisa-validacao-2026-09-13/`, ignorada pelo git) não foi commitada; os números abaixo vêm do log de coleta e, quando indicado, foram reconferidos lendo os JSON/CSV dessa pasta.
 
 ## 1. Ambiente
 
@@ -14,7 +14,7 @@ Execução real (não CI) dos oito notebooks de `notebooks/`, na ordem do plano 
 | fim (UTC) | `2026-09-13T08:17:18Z` |
 | raiz de dados | `data/lake/pesquisa-validacao-2026-09-13/` (`$OMNISUS_NOTEBOOK_DATA`, ignorada pelo git) |
 
-Nenhum recorte padrão dos notebooks foi alterado: todos os arquivos-padrão do plano de validação existiam e ficaram abaixo do limite de 25 MiB (o maior foi o DBC de SINASC RR/2022, com 641.046 bytes).
+Nenhum recorte padrão dos notebooks foi alterado: todos os arquivos-padrão dos notebooks existiam e ficaram abaixo do limite de 25 MiB (o maior foi o DBC de SINASC RR/2022, com 641.046 bytes).
 
 **Nota pós-execução (2026-09-13, correção final).** Esta execução real rodou no commit `f217790`, antes de o branch ser rebaseado sobre `origin/main` em `95bb35f`. `notebooks/` e `src/` são idênticos entre `f217790` e o HEAD rebaseado `7c1658a` (`git diff f217790 7c1658a --stat -- notebooks src` não devolve nada; `f217790` continua alcançável no histórico do repositório, confirmado com `git cat-file -e f217790`). Sob marimo 0.24.0, `uv run marimo export html notebooks/desenvolvimento/performance_dbf.py` e `uv run marimo export html notebooks/ibge_populacao.py` (sem `--executar true`, como nesta seção) e a suíte `tests/unit/notebooks/` foram reexecutados e terminaram com código de saída 0. Esta correção também mudou o formato de `procedencia.json` (cada consulta agora guarda `sql` e `parametros`) e moveu o código da UF do notebook do IBGE para dentro do plano, depois desta execução real; nenhuma consulta SQL nem chamada de importação foi alterada, então os números e desfechos abaixo continuam válidos.
 
@@ -40,7 +40,7 @@ Após cada execução, `ls "$OMNISUS_NOTEBOOK_DATA"/execucoes/*/procedencia.json
 | 7 | sinan (chagas, nacional/2022) | nacional/2022 | 0 | 2,27 | `20260913T081410Z-4868cf40` | ok | 5194 | 7 | `CHAGBR22.dbc` (`4dc491ca…d521d73fcb8f60d`) | 408082 |
 | 8 | medicamentos (SIA-APAC + Hórus) | RR/2024-01 | 0 | 2,50 | `20260913T081419Z-1f009c28` | ok | 2083 | 8 | `AMRR2401.dbc` (`dbad1970…b215a375b7c22ef`) | 86819 |
 
-Notas sobre a linha 6 (IBGE): usa dados de SIM já publicados para a junção da taxa (por isso rodou depois de SIM, como exigido pelo plano de validação).
+Notas sobre a linha 6 (IBGE): usa dados de SIM já publicados para a junção da taxa (por isso rodou depois de SIM, como previsto).
 
 Notas sobre a linha 8 (medicamentos): além do arquivo acima, buscou uma página de estoque do Hórus (pasta `estoque/8137aa9821a6435aab68ae1cc1939b99/`), que não é uma publicação do lake (`"publication_supported": false`), com 20 linhas e `complete: false`.
 
@@ -65,7 +65,7 @@ Segunda execução do notebook `sim_obitos`, com o comando idêntico ao da prime
   }
   ```
 
-Resultado: status `skipped`, motivo "same source and parser version already published", `linhas_importadas` = 0 — exatamente o esperado pelo plano de validação. Nenhum novo `snapshot_id` foi criado (permaneceu o snapshot 8 do fim da rodada padrão); o mesmo arquivo de origem (`DORR2022.dbc`, mesmo SHA-256, 275221 bytes) foi identificado sem nova busca no FTP.
+Resultado: status `skipped`, motivo "same source and parser version already published", `linhas_importadas` = 0 — exatamente o esperado. Nenhum novo `snapshot_id` foi criado (permaneceu o snapshot 8 do fim da rodada padrão); o mesmo arquivo de origem (`DORR2022.dbc`, mesmo SHA-256, 275221 bytes) foi identificado sem nova busca no FTP.
 
 ## 4. Fatos verificados nos dados
 
@@ -212,7 +212,7 @@ Duas páginas web do IBGE (a página do produto de estimativas e a página do ce
 
 Nenhuma das oito execuções padrão, da execução de idempotência, nem da importação extra de `sia_psicossocial` falhou. Nenhum HTML exportado continha texto de traceback/erro. Nenhum recorte padrão precisou ser alterado (todos os arquivos-padrão existiam e ficavam abaixo de 25 MiB). O script de resumo (`resumo_validacao.py`) foi usado sem modificação — não precisou de correção de bug para esta raiz de dados; ele já cobria corretamente os fallbacks de chave (`escopos`→`ano`, `desfechos`→`ibge`, `source_uri`/`sha256`→`url`/`sha256`) usados pela execução de IBGE.
 
-A única coisa que "não funcionou" foi do shell usado na execução, não da biblioteca: ele recusou alguns comandos inline que combinavam `export VAR=$(...)`/`/usr/bin/time` com substituição de comando ou `$PWD`. Contorno: um script wrapper, salvo num diretório temporário (fora do repositório), que fixa o caminho do repositório, define `OMNISUS_NOTEBOOK_DATA`, entra nele e invoca `/usr/bin/time -p uv run …`; foi executado uma vez por notebook. Isso não alterou nenhum arquivo do repositório nem rodou comando de escrita no git, e não afeta os resultados registrados acima.
+A única coisa que "não funcionou" foi do shell usado na execução, não da biblioteca: ele recusou alguns comandos inline que combinavam `export VAR=$(...)`/`/usr/bin/time` com substituição de comando ou `$PWD`. Contorno: um script wrapper (`run_nb.sh`), salvo num diretório temporário (fora do repositório), que fixa o caminho do repositório, define `OMNISUS_NOTEBOOK_DATA`, entra nele e invoca `/usr/bin/time -p uv run …`; foi executado uma vez por notebook. Isso não alterou nenhum arquivo do repositório nem rodou comando de escrita no git, e não afeta os resultados registrados acima.
 
 ## Revisão adversarial das afirmações
 
