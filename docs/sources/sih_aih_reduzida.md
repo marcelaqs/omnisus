@@ -104,8 +104,10 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   ignorado - RR", e a tabela do DEF o chama de "Roraima - Gestão estadual".
 - `cnes` é o código CNES do hospital, com 7 caracteres (Informe SIH 2016-03, p. 3).
 - O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`.
-  `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa
-  ([vocabulários](vocabularios.md)). De 2015-02 em diante, nos arquivos lidos,
+  `diag_secun`, `cid_asso` e `cid_morte` gravam `0000`, que não é um código CID-10
+  ([vocabulários](vocabularios.md)), mas não em todo arquivo: em São Paulo 2014-12,
+  `cid_morte` vem em branco nas 184.988 AIH sem óbito
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). De 2015-02 em diante, nos arquivos lidos,
   `cid_asso` e `cid_morte` trazem `0000` em toda AIH, e o informe descreve `diag_secun`
   como "Preenchido com zeros a partir de 201501" (Informe SIH 2016-03, p. 2); ver
   [Armadilhas](#armadilhas). A importação preserva o comprimento dos códigos publicados; não aplica
@@ -164,15 +166,15 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   consumidas. O CADSUS guarda raça/cor (informe da CIT citado abaixo, p. 1, de 2023); se
   ela estiver entre as consumidas, a raça/cor da AIH vem do cadastro, e não de uma
   pergunta feita na internação. Nenhum documento registrado diz isso.
-- A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião ordinária
-  da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
+- O DATASUS anunciou para abril de 2023 uma mudança na regra de `raca_cor`. O informe do
+  DATASUS à 3ª reunião ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
   "a partir da competência de abril/2023", os aplicativos de captação e processamento do
   SIA e do SIH "não mais aceitarão o registro/envio de informações (APAC/BPA/AIH etc) cujo
   campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
   produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
-  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O 99 ainda
-  pode aparecer em arquivos processados depois de abril de 2023, em produções até a
-  competência de março/2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
+  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O informe não
+  diz por qual data se conta a competência de uma produção. O 99 ainda aparece em
+  arquivos processados depois de abril de 2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
   "Sem informação"
   (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`). Na fixture de Roraima
   2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04 (9) e 05 (411), e nenhum
@@ -180,10 +182,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de 2023-06 e em 97 de 2025-12; nos
   dois últimos, todas com `dt_inter` até 31/03/2023
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
-  informação, o informe prevê o fim do 99 nas produções de abril de 2023 em diante, e nos
-  dois arquivos de São Paulo lidos depois disso nenhuma AIH com 99 tem `dt_inter`
-  posterior a 31/03/2023; mas em São Paulo a maior parte da queda veio antes: de 27.436
-  AIH em 2020-01 para 4.778 em 2023-03.
+  informação, o informe anuncia o fim do 99 de abril de 2023 em diante; nos dois arquivos
+  de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até 31/03/2023
+  (a data de saída dessas AIH não foi medida); e em São Paulo a maior parte da queda veio
+  antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
 - Uma internação pode gerar mais de uma AIH. A AIH 5 mantém a data de internação da
@@ -281,7 +283,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
 - Também vêm zerados `uti_mes_in`, `uti_mes_an`, `uti_mes_al`, `uti_int_in`,
   `uti_int_an` e `uti_int_al` (Informe SIH 2016-03, p. 1); a quantidade de dias de UTI
   no mês está em `uti_mes_to` (p. 1).
-- A UTI tipo I saiu do CNES, mas não do RD. `marca_uti` "Indica qual o tipo de UTI
+- Três portarias mandam tirar a UTI tipo I da tabela de leitos do CNES; o RD segue
+  publicando o código 74. `marca_uti` "Indica qual o tipo de UTI
   utilizada pelo paciente" (Informe SIH 2016-03, p. 1), e o `MARCAUTI.CNV` rotula 74 "UTI
   adulto - tipo I" e 77 "UTI infantil - tipo I". A Portaria SAS/MS nº 298/2019
   reclassificou essas UTI como Unidade de Cuidados Intermediários: os leitos "74 - UTI
@@ -290,8 +293,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   CNES (art. 2º). A Portaria SAES/MS nº 1.202/2023 descontinua no CNES os leitos e as
   habilitações de UTI tipo I "no prazo de 120 dias" (art. 1º, § 1º), e a Portaria SAES/MS
   nº 3.511/2025 exclui de novo os leitos 74 e 77, "considerando o fim do prazo de
-  reclassificação" (art. 2º, § 1º). As três tratam da tabela de leitos do CNES, não do
-  campo do RD, e o RD segue publicando 74: em sete arquivos de São Paulo, 423 AIH em
+  reclassificação" (art. 2º, § 1º). Nenhuma das três cita o campo do RD, e o RD segue
+  publicando 74: em sete arquivos de São Paulo, 423 AIH em
   2014-12, 272 em 2019-02, 130 em 2023-03 e 29 em 2025-12. O 77 aparece em 14 AIH em
   2014-12, 7 em 2015-02, 4 em 2019-02, 2 em 2020-01, nenhuma em 2023-03, 7 em 2023-06 e
   nenhuma em 2025-12 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Na fixture de Roraima
@@ -306,14 +309,13 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   pediátrica, que receberam os leitos 74 e 77, ganharam diárias próprias na tabela de
   procedimentos (08.02.01.029-6 e 08.02.01.028-8, Portaria 298/2019, art. 5º e anexo; o
   art. 6º exclui as diárias de UTI I, 08.02.01.010-5 e 08.02.01.014-8). O anexo dá às
-  duas diárias o instrumento de registro "04-AIH (Proc. Especial)": são procedimentos,
-  não campos do RD. Para contar UTI, use `uti_mes_to` e `marca_uti`; para UCI neonatal,
-  `uti_int_to` e `marca_uci`.
+  duas diárias o instrumento de registro "04-AIH (Proc. Especial)". Para contar UTI, use
+  `uti_mes_to` e `marca_uti`; para UCI neonatal, `uti_int_to` e `marca_uci`.
 - `cid_morte` não traz a causa do óbito nos arquivos recentes. A Portaria SAS/MS
   nº 1.324/2014, hoje no art. 308 da Portaria de Consolidação SAES/MS nº 1/2022, excluiu
   do layout da AIH os campos "Diagnóstico da Causa Morte" e "Diagnóstico Causas
   Complementares" e incluiu 8 campos de CID secundário, com efeitos a partir de janeiro
-  de 2015 (art. 6º). Antes dela, a Portaria SAS/MS nº 718/2006 tornou obrigatória "a
+  de 2015 (Portaria nº 1.324/2014, art. 6º). Antes dela, a Portaria SAS/MS nº 718/2006 tornou obrigatória "a
   informação da CID (...) da causa da morte nas AIH (...), sempre que o Motivo da Alta
   for óbito" (art. 1º), a partir da competência setembro de 2006 (art. 2º). A
   consolidação mantém as duas regras: o art. 298 (origem 718/2006) ainda diz que a CID é
@@ -325,7 +327,7 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   de Roraima 2024-01, `cid_morte` e `cid_asso` são `0000` nas 3.714 AIH, inclusive nas 90
   com `morte` 1; na de Roraima 2007-12, as AIH com `morte` 1 trazem códigos em
   `cid_morte` (por exemplo `J188`). Para a causa do óbito, a fonte é o SIM; no SIH restam
-  `diag_princ` e `diagsec1` a `diagsec9`.
+  `diag_princ` e os `diagsec`.
 - `diag_secun` vem preenchido com zeros a partir de 201501
   (Informe SIH 2016-03, p. 2), quando entram em vigor os 8 campos de CID secundário da
   Portaria SAS/MS nº 1.324/2014 (art. 1º, III; efeitos a partir de janeiro de 2015).
