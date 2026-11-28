@@ -40,10 +40,11 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   e 1, e `1` só em `RDAP2607` (34 registros); por isso a lista dos dois documentos não virou mapa
   (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`,
   `evidence/2026-11-18-rd-medidas/`). A Nota Técnica SIHD2 nº 001/2015 (DATASUS-RJ,
-  25/08/2015, "válido a partir da competência 08/2015") muda o bloqueio de homônimos: o
-  gerenciador do SIHD2 "passa a realizar o bloqueio de DUPLICIDADES (homônimos) apenas
-  nas AIHs que NÃO POSSUAM número de CNS do paciente", e um bloqueio novo pega as AIH do
-  mesmo CNS com internações sobrepostas ou com até 3 dias de intervalo. A nota não dá os
+  25/08/2015, "Válido a partir da competência 08/2015") muda o bloqueio de homônimos: o
+  gerenciador do SIHD2 passa a "realizar o bloqueio de DUPLICIDADES (homônimos) apenas
+  nas AIHs que NÃO POSSUAM número de CNS do paciente", e dois bloqueios novos pegam AIH
+  com internações sobrepostas ou com até 3 dias de intervalo: entre as AIH do mesmo CNS
+  no próprio movimento e contra o histórico de internações do estado. A nota não dá os
   códigos do campo. Nos arquivos lidos, a frequência de `2` cai no mesmo mês: nos `RDRR`,
   `homonimo` `2` está em 3.657 das 19.931 AIH de 2015-01 a 2015-07 (18,3%) e em 182 das
   14.903 de 2015-08 a 2015-12 (1,2%); de 2008-01 a 2015-07, em 29.532 de 229.443
@@ -159,7 +160,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   para identificar que a autorização é de Internação (AIH) - uso geral"; 6º a 12º, um
   sequencial; 13º, o dígito verificador (Manual SIH 2012, p. 8). Na fixture de Roraima
   2024-01, os 3.714 números têm 13 caracteres, são distintos e começam com 14 (Roraima);
-  781 têm ano 23, numerados em 2023 e processados em 2024-01. O 5º dígito é 1 em 3.432 e
+  781 têm 23 no 3º e 4º dígitos (o "ano de referência" do manual), em arquivo processado
+  em 2024-01. O 5º dígito é 1 em 3.432 e
   5 em 282, embora todas as 3.714 tenham `ident` 1: não deduza o tipo da AIH do
   número. Em São Paulo 2025-12, as 4.488 AIH com `ident` 5 têm o 5º dígito 1, e as com
   `ident` 1 têm 1, 3 ou 5 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
@@ -174,10 +176,11 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   2012, p. 10). Os arts. 400 e 401 da Portaria de Consolidação SAES/MS nº 1/2022 dizem
   que, no SIH, o mês de produção é o mês da alta, e que o mês de processamento aceita AIH
   "com alta de no máximo 4 (quatro) meses anteriores"; segundo a nota de origem dos dois
-  artigos na consolidação, a regra vem da Portaria SAS/MS nº 472/2008. Os arquivos de um
-  mês de processamento trazem altas de meses anteriores, e as altas de um mês só ficam
-  completas meses depois.
-- `qt_diarias`, a "quantidade de diárias" (Informe SIH 2016-03, p. 2), não conta dias de
+  artigos na consolidação, a regra vem da Portaria SAS/MS nº 472/2008. Na fixture de
+  Roraima 2024-01, 3.431 das 3.714 AIH têm `dt_saida` de 2023-10 a 2023-12 e 283, de
+  2024-01: o arquivo de um mês de processamento traz altas de meses anteriores, e as
+  altas de um mês se espalham pelos arquivos dos meses seguintes.
+- `qt_diarias`, a "Quantidade de diárias" (Informe SIH 2016-03, p. 2), não conta dias de
   permanência. "O sistema paga o último dia de internamento quando o motivo de
   apresentação for: permanência, óbito e transferência" (Manual SIH 2012, p. 13). Em São
   Paulo 2025-12, `qt_diarias` é `dias_perm` mais 1 em 8.659 das 9.869 AIH com motivo de
@@ -196,10 +199,11 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   `TAB_SIH.zip`, `RD2008.DEF` → `SAIDAPERM.CNV` — por exemplo, 26 = permanência por
   mudança de procedimento e 31 = transferência para outro estabelecimento
   (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`). O motivo de saída ou
-  permanência substituiu o "Motivo de Cobrança" com efeitos a partir de janeiro de 2008,
-  pela Portaria SAS/MS nº 719/2007 (art. 2º), que define a tabela de motivos no art. 5º.
-  Os arquivos até 2007 publicam códigos fora dela (33, 35, 37, 52, 53 e 71 na fixture de
-  Roraima 2007-12, `tests/fixtures/dbc/sih_rd_rr_2007_12_mini.dbc`). O layout dos
+  permanência substituiu o "Motivo de Cobrança" com efeitos operacionais a partir de
+  janeiro de 2008, pela Portaria SAS/MS nº 719/2007 (arts. 2º e 8º), que define a tabela
+  de motivos no art. 5º. A fixture de Roraima 2007-12
+  (`tests/fixtures/dbc/sih_rd_rr_2007_12_mini.dbc`) publica códigos fora dela: 33, 35, 37,
+  52, 53 e 71. O layout dos
   arquivos de 2006-04 a 2007-12 só dá o nome do campo, "MOTIVO DE COBRANCA"
   (`Layout_REDUZIDA.pdf`, p. 1), e os dicionários de 1992-1997 e de 1998-2007 deixam
   `cobranca` sem tabela.
@@ -227,7 +231,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   no mês está em `uti_mes_to` (p. 1).
 - `diag_secun` vem preenchido com zeros a partir de 201501
   (Informe SIH 2016-03, p. 2), quando entram em vigor os 8 campos de CID secundário da
-  Portaria SAS/MS nº 1.324/2014 (art. 1º, III; efeitos a partir de janeiro de 2015).
+  Portaria SAS/MS nº 1.324/2014 (art. 1º, III; art. 6º: efeitos a partir de janeiro de
+  2015).
   Desde então, o sistema não critica mais a compatibilidade entre procedimento e
   diagnóstico (art. 4º; hoje art. 311 da Portaria de Consolidação SAES/MS nº 1/2022); os
   diagnósticos secundários estão em `diagsec1` a `diagsec9` (Informe SIH 2016-03, p. 4),
@@ -255,7 +260,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   capítulo XIX (S00 a T98), o SISAIH01 exige que o secundário seja do capítulo XX (V01 a
   Y98) ou um de D66, D67, D680, D681 e D684 (Manual SIH 2012, p. 37). A regra do
   capítulo XX no "primeiro campo de CID secundário" é da Portaria SAS/MS nº 1.324/2014
-  (art. 3º, § 2º), com efeitos a partir de janeiro de 2015, hoje no art. 310, § 2º, da
+  (art. 3º, § 2º; efeitos pelo art. 6º, a partir de janeiro de 2015), hoje no art. 310,
+  § 2º, da
   Portaria de Consolidação SAES/MS nº 1/2022. O tipo de causa externa só passou a ser
   codificado na AIH em 1998: até 1997, os dados de acidentes e violências eram "relativos
   somente à natureza da lesão", e a codificação veio "em decorrência da Portaria
@@ -324,11 +330,12 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   linhas como pacientes, e compare linhas com valores distintos de `n_aih` (consulta
   `aih_distintas`) antes de contar AIH.
 - Como juntar as AIH de uma mesma internação: o Manual SIH 2012 diz quando uma
-  internação se divide em mais de uma AIH (pp. 8, 10–11; ver Armadilhas), mas nem ele
-  nem o informe dizem qual campo do RD liga essas AIH entre si, e o layout RD não traz
-  o número do Cartão Nacional de Saúde (Informe SIH 2016-03, p. 1–4). Não conte
-  internações como linhas sem olhar `ident`, `seq_aih5`, `cobranca` e `n_aih` nos seus
-  dados.
+  internação se divide em mais de uma AIH (pp. 8, 10–11; ver Armadilhas) e que, em
+  cuidados prolongados, a AIH 5 é usada "com mesmo número da AIH - 1" (p. 48). Para a
+  nova AIH aberta na mesma internação (pp. 10–11), nem ele nem o informe dizem qual
+  campo do RD liga as AIH entre si, e o layout RD não traz o número do Cartão Nacional
+  de Saúde (Informe SIH 2016-03, p. 1–4). Não conte internações como linhas sem olhar
+  `ident`, `seq_aih5`, `cobranca`, `n_aih` e `dt_inter` nos seus dados.
 - Se o mês do arquivo (`mes`) é sempre igual a `mes_cmpt`: o documento não explica o
   nome do arquivo. Compare as duas colunas antes de supor.
 - Os códigos de `ident`: o informe não os lista; o Manual SIH 2012 dá os tipos 1 e 5
