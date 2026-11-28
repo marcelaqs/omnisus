@@ -30,9 +30,6 @@ native/**/fuzz/corpus/
 # Notebook results (tables and citations)
 /resultados/
 
-# Fixtures cached
-tests/.cache/
-
 # Docs build
 site/
 
