@@ -413,7 +413,8 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   82.992 nas 27 UFs em 2012-01 e 18.726 das 19.086 em São Paulo 2014-12; nas 27 UFs em
   2016-01 e em 2025-12, nenhuma (`evidence/2026-11-28-rd-medidas-da-revisao/`). Os
   outros meses de 2008 a 2014 não foram medidos para esse campo. O caráter de
-  atendimento, 2012, p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
+  atendimento, `car_int`, tem códigos de acidente e lesão (03 a 06; Manual SIH 2012,
+  p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
   contá-los: em São Paulo 2025-12, as 2.588 AIH com 03 a 06 têm `diag_princ` de S ou T, e
   23.252 das 25.840 AIH com S ou T têm caráter 01 (eletivo) ou 02 (urgência).
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
