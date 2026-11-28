@@ -1,6 +1,6 @@
 name: probe
 
-# Tier 3 (spec §6): validate every registry row against the live DATASUS
+# Validate every registry row against the live DATASUS
 # server. Off the PR path — upstream is flaky and this is network-bound.
 on:
   schedule:
