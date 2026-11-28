@@ -8,6 +8,18 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+### Dictionaries
+
+- `sim_obitos` 2.16.1 and `sim_obitos_externos`, `sim_obitos_infantis` and
+  `sim_obitos_maternos` 1.11.1: the code maps of `altcausa`, `assistmed`, `atestante`,
+  `codificado`, `esc2010`, `escmae2010`, `morteparto`, `origem`, `tp_altera`,
+  `tpnivelinv` and `tppos` become `verified_in_source` after a human review against the
+  registered documents. The conflicts of `atestante` and `tppos` are closed: the document
+  and the CNV word code 1 of `atestante` differently, and for `tppos` the document lists
+  1 and 2 where the files write S and N, so the files decide; each resolved issue keeps
+  the previous text. No label or code changes. New source `sim-2177e17cf20b`, the
+  Estrutura do SIM of 06/2025 on the Portal de Dados Abertos do SUS (#245).
+
 ## v0.5.1 — 2026-11-28
 
 **Upgrading from 0.5.0:** no parser version changed (the import still reads the same
