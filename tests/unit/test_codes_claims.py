@@ -80,14 +80,65 @@ def test_esc2010_labels_are_the_ones_the_estrutura_do_sim_writes(name, page) -> 
     field = _field("sim_obitos", name)
     assert field["x-decode"] == ESC2010_IN_THE_DOCUMENT
     (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
-    assert (claim["status"], claim["reviewer"]) == ("unreviewed", None)
-    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
-        ("sim-b4195ac8e0f8", [page])
-    ]
+    assert (claim["evidence"][0]["source_id"], claim["evidence"][0]["pages"]) == (
+        "sim-b4195ac8e0f8",
+        [page],
+    )
     (issue,) = [
         i for i in field["x-metadata"]["issues"] if i["id"] == f"{name}-rotulo-diverge-do-pdf"
     ]
     assert issue["status"] == "resolved" and "1-5 ano" in issue["description"]
+
+
+@pytest.mark.parametrize(
+    ("name", "page"),
+    [("assistmed", 4), ("codificado", 6), ("esc2010", 2), ("escmae2010", 3)],
+)
+def test_a_human_review_against_the_estrutura_do_sim_verifies_the_codes(name, page) -> None:
+    """A reviewer compared the map with the Estrutura do SIM, the one document the claim cites."""
+    field = _field("sim_obitos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
+        ("sim-b4195ac8e0f8", [page]),
+    ]
+    assert "tabela DO" not in claim["method"]
+
+
+@pytest.mark.parametrize("name", ["atestante", "tppos"])
+def test_a_reviewer_closes_the_conflict_between_the_cnv_and_the_document(name) -> None:
+    """`atestante` differs in wording, `tppos` in the codes; `test_sim_cnv_claims` has each."""
+    field = _field("sim_obitos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["method"]) == ("verified_in_source", "cnv-parse")
+    issues = field["x-metadata"]["issues"]
+    assert issues and all(i["status"] == "resolved" for i in issues)
+    assert all("marcelaqs" in i["description"] for i in issues)
+
+
+SIM_DICIONARIO_2025 = "sim-2177e17cf20b"
+
+
+@pytest.mark.parametrize(
+    ("name", "page"),
+    [("origem", 6), ("tpnivelinv", 8), ("morteparto", 8), ("altcausa", 8), ("tp_altera", 9)],
+)
+def test_a_human_review_against_the_open_data_edition_verifies_the_codes(name, page) -> None:
+    """A reviewer compared the map with the Estrutura do SIM of the open data portal."""
+    field = _field("sim_obitos", name)
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
+    assert (SIM_DICIONARIO_2025, [page]) in [
+        (e["source_id"], e["pages"]) for e in claim["evidence"]
+    ]
+
+
+def test_tpnivelinv_also_cites_the_dictionary_of_table_dom() -> None:
+    field = _field("sim_obitos", "tpnivelinv")
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert ("sim-dom-fb396a277981", [2]) in [
+        (e["source_id"], e["pages"]) for e in claim["evidence"]
+    ]
 
 
 SINASC_ESTRUTURA_1996_2019 = "sinasc-0ffc45994687"

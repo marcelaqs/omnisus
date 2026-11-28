@@ -240,7 +240,21 @@
       "edition": null,
       "published_on": null,
       "retrieved_on": "2026-09-14",
-      "last_checked_on": "2026-11-18"
+      "last_checked_on": "2026-11-28"
+    },
+    {
+      "id": "sim-2177e17cf20b",
+      "category": "SIM",
+      "title": "Dicionario_SIM_2025.pdf — Estrutura do SIM (Portal de Dados Abertos do SUS)",
+      "publisher": "Ministério da Saúde",
+      "authority": "official",
+      "url": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SIM/Dicionario_SIM_2025.pdf",
+      "sha256": "2177e17cf20b6f665334f8bcc84fc2e703e79364412161ebfd1992b2d2268e31",
+      "bytes": 635539,
+      "edition": "06/2025",
+      "published_on": null,
+      "retrieved_on": "2026-11-25",
+      "last_checked_on": "2026-11-28"
     },
     {
       "id": "sim-anterior-13cabba0b9a1",
