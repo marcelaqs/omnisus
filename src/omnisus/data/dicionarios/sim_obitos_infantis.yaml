@@ -2274,9 +2274,11 @@ schema:
           O Estrutura_do_SIM_2025.pdf (p. 5) escreve ''1 - Assistente; 2 – Substituto; 3 – IML; 4 – SVO;
           5 – Outro''; o ATESTANT.CNV rotula 1 como ''Sim''. Resolvido em 2026-11-25 pela revisora marcelaqs:
           segundo a revisora, ''Assistente'' e ''Sim'' respondem à mesma pergunta da DO, se o médico que
-          assina atendeu o falecido (nenhum formulário ou manual da DO está registrado como fonte); vale
-          o CNV. O Obito_1996_CID10.def liga o campo ao ATESTANT.CNV numa linha X, ''XMedico Atest, ATESTANTE,
-          1, ATESTANT.CNV'' (a ressalva dessas linhas está no issue def-liga-por-linha-x de seriescfal);
+          assina atendeu o falecido (nenhum formulário ou manual da DO está registrado como fonte; o dicionário
+          da tabela DOM, sim-dom-fb396a277981, p. 6, liga ATESTANTE ao ATESTANT.CNV e escreve ''Indica se
+          o médico que assina atendeu o paciente: 1 – Sim; 2 – Substituto; 3 – IML; 4 – SVO; 5 – Outros'');
+          vale o CNV. O Obito_1996_CID10.def liga o campo ao ATESTANT.CNV numa linha X, ''XMedico Atest,
+          ATESTANTE, 1, ATESTANT.CNV'' (a ressalva dessas linhas está no issue def-liga-por-linha-x de seriescfal);
           o Obito_1979_95_CID-09.DEF, do mesmo OBITOS_CID10_TAB/tabdo, liga ATESTANTE ao ATESTANT.CNV em
           linhas T e S, que têm função definida: ''TAtestante, ATESTANTE, 1, ATESTANT.CNV'' e ''SAtestante,
           ATESTANTE, 1, ATESTANT.CNV''.'
