@@ -166,15 +166,15 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   consumidas. O CADSUS guarda raça/cor (informe da CIT citado abaixo, p. 1, de 2023); se
   ela estiver entre as consumidas, a raça/cor da AIH vem do cadastro, e não de uma
   pergunta feita na internação. Nenhum documento registrado diz isso.
-- A regra de `raca_cor` muda em abril de 2023. O informe do DATASUS à 3ª reunião ordinária
-  da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
+- O DATASUS anunciou para abril de 2023 uma mudança na regra de `raca_cor`. O informe do
+  DATASUS à 3ª reunião ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
   "a partir da competência de abril/2023", os aplicativos de captação e processamento do
   SIA e do SIH "não mais aceitarão o registro/envio de informações (APAC/BPA/AIH etc) cujo
   campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
   produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
-  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O 99 ainda
-  pode aparecer em arquivos processados depois de abril de 2023, em produções até a
-  competência de março/2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
+  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O informe não
+  diz por qual data se conta a competência de uma produção. O 99 ainda aparece em
+  arquivos processados depois de abril de 2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
   "Sem informação"
   (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`). Na fixture de Roraima
   2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04 (9) e 05 (411), e nenhum
@@ -182,10 +182,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de 2023-06 e em 97 de 2025-12; nos
   dois últimos, todas com `dt_inter` até 31/03/2023
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
-  informação, o informe prevê o fim do 99 nas produções de abril de 2023 em diante, e nos
-  dois arquivos de São Paulo lidos depois disso nenhuma AIH com 99 tem `dt_inter`
-  posterior a 31/03/2023; mas em São Paulo a maior parte da queda veio antes: de 27.436
-  AIH em 2020-01 para 4.778 em 2023-03.
+  informação, o informe anuncia o fim do 99 de abril de 2023 em diante; nos dois arquivos
+  de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até 31/03/2023
+  (a data de saída dessas AIH não foi medida); e em São Paulo a maior parte da queda veio
+  antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
 - Uma internação pode gerar mais de uma AIH. A AIH 5 mantém a data de internação da
