@@ -44,5 +44,6 @@ edition. The new edition is registered so a later pull request can cite it.
 no copy of `sia-tab-1ce232b217c6`, only its member hashes and sizes, and the server now
 returns the new edition, so the rows could not be compared. `Producao_Ambulatorial.DEF`
 links `DBF/TB_SIGTAW.DBF` to `PA_PROC_ID`, `DBF/CBO.DBF` to `PA_CBOCOD` and the
-`DBF/CADGER??.DBF` files to `PA_CODUNI`; `vinculos.json` packages none of them. Whoever
-packages one of the 30 cites it from the new edition and reads it again.
+`DBF/CADGER??.DBF` files of the 27 UFs to `PA_CODUNI` (its two `CADGERBR` lines are
+commented out with `;`); `vinculos.json` packages none of them. Whoever packages one of
+the 30 cites it from the new edition and reads it again.
