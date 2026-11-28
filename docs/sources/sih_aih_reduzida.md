@@ -379,6 +379,28 @@ Passo a passo com análise e procedência:
   issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
   texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
   COMPETÊNCIA" e é "Ano de processamento da AIH").
+- Portaria SAS/MS nº 719, de 28 de dezembro de 2007, Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2007/prt0719_28_12_2007.html>
+  — consultado em 2026-11-24; SHA-256
+  `fe7c64067e022f0f8038f36c9dac0011e4b05746eea76b29e9332e59be2564bb`.
+  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 508, de 28 de setembro de 2010, Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2010/prt0508_28_09_2010.html>
+  — consultado em 2026-11-24; SHA-256
+  `f3c9c26255ce7383b78bc21f82b0a7b2bd26fa0ff3bccb468e9dcb26b4e8f5e4`.
+  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 1.134, de 23 de outubro de 2014, Ministério da Saúde / Secretaria de Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2014/prt1134_23_10_2014.html>
+  — consultado em 2026-11-24; SHA-256
+  `bb6635f3da715a78621c8d1ca7cbf5aaecb042b7a32e3b963956b1199e63bca4`.
+  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
+- Demanda raça/cor, informe do DATASUS à 3ª reunião ordinária da Comissão Intergestores
+  Tripartite de 2023 (30/03/2023), Ministério da Saúde / Secretaria de Informação e Saúde Digital
+  (SEIDIGI) / DATASUS; o arquivo está hospedado no sítio do CONASS:
+  <https://www.conass.org.br/wp-content/uploads/2023/03/4.-c-Demanda-rac%CC%A7a-cor.pdf>
+  — consultado em 2026-11-24; SHA-256
+  `737abb0473feeddcb9aadeae0f173f1d3e279a67e763b65ce13eb0114052d946`.
+  Registro: `src/omnisus/data/dicionarios/sources/registry.json`.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos
