@@ -10,6 +10,27 @@
 
 ### Dictionaries
 
+- `sim_obitos` 2.16.1 and `sim_obitos_externos`, `sim_obitos_infantis` and
+  `sim_obitos_maternos` 1.11.1: the code maps of `altcausa`, `assistmed`, `atestante`,
+  `codificado`, `esc2010`, `escmae2010`, `morteparto`, `origem`, `tp_altera`,
+  `tpnivelinv` and `tppos` (`tp_altera` only in `sim_obitos`) become
+  `verified_in_source` after a human review against the registered documents. The conflicts of `atestante` and `tppos` are closed: the document
+  and the CNV word code 1 of `atestante` differently, and for `tppos` the document lists
+  1 and 2 where the files write S and N, so the files decide; each resolved issue keeps
+  the previous text. No label or code changes. New source `sim-2177e17cf20b`, the
+  Estrutura do SIM of 06/2025 on the Portal de Dados Abertos do SUS (#245).
+- `sinasc_nascidos_vivos` 2.8.0: code `5` of `locnasc` gains the label "Aldeia indígena",
+  which the manual of the DN (4th edition, p. 23) and the SINASC Estrutura of 1996 to
+  2019 (p. 1) give it; `LOCOCOR.CNV` groups it under "Ignorado", and 740 of the 13,091
+  rows of `DNRR2022.dbc` publish it. The map of `locnasc` is now kept by hand, the lines
+  of the CNV with that one label replaced, outside the fields `gerar_decode_cnv.py`
+  generates. `stdnnova` becomes `0` "Não" and `1` "Sim". 25 of the 26 code-map claims
+  become `verified_in_source`: 23 reviewed by a human reviewer, and `locnasc` and
+  `sttrabpart` by decision of the maintainer on her findings. Code `3` of `sttrabpart`
+  stays unlabelled: only the Estrutura lists it and no row of that file publishes it
+  (issue `sttrabpart-3-so-no-estrutura`), and so does code `9` of `paridade`, which only
+  `Estrutura_SINASC_para_CD.pdf` lists (issue `paridade-9-so-no-estrutura-para-cd`). New sources: `sinasc-0ffc45994687` and
+  `sinasc-5956ea4d8e89` (#246).
 - `sia_apac_cirurgia_bariatrica`, `sia_apac_laudos_diversos`, `sia_apac_medicamentos`,
   `sia_apac_quimioterapia` and `sia_apac_tratamento_dialitico` 0.6.1 and
   `sia_psicossocial` 0.5.1: 48 `cnv-parse` claims on `/field/codes` go from
