@@ -16,6 +16,7 @@ import pytest
 import yaml
 
 import omnisus as sus
+from omnisus.metadata import sources_registry
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 from omnisus.transforms.cnv import cnv_map, parse_cnv
 
@@ -93,7 +94,7 @@ SINASC_ESTRUTURA_1996_2019 = "sinasc-0ffc45994687"
 SINASC_MANUAL_DA_DN_2022 = "sinasc-5956ea4d8e89"
 SINASC_TAB = "sinasc-tab-de43d0c99630"
 
-SINASC_CNV_MAPS_SAME_MEANING = [
+SINASC_CNV_CONFLICTS_THE_REVIEWER_CLOSED = [
     "origem",
     "estcivmae",
     "escmae",
@@ -117,9 +118,11 @@ SINASC_CNV_MAPS_SAME_MEANING = [
 ]
 
 
-@pytest.mark.parametrize("name", SINASC_CNV_MAPS_SAME_MEANING)
-def test_a_sinasc_cnv_map_that_says_what_the_older_map_said_is_verified(name) -> None:
-    """A reviewer closed the conflict: the older map had no claim and meant the same."""
+@pytest.mark.parametrize("name", SINASC_CNV_CONFLICTS_THE_REVIEWER_CLOSED)
+def test_a_sinasc_cnv_conflict_the_reviewer_closed_is_verified(name) -> None:
+    """The older map had no claim, so the CNV's stands. The reviewer compared 18 of the 20
+    with the Estrutura; it gives no codes for KOTELCHUCK and TPROBSON (p. 2), which she
+    compared with the CNV alone."""
     field = _field("sinasc_nascidos_vivos", name)
     (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
     assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
@@ -127,6 +130,34 @@ def test_a_sinasc_cnv_map_that_says_what_the_older_map_said_is_verified(name) ->
         i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
     ]
     assert issue["status"] == "resolved" and "revisora marcelaqs" in issue["description"]
+    only_the_cnv = name in ("kotelchuck", "tprobson")
+    assert (SINASC_ESTRUTURA_1996_2019 in issue["description"]) is not only_the_cnv
+
+
+def test_the_manual_of_the_dn_is_registered_with_the_edition_it_declares() -> None:
+    """Its catalogue card (p. 3) gives the 4th edition, Ministério da Saúde, Brasília, 2022."""
+    (manual,) = [s for s in sources_registry()["sources"] if s["id"] == SINASC_MANUAL_DA_DN_2022]
+    assert (manual["edition"], manual["bytes"]) == ("2022", 6188796)
+
+
+def test_the_tprobson_issue_says_the_cut_offs_are_the_writing_of_the_cnv() -> None:
+    """ROBSON.CNV writes ">37sem" and "<36sem" where the older map said "≥ 37" and "< 37"."""
+    sinasc = DICIONARIOS / "sources/cnv/sinasc"
+    robson = cnv_map(parse_cnv((sinasc / "ROBSON.CNV").read_bytes().decode("latin-1")))
+    assert ">37sem" in robson["01"] and "<36sem" in robson["10"]
+    field = _field("sinasc_nascidos_vivos", "tprobson")
+    assert field["x-decode"] == robson
+    (issue,) = field["x-metadata"]["issues"]
+    assert all(
+        text in issue["description"]
+        for text in (
+            "≥ 37 sem, TP espontâneo",
+            "< 37 sem",
+            '">37sem"',
+            '"<36sem"',
+            "escrita do CNV",
+        )
+    )
 
 
 @pytest.mark.parametrize(("name", "page"), [("paridade", 2), ("stdnepidem", 2), ("stdnnova", 2)])

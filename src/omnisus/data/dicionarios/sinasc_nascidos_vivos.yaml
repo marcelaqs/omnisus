@@ -836,7 +836,7 @@ schema:
             — Gestação múltipla (incl. c/ cesárea anterior)'', CNV ''08 Todas gest múltiplas (incluindo CS
             prévia''; ''09'' era ''Grupo 9 — Única transversa/oblíqua (incl. c/ cesárea anterior)'', CNV ''09
             Todas apres anormais (incluindo CS prévia''; ''10'' era ''Grupo 10 — Única cefálica, < 37 sem
-            (incl. c/ cesárea anterior)'', CNV ''10 Todas gest unic cefal <36sem (incl CS prévia''. Resolvido em 2026-11-26 pela revisora marcelaqs: o mapa anterior não tinha claim e diz os mesmos grupos de Robson com outras palavras. Vale o CNV.'
+            (incl. c/ cesárea anterior)'', CNV ''10 Todas gest unic cefal <36sem (incl CS prévia''. Resolvido em 2026-11-26 pela revisora marcelaqs: o mapa anterior não tinha claim e diz os mesmos grupos de Robson com outras palavras. Vale o CNV. Os cortes de idade gestacional são a escrita do CNV: ">37sem" nos códigos 01 a 03 (">37s" no 04, "> 37 semanas" no 05) e "<36sem" no 10, onde o mapa anterior dizia "≥ 37 sem" e "< 37 sem". Os rótulos ficam como o CNV os escreve.'
     - name: paridade
       type: string
       label: Paridade
