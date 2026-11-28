@@ -140,7 +140,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XRaça/Cor Paciente, AP_RACACOR, 1, CNV/RACA_COR.CNV; CNV/RACA_COR.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -177,7 +177,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: TInvasão Estadual, AP_UFDIF, 1, CNV/INVASAO.CNV; CNV/Invasao.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -203,7 +203,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: TInvasão Municipal, AP_MNDIF, 1, CNV/INVASAO.CNV; CNV/Invasao.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -239,7 +239,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XTipo de APAC, AP_TPAPAC, 1, CNV/TP_APAC.CNV; CNV/TP_APAC.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -266,7 +266,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XMotivo Saída-Óbito, AP_OBITO, 1, CNV/OBITO.CNV; CNV/OBITO.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -290,7 +290,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XMotivo Saída-Encerramento, AP_ENCERR, 1, CNV/ENCERRAM.CNV; CNV/ENCERRAM.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -314,7 +314,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XMotivo Saída-Permanência, AP_PERMAN, 1, CNV/PERMANEN.CNV; CNV/PERMANEN.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -338,7 +338,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XMotivo Saída-Alta, AP_ALTA, 1, CNV/ALTA.CNV; CNV/ALTA.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -363,7 +363,7 @@ schema:
             pages: []
             locator: 'APAC_Medicamentos.DEF: XMotivo Saída-Transferência, AP_TRANSF, 1, CNV/TRANSFER.CNV;
               CNV/TRANSFER.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -435,7 +435,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'APAC_Medicamentos.DEF: XTransplantado, AM_TRANSPL, 1, CNV/TRANSPL.CNV; CNV/TRANSPL.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved

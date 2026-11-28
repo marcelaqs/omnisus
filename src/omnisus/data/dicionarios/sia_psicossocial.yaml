@@ -145,7 +145,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'RAAS_Psicossocial.def: LRaça/Cor Paciente, RACACOR, 1, CNV/RACA_COR.CNV; CNV/RACA_COR.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
@@ -248,7 +248,7 @@ schema:
           - source_id: sia-tab-e5812b51d802
             pages: []
             locator: 'RAAS_Psicossocial.def: XSituação Rua (S/N), SIT_RUA, 1, CNV/SIT_RUA.CNV; CNV/SIT_RUA.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          note: Mapa do CNV. O conflito com o mapa anterior, que não tinha claim, foi encerrado em 2026-11-26 pela revisora marcelaqs; texto no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved

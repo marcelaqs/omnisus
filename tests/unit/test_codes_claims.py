@@ -107,7 +107,7 @@ SIA_APAC_WITH_THE_COMMON_BLOCK = [
     "sia_apac_quimioterapia",
     "sia_apac_tratamento_dialitico",
 ]
-SIA_APAC_SAME_MEANING = [
+SIA_APAC_CLOSED_BY_REVIEW = [
     "ap_racacor",
     "ap_ufdif",
     "ap_mndif",
@@ -118,8 +118,10 @@ SIA_APAC_SAME_MEANING = [
     "ap_alta",
     "ap_transf",
 ]
-SIA_CNV_MAPS_SAME_MEANING = [
-    (dataset, name) for dataset in SIA_APAC_WITH_THE_COMMON_BLOCK for name in SIA_APAC_SAME_MEANING
+SIA_CNV_MAPS_CLOSED_BY_REVIEW = [
+    (dataset, name)
+    for dataset in SIA_APAC_WITH_THE_COMMON_BLOCK
+    for name in SIA_APAC_CLOSED_BY_REVIEW
 ] + [
     ("sia_apac_medicamentos", "am_transpl"),
     ("sia_psicossocial", "racacor"),
@@ -127,32 +129,33 @@ SIA_CNV_MAPS_SAME_MEANING = [
 ]
 
 
-@pytest.mark.parametrize(("dataset", "name"), SIA_CNV_MAPS_SAME_MEANING)
-def test_a_sia_cnv_map_that_says_what_the_older_map_said_is_verified(dataset, name) -> None:
-    """A reviewer closed the conflict: the older map had no claim and meant the same."""
-    field = _field(dataset, name)
-    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+def _codes_claim_and_cnv_issue(dataset: str, name: str) -> tuple[dict, dict]:
+    metadata = _field(dataset, name)["x-metadata"]
+    (claim,) = [c for c in metadata["claims"] if c["target"] == "/field/codes"]
+    (issue,) = [i for i in metadata["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"]
+    return claim, issue
+
+
+@pytest.mark.parametrize(("dataset", "name"), SIA_CNV_MAPS_CLOSED_BY_REVIEW)
+def test_a_sia_cnv_map_whose_conflict_a_reviewer_closed_is_verified(dataset, name) -> None:
+    """The older map had no claim: the claim and the issue both say who closed it and when."""
+    claim, issue = _codes_claim_and_cnv_issue(dataset, name)
     assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
-    (issue,) = [
-        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
-    ]
+    assert "encerrado em 2026-11-26 pela revisora marcelaqs" in claim["note"]
     assert issue["status"] == "resolved" and "revisora marcelaqs" in issue["description"]
 
 
-@pytest.mark.parametrize(
-    "dataset",
-    ["sia_apac_laudos_diversos", "sia_apac_quimioterapia", "sia_apac_tratamento_dialitico"],
-)
-def test_ap_tpapac_4_stays_an_open_issue(dataset) -> None:
-    issues = _field(dataset, "ap_tpapac")["x-metadata"]["issues"]
-    assert [i["status"] for i in issues if i["id"] == "ap_tpapac-4-sem-fonte"] == ["open"]
+@pytest.mark.parametrize("dataset", SIA_APAC_WITH_THE_COMMON_BLOCK)
+def test_the_closed_ap_tpapac_issue_says_the_4_of_the_older_map_has_no_label(dataset) -> None:
+    """The older map had a '4' that TP_APAC.CNV does not list: not the same meaning."""
+    _, issue = _codes_claim_and_cnv_issue(dataset, "ap_tpapac")
+    older, closing = issue["description"].split("Resolvido em 2026-11-26")
+    assert "'4' era 'Fora de rede (encerramento)', CNV não lista" in older
+    assert "'4'" in closing and "sem fonte" in closing
+    assert "4" not in _field(dataset, "ap_tpapac")["x-decode"]
 
 
 def test_am_gestant_stays_conflicting_because_the_cnv_contradicts_itself() -> None:
-    field = _field("sia_apac_medicamentos", "am_gestant")
-    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
-    (issue,) = [
-        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
-    ]
+    claim, issue = _codes_claim_and_cnv_issue("sia_apac_medicamentos", "am_gestant")
     assert (claim["status"], issue["status"]) == ("conflicting", "open")
     assert "GESTANTE.CNV" in issue["description"]
