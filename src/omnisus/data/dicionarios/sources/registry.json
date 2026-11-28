@@ -257,20 +257,6 @@
       "last_checked_on": "2026-11-25"
     },
     {
-      "id": "sim-do-5d1852acb228",
-      "category": "SIM",
-      "title": "Dicionário de dados do SIM — tabela DO",
-      "publisher": "Ministério da Saúde",
-      "authority": "official",
-      "url": "https://svs.aids.gov.br/daent/cgiae/coesv/sistemas-informacao/sim/documentacao/dicionario-de-dados-SIM-tabela-DO.pdf",
-      "sha256": "5d1852acb228c2d868132249455757a35fda7d916310ea3bc0c7cb8fe6d153e6",
-      "bytes": 129652,
-      "edition": null,
-      "published_on": null,
-      "retrieved_on": "2026-11-25",
-      "last_checked_on": "2026-11-25"
-    },
-    {
       "id": "sim-anterior-13cabba0b9a1",
       "category": "SIM",
       "title": "Estrutura SIM anterior — Mortalidade 2006 e até 2005",
