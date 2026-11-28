@@ -8,12 +8,14 @@ is removed, with an issue saying what was consulted.
 
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 
 import pytest
 import yaml
 
 import omnisus as sus
+from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 DICIONARIOS = Path(sus.__file__).parent / "data" / "dicionarios"
 
@@ -149,7 +151,16 @@ def test_a_sinasc_map_read_from_the_document_is_verified_by_a_reviewer(name, pag
     ]
 
 
-def test_stdnnova_takes_the_labels_of_the_document() -> None:
+def _labelled_rr_2022(dbc_fixture, name: str) -> Counter[tuple[str, str]]:
+    """(code, label) -> rows of DNRR2022.dbc, the whole file (13,091 rows)."""
+    raw = dbc_fixture("sinasc_rr_2022_mini").read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset="sinasc_nascidos_vivos").collect()
+    return Counter(sus.label("sinasc_nascidos_vivos", frame.select(name), columns=[name]).rows())
+
+
+def test_stdnnova_takes_the_labels_of_the_document(dbc_fixture) -> None:
+    """Every row of DNRR2022.dbc publishes STDNNOVA 1, which the two documents call Sim."""
+    assert _labelled_rr_2022(dbc_fixture, "stdnnova") == {("1", "Sim"): 13091}
     field = _field("sinasc_nascidos_vivos", "stdnnova")
     assert field["x-decode"] == {"0": "Não", "1": "Sim"}
     assert all(i["status"] == "resolved" for i in field["x-metadata"]["issues"])
