@@ -1,0 +1,540 @@
+{
+ "espec_17_cnes_distinct": {
+  "RD": 5,
+  "RJ": 2
+ },
+ "files": {
+  "RDSP2001.dbc": {
+   "bytes": 17083017,
+   "espec_17": {
+    "cnes_distinct": 0,
+    "marca_uti": {},
+    "proc_rea": {},
+    "rows": 0
+   },
+   "espec_not_in_leitos_cnv": {},
+   "rows": 215766,
+   "sha256": "ea611bb554aa00062c8aee2c3041d3065b2635938cdd32d6ce6636cb91436478"
+  },
+  "RDSP2002.dbc": {
+   "bytes": 15807732,
+   "espec_17": {
+    "cnes_distinct": 0,
+    "marca_uti": {},
+    "proc_rea": {},
+    "rows": 0
+   },
+   "espec_not_in_leitos_cnv": {},
+   "rows": 205588,
+   "sha256": "78e3493a21d52b6ec5dbb9b02869667b579bcdbccf1e8f1c5d178eb229a00678"
+  },
+  "RDSP2003.dbc": {
+   "bytes": 16136638,
+   "espec_17": {
+    "cnes_distinct": 0,
+    "marca_uti": {},
+    "proc_rea": {},
+    "rows": 0
+   },
+   "espec_not_in_leitos_cnv": {},
+   "rows": 208684,
+   "sha256": "a19bd181d39674213ee5a4238fe950ee486a9bf8df7e0bc990740aabdf68c417"
+  },
+  "RDSP2004.dbc": {
+   "bytes": 12311769,
+   "espec_17": {
+    "cnes_distinct": 0,
+    "marca_uti": {},
+    "proc_rea": {},
+    "rows": 0
+   },
+   "espec_not_in_leitos_cnv": {},
+   "rows": 158154,
+   "sha256": "00511f50e3bcfd6e86724a50d60e9013aea190e1f3f52fa2af86371b95c47aa3"
+  },
+  "RDSP2005.dbc": {
+   "bytes": 12616169,
+   "espec_17": {
+    "cnes_distinct": 0,
+    "marca_uti": {},
+    "proc_rea": {},
+    "rows": 0
+   },
+   "espec_not_in_leitos_cnv": {},
+   "rows": 163154,
+   "sha256": "f2c21020ea246a53039f899b13bc4465d67737d837c519b393cfa0f22b1bc94f"
+  },
+  "RDSP2006.dbc": {
+   "bytes": 13217058,
+   "espec_17": {
+    "cnes_distinct": 0,
+    "marca_uti": {},
+    "proc_rea": {},
+    "rows": 0
+   },
+   "espec_not_in_leitos_cnv": {},
+   "rows": 172034,
+   "sha256": "ad036b4872637ef9e0613a3ac1bebcce6ef5696c9919fd50dda63da6afb9f3a8"
+  },
+  "RDSP2007.dbc": {
+   "bytes": 14415177,
+   "espec_17": {
+    "cnes_distinct": 3,
+    "marca_uti": {
+     "51": 75
+    },
+    "proc_rea": {
+     "0303010223": 75
+    },
+    "rows": 75
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 75
+   },
+   "rows": 186658,
+   "sha256": "8adcc84f3cff9fdca5510ff02fcfaa6a1cb30e5d76139256af428e861ddd6a17"
+  },
+  "RDSP2008.dbc": {
+   "bytes": 14271920,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 52
+    },
+    "proc_rea": {
+     "0303010223": 52
+    },
+    "rows": 52
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 52
+   },
+   "rows": 184527,
+   "sha256": "a46690ce47cdce0f97b3eae98a524645c1e7c2cdd8d1c7cc6433fb0cfe8c4385"
+  },
+  "RDSP2009.dbc": {
+   "bytes": 14856531,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 109
+    },
+    "proc_rea": {
+     "0303010223": 109
+    },
+    "rows": 109
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 109
+   },
+   "rows": 190926,
+   "sha256": "6704c2ad52186cab31903bea91301d7a4bf2783f5be2dda14981af925bcec7a9"
+  },
+  "RDSP2010.dbc": {
+   "bytes": 15268036,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 72
+    },
+    "proc_rea": {
+     "0303010223": 72
+    },
+    "rows": 72
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 72
+   },
+   "rows": 196014,
+   "sha256": "47960b7bef955ddaceb9a678e9233ec24eba7a467fb99482ea6d12eb49c3f03b"
+  },
+  "RDSP2011.dbc": {
+   "bytes": 15181331,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 92
+    },
+    "proc_rea": {
+     "0303010223": 92
+    },
+    "rows": 92
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 92
+   },
+   "rows": 195262,
+   "sha256": "af54813ccc1ee57cb05a2d676f390f26f4719534bf34cdad25f84901245aa715"
+  },
+  "RDSP2012.dbc": {
+   "bytes": 14609333,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 292
+    },
+    "proc_rea": {
+     "0303010223": 292
+    },
+    "rows": 292
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 292
+   },
+   "rows": 188128,
+   "sha256": "beb0372a2615932adcaf15e809216cc85497ab0a4e5526fd5f175d88a704d125"
+  },
+  "RDSP2101.dbc": {
+   "bytes": 15281896,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 146
+    },
+    "proc_rea": {
+     "0303010223": 146
+    },
+    "rows": 146
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 146
+   },
+   "rows": 195978,
+   "sha256": "226547f04f23b9f18db84b402bcd02b66c47f37ebf366d534ad63abe5c5e7f3c"
+  },
+  "RDSP2102.dbc": {
+   "bytes": 14730967,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 113
+    },
+    "proc_rea": {
+     "0303010223": 113
+    },
+    "rows": 113
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 113
+   },
+   "rows": 191120,
+   "sha256": "c679e2a82871de03fc946682fc34ba5e6f25354f1237ac0248a01da006306291"
+  },
+  "RDSP2103.dbc": {
+   "bytes": 15251695,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 87
+    },
+    "proc_rea": {
+     "0303010223": 87
+    },
+    "rows": 87
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 87
+   },
+   "rows": 199489,
+   "sha256": "f631714d40a47ab461d9e1d219ae05e51e176d929a5c018f1083cd45de163d2b"
+  },
+  "RDSP2104.dbc": {
+   "bytes": 14650762,
+   "espec_17": {
+    "cnes_distinct": 3,
+    "marca_uti": {
+     "51": 188
+    },
+    "proc_rea": {
+     "0303010223": 188
+    },
+    "rows": 188
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 188
+   },
+   "rows": 192501,
+   "sha256": "3d1586db27ae09be6dfe7e541774a4692998bc2dc9ebd051ddab40a4a03ffbdf"
+  },
+  "RDSP2105.dbc": {
+   "bytes": 15374265,
+   "espec_17": {
+    "cnes_distinct": 5,
+    "marca_uti": {
+     "51": 150
+    },
+    "proc_rea": {
+     "0303010223": 150
+    },
+    "rows": 150
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 150
+   },
+   "rows": 202051,
+   "sha256": "aa7447a8686b7c24ad699b181bce7225cc5a6ae6b15530d87c68e8258330bfd4"
+  },
+  "RDSP2106.dbc": {
+   "bytes": 15398229,
+   "espec_17": {
+    "cnes_distinct": 4,
+    "marca_uti": {
+     "51": 204
+    },
+    "proc_rea": {
+     "0303010223": 204
+    },
+    "rows": 204
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 204
+   },
+   "rows": 201017,
+   "sha256": "7e42253f6676ccc70d58ca89ce30912f0356a98deaf2ccb25d3f4b742a9d619b"
+  },
+  "RDSP2107.dbc": {
+   "bytes": 15651610,
+   "espec_17": {
+    "cnes_distinct": 4,
+    "marca_uti": {
+     "51": 156
+    },
+    "proc_rea": {
+     "0303010223": 156
+    },
+    "rows": 156
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 156
+   },
+   "rows": 200591,
+   "sha256": "429bc327419e28e73728558adf8f83007cc14f7b69bf49a82da6c5662f24cab7"
+  },
+  "RDSP2108.dbc": {
+   "bytes": 15748366,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 87
+    },
+    "proc_rea": {
+     "0303010223": 87
+    },
+    "rows": 87
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 87
+   },
+   "rows": 201312,
+   "sha256": "cf6a9cf0cfeb508aa4e467f892bbdd4aad3a21ea6ce8206ba8cb04471256070e"
+  },
+  "RDSP2109.dbc": {
+   "bytes": 15398983,
+   "espec_17": {
+    "cnes_distinct": 3,
+    "marca_uti": {
+     "51": 58
+    },
+    "proc_rea": {
+     "0303010223": 58
+    },
+    "rows": 58
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 58
+   },
+   "rows": 196878,
+   "sha256": "1bebbd6a2a72146df2c1465040a63ebe49bd8cc936322e6d29f3c38ac380d59d"
+  },
+  "RDSP2110.dbc": {
+   "bytes": 15324314,
+   "espec_17": {
+    "cnes_distinct": 3,
+    "marca_uti": {
+     "51": 27
+    },
+    "proc_rea": {
+     "0303010223": 27
+    },
+    "rows": 27
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 27
+   },
+   "rows": 195013,
+   "sha256": "39e252c49cff03f25b1f131b2249070cfabc78ae42fe0843f9f5c453fadc23de"
+  },
+  "RDSP2111.dbc": {
+   "bytes": 15326784,
+   "espec_17": {
+    "cnes_distinct": 3,
+    "marca_uti": {
+     "51": 15
+    },
+    "proc_rea": {
+     "0303010223": 15
+    },
+    "rows": 15
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 15
+   },
+   "rows": 197590,
+   "sha256": "acf6a9bb25509cb2de0bc494ba29bb9afb642de966cda8f1432d7ad7dda7b938"
+  },
+  "RDSP2112.dbc": {
+   "bytes": 15969903,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 4
+    },
+    "proc_rea": {
+     "0303010223": 4
+    },
+    "rows": 4
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 4
+   },
+   "rows": 203150,
+   "sha256": "7f96f44bd8188eb0f7c3924149830449789343487322c03872c10ad88569317d"
+  },
+  "RDSP2201.dbc": {
+   "bytes": 15549230,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 23
+    },
+    "proc_rea": {
+     "0303010223": 23
+    },
+    "rows": 23
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 23
+   },
+   "rows": 199070,
+   "sha256": "8ae4e3a106dbdd27e7c1a75591f4f692255364d8238044451fb00b7d85346c68"
+  },
+  "RDSP2202.dbc": {
+   "bytes": 15047971,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 13
+    },
+    "proc_rea": {
+     "0303010223": 13
+    },
+    "rows": 13
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 13
+   },
+   "rows": 191763,
+   "sha256": "adde15599eb92152b61316c86122d4e0f3fa9580dff02a51bd4cec4ccc04d335"
+  },
+  "RJSP2201.dbc": {
+   "bytes": 621582,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 6
+    },
+    "proc_rea": {
+     "0303010223": 6
+    },
+    "rows": 6
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 6
+   },
+   "rows": 9912,
+   "sha256": "2ea4a600fec594ce4dfb00075e5ae29a72b378b3375946c3b74c8ff50b76c241"
+  },
+  "RJSP2202.dbc": {
+   "bytes": 599573,
+   "espec_17": {
+    "cnes_distinct": 1,
+    "marca_uti": {
+     "51": 20
+    },
+    "proc_rea": {
+     "0303010223": 20
+    },
+    "rows": 20
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 20
+   },
+   "rows": 9594,
+   "sha256": "cadf30eec97f970949f63522171143cbd87f6c0101abaa2f44e1a2d95894d060"
+  },
+  "RJSP2203.dbc": {
+   "bytes": 672103,
+   "espec_17": {
+    "cnes_distinct": 2,
+    "marca_uti": {
+     "51": 49
+    },
+    "proc_rea": {
+     "0303010223": 49
+    },
+    "rows": 49
+   },
+   "espec_not_in_leitos_cnv": {
+    "17": 49
+   },
+   "rows": 10948,
+   "sha256": "f85760f7cf7befa7507266736e5ae5bda02b9b92cf5a7a020db30dc4e2873100"
+  }
+ },
+ "leitos_cnv": {
+  "codes": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "51",
+   "52",
+   "64",
+   "65",
+   "74",
+   "75",
+   "76",
+   "77",
+   "78",
+   "79",
+   "80",
+   "81",
+   "82",
+   "83",
+   "84",
+   "85",
+   "86",
+   "87",
+   "88",
+   "89",
+   "90",
+   "91",
+   "92",
+   "93",
+   "94",
+   "95",
+   "96"
+  ],
+  "sha256": "040504bd1af5aae1e28d9384abad44dcece26d03b1886a5d6ccd578da93f0eda"
+ }
+}
