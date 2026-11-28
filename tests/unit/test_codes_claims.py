@@ -8,6 +8,7 @@ is removed, with an issue saying what was consulted.
 
 from __future__ import annotations
 
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -16,6 +17,7 @@ import yaml
 
 import omnisus as sus
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
+from omnisus.transforms.cnv import cnv_map, parse_cnv
 
 DICIONARIOS = Path(sus.__file__).parent / "data" / "dicionarios"
 
@@ -63,7 +65,6 @@ def test_a_map_nothing_backs_is_gone(dataset, name) -> None:
 @pytest.mark.parametrize(
     ("dataset", "name"),
     [
-        ("sinasc_nascidos_vivos", "locnasc"),
         ("sinasc_nascidos_vivos", "sttrabpart"),
     ],
 )
@@ -104,6 +105,8 @@ def test_esc2010_labels_are_the_ones_the_estrutura_do_sim_writes(name, page) -> 
 
 
 SINASC_ESTRUTURA_1996_2019 = "sinasc-0ffc45994687"
+SINASC_MANUAL_DA_DN_2022 = "sinasc-5956ea4d8e89"
+SINASC_TAB = "sinasc-tab-de43d0c99630"
 
 SINASC_CNV_MAPS_SAME_MEANING = [
     "origem",
@@ -166,7 +169,7 @@ def test_stdnnova_takes_the_labels_of_the_document(dbc_fixture) -> None:
     assert all(i["status"] == "resolved" for i in field["x-metadata"]["issues"])
 
 
-@pytest.mark.parametrize(("name", "code"), [("locnasc", "5"), ("sttrabpart", "3")])
+@pytest.mark.parametrize(("name", "code"), [("sttrabpart", "3")])
 def test_a_code_the_cnv_misses_stays_open_with_the_document_that_gives_it(name, code) -> None:
     field = _field("sinasc_nascidos_vivos", name)
     (issue,) = [
@@ -175,10 +178,60 @@ def test_a_code_the_cnv_misses_stays_open_with_the_document_that_gives_it(name, 
     assert issue["status"] == "open" and SINASC_ESTRUTURA_1996_2019 in issue["description"]
 
 
-@pytest.mark.parametrize("name", ["locnasc", "sttrabpart"])
+@pytest.mark.parametrize("name", ["sttrabpart"])
 def test_the_open_sinasc_conflicts_cite_the_manual_of_the_dn(name) -> None:
     field = _field("sinasc_nascidos_vivos", name)
     (issue,) = [
         i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
     ]
     assert "sinasc-5956ea4d8e89" in issue["description"]
+
+
+def test_locnasc_5_takes_the_label_of_the_manual_and_the_estrutura(dbc_fixture) -> None:
+    """#246, decision 1: lines 56 and 57 of NASCIDO.def bind LOCNASC to LOCOCOR.CNV, whose
+    last line is a tabulation catch-all, "Ignorado 0,5,6,7,8,9". The manual of the DN
+    (p. 23) writes "5. Aldeia indígena" and the Estrutura (p. 1) "5- Aldeia Indígena", and
+    740 of the 13,091 rows of DNRR2022.dbc publish 5. The map is kept by hand: the lines
+    of the CNV as the CNV writes them, with 5 in the words of the manual. The claim cites
+    the three sources and says which code comes from which; the field left `campos`, so
+    this test is what compares the map with the CNV."""
+    label = "Aldeia indígena"
+    sinasc = DICIONARIOS / "sources/cnv/sinasc"
+    lines = (sinasc / "NASCIDO.def").read_text(encoding="latin-1").splitlines()[55:57]
+    assert [[part.strip() for part in line.split(",")[1:]] for line in lines] == [
+        ["LOCNASC", "1", "LOCOCOR.CNV"]
+    ] * 2
+    lococor = cnv_map(parse_cnv((sinasc / "LOCOCOR.CNV").read_bytes().decode("latin-1")))
+    assert {code for code, text in lococor.items() if text == "Ignorado"} == set("056789")
+    assert _labelled_rr_2022(dbc_fixture, "locnasc") == {
+        ("1", "Hospital"): 11591,
+        ("2", "Outro Estab de Saúde"): 72,
+        ("3", "Domicílio"): 606,
+        ("4", "Outros"): 81,
+        ("5", label): 740,
+        ("9", "Ignorado"): 1,
+    }
+    field = _field("sinasc_nascidos_vivos", "locnasc")
+    assert field["x-decode"] == {**lococor, "5": label}
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["method"], claim["status"], claim["reviewer"]) == (
+        "cnv-read",
+        "verified_in_source",
+        "marcelaqs",
+    )
+    assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
+        (SINASC_TAB, []),
+        (SINASC_MANUAL_DA_DN_2022, [23]),
+        (SINASC_ESTRUTURA_1996_2019, [1]),
+    ]
+    tabwin, manual, estrutura = (e["locator"] for e in claim["evidence"])
+    assert tabwin.endswith("LOCOCOR.CNV") and '"5. Aldeia indígena' in manual
+    assert estrutura.endswith('5- Aldeia Indígena."')
+    assert all(f"'{code}'" in claim["note"] for code in "05678")
+    assert [(i["id"], i["status"]) for i in field["x-metadata"]["issues"]] == [
+        ("cnv-difere-do-mapa-anterior", "resolved")
+    ]
+    vinculos = json.loads((DICIONARIOS / "sources/cnv/vinculos.json").read_text("utf-8"))[
+        "datasets"
+    ]["sinasc_nascidos_vivos"]
+    assert "locnasc" not in vinculos["campos"] and "LOCOCOR.CNV" in vinculos["sem_cnv"]["locnasc"]

@@ -98,7 +98,9 @@ junto com a quantidade).
 `method: cnv-read` marca um mapa de códigos mantido à mão a partir de um CNV oficial e de
 outra fonte registrada, quando o gerador não pode escrever o campo: a afirmação traz uma
 evidência por fonte, e a nota diz qual código vem de qual. É o caso de `espec` no RD e no
-RJ do SIH (as linhas de `LEITOS.CNV` e o `17` da Portaria SAES/MS nº 245/2020).
+RJ do SIH (as linhas de `LEITOS.CNV` e o `17` da Portaria SAES/MS nº 245/2020) e de
+`locnasc` no SINASC (as linhas de `LOCOCOR.CNV` e o `5` do manual de preenchimento da DN e do
+SINASC - Estrutura).
 
 `verified_in_source` **não confirma** vigência nos dados. A dimensão separada
 `applicability.status` pode ser `unknown`, `confirmed`, `conflicting` ou

@@ -66,7 +66,7 @@ schema:
         '2': Outro Estab de Saúde
         '3': Domicílio
         '4': Outros
-        '5': Ignorado
+        '5': Aldeia indígena
         '6': Ignorado
         '7': Ignorado
         '8': Ignorado
@@ -74,22 +74,39 @@ schema:
       x-metadata:
         claims:
         - target: /field/codes
-          value_sha256: 1f80da7ba19d0f9baea1f3134493642467c49f8b6bd30fda1869880776ac1dfa
-          status: conflicting
-          checked_at: '2026-09-21'
-          method: cnv-parse
-          reviewer: scripts/metadados/gerar_decode_cnv.py
+          value_sha256: 105821a845bf700e5fff65fc5f67462990b0fa13538d9b968850c40051336d93
+          status: verified_in_source
+          checked_at: '2026-11-26'
+          method: cnv-read
+          reviewer: marcelaqs
           evidence:
           - source_id: sinasc-tab-de43d0c99630
             pages: []
             locator: 'NASCIDO.def: TLocal Ocorrencia, LOCNASC, 1, LOCOCOR.CNV; Arquivos Auxiliares para Tabulação
               a partir de 1996/LOCOCOR.CNV'
-          note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
+          - source_id: sinasc-5956ea4d8e89
+            pages:
+            - 23
+            locator: 'campo 7, Local da ocorrência: "5. Aldeia indígena: se o nascimento ocorreu em aldeia indígena."'
+          - source_id: sinasc-0ffc45994687
+            pages:
+            - 1
+            locator: 'posição 2, LOCNASC: "Local de nascimento: 1 – Hospital; 2 – Outros estabelecimentos de saúde;
+              3 – Domicílio; 4 – Outros; 5- Aldeia Indígena."'
+          note: 'Mapa mantido à mão (pull request 246 do repositório, decisão 1 do mantenedor). ''5'' vem dos dois
+            documentos, o manual de preenchimento da DN e o SINASC - Estrutura; o rótulo é o texto do manual, "Aldeia
+            indígena", sem o número, como o CNV escreve os outros. LOCOCOR.CNV junta o 5 aos códigos ignorados, na linha
+            "Ignorado 0,5,6,7,8,9". Os outros códigos e rótulos são as linhas de LOCOCOR.CNV,
+            como o CNV as escreve: ''0'', ''6'', ''7'' e ''8'', que nenhum dos dois documentos lista, continuam com o
+            "Ignorado" dessa linha, e o ''9'' também (o manual escreve "9. Ignorado"; o Estrutura não lista o 9).
+            tests/unit/test_codes_claims.py compara o mapa com o CNV empacotado. A revisora conferiu os dois documentos
+            em 2026-11-26; o mapa foi escrito em 2026-11-28. O mapa anterior ao CNV, sem fonte, está no issue
+            cnv-difere-do-mapa-anterior.'
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''2'' era ''Outro estabelecimento de
-            saúde'', CNV ''Outro Estab de Saúde''; ''5'' era ''Aldeia indígena'', CNV ''Ignorado''. Em 2026-11-26 a revisora marcelaqs conferiu o sinasc-0ffc45994687 (p. 1): o campo tem ''5- Aldeia Indígena'', código que o CNV rotula como Ignorado. O manual de preenchimento da DN, 4ª edição (sinasc-5956ea4d8e89, p. 23), também dá ''5. Aldeia indígena: se o nascimento ocorreu em aldeia indígena''. Fica aberto: o mapa vem do CNV, e decidir que o documento prevalece sobre o CNV cabe ao mantenedor.'
+            saúde'', CNV ''Outro Estab de Saúde''; ''5'' era ''Aldeia indígena'', CNV ''Ignorado''. Em 2026-11-26 a revisora marcelaqs conferiu o sinasc-0ffc45994687 (p. 1): o campo tem ''5- Aldeia Indígena'', código que o CNV rotula como Ignorado. O manual de preenchimento da DN, 4ª edição (sinasc-5956ea4d8e89, p. 23), também dá ''5. Aldeia indígena: se o nascimento ocorreu em aldeia indígena''. Resolvido em 2026-11-28: o mantenedor decidiu que os dois documentos valem para o código 5. ''5'' recebe o rótulo ''Aldeia indígena'', e o mapa de LOCNASC passa a ser mantido à mão, fora dos campos que scripts/metadados/gerar_decode_cnv.py gera (sem_cnv em sources/cnv/vinculos.json). No DNRR2022.dbc (tests/fixtures/dbc/sinasc_rr_2022_mini.dbc), 740 das 13.091 linhas trazem 5 e 1 traz 9.'
     - name: contador
       type: integer
       label: Contador
