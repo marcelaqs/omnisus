@@ -1,0 +1,191 @@
+# RD: `uti_mes_to` 999 and `regct` 7118
+
+Counts taken on 2026-11-27 and 2026-11-28 from 114 `RD*.dbc` files of
+`ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/`, downloaded on those
+days, to answer two checks left open in the review of `sih_aih_reduzida`: whether the RD
+publishes `999` in `UTI_MES_TO`, and whether it publishes `7118` in `REGCT`. `medir.py`
+wrote `medidas.json`:
+
+    uv run --locked python evidence/2026-11-28-rd-uti-mes-to-regct/medir.py \
+        DIR evidence/2026-11-28-rd-uti-mes-to-regct/medidas.json
+
+The files: the 27 UFs of 2008-01, 2012-01, 2016-01 and 2025-12 (108 files, all listed by
+the server), and `RDSP` of 2014-12, 2015-02, 2019-02, 2020-01, 2023-03 and 2023-06. In all,
+4,939,510 AIH and 359,203,926 bytes. The seven `RDSP` files of
+`evidence/2026-11-24-rd-sp-uti-cid-raca/` have the SHA-256 recorded there. The script reads
+the DBF records directly (`omnisus.sources.datasus_ftp.dbc.decompress_bytes`), so the values
+are the published text. The `regct` decode map is the one of
+`src/omnisus/data/dicionarios/sih_aih_reduzida.yaml` at SHA-256
+`6ac55ee9c5320b9c4ec68924a8a3193ed7489c112bcbf432b52c86e177a356b8`, `x-version` 2.30.2 (20 codes: `0000`,
+`7010` and `7100` to `7117`, the lines of `CNV/REGCT.cnv`).
+
+## Where the two values come from
+
+- **999.** No registered layout mentions it. `IT_SIHSUS_1603` (Tabela 1, line 15)
+  describes `UTI_MES_TO` as numeric(3), "Quantidade de dias de UTI no mês.". `RD2008.DEF`
+  line 236 links the field to `CNV\DIARIASUTI.CNV`, which the repository does not package.
+  The member of `TAB_SIH.zip` read on 2026-11-27 (zip of 6,085,117 bytes, server date
+  2026-11-24 21:11, SHA-256
+  `2491e8d4f2db2cc2963006a589157cd55015ad26c2d8eaf8666320f98fcd9bef`; member SHA-256
+  `a773ad817af4ed7a8611ffaf427f5bce3df27dd5a3ab2f1e219eb0ded0a4a998`, the one recorded in
+  `evidence/2026-11-15-tab-sih-republicado/members.csv`) has two lines: `Sim` for the range
+  `001-999` and `Não` for `000`. There 999 is the upper bound of a range, not a code.
+- **7118.** `CNV/REGCT.cnv` (SHA-256
+  `64160f575228701a0cc939bdff7dc42363c0549f7a14d2ca07f0ee491bd65bc1`, equal in the zip read
+  on 2026-11-27) has no line for 7118: its highest code is 7117. In the dictionary, the
+  entry `'7118': NÃO INFORMADO` belongs to the field `etnia`, whose CNV opens with the range
+  `0000-9999`; the decode map of `regct` ends at `7117`.
+
+## What the counts show
+
+- **`uti_mes_to` 999.** No AIH has 999 in any of the 114 files. The field is N3 in all of
+  them and always a number. The highest value is 183 (`RDRJ1601`); 67 AIH have 100 or more
+  (none in 2008-01, where the highest is 91) and 7,105 have more than 31, of 345,591 with a
+  value above zero. Values above 31 appear in every competence read.
+- **Sibling fields.** All 114 headers have `UTI_MES_IN`, `UTI_MES_AN`, `UTI_MES_AL` (N2)
+  and `UTI_INT_TO` (N3). The first three are zero in every AIH. `uti_int_to` never reaches
+  100 (highest 99, `RDSP2001`) and has no 999.
+- **`regct` 7118.** No AIH has 7118 in any of the 114 files. The field is C4 in all of
+  them and never blank.
+- **`regct` values.** Nine values appear, all in the decode map: `0000` 3,477,481,
+  `7102` 1,223,556, `7109` 86,175, `7104` 85,279, `7106` 35,145, `7110` 21,809, `7113`
+  5,437, `7105` 290 and `7112` 4,338. No published value lacks a label. `7113` appears only
+  in 2025-12. Eleven codes of the map appear in no file read: `7010`, `7100`, `7101`,
+  `7103`, `7107`, `7108`, `7111`, `7114`, `7115`, `7116` and `7117`.
+
+What this does not settle: the other competences and, outside São Paulo, any month other
+than the four read.
+
+## Per competence
+
+| Competence | Files | AIH | uti_mes_to max | rows > 31 | rows >= 100 | rows = 999 | REGCT 7118 | REGCT values (rows) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 2008-01 | 27 | 651615 | 91 | 291 | 0 | 0 | 0 | `0000` 566118, `7102` 79525, `7104` 1562, `7106` 434, `7109` 3976 |
+| 2012-01 | 27 | 918846 | 130 | 1333 | 13 | 0 | 0 | `0000` 681155, `7102` 186331, `7104` 8579, `7105` 4, `7106` 9891, `7109` 24844, `7110` 6792, `7112` 1250 |
+| 2014-12 | 1 | 193789 | 130 | 401 | 2 | 0 | 0 | `0000` 95972, `7102` 88690, `7104` 9127 |
+| 2015-02 | 1 | 195822 | 111 | 438 | 4 | 0 | 0 | `0000` 96407, `7102` 90521, `7104` 8894 |
+| 2016-01 | 27 | 919331 | 183 | 1443 | 24 | 0 | 0 | `0000` 658945, `7102` 198824, `7104` 9205, `7105` 50, `7106` 14911, `7109` 26569, `7110` 9764, `7112` 1063 |
+| 2019-02 | 1 | 203599 | 135 | 381 | 2 | 0 | 0 | `0000` 97003, `7102` 95618, `7104` 10787, `7105` 59, `7106` 132 |
+| 2020-01 | 1 | 215766 | 153 | 397 | 3 | 0 | 0 | `0000` 104095, `7102` 100322, `7104` 11127, `7105` 64, `7106` 158 |
+| 2023-03 | 1 | 233649 | 106 | 448 | 1 | 0 | 0 | `0000` 132100, `7102` 91673, `7104` 9635, `7106` 241 |
+| 2023-06 | 1 | 232263 | 181 | 475 | 5 | 0 | 0 | `0000` 122310, `7102` 98775, `7104` 10981, `7106` 197 |
+| 2025-12 | 27 | 1174830 | 136 | 1498 | 13 | 0 | 0 | `0000` 923376, `7102` 193277, `7104` 5382, `7105` 113, `7106` 9181, `7109` 30786, `7110` 5253, `7112` 2025, `7113` 5437 |
+
+## Files
+
+| File | SHA-256 | Bytes | AIH | uti_mes_to max |
+| --- | --- | ---: | ---: | ---: |
+| RDAC0801.dbc | `fde119624f5ba8400fdd25f086be6180bb25440c141dbf9ae634b7f417d0f28d` | 114153 | 2087 | 27 |
+| RDAC1201.dbc | `ed1af51e4aa132693c8c652d8173faed293f390d254413dca9ce32b4cb3a4c0b` | 282290 | 3945 | 28 |
+| RDAC1601.dbc | `f65e80451faf6663187f826b66176a45eb0c35b1000f91ea5a4180246f965ac2` | 260204 | 3520 | 65 |
+| RDAC2512.dbc | `0866ca3264e1fef1431de70e0f857b65bccea6c050163f3cfa99871604f68fd8` | 326478 | 4527 | 136 |
+| RDAL0801.dbc | `8b72541b774a0f125905995d88578f1ef8e7bcaf0347836f584ad4d2a1c518cc` | 649292 | 12168 | 27 |
+| RDAL1201.dbc | `d6f36f496e516ba5f65fefdc3d29f9cf4e3fb55d4d1506c1d506216fad2d8cfb` | 986632 | 15179 | 42 |
+| RDAL1601.dbc | `5e2bad3270033b49f1272eae1ef37b76980581d890829c08c48f28df4a1cb20b` | 972093 | 13902 | 56 |
+| RDAL2512.dbc | `e4ef6f7f2a578fccd9909de8e9d56aeb6b6948ed34dc4b02f26c4d45082ba5ca` | 1051577 | 14176 | 98 |
+| RDAM0801.dbc | `70fc4614593552d58e2a0e13858170d8c5babfdeb6fed5bdfc73fb55207bd2f1` | 507103 | 9325 | 31 |
+| RDAM1201.dbc | `0d7c3c186c3867d40d8ea1307b56bd7bb98a85536a6d0e0a947b4db071ab194d` | 836846 | 12944 | 74 |
+| RDAM1601.dbc | `cfe4763cbc5276b7cb086700307be9f5df3f3f25f66252d5dce6197faa527915` | 892456 | 13492 | 97 |
+| RDAM2512.dbc | `b41cf5ca53da64b4481f57662072357327bb9925280e3d0cd73addbb44a201da` | 1547730 | 21768 | 99 |
+| RDAP0801.dbc | `00afc30235fc8ada93c98a4ebe81a583ea9054bfef4198b03ee42502197ae2fc` | 138343 | 2386 | 10 |
+| RDAP1201.dbc | `e84f467afd4871ff4d17fdbba7ffbf5da0c39b9a67075fb33543f28371f9e10d` | 204119 | 3055 | 31 |
+| RDAP1601.dbc | `03ddc29ee17f82b348cecb3c8109bc3624ea2860d89663cae8a9896319266a70` | 167039 | 2607 | 33 |
+| RDAP2512.dbc | `a530c43b1cca7995011c9121fa8be834c0022866c7446bbfd041f0f28b29c79e` | 331879 | 4900 | 79 |
+| RDBA0801.dbc | `3b6a630a91cd958d07ad42d9f02b510f39d54bfd5f5e560cc8bbb27a70078813` | 2442824 | 41659 | 61 |
+| RDBA1201.dbc | `92b8420453f03265916a93c1bc64f1ee104fc6ccb739395991d7cba51e8c7457` | 4488183 | 68584 | 122 |
+| RDBA1601.dbc | `1d689f5fd3aaa7a389335a12ca8134a5bb05c9aed2b3fb23566acd16721724a6` | 4635410 | 64985 | 101 |
+| RDBA2512.dbc | `0e7c0ab9b4631c47f5a2f89f84bbc8f4880e9dd1d18392295b9b20647fc50619` | 5706040 | 77304 | 68 |
+| RDCE0801.dbc | `0f28c1f696c373c26ac1e051b827787427cd8c1455167192edb703e99ec0d7f8` | 1717859 | 29823 | 84 |
+| RDCE1201.dbc | `beaf250bdedf9c30afe75397b91a08f53cbc42023b53207f01e71b19301112bf` | 2523916 | 38134 | 114 |
+| RDCE1601.dbc | `fd8d7de66376b83d17ee6fcab6641d94f89239973d6970d08db1d5ff88dcf9ae` | 2661764 | 38221 | 119 |
+| RDCE2512.dbc | `c06b42d30e7f0607330e16b3b7229a0b21cfdec1e01623dfe7b36d68c21e0c66` | 3620722 | 48468 | 112 |
+| RDDF0801.dbc | `d8fd2676df3696d9d338f804f931cc538878f3e1b77933caed9ff38e116c704a` | 463062 | 7754 | 65 |
+| RDDF1201.dbc | `ee24bdfcbd6279ab879141b66bd0aa6a6196963c870fd15dfe7249ecf9733a7e` | 1081971 | 15111 | 93 |
+| RDDF1601.dbc | `3048ecf0c9147f507725f44d4dfb03a75a2127415a2f154d2009066e34a6d583` | 983353 | 13128 | 102 |
+| RDDF2512.dbc | `d4c111a1fd34debe6b793aeec306e0f38cfd729d8326beba6d162f234c3e8730` | 1632157 | 20360 | 94 |
+| RDES0801.dbc | `18ba01c3ca88b556a208c689d81bf58c19be8e73f949f4b13de1bc93a5bce3d0` | 599540 | 9502 | 57 |
+| RDES1201.dbc | `4f47bc2a6bf69a9fba2ffa9da5b1b9b7262200e729dd4c0e57626ba1c7897c2f` | 1281519 | 17509 | 99 |
+| RDES1601.dbc | `12111b4880aa7c397a0a43a16d946529ff1efe00a02feb7e378c94f74a99874a` | 1451513 | 18956 | 65 |
+| RDES2512.dbc | `ac8c7142b1133ee6c44adf0fa867fc9335d0d1077d43cd74f1f2a7a6430ff8e3` | 1982866 | 25613 | 61 |
+| RDGO0801.dbc | `f117d0e81ef106ac791c5d5a9e04264c8bb908def51a1d11d4930ab44e2eff9f` | 1565822 | 26465 | 59 |
+| RDGO1201.dbc | `5b6c23df17c1f49e633e77f059d657ef24ba3d4a477dcdd0a4a7cc8bceb608e0` | 1905518 | 28427 | 59 |
+| RDGO1601.dbc | `9c07f45d2ef5577dba3b9ca93d3cb605e47e49d4285641a58876fcd38f29989f` | 2008223 | 28199 | 59 |
+| RDGO2512.dbc | `fe36a273314aafd24e755f12e012ea98b16796466e717758c32b07312bcf303d` | 2791654 | 37218 | 71 |
+| RDMA0801.dbc | `4364e04d3ce87e3340195e08fdb36bb0a6e654f05f0ff963882fc320d94ffe27` | 1064563 | 21417 | 64 |
+| RDMA1201.dbc | `155e4e550c8513a80a226231201b719a73b4e2e3bc828f6b4e79128085d99233` | 2078201 | 33818 | 61 |
+| RDMA1601.dbc | `76cf5327a99f241b7704edb933af3b3f5872bf2ad273624d32733403691114fc` | 2328574 | 35088 | 61 |
+| RDMA2512.dbc | `f63141a68a291ceee339b892790835574c5d388a5b05ffeab6ca5fc4c5491925` | 2758504 | 40293 | 63 |
+| RDMG0801.dbc | `06ce4974f52e58b1ebade62a7e1e4bc10c87b9ec2bea5498fc16188a4c7ad204` | 4357193 | 67509 | 59 |
+| RDMG1201.dbc | `a2073e91a6aeb39852cc0467dabe8356c7ab3307220acaf14755dc7466c97012` | 7229369 | 96614 | 90 |
+| RDMG1601.dbc | `e146c2f419fc6394ca21f6ee2864b95cd2fbdaf7592a980c1bb36130f6a34943` | 7605837 | 97833 | 153 |
+| RDMG2512.dbc | `1f8e56e7aee39a4a0e2486f03413386061f197252ecd25000c48a423fc368cd8` | 10040304 | 128022 | 123 |
+| RDMS0801.dbc | `09d6fd890a4b290cb88e12e00c66aaba475964c3f7d13a70388d873305a1c7c0` | 618944 | 9636 | 59 |
+| RDMS1201.dbc | `43fadff2f71290c242d77fafd49e0d734fd9a61c1a3da13cd033c1896d7ddcc2` | 849807 | 11936 | 60 |
+| RDMS1601.dbc | `b5f29d49154e3e026e291a245961fbfb58d5c9e16ae10b09da280d9899ef5910` | 1041446 | 13732 | 68 |
+| RDMS2512.dbc | `a9956bdae4dd6abaed71e37dfc25eda719571a8c52356fd0f4e021cd17240f50` | 1256472 | 16193 | 67 |
+| RDMT0801.dbc | `b596449d6bc34c53092f2478ee43135fe2204055e6e16fd29f247a9ef5331383` | 623545 | 9975 | 57 |
+| RDMT1201.dbc | `e6ca9867c4a97c17e9332f73a06a9aa01c8252e9fe1fb6b28c45ffcdc75377c6` | 936597 | 13512 | 59 |
+| RDMT1601.dbc | `86857d02c2ec68fd9910c3a7e725e802b17adc0009874d9abdcdaf8e15f2d949` | 1161922 | 15805 | 54 |
+| RDMT2512.dbc | `c8444a494d944eaabe1f9af9793dc8b7e2057091b9ed2fe667b855f033019c94` | 1540767 | 20653 | 79 |
+| RDPA0801.dbc | `03337aeb2b84a9dbbc7521a1664b43ba4237439fbe7e244a36a55836cb941326` | 2050198 | 38628 | 49 |
+| RDPA1201.dbc | `0f2f00d540e3e5a8468821763728155657bd2b634147ead02af2e9b62806ae31` | 2607609 | 42778 | 67 |
+| RDPA1601.dbc | `6d9ea813af736595931ae6b6bd13a13398d634bc01343fded0bdf8cb203b261e` | 2420770 | 37348 | 57 |
+| RDPA2512.dbc | `6d5896f3f5f6adf9524166a834500f4789e08792fb0c34bf805f5ad0713d0c51` | 3414115 | 48817 | 59 |
+| RDPB0801.dbc | `88f23e8fca1d3a956e362fc29d6786b30f24403e568ab0bdf7164aa07add7cba` | 1049842 | 17126 | 56 |
+| RDPB1201.dbc | `cbfc84b31b0978fa13b0148f1bbd276dd5d071521d9850726f7368820176e989` | 1141324 | 16259 | 51 |
+| RDPB1601.dbc | `8ac64383afdc3a71250bf2cbcd13f50951f3585628173ebc635353974fe972cb` | 984103 | 13646 | 53 |
+| RDPB2512.dbc | `989bb9fcaf953703d40269b500f13dd3508604ed92c1f001d4e50be4e1b14546` | 1501361 | 19260 | 89 |
+| RDPE0801.dbc | `a19eee31d7c75c70dcc61d8942da2de3a84c689b3592987cedc3127112b99cc7` | 1489520 | 25390 | 59 |
+| RDPE1201.dbc | `35dad3dfec6c394e2003a48f6104b956b0101a1b26482b4cd27aca5b8d572772` | 2980539 | 43116 | 125 |
+| RDPE1601.dbc | `f68f634da1d45b6bb3f60f989613c0566f7c394f071fa1b7c4a6f3874bbbe674` | 3182632 | 43928 | 144 |
+| RDPE2512.dbc | `6e73e0169857423e23c5c7b2b8634a4c048cdbd019b1ceae61e31bb9a4e69d2b` | 4153035 | 55935 | 70 |
+| RDPI0801.dbc | `1da2d97af82a734078782f10104142035013d9fa68014f44c976c976732107df` | 927125 | 15878 | 59 |
+| RDPI1201.dbc | `38f79bd22a53a781bf7a28b7d26aa491a17594c3312334fb184403f23b62a29a` | 1289545 | 18994 | 88 |
+| RDPI1601.dbc | `2f7ea8f2e0b8e7e6f8a3d0b00b9db2ba0bdf7cacc52a385ba1773fd56657cccb` | 1272221 | 18038 | 46 |
+| RDPI2512.dbc | `3720bb785b33df481d572872e861a9e5625de32747ed257ccf5f937251d2bfce` | 1428355 | 19014 | 51 |
+| RDPR0801.dbc | `be9aec235d3ffd2481cb482a832dd3fa71e8b156352f95fdcc64e9b5574cf825` | 3206594 | 51180 | 73 |
+| RDPR1201.dbc | `0a935da7c6bb8b11877c571937db4ba305e4aa91997a7c9c02aa3b7860ebc8fc` | 4678129 | 64290 | 84 |
+| RDPR1601.dbc | `783591a7530ee2cb97c56d434e7d1a40d8dc6e293288466cf084a551a748a3ec` | 4812925 | 63458 | 101 |
+| RDPR2512.dbc | `df5e4ede0d85f9fe7a4605445b11333cec5a6d0b1b4f2680713e16b84a9c8101` | 6875278 | 89610 | 105 |
+| RDRJ0801.dbc | `6a362242dcb881099929eef7a13f75a92ee1b46cbc1f98ff996354afceb37b49` | 1970037 | 34859 | 90 |
+| RDRJ1201.dbc | `742d3fd52030906d21a986a86d2b10b5e48c8d19ff5ebcff85db48435e41cd8a` | 3636795 | 53068 | 111 |
+| RDRJ1601.dbc | `ff0af5d0359ddd7091395eea46e1f01d8f5e27c642a2d739e456c2f4eb727033` | 4187567 | 56877 | 183 |
+| RDRJ2512.dbc | `93d6e196b52c1a5864437e6a97f8a041af71642dfd082179e4247719e61bd36b` | 5909820 | 76232 | 134 |
+| RDRN0801.dbc | `f3e93d1c76123edc4a8c9fb986e9ca9c2e7186bbf82c62b981f38b74f6250cbf` | 573433 | 9916 | 62 |
+| RDRN1201.dbc | `437863e108abb46a879a343ccc9a7d790146b94af1bb1d4f236598f6d0b74880` | 896455 | 13551 | 54 |
+| RDRN1601.dbc | `8815ac4345f7951e530dff5b50e3593a7572c0eacd62b8f9e1a0de04c80176ca` | 924489 | 12793 | 71 |
+| RDRN2512.dbc | `6453c7d81a3d6b5b24cdc548af3e6323b077803665281b5b481f505e1fd5ea3f` | 1293284 | 17704 | 112 |
+| RDRO0801.dbc | `c50dbfb6239025119bf2eb79e482ebb4284fc2f4e48fc240f37bca979ff6f868` | 223052 | 4142 | 0 |
+| RDRO1201.dbc | `df9b50a9d2142cc7029f7edb6d205f694f3e37ac1c6eaa9db0588ee183400586` | 481274 | 7998 | 51 |
+| RDRO1601.dbc | `baede1b3f33727ff239a2c60a318c23f0adec27eeab1c458c473184eee545b7d` | 612200 | 8956 | 181 |
+| RDRO2512.dbc | `25fdb0528ed640dd9ebfd32dc0c2907dc66ce47212a3c1da1a270235af5b67e4` | 804859 | 11527 | 58 |
+| RDRR0801.dbc | `ad3817afbe19f8087415f5204a677893dee767a802de093d84bb193577c2d4e7` | 75358 | 1475 | 30 |
+| RDRR1201.dbc | `3f1ebc51b1e2aca35348d7440a982576c6fdd446762fb9a57373bd3e3e63eb48` | 155584 | 2289 | 50 |
+| RDRR1601.dbc | `b5426ef0c50304897e6e92b6615a0b8382f61814ccd78f3b15f12fef1dfb98b5` | 196012 | 2748 | 54 |
+| RDRR2512.dbc | `75988926198221313d854ca8bf80e23007b2a110c3385d3fb64ab2222aff5df9` | 157616 | 2128 | 55 |
+| RDRS0801.dbc | `8d25b1e34bffb60c8abb175ef39af91ff4f5f3327d3bbdf353b9170c118c651a` | 2780100 | 41729 | 59 |
+| RDRS1201.dbc | `8bd1b90790e4bfd08853185871d635b32bacefac6615f3e3291e2de98ca775e9` | 4268871 | 55459 | 118 |
+| RDRS1601.dbc | `f089f0e203ea92992aca2c9aaba774f820254bbc211aba71d2dd5ee3ce58495e` | 4516083 | 58456 | 99 |
+| RDRS2512.dbc | `baa03998fc041c61b3ad2fcb24c91ff0549f85a628c65a5df60ab7a4d871783e` | 5486232 | 70967 | 128 |
+| RDSC0801.dbc | `7757608f37219b9d284dcdbe2f4641d216ed6c13bb6313a03a8f0738affcf7d2` | 1619551 | 23728 | 59 |
+| RDSC1201.dbc | `a2802efdfe8f508ec767d4674d5769dbce6afc4f26776462f5b03aad564d8bdf` | 2440187 | 32159 | 90 |
+| RDSC1601.dbc | `f2f89e69f67f2ae87cd4efa7ec44215423448d56d9c338e78f2e4ba47c590a43` | 2825319 | 36944 | 101 |
+| RDSC2512.dbc | `9cc6322a4167d3836a1fc229872a07ae6e8ad20f648bded0052d3242d7349a22` | 4382328 | 55204 | 61 |
+| RDSE0801.dbc | `4abed05e11b06f28275772417f711da7d7cc4d561fafc4d39cb2a57f97ba631f` | 309622 | 5832 | 28 |
+| RDSE1201.dbc | `133fe250bdcfbbca55220da3e7d5024eb004d55e5e0cd0ecb22b3e204bede33c` | 516538 | 7380 | 67 |
+| RDSE1601.dbc | `559316bca769156357476f693ac66713c8e8ad9d715b861de46af67165e975f2` | 496048 | 7203 | 80 |
+| RDSE2512.dbc | `272cb12866dc82443fe21f94ab23699acb60ead0fb223320dabcc66c400f845a` | 797886 | 10417 | 70 |
+| RDSP0801.dbc | `f2cba06b3b3d4d13d6ed3cfe69f83e46443f3e1700bc694e637fa5847c0671e9` | 7799792 | 125361 | 91 |
+| RDSP1201.dbc | `3edf83e541c3287df66110c3222092d6f1c98b317a6f09804555d80f7244bf07` | 13891006 | 193264 | 130 |
+| RDSP1412.dbc | `c744f524f7a98dc02b30aef346d0efa693dc00d5baeb29a47e378876b808c3ec` | 14214477 | 193789 | 130 |
+| RDSP1502.dbc | `8011928ad0cb9119ba6ef1c95df8471a44e52a70855624810b3c30ae79b5e8b6` | 14899189 | 195822 | 111 |
+| RDSP1601.dbc | `c14bcae03b5adecadd84f7983a30faef0ceaeea0e1a3bdf7d6cfec14f8b3c7f2` | 14818924 | 193621 | 118 |
+| RDSP1902.dbc | `4653fb8f96fefacfb3a47f8f7fc1b1d1591c56be0c9800fbe0fcddf82dc254a0` | 15690982 | 203599 | 135 |
+| RDSP2001.dbc | `ea611bb554aa00062c8aee2c3041d3065b2635938cdd32d6ce6636cb91436478` | 17083017 | 215766 | 153 |
+| RDSP2303.dbc | `e6c920afdb0f432f93724893a731b22cb9303c2bed8a3342ed0c161f2e600b6b` | 18077745 | 233649 | 106 |
+| RDSP2306.dbc | `e9507c7429b4dc8990639b90b70e2ea38d42547dde7594cf1f327aae8587a95b` | 18001348 | 232263 | 181 |
+| RDSP2512.dbc | `976373cd79219b8287dcb3815f5a7b7b85c40ce542dce903e44591bc05159aa5` | 18300555 | 230747 | 99 |
+| RDTO0801.dbc | `ba2e15f2f1b53a42e35c014ddaca4716d7b07651b1460fa5180ff482ed7bc723` | 418955 | 6665 | 30 |
+| RDTO1201.dbc | `bb149fb60ebf4c6cd962c272a585f4713852b5e2c5d37c6b7c78b7ef41acd6a1` | 666210 | 9473 | 32 |
+| RDTO1601.dbc | `9fdb35647acef42416c6eb1c4de3d3e902c8f8e6325efef36cbcda8fff8709d2` | 438778 | 5847 | 66 |
+| RDTO2512.dbc | `4a21a3a2c3c88ba8e6417eac0147e7f7334e46dd6bfd838d84bd48a1035f4099` | 596933 | 7773 | 45 |
