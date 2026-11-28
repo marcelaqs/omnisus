@@ -306,6 +306,20 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   2014-12, 7 em 2015-02, 4 em 2019-02, 2 em 2020-01, nenhuma em 2023-03, 7 em 2023-06 e
   nenhuma em 2025-12 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Na fixture de Roraima
   2024-01, `marca_uti` traz 75 (35 AIH), 78 (34) e 81 (32).
+- O código 17 de `espec` vem de uma portaria de 2020, não do `LEITOS.CNV`. O
+  `RD2008.DEF` e o `RJ2008.DEF` ligam `espec` ao `CNV/LEITOS.CNV`, que lista 41 códigos e
+  não tem o 17. A Portaria SAES/MS nº 245/2020 inclui na Tabela de Especialidade da AIH "o
+  código 17 - Estabelecimento Exclusivo UTI SUS" (art. 2º) e restringe o código à AIH do
+  procedimento 03.03.01.022-3 (COVID-19) em estabelecimento que só tem leitos de UTI no
+  SUS (§ 2º). O rótulo do dicionário, no RD e no RJ, é o texto da portaria na forma
+  "NN-texto" que o CNV dá aos outros códigos: "17-Estabelecimento Exclusivo UTI SUS"; os
+  outros 41 rótulos são as linhas do CNV. Em São Paulo, os 26 arquivos `RD` de 2020-01 a
+  2022-02 trazem o 17 de 2020-07 em diante, em 1.963 AIH de 5 estabelecimentos (692 em
+  2020, 1.235 em 2021 e 36 nos dois meses de 2022; o mês com mais AIH é 2020-12, com
+  292), e os três arquivos `RJ` de 2022-01 a 2022-03, em 75. Em todas, `proc_rea` é
+  0303010223 e `marca_uti` é 51 (`evidence/2026-11-28-sih-espec-17/`). A contagem não leu
+  outra UF, nem o RD depois de 2022-02. A portaria não foi relida em 2026-11-28: o texto
+  citado é o transcrito do arquivo registrado, obtido em 2026-11-24.
 - Nos arquivos lidos, `uti_int_to` e `marca_uci` só trazem UCI neonatal. A UCI não tem
   código no `MARCAUTI.CNV`; o RD tem `uti_int_to`, as diárias em unidade intermediária
   (Informe SIH 2016-03, p. 1), e `marca_uci`, o "Tipo de UCI utilizada pelo paciente"
@@ -631,6 +645,12 @@ Passo a passo com análise e procedência:
   — consultado em 2026-11-24; SHA-256
   `6a8cfeccbe3bf7a1b2267c2098190038e00642abd3612b8d1667ce9517ff29fb`.
   Registro `sihsus-6a8cfeccbe3b` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAES/MS nº 245, de 24 de março de 2020 (republicada), Ministério da Saúde /
+  Secretaria de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2020/prt0245_15_06_2020_rep.html>
+  — consultado em 2026-11-24; SHA-256
+  `80babfa3a19724e8da3b66a92f1e93767f1ddfa4fae360c46de8e717435bb6dd`.
+  Registro `sihsus-80babfa3a197` em `src/omnisus/data/dicionarios/sources/registry.json`.
 - Portaria SAES/MS nº 3.511, de 24 de novembro de 2025, Ministério da Saúde / Secretaria
   de Atenção Especializada à Saúde (Saúde Legis):
   <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2025/prt3511_05_12_2025.html>

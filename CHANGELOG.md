@@ -10,10 +10,15 @@
 
 ### Dictionaries
 
-- `sih_aih_reduzida` 2.30.2 and `sih_aih_rejeitada` 1.11.2: the issue
-  `espec-17-sem-fonte` cites Portaria SAES/MS nº 245/2020, art. 2º, which adds code 17 to
-  the AIH speciality table. The code stays without a label: the map of `espec` is
-  generated from `LEITOS.CNV`, which lacks it. No label or code changes.
+- `sih_aih_reduzida` 2.31.0 and `sih_aih_rejeitada` 1.12.0: code `17` of `espec` gains
+  the label "17-Estabelecimento Exclusivo UTI SUS". Portaria SAES/MS nº 245/2020, art. 2º,
+  adds the code to the AIH speciality table; `LEITOS.CNV` lacks it. The map of `espec` is
+  now kept by hand, the 41 lines of the CNV plus 17, outside the fields
+  `gerar_decode_cnv.py` generates; its claim cites both sources and the issue
+  `espec-17-sem-fonte` is resolved. No other label or code changes. In the `RDSP` files
+  of 2020-01 to 2022-02 the code appears from 2020-07 on, in 1,963 AIH, and in 75 of the
+  `RJSP` files of 2022-01 to 2022-03; every one has `proc_rea` 0303010223 and `marca_uti`
+  51 (`evidence/2026-11-28-sih-espec-17/`, #254).
 - The page of `sih_aih_reduzida` (`docs/sources/sih_aih_reduzida.md`) gains the notes of
   a review against the SIH manual of 2012 and the norms behind the fields, each with its
   source in the registry and counts from real files: one admission can span several AIH
