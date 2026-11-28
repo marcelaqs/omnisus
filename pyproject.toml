@@ -123,8 +123,8 @@ extend-immutable-calls = ["typer.Argument", "typer.Option"]
 
 [tool.ruff.format]
 quote-style = "double"
-# Ruff 0.16 includes Markdown by default. Keep the existing Python-only
-# formatting scope; historical design documents contain illustrative snippets.
+# Ruff 0.16 includes Markdown by default. Keep the Python-only formatting scope:
+# the code blocks of the Markdown files stay as written.
 exclude = ["*.md"]
 
 [tool.pytest.ini_options]

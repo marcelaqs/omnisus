@@ -10,6 +10,18 @@
 
 ### Dictionaries
 
+- `registry.json` registers the `TAB_SIH.zip` republished on 2026-11-24
+  (`sih-tab-2491e8d4f2db`). All 885 members were compared with the edition of 2026-10-15:
+  58 `DBF/` members changed, none of them packaged, and the 33 members `vinculos.json`
+  packages are identical, so they stay on `sih-tab-f05b32f32908` and
+  `sih-tab-21e42384645a`; `evidence/2026-11-28-tab-sih-republicado/` has the member
+  census (#255).
+- `registry.json` registers the `TAB_SIA.zip` republished on 2026-11-24
+  (`sia-tab-5e145464db62`). All 877 members were compared with the edition of 2026-10-15:
+  30 `DBF/` members changed, none of them packaged, and the 53 members `vinculos.json`
+  packages are identical, so they stay on `sia-tab-e5812b51d802` and
+  `sia-tab-1ce232b217c6`; `evidence/2026-11-28-tab-sia-republicado/` has the member
+  census.
 - `sih_aih_reduzida` 2.30.2 and `sih_aih_rejeitada` 1.11.2: the issue
   `espec-17-sem-fonte` cites Portaria SAES/MS nº 245/2020, art. 2º, which adds code 17 to
   the AIH speciality table. The code stays without a label: the map of `espec` is
