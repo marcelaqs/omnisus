@@ -318,11 +318,15 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   art. 6º exclui as diárias de UTI I, 08.02.01.010-5 e 08.02.01.014-8). O anexo dá às
   duas diárias o instrumento de registro "04-AIH (Proc. Especial)". Para contar UTI, use
   `uti_mes_to` e `marca_uti`; para UCI neonatal, `uti_int_to` e `marca_uci`.
-- `uti_mes_to` passa de 31 e não traz `999`. O informe o descreve como "Quantidade de
-  dias de UTI no mês." (Informe SIH 2016-03, p. 1). Em 114 arquivos RD (as 27 UFs em
-  2008-01, 2012-01, 2016-01 e 2025-12, e São Paulo em mais seis meses; 4.939.510 AIH),
+- `uti_mes_to` passa de 31 e, nos arquivos lidos, não traz `999`. O informe o descreve
+  como "Quantidade de dias de UTI no mês." (Informe SIH 2016-03, p. 1). Em 114 arquivos
+  RD (as 27 UFs em 2008-01, 2012-01, 2016-01 e 2025-12, e São Paulo em mais seis meses;
+  4.939.510 AIH),
   7.105 AIH têm mais de 31 dias, em todos os meses lidos, e o maior valor é 183; nenhuma
-  traz `999`, e nenhum documento registrado explica os valores acima de 31. O `RD2008.DEF`
+  traz `999`. O Manual SIH 2012 diz que "Não há limite máximo de diárias numa mesma AIH."
+  e que a diária de UTI é registrada "no mês de competência em que foi utilizada" (p. 24,
+  item 13.4); nenhum documento registrado lido diz que `uti_mes_to` soma as diárias de
+  todos os meses da AIH. O `RD2008.DEF`
   liga o campo ao `DIARIASUTI.CNV`, que a biblioteca não empacota: nele `999` é só o fim
   da faixa `001-999`, "Sim". Nos mesmos arquivos, `regct` traz nove códigos, todos com
   rótulo no `REGCT.cnv`; `7118` não aparece em nenhum, e o `7118` que o dicionário traz é
