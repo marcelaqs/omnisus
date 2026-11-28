@@ -467,6 +467,20 @@
       "last_checked_on": "2026-11-18"
     },
     {
+      "id": "sia-tab-5e145464db62",
+      "category": "SIASUS",
+      "title": "TAB_SIA.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Auxiliar/TAB_SIA.zip",
+      "sha256": "5e145464db62dc80b6727ea0569780444fdafeb395ef1eae7f70f3d1b90b710e",
+      "bytes": 74143727,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-28",
+      "last_checked_on": "2026-11-28"
+    },
+    {
       "id": "sinan-tab-cad66ee38781",
       "category": "SINAN",
       "title": "TAB_SINANNET.zip",
