@@ -18,7 +18,10 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   vêm do pacote oficial `TAB_SIH.zip`, `RD2008.DEF` → `IDENT.CNV`: 1 = Normal,
   5 = Longa permanência, e a faixa `0-9` dá "Outras/ignorado" a qualquer outro código,
   como o 3, que não tem rótulo próprio na tabela
-  (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`).
+  (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`). O Manual SIH 2012 diz que
+  "Existem dois tipos de AIH: Tipo 1: internamento inicial e Tipo 5: continuidade"
+  (p. 8). Na fixture de Roraima 2024-01 (`tests/fixtures/dbc/sih_rr_2024_01_mini.dbc`),
+  as 3.714 AIH têm `ident` 1.
 - `seq_aih5` é o sequencial de longa permanência, da AIH tipo 5
   (Informe SIH 2016-03, p. 3).
 - O layout RD não traz o número do Cartão Nacional de Saúde do paciente
@@ -36,7 +39,23 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   todos os anos de 2006 a 2026, inclusive os 21 de Roraima dos meses do layout que diz 0
   e 1, e `1` só em `RDAP2607` (34 registros); por isso a lista dos dois documentos não virou mapa
   (`evidence/2026-11-18-sih-codigos-em-outros-documentos/`,
-  `evidence/2026-11-18-rd-medidas/`).
+  `evidence/2026-11-18-rd-medidas/`). A Nota Técnica SIHD2 nº 001/2015 (DATASUS-RJ,
+  25/08/2015, "Válido a partir da competência 08/2015") muda o bloqueio de homônimos: o
+  gerenciador do SIHD2 passa a "realizar o bloqueio de DUPLICIDADES (homônimos) apenas
+  nas AIHs que NÃO POSSUAM número de CNS do paciente", e dois bloqueios novos pegam AIH
+  com internações sobrepostas ou com até 3 dias de intervalo: entre as AIH do mesmo CNS
+  no próprio movimento e contra o histórico de internações do estado. A nota não dá os
+  códigos do campo. Nos arquivos lidos, a frequência de `2` cai no mesmo mês: nos `RDRR`,
+  `homonimo` `2` está em 3.657 das 19.931 AIH de 2015-01 a 2015-07 (18,3%) e em 182 das
+  14.903 de 2015-08 a 2015-12 (1,2%); de 2008-01 a 2015-07, em 29.532 de 229.443
+  (12,9%), e de 2015-08 a 2026-06, em 3.244 de 452.253 (0,7%). Nos arquivos de janeiro
+  de São Paulo, Rio de Janeiro e Distrito Federal, `2` está em 11,4%, 6,3% e 14,4% das
+  AIH em 2012 e em 0,01%, 0,4% e 0,2% em 2016
+  (`evidence/2026-11-18-rd-medidas/2008-2026/medidas.csv`). Sobre homônimos, o Manual SIH
+  2012 diz que, na nova AIH do mesmo paciente na mesma internação, "o sistema bloqueia a
+  AIH por “duplicidade” (homônimo), mas o gestor autoriza" (p. 11, item 5.10). Nenhum
+  documento lido liga o código `2` ao bloqueio; compare `homonimo` antes e depois de
+  2015-08 com essa ressalva.
 - `diag_princ` é o código do diagnóstico principal pela CID-10, com 4 caracteres
   (Informe SIH 2016-03, p. 2), e o dicionário o liga à tabela `aux_cid10`
   (`src/omnisus/data/dicionarios/sih_aih_reduzida.yaml`).
@@ -85,8 +104,17 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   pela faixa `530000-530009`. Nenhum arquivo `RJ` do Distrito Federal foi lido. O campo não tem referência a `aux_municipios`: lá `140000` é "Município
   ignorado - RR", e a tabela do DEF o chama de "Roraima - Gestão estadual".
 - `cnes` é o código CNES do hospital, com 7 caracteres (Informe SIH 2016-03, p. 3).
-- O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`; `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa ([vocabulários](vocabularios.md)).
-  A importação preserva o comprimento dos códigos publicados; não aplica
+- O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`.
+  `diag_secun`, `cid_asso` e `cid_morte` gravam `0000`, que não é um código CID-10
+  ([vocabulários](vocabularios.md)), mas não em todo arquivo: em São Paulo 2014-12,
+  `cid_morte` vem em branco nas 184.988 AIH sem óbito
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`), e nenhuma das 193.789 AIH traz `0000` em
+  `diag_secun` ou `cid_asso`: `diag_secun` vem em branco em 134.282 e `cid_asso` em
+  187.186 (`evidence/2026-11-28-rd-medidas-da-revisao/`). De 2015-02 em diante, nos
+  arquivos lidos,
+  `cid_asso` e `cid_morte` trazem `0000` em toda AIH, e o informe descreve `diag_secun`
+  como "Preenchido com zeros a partir de 201501" (Informe SIH 2016-03, p. 2); ver
+  [Armadilhas](#armadilhas). A importação preserva o comprimento dos códigos publicados; não aplica
   preenchimento de zeros guiado pelo YAML.
 
 ## Cobertura e modalidade
@@ -107,7 +135,9 @@ descreve (o sumário, p. 1, lista só `RD` e `SP`), são linhas próprias; veja 
 | `sih_aih_reduzida_1992_1997` | `RD` | `SIHSUS/199201_200712/Dados` | 1992-01 a 1997-12; o diretório `Doc` dessa era está vazio no servidor |
 | `sih_aih_reduzida_1998_2007` | `RD` | `SIHSUS/199201_200712/Dados` | 1998-01 a 2007-12; mesmo diretório, mesmo prefixo |
 
-Os dicionários dessas linhas partem do inventário físico do descritor DBF de uma fixture real (`scripts/gen_dicionario.py`); os de `sih_aih_reduzida_1992_1997` e `sih_aih_reduzida_1998_2007`, dos descritores de duas fixtures cada um (`uti_total`, de `sih_aih_reduzida_1998_2007`, só existe até 1999-12 e nenhuma fixture da era o traz: o tipo vem do N2.0 que ele tem em todos os layouts) e do censo de layouts descrito abaixo. Os rótulos de categoria vêm do CNV do TabWin quando o DEF liga o campo e todo valor não branco da fixture é chave do mapa (`sources/cnv/vinculos.json`); calendários, cadastros e faixas não são copiados. Fica sem rótulos `sih_aih_rejeitada_erro` (o DEF só liga ano e mês). Em `sih_aih_reduzida_1992_1997` (`ident`, `sexo`, `morte`, `natureza` e `semiplen`) e em `sih_aih_reduzida_1998_2007` (`ident`, `sexo`, `morte`, `natureza`, `gestao`, `instru` e `vincprev`), os campos têm os rótulos dos CNV que o `RD.DEF` liga a eles nos três pacotes da era em `SIHSUS/200801_/Auxiliar/` (`TAB_SIH_199201-199712.zip`, `TAB_SIH_199801-200307.zip` e `TAB_SIH_200308-200712.zip`), idênticos byte a byte; os SHA-256 estão em `evidence/2026-09-29-tab-sih-rd-eras/`. Os outros campos categóricos que o `RD.DEF` liga, como `espec`, `car_int`, `cobranca` e `marca_uti`, seguem sem rótulo nessas duas linhas. `CH` e `CM` (nacionais, desde 2019) e as eras antigas de `RJ` e `SP` não têm linha em [Bases e argumentos](../datasets.md#sih).
+Os dicionários dessas linhas partem do inventário físico do descritor DBF de uma fixture real (`scripts/gen_dicionario.py`); os de `sih_aih_reduzida_1992_1997` e `sih_aih_reduzida_1998_2007`, dos descritores de duas fixtures cada um (`uti_total`, de `sih_aih_reduzida_1998_2007`, só existe até 1999-12 e nenhuma fixture da era o traz: o tipo vem do N2.0 que ele tem em todos os layouts) e do censo de layouts descrito abaixo. Os rótulos de categoria vêm do CNV do TabWin quando o DEF liga o campo e todo valor não branco da fixture é chave do mapa (`sources/cnv/vinculos.json`); calendários, cadastros e faixas não são copiados. Em `sih_aih_rejeitada_erro`, o DEF liga a CNV só ano e mês; `co_erro` ele liga a `DBF/MOTERRO.dbf`, de onde vêm os rótulos (`sources/cnv/vinculos.json`). Em `sih_aih_reduzida_1992_1997` (`ident`, `sexo`, `morte`, `natureza` e `semiplen`) e em `sih_aih_reduzida_1998_2007` (`ident`, `sexo`, `morte`, `natureza`, `gestao`, `instru` e `vincprev`), os campos têm os rótulos dos CNV que o `RD.DEF` liga a eles nos três pacotes da era em `SIHSUS/200801_/Auxiliar/` (`TAB_SIH_199201-199712.zip`, `TAB_SIH_199801-200307.zip` e `TAB_SIH_200308-200712.zip`), idênticos byte a byte; os SHA-256 estão em `evidence/2026-09-29-tab-sih-rd-eras/`. Os outros campos categóricos que o `RD.DEF` liga, como `espec`, `car_int`, `cobranca` e `marca_uti`, seguem sem rótulo nessas duas linhas. `CH` e `CM` (nacionais, desde 2019) e as eras antigas de `RJ` e `SP` não têm linha em [Bases e argumentos](../datasets.md#sih).
+
+Em `sih_aih_rejeitada_erro`, `co_erro` tem 398 valores distintos nas 14.656.815 linhas dos 4.931 arquivos `ER` que o servidor listava em 2026-09-23 (2011-01 a 2026-07); 15 deles, em 8.048 linhas, não estão em `DBF/MOTERRO.dbf` do `TAB_SIH.zip` e ficam sem rótulo (`evidence/2026-09-23-er-co-erro/`; issue `co_erro-fora-da-tabela` do campo).
 
 De 1992-01 a 2007-12, os arquivos `RD` lidos (um de RR por mês, AP onde RR falta, e SP e MG nos meses de troca) têm 19 layouts DBF: 7 até 1997-12 e 12 de 1998-01 em diante. O dataset é separado em 1998-01, um dicionário por era (issue #12, decisão 1): `sih_aih_reduzida_1992_1997` declara os 43 campos dos 7 primeiros layouts e `sih_aih_reduzida_1998_2007`, os 80 dos 12 últimos (89 no total). Cada tabela do lake só tem as colunas da sua era; antes da separação, os 46 campos que só os layouts de 1998-01 em diante têm eram colunas vazias da tabela única em 1992-1997. Colunas aparecem e somem: `us_sh`, `us_sp`, `us_sadt`, `us_ortp` e `us_sangue` existem até 1997-12 (`us_rn`, de 1994-01 a 1997-12); `uti_total`, até 1999-12; `cod_arq` e `cont`, até 2006-03, menos em 2001; `semiplen`, de 1995-01 a 1997-12; `diag_sec`, só em 1997; `val_sang`, só em 1994-12, mês que não tem `val_sangue`; `cgc_mant`, só em 2004-07; `cod_seg`, de 2004-07 a 2006-03. Numa tabela com vários meses da mesma era, a coluna que falta num mês fica NULL nas linhas desse mês. O `RD.DEF` dos três pacotes liga `semiplen` ("Gestão (95-97)") a `GESTAO.CNV`, de onde vêm os rótulos, e `diag_sec` a tabelas CID-9; `diag_sec` fica sem rótulo, como `diag_princ`. `num_proc` (era 1992-1997) é numérico (N) de 1996-01 a 1996-07, e `insc_pn` e `seq_aih5` (era 1998-2007), de 2004-07 a 2006-03; nos outros meses em que existem são texto (C), o tipo que o dicionário declara. A importação grava os meses N como texto, o número sem zeros à esquerda ([issue #40](https://github.com/raphaelfh/omnisus/issues/40)): nos 264 registros de `RDRR9602` e nos 5 da fixture de `RDRR9603`, `num_proc` sai `364` e `368`, e nos 794 de `RDRR9709`, `0489`; nos 91 da fixture de `RDRR0407`, `insc_pn` e `seq_aih5` saem `0`, e nos 1.496 de `RDRR0712`, `0000000000` e `000`. Quem quiser unir as duas formas faz isso na consulta; a issue `sem-zeros-a-esquerda` de cada um dos três campos, no dicionário da sua era, lista os meses. Um lake em que uma dessas colunas já é número, porque começou por um mês N numa versão anterior, recusa os arquivos gravados como texto com `UnsafeSchemaError`, também com `replace`; a biblioteca não tem operação que troque o tipo de uma coluna, e a tabela precisa ser importada de novo num lake novo. Os arquivos lidos, com data, tamanho, SHA-256 e layout, estão em `evidence/2026-10-01-rd-1992-2007-layouts/`. O cabeçalho DBF dos 5.165 arquivos `RD` do diretório, lido em 2026-11-19 (`evidence/2026-11-19-sih-cabecalhos/`), tem os mesmos 19 layouts e nenhum outro, em todas as UFs; `num_proc` é N nos 188 arquivos de 1996-01 a 1996-07, e `insc_pn` e `seq_aih5`, nos 567 de 2004-07 a 2006-03.
 
@@ -115,7 +145,7 @@ De 2008-01 em diante, os arquivos `RD` lidos (um de RR por mês, AP onde RR falt
 
 Os arquivos `SP` e `RJ` ganham `FONTE_ORC` (C(2)) no mesmo mês: é o último campo do cabeçalho DBF dos 510 arquivos de cada prefixo, de 2025-03 a 2026-09, e de nenhum anterior (`evidence/2026-11-19-sih-cabecalhos/`, o cabeçalho de todo arquivo `SP` e `RJ` que o servidor listava em 2026-11-19, lido sem nenhum registro). `sih_servicos_profissionais` e `sih_aih_rejeitada` declaram `fonte_orc` sem rótulo e sem mapa: o `SP2008.DEF` e o `RJ2008.DEF` não citam o campo, e a linha do `RD2008.DEF` é do RD. Nos 18 arquivos `RJRR` de 2025-03 a 2026-08, o campo vale `00` nos 1.270 registros, o mesmo valor que o RD publica; dos arquivos `SP`, só o cabeçalho foi lido para este registro. A issue `fonte_orc-sem-def` do campo diz isso.
 
-Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `contracep2`) e `motbloqueio.cnv` (`st_mot_blo`, só em `RJ`) abrem com a faixa `00-99`, que rotula qualquer código de dois dígitos: um código fora da tabela recebe "Ignorado/não se aplica" ou "NÃO ESPECIFICADO", e não fica sem rótulo. Do mesmo jeito, `etnia.cnv` (`etnia`) lista os códigos `0001` a `0264` e abre com a faixa `0000-9999`: qualquer outro código de quatro dígitos, `0000` inclusive, recebe "NÃO INFORMADO" só pela faixa (issue `etnia-nao-informado-pela-faixa` no campo). Código que não é dígito fica fora da faixa e sem rótulo: RDRR2501 (RR, 2025-01) publica `X389` em 2 AIHs e `X401` em 3, todas com `raca_cor` 05, e a issue `etnia-x389-x401-sem-fonte` do campo diz isso; o excerto `sih_rd_rr_2025_01_excerpt` traz as duas AIHs com `X389`.
+Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `contracep2`), `RACACOR.CNV` (`raca_cor`) e `motbloqueio.cnv` (`st_mot_blo`, só em `RJ`) abrem com a faixa `00-99`, que rotula qualquer código de dois dígitos: um código fora da tabela recebe "Ignorado/não se aplica", "Sem informação" ou "NÃO ESPECIFICADO", e não fica sem rótulo. Do mesmo jeito, `etnia.cnv` (`etnia`) lista os códigos `0001` a `0264` e abre com a faixa `0000-9999`: qualquer outro código de quatro dígitos, `0000` inclusive, recebe "NÃO INFORMADO" só pela faixa (issue `etnia-nao-informado-pela-faixa` no campo). Código que não é dígito fica fora da faixa e sem rótulo: RDRR2501 (RR, 2025-01) publica `X389` em 2 AIHs e `X401` em 3, todas com `raca_cor` 05, e a issue `etnia-x389-x401-sem-fonte` do campo diz isso; o excerto `sih_rd_rr_2025_01_excerpt` traz as duas AIHs com `X389`.
 
 ## Armadilhas
 
@@ -124,14 +154,94 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   com `0000` tem `raca_cor` de 01 a 04, e toda linha com `raca_cor` 05 (indígena) tem um
   código de `0001` a `0264`. O `etnia.cnv` rotula o `0000` "NÃO INFORMADO" só pela faixa
   `0000-9999`; em RR 2024-01 são 3.303 das 3.714 AIHs do RD. Para contar pacientes
-  indígenas, filtre por `raca_cor`.
+  indígenas, filtre por `raca_cor`. A Portaria SAS/MS nº 508/2010 incluiu o campo no SIH,
+  "com efeitos operacionais a partir da competência outubro de 2010" (art. 5º), e o exige
+  "somente" quando o usuário é registrado em raça/cor "como Indígena" (art. 2º). Em sete
+  arquivos de São Paulo de 2014-12 a 2025-12, nenhuma AIH com `raca_cor` diferente de 05
+  traz `etnia` diferente de `0000`, e algumas com 05 trazem `0000` (6 das 35 em 2020-01)
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
+- `raca_cor` entrou no SIH pela Portaria SAS/MS nº 719/2007, com 01 a 05 e 99 "SEM
+  INFORMACAO", "atendendo a classificação expressada pelo próprio usuário ou seu
+  responsável" (art. 1º), "com efeitos operacionais a partir de janeiro de 2008" (art.
+  8º): os arquivos de 1992 a 2007 não têm o campo (`evidence/2026-11-19-sih-cabecalhos/`).
+  Desde a Portaria SAS/MS nº 1.134/2014, com "efeitos operacionais a partir de novembro de
+  2014" (art. 6º), quando a AIH traz o Cartão Nacional de Saúde, o SISAIH01 "irá consumir
+  as informações cadastrais" do CADSUS WEB, que "não poderão ser alteradas no SISAIH01"
+  (art. 1º e § 1º); as informações indispensáveis que faltarem no CADSUS "poderão ser
+  registradas manualmente" (§ 3º). A portaria não lista quais informações cadastrais são
+  consumidas. O CADSUS guarda raça/cor (informe da CIT citado abaixo, p. 1, de 2023); se
+  ela estiver entre as consumidas, a raça/cor da AIH vem do cadastro, e não de uma
+  pergunta feita na internação. Nenhum documento registrado diz isso.
+- O DATASUS anunciou para abril de 2023 uma mudança na regra de `raca_cor`. O informe do
+  DATASUS à 3ª reunião ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
+  "a partir da competência de abril/2023", os aplicativos de captação e processamento do
+  SIA e do SIH "não mais aceitarão o registro/envio de informações (APAC/BPA/AIH etc) cujo
+  campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
+  produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
+  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O informe não
+  diz por qual data se conta a competência de uma produção. O 99 ainda aparece em
+  arquivos processados depois de abril de 2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
+  "Sem informação"
+  (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`). Na fixture de Roraima
+  2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04 (9) e 05 (411), e nenhum
+  99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de 2014-12, em 27.436 das 215.766
+  de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de 2023-06 e em 97 de 2025-12; nos
+  dois últimos, todas com `dt_inter` até 31/03/2023
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
+  informação, o informe anuncia o fim do 99 de abril de 2023 em diante; nos dois arquivos
+  de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até
+  31/03/2023. Parte das AIH com 99 desses dois arquivos tem `dt_saida` depois de março de
+  2023: das 282 de 2023-06, 229 têm `dt_saida` de abril a junho de 2023, e 190 das 282
+  têm `ident` 5; as 97 de 2025-12 têm `ident` 5 e `dt_saida` em dezembro de 2025
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`). Em São Paulo a maior parte da queda
+  veio antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
+- Uma internação pode gerar mais de uma AIH. A AIH 5 mantém a data de internação da
+  AIH 1, "mesmo que a internação se prolongue por meses (ou anos)", e na permanência é
+  "renovada" mensalmente (Manual SIH 2012, p. 8). Além disso, uma nova AIH para o mesmo
+  paciente na mesma internação é obrigatória, com motivo 2 (permanência), em casos como
+  uma segunda cirurgia, um parto em paciente internada por outro motivo ou a reinternação
+  clínica pela mesma doença até 3 dias depois da alta (pp. 10–11; a reinternação é o
+  item 5.9, e o item 5.11, na mesma página, manda manter a mesma AIH no retorno com menos
+  de 3 dias: o manual não resolve a diferença). Contar AIH não é contar internações nem
+  pacientes.
+- `n_aih` segue uma regra de numeração: 1º e 2º dígitos, a UF pelo código do IBGE (ou 99
+  nas séries da CNRAC); 3º e 4º, os dois últimos algarismos do ano; 5º, "o número 1 (um)
+  para identificar que a autorização é de Internação (AIH) - uso geral"; 6º a 12º, um
+  sequencial; 13º, o dígito verificador (Manual SIH 2012, p. 8). Na fixture de Roraima
+  2024-01, os 3.714 números têm 13 caracteres, são distintos e começam com 14 (Roraima);
+  781 têm 23 no 3º e 4º dígitos (o "ano de referência" do manual), em arquivo processado
+  em 2024-01. O 5º dígito é 1 em 3.432 e
+  5 em 282, embora todas as 3.714 tenham `ident` 1: não deduza o tipo da AIH do
+  número. Em São Paulo 2025-12, as 4.488 AIH com `ident` 5 têm o 5º dígito 1, e as com
+  `ident` 1 têm 1, 3 ou 5 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
 - A consulta `aih_distintas` do notebook compara o número de linhas com o número de
   valores distintos de `n_aih` antes de qualquer contagem
   (`notebooks/sih_aih_reduzida.py`).
 - Agregar por `mes_cmpt` conta AIH processadas no mês (Informe SIH 2016-03, p. 1); para
-  contar internações por mês de ocorrência, use `dt_inter` (p. 2).
+  contar internações por mês de ocorrência, use `dt_inter` (p. 2). A validade da AIH é
+  de "no máximo 03 competências anteriores à competência de apresentação"; apresentada
+  com mais de 4 meses do mês da alta, a AIH é rejeitada em definitivo e, rejeitada dentro
+  desse prazo, pode ser reapresentada até o 6º mês contado do mês da alta (Manual SIH
+  2012, p. 10). Os arts. 400 e 401 da Portaria de Consolidação SAES/MS nº 1/2022 dizem
+  que, no SIH, o mês de produção é o mês da alta, e que o mês de processamento aceita AIH
+  "com alta de no máximo 4 (quatro) meses anteriores"; segundo a nota de origem dos dois
+  artigos na consolidação, a regra vem da Portaria SAS/MS nº 472/2008. Na fixture de
+  Roraima 2024-01, 3.431 das 3.714 AIH têm `dt_saida` de 2023-10 a 2023-12 e 283, de
+  2024-01: nessa fixture, o arquivo traz altas de até três meses antes; em São Paulo
+  2023-06, 3 das 282 AIH com `raca_cor` 99 têm `dt_saida` de 2023-02, quatro meses antes
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`).
+- `qt_diarias`, a "Quantidade de diárias" (Informe SIH 2016-03, p. 2), não conta dias de
+  permanência. "O sistema paga o último dia de internamento quando o motivo de
+  apresentação for: permanência, óbito e transferência" (Manual SIH 2012, p. 13). Em São
+  Paulo 2025-12, `qt_diarias` é `dias_perm` mais 1 em 8.659 das 9.869 AIH com motivo de
+  transferência (`cobranca` 3x; 87,7%), em 6.877 das 11.595 com óbito (4x; 59,3%) e em
+  8.176 das 15.364 com permanência (2x; 53,2%), em que outras 4.269 têm os dois iguais; e
+  é igual a `dias_perm` em 131.170 das 170.082 com alta (1x; 77,1%) e em 20.569 das
+  20.855 de parto (6x; 98,6%). `dias_perm` é igual a `dt_saida` menos
+  `dt_inter` em 226.276 das 230.747 AIH (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Para
+  tempo de internação, use as datas ou `dias_perm`, não `qt_diarias`.
 - `morte` "indica óbito", com 1 algarismo, e o documento não lista os códigos
   (Informe SIH 2016-03, p. 2); os códigos e rótulos vêm do pacote oficial
   `TAB_SIH.zip`, republicado pelo DATASUS em 2026-09-15, `RD2008.DEF` →
@@ -140,10 +250,55 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   saída ou permanência (p. 2); os códigos e rótulos de `cobranca` vêm do mesmo pacote
   `TAB_SIH.zip`, `RD2008.DEF` → `SAIDAPERM.CNV` — por exemplo, 26 = permanência por
   mudança de procedimento e 31 = transferência para outro estabelecimento
-  (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`).
+  (`src/omnisus/data/dicionarios/sources/cnv/vinculos.json`). O motivo de saída ou
+  permanência substituiu o "Motivo de Cobrança" com efeitos operacionais a partir de
+  janeiro de 2008, pela Portaria SAS/MS nº 719/2007 (arts. 2º e 8º), que define a tabela
+  de motivos no art. 5º. A fixture de Roraima 2007-12
+  (`tests/fixtures/dbc/sih_rd_rr_2007_12_mini.dbc`) publica códigos fora dela: 33, 35, 37,
+  52, 53 e 71. O layout dos
+  arquivos de 2006-04 a 2007-12 só dá o nome do campo, "MOTIVO DE COBRANCA"
+  (`Layout_REDUZIDA.pdf`, p. 1), e os dicionários de 1992-1997 e de 1998-2007 deixam
+  `cobranca` sem tabela.
+- Óbitos não estão só em `cobranca` 41 a 43. Os motivos 61 a 67 são "exclusivo[s] para
+  as AIH de procedimento principal parto", incluídos pela Portaria SAS/MS n.º 384/2010
+  (Manual SIH 2012, p. 13): 63 e 64 registram alta da mãe com óbito do recém-nascido
+  ou óbito fetal, e 65 a 67, o óbito da gestante ou da mãe/puérpera (p. 12–13;
+  `SAIDAPERM.CNV`). Quem conta óbitos hospitalares por 41 a 43 deixa de fora as mortes
+  maternas em AIH de parto; quem conta qualquer código de 61 a 67 com "óbito" no rótulo
+  mistura a morte da mãe com a do concepto. Na fixture de Roraima 2024-01, as 90 AIH com
+  41 têm `morte` 1 e as 659 com 61 têm `morte` 0. Em sete arquivos de São Paulo de 2014-12
+  a 2025-12, nas 25 AIH com 65, 66 ou 67, `morte` é 1, e nas 192.678 AIH com 61 a 64,
+  inclusive as 2.029 com 63 ou 64, `morte` é 0: nesses arquivos, `morte` acompanha a
+  morte da paciente da AIH, não a do concepto
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
 - Os complementos federal e do gestor de serviços hospitalares e profissionais
   (`val_sh_fed`, `val_sp_fed`, `val_sh_ges`, `val_sp_ges`) estão incluídos no valor
   total da AIH (Informe SIH 2016-03, p. 4).
+- `diar_acom` é a "Quantidade de diárias de acompanhante" (Informe SIH 2016-03, p. 2):
+  conta diárias cobradas, não a presença do acompanhante, e `diar_acom` maior que zero
+  não indica parto. Duas normas registradas autorizam o prestador a cobrar na AIH
+  "despesas previstas com acompanhante". Uma é a do acompanhante "no trabalho de parto,
+  parto e pós-parto imediato" (Portaria GM/MS nº 2.418/2005, art. 1º, § 2º); em 2017 o
+  texto passou ao art. 92, § 2º, do Anexo II da Portaria de Consolidação GM/MS nº 3/2017
+  (texto registrado, anotado até 2018; a vigência depois disso não foi lida), que revogou
+  a 2.418/2005 "por consolidação" (art. 6º, VII). A outra é a do acompanhante de
+  pacientes "maiores de 60 (sessenta) anos de idade, quando internados" (Portaria de
+  Consolidação GM/MS nº 2/2017, Anexo 2 do Anexo XI: o art. 1º obriga o hospital a
+  viabilizar a presença do acompanhante, e o § 1º do art. 1º autoriza a cobrança). As
+  duas não esgotam o campo: o Manual SIH 2012 diz que "É permitido acompanhante para
+  menores de 18 anos", que "Para maiores de 18 o médico assistente deve decidir pela
+  necessidade ou não do acompanhante" e que "Essas diárias são remuneradas" (p. 23,
+  item 13.1). Nos arquivos de São Paulo de 2014-12 e 2025-12, das AIH com `cobranca` 61 a
+  67 (alta ou óbito da mãe/puérpera ou da gestante, `SAIDAPERM.CNV`), 9.499 de 26.207
+  (2014-12) e 13.909 de 20.855 (2025-12) trazem `diar_acom` maior que zero
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Nos mesmos dois arquivos, a maior parte
+  das AIH com `diar_acom` maior que zero está fora dessas: das 85.178 de 2025-12, 41.243
+  são de pacientes de 60 anos ou mais (de 80.284 AIH dessa idade sem `cobranca` 61 a 67),
+  16.916 de menores de 18 (de 29.252) e 13.110 de 18 a 59 anos (de 100.356); das 52.346
+  de 2014-12, 21.800 (de 51.449), 15.921 (de 29.007) e 5.126 (de 87.126). Os
+  denominadores excluem `cobranca` 61 a 67, e a idade em anos é calculada de `cod_idade`
+  e `idade` (`evidence/2026-11-28-rd-medidas-da-revisao/`). Um `diar_acom` zero não mostra que a
+  paciente ficou sem acompanhante.
 - `us_tot` é o valor total em dólar, não em reais (Informe SIH 2016-03, p. 2).
 - Vários campos de valor vêm zerados: `val_sadt`, `val_rn`, `val_acomp`, `val_ortp`,
   `val_sangue`, `val_sadtsr`, `val_transp`, `val_obsang` e `val_ped1ac`
@@ -151,9 +306,88 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
 - Também vêm zerados `uti_mes_in`, `uti_mes_an`, `uti_mes_al`, `uti_int_in`,
   `uti_int_an` e `uti_int_al` (Informe SIH 2016-03, p. 1); a quantidade de dias de UTI
   no mês está em `uti_mes_to` (p. 1).
+- Três portarias mandam tirar a UTI tipo I da tabela de leitos do CNES; o RD segue
+  publicando o código 74. `marca_uti` "Indica qual o tipo de UTI
+  utilizada pelo paciente" (Informe SIH 2016-03, p. 1), e o `MARCAUTI.CNV` rotula 74 "UTI
+  adulto - tipo I" e 77 "UTI infantil - tipo I". A Portaria SAS/MS nº 298/2019
+  reclassificou essas UTI como Unidade de Cuidados Intermediários: os leitos "74 - UTI
+  Adulto - Tipo I" migram para "95 - Unidade de Cuidados Intermediários Adulto", os "77 -
+  UTI Pediátrica - Tipo I" para "94", e os códigos 74 e 77 saem da tabela de leitos do
+  CNES (art. 2º). A Portaria SAES/MS nº 1.202/2023 descontinua no CNES os leitos e as
+  habilitações de UTI tipo I "no prazo de 120 dias" (art. 1º, § 1º), e a Portaria SAES/MS
+  nº 3.511/2025 exclui de novo os leitos 74 e 77, "considerando o fim do prazo de
+  reclassificação" (art. 2º, § 1º). Nenhuma das três cita o campo do RD, e o RD segue
+  publicando 74: em sete arquivos de São Paulo, 423 AIH em
+  2014-12, 272 em 2019-02, 130 em 2023-03 e 29 em 2025-12. O 77 aparece em 14 AIH em
+  2014-12, 7 em 2015-02, 4 em 2019-02, 2 em 2020-01, nenhuma em 2023-03, 7 em 2023-06 e
+  nenhuma em 2025-12 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Na fixture de Roraima
+  2024-01, `marca_uti` traz 75 (35 AIH), 78 (34) e 81 (32).
+- O código 17 de `espec` vem de uma portaria de 2020, não do `LEITOS.CNV`. O
+  `RD2008.DEF` e o `RJ2008.DEF` ligam `espec` ao `CNV/LEITOS.CNV`, que lista 41 códigos e
+  não tem o 17. A Portaria SAES/MS nº 245/2020 inclui na Tabela de Especialidade da AIH "o
+  código 17 - Estabelecimento Exclusivo UTI SUS" (art. 2º) e restringe o código à AIH do
+  procedimento 03.03.01.022-3 (COVID-19) em estabelecimento que só tem leitos de UTI no
+  SUS (§ 2º). O rótulo do dicionário, no RD e no RJ, é o texto da portaria na forma
+  "NN-texto" que o CNV dá aos outros códigos: "17-Estabelecimento Exclusivo UTI SUS"; os
+  outros 41 rótulos são as linhas do CNV. Em São Paulo, os 26 arquivos `RD` de 2020-01 a
+  2022-02 trazem o 17 de 2020-07 em diante, em 1.963 AIH de 5 estabelecimentos (692 em
+  2020, 1.235 em 2021 e 36 nos dois meses de 2022; o mês com mais AIH é 2020-12, com
+  292), e os três arquivos `RJ` de 2022-01 a 2022-03, em 75. Em todas, `proc_rea` é
+  0303010223 e `marca_uti` é 51 (`evidence/2026-11-28-sih-espec-17/`). A contagem não leu
+  outra UF, nem o RD depois de 2022-02. O art. 2º foi lido em 2026-11-24 no arquivo
+  registrado e transcrito na issue `espec-17-sem-fonte` do dicionário; o rótulo foi escrito
+  em 2026-11-28 a partir dessa transcrição, sem reabrir a portaria (o Saúde Legis devolveu
+  403).
+- Nos arquivos lidos, `uti_int_to` e `marca_uci` só trazem UCI neonatal. A UCI não tem
+  código no `MARCAUTI.CNV`; o RD tem `uti_int_to`, as diárias em unidade intermediária
+  (Informe SIH 2016-03, p. 1), e `marca_uci`, o "Tipo de UCI utilizada pelo paciente"
+  (p. 4), cujo `MARCAUCI.cnv` só lista UCI neonatais (01 convencional, 02 canguru, 03
+  unidade intermediária neonatal). Em sete arquivos de São Paulo, toda AIH com
+  `uti_int_to` maior que zero é de paciente com menos de 1 ano e tem `marca_uci` 01 a 03
+  (1.926 em 2025-12), e muitas têm `marca_uti` 00 (1.103 delas). A UCI adulto e a
+  pediátrica, que receberam os leitos 74 e 77, ganharam diárias próprias na tabela de
+  procedimentos (08.02.01.029-6 e 08.02.01.028-8, Portaria 298/2019, art. 5º e anexo; o
+  art. 6º exclui as diárias de UTI I, 08.02.01.010-5 e 08.02.01.014-8). O anexo dá às
+  duas diárias o instrumento de registro "04-AIH (Proc. Especial)". Para contar UTI, use
+  `uti_mes_to` e `marca_uti`; para UCI neonatal, `uti_int_to` e `marca_uci`.
+- `uti_mes_to` passa de 31 e, nos arquivos lidos, não traz `999`. O informe o descreve
+  como "Quantidade de dias de UTI no mês." (Informe SIH 2016-03, p. 1). Em 114 arquivos
+  RD (as 27 UFs em 2008-01, 2012-01, 2016-01 e 2025-12, e São Paulo em mais seis meses;
+  4.939.510 AIH),
+  7.105 AIH têm mais de 31 dias, em todos os meses lidos, e o maior valor é 183; nenhuma
+  traz `999`. O Manual SIH 2012 diz que "Não há limite máximo de diárias numa mesma AIH."
+  e que a diária de UTI é registrada "no mês de competência em que foi utilizada" (p. 24,
+  item 13.4); nenhum documento registrado lido diz que `uti_mes_to` soma as diárias de
+  todos os meses da AIH. O `RD2008.DEF`
+  liga o campo ao `DIARIASUTI.CNV`, que a biblioteca não empacota: nele `999` é só o fim
+  da faixa `001-999`, "Sim". Nos mesmos arquivos, `regct` traz nove códigos, todos com
+  rótulo no `REGCT.cnv`; `7118` não aparece em nenhum, e o `7118` que o dicionário traz é
+  de `etnia`, pela faixa `0000-9999` (`evidence/2026-11-28-rd-uti-mes-to-regct/`).
+- `cid_morte` não traz a causa do óbito nos arquivos recentes. A Portaria SAS/MS
+  nº 1.324/2014, hoje no art. 308 da Portaria de Consolidação SAES/MS nº 1/2022, excluiu
+  do layout da AIH os campos "Diagnóstico da Causa Morte" e "Diagnóstico Causas
+  Complementares" e incluiu 8 campos de CID secundário, com efeitos a partir de janeiro
+  de 2015 (Portaria nº 1.324/2014, art. 6º). Antes dela, a Portaria SAS/MS nº 718/2006 tornou obrigatória "a
+  informação da CID (...) da causa da morte nas AIH (...), sempre que o Motivo da Alta
+  for óbito" (art. 1º), a partir da competência setembro de 2006 (art. 2º). A
+  consolidação mantém as duas regras: o art. 298 (origem 718/2006) ainda diz que a CID é
+  obrigatória, e o art. 308 (origem 1.324/2014) exclui o campo do layout. Nenhum
+  documento lido diz que a obrigação acabou; o que os arquivos mostram é o campo sem a
+  CID de 2015-02 em diante. Em São Paulo, as 8.801 AIH com `morte` 1 de 2014-12 trazem
+  uma CID em `cid_morte`; de 2015-02 em diante, `cid_morte` e `cid_asso` são `0000` em
+  todas as AIH dos arquivos lidos (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Na fixture
+  de Roraima 2024-01, `cid_morte` e `cid_asso` são `0000` nas 3.714 AIH, inclusive nas 90
+  com `morte` 1; na de Roraima 2007-12, as AIH com `morte` 1 trazem códigos em
+  `cid_morte` (por exemplo `J188`). Para a causa do óbito, a fonte é o SIM; no SIH restam
+  `diag_princ` e os `diagsec`.
 - `diag_secun` vem preenchido com zeros a partir de 201501
-  (Informe SIH 2016-03, p. 2); os diagnósticos secundários estão em `diagsec1` a
-  `diagsec9` (p. 4), e o dicionário liga `diagsec1` a `diagsec8` à tabela `aux_cid10`,
+  (Informe SIH 2016-03, p. 2), quando entram em vigor os 8 campos de CID secundário da
+  Portaria SAS/MS nº 1.324/2014 (art. 1º, III; art. 6º: efeitos a partir de janeiro de
+  2015).
+  Desde então, o sistema não critica mais a compatibilidade entre procedimento e
+  diagnóstico (art. 4º; hoje art. 311 da Portaria de Consolidação SAES/MS nº 1/2022); os
+  diagnósticos secundários estão em `diagsec1` a `diagsec9` (Informe SIH 2016-03, p. 4),
+  e o dicionário liga `diagsec1` a `diagsec8` à tabela `aux_cid10`,
   como o `diag_princ` (`RD2008.DEF`, linhas 389-406, relaciona `DIAGSEC1` a `DIAGSEC9` a
   `DBF/CID10.DBF`). O `diagsec9` fica sem a ligação: a p. 4 dá `char (4)`, mas os 157
   arquivos RD lidos de 2014-01 a 2026-07 (um de RR ou AP por mês, mais SP e MG nos meses
@@ -173,6 +407,34 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   diagnóstico do mesmo número em branco e `1` ou `2` só com ele preenchido (`tpdisec8` e
   `tpdisec9` só trazem `0`). A contagem diz o que os arquivos trazem, não o que o `0`
   quer dizer.
+- A causa externa de uma lesão não fica em `diag_princ`. Quando o CID principal é do
+  capítulo XIX (S00 a T98), o SISAIH01 exige que o secundário seja do capítulo XX (V01 a
+  Y98) ou um de D66, D67, D680, D681 e D684 (Manual SIH 2012, p. 37). A regra do
+  capítulo XX no "primeiro campo de CID secundário" é da Portaria SAS/MS nº 1.324/2014
+  (art. 3º, § 2º; efeitos pelo art. 6º, a partir de janeiro de 2015), hoje no art. 310,
+  § 2º, da
+  Portaria de Consolidação SAES/MS nº 1/2022. O tipo de causa externa só passou a ser
+  codificado na AIH em 1998: até 1997, os dados de acidentes e violências eram "relativos
+  somente à natureza da lesão", e a codificação veio "em decorrência da Portaria
+  Ministerial N.º 142, de 13 de novembro de 1997" (Portaria de Consolidação GM/MS
+  nº 2/2017, Anexo 1 do Anexo VII, Política Nacional de Redução da Morbimortalidade por
+  Acidentes e Violências, seção "I. Introdução", parágrafo que começa "O Sistema de
+  Informações Hospitalares (SIH/SUS)"). Na fixture de Roraima 2024-01, as 406 AIH com
+  `diag_princ` de S ou T trazem em `diagsec1` um código de V a Y; em São Paulo, 18.320
+  das 18.321 em 2015-02 e 25.556 das 25.840 em 2025-12
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). De 2015-02 em diante, procure a causa
+  externa em `diagsec1`, o único campo medido aqui. Em São Paulo 2014-12, nenhuma das
+  19.086 AIH com S ou T traz V a Y em `diagsec1`. Na fixture de Roraima 2007-12
+  (`tests/fixtures/dbc/sih_rd_rr_2007_12_mini.dbc`), as 144 AIH com S ou T trazem V a Y
+  em `diag_secun`. Nos arquivos de 2008 a 2014 lidos, quase todas as AIH com S ou T
+  trazem V a Y em `diag_secun`: 39.073 das 39.931 nas 27 UFs em 2008-01, 82.696 das
+  82.992 nas 27 UFs em 2012-01 e 18.726 das 19.086 em São Paulo 2014-12; nas 27 UFs em
+  2016-01 e em 2025-12, nenhuma (`evidence/2026-11-28-rd-medidas-da-revisao/`). Os
+  outros meses de 2008 a 2014 não foram medidos para esse campo. O caráter de
+  atendimento, `car_int`, tem códigos de acidente e lesão (03 a 06; Manual SIH 2012,
+  p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
+  contá-los: em São Paulo 2025-12, as 2.588 AIH com 03 a 06 têm `diag_princ` de S ou T, e
+  23.252 das 25.840 AIH com S ou T têm caráter 01 (eletivo) ou 02 (urgência).
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
   CID-10 (`O800`) em `sih_aih_reduzida_1998_2007`: a separação por era põe cada
   classificação em sua tabela, e só os códigos de 1998 em diante juntam à `aux_cid10`.
@@ -196,7 +458,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
 - `sexo` tem 1 caractere (Informe SIH 2016-03, p. 1). A tabela oficial
   `CNV/SEXO.CNV` define 1 masculino e 2/3 feminino. A aplicação dessas regras
   exige os escopos e hashes confirmados no contrato; códigos não documentados
-  permanecem desconhecidos.
+  permanecem desconhecidos. O layout dos arquivos RD de 2006-04 a 2007-12 dá só
+  "1=MASCULINO; 3=FEMININO" (`Layout_REDUZIDA.pdf`, p. 1), e na fixture de Roraima
+  2024-01 só aparecem 1 (1.517 AIH) e 3 (2.197), como nos sete arquivos de São Paulo de
+  2014-12 a 2025-12 (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
 - Os códigos ficam no lake como publicados: o dicionário decodifica rótulos, datas e
   idade na exibição, não na importação (`src/omnisus/transforms/dictionaries.py`,
   docstring do módulo; `src/omnisus/sources/datasus_ftp/staging.py`, que não
@@ -219,13 +484,24 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   RD não traz o número do Cartão Nacional de Saúde do paciente (p. 1–4). Não trate
   linhas como pacientes, e compare linhas com valores distintos de `n_aih` (consulta
   `aih_distintas`) antes de contar AIH.
-- Se uma internação longa aparece em mais de uma linha: o documento traz o tipo da AIH
-  e o sequencial de longa permanência (p. 1 e p. 3), mas não diz como uma internação se
-  divide em AIH. Não conte internações como linhas sem olhar `ident`, `seq_aih5` e
-  `n_aih` nos seus dados.
+- Como juntar as AIH de uma mesma internação: o Manual SIH 2012 diz quando uma
+  internação se divide em mais de uma AIH (pp. 8, 10–11; ver Armadilhas) e que, em
+  cuidados prolongados, a AIH 5 é usada "com mesmo número da AIH - 1" (p. 48). Para a
+  nova AIH aberta na mesma internação (pp. 10–11), nem ele nem o informe dizem qual
+  campo do RD liga as AIH entre si, e o layout RD não traz o número do Cartão Nacional
+  de Saúde (Informe SIH 2016-03, p. 1–4). Em São Paulo, 3.042 valores de `n_aih` estão
+  nos arquivos de 2023-03 e de 2023-06: todos com o mesmo `dt_inter` nos dois e com
+  `dt_saida` mais tarde em 2023-06; 2.765 têm `ident` 5 nos dois, 274 têm `ident` 1 em
+  2023-03 e 5 em 2023-06, e 3 têm linhas com 1 e com 5 em 2023-03. Um mesmo arquivo
+  também repete `n_aih` em mais de uma linha (45 valores em 2023-03, 174 em 2023-06),
+  nos sete arquivos de São Paulo lidos com um só `dt_inter` por valor
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`). Isso vale para esses arquivos; outros
+  meses e outras UFs não foram comparados. Não conte internações como linhas sem olhar
+  `ident`, `seq_aih5`, `cobranca`, `n_aih` e `dt_inter` nos seus dados.
 - Se o mês do arquivo (`mes`) é sempre igual a `mes_cmpt`: o documento não explica o
   nome do arquivo. Compare as duas colunas antes de supor.
-- Os códigos de `ident`: o informe não os lista. Para idade e sexo,
+- Os códigos de `ident`: o informe não os lista; o Manual SIH 2012 dá os tipos 1 e 5
+  (p. 8), sem dizer o que um 3 seria. Para idade e sexo,
   a auditoria de 2026-09-14 acrescentou o pacote oficial TAB_SIH: unidade 5 usa
   100 + quantidade no domínio confirmado; sexo 1 é masculino e 2/3 feminino. A consulta `campo_morte` do notebook mostra
   os valores publicados.
@@ -342,6 +618,105 @@ Passo a passo com análise e procedência:
   issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
   texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
   COMPETÊNCIA" e é "Ano de processamento da AIH").
+- Manual Técnico Operacional do Sistema de Informação Hospitalar do SUS, setembro de
+  2012, Ministério da Saúde / Secretaria de Atenção à Saúde / Departamento de
+  Regulação, Avaliação e Controle (Manual SIH 2012):
+  <https://bvsms.saude.gov.br/bvs/publicacoes/manual_tecnico_sistema_informacao_hospitalar_sus.pdf>
+  — consultado em 2026-11-24; SHA-256
+  `7429b011ee2a7329ffb4084e71bd0ede629985ce3d1bcd9e8e4109a2af85e755`, 1.502.594 bytes.
+  A página de manuais do SIHD lista `MANUAL_SIH_SETEMBRO_2012_VERSAO_DIA_30_09_12.pdf`
+  com o mesmo tamanho (`evidence/2026-11-18-layout-reduzida-sihd/manuais-listing.txt`),
+  e o arquivo do FTP (`ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/`),
+  baixado em 2026-11-28, tem o mesmo SHA-256. As páginas citadas são as impressas no
+  rodapé, duas a menos que as do PDF (p. 8 é a 10ª página do arquivo).
+  O manual descreve o SISAIH01 e o processamento do SIH/SUS, não o arquivo RD: liga-se
+  aos campos pelo nome que o informe de 2016 dá a cada um.
+- Nota Técnica SIHD2 nº 001/2015, DATASUS-RJ, 25/08/2015, da página de manuais do SIHD:
+  <ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Manuais/SIHD2_NotaTecnica_2015-001.pdf>
+  — consultado em 2026-11-26; SHA-256
+  `6de69835fef0be45475182f945a716b7b39354f1eb6fde9a56c095b0be4a9eca`, 262.952 bytes.
+- Portaria SAS/MS nº 1.324, de 27 de novembro de 2014, Ministério da Saúde / Secretaria de
+  Atenção à Saúde, na impressão do Saúde Legis hospedada pela SES-DF:
+  <https://www.saude.df.gov.br/documents/37101/75753/Portaria+MS+n%C2%BA+1.324_2014_Conceitos+de+diagn%C3%B3stico+utilizados+no+Programa+de+Apoio+%C3%A0+Entrada+de+Dados+das+Autoriza%C3%A7%C3%B5es+de+Interna%C3%A7%C3%A3o+Hospitalar.pdf>
+  — consultado em 2026-11-26; SHA-256
+  `d3ae36f17dd0815d67f62d0d1f56fe8d3a57d91085082bf4d94f94e96868aaf3`, 252.775 bytes.
+- Portaria SAS/MS nº 719, de 28 de dezembro de 2007, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2007/prt0719_28_12_2007.html>
+  — consultado em 2026-11-24; SHA-256
+  `fe7c64067e022f0f8038f36c9dac0011e4b05746eea76b29e9332e59be2564bb`, 61.948 bytes.
+- Portaria de Consolidação SAES/MS nº 1, de 22 de fevereiro de 2022, texto compilado,
+  Ministério da Saúde / Secretaria de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2022/prc0001_31_03_2022_comp.html>
+  — consultado em 2026-11-24; SHA-256
+  `7ea504980caae5735edfe11b9cab06b07917fd08b2c969b4165fd742fb4d6df6`, 1.823.197 bytes.
+- Portaria de Consolidação GM/MS nº 2, de 28 de setembro de 2017, texto compilado,
+  Ministério da Saúde / Gabinete do Ministro (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/gm/2017/prc0002_03_10_2017.html>
+  — consultado em 2026-11-26; SHA-256
+  `047d0dc65b9fe2787e635081bdf45c5af5fc82cca374bb2eab478ab3793d796f`, 5.771.523 bytes.
+  O Anexo 2 do Anexo XI traz como origem a Portaria GM/MS nº 280/1999.
+- Portaria SAS/MS nº 718, de 28 de setembro de 2006, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (portal SIHD):
+  <ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Portarias/portaria2006/PT-718.htm>
+  — consultado em 2026-11-26; SHA-256
+  `6eca467db02d64f7a589385e5214dc0b98e9f07da8ae53d71478bfcb52ccc82f`.
+  Registro `sihsus-6eca467db02d` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 298, de 1º de março de 2019, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2019/prt0298_06_03_2019.html>
+  — consultado em 2026-11-24; SHA-256
+  `b6bf1a4c9851b4d780340de08b54e605a83b06cf7a781802bd6721d94ed6de6c`.
+  Registro `sihsus-b6bf1a4c9851` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAES/MS nº 1.202, de 29 de dezembro de 2023, Ministério da Saúde / Secretaria
+  de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2023/prt1202_29_12_2023.html>
+  — consultado em 2026-11-24; SHA-256
+  `6a8cfeccbe3bf7a1b2267c2098190038e00642abd3612b8d1667ce9517ff29fb`.
+  Registro `sihsus-6a8cfeccbe3b` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAES/MS nº 245, de 24 de março de 2020 (republicada), Ministério da Saúde /
+  Secretaria de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2020/prt0245_15_06_2020_rep.html>
+  — consultado em 2026-11-24; SHA-256
+  `80babfa3a19724e8da3b66a92f1e93767f1ddfa4fae360c46de8e717435bb6dd`.
+  Registro `sihsus-80babfa3a197` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAES/MS nº 3.511, de 24 de novembro de 2025, Ministério da Saúde / Secretaria
+  de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2025/prt3511_05_12_2025.html>
+  — consultado em 2026-11-24; SHA-256
+  `39c190981579b6b523ddfb357f44b9af0e096c773e453dac8faad95b9ee163b1`.
+  Registro `sihsus-39c190981579` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 508, de 28 de setembro de 2010, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2010/prt0508_28_09_2010.html> —
+  consultado em 2026-11-24; SHA-256
+  `f3c9c26255ce7383b78bc21f82b0a7b2bd26fa0ff3bccb468e9dcb26b4e8f5e4`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 1.134, de 23 de outubro de 2014, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2014/prt1134_23_10_2014.html> —
+  consultado em 2026-11-24; SHA-256
+  `bb6635f3da715a78621c8d1ca7cbf5aaecb042b7a32e3b963956b1199e63bca4`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Demanda raça/cor, informe do DATASUS à 3ª reunião ordinária da Comissão Intergestores
+  Tripartite de 2023 (30/03/2023), Ministério da Saúde / Secretaria de Informação e Saúde
+  Digital (SEIDIGI) / DATASUS; o arquivo está hospedado no sítio do CONASS:
+  <https://www.conass.org.br/wp-content/uploads/2023/03/4.-c-Demanda-rac%CC%A7a-cor.pdf> —
+  consultado em 2026-11-24; SHA-256
+  `737abb0473feeddcb9aadeae0f173f1d3e279a67e763b65ce13eb0114052d946`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria GM/MS nº 2.418, de 2 de dezembro de 2005, Ministério da Saúde / Gabinete do
+  Ministro (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/gm/2005/prt2418_02_12_2005.html>
+  — consultado em 2026-11-24; SHA-256
+  `92c80feb434abfae35b99a84e8501875eb378e9d9737b9caa991d707cf516464`, 4.257 bytes.
+- Portaria de Consolidação GM/MS nº 3, de 28 de setembro de 2017, Ministério da Saúde /
+  Gabinete do Ministro (Saúde Legis), no arquivo `prc0003_03_10_2017ARQUIVO.html`, que
+  anota alterações de 2017 e 2018; nenhuma delas está no art. 6º nem no art. 92 do
+  Anexo II:
+  <https://bvsms.saude.gov.br/bvs/saudelegis/gm/2017/prc0003_03_10_2017ARQUIVO.html>
+  — consultado em 2026-11-26; SHA-256
+  `a93041ba7d74ebc2f287057147a6f3ae1aab9bf8199e403e918d5d4fb0d1534e`, 2.614.946 bytes.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos

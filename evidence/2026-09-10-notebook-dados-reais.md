@@ -36,7 +36,7 @@ gera um destino novo; abrir ou alterar filtros não repete a ingestão.
 - Manifesto com histórico divergente rejeitado pela célula de leitura.
 - Commit da tabela derivada e rollback da tentativa de duplicação verificados.
 - Ruff, formatação, `marimo check --strict`, `git diff --check` e exportação HTML
-  real aprovados. HTML de conferência: `/private/tmp/omnisus-real.html`.
+  real aprovados. HTML de conferência: `<tmp>/omnisus-real.html`.
 
 A qualidade calculada encontrou zero datas ausentes/inválidas/divergentes do ano
 do arquivo, zero causas básicas ou municípios de residência vazios, e dois códigos
@@ -47,9 +47,9 @@ populacionais. Interpretação dos campos apoiada no
 [dicionário SIM](https://svs.aids.gov.br/download/Dicionario_de_Dados_SIM_tabela_DO.pdf)
 e no esquema efetivamente importado.
 
-A revisão independente por subagente levou à comparação do histórico persistido
+A revisão independente levou à comparação do histórico persistido
 e à confirmação por identidade do erro induzido no rollback. A revisão foi
-estática; o controlador executou os testes e a importação real.
+estática; os testes e a importação real foram executados à parte.
 
 Evidências: [verification.json](evidence/2026-09-10-marimo-real/verification.json)
 e [script de aceitação](evidence/2026-09-10-marimo-real/verify_notebook.py).

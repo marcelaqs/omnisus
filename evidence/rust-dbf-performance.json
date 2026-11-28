@@ -1,7 +1,7 @@
 {
   "completed": true,
   "invocation": [
-    "/private/tmp/omnisus-rust-dbf/.venv/bin/python",
+    "<tmp>/omnisus-rust-dbf/.venv/bin/python",
     "scripts/benchmark_resources.py",
     "--repeat",
     "4",
@@ -21,7 +21,7 @@
   "environment": {
     "recorded_at_utc": "2026-09-10T17:05:43.646453+00:00",
     "python": "3.13.12 (main, Mar  3 2026, 15:32:44) [Clang 21.1.4 ]",
-    "executable": "/private/tmp/omnisus-rust-dbf/.venv/bin/python",
+    "executable": "<tmp>/omnisus-rust-dbf/.venv/bin/python",
     "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
     "machine": "arm64",
     "cpu": "Apple M5 Pro",
@@ -145,8 +145,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -166,8 +166,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -209,8 +209,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -228,8 +228,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -271,8 +271,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -290,8 +290,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -333,8 +333,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -352,8 +352,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -893,8 +893,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -915,8 +915,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -961,8 +961,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -981,8 +981,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -1027,8 +1027,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -1047,8 +1047,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -1093,8 +1093,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -1113,8 +1113,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -2782,8 +2782,8 @@
               },
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               }
@@ -3338,8 +3338,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3359,8 +3359,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3402,8 +3402,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3421,8 +3421,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3464,8 +3464,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3483,8 +3483,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3526,8 +3526,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -3545,8 +3545,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4086,8 +4086,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4108,8 +4108,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4154,8 +4154,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4174,8 +4174,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4220,8 +4220,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4240,8 +4240,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4286,8 +4286,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -4306,8 +4306,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -5975,8 +5975,8 @@
               },
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               }
@@ -6532,8 +6532,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6553,8 +6553,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6596,8 +6596,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6615,8 +6615,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6658,8 +6658,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6677,8 +6677,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6720,8 +6720,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -6739,8 +6739,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7410,8 +7410,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7432,8 +7432,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7478,8 +7478,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7498,8 +7498,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7544,8 +7544,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7564,8 +7564,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7610,8 +7610,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -7630,8 +7630,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -9704,8 +9704,8 @@
               },
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               }
@@ -10396,8 +10396,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10417,8 +10417,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10460,8 +10460,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10479,8 +10479,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10522,8 +10522,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10541,8 +10541,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10584,8 +10584,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -10603,8 +10603,8 @@
               "phase": "dbf_to_arrow",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11274,8 +11274,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11296,8 +11296,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11342,8 +11342,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11362,8 +11362,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11408,8 +11408,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11428,8 +11428,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11474,8 +11474,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -11494,8 +11494,8 @@
               "phase": "parquet",
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               },
@@ -13568,8 +13568,8 @@
               },
               "native_evidence": {
                 "open_reader_calls": 1,
-                "module": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
-                "binary": "/private/tmp/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
+                "module": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/__init__.py",
+                "binary": "<tmp>/omnisus-rust-dbf/.venv/lib/python3.13/site-packages/omnisus_db_dbf/_native.cpython-313-darwin.so",
                 "binary_sha256": "1cde17481310704ef8531d3296cb8b4bf3fc173fc7255ed6fd754a77be4af1c4",
                 "version": "0.1.0"
               }

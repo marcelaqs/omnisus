@@ -174,6 +174,14 @@ Um `conflicting` de `cnv-parse` cujo mapa anterior não tinha fonte também se r
 mão: a claim passa a `verified_in_source` e o issue `cnv-difere-do-mapa-anterior` passa a
 `resolved`, guardando o texto do mapa anterior.
 
+Um código que uma norma inclui na tabela e o CNV não lista não entra pelo gerador. O campo
+sai de `campos` e ganha um motivo em `sem_cnv`; o mapa passa a ser mantido à mão, com
+todas as linhas do CNV e mais esse código, e a claim `/field/codes` usa
+`method: cnv-read`, com uma evidência por fonte e uma nota que diz qual código vem de
+qual. É o caso de `espec` no RD e no RJ do SIH: o `17` vem da Portaria SAES/MS nº 245/2020
+(issue #254, decisão 4). Como `gerar_decode_cnv.py --check` deixa de conferir o campo,
+`tests/unit/transforms/test_sih_rd_fields.py` compara o mapa com o `LEITOS.CNV` empacotado.
+
 Os campos de `sim_obitos_infantis`, `sim_obitos_maternos` e `sim_obitos_externos` são os
 de `sim_obitos` (os registros são do DO), menos a `derivation` de `idade`: sem
 `x-analytics`, os subconjuntos não criam as colunas harmonizadas. Depois de mudar `sim_obitos.yaml`,

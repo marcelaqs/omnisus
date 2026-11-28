@@ -8,6 +8,48 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+## v0.5.1 — 2026-11-28
+
+**Upgrading from 0.5.0:** no parser version changed (the import still reads the same
+`encoding` and `x-identity` of every dictionary), so a 0.5.0 lake keeps every scope;
+`load` downloads nothing again. Code `17` of `espec` gains a label in `sih_aih_reduzida`
+and `sih_aih_rejeitada` (below); no other label or code changes.
+
+### Dictionaries
+
+- `registry.json` registers the `TAB_SIH.zip` republished on 2026-11-24
+  (`sih-tab-2491e8d4f2db`). All 885 members were compared with the edition of 2026-10-15:
+  58 `DBF/` members changed, none of them packaged, and the 33 members `vinculos.json`
+  packages are identical, so they stay on `sih-tab-f05b32f32908` and
+  `sih-tab-21e42384645a`; `evidence/2026-11-28-tab-sih-republicado/` has the member
+  census (#255).
+- `registry.json` registers the `TAB_SIA.zip` republished on 2026-11-24
+  (`sia-tab-5e145464db62`). All 877 members were compared with the edition of 2026-10-15:
+  30 `DBF/` members changed, none of them packaged, and the 53 members `vinculos.json`
+  packages are identical, so they stay on `sia-tab-e5812b51d802` and
+  `sia-tab-1ce232b217c6`; `evidence/2026-11-28-tab-sia-republicado/` has the member
+  census.
+- `sih_aih_reduzida` 2.31.0 and `sih_aih_rejeitada` 1.12.0: code `17` of `espec` gains
+  the label "17-Estabelecimento Exclusivo UTI SUS". Portaria SAES/MS nº 245/2020, art. 2º,
+  adds the code to the AIH speciality table; `LEITOS.CNV` lacks it. The map of `espec` is
+  now kept by hand, the 41 lines of the CNV plus 17, outside the fields
+  `gerar_decode_cnv.py` generates; its claim cites both sources and the issue
+  `espec-17-sem-fonte` is resolved. No other label or code changes. In the `RDSP` files
+  of 2020-01 to 2022-02 the code appears from 2020-07 on, in 1,963 AIH, and in 75 AIH of
+  the `RJSP` files of 2022-01 to 2022-03; every one has `proc_rea` 0303010223 and `marca_uti`
+  51 (`evidence/2026-11-28-sih-espec-17/`, #254).
+- The page of `sih_aih_reduzida` (`docs/sources/sih_aih_reduzida.md`) gains the notes of
+  a review against the SIH manual of 2012 and the norms behind the fields, each with its
+  source in the registry and counts from real files: one admission can span several AIH
+  and `n_aih` does not give the type; `cobranca` 61 to 67; external cause in the secondary
+  diagnosis; `qt_diarias` is not length of stay; `sexo` 1 and 3; `marca_uti` 74 still
+  published; `uti_int_to` and `marca_uci` only neonatal in the files read; `cid_morte`
+  without the cause from 2015-02; `raca_cor` 99 and its end announced for April 2023;
+  `diar_acom` counts billed daily rates; `uti_mes_to` above 31 and without 999 in the
+  files read
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`, `evidence/2026-11-28-rd-uti-mes-to-regct/`,
+  `evidence/2026-11-28-rd-medidas-da-revisao/`).
+
 ## v0.5.0 — 2026-11-21
 
 **Upgrading from 0.4.1:** one entry is marked **Breaking** below. The dataset
