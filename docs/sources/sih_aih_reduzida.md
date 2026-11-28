@@ -275,12 +275,14 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   pacientes "maiores de 60 (sessenta) anos de idade, quando internados" (Portaria de
   Consolidação GM/MS nº 2/2017, Anexo 2 do Anexo XI: o art. 1º obriga o hospital a
   viabilizar a presença do acompanhante, e o § 1º do art. 1º autoriza a cobrança). As
-  duas não esgotam o campo: nenhum documento registrado dá a regra da diária de
-  acompanhante de outros pacientes. Nos arquivos de São Paulo de 2014-12 e 2025-12, das
-  AIH com `cobranca` 61 a 67 (alta ou óbito da mãe/puérpera ou da gestante,
-  `SAIDAPERM.CNV`), 9.499 de 26.207 (2014-12) e 13.909 de 20.855 (2025-12) trazem
-  `diar_acom` maior que zero (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom`
-  zero não mostra que a paciente ficou sem acompanhante.
+  duas não esgotam o campo: o Manual SIH 2012 diz que "É permitido acompanhante para
+  menores de 18 anos", que "Para maiores de 18 o médico assistente deve decidir pela
+  necessidade ou não do acompanhante" e que "Essas diárias são remuneradas" (p. 23,
+  item 13.1). Nos arquivos de São Paulo de 2014-12 e 2025-12, das AIH com `cobranca` 61 a
+  67 (alta ou óbito da mãe/puérpera ou da gestante, `SAIDAPERM.CNV`), 9.499 de 26.207
+  (2014-12) e 13.909 de 20.855 (2025-12) trazem `diar_acom` maior que zero
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom` zero não mostra que a
+  paciente ficou sem acompanhante.
 - `us_tot` é o valor total em dólar, não em reais (Informe SIH 2016-03, p. 2).
 - Vários campos de valor vêm zerados: `val_sadt`, `val_rn`, `val_acomp`, `val_ortp`,
   `val_sangue`, `val_sadtsr`, `val_transp`, `val_obsang` e `val_ped1ac`
