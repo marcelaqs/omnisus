@@ -8,6 +8,13 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+## v0.5.1 — 2026-11-28
+
+**Upgrading from 0.5.0:** no parser version changed (the import still reads the same
+`encoding` and `x-identity` of every dictionary), so a 0.5.0 lake keeps every scope;
+`load` downloads nothing again. Code `17` of `espec` gains a label in `sih_aih_reduzida`
+and `sih_aih_rejeitada` (below); no other label or code changes.
+
 ### Dictionaries
 
 - `registry.json` registers the `TAB_SIH.zip` republished on 2026-11-24
