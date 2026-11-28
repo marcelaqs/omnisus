@@ -62,21 +62,6 @@ def test_a_map_nothing_backs_is_gone(dataset, name) -> None:
     assert "x-decode" not in _field(dataset, name)
 
 
-@pytest.mark.parametrize(
-    ("dataset", "name"),
-    [
-        ("sinasc_nascidos_vivos", "sttrabpart"),
-    ],
-)
-def test_a_label_the_document_contradicts_is_a_conflicting_claim_with_an_issue(
-    dataset, name
-) -> None:
-    field = _field(dataset, name)
-    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
-    assert claim["status"] == "conflicting" and claim["evidence"]
-    assert any(i["status"] == "open" for i in field["x-metadata"]["issues"])
-
-
 ESC2010_IN_THE_DOCUMENT = {
     "0": "Sem escolaridade",
     "1": "Fundamental I (1ª a 4ª série)",
@@ -169,24 +154,6 @@ def test_stdnnova_takes_the_labels_of_the_document(dbc_fixture) -> None:
     assert all(i["status"] == "resolved" for i in field["x-metadata"]["issues"])
 
 
-@pytest.mark.parametrize(("name", "code"), [("sttrabpart", "3")])
-def test_a_code_the_cnv_misses_stays_open_with_the_document_that_gives_it(name, code) -> None:
-    field = _field("sinasc_nascidos_vivos", name)
-    (issue,) = [
-        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
-    ]
-    assert issue["status"] == "open" and SINASC_ESTRUTURA_1996_2019 in issue["description"]
-
-
-@pytest.mark.parametrize("name", ["sttrabpart"])
-def test_the_open_sinasc_conflicts_cite_the_manual_of_the_dn(name) -> None:
-    field = _field("sinasc_nascidos_vivos", name)
-    (issue,) = [
-        i for i in field["x-metadata"]["issues"] if i["id"] == "cnv-difere-do-mapa-anterior"
-    ]
-    assert "sinasc-5956ea4d8e89" in issue["description"]
-
-
 def test_locnasc_5_takes_the_label_of_the_manual_and_the_estrutura(dbc_fixture) -> None:
     """#246, decision 1: lines 56 and 57 of NASCIDO.def bind LOCNASC to LOCOCOR.CNV, whose
     last line is a tabulation catch-all, "Ignorado 0,5,6,7,8,9". The manual of the DN
@@ -235,3 +202,37 @@ def test_locnasc_5_takes_the_label_of_the_manual_and_the_estrutura(dbc_fixture) 
         "datasets"
     ]["sinasc_nascidos_vivos"]
     assert "locnasc" not in vinculos["campos"] and "LOCOCOR.CNV" in vinculos["sem_cnv"]["locnasc"]
+
+
+def test_sttrabpart_3_stays_unlabelled_until_a_real_file_publishes_it(dbc_fixture) -> None:
+    """#246, decision 2: the Estrutura (p. 2, position 52) lists 3, "Não se aplica", for
+    STTRABPART; ANOMAL.CNV, which line 161 of NASCIDO.def binds to the field, and the
+    manual of the DN (p. 34, field 37) do not, and no row of DNRR2022.dbc publishes 3.
+    The map stays the CNV's, verified, and an open issue says where 3 was read."""
+    assert _labelled_rr_2022(dbc_fixture, "sttrabpart") == {
+        ("1", "Sim"): 1255,
+        ("2", "Não"): 11824,
+        ("9", "Ign"): 12,
+    }
+    sinasc = DICIONARIOS / "sources/cnv/sinasc"
+    line = (sinasc / "NASCIDO.def").read_text(encoding="latin-1").splitlines()[160]
+    assert [part.strip() for part in line.split(",")[1:]] == ["STTRABPART", "1", "ANOMAL.CNV"]
+    anomal = cnv_map(parse_cnv((sinasc / "ANOMAL.CNV").read_bytes().decode("latin-1")))
+    field = _field("sinasc_nascidos_vivos", "sttrabpart")
+    assert field["x-decode"] == anomal and "3" not in anomal
+    (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
+    assert (claim["method"], claim["status"]) == ("cnv-parse", "verified_in_source")
+    replaced, code_3 = field["x-metadata"]["issues"]
+    assert (replaced["id"], replaced["status"]) == ("cnv-difere-do-mapa-anterior", "resolved")
+    assert (code_3["id"], code_3["status"]) == ("sttrabpart-3-so-no-estrutura", "open")
+    assert all(
+        text in code_3["description"]
+        for text in (
+            "'3'",
+            "3\u2013 Não se aplica;",
+            SINASC_ESTRUTURA_1996_2019,
+            SINASC_MANUAL_DA_DN_2022,
+            "ANOMAL.CNV",
+            "13.091",
+        )
+    )

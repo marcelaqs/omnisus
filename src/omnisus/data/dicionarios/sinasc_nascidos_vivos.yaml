@@ -707,7 +707,7 @@ schema:
         claims:
         - target: /field/codes
           value_sha256: 3422606b95b81313902f1103a41cfa99757b2781f730bca8f24722d56acc3807
-          status: conflicting
+          status: verified_in_source
           checked_at: '2026-09-21'
           method: cnv-parse
           reviewer: scripts/metadados/gerar_decode_cnv.py
@@ -719,9 +719,18 @@ schema:
           note: Mapa do CNV; o mapa anterior está no issue cnv-difere-do-mapa-anterior.
         issues:
         - id: cnv-difere-do-mapa-anterior
-          status: open
+          status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''3'' era ''Não se aplica'', CNV não
-            lista; ''9'' era ''Ignorado'', CNV ''Ign''. Em 2026-11-26 a revisora marcelaqs conferiu o sinasc-0ffc45994687 (p. 2): o campo tem ''3– Não se aplica'', código que o CNV não lista. Já o manual de preenchimento da DN, 4ª edição (sinasc-5956ea4d8e89, p. 34), dá ao campo 37 só Sim, Não e 9 Ignorado; o ''3 – Não se aplica'' do manual é do campo 39 (STCESPARTO). As fontes oficiais divergem entre si. Fica aberto: o mapa vem do CNV, e decidir que o documento prevalece sobre o CNV cabe ao mantenedor.'
+            lista; ''9'' era ''Ignorado'', CNV ''Ign''. Em 2026-11-26 a revisora marcelaqs conferiu o sinasc-0ffc45994687 (p. 2): o campo tem ''3– Não se aplica'', código que o CNV não lista. Já o manual de preenchimento da DN, 4ª edição (sinasc-5956ea4d8e89, p. 34), dá ao campo 37 só Sim, Não e 9 Ignorado; o ''3 – Não se aplica'' do manual é do campo 39 (STCESPARTO). As fontes oficiais divergem entre si. Resolvido em 2026-11-28: o mantenedor decidiu que vale o CNV, que o manual não contradiz; o mapa anterior não tinha claim. O 3 continua sem rótulo, e o issue sttrabpart-3-so-no-estrutura diz onde ele foi lido.'
+        - id: sttrabpart-3-so-no-estrutura
+          status: open
+          description: '''3'' não tem rótulo. O SINASC - Estrutura (sinasc-0ffc45994687, p. 2, posição 52) escreve
+            "Trabalho de parto induzido? Valores: 1– Sim; 2– Não; 3– Não se aplica; 9– Ignorado." ANOMAL.CNV, que o
+            NASCIDO.def (linha 161) liga a STTRABPART, lista só 1, 2 e 9. O manual de preenchimento da DN, 4ª edição
+            (sinasc-5956ea4d8e89), também não traz o 3: no campo 37 (p. 34) escreve só "9 – Ignorado", e na p. 52,
+            as respostas "SIM" e "NÃO". Nenhuma das 13.091 linhas do DNRR2022.dbc
+            (tests/fixtures/dbc/sinasc_rr_2022_mini.dbc) traz 3: são 1.255 com 1, 11.824 com 2 e 12 com 9. O 3 fica
+            sem rótulo até um arquivo real trazê-lo.'
     - name: tpapresent
       type: string
       label: Apresentação fetal
