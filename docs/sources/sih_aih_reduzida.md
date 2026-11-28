@@ -178,8 +178,7 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   "com alta de no máximo 4 (quatro) meses anteriores"; segundo a nota de origem dos dois
   artigos na consolidação, a regra vem da Portaria SAS/MS nº 472/2008. Na fixture de
   Roraima 2024-01, 3.431 das 3.714 AIH têm `dt_saida` de 2023-10 a 2023-12 e 283, de
-  2024-01: o arquivo de um mês de processamento traz altas de meses anteriores, e as
-  altas de um mês se espalham pelos arquivos dos meses seguintes.
+  2024-01: o arquivo de um mês de processamento traz altas de até três meses antes.
 - `qt_diarias`, a "Quantidade de diárias" (Informe SIH 2016-03, p. 2), não conta dias de
   permanência. "O sistema paga o último dia de internamento quando o motivo de
   apresentação for: permanência, óbito e transferência" (Manual SIH 2012, p. 13). Em São
