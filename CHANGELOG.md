@@ -8,6 +8,23 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+### Dictionaries
+
+- `sih_aih_reduzida` 2.30.2 and `sih_aih_rejeitada` 1.11.2: the issue
+  `espec-17-sem-fonte` cites Portaria SAES/MS nº 245/2020, art. 2º, which adds code 17 to
+  the AIH speciality table. The code stays without a label: the map of `espec` is
+  generated from `LEITOS.CNV`, which lacks it. No label or code changes.
+- The page of `sih_aih_reduzida` (`docs/sources/sih_aih_reduzida.md`) gains the notes of
+  a review against the SIH manual of 2012 and the norms behind the fields, each with its
+  source in the registry and counts from real files: one admission can span several AIH
+  and `n_aih` does not give the type; `cobranca` 61 to 67; external cause in the secondary
+  diagnosis; `qt_diarias` is not length of stay; `sexo` 1 and 3; `marca_uti` 74 still
+  published; `uti_int_to` and `marca_uci` only neonatal in the files read; `cid_morte`
+  without the cause from 2015-02; `raca_cor` 99 and its end announced for April 2023;
+  `diar_acom` counts billed daily rates; `uti_mes_to` above 31 and without 999 in the
+  files read
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`, `evidence/2026-11-28-rd-uti-mes-to-regct/`).
+
 ## v0.5.0 — 2026-11-21
 
 **Upgrading from 0.4.1:** one entry is marked **Breaking** below. The dataset
