@@ -140,7 +140,7 @@ De 2008-01 em diante, os arquivos `RD` lidos (um de RR por mês, AP onde RR falt
 
 Os arquivos `SP` e `RJ` ganham `FONTE_ORC` (C(2)) no mesmo mês: é o último campo do cabeçalho DBF dos 510 arquivos de cada prefixo, de 2025-03 a 2026-09, e de nenhum anterior (`evidence/2026-11-19-sih-cabecalhos/`, o cabeçalho de todo arquivo `SP` e `RJ` que o servidor listava em 2026-11-19, lido sem nenhum registro). `sih_servicos_profissionais` e `sih_aih_rejeitada` declaram `fonte_orc` sem rótulo e sem mapa: o `SP2008.DEF` e o `RJ2008.DEF` não citam o campo, e a linha do `RD2008.DEF` é do RD. Nos 18 arquivos `RJRR` de 2025-03 a 2026-08, o campo vale `00` nos 1.270 registros, o mesmo valor que o RD publica; dos arquivos `SP`, só o cabeçalho foi lido para este registro. A issue `fonte_orc-sem-def` do campo diz isso.
 
-Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `contracep2`) e `motbloqueio.cnv` (`st_mot_blo`, só em `RJ`) abrem com a faixa `00-99`, que rotula qualquer código de dois dígitos: um código fora da tabela recebe "Ignorado/não se aplica" ou "NÃO ESPECIFICADO", e não fica sem rótulo. Do mesmo jeito, `etnia.cnv` (`etnia`) lista os códigos `0001` a `0264` e abre com a faixa `0000-9999`: qualquer outro código de quatro dígitos, `0000` inclusive, recebe "NÃO INFORMADO" só pela faixa (issue `etnia-nao-informado-pela-faixa` no campo). Código que não é dígito fica fora da faixa e sem rótulo: RDRR2501 (RR, 2025-01) publica `X389` em 2 AIHs e `X401` em 3, todas com `raca_cor` 05, e a issue `etnia-x389-x401-sem-fonte` do campo diz isso; o excerto `sih_rd_rr_2025_01_excerpt` traz as duas AIHs com `X389`.
+Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `contracep2`), `RACACOR.CNV` (`raca_cor`) e `motbloqueio.cnv` (`st_mot_blo`, só em `RJ`) abrem com a faixa `00-99`, que rotula qualquer código de dois dígitos: um código fora da tabela recebe "Ignorado/não se aplica", "Sem informação" ou "NÃO ESPECIFICADO", e não fica sem rótulo. Do mesmo jeito, `etnia.cnv` (`etnia`) lista os códigos `0001` a `0264` e abre com a faixa `0000-9999`: qualquer outro código de quatro dígitos, `0000` inclusive, recebe "NÃO INFORMADO" só pela faixa (issue `etnia-nao-informado-pela-faixa` no campo). Código que não é dígito fica fora da faixa e sem rótulo: RDRR2501 (RR, 2025-01) publica `X389` em 2 AIHs e `X401` em 3, todas com `raca_cor` 05, e a issue `etnia-x389-x401-sem-fonte` do campo diz isso; o excerto `sih_rd_rr_2025_01_excerpt` traz as duas AIHs com `X389`.
 
 ## Armadilhas
 
@@ -149,7 +149,44 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   com `0000` tem `raca_cor` de 01 a 04, e toda linha com `raca_cor` 05 (indígena) tem um
   código de `0001` a `0264`. O `etnia.cnv` rotula o `0000` "NÃO INFORMADO" só pela faixa
   `0000-9999`; em RR 2024-01 são 3.303 das 3.714 AIHs do RD. Para contar pacientes
-  indígenas, filtre por `raca_cor`.
+  indígenas, filtre por `raca_cor`. A Portaria SAS/MS nº 508/2010 incluiu o campo no SIH,
+  "com efeitos operacionais a partir da competência outubro de 2010" (art. 5º), e o exige
+  "somente" quando o usuário é registrado em raça/cor "como Indígena" (art. 2º). Em sete
+  arquivos de São Paulo de 2014-12 a 2025-12, nenhuma AIH com `raca_cor` diferente de 05
+  traz `etnia` diferente de `0000`, e algumas com 05 trazem `0000` (6 das 35 em 2020-01)
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`).
+- `raca_cor` entrou no SIH pela Portaria SAS/MS nº 719/2007, com 01 a 05 e 99 "SEM
+  INFORMACAO", "atendendo a classificação expressada pelo próprio usuário ou seu
+  responsável" (art. 1º), "com efeitos operacionais a partir de janeiro de 2008" (art.
+  8º): os arquivos de 1992 a 2007 não têm o campo (`evidence/2026-11-19-sih-cabecalhos/`).
+  Desde a Portaria SAS/MS nº 1.134/2014, com "efeitos operacionais a partir de novembro de
+  2014" (art. 6º), quando a AIH traz o Cartão Nacional de Saúde, o SISAIH01 "irá consumir
+  as informações cadastrais" do CADSUS WEB, que "não poderão ser alteradas no SISAIH01"
+  (art. 1º e § 1º); as informações indispensáveis que faltarem no CADSUS "poderão ser
+  registradas manualmente" (§ 3º). A portaria não lista quais informações cadastrais são
+  consumidas. O CADSUS guarda raça/cor (informe da CIT citado abaixo, p. 1, de 2023); se
+  ela estiver entre as consumidas, a raça/cor da AIH vem do cadastro, e não de uma
+  pergunta feita na internação. Nenhum documento registrado diz isso.
+- O DATASUS anunciou para abril de 2023 uma mudança na regra de `raca_cor`. O informe do
+  DATASUS à 3ª reunião ordinária da Comissão Intergestores Tripartite de 2023 (30/03/2023, "Demanda raça/cor") diz que,
+  "a partir da competência de abril/2023", os aplicativos de captação e processamento do
+  SIA e do SIH "não mais aceitarão o registro/envio de informações (APAC/BPA/AIH etc) cujo
+  campo raça/cor esteja preenchido com o código 99 (não informado)", e que "as
+  produções/atendimentos feitos até a competência de março/2023 não sofrerão qualquer
+  impacto, mesmo que as produções sejam enviadas após essa competência" (p. 2). O informe não
+  diz por qual data se conta a competência de uma produção. O 99 ainda aparece em
+  arquivos processados depois de abril de 2023. O `RACACOR.CNV` só dá rótulo ao 99 pela faixa `00-99`,
+  "Sem informação"
+  (`src/omnisus/data/dicionarios/sources/cnv/sih/CNV/RACACOR.CNV`). Na fixture de Roraima
+  2024-01, `raca_cor` traz 01 (120 AIH), 02 (40), 03 (3.134), 04 (9) e 05 (411), e nenhum
+  99. Em São Paulo, o 99 está em 32.488 das 193.789 AIH de 2014-12, em 27.436 das 215.766
+  de 2020-01, em 4.778 das 233.649 de 2023-03, em 282 de 2023-06 e em 97 de 2025-12; nos
+  dois últimos, todas com `dt_inter` até 31/03/2023
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
+  informação, o informe anuncia o fim do 99 de abril de 2023 em diante; nos dois arquivos
+  de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até 31/03/2023
+  (a data de saída dessas AIH não foi medida); e em São Paulo a maior parte da queda veio
+  antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
 - Uma internação pode gerar mais de uma AIH. A AIH 5 mantém a data de internação da
@@ -567,6 +604,25 @@ Passo a passo com análise e procedência:
   — consultado em 2026-11-24; SHA-256
   `39c190981579b6b523ddfb357f44b9af0e096c773e453dac8faad95b9ee163b1`.
   Registro `sihsus-39c190981579` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 508, de 28 de setembro de 2010, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2010/prt0508_28_09_2010.html> —
+  consultado em 2026-11-24; SHA-256
+  `f3c9c26255ce7383b78bc21f82b0a7b2bd26fa0ff3bccb468e9dcb26b4e8f5e4`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 1.134, de 23 de outubro de 2014, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2014/prt1134_23_10_2014.html> —
+  consultado em 2026-11-24; SHA-256
+  `bb6635f3da715a78621c8d1ca7cbf5aaecb042b7a32e3b963956b1199e63bca4`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
+- Demanda raça/cor, informe do DATASUS à 3ª reunião ordinária da Comissão Intergestores
+  Tripartite de 2023 (30/03/2023), Ministério da Saúde / Secretaria de Informação e Saúde
+  Digital (SEIDIGI) / DATASUS; o arquivo está hospedado no sítio do CONASS:
+  <https://www.conass.org.br/wp-content/uploads/2023/03/4.-c-Demanda-rac%CC%A7a-cor.pdf> —
+  consultado em 2026-11-24; SHA-256
+  `737abb0473feeddcb9aadeae0f173f1d3e279a67e763b65ce13eb0114052d946`. Registro:
+  `src/omnisus/data/dicionarios/sources/registry.json`.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos
