@@ -1,0 +1,1437 @@
+{
+ "competences": {
+  "2008-01": {
+   "diag_princ_s_t": 39931,
+   "diag_princ_s_t_diag_secun_v_y": 39073,
+   "files": 27,
+   "rows": 651615
+  },
+  "2012-01": {
+   "diag_princ_s_t": 82992,
+   "diag_princ_s_t_diag_secun_v_y": 82696,
+   "files": 27,
+   "rows": 918846
+  },
+  "2014-12": {
+   "diag_princ_s_t": 19086,
+   "diag_princ_s_t_diag_secun_v_y": 18726,
+   "files": 1,
+   "rows": 193789
+  },
+  "2015-02": {
+   "diag_princ_s_t": 18321,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 1,
+   "rows": 195822
+  },
+  "2016-01": {
+   "diag_princ_s_t": 94147,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 27,
+   "rows": 919331
+  },
+  "2019-02": {
+   "diag_princ_s_t": 19456,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 1,
+   "rows": 203599
+  },
+  "2020-01": {
+   "diag_princ_s_t": 21533,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 1,
+   "rows": 215766
+  },
+  "2023-03": {
+   "diag_princ_s_t": 22918,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 1,
+   "rows": 233649
+  },
+  "2023-06": {
+   "diag_princ_s_t": 22463,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 1,
+   "rows": 232263
+  },
+  "2025-12": {
+   "diag_princ_s_t": 140632,
+   "diag_princ_s_t_diag_secun_v_y": 0,
+   "files": 27,
+   "rows": 1174830
+  }
+ },
+ "files": {
+  "RDAC0801.dbc": {
+   "bytes": 114153,
+   "external_cause": {
+    "diag_princ_s_t": 132,
+    "diag_princ_s_t_diag_secun_v_y": 126
+   },
+   "rows": 2087,
+   "sha256": "fde119624f5ba8400fdd25f086be6180bb25440c141dbf9ae634b7f417d0f28d"
+  },
+  "RDAC1201.dbc": {
+   "bytes": 282290,
+   "external_cause": {
+    "diag_princ_s_t": 357,
+    "diag_princ_s_t_diag_secun_v_y": 357
+   },
+   "rows": 3945,
+   "sha256": "ed1af51e4aa132693c8c652d8173faed293f390d254413dca9ce32b4cb3a4c0b"
+  },
+  "RDAC1601.dbc": {
+   "bytes": 260204,
+   "external_cause": {
+    "diag_princ_s_t": 370,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 3520,
+   "sha256": "f65e80451faf6663187f826b66176a45eb0c35b1000f91ea5a4180246f965ac2"
+  },
+  "RDAC2512.dbc": {
+   "bytes": 326478,
+   "external_cause": {
+    "diag_princ_s_t": 329,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 4527,
+   "sha256": "0866ca3264e1fef1431de70e0f857b65bccea6c050163f3cfa99871604f68fd8"
+  },
+  "RDAL0801.dbc": {
+   "bytes": 649292,
+   "external_cause": {
+    "diag_princ_s_t": 513,
+    "diag_princ_s_t_diag_secun_v_y": 510
+   },
+   "rows": 12168,
+   "sha256": "8b72541b774a0f125905995d88578f1ef8e7bcaf0347836f584ad4d2a1c518cc"
+  },
+  "RDAL1201.dbc": {
+   "bytes": 986632,
+   "external_cause": {
+    "diag_princ_s_t": 1138,
+    "diag_princ_s_t_diag_secun_v_y": 1138
+   },
+   "rows": 15179,
+   "sha256": "d6f36f496e516ba5f65fefdc3d29f9cf4e3fb55d4d1506c1d506216fad2d8cfb"
+  },
+  "RDAL1601.dbc": {
+   "bytes": 972093,
+   "external_cause": {
+    "diag_princ_s_t": 1376,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 13902,
+   "sha256": "5e2bad3270033b49f1272eae1ef37b76980581d890829c08c48f28df4a1cb20b"
+  },
+  "RDAL2512.dbc": {
+   "bytes": 1051577,
+   "external_cause": {
+    "diag_princ_s_t": 1868,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 14176,
+   "sha256": "e4ef6f7f2a578fccd9909de8e9d56aeb6b6948ed34dc4b02f26c4d45082ba5ca"
+  },
+  "RDAM0801.dbc": {
+   "bytes": 507103,
+   "external_cause": {
+    "diag_princ_s_t": 457,
+    "diag_princ_s_t_diag_secun_v_y": 446
+   },
+   "rows": 9325,
+   "sha256": "70fc4614593552d58e2a0e13858170d8c5babfdeb6fed5bdfc73fb55207bd2f1"
+  },
+  "RDAM1201.dbc": {
+   "bytes": 836846,
+   "external_cause": {
+    "diag_princ_s_t": 901,
+    "diag_princ_s_t_diag_secun_v_y": 901
+   },
+   "rows": 12944,
+   "sha256": "0d7c3c186c3867d40d8ea1307b56bd7bb98a85536a6d0e0a947b4db071ab194d"
+  },
+  "RDAM1601.dbc": {
+   "bytes": 892456,
+   "external_cause": {
+    "diag_princ_s_t": 894,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 13492,
+   "sha256": "cfe4763cbc5276b7cb086700307be9f5df3f3f25f66252d5dce6197faa527915"
+  },
+  "RDAM2512.dbc": {
+   "bytes": 1547730,
+   "external_cause": {
+    "diag_princ_s_t": 2172,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 21768,
+   "sha256": "b41cf5ca53da64b4481f57662072357327bb9925280e3d0cd73addbb44a201da"
+  },
+  "RDAP0801.dbc": {
+   "bytes": 138343,
+   "external_cause": {
+    "diag_princ_s_t": 65,
+    "diag_princ_s_t_diag_secun_v_y": 58
+   },
+   "rows": 2386,
+   "sha256": "00afc30235fc8ada93c98a4ebe81a583ea9054bfef4198b03ee42502197ae2fc"
+  },
+  "RDAP1201.dbc": {
+   "bytes": 204119,
+   "external_cause": {
+    "diag_princ_s_t": 262,
+    "diag_princ_s_t_diag_secun_v_y": 262
+   },
+   "rows": 3055,
+   "sha256": "e84f467afd4871ff4d17fdbba7ffbf5da0c39b9a67075fb33543f28371f9e10d"
+  },
+  "RDAP1601.dbc": {
+   "bytes": 167039,
+   "external_cause": {
+    "diag_princ_s_t": 166,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 2607,
+   "sha256": "03ddc29ee17f82b348cecb3c8109bc3624ea2860d89663cae8a9896319266a70"
+  },
+  "RDAP2512.dbc": {
+   "bytes": 331879,
+   "external_cause": {
+    "diag_princ_s_t": 446,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 4900,
+   "sha256": "a530c43b1cca7995011c9121fa8be834c0022866c7446bbfd041f0f28b29c79e"
+  },
+  "RDBA0801.dbc": {
+   "bytes": 2442824,
+   "external_cause": {
+    "diag_princ_s_t": 2216,
+    "diag_princ_s_t_diag_secun_v_y": 2199
+   },
+   "rows": 41659,
+   "sha256": "3b6a630a91cd958d07ad42d9f02b510f39d54bfd5f5e560cc8bbb27a70078813"
+  },
+  "RDBA1201.dbc": {
+   "bytes": 4488183,
+   "external_cause": {
+    "diag_princ_s_t": 5170,
+    "diag_princ_s_t_diag_secun_v_y": 5114
+   },
+   "rows": 68584,
+   "sha256": "92b8420453f03265916a93c1bc64f1ee104fc6ccb739395991d7cba51e8c7457"
+  },
+  "RDBA1601.dbc": {
+   "bytes": 4635410,
+   "external_cause": {
+    "diag_princ_s_t": 5987,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 64985,
+   "sha256": "1d689f5fd3aaa7a389335a12ca8134a5bb05c9aed2b3fb23566acd16721724a6"
+  },
+  "RDBA2512.dbc": {
+   "bytes": 5706040,
+   "external_cause": {
+    "diag_princ_s_t": 9568,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 77304,
+   "sha256": "0e7c0ab9b4631c47f5a2f89f84bbc8f4880e9dd1d18392295b9b20647fc50619"
+  },
+  "RDCE0801.dbc": {
+   "bytes": 1717859,
+   "external_cause": {
+    "diag_princ_s_t": 1695,
+    "diag_princ_s_t_diag_secun_v_y": 1690
+   },
+   "rows": 29823,
+   "sha256": "0f28c1f696c373c26ac1e051b827787427cd8c1455167192edb703e99ec0d7f8"
+  },
+  "RDCE1201.dbc": {
+   "bytes": 2523916,
+   "external_cause": {
+    "diag_princ_s_t": 3903,
+    "diag_princ_s_t_diag_secun_v_y": 3903
+   },
+   "rows": 38134,
+   "sha256": "beaf250bdedf9c30afe75397b91a08f53cbc42023b53207f01e71b19301112bf"
+  },
+  "RDCE1601.dbc": {
+   "bytes": 2661764,
+   "external_cause": {
+    "diag_princ_s_t": 4154,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 38221,
+   "sha256": "fd8d7de66376b83d17ee6fcab6641d94f89239973d6970d08db1d5ff88dcf9ae"
+  },
+  "RDCE2512.dbc": {
+   "bytes": 3620722,
+   "external_cause": {
+    "diag_princ_s_t": 5919,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 48468,
+   "sha256": "c06b42d30e7f0607330e16b3b7229a0b21cfdec1e01623dfe7b36d68c21e0c66"
+  },
+  "RDDF0801.dbc": {
+   "bytes": 463062,
+   "external_cause": {
+    "diag_princ_s_t": 455,
+    "diag_princ_s_t_diag_secun_v_y": 455
+   },
+   "rows": 7754,
+   "sha256": "d8fd2676df3696d9d338f804f931cc538878f3e1b77933caed9ff38e116c704a"
+  },
+  "RDDF1201.dbc": {
+   "bytes": 1081971,
+   "external_cause": {
+    "diag_princ_s_t": 1353,
+    "diag_princ_s_t_diag_secun_v_y": 1353
+   },
+   "rows": 15111,
+   "sha256": "ee24bdfcbd6279ab879141b66bd0aa6a6196963c870fd15dfe7249ecf9733a7e"
+  },
+  "RDDF1601.dbc": {
+   "bytes": 983353,
+   "external_cause": {
+    "diag_princ_s_t": 1316,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 13128,
+   "sha256": "3048ecf0c9147f507725f44d4dfb03a75a2127415a2f154d2009066e34a6d583"
+  },
+  "RDDF2512.dbc": {
+   "bytes": 1632157,
+   "external_cause": {
+    "diag_princ_s_t": 2188,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 20360,
+   "sha256": "d4c111a1fd34debe6b793aeec306e0f38cfd729d8326beba6d162f234c3e8730"
+  },
+  "RDES0801.dbc": {
+   "bytes": 599540,
+   "external_cause": {
+    "diag_princ_s_t": 456,
+    "diag_princ_s_t_diag_secun_v_y": 441
+   },
+   "rows": 9502,
+   "sha256": "18ba01c3ca88b556a208c689d81bf58c19be8e73f949f4b13de1bc93a5bce3d0"
+  },
+  "RDES1201.dbc": {
+   "bytes": 1281519,
+   "external_cause": {
+    "diag_princ_s_t": 1491,
+    "diag_princ_s_t_diag_secun_v_y": 1451
+   },
+   "rows": 17509,
+   "sha256": "4f47bc2a6bf69a9fba2ffa9da5b1b9b7262200e729dd4c0e57626ba1c7897c2f"
+  },
+  "RDES1601.dbc": {
+   "bytes": 1451513,
+   "external_cause": {
+    "diag_princ_s_t": 2057,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 18956,
+   "sha256": "12111b4880aa7c397a0a43a16d946529ff1efe00a02feb7e378c94f74a99874a"
+  },
+  "RDES2512.dbc": {
+   "bytes": 1982866,
+   "external_cause": {
+    "diag_princ_s_t": 3721,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 25613,
+   "sha256": "ac8c7142b1133ee6c44adf0fa867fc9335d0d1077d43cd74f1f2a7a6430ff8e3"
+  },
+  "RDGO0801.dbc": {
+   "bytes": 1565822,
+   "external_cause": {
+    "diag_princ_s_t": 1779,
+    "diag_princ_s_t_diag_secun_v_y": 1696
+   },
+   "rows": 26465,
+   "sha256": "f117d0e81ef106ac791c5d5a9e04264c8bb908def51a1d11d4930ab44e2eff9f"
+  },
+  "RDGO1201.dbc": {
+   "bytes": 1905518,
+   "external_cause": {
+    "diag_princ_s_t": 2823,
+    "diag_princ_s_t_diag_secun_v_y": 2823
+   },
+   "rows": 28427,
+   "sha256": "5b6c23df17c1f49e633e77f059d657ef24ba3d4a477dcdd0a4a7cc8bceb608e0"
+  },
+  "RDGO1601.dbc": {
+   "bytes": 2008223,
+   "external_cause": {
+    "diag_princ_s_t": 3956,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 28199,
+   "sha256": "9c07f45d2ef5577dba3b9ca93d3cb605e47e49d4285641a58876fcd38f29989f"
+  },
+  "RDGO2512.dbc": {
+   "bytes": 2791654,
+   "external_cause": {
+    "diag_princ_s_t": 6245,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 37218,
+   "sha256": "fe36a273314aafd24e755f12e012ea98b16796466e717758c32b07312bcf303d"
+  },
+  "RDMA0801.dbc": {
+   "bytes": 1064563,
+   "external_cause": {
+    "diag_princ_s_t": 870,
+    "diag_princ_s_t_diag_secun_v_y": 839
+   },
+   "rows": 21417,
+   "sha256": "4364e04d3ce87e3340195e08fdb36bb0a6e654f05f0ff963882fc320d94ffe27"
+  },
+  "RDMA1201.dbc": {
+   "bytes": 2078201,
+   "external_cause": {
+    "diag_princ_s_t": 2210,
+    "diag_princ_s_t_diag_secun_v_y": 2210
+   },
+   "rows": 33818,
+   "sha256": "155e4e550c8513a80a226231201b719a73b4e2e3bc828f6b4e79128085d99233"
+  },
+  "RDMA1601.dbc": {
+   "bytes": 2328574,
+   "external_cause": {
+    "diag_princ_s_t": 3465,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 35088,
+   "sha256": "76cf5327a99f241b7704edb933af3b3f5872bf2ad273624d32733403691114fc"
+  },
+  "RDMA2512.dbc": {
+   "bytes": 2758504,
+   "external_cause": {
+    "diag_princ_s_t": 4726,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 40293,
+   "sha256": "f63141a68a291ceee339b892790835574c5d388a5b05ffeab6ca5fc4c5491925"
+  },
+  "RDMG0801.dbc": {
+   "bytes": 4357193,
+   "external_cause": {
+    "diag_princ_s_t": 4526,
+    "diag_princ_s_t_diag_secun_v_y": 4433
+   },
+   "rows": 67509,
+   "sha256": "06ce4974f52e58b1ebade62a7e1e4bc10c87b9ec2bea5498fc16188a4c7ad204"
+  },
+  "RDMG1201.dbc": {
+   "bytes": 7229369,
+   "external_cause": {
+    "diag_princ_s_t": 9366,
+    "diag_princ_s_t_diag_secun_v_y": 9235
+   },
+   "rows": 96614,
+   "sha256": "a2073e91a6aeb39852cc0467dabe8356c7ab3307220acaf14755dc7466c97012"
+  },
+  "RDMG1601.dbc": {
+   "bytes": 7605837,
+   "external_cause": {
+    "diag_princ_s_t": 10537,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 97833,
+   "sha256": "e146c2f419fc6394ca21f6ee2864b95cd2fbdaf7592a980c1bb36130f6a34943"
+  },
+  "RDMG2512.dbc": {
+   "bytes": 10040304,
+   "external_cause": {
+    "diag_princ_s_t": 14968,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 128022,
+   "sha256": "1f8e56e7aee39a4a0e2486f03413386061f197252ecd25000c48a423fc368cd8"
+  },
+  "RDMS0801.dbc": {
+   "bytes": 618944,
+   "external_cause": {
+    "diag_princ_s_t": 966,
+    "diag_princ_s_t_diag_secun_v_y": 920
+   },
+   "rows": 9636,
+   "sha256": "09d6fd890a4b290cb88e12e00c66aaba475964c3f7d13a70388d873305a1c7c0"
+  },
+  "RDMS1201.dbc": {
+   "bytes": 849807,
+   "external_cause": {
+    "diag_princ_s_t": 1436,
+    "diag_princ_s_t_diag_secun_v_y": 1436
+   },
+   "rows": 11936,
+   "sha256": "43fadff2f71290c242d77fafd49e0d734fd9a61c1a3da13cd033c1896d7ddcc2"
+  },
+  "RDMS1601.dbc": {
+   "bytes": 1041446,
+   "external_cause": {
+    "diag_princ_s_t": 1814,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 13732,
+   "sha256": "b5f29d49154e3e026e291a245961fbfb58d5c9e16ae10b09da280d9899ef5910"
+  },
+  "RDMS2512.dbc": {
+   "bytes": 1256472,
+   "external_cause": {
+    "diag_princ_s_t": 2384,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 16193,
+   "sha256": "a9956bdae4dd6abaed71e37dfc25eda719571a8c52356fd0f4e021cd17240f50"
+  },
+  "RDMT0801.dbc": {
+   "bytes": 623545,
+   "external_cause": {
+    "diag_princ_s_t": 551,
+    "diag_princ_s_t_diag_secun_v_y": 527
+   },
+   "rows": 9975,
+   "sha256": "b596449d6bc34c53092f2478ee43135fe2204055e6e16fd29f247a9ef5331383"
+  },
+  "RDMT1201.dbc": {
+   "bytes": 936597,
+   "external_cause": {
+    "diag_princ_s_t": 1634,
+    "diag_princ_s_t_diag_secun_v_y": 1617
+   },
+   "rows": 13512,
+   "sha256": "e6ca9867c4a97c17e9332f73a06a9aa01c8252e9fe1fb6b28c45ffcdc75377c6"
+  },
+  "RDMT1601.dbc": {
+   "bytes": 1161922,
+   "external_cause": {
+    "diag_princ_s_t": 2331,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 15805,
+   "sha256": "86857d02c2ec68fd9910c3a7e725e802b17adc0009874d9abdcdaf8e15f2d949"
+  },
+  "RDMT2512.dbc": {
+   "bytes": 1540767,
+   "external_cause": {
+    "diag_princ_s_t": 2947,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 20653,
+   "sha256": "c8444a494d944eaabe1f9af9793dc8b7e2057091b9ed2fe667b855f033019c94"
+  },
+  "RDPA0801.dbc": {
+   "bytes": 2050198,
+   "external_cause": {
+    "diag_princ_s_t": 2670,
+    "diag_princ_s_t_diag_secun_v_y": 2606
+   },
+   "rows": 38628,
+   "sha256": "03337aeb2b84a9dbbc7521a1664b43ba4237439fbe7e244a36a55836cb941326"
+  },
+  "RDPA1201.dbc": {
+   "bytes": 2607609,
+   "external_cause": {
+    "diag_princ_s_t": 4011,
+    "diag_princ_s_t_diag_secun_v_y": 4011
+   },
+   "rows": 42778,
+   "sha256": "0f2f00d540e3e5a8468821763728155657bd2b634147ead02af2e9b62806ae31"
+  },
+  "RDPA1601.dbc": {
+   "bytes": 2420770,
+   "external_cause": {
+    "diag_princ_s_t": 4258,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 37348,
+   "sha256": "6d9ea813af736595931ae6b6bd13a13398d634bc01343fded0bdf8cb203b261e"
+  },
+  "RDPA2512.dbc": {
+   "bytes": 3414115,
+   "external_cause": {
+    "diag_princ_s_t": 7131,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 48817,
+   "sha256": "6d5896f3f5f6adf9524166a834500f4789e08792fb0c34bf805f5ad0713d0c51"
+  },
+  "RDPB0801.dbc": {
+   "bytes": 1049842,
+   "external_cause": {
+    "diag_princ_s_t": 979,
+    "diag_princ_s_t_diag_secun_v_y": 957
+   },
+   "rows": 17126,
+   "sha256": "88f23e8fca1d3a956e362fc29d6786b30f24403e568ab0bdf7164aa07add7cba"
+  },
+  "RDPB1201.dbc": {
+   "bytes": 1141324,
+   "external_cause": {
+    "diag_princ_s_t": 1277,
+    "diag_princ_s_t_diag_secun_v_y": 1276
+   },
+   "rows": 16259,
+   "sha256": "cbfc84b31b0978fa13b0148f1bbd276dd5d071521d9850726f7368820176e989"
+  },
+  "RDPB1601.dbc": {
+   "bytes": 984103,
+   "external_cause": {
+    "diag_princ_s_t": 1070,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 13646,
+   "sha256": "8ac64383afdc3a71250bf2cbcd13f50951f3585628173ebc635353974fe972cb"
+  },
+  "RDPB2512.dbc": {
+   "bytes": 1501361,
+   "external_cause": {
+    "diag_princ_s_t": 1990,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 19260,
+   "sha256": "989bb9fcaf953703d40269b500f13dd3508604ed92c1f001d4e50be4e1b14546"
+  },
+  "RDPE0801.dbc": {
+   "bytes": 1489520,
+   "external_cause": {
+    "diag_princ_s_t": 1033,
+    "diag_princ_s_t_diag_secun_v_y": 997
+   },
+   "rows": 25390,
+   "sha256": "a19eee31d7c75c70dcc61d8942da2de3a84c689b3592987cedc3127112b99cc7"
+  },
+  "RDPE1201.dbc": {
+   "bytes": 2980539,
+   "external_cause": {
+    "diag_princ_s_t": 3232,
+    "diag_princ_s_t_diag_secun_v_y": 3232
+   },
+   "rows": 43116,
+   "sha256": "35dad3dfec6c394e2003a48f6104b956b0101a1b26482b4cd27aca5b8d572772"
+  },
+  "RDPE1601.dbc": {
+   "bytes": 3182632,
+   "external_cause": {
+    "diag_princ_s_t": 4382,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 43928,
+   "sha256": "f68f634da1d45b6bb3f60f989613c0566f7c394f071fa1b7c4a6f3874bbbe674"
+  },
+  "RDPE2512.dbc": {
+   "bytes": 4153035,
+   "external_cause": {
+    "diag_princ_s_t": 7498,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 55935,
+   "sha256": "6e73e0169857423e23c5c7b2b8634a4c048cdbd019b1ceae61e31bb9a4e69d2b"
+  },
+  "RDPI0801.dbc": {
+   "bytes": 927125,
+   "external_cause": {
+    "diag_princ_s_t": 888,
+    "diag_princ_s_t_diag_secun_v_y": 886
+   },
+   "rows": 15878,
+   "sha256": "1da2d97af82a734078782f10104142035013d9fa68014f44c976c976732107df"
+  },
+  "RDPI1201.dbc": {
+   "bytes": 1289545,
+   "external_cause": {
+    "diag_princ_s_t": 1759,
+    "diag_princ_s_t_diag_secun_v_y": 1759
+   },
+   "rows": 18994,
+   "sha256": "38f79bd22a53a781bf7a28b7d26aa491a17594c3312334fb184403f23b62a29a"
+  },
+  "RDPI1601.dbc": {
+   "bytes": 1272221,
+   "external_cause": {
+    "diag_princ_s_t": 2097,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 18038,
+   "sha256": "2f7ea8f2e0b8e7e6f8a3d0b00b9db2ba0bdf7cacc52a385ba1773fd56657cccb"
+  },
+  "RDPI2512.dbc": {
+   "bytes": 1428355,
+   "external_cause": {
+    "diag_princ_s_t": 2577,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 19014,
+   "sha256": "3720bb785b33df481d572872e861a9e5625de32747ed257ccf5f937251d2bfce"
+  },
+  "RDPR0801.dbc": {
+   "bytes": 3206594,
+   "external_cause": {
+    "diag_princ_s_t": 3678,
+    "diag_princ_s_t_diag_secun_v_y": 3585
+   },
+   "rows": 51180,
+   "sha256": "be9aec235d3ffd2481cb482a832dd3fa71e8b156352f95fdcc64e9b5574cf825"
+  },
+  "RDPR1201.dbc": {
+   "bytes": 4678129,
+   "external_cause": {
+    "diag_princ_s_t": 6655,
+    "diag_princ_s_t_diag_secun_v_y": 6626
+   },
+   "rows": 64290,
+   "sha256": "0a935da7c6bb8b11877c571937db4ba305e4aa91997a7c9c02aa3b7860ebc8fc"
+  },
+  "RDPR1601.dbc": {
+   "bytes": 4812925,
+   "external_cause": {
+    "diag_princ_s_t": 6812,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 63458,
+   "sha256": "783591a7530ee2cb97c56d434e7d1a40d8dc6e293288466cf084a551a748a3ec"
+  },
+  "RDPR2512.dbc": {
+   "bytes": 6875278,
+   "external_cause": {
+    "diag_princ_s_t": 10788,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 89610,
+   "sha256": "df5e4ede0d85f9fe7a4605445b11333cec5a6d0b1b4f2680713e16b84a9c8101"
+  },
+  "RDRJ0801.dbc": {
+   "bytes": 1970037,
+   "external_cause": {
+    "diag_princ_s_t": 1345,
+    "diag_princ_s_t_diag_secun_v_y": 1328
+   },
+   "rows": 34859,
+   "sha256": "6a362242dcb881099929eef7a13f75a92ee1b46cbc1f98ff996354afceb37b49"
+  },
+  "RDRJ1201.dbc": {
+   "bytes": 3636795,
+   "external_cause": {
+    "diag_princ_s_t": 3845,
+    "diag_princ_s_t_diag_secun_v_y": 3828
+   },
+   "rows": 53068,
+   "sha256": "742d3fd52030906d21a986a86d2b10b5e48c8d19ff5ebcff85db48435e41cd8a"
+  },
+  "RDRJ1601.dbc": {
+   "bytes": 4187567,
+   "external_cause": {
+    "diag_princ_s_t": 5681,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 56877,
+   "sha256": "ff0af5d0359ddd7091395eea46e1f01d8f5e27c642a2d739e456c2f4eb727033"
+  },
+  "RDRJ2512.dbc": {
+   "bytes": 5909820,
+   "external_cause": {
+    "diag_princ_s_t": 9085,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 76232,
+   "sha256": "93d6e196b52c1a5864437e6a97f8a041af71642dfd082179e4247719e61bd36b"
+  },
+  "RDRN0801.dbc": {
+   "bytes": 573433,
+   "external_cause": {
+    "diag_princ_s_t": 398,
+    "diag_princ_s_t_diag_secun_v_y": 396
+   },
+   "rows": 9916,
+   "sha256": "f3e93d1c76123edc4a8c9fb986e9ca9c2e7186bbf82c62b981f38b74f6250cbf"
+  },
+  "RDRN1201.dbc": {
+   "bytes": 896455,
+   "external_cause": {
+    "diag_princ_s_t": 949,
+    "diag_princ_s_t_diag_secun_v_y": 949
+   },
+   "rows": 13551,
+   "sha256": "437863e108abb46a879a343ccc9a7d790146b94af1bb1d4f236598f6d0b74880"
+  },
+  "RDRN1601.dbc": {
+   "bytes": 924489,
+   "external_cause": {
+    "diag_princ_s_t": 1014,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 12793,
+   "sha256": "8815ac4345f7951e530dff5b50e3593a7572c0eacd62b8f9e1a0de04c80176ca"
+  },
+  "RDRN2512.dbc": {
+   "bytes": 1293284,
+   "external_cause": {
+    "diag_princ_s_t": 2058,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 17704,
+   "sha256": "6453c7d81a3d6b5b24cdc548af3e6323b077803665281b5b481f505e1fd5ea3f"
+  },
+  "RDRO0801.dbc": {
+   "bytes": 223052,
+   "external_cause": {
+    "diag_princ_s_t": 283,
+    "diag_princ_s_t_diag_secun_v_y": 280
+   },
+   "rows": 4142,
+   "sha256": "c50dbfb6239025119bf2eb79e482ebb4284fc2f4e48fc240f37bca979ff6f868"
+  },
+  "RDRO1201.dbc": {
+   "bytes": 481274,
+   "external_cause": {
+    "diag_princ_s_t": 768,
+    "diag_princ_s_t_diag_secun_v_y": 768
+   },
+   "rows": 7998,
+   "sha256": "df9b50a9d2142cc7029f7edb6d205f694f3e37ac1c6eaa9db0588ee183400586"
+  },
+  "RDRO1601.dbc": {
+   "bytes": 612200,
+   "external_cause": {
+    "diag_princ_s_t": 1340,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 8956,
+   "sha256": "baede1b3f33727ff239a2c60a318c23f0adec27eeab1c458c473184eee545b7d"
+  },
+  "RDRO2512.dbc": {
+   "bytes": 804859,
+   "external_cause": {
+    "diag_princ_s_t": 1343,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 11527,
+   "sha256": "25fdb0528ed640dd9ebfd32dc0c2907dc66ce47212a3c1da1a270235af5b67e4"
+  },
+  "RDRR0801.dbc": {
+   "bytes": 75358,
+   "external_cause": {
+    "diag_princ_s_t": 72,
+    "diag_princ_s_t_diag_secun_v_y": 72
+   },
+   "rows": 1475,
+   "sha256": "ad3817afbe19f8087415f5204a677893dee767a802de093d84bb193577c2d4e7"
+  },
+  "RDRR1201.dbc": {
+   "bytes": 155584,
+   "external_cause": {
+    "diag_princ_s_t": 180,
+    "diag_princ_s_t_diag_secun_v_y": 180
+   },
+   "rows": 2289,
+   "sha256": "3f1ebc51b1e2aca35348d7440a982576c6fdd446762fb9a57373bd3e3e63eb48"
+  },
+  "RDRR1601.dbc": {
+   "bytes": 196012,
+   "external_cause": {
+    "diag_princ_s_t": 221,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 2748,
+   "sha256": "b5426ef0c50304897e6e92b6615a0b8382f61814ccd78f3b15f12fef1dfb98b5"
+  },
+  "RDRR2512.dbc": {
+   "bytes": 157616,
+   "external_cause": {
+    "diag_princ_s_t": 171,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 2128,
+   "sha256": "75988926198221313d854ca8bf80e23007b2a110c3385d3fb64ab2222aff5df9"
+  },
+  "RDRS0801.dbc": {
+   "bytes": 2780100,
+   "external_cause": {
+    "diag_princ_s_t": 2292,
+    "diag_princ_s_t_diag_secun_v_y": 2204
+   },
+   "rows": 41729,
+   "sha256": "8d25b1e34bffb60c8abb175ef39af91ff4f5f3327d3bbdf353b9170c118c651a"
+  },
+  "RDRS1201.dbc": {
+   "bytes": 4268871,
+   "external_cause": {
+    "diag_princ_s_t": 4257,
+    "diag_princ_s_t_diag_secun_v_y": 4257
+   },
+   "rows": 55459,
+   "sha256": "8bd1b90790e4bfd08853185871d635b32bacefac6615f3e3291e2de98ca775e9"
+  },
+  "RDRS1601.dbc": {
+   "bytes": 4516083,
+   "external_cause": {
+    "diag_princ_s_t": 4919,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 58456,
+   "sha256": "f089f0e203ea92992aca2c9aaba774f820254bbc211aba71d2dd5ee3ce58495e"
+  },
+  "RDRS2512.dbc": {
+   "bytes": 5486232,
+   "external_cause": {
+    "diag_princ_s_t": 6827,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 70967,
+   "sha256": "baa03998fc041c61b3ad2fcb24c91ff0549f85a628c65a5df60ab7a4d871783e"
+  },
+  "RDSC0801.dbc": {
+   "bytes": 1619551,
+   "external_cause": {
+    "diag_princ_s_t": 1672,
+    "diag_princ_s_t_diag_secun_v_y": 1569
+   },
+   "rows": 23728,
+   "sha256": "7757608f37219b9d284dcdbe2f4641d216ed6c13bb6313a03a8f0738affcf7d2"
+  },
+  "RDSC1201.dbc": {
+   "bytes": 2440187,
+   "external_cause": {
+    "diag_princ_s_t": 3292,
+    "diag_princ_s_t_diag_secun_v_y": 3292
+   },
+   "rows": 32159,
+   "sha256": "a2802efdfe8f508ec767d4674d5769dbce6afc4f26776462f5b03aad564d8bdf"
+  },
+  "RDSC1601.dbc": {
+   "bytes": 2825319,
+   "external_cause": {
+    "diag_princ_s_t": 3689,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 36944,
+   "sha256": "f2f89e69f67f2ae87cd4efa7ec44215423448d56d9c338e78f2e4ba47c590a43"
+  },
+  "RDSC2512.dbc": {
+   "bytes": 4382328,
+   "external_cause": {
+    "diag_princ_s_t": 5881,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 55204,
+   "sha256": "9cc6322a4167d3836a1fc229872a07ae6e8ad20f648bded0052d3242d7349a22"
+  },
+  "RDSE0801.dbc": {
+   "bytes": 309622,
+   "external_cause": {
+    "diag_princ_s_t": 429,
+    "diag_princ_s_t_diag_secun_v_y": 429
+   },
+   "rows": 5832,
+   "sha256": "4abed05e11b06f28275772417f711da7d7cc4d561fafc4d39cb2a57f97ba631f"
+  },
+  "RDSE1201.dbc": {
+   "bytes": 516538,
+   "external_cause": {
+    "diag_princ_s_t": 616,
+    "diag_princ_s_t_diag_secun_v_y": 616
+   },
+   "rows": 7380,
+   "sha256": "133fe250bdcfbbca55220da3e7d5024eb004d55e5e0cd0ecb22b3e204bede33c"
+  },
+  "RDSE1601.dbc": {
+   "bytes": 496048,
+   "external_cause": {
+    "diag_princ_s_t": 716,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 7203,
+   "sha256": "559316bca769156357476f693ac66713c8e8ad9d715b861de46af67165e975f2"
+  },
+  "RDSE2512.dbc": {
+   "bytes": 797886,
+   "external_cause": {
+    "diag_princ_s_t": 918,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 10417,
+   "sha256": "272cb12866dc82443fe21f94ab23699acb60ead0fb223320dabcc66c400f845a"
+  },
+  "RDSP0801.dbc": {
+   "bytes": 7799792,
+   "external_cause": {
+    "diag_princ_s_t": 8925,
+    "diag_princ_s_t_diag_secun_v_y": 8839
+   },
+   "rows": 125361,
+   "sha256": "f2cba06b3b3d4d13d6ed3cfe69f83e46443f3e1700bc694e637fa5847c0671e9"
+  },
+  "RDSP1201.dbc": {
+   "bytes": 13891006,
+   "external_cause": {
+    "diag_princ_s_t": 18973,
+    "diag_princ_s_t_diag_secun_v_y": 18968
+   },
+   "rows": 193264,
+   "sha256": "3edf83e541c3287df66110c3222092d6f1c98b317a6f09804555d80f7244bf07"
+  },
+  "RDSP1412.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 0,
+     "blank": 187186
+    },
+    "diag_secun": {
+     "0000": 0,
+     "blank": 134282
+    }
+   },
+   "bytes": 14214477,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 26207,
+      "rows_above_0": 9499
+     },
+     "other_age_18_to_59": {
+      "rows": 87126,
+      "rows_above_0": 5126
+     },
+     "other_age_60_or_more": {
+      "rows": 51449,
+      "rows_above_0": 21800
+     },
+     "other_age_under_18": {
+      "rows": 29007,
+      "rows_above_0": 15921
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 52346
+   },
+   "external_cause": {
+    "diag_princ_s_t": 19086,
+    "diag_princ_s_t_diag_secun_v_y": 18726
+   },
+   "n_aih_repeated": {
+    "n_aih": 258,
+    "n_aih_with_one_dt_inter": 258,
+    "rows": 548
+   },
+   "raca_cor_99": {
+    "dt_inter_from_2023_04_01": 0,
+    "rows": 32488
+   },
+   "rows": 193789,
+   "sha256": "c744f524f7a98dc02b30aef346d0efa693dc00d5baeb29a47e378876b808c3ec"
+  },
+  "RDSP1502.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 195822,
+     "blank": 0
+    },
+    "diag_secun": {
+     "0000": 195822,
+     "blank": 0
+    }
+   },
+   "bytes": 14899189,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 29456,
+      "rows_above_0": 10264
+     },
+     "other_age_18_to_59": {
+      "rows": 86516,
+      "rows_above_0": 5221
+     },
+     "other_age_60_or_more": {
+      "rows": 50799,
+      "rows_above_0": 21073
+     },
+     "other_age_under_18": {
+      "rows": 29051,
+      "rows_above_0": 15792
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 52350
+   },
+   "external_cause": {
+    "diag_princ_s_t": 18321,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "n_aih_repeated": {
+    "n_aih": 254,
+    "n_aih_with_one_dt_inter": 254,
+    "rows": 528
+   },
+   "raca_cor_99": {
+    "dt_inter_from_2023_04_01": 0,
+    "rows": 34296
+   },
+   "rows": 195822,
+   "sha256": "8011928ad0cb9119ba6ef1c95df8471a44e52a70855624810b3c30ae79b5e8b6"
+  },
+  "RDSP1601.dbc": {
+   "bytes": 14818924,
+   "external_cause": {
+    "diag_princ_s_t": 18831,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 193621,
+   "sha256": "c14bcae03b5adecadd84f7983a30faef0ceaeea0e1a3bdf7d6cfec14f8b3c7f2"
+  },
+  "RDSP1902.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 203599,
+     "blank": 0
+    },
+    "diag_secun": {
+     "0000": 203599,
+     "blank": 0
+    }
+   },
+   "bytes": 15690982,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 29633,
+      "rows_above_0": 15645
+     },
+     "other_age_18_to_59": {
+      "rows": 89318,
+      "rows_above_0": 7297
+     },
+     "other_age_60_or_more": {
+      "rows": 57571,
+      "rows_above_0": 27306
+     },
+     "other_age_under_18": {
+      "rows": 27077,
+      "rows_above_0": 15318
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 65566
+   },
+   "external_cause": {
+    "diag_princ_s_t": 19456,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "n_aih_repeated": {
+    "n_aih": 63,
+    "n_aih_with_one_dt_inter": 63,
+    "rows": 144
+   },
+   "raca_cor_99": {
+    "dt_inter_from_2023_04_01": 0,
+    "rows": 27160
+   },
+   "rows": 203599,
+   "sha256": "4653fb8f96fefacfb3a47f8f7fc1b1d1591c56be0c9800fbe0fcddf82dc254a0"
+  },
+  "RDSP2001.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 215766,
+     "blank": 0
+    },
+    "diag_secun": {
+     "0000": 215766,
+     "blank": 0
+    }
+   },
+   "bytes": 17083017,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 30271,
+      "rows_above_0": 16937
+     },
+     "other_age_18_to_59": {
+      "rows": 93726,
+      "rows_above_0": 8091
+     },
+     "other_age_60_or_more": {
+      "rows": 63199,
+      "rows_above_0": 31603
+     },
+     "other_age_under_18": {
+      "rows": 28570,
+      "rows_above_0": 16385
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 73016
+   },
+   "external_cause": {
+    "diag_princ_s_t": 21533,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "n_aih_repeated": {
+    "n_aih": 95,
+    "n_aih_with_one_dt_inter": 95,
+    "rows": 206
+   },
+   "raca_cor_99": {
+    "dt_inter_from_2023_04_01": 0,
+    "rows": 27436
+   },
+   "rows": 215766,
+   "sha256": "ea611bb554aa00062c8aee2c3041d3065b2635938cdd32d6ce6636cb91436478"
+  },
+  "RDSP2303.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 233649,
+     "blank": 0
+    },
+    "diag_secun": {
+     "0000": 233649,
+     "blank": 0
+    }
+   },
+   "bytes": 18077745,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 29007,
+      "rows_above_0": 17013
+     },
+     "other_age_18_to_59": {
+      "rows": 98275,
+      "rows_above_0": 7383
+     },
+     "other_age_60_or_more": {
+      "rows": 71947,
+      "rows_above_0": 30791
+     },
+     "other_age_under_18": {
+      "rows": 34420,
+      "rows_above_0": 19921
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 75108
+   },
+   "external_cause": {
+    "diag_princ_s_t": 22918,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "n_aih_repeated": {
+    "n_aih": 45,
+    "n_aih_with_one_dt_inter": 45,
+    "rows": 95
+   },
+   "raca_cor_99": {
+    "dt_inter_from_2023_04_01": 0,
+    "rows": 4778
+   },
+   "rows": 233649,
+   "sha256": "e6c920afdb0f432f93724893a731b22cb9303c2bed8a3342ed0c161f2e600b6b"
+  },
+  "RDSP2306.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 232263,
+     "blank": 0
+    },
+    "diag_secun": {
+     "0000": 232263,
+     "blank": 0
+    }
+   },
+   "bytes": 18001348,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 27274,
+      "rows_above_0": 15729
+     },
+     "other_age_18_to_59": {
+      "rows": 97257,
+      "rows_above_0": 7836
+     },
+     "other_age_60_or_more": {
+      "rows": 74436,
+      "rows_above_0": 33430
+     },
+     "other_age_under_18": {
+      "rows": 33296,
+      "rows_above_0": 19348
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 76343
+   },
+   "external_cause": {
+    "diag_princ_s_t": 22463,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "n_aih_repeated": {
+    "n_aih": 174,
+    "n_aih_with_one_dt_inter": 174,
+    "rows": 353
+   },
+   "raca_cor_99": {
+    "by_dt_saida_month": {
+     "202302": 3,
+     "202303": 50,
+     "202304": 29,
+     "202305": 8,
+     "202306": 192
+    },
+    "by_ident": {
+     "1": 92,
+     "5": 190
+    },
+    "dt_inter_from_2023_04_01": 0,
+    "dt_inter_max": "20230331",
+    "dt_saida_from_2023_04_01": 229,
+    "rows": 282
+   },
+   "rows": 232263,
+   "sha256": "e9507c7429b4dc8990639b90b70e2ea38d42547dde7594cf1f327aae8587a95b"
+  },
+  "RDSP2512.dbc": {
+   "blank_or_0000": {
+    "cid_asso": {
+     "0000": 230747,
+     "blank": 0
+    },
+    "diag_secun": {
+     "0000": 230747,
+     "blank": 0
+    }
+   },
+   "bytes": 18300555,
+   "diar_acom": {
+    "by_group": {
+     "cobranca_61_67": {
+      "rows": 20855,
+      "rows_above_0": 13909
+     },
+     "other_age_18_to_59": {
+      "rows": 100356,
+      "rows_above_0": 13110
+     },
+     "other_age_60_or_more": {
+      "rows": 80284,
+      "rows_above_0": 41243
+     },
+     "other_age_under_18": {
+      "rows": 29252,
+      "rows_above_0": 16916
+     },
+     "other_age_unknown": {
+      "rows": 0,
+      "rows_above_0": 0
+     }
+    },
+    "rows_above_0": 85178
+   },
+   "external_cause": {
+    "diag_princ_s_t": 25840,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "n_aih_repeated": {
+    "n_aih": 62,
+    "n_aih_with_one_dt_inter": 62,
+    "rows": 128
+   },
+   "raca_cor_99": {
+    "by_dt_saida_month": {
+     "202512": 97
+    },
+    "by_ident": {
+     "5": 97
+    },
+    "dt_inter_from_2023_04_01": 0,
+    "dt_inter_max": "20221125",
+    "dt_saida_from_2023_04_01": 97,
+    "rows": 97
+   },
+   "rows": 230747,
+   "sha256": "976373cd79219b8287dcb3815f5a7b7b85c40ce542dce903e44591bc05159aa5"
+  },
+  "RDTO0801.dbc": {
+   "bytes": 418955,
+   "external_cause": {
+    "diag_princ_s_t": 586,
+    "diag_princ_s_t_diag_secun_v_y": 585
+   },
+   "rows": 6665,
+   "sha256": "ba2e15f2f1b53a42e35c014ddaca4716d7b07651b1460fa5180ff482ed7bc723"
+  },
+  "RDTO1201.dbc": {
+   "bytes": 666210,
+   "external_cause": {
+    "diag_princ_s_t": 1134,
+    "diag_princ_s_t_diag_secun_v_y": 1134
+   },
+   "rows": 9473,
+   "sha256": "bb149fb60ebf4c6cd962c272a585f4713852b5e2c5d37c6b7c78b7ef41acd6a1"
+  },
+  "RDTO1601.dbc": {
+   "bytes": 438778,
+   "external_cause": {
+    "diag_princ_s_t": 694,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 5847,
+   "sha256": "9fdb35647acef42416c6eb1c4de3d3e902c8f8e6325efef36cbcda8fff8709d2"
+  },
+  "RDTO2512.dbc": {
+   "bytes": 596933,
+   "external_cause": {
+    "diag_princ_s_t": 1044,
+    "diag_princ_s_t_diag_secun_v_y": 0
+   },
+   "rows": 7773,
+   "sha256": "4a21a3a2c3c88ba8e6417eac0147e7f7334e46dd6bfd838d84bd48a1035f4099"
+  }
+ },
+ "n_aih_in_both": {
+  "by_ident_and_dt_inter": {
+   "1+5/5/same_dt_inter": 3,
+   "1/5/same_dt_inter": 274,
+   "5/5/same_dt_inter": 2765
+  },
+  "files": [
+   "RDSP2303",
+   "RDSP2306"
+  ],
+  "n_aih": 3042,
+  "n_aih_later_dt_saida_in_second": 3042,
+  "pairs_of_rows": 3148,
+  "rows_in_first": 3050,
+  "rows_in_second": 3139
+ }
+}

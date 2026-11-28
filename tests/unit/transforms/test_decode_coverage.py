@@ -646,6 +646,20 @@ def test_the_comparison_report_gaps_are_closed(dbc_fixture, dataset, fixture, fi
             "sexo",
             {"1": "Masculino", "3": "Feminino"},
         ),
+        # LEITOS.CNV has no 17: Portaria SAES/MS 245/2020, art. 2º, adds it to the table
+        # (#254, decision 4).
+        (
+            "sih_aih_reduzida",
+            "sih_rd_sp_2022_01_excerpt",
+            "espec",
+            {"17": "17-Estabelecimento Exclusivo UTI SUS"},
+        ),
+        (
+            "sih_aih_rejeitada",
+            "sih_rj_sp_2022_03_excerpt",
+            "espec",
+            {"17": "17-Estabelecimento Exclusivo UTI SUS"},
+        ),
         # Motivo_de_Erro.DEF relates CO_ERRO to DBF/MOTERRO.DBF.
         (
             "sih_aih_rejeitada_erro",
@@ -728,8 +742,6 @@ def test_report_codes_take_the_source_label(dbc_fixture, dataset, fixture, field
             "ar_finali-7-sem-fonte",
             {"7"},
         ),
-        ("sih_aih_reduzida", "sih_rd_sp_2022_01_excerpt", "espec", "espec-17-sem-fonte", {"17"}),
-        ("sih_aih_rejeitada", "sih_rj_sp_2022_03_excerpt", "espec", "espec-17-sem-fonte", {"17"}),
         (
             "sih_aih_rejeitada",
             "sih_rj_sp_2022_07_excerpt",

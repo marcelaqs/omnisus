@@ -1079,7 +1079,6 @@
         "complex": "sih/CNV/COMPLEX2.CNV",
         "contracep1": "sih/CNV/CONTRAC.CNV",
         "contracep2": "sih/CNV/CONTRAC.CNV",
-        "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
         "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
@@ -1111,6 +1110,7 @@
         "vincprev": "sih/CNV/VINCPREV.CNV"
       },
       "sem_cnv": {
+        "espec": "RD2008.DEF (linha 229) liga ESPEC a LEITOS.CNV, empacotado, que não lista um código que os arquivos publicam e que uma portaria inclui na tabela. O mapa do campo é o do CNV mais esse código, mantido à mão; a claim de códigos do campo cita as duas fontes. Issue 254, decisão 4.",
         "cod_idade": "RD2008.DEF (linhas 188-191) liga COD_IDADE a IDADEBAS.CNV, IDADEPUB.CNV, IDADE18.CNV e IDADEDET.CNV, que comparam três caracteres a partir de COD_IDADE, que tem um; nenhum está empacotado. Issue 6.",
         "nat_jur": "RD2008.DEF (linhas 168-173) liga NAT_JUR a NATJUR.CNV, NATJURC.CNV, ESFERAJUR.CNV e ESFERAJURC.CNV; nenhum está empacotado. A escolha do vínculo é a decisão 5 da issue 7.",
         "cnaer": "RD2008.DEF (linhas 222-224) liga CNAER a CNAEG.CNV e CNAE.CNV; nenhum está empacotado. A escolha do vínculo é a decisão 2 da issue 7; as fixtures do RD trazem '000' em todas as linhas.",
@@ -1547,7 +1547,6 @@
         "complex": "sih/CNV/COMPLEX2.CNV",
         "contracep1": "sih/CNV/CONTRAC.CNV",
         "contracep2": "sih/CNV/CONTRAC.CNV",
-        "espec": "sih/CNV/LEITOS.CNV",
         "etnia": "sih/CNV/etnia.cnv",
         "faec_tp": "sih/CNV/TP_FINAN.CNV",
         "financ": "sih/CNV/FINANC.CNV",
@@ -1571,6 +1570,7 @@
         "vincprev": "sih/CNV/VINCPREV.CNV"
       },
       "sem_cnv": {
+        "espec": "RJ2008.DEF (linha 233) liga ESPEC a LEITOS.CNV, empacotado, que não lista um código que os arquivos publicam e que uma portaria inclui na tabela. O mapa do campo é o do CNV mais esse código, mantido à mão; a claim de códigos do campo cita as duas fontes. Issue 254, decisão 4.",
         "cod_idade": "RJ2008.DEF (linhas 193-196) liga COD_IDADE a IDADEBAS.CNV, IDADEPUB.CNV, IDADE18.CNV e IDADEDET.CNV, que comparam três caracteres a partir de COD_IDADE, que tem um; nenhum está empacotado. Issue 6.",
         "nat_jur": "RJ2008.DEF (linhas 170-175) liga NAT_JUR a NATJUR.CNV, NATJURC.CNV, ESFERAJUR.CNV e ESFERAJURC.CNV; nenhum está empacotado. A escolha do vínculo é a decisão 5 da issue 7.",
         "cnaer": "RJ2008.DEF (linhas 226-228) liga CNAER a CNAEG.CNV e CNAE.CNV; nenhum está empacotado. A escolha do vínculo é a decisão 2 da issue 7; as fixtures do RJ trazem '000' em todas as linhas.",

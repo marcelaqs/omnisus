@@ -15,7 +15,7 @@ import pytest
 import yaml
 
 from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
-from omnisus.transforms.cnv import DefBinding, parse_def
+from omnisus.transforms.cnv import DefBinding, cnv_map, parse_cnv, parse_def
 
 ROOT = Path(__file__).resolve().parents[3]
 CNV = ROOT / "src/omnisus/data/dicionarios/sources/cnv"
@@ -100,6 +100,10 @@ SIH_FIELDS_WAITING_FOR_A_MEMBER = {
 # - every "aux_X" it names: exactly the foreignKeys resources of the field in the YAML;
 # - "issue N", "decisão N" and "pp. N-M", not checked.
 # A number outside these formulas fails the test.
+# Issue #254 (decision 4): the one kind of field with a reason and a packaged member. Its
+# hand map is the whole map of that table plus at least one code of another source, which
+# the generator would refuse; the reason says the member is "empacotado".
+HAND_MAPS_OVER_A_PACKAGED_TABLE = {"espec"}
 _CITED_LINES = re.compile(r"\blinhas? ((?:\d+(?:-\d+)?(?:, | e )?)+)")
 _CITED_DEFS = re.compile(r"\b\w+\.DEF\b")
 _CITED_MEMBERS = re.compile(r"[\w-]+\.cnv\b", re.IGNORECASE)
@@ -140,8 +144,9 @@ def test_every_field_the_sih_2008_def_binds_has_a_map_or_a_reason_true_to_the_de
     their exact count, naming only real members), each start other than 1, the field
     name the DEF puts in place of a start column, only labels the DEF writes, exactly
     the references the field declares in the YAML, and no other number; every member is
-    unpacked and each mention of packaging says so itself. The fields waiting for a
-    member also hold the values and the row count the fixture publishes."""
+    unpacked and each mention of packaging says so itself, except for a hand map over
+    a packaged table (`espec`), which holds every line of that table and more. The fields
+    waiting for a member also hold the values and the row count the fixture publishes."""
     gerar = _load(monkeypatch)
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
     spec = vinculos["datasets"][dataset]
@@ -194,8 +199,23 @@ def test_every_field_the_sih_2008_def_binds_has_a_map_or_a_reason_true_to_the_de
         assert set(_CITED_NO_START.findall(reason)) == names_for_a_start[field], where
         references = {fk["reference"]["resource"] for fk in fields[field].get("foreignKeys", [])}
         assert set(_CITED_REFERENCES.findall(reason)) == references, where
-        assert not {m.lower() for m in members} & packaged, where
-        assert len(re.findall("empacotad", reason)) == len(_UNPACKED.findall(reason)) > 0, where
+        if field in HAND_MAPS_OVER_A_PACKAGED_TABLE:
+            (binding,) = bound
+            table = cnv_map(
+                parse_cnv(
+                    gerar.read_member(
+                        package + binding.table.replace("\\", "/"), vinculos["membros"]
+                    )
+                )
+            )
+            assert table.items() < fields[field]["x-decode"].items(), where
+            assert re.findall(r"empacotad\w*", reason) == ["empacotado"], where
+            assert not _UNPACKED.search(reason), where
+        else:
+            assert not {m.lower() for m in members} & packaged, where
+            assert len(re.findall("empacotad", reason)) == len(_UNPACKED.findall(reason)) > 0, (
+                where
+            )
         assert _numbers_outside_the_formulas(reason) == [], where
         fixtures, observed = SIH_FIELDS_WAITING_FOR_A_MEMBER.get(where, ((), set()))
         quoted = set(_QUOTED.findall(reason))
@@ -327,7 +347,6 @@ def test_a_binding_with_unknown_start_needs_a_reviewed_start(monkeypatch, dbc_fi
 def test_sih_fields_with_a_fallback_range_take_the_cnv_map(field, member, labels):
     """ManualTabnet.pdf p. 21: a code listed again takes the later line. These CNVs open
     with a fallback range, so they left `sem_cnv` for `campos`."""
-    from omnisus.transforms.cnv import cnv_map, parse_cnv
     from omnisus.transforms.dictionaries import load_dicionario
 
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
@@ -370,8 +389,6 @@ def test_rd_cnv_maps_are_verified_and_the_hand_maps_they_replaced_resolved():
 
 def _marca_uti(gerar: ModuleType) -> tuple[dict[str, Any], dict[str, str]]:
     """The committed sih marca_uti field and the map its packaged MARCAUTI.CNV yields."""
-    from omnisus.transforms.cnv import cnv_map, parse_cnv
-
     vinculos = json.loads((CNV / "vinculos.json").read_text(encoding="utf-8"))
     doc = yaml.load(
         (ROOT / "src/omnisus/data/dicionarios/sih_aih_reduzida.yaml").read_text("utf-8"),
