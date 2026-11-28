@@ -895,3 +895,55 @@ def test_cod_idade_labels_the_measured_units(
     (entry,) = field["x-metadata"]["issues"]
     assert (entry["id"], entry["status"]) == ("cod_idade-sem-tabela", "open")
     assert all(s in entry["description"] for s in ("IDADEDET.CNV", "IDADEBAS.CNV", "'0'"))
+
+
+@pytest.mark.parametrize(
+    ("dataset", "fixture", "def_member", "def_line"),
+    [
+        ("sih_aih_reduzida", "sih_rd_sp_2022_01_excerpt", "RD2008.DEF", 229),
+        ("sih_aih_rejeitada", "sih_rj_sp_2022_03_excerpt", "RJ2008.DEF", 233),
+    ],
+)
+def test_espec_17_takes_the_label_of_portaria_245(
+    dbc_fixture, dataset, fixture, def_member, def_line
+):
+    """#254, decision 4: the RD and the RJ DEF bind ESPEC to CNV/LEITOS.CNV, which lists 41
+    codes and no 17. Portaria SAES/MS 245/2020, art. 2º, adds "o código 17 -
+    Estabelecimento Exclusivo UTI SUS" to the table, and RDSP2201 and RJSP2203 publish
+    it, in an AIH of procedure 0303010223 with marca_uti 51. The map is kept by hand: the
+    41 lines of the CNV as the CNV writes them, plus 17 with the words of the portaria in
+    the CNV's "NN-text" form. The claim cites both sources and says which code comes from
+    which; the field left `campos`, so this test is what compares the map with the CNV."""
+    import json
+
+    from omnisus.transforms.cnv import cnv_map, parse_cnv
+
+    label = "17-Estabelecimento Exclusivo UTI SUS"
+    sih = ROOT / "src/omnisus/data/dicionarios/sources/cnv/sih"
+    line = (sih / def_member).read_text(encoding="latin-1").splitlines()[def_line - 1]
+    assert [part.strip() for part in line.split(",")[1:]] == ["ESPEC", "1", "CNV\\LEITOS.CNV"]
+    leitos = cnv_map(parse_cnv((sih / "CNV/LEITOS.CNV").read_bytes().decode("latin-1")))
+    assert len(leitos) == 41 and "17" not in leitos
+    raw = dbc_fixture(fixture).read_bytes()
+    frame = dbc_bytes_to_lazyframe(raw, dataset=dataset).collect()
+    assert frame.select("espec", "proc_rea", "marca_uti").rows() == [("17", "0303010223", "51")]
+    labelled = sus.label(dataset, frame.select("espec"), columns=["espec"])
+    assert dict(labelled.unique().rows()) == {"17": label}
+    field = load_dicionario(dataset).field_def("espec")
+    assert field["x-decode"] == {**leitos, "17": label}
+    (claim,) = (c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes")
+    assert (claim["method"], claim["status"]) == ("cnv-read", "verified_in_source")
+    assert [e["source_id"] for e in claim["evidence"]] == [
+        "sih-tab-f05b32f32908",
+        "sihsus-80babfa3a197",
+    ]
+    assert claim["evidence"][0]["locator"].endswith("CNV/LEITOS.CNV")
+    assert '"o código 17 - Estabelecimento Exclusivo UTI SUS"' in claim["evidence"][1]["locator"]
+    assert "'17'" in claim["note"] and "portaria" in claim["note"].lower()
+    (entry,) = (i for i in field["x-metadata"]["issues"] if i["id"] == "espec-17-sem-fonte")
+    assert entry["status"] == "resolved"
+    assert "evidence/2026-11-28-sih-espec-17" in entry["description"]
+    vinculos = json.loads(
+        (ROOT / "src/omnisus/data/dicionarios/sources/cnv/vinculos.json").read_text("utf-8")
+    )["datasets"][dataset]
+    assert "espec" not in vinculos["campos"] and "LEITOS.CNV" in vinculos["sem_cnv"]["espec"]
