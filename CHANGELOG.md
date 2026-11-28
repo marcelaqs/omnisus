@@ -23,7 +23,8 @@
   without the cause from 2015-02; `raca_cor` 99 and its end announced for April 2023;
   `diar_acom` counts billed daily rates; `uti_mes_to` above 31 and without 999 in the
   files read
-  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`, `evidence/2026-11-28-rd-uti-mes-to-regct/`).
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`, `evidence/2026-11-28-rd-uti-mes-to-regct/`,
+  `evidence/2026-11-28-rd-medidas-da-revisao/`).
 
 ## v0.5.0 — 2026-11-21
 
