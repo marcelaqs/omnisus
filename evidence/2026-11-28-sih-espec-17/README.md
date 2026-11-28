@@ -23,9 +23,10 @@ records for the two excerpts cut from them, and `RDSP2001.dbc` the one recorded 
 SHA-256 `040504bd1af5aae1e28d9384abad44dcece26d03b1886a5d6ccd578da93f0eda`). Portaria SAES/MS nº 245/2020,
 art. 2º (`sihsus-80babfa3a197` in
 `src/omnisus/data/dicionarios/sources/registry.json`), adds "o código 17 - Estabelecimento
-Exclusivo UTI SUS" to the AIH speciality table. The ordinance was not read again on
-2026-11-28: its words here are the ones the issue `espec-17-sem-fonte` of the two
-dictionaries transcribed from the registered file, retrieved on 2026-11-24.
+Exclusivo UTI SUS" to the AIH speciality table. Art. 2º was read on 2026-11-24 in the
+registered file (SHA-256 `80babfa3...`) and transcribed in the issue `espec-17-sem-fonte` of
+the two dictionaries; the words here are that transcription. The ordinance was not reopened
+on 2026-11-28 (Saúde Legis returned 403).
 
 ## What the counts show
 

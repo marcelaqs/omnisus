@@ -95,6 +95,11 @@ valor composto, não o código sozinho. A afirmação fica sempre `unreviewed`, 
 rótulo. É o caso de `cod_idade` no RD e no RJ do SIH (`IDADEDET.CNV` rotula a unidade
 junto com a quantidade).
 
+`method: cnv-read` marca um mapa de códigos mantido à mão a partir de um CNV oficial e de
+outra fonte registrada, quando o gerador não pode escrever o campo: a afirmação traz uma
+evidência por fonte, e a nota diz qual código vem de qual. É o caso de `espec` no RD e no
+RJ do SIH (as linhas de `LEITOS.CNV` e o `17` da Portaria SAES/MS nº 245/2020).
+
 `verified_in_source` **não confirma** vigência nos dados. A dimensão separada
 `applicability.status` pode ser `unknown`, `confirmed`, `conflicting` ou
 `not_applicable`. Aplicar uma interpretação automaticamente a um recorte pede as

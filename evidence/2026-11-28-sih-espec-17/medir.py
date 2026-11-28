@@ -1,6 +1,6 @@
 """Rows with ESPEC 17 in RD and RJ files, and what those rows hold. Only counts leave the files.
 
-Usage: uv run --locked python medir.py DIR OUT
+Usage: uv run --locked python -I evidence/2026-11-28-sih-espec-17/medir.py DIR OUT
 DIR holds RD*.dbc and RJ*.dbc files of SIHSUS/200801_/Dados/; OUT is the JSON written.
 
 The values are the bytes of the DBF record, decoded as latin-1, as published. For each

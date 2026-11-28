@@ -940,8 +940,10 @@ def test_espec_17_takes_the_label_of_portaria_245(
     assert claim["evidence"][0]["locator"].endswith("CNV/LEITOS.CNV")
     assert '"o código 17 - Estabelecimento Exclusivo UTI SUS"' in claim["evidence"][1]["locator"]
     assert "'17'" in claim["note"] and "portaria" in claim["note"].lower()
-    (entry,) = (i for i in field["x-metadata"]["issues"] if i["id"] == "espec-17-sem-fonte")
-    assert entry["status"] == "resolved"
+    issues = [(i["id"], i["status"]) for i in field["x-metadata"]["issues"]]
+    replaced = [("cnv-difere-do-mapa-anterior", "resolved")] if dataset == DATASET else []
+    assert issues == [*replaced, ("espec-17-sem-fonte", "resolved")]
+    entry = field["x-metadata"]["issues"][-1]
     assert "evidence/2026-11-28-sih-espec-17" in entry["description"]
     vinculos = json.loads(
         (ROOT / "src/omnisus/data/dicionarios/sources/cnv/vinculos.json").read_text("utf-8")

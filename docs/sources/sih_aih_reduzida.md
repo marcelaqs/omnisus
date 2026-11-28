@@ -334,8 +334,10 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   2020, 1.235 em 2021 e 36 nos dois meses de 2022; o mês com mais AIH é 2020-12, com
   292), e os três arquivos `RJ` de 2022-01 a 2022-03, em 75. Em todas, `proc_rea` é
   0303010223 e `marca_uti` é 51 (`evidence/2026-11-28-sih-espec-17/`). A contagem não leu
-  outra UF, nem o RD depois de 2022-02. A portaria não foi relida em 2026-11-28: o texto
-  citado é o transcrito do arquivo registrado, obtido em 2026-11-24.
+  outra UF, nem o RD depois de 2022-02. O art. 2º foi lido em 2026-11-24 no arquivo
+  registrado e transcrito na issue `espec-17-sem-fonte` do dicionário; o rótulo foi escrito
+  em 2026-11-28 a partir dessa transcrição, sem reabrir a portaria (o Saúde Legis devolveu
+  403).
 - Nos arquivos lidos, `uti_int_to` e `marca_uci` só trazem UCI neonatal. A UCI não tem
   código no `MARCAUTI.CNV`; o RD tem `uti_int_to`, as diárias em unidade intermediária
   (Informe SIH 2016-03, p. 1), e `marca_uci`, o "Tipo de UCI utilizada pelo paciente"

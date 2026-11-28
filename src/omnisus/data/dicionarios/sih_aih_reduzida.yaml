@@ -16530,7 +16530,7 @@ schema:
         - target: /field/codes
           value_sha256: cb033ec696ce46db86e7abed9fb5db001285826d6b493a98efe5d27b129a27d0
           status: verified_in_source
-          checked_at: '2026-11-28'
+          checked_at: '2026-11-24'
           method: cnv-read
           reviewer: Claude Code
           evidence:
@@ -16543,9 +16543,10 @@ schema:
           note: 'Mapa mantido à mão (issue 254 do repositório, decisão 4). ''17'' vem da Portaria SAES/MS nº 245/2020:
             LEITOS.CNV não o lista, e o rótulo é o texto da portaria, "Estabelecimento Exclusivo UTI SUS", na forma
             "NN-texto" que o CNV dá aos outros códigos. Os outros 41 códigos e rótulos são as linhas de LEITOS.CNV, como
-            o CNV as escreve; tests/unit/transforms/test_sih_rd_fields.py compara o mapa com o CNV empacotado. A portaria
-            não foi relida em 2026-11-28: o texto citado é o que a issue espec-17-sem-fonte transcreveu do arquivo
-            registrado (SHA-256 80babfa3...), obtido em 2026-11-24. O mapa anterior ao CNV, sem fonte, foi descartado em 2026-09-26; texto no issue cnv-difere-do-mapa-anterior.'
+            o CNV as escreve; tests/unit/transforms/test_sih_rd_fields.py compara o mapa com o CNV empacotado. O art. 2º
+            foi lido em 2026-11-24 no arquivo registrado (SHA-256 80babfa3...) e transcrito na issue
+            espec-17-sem-fonte; o mapa foi escrito em 2026-11-28 a partir dessa transcrição, sem reabrir a portaria
+            (o Saúde Legis devolveu 403). O mapa anterior ao CNV, sem fonte, foi descartado em 2026-09-26; texto no issue cnv-difere-do-mapa-anterior.'
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
