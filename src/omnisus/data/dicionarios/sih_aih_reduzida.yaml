@@ -16558,9 +16558,8 @@ schema:
             Exclusivo UTI SUS", e o § 2º restringe o código à AIH do procedimento 03.03.01.022-3 (COVID-19) em
             estabelecimento que só tem leitos de UTI no SUS. O LEITOS.CNV do TAB_SIH republicado em 2026-11-15
             é o mesmo arquivo (SHA-256 040504bd..., evidence/2026-11-15-tab-sih-republicado/members.csv) e
-            continua sem o 17. O código segue sem rótulo porque o
-            x-decode de ESPEC é gerado do CNV (scripts/metadados/gerar_decode_cnv.py), que não aceita um
-            código de outra fonte.'
+            continua sem o 17. O código segue sem rótulo porque o x-decode de ESPEC é gerado do CNV
+            (scripts/metadados/gerar_decode_cnv.py), que não aceita um código de outra fonte.'
     - name: complex
       type: string
       label: Complexidade

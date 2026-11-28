@@ -2,7 +2,7 @@ name: sih_aih_rejeitada
 title: SIHSUS — AIH rejeitada (RJ)
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.11.0
+x-version: 1.11.1
 x-source-format: dbc
 x-evidence:
   physical_schema: sih_rj_rr_2024_01_mini.dbc, 90 fields; observed 2026-09-22. FONTE_ORC,
@@ -15832,7 +15832,13 @@ schema:
         status: open
         description: '''17'' fica sem rótulo: LEITOS.CNV (TAB_SIH), ligado a ESPEC no RD2008.DEF e no RJ2008.DEF,
           lista 41 códigos, 01 a 14, 51, 52, 64, 65 e 74 a 96; o IT SIHSUS 1603 descreve ESPEC sem códigos
-          (p. 1). SP 2022: 75 linhas (RJSP2201 6, RJSP2202 20, RJSP2203 49).'
+          (p. 1). SP 2022: 75 linhas (RJSP2201 6, RJSP2202 20, RJSP2203 49). A Portaria SAES/MS nº 245/2020,
+          art. 2º (sihsus-80babfa3a197), inclui na Tabela de Especialidade da AIH "o código 17 - Estabelecimento
+          Exclusivo UTI SUS", e o § 2º restringe o código à AIH do procedimento 03.03.01.022-3 (COVID-19) em
+          estabelecimento que só tem leitos de UTI no SUS. O LEITOS.CNV do TAB_SIH republicado em 2026-11-15
+          é o mesmo arquivo (SHA-256 040504bd..., evidence/2026-11-15-tab-sih-republicado/members.csv) e
+          continua sem o 17. O código segue sem rótulo porque o x-decode de ESPEC é gerado do CNV
+          (scripts/metadados/gerar_decode_cnv.py), que não aceita um código de outra fonte.'
   - name: cgc_hosp
     type: string
   - name: n_aih
