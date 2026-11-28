@@ -116,10 +116,8 @@ def test_a_human_review_against_the_estrutura_do_sim_verifies_the_codes(name, pa
 
 
 @pytest.mark.parametrize("name", ["atestante", "tppos"])
-def test_a_reviewer_closes_a_conflict_of_wording_between_the_cnv_and_the_document(
-    name,
-) -> None:
-    """The CNV and the Estrutura do SIM name the same answer in other words."""
+def test_a_reviewer_closes_the_conflict_between_the_cnv_and_the_document(name) -> None:
+    """`atestante` differs in wording, `tppos` in the codes; `test_sim_cnv_claims` has each."""
     field = _field("sim_obitos", name)
     (claim,) = [c for c in field["x-metadata"]["claims"] if c["target"] == "/field/codes"]
     assert (claim["status"], claim["method"]) == ("verified_in_source", "cnv-parse")

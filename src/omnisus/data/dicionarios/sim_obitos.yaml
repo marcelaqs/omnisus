@@ -1683,7 +1683,7 @@ schema:
         issues:
         - id: cnv-difere-do-mapa-anterior
           status: resolved
-          description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Assistente'', CNV ''Sim''. O Estrutura_do_SIM_2025.pdf (p. 5) escreve ''1 - Assistente; 2 – Substituto; 3 – IML; 4 – SVO; 5 – Outro''; o ATESTANT.CNV rotula 1 como ''Sim''. Resolvido em 2026-11-25 pela revisora marcelaqs: ''Assistente'' e ''Sim'' respondem à mesma pergunta da DO, se o médico que assina atendeu o falecido; vale o CNV, que o DEF liga ao campo.'
+          description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Assistente'', CNV ''Sim''. O Estrutura_do_SIM_2025.pdf (p. 5) escreve ''1 - Assistente; 2 – Substituto; 3 – IML; 4 – SVO; 5 – Outro''; o ATESTANT.CNV rotula 1 como ''Sim''. Resolvido em 2026-11-25 pela revisora marcelaqs: segundo a revisora, ''Assistente'' e ''Sim'' respondem à mesma pergunta da DO, se o médico que assina atendeu o falecido (nenhum formulário ou manual da DO está registrado como fonte); vale o CNV. O Obito_1996_CID10.def liga o campo ao ATESTANT.CNV numa linha X, ''XMedico Atest, ATESTANTE, 1, ATESTANT.CNV'' (a ressalva dessas linhas está no issue def-liga-por-linha-x de seriescfal); o Obito_1979_95_CID-09.DEF, do mesmo OBITOS_CID10_TAB/tabdo, liga ATESTANTE ao ATESTANT.CNV em linhas T e S, que têm função definida: ''TAtestante, ATESTANTE, 1, ATESTANT.CNV'' e ''SAtestante, ATESTANTE, 1, ATESTANT.CNV''.'
     - name: comunsvoim
       type: string
       label: Município SVO/IML
@@ -1981,12 +1981,12 @@ schema:
         issues:
         - id: tppos-codigos-divergem-do-pdf
           status: resolved
-          description: 'O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos ''1 – sim; 2 – não''. DORR2022, DORR2023 e os excertos de DOEXT, DOINF e DOMAT de 2023 gravam S, N ou branco, as chaves do INVESTIG.CNV, que o Obito_1996_CID10.def liga ao campo numa linha X (a ressalva dessas linhas está no issue def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo. Nos arquivos DO de AC, AP, DF, RR, SE e TO de cada ano de 1996 a 2024 e de BA, PA, RS e SP de 2006, 2015 e 2023 (evidence/2026-11-18-sim-valores-do/), TPPOS tem S em 374.509 registros, N em 951.045 e branco em 950.059, e nenhum 1 ou 2. Resolvido em 2026-11-25 pela revisora marcelaqs: ''1 – sim; 2 – não'' do documento e S/N do CNV dizem se o óbito foi investigado; o mapa fica com as chaves que os arquivos gravam.'
+          description: 'O Estrutura_do_SIM_2025.pdf (p. 8) dá a TPPOS os códigos ''1 – sim; 2 – não''. DORR2022, DORR2023 e os excertos de DOEXT, DOINF e DOMAT de 2023 gravam S, N ou branco, as chaves do INVESTIG.CNV, que o Obito_1996_CID10.def liga ao campo numa linha X (a ressalva dessas linhas está no issue def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo. Nos arquivos DO de AC, AP, DF, RR, SE e TO de cada ano de 1996 a 2024 e de BA, PA, RS e SP de 2006, 2015 e 2023 (evidence/2026-11-18-sim-valores-do/), TPPOS tem S em 374.509 registros, N em 951.045 e branco em 950.059, e nenhum 1 ou 2. Resolvido em 2026-11-25 pela revisora marcelaqs: os códigos diferem, 1 e 2 no documento e S e N nos arquivos, e quem decide são os arquivos, que nos registros contados acima gravam S 374.509 vezes, N 951.045 vezes e nenhuma vez 1 ou 2. Segundo a revisora, os dois pares dizem se o óbito foi investigado. O mapa fica com as chaves que os arquivos gravam; 1 e 2 seguem sem rótulo.'
         - id: cnv-difere-do-mapa-anterior
           status: resolved
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Investigado'';
             ''N'' era ''Não'', CNV ''Nao Investigado''; ''1'' era ''Sim'', CNV não lista; ''2'' era ''Não'',
-            CNV não lista. Resolvido em 2026-11-25 pela revisora marcelaqs: os rótulos dizem o mesmo; vale o CNV, que o DEF liga ao campo.'
+            CNV não lista. Resolvido em 2026-11-25 pela revisora marcelaqs: para S e N os rótulos dizem o mesmo e vale o CNV, que o DEF liga ao campo numa linha X (ressalva no issue def-liga-por-linha-x de seriescfal). 1 e 2 não são outra grafia: são códigos do documento que os arquivos não gravam, e ficam sem rótulo (issue tppos-codigos-divergem-do-pdf).'
     - name: dtinvestig
       type: date
       label: Data da investigação
