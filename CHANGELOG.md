@@ -8,6 +8,20 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+### Dictionaries
+
+- `sinasc_nascidos_vivos` 2.8.0: code `5` of `locnasc` gains the label "Aldeia indígena",
+  which the manual of the DN (4th edition, p. 23) and the SINASC Estrutura of 1996 to
+  2019 (p. 1) give it; `LOCOCOR.CNV` groups it under "Ignorado", and 740 of the 13,091
+  rows of `DNRR2022.dbc` publish it. The map of `locnasc` is now kept by hand, the lines
+  of the CNV with that one label replaced, outside the fields `gerar_decode_cnv.py`
+  generates. `stdnnova` becomes `0` "Não" and `1` "Sim". 25 of the 26 code-map claims
+  become `verified_in_source`: 23 reviewed by a human reviewer, and `locnasc` and
+  `sttrabpart` by decision of the maintainer on her findings. Code `3` of `sttrabpart`
+  stays unlabelled: only the Estrutura lists it and no row of that file publishes it
+  (issue `sttrabpart-3-so-no-estrutura`). New sources: `sinasc-0ffc45994687` and
+  `sinasc-5956ea4d8e89` (#246).
+
 ## v0.5.1 — 2026-11-28
 
 **Upgrading from 0.5.0:** no parser version changed (the import still reads the same
