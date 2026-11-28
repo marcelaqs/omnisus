@@ -391,6 +391,43 @@ Passo a passo com análise e procedência:
   issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
   texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
   COMPETÊNCIA" e é "Ano de processamento da AIH").
+- Portaria SAS/MS nº 718, de 28 de setembro de 2006, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (portal SIHD):
+  <ftp://ftp2.datasus.gov.br/public/sistemas/dsweb/SIHD/Portarias/portaria2006/PT-718.htm>
+  — consultado em 2026-11-26; SHA-256
+  `6eca467db02d64f7a589385e5214dc0b98e9f07da8ae53d71478bfcb52ccc82f`.
+  Registro `sihsus-6eca467db02d` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 1.324, de 27 de novembro de 2014, Ministério da Saúde / Secretaria
+  de Atenção à Saúde (impressão do Saúde Legis hospedada pela SES-DF):
+  <https://www.saude.df.gov.br/documents/37101/75753/Portaria+MS+n%C2%BA+1.324_2014_Conceitos+de+diagn%C3%B3stico+utilizados+no+Programa+de+Apoio+%C3%A0+Entrada+de+Dados+das+Autoriza%C3%A7%C3%B5es+de+Interna%C3%A7%C3%A3o+Hospitalar.pdf>
+  — consultado em 2026-11-26; SHA-256
+  `d3ae36f17dd0815d67f62d0d1f56fe8d3a57d91085082bf4d94f94e96868aaf3`.
+  Registro `sihsus-d3ae36f17dd0` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAS/MS nº 298, de 1º de março de 2019, Ministério da Saúde / Secretaria de
+  Atenção à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/sas/2019/prt0298_06_03_2019.html>
+  — consultado em 2026-11-24; SHA-256
+  `b6bf1a4c9851b4d780340de08b54e605a83b06cf7a781802bd6721d94ed6de6c`.
+  Registro `sihsus-b6bf1a4c9851` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria de Consolidação SAES/MS nº 1, de 22 de fevereiro de 2022 (texto compilado),
+  edição de 2026-11-14, Ministério da Saúde / Secretaria de Atenção Especializada à
+  Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2022/prc0001_31_03_2022_comp.html>
+  — consultado em 2026-11-24; SHA-256
+  `7ea504980caae5735edfe11b9cab06b07917fd08b2c969b4165fd742fb4d6df6`.
+  Registro `sihsus-7ea504980caa` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAES/MS nº 1.202, de 29 de dezembro de 2023, Ministério da Saúde / Secretaria
+  de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2023/prt1202_29_12_2023.html>
+  — consultado em 2026-11-24; SHA-256
+  `6a8cfeccbe3bf7a1b2267c2098190038e00642abd3612b8d1667ce9517ff29fb`.
+  Registro `sihsus-6a8cfeccbe3b` em `src/omnisus/data/dicionarios/sources/registry.json`.
+- Portaria SAES/MS nº 3.511, de 24 de novembro de 2025, Ministério da Saúde / Secretaria
+  de Atenção Especializada à Saúde (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/saes/2025/prt3511_05_12_2025.html>
+  — consultado em 2026-11-24; SHA-256
+  `39c190981579b6b523ddfb357f44b9af0e096c773e453dac8faad95b9ee163b1`.
+  Registro `sihsus-39c190981579` em `src/omnisus/data/dicionarios/sources/registry.json`.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos
