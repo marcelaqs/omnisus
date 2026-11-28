@@ -467,7 +467,7 @@ schema:
         - id: cnv-difere-do-mapa-anterior
           status: open
           description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Sim - (O paciente
-            é gestante)''; ''N'' era ''Não'', CNV ''Nao - (O paciente é gestante)''. Em 2026-11-26 a revisora marcelaqs: o GESTANTE.CNV rotula ''N'' como ''Nao - (O paciente é gestante)'', que contradiz o próprio código; o ''Não'' do mapa anterior é o sentido certo. Fica aberto: o mapa vem do CNV, e corrigir o rótulo do CNV cabe ao mantenedor.'
+            é gestante)''; ''N'' era ''Não'', CNV ''Nao - (O paciente é gestante)''. Em 2026-11-26 a revisora marcelaqs: o GESTANTE.CNV rotula ''N'' como ''Nao - (O paciente é gestante)'', que contradiz o próprio código; o ''Não'' do mapa anterior é o sentido certo. Medido na fixture sia_am_rr_2024_01_mini.dbc (AMRR2401.dbc inteiro, 2.083 linhas): am_gestant é ''N'' em 2.075 e ''S'' em 8; das ''N'', 1.234 têm ap_sexo ''F'' e 841 têm ''M''; as 8 ''S'' têm ap_sexo ''F''. Linhas de pacientes do sexo masculino trazem ''N'', então ''N'' não pode significar gestante. Fica aberto: o mapa vem do CNV, e corrigir o rótulo do CNV cabe ao mantenedor.'
     - name: ap_natjur
       type: string
       label: Ap natjur

@@ -156,6 +156,8 @@ def test_the_closed_ap_tpapac_issue_says_the_4_of_the_older_map_has_no_label(dat
 
 
 def test_am_gestant_stays_conflicting_because_the_cnv_contradicts_itself() -> None:
+    """AMRR2401 gives N to every male patient, so N cannot mean pregnant (FIXTURES.md)."""
     claim, issue = _codes_claim_and_cnv_issue("sia_apac_medicamentos", "am_gestant")
     assert (claim["status"], issue["status"]) == ("conflicting", "open")
     assert "GESTANTE.CNV" in issue["description"]
+    assert "sia_am_rr_2024_01_mini.dbc" in issue["description"]
