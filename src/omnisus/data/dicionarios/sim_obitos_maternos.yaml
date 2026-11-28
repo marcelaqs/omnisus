@@ -2,7 +2,7 @@ name: sim_obitos_maternos
 title: SIM — Óbitos maternos (DOMAT), nacional
 profile: tabular-data-resource
 encoding: latin-1
-x-version: 1.11.3
+x-version: 1.11.1
 x-source-format: dbc
 x-evidence:
   physical_schema: sim_domat_br_2023_mini.dbc, 87 fields; observed 2026-09-22
@@ -48,8 +48,8 @@ schema:
           - 6
           locator: 'ORIGEM, Caracter 1: 01- Oracle, 02 Banco estadual diponibilizado via FTP, 03 Banco SEADE
             9 Ignorado'
-        note: A edição de 12/2019 escreve 1, 2, 3 e 9, como o x-decode; a de 07/2025 escreve 01, 02 e 03
-          (e 9) para um campo de 1 caractere. Os rótulos são abreviações do texto.
+        note: A edição de 12/2019 escreve 1, 2, 3 e 9, como o x-decode; as de 06/2025 e 07/2025 escrevem
+          01, 02 e 03 (e 9) para um campo de 1 caractere. Os rótulos são abreviações do texto.
       - target: /field/description
         value_sha256: fd1e53ff65f8f7987c099ba78065ce3dcbda0bcbf2dd39818c2054c39e46c65e
         status: unreviewed
@@ -591,19 +591,13 @@ schema:
         value_sha256: 3f62f8acbc3b5fb8d9d538446c2fadf44abd5f65c9be4f54433a595e2e1768f2
         status: verified_in_source
         checked_at: '2026-11-25'
-        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
-          da tabela DO, conferida por revisora humana
+        method: Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS, conferida
+          por revisora humana
         reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 2
-          locator: 'ESC2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 – Fundamental
-            II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior completo;
-            9 – Ignorado'
-        - source_id: sim-do-5d1852acb228
-          pages:
-          - 6
           locator: 'ESC2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 – Fundamental
             II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior completo;
             9 – Ignorado'
@@ -981,19 +975,13 @@ schema:
         value_sha256: 3f62f8acbc3b5fb8d9d538446c2fadf44abd5f65c9be4f54433a595e2e1768f2
         status: verified_in_source
         checked_at: '2026-11-25'
-        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
-          da tabela DO, conferida por revisora humana
+        method: Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS, conferida
+          por revisora humana
         reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 3
-          locator: 'ESCMAE2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 –
-            Fundamental II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior
-            completo; 9 – Ignorado'
-        - source_id: sim-do-5d1852acb228
-          pages:
-          - 6
           locator: 'ESCMAE2010, Caracter 1: 0 – Sem escolaridade; 1 – Fundamental I (1ª a 4ª série); 2 –
             Fundamental II (5ª a 8ª série); 3 – Médio (antigo 2º Grau); 4 – Superior incompleto; 5 – Superior
             completo; 9 – Ignorado'
@@ -1534,18 +1522,14 @@ schema:
         value_sha256: ba4c4540ade0bc08b200748ac04aceb58cfa915241b368ef9341cd637bad18be
         status: verified_in_source
         checked_at: '2026-11-25'
-        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
-          da tabela DO, conferida por revisora humana
+        method: Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS, conferida
+          por revisora humana
         reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 4
           locator: 'ASSISTMED, Caracter 1: 1 sim; 2 não; 9 ignorado'
-        - source_id: sim-do-5d1852acb228
-          pages:
-          - 4
-          locator: 'ASSISTMED, Caracter 1: Assistência médica: 1 – sim; 2 – não; 9 – ignorado.'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
       - target: /field/description
         value_sha256: cd3da60e01ca5733d70eb8ef07306e40758c9ca6a228dec52b2bead19104bdca
@@ -2077,15 +2061,19 @@ schema:
           def-liga-por-linha-x de seriescfal). O mapa é o do CNV; 1 e 2 ficam sem rótulo. Nos arquivos DO
           de AC, AP, DF, RR, SE e TO de cada ano de 1996 a 2024 e de BA, PA, RS e SP de 2006, 2015 e 2023
           (evidence/2026-11-18-sim-valores-do/), TPPOS tem S em 374.509 registros, N em 951.045 e branco
-          em 950.059, e nenhum 1 ou 2. Resolvido em 2026-11-25 pela revisora marcelaqs: ''1 – sim; 2 – não''
-          do documento e S/N do CNV dizem se o óbito foi investigado; o mapa fica com as chaves que os arquivos
-          gravam.'
+          em 950.059, e nenhum 1 ou 2. Resolvido em 2026-11-25 pela revisora marcelaqs: os códigos diferem,
+          1 e 2 no documento e S e N nos arquivos, e quem decide são os arquivos, que nos registros contados
+          acima gravam S 374.509 vezes, N 951.045 vezes e nenhuma vez 1 ou 2. Segundo a revisora, os dois
+          pares dizem se o óbito foi investigado. O mapa fica com as chaves que os arquivos gravam; 1 e
+          2 seguem sem rótulo.'
       - id: cnv-difere-do-mapa-anterior
         status: resolved
         description: 'Mapa anterior sem fonte substituído pelo CNV: ''S'' era ''Sim'', CNV ''Investigado'';
           ''N'' era ''Não'', CNV ''Nao Investigado''; ''1'' era ''Sim'', CNV não lista; ''2'' era ''Não'',
-          CNV não lista. Resolvido em 2026-11-25 pela revisora marcelaqs: os rótulos dizem o mesmo; vale
-          o CNV, que o DEF liga ao campo.'
+          CNV não lista. Resolvido em 2026-11-25 pela revisora marcelaqs: para S e N os rótulos dizem o
+          mesmo e vale o CNV, que o DEF liga ao campo numa linha X (ressalva no issue def-liga-por-linha-x
+          de seriescfal). 1 e 2 não são outra grafia: são códigos do documento que os arquivos não gravam,
+          e ficam sem rótulo (issue tppos-codigos-divergem-do-pdf).'
   - name: dtinvestig
     type: date
     label: Data da investigação
@@ -2285,8 +2273,13 @@ schema:
         description: 'Mapa anterior sem fonte substituído pelo CNV: ''1'' era ''Assistente'', CNV ''Sim''.
           O Estrutura_do_SIM_2025.pdf (p. 5) escreve ''1 - Assistente; 2 – Substituto; 3 – IML; 4 – SVO;
           5 – Outro''; o ATESTANT.CNV rotula 1 como ''Sim''. Resolvido em 2026-11-25 pela revisora marcelaqs:
-          ''Assistente'' e ''Sim'' respondem à mesma pergunta da DO, se o médico que assina atendeu o falecido;
-          vale o CNV, que o DEF liga ao campo.'
+          segundo a revisora, ''Assistente'' e ''Sim'' respondem à mesma pergunta da DO, se o médico que
+          assina atendeu o falecido (nenhum formulário ou manual da DO está registrado como fonte); vale
+          o CNV. O Obito_1996_CID10.def liga o campo ao ATESTANT.CNV numa linha X, ''XMedico Atest, ATESTANTE,
+          1, ATESTANT.CNV'' (a ressalva dessas linhas está no issue def-liga-por-linha-x de seriescfal);
+          o Obito_1979_95_CID-09.DEF, do mesmo OBITOS_CID10_TAB/tabdo, liga ATESTANTE ao ATESTANT.CNV em
+          linhas T e S, que têm função definida: ''TAtestante, ATESTANTE, 1, ATESTANT.CNV'' e ''SAtestante,
+          ATESTANTE, 1, ATESTANT.CNV''.'
   - name: stcodifica
     type: string
     label: Status codificação
@@ -2343,18 +2336,14 @@ schema:
         value_sha256: 9ba2685b831819fd5247b6b228dc10f83f5fc3671c83581db0e377741f553661
         status: verified_in_source
         checked_at: '2026-11-25'
-        method: Comparação dos códigos e rótulos do x-decode com a Estrutura do SIM e o dicionário de dados
-          da tabela DO, conferida por revisora humana
+        method: Comparação dos códigos e rótulos do x-decode com o Estrutura do SIM do FTP do DATASUS, conferida
+          por revisora humana
         reviewer: marcelaqs
         evidence:
         - source_id: sim-b4195ac8e0f8
           pages:
           - 6
           locator: 'CODIFICADO, Caracter 1: S se estiver codificado; N se não'
-        - source_id: sim-do-5d1852acb228
-          pages:
-          - 5
-          locator: 'CODIFICADO, Caracter 1: Se estiver codificado (valor: S) ou não (valor: N)'
         note: Códigos do PDF iguais aos do x-decode; os rótulos são abreviações do texto do PDF.
       - target: /field/description
         value_sha256: 4730246174647bf3f31bbf856f09f92637140ed987bc30bdf30006d56cc6d7d2
