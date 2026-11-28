@@ -313,6 +313,20 @@
       "last_checked_on": "2026-11-15"
     },
     {
+      "id": "sih-tab-2491e8d4f2db",
+      "category": "SIHSUS",
+      "title": "TAB_SIH.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Auxiliar/TAB_SIH.zip",
+      "sha256": "2491e8d4f2db2cc2963006a589157cd55015ad26c2d8eaf8666320f98fcd9bef",
+      "bytes": 6085117,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-27",
+      "last_checked_on": "2026-11-28"
+    },
+    {
       "id": "sih-tab-b433310785e0",
       "category": "SIHSUS",
       "title": "TAB_SIH_199201-199712.zip",
@@ -451,6 +465,20 @@
       "published_on": null,
       "retrieved_on": "2026-11-18",
       "last_checked_on": "2026-11-18"
+    },
+    {
+      "id": "sia-tab-5e145464db62",
+      "category": "SIASUS",
+      "title": "TAB_SIA.zip",
+      "publisher": "Ministério da Saúde / DATASUS",
+      "authority": "official",
+      "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Auxiliar/TAB_SIA.zip",
+      "sha256": "5e145464db62dc80b6727ea0569780444fdafeb395ef1eae7f70f3d1b90b710e",
+      "bytes": 74143727,
+      "edition": null,
+      "published_on": null,
+      "retrieved_on": "2026-11-28",
+      "last_checked_on": "2026-11-28"
     },
     {
       "id": "sinan-tab-cad66ee38781",

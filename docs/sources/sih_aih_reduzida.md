@@ -108,7 +108,10 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   `diag_secun`, `cid_asso` e `cid_morte` gravam `0000`, que não é um código CID-10
   ([vocabulários](vocabularios.md)), mas não em todo arquivo: em São Paulo 2014-12,
   `cid_morte` vem em branco nas 184.988 AIH sem óbito
-  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). De 2015-02 em diante, nos arquivos lidos,
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`), e nenhuma das 193.789 AIH traz `0000` em
+  `diag_secun` ou `cid_asso`: `diag_secun` vem em branco em 134.282 e `cid_asso` em
+  187.186 (`evidence/2026-11-28-rd-medidas-da-revisao/`). De 2015-02 em diante, nos
+  arquivos lidos,
   `cid_asso` e `cid_morte` trazem `0000` em toda AIH, e o informe descreve `diag_secun`
   como "Preenchido com zeros a partir de 201501" (Informe SIH 2016-03, p. 2); ver
   [Armadilhas](#armadilhas). A importação preserva o comprimento dos códigos publicados; não aplica
@@ -132,7 +135,9 @@ descreve (o sumário, p. 1, lista só `RD` e `SP`), são linhas próprias; veja 
 | `sih_aih_reduzida_1992_1997` | `RD` | `SIHSUS/199201_200712/Dados` | 1992-01 a 1997-12; o diretório `Doc` dessa era está vazio no servidor |
 | `sih_aih_reduzida_1998_2007` | `RD` | `SIHSUS/199201_200712/Dados` | 1998-01 a 2007-12; mesmo diretório, mesmo prefixo |
 
-Os dicionários dessas linhas partem do inventário físico do descritor DBF de uma fixture real (`scripts/gen_dicionario.py`); os de `sih_aih_reduzida_1992_1997` e `sih_aih_reduzida_1998_2007`, dos descritores de duas fixtures cada um (`uti_total`, de `sih_aih_reduzida_1998_2007`, só existe até 1999-12 e nenhuma fixture da era o traz: o tipo vem do N2.0 que ele tem em todos os layouts) e do censo de layouts descrito abaixo. Os rótulos de categoria vêm do CNV do TabWin quando o DEF liga o campo e todo valor não branco da fixture é chave do mapa (`sources/cnv/vinculos.json`); calendários, cadastros e faixas não são copiados. Fica sem rótulos `sih_aih_rejeitada_erro` (o DEF só liga ano e mês). Em `sih_aih_reduzida_1992_1997` (`ident`, `sexo`, `morte`, `natureza` e `semiplen`) e em `sih_aih_reduzida_1998_2007` (`ident`, `sexo`, `morte`, `natureza`, `gestao`, `instru` e `vincprev`), os campos têm os rótulos dos CNV que o `RD.DEF` liga a eles nos três pacotes da era em `SIHSUS/200801_/Auxiliar/` (`TAB_SIH_199201-199712.zip`, `TAB_SIH_199801-200307.zip` e `TAB_SIH_200308-200712.zip`), idênticos byte a byte; os SHA-256 estão em `evidence/2026-09-29-tab-sih-rd-eras/`. Os outros campos categóricos que o `RD.DEF` liga, como `espec`, `car_int`, `cobranca` e `marca_uti`, seguem sem rótulo nessas duas linhas. `CH` e `CM` (nacionais, desde 2019) e as eras antigas de `RJ` e `SP` não têm linha em [Bases e argumentos](../datasets.md#sih).
+Os dicionários dessas linhas partem do inventário físico do descritor DBF de uma fixture real (`scripts/gen_dicionario.py`); os de `sih_aih_reduzida_1992_1997` e `sih_aih_reduzida_1998_2007`, dos descritores de duas fixtures cada um (`uti_total`, de `sih_aih_reduzida_1998_2007`, só existe até 1999-12 e nenhuma fixture da era o traz: o tipo vem do N2.0 que ele tem em todos os layouts) e do censo de layouts descrito abaixo. Os rótulos de categoria vêm do CNV do TabWin quando o DEF liga o campo e todo valor não branco da fixture é chave do mapa (`sources/cnv/vinculos.json`); calendários, cadastros e faixas não são copiados. Em `sih_aih_rejeitada_erro`, o DEF liga a CNV só ano e mês; `co_erro` ele liga a `DBF/MOTERRO.dbf`, de onde vêm os rótulos (`sources/cnv/vinculos.json`). Em `sih_aih_reduzida_1992_1997` (`ident`, `sexo`, `morte`, `natureza` e `semiplen`) e em `sih_aih_reduzida_1998_2007` (`ident`, `sexo`, `morte`, `natureza`, `gestao`, `instru` e `vincprev`), os campos têm os rótulos dos CNV que o `RD.DEF` liga a eles nos três pacotes da era em `SIHSUS/200801_/Auxiliar/` (`TAB_SIH_199201-199712.zip`, `TAB_SIH_199801-200307.zip` e `TAB_SIH_200308-200712.zip`), idênticos byte a byte; os SHA-256 estão em `evidence/2026-09-29-tab-sih-rd-eras/`. Os outros campos categóricos que o `RD.DEF` liga, como `espec`, `car_int`, `cobranca` e `marca_uti`, seguem sem rótulo nessas duas linhas. `CH` e `CM` (nacionais, desde 2019) e as eras antigas de `RJ` e `SP` não têm linha em [Bases e argumentos](../datasets.md#sih).
+
+Em `sih_aih_rejeitada_erro`, `co_erro` tem 398 valores distintos nas 14.656.815 linhas dos 4.931 arquivos `ER` que o servidor listava em 2026-09-23 (2011-01 a 2026-07); 15 deles, em 8.048 linhas, não estão em `DBF/MOTERRO.dbf` do `TAB_SIH.zip` e ficam sem rótulo (`evidence/2026-09-23-er-co-erro/`; issue `co_erro-fora-da-tabela` do campo).
 
 De 1992-01 a 2007-12, os arquivos `RD` lidos (um de RR por mês, AP onde RR falta, e SP e MG nos meses de troca) têm 19 layouts DBF: 7 até 1997-12 e 12 de 1998-01 em diante. O dataset é separado em 1998-01, um dicionário por era (issue #12, decisão 1): `sih_aih_reduzida_1992_1997` declara os 43 campos dos 7 primeiros layouts e `sih_aih_reduzida_1998_2007`, os 80 dos 12 últimos (89 no total). Cada tabela do lake só tem as colunas da sua era; antes da separação, os 46 campos que só os layouts de 1998-01 em diante têm eram colunas vazias da tabela única em 1992-1997. Colunas aparecem e somem: `us_sh`, `us_sp`, `us_sadt`, `us_ortp` e `us_sangue` existem até 1997-12 (`us_rn`, de 1994-01 a 1997-12); `uti_total`, até 1999-12; `cod_arq` e `cont`, até 2006-03, menos em 2001; `semiplen`, de 1995-01 a 1997-12; `diag_sec`, só em 1997; `val_sang`, só em 1994-12, mês que não tem `val_sangue`; `cgc_mant`, só em 2004-07; `cod_seg`, de 2004-07 a 2006-03. Numa tabela com vários meses da mesma era, a coluna que falta num mês fica NULL nas linhas desse mês. O `RD.DEF` dos três pacotes liga `semiplen` ("Gestão (95-97)") a `GESTAO.CNV`, de onde vêm os rótulos, e `diag_sec` a tabelas CID-9; `diag_sec` fica sem rótulo, como `diag_princ`. `num_proc` (era 1992-1997) é numérico (N) de 1996-01 a 1996-07, e `insc_pn` e `seq_aih5` (era 1998-2007), de 2004-07 a 2006-03; nos outros meses em que existem são texto (C), o tipo que o dicionário declara. A importação grava os meses N como texto, o número sem zeros à esquerda ([issue #40](https://github.com/raphaelfh/omnisus/issues/40)): nos 264 registros de `RDRR9602` e nos 5 da fixture de `RDRR9603`, `num_proc` sai `364` e `368`, e nos 794 de `RDRR9709`, `0489`; nos 91 da fixture de `RDRR0407`, `insc_pn` e `seq_aih5` saem `0`, e nos 1.496 de `RDRR0712`, `0000000000` e `000`. Quem quiser unir as duas formas faz isso na consulta; a issue `sem-zeros-a-esquerda` de cada um dos três campos, no dicionário da sua era, lista os meses. Um lake em que uma dessas colunas já é número, porque começou por um mês N numa versão anterior, recusa os arquivos gravados como texto com `UnsafeSchemaError`, também com `replace`; a biblioteca não tem operação que troque o tipo de uma coluna, e a tabela precisa ser importada de novo num lake novo. Os arquivos lidos, com data, tamanho, SHA-256 e layout, estão em `evidence/2026-10-01-rd-1992-2007-layouts/`. O cabeçalho DBF dos 5.165 arquivos `RD` do diretório, lido em 2026-11-19 (`evidence/2026-11-19-sih-cabecalhos/`), tem os mesmos 19 layouts e nenhum outro, em todas as UFs; `num_proc` é N nos 188 arquivos de 1996-01 a 1996-07, e `insc_pn` e `seq_aih5`, nos 567 de 2004-07 a 2006-03.
 
@@ -184,9 +189,12 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   dois últimos, todas com `dt_inter` até 31/03/2023
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Numa série da proporção de raça/cor sem
   informação, o informe anuncia o fim do 99 de abril de 2023 em diante; nos dois arquivos
-  de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até 31/03/2023
-  (a data de saída dessas AIH não foi medida); e em São Paulo a maior parte da queda veio
-  antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
+  de São Paulo lidos depois disso o 99 continua, só em AIH com `dt_inter` até
+  31/03/2023. Parte das AIH com 99 desses dois arquivos tem `dt_saida` depois de março de
+  2023: das 282 de 2023-06, 229 têm `dt_saida` de abril a junho de 2023, e 190 das 282
+  têm `ident` 5; as 97 de 2025-12 têm `ident` 5 e `dt_saida` em dezembro de 2025
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`). Em São Paulo a maior parte da queda
+  veio antes: de 27.436 AIH em 2020-01 para 4.778 em 2023-03.
 - Há AIH de tipos diferentes em `ident` (Informe SIH 2016-03, p. 1) e um sequencial
   próprio para a AIH de longa permanência (p. 3).
 - Uma internação pode gerar mais de uma AIH. A AIH 5 mantém a data de internação da
@@ -221,7 +229,9 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   "com alta de no máximo 4 (quatro) meses anteriores"; segundo a nota de origem dos dois
   artigos na consolidação, a regra vem da Portaria SAS/MS nº 472/2008. Na fixture de
   Roraima 2024-01, 3.431 das 3.714 AIH têm `dt_saida` de 2023-10 a 2023-12 e 283, de
-  2024-01: o arquivo de um mês de processamento traz altas de até três meses antes.
+  2024-01: nessa fixture, o arquivo traz altas de até três meses antes; em São Paulo
+  2023-06, 3 das 282 AIH com `raca_cor` 99 têm `dt_saida` de 2023-02, quatro meses antes
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`).
 - `qt_diarias`, a "Quantidade de diárias" (Informe SIH 2016-03, p. 2), não conta dias de
   permanência. "O sistema paga o último dia de internamento quando o motivo de
   apresentação for: permanência, óbito e transferência" (Manual SIH 2012, p. 13). Em São
@@ -281,7 +291,13 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   item 13.1). Nos arquivos de São Paulo de 2014-12 e 2025-12, das AIH com `cobranca` 61 a
   67 (alta ou óbito da mãe/puérpera ou da gestante, `SAIDAPERM.CNV`), 9.499 de 26.207
   (2014-12) e 13.909 de 20.855 (2025-12) trazem `diar_acom` maior que zero
-  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom` zero não mostra que a
+  (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Nos mesmos dois arquivos, a maior parte
+  das AIH com `diar_acom` maior que zero está fora dessas: das 85.178 de 2025-12, 41.243
+  são de pacientes de 60 anos ou mais (de 80.284 AIH dessa idade sem `cobranca` 61 a 67),
+  16.916 de menores de 18 (de 29.252) e 13.110 de 18 a 59 anos (de 100.356); das 52.346
+  de 2014-12, 21.800 (de 51.449), 15.921 (de 29.007) e 5.126 (de 87.126). Os
+  denominadores excluem `cobranca` 61 a 67, e a idade em anos é calculada de `cod_idade`
+  e `idade` (`evidence/2026-11-28-rd-medidas-da-revisao/`). Um `diar_acom` zero não mostra que a
   paciente ficou sem acompanhante.
 - `us_tot` é o valor total em dólar, não em reais (Informe SIH 2016-03, p. 2).
 - Vários campos de valor vêm zerados: `val_sadt`, `val_rn`, `val_acomp`, `val_ortp`,
@@ -408,9 +424,13 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   externa em `diagsec1`, o único campo medido aqui. Em São Paulo 2014-12, nenhuma das
   19.086 AIH com S ou T traz V a Y em `diagsec1`. Na fixture de Roraima 2007-12
   (`tests/fixtures/dbc/sih_rd_rr_2007_12_mini.dbc`), as 144 AIH com S ou T trazem V a Y
-  em `diag_secun`; os arquivos de 2008 a 2014 não foram medidos para esse campo. O
-  caráter de atendimento, `car_int`, tem códigos de acidente e lesão (03 a 06; Manual SIH
-  2012, p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
+  em `diag_secun`. Nos arquivos de 2008 a 2014 lidos, quase todas as AIH com S ou T
+  trazem V a Y em `diag_secun`: 39.073 das 39.931 nas 27 UFs em 2008-01, 82.696 das
+  82.992 nas 27 UFs em 2012-01 e 18.726 das 19.086 em São Paulo 2014-12; nas 27 UFs em
+  2016-01 e em 2025-12, nenhuma (`evidence/2026-11-28-rd-medidas-da-revisao/`). Os
+  outros meses de 2008 a 2014 não foram medidos para esse campo. O caráter de
+  atendimento, `car_int`, tem códigos de acidente e lesão (03 a 06; Manual SIH 2012,
+  p. 12; tabela do art. 4º da Portaria SAS/MS nº 719/2007), mas não serve para
   contá-los: em São Paulo 2025-12, as 2.588 AIH com 03 a 06 têm `diag_princ` de S ou T, e
   23.252 das 25.840 AIH com S ou T têm caráter 01 (eletivo) ou 02 (urgência).
 - `diag_princ` grava CID-9 (6 algarismos, `065099`) em `sih_aih_reduzida_1992_1997` e
@@ -467,7 +487,14 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   cuidados prolongados, a AIH 5 é usada "com mesmo número da AIH - 1" (p. 48). Para a
   nova AIH aberta na mesma internação (pp. 10–11), nem ele nem o informe dizem qual
   campo do RD liga as AIH entre si, e o layout RD não traz o número do Cartão Nacional
-  de Saúde (Informe SIH 2016-03, p. 1–4). Não conte internações como linhas sem olhar
+  de Saúde (Informe SIH 2016-03, p. 1–4). Em São Paulo, 3.042 valores de `n_aih` estão
+  nos arquivos de 2023-03 e de 2023-06: todos com o mesmo `dt_inter` nos dois e com
+  `dt_saida` mais tarde em 2023-06; 2.765 têm `ident` 5 nos dois, 274 têm `ident` 1 em
+  2023-03 e 5 em 2023-06, e 3 têm linhas com 1 e com 5 em 2023-03. Um mesmo arquivo
+  também repete `n_aih` em mais de uma linha (45 valores em 2023-03, 174 em 2023-06),
+  nos sete arquivos de São Paulo lidos com um só `dt_inter` por valor
+  (`evidence/2026-11-28-rd-medidas-da-revisao/`). Isso vale para esses arquivos; outros
+  meses e outras UFs não foram comparados. Não conte internações como linhas sem olhar
   `ident`, `seq_aih5`, `cobranca`, `n_aih` e `dt_inter` nos seus dados.
 - Se o mês do arquivo (`mes`) é sempre igual a `mes_cmpt`: o documento não explica o
   nome do arquivo. Compare as duas colunas antes de supor.

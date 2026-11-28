@@ -40,7 +40,6 @@ class Lake(Session):
     """
 
     def __init__(self, *, target: CatalogURI, alias: str = "lake") -> None:
-        self._target = target
         self._in_transaction = False
         self._pending_results: list[ImportResult] = []
         self._ensured: set[str] = set()
