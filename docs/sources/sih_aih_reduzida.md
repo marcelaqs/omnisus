@@ -85,8 +85,12 @@ SUS (SIH/SUS), nos arquivos RD que o DATASUS publica um por UF e mês de process
   pela faixa `530000-530009`. Nenhum arquivo `RJ` do Distrito Federal foi lido. O campo não tem referência a `aux_municipios`: lá `140000` é "Município
   ignorado - RR", e a tabela do DEF o chama de "Roraima - Gestão estadual".
 - `cnes` é o código CNES do hospital, com 7 caracteres (Informe SIH 2016-03, p. 3).
-- O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`; `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa ([vocabulários](vocabularios.md)).
-  A importação preserva o comprimento dos códigos publicados; não aplica
+- O dicionário liga `munic_res` e `munic_mov` a `aux_municipios.codigo_6`.
+  `diag_secun`, `cid_asso` e `cid_morte` gravam `0000` quando não há causa
+  ([vocabulários](vocabularios.md)). De 2015-02 em diante, nos arquivos lidos,
+  `cid_asso` e `cid_morte` trazem `0000` em toda AIH, e o informe descreve `diag_secun`
+  como "Preenchido com zeros a partir de 201501" (Informe SIH 2016-03, p. 2); ver
+  [Armadilhas](#armadilhas). A importação preserva o comprimento dos códigos publicados; não aplica
   preenchimento de zeros guiado pelo YAML.
 
 ## Cobertura e modalidade
