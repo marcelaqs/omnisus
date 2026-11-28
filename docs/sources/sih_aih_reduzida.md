@@ -145,23 +145,20 @@ Em `sih_aih_reduzida` e `sih_aih_rejeitada`, `CONTRAC.CNV` (`contracep1` e `cont
   (`val_sh_fed`, `val_sp_fed`, `val_sh_ges`, `val_sp_ges`) estão incluídos no valor
   total da AIH (Informe SIH 2016-03, p. 4).
 - `diar_acom` é a "Quantidade de diárias de acompanhante" (Informe SIH 2016-03, p. 2):
-  conta diárias cobradas, não a presença do acompanhante. A Portaria GM/MS nº 2.418/2005
-  regulamenta o acompanhante da mulher no trabalho de parto, parto e pós-parto imediato
-  (Lei nº 11.108/2005) e autoriza "a cobrança, de acordo com as tabelas do SUS, das
-  despesas previstas com acompanhante", "cabendo ao gestor a devida formalização dessa
-  autorização de cobrança" na AIH (art. 1º, § 2º). Desde 2017, o texto é o art. 92, § 2º,
-  da Portaria de Consolidação GM/MS nº 3/2017, que revogou a 2.418/2005 "por consolidação"
-  (art. 6º, VII, no texto original). No texto compilado, os §§ 1º a 3º trazem "Repristinado
-  pela PRT GM/MS nº 13 de 13.01.2023", e o caput, com a redação da Portaria GM/MS
-  nº 5.350/2024 e a Lei nº 14.737/2023, estende o acompanhante à admissão, internação,
-  alta, consultas, exames e procedimentos. A cobrança de diárias de acompanhante na AIH
-  também vale para pacientes "maiores de 60 (sessenta) anos de idade, quando internados"
-  (Portaria GM/MS nº 280/1999, hoje Anexo 2 do Anexo XI da Portaria de Consolidação GM/MS
-  nº 2/2017): `diar_acom` maior que zero não indica parto. Em São Paulo, das AIH com motivo de
-  saída de parto (`cobranca` 61 a 67), 9.499 de 26.207 trazem `diar_acom` maior que zero
-  em 2014-12 e 13.909 de 20.855 em 2025-12
+  conta diárias cobradas, não a presença do acompanhante, e `diar_acom` maior que zero
+  não indica parto. Duas normas autorizam o prestador a cobrar na AIH "despesas previstas
+  com acompanhante". Uma é a do acompanhante "no trabalho de parto, parto e pós-parto
+  imediato" (Portaria GM/MS nº 2.418/2005, art. 1º, § 2º); em 2017 o texto passou ao
+  art. 92, § 2º, do Anexo II da Portaria de Consolidação GM/MS nº 3/2017, que revogou a
+  2.418/2005 "por consolidação" (art. 6º, VII). A outra é a do acompanhante de pacientes
+  "maiores de 60 (sessenta) anos de idade, quando internados" (Portaria de Consolidação
+  GM/MS nº 2/2017, Anexo 2 do Anexo XI: o art. 1º obriga o hospital a viabilizar a
+  presença do acompanhante, e o § 1º do art. 1º autoriza a cobrança). Nos arquivos de
+  São Paulo de 2014-12 e 2025-12, das AIH com `cobranca` 61 a 67 (alta ou óbito da
+  mãe/puérpera ou da gestante, `SAIDAPERM.CNV`), 9.499 de 26.207 (2014-12) e 13.909 de
+  20.855 (2025-12) trazem `diar_acom` maior que zero
   (`evidence/2026-11-24-rd-sp-uti-cid-raca/`). Um `diar_acom` zero não mostra que a
-  mulher ficou sem acompanhante.
+  paciente ficou sem acompanhante.
 - `us_tot` é o valor total em dólar, não em reais (Informe SIH 2016-03, p. 2).
 - Vários campos de valor vêm zerados: `val_sadt`, `val_rn`, `val_acomp`, `val_ortp`,
   `val_sangue`, `val_sadtsr`, `val_transp`, `val_obsang` e `val_ped1ac`
@@ -360,6 +357,27 @@ Passo a passo com análise e procedência:
   issue `rotulo-do-layout-ate-2007`. Onde o informe de 2016 descreve o campo, vale o
   texto dele, mesmo quando o layout anterior dizia outra coisa (`ano_cmpt` era "ANO
   COMPETÊNCIA" e é "Ano de processamento da AIH").
+- Portaria GM/MS nº 2.418, de 2 de dezembro de 2005, Ministério da Saúde / Gabinete do
+  Ministro (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/gm/2005/prt2418_02_12_2005.html>
+  — consultado em 2026-11-24; SHA-256
+  `92c80feb434abfae35b99a84e8501875eb378e9d9737b9caa991d707cf516464`. Registro: `src/omnisus/data/dicionarios/sources/registry.json`,
+  `sihsus-92c80feb434a`.
+- Portaria de Consolidação GM/MS nº 3, de 28 de setembro de 2017, Ministério da Saúde /
+  Gabinete do Ministro (Saúde Legis), no arquivo `prc0003_03_10_2017ARQUIVO.html`, que
+  anota alterações de 2017 e 2018; nenhuma delas está no art. 6º nem no art. 92 do
+  Anexo II:
+  <https://bvsms.saude.gov.br/bvs/saudelegis/gm/2017/prc0003_03_10_2017ARQUIVO.html>
+  — consultado em 2026-11-26; SHA-256
+  `a93041ba7d74ebc2f287057147a6f3ae1aab9bf8199e403e918d5d4fb0d1534e`. Registro: `src/omnisus/data/dicionarios/sources/registry.json`,
+  `sihsus-a93041ba7d74`.
+- Portaria de Consolidação GM/MS nº 2, de 28 de setembro de 2017, texto compilado,
+  Ministério da Saúde / Gabinete do Ministro (Saúde Legis):
+  <https://bvsms.saude.gov.br/bvs/saudelegis/gm/2017/prc0002_03_10_2017.html>
+  — consultado em 2026-11-26; SHA-256
+  `047d0dc65b9fe2787e635081bdf45c5af5fc82cca374bb2eab478ab3793d796f`. Registro: `src/omnisus/data/dicionarios/sources/registry.json`,
+  `sihsus-047d0dc65b9f`. O Anexo 2 do Anexo XI traz como origem a Portaria GM/MS
+  nº 280/1999.
 - [Bases e argumentos](../datasets.md#sih), página gerada do registro da biblioteca.
 
 ## Detalhes técnicos
