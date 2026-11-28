@@ -8,12 +8,14 @@ is removed, with an issue saying what was consulted.
 
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 
 import pytest
 import yaml
 
 import omnisus as sus
+from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 DICIONARIOS = Path(sus.__file__).parent / "data" / "dicionarios"
 
@@ -155,9 +157,17 @@ def test_the_closed_ap_tpapac_issue_says_the_4_of_the_older_map_has_no_label(dat
     assert "4" not in _field(dataset, "ap_tpapac")["x-decode"]
 
 
-def test_am_gestant_stays_conflicting_because_the_cnv_contradicts_itself() -> None:
+def test_am_gestant_stays_conflicting_because_the_cnv_contradicts_itself(dbc_fixture) -> None:
     """AMRR2401 gives N to every male patient, so N cannot mean pregnant (FIXTURES.md)."""
     claim, issue = _codes_claim_and_cnv_issue("sia_apac_medicamentos", "am_gestant")
     assert (claim["status"], issue["status"]) == ("conflicting", "open")
     assert "GESTANTE.CNV" in issue["description"]
     assert "sia_am_rr_2024_01_mini.dbc" in issue["description"]
+    frame = dbc_bytes_to_lazyframe(
+        dbc_fixture("sia_am_rr_2024_01_mini").read_bytes(), dataset="sia_apac_medicamentos"
+    ).collect()
+    counts = Counter(zip(frame["am_gestant"], frame["ap_sexo"], strict=True))
+    assert counts == {("N", "F"): 1234, ("N", "M"): 841, ("S", "F"): 8}
+    assert _field("sia_apac_medicamentos", "ap_sexo")["x-decode"]["M"] == "Masculino"
+    for quoted in ("2.083 linhas", "'N' em 2.075", "'S' em 8", "1.234", "841"):
+        assert quoted in issue["description"]
