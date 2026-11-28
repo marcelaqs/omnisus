@@ -8,6 +8,16 @@
   SINAN national files no longer fall back to the Python reader. `API_VERSION` stays 2
   (#149).
 
+### Dictionaries
+
+- `sia_apac_cirurgia_bariatrica`, `sia_apac_laudos_diversos`, `sia_apac_medicamentos`,
+  `sia_apac_quimioterapia` and `sia_apac_tratamento_dialitico` 0.6.1 and
+  `sia_psicossocial` 0.5.1: 48 `cnv-parse` claims on `/field/codes` go from
+  `conflicting` to `verified_in_source` after a human review, and on each of these
+  fields the issue `cnv-difere-do-mapa-anterior` is resolved. No label or code changes.
+  `am_gestant` of `sia_apac_medicamentos` stays `conflicting`, with the issue open:
+  `GESTANTE.CNV` labels `N` "Nao - (O paciente é gestante)" (#247).
+
 ## v0.5.1 — 2026-11-28
 
 **Upgrading from 0.5.0:** no parser version changed (the import still reads the same
