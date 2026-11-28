@@ -23,6 +23,7 @@ from omnisus.sources.datasus_ftp.parse import dbc_bytes_to_lazyframe
 
 ESTRUTURA_2025 = "sim-b4195ac8e0f8"
 ESTRUTURA_2019 = "sim-b014389eca62"
+ESTRUTURA_2025_OPEN_DATA = "sim-2177e17cf20b"
 ESTRUTURA_2006 = "sim-anterior-13cabba0b9a1"
 DICIONARIO_DOM = "sim-dom-fb396a277981"
 EVERY_PAGE = list(range(1, 10))
@@ -266,14 +267,22 @@ def test_codestab_is_seven_digits_where_the_document_says_eight(dbc_fixture, fix
 
 
 def test_origem_codes_cite_the_edition_that_writes_them_as_the_map_does() -> None:
-    """The 12/2019 edition writes 1, 2, 3 and 9; the 07/2025 edition writes 01, 02 and 03."""
+    """The 12/2019 edition writes 1, 2, 3 and 9; those of 06/2025 and 07/2025 write 01, 02, 03."""
     (claim,) = [c for c in _columns()["origem"]["claims"] if c["target"] == "/field/codes"]
     assert [(e["source_id"], e["pages"]) for e in claim["evidence"]] == [
         (ESTRUTURA_2019, [6]),
         (ESTRUTURA_2025, [5]),
-        ("sim-2177e17cf20b", [6]),
+        (ESTRUTURA_2025_OPEN_DATA, [6]),
     ]
     assert (claim["status"], claim["reviewer"]) == ("verified_in_source", "marcelaqs")
+    editions = {s["id"]: s["edition"] for s in sources_registry()["sources"]}
+    assert all(editions[e["source_id"]] in claim["note"] for e in claim["evidence"])
+
+
+def test_the_open_data_edition_is_registered_with_the_month_it_declares() -> None:
+    """Every page of Dicionario_SIM_2025.pdf says "Arquivo atualizado em 06/2025"."""
+    (source,) = [s for s in sources_registry()["sources"] if s["id"] == ESTRUTURA_2025_OPEN_DATA]
+    assert source["edition"] == "06/2025"
 
 
 def test_the_2006_structure_is_registered_with_both_layouts() -> None:
